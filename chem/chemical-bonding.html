@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemical Bonding Notes (Unit 4)</title>
+<meta name="description" content="Interactive Chemical Bonding Notes (Unit 4 of 10). Ionic, covalent, and metallic bonds, Lewis structures, electronegativity, bond polarity, molecular polarity. By tutoringwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<style>
+:root{
+  --white:#FFFFFF;--sage-l:#D0D6B3;--sage:#9BA06A;--slate:#525B76;--forest:#143109;
+  --bg:#f5f6ee;--sage-m:#e4e8cc;
+  --c-h:#a8c6a8;--c-c:#525B76;--c-o:#e8b0a0;--c-n:#c9b3d4;--c-other:#d9c59a;
+  --good:#5b8a3f;--bad:#b5503e;
+  --fh:'Young Serif',Georgia,serif;--fp:'Dosis','Trebuchet MS',Arial,sans-serif;--fb:'Bitter',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--fp);color:var(--forest);padding:18px 16px 52px;overflow-x:hidden}
+.page{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+
+/* Header */
+.pg-head{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:20px;padding:36px 28px;text-align:center}
+.pg-head .topic-badge{display:inline-block;font-family:var(--fb);font-weight:700;color:var(--slate);background:var(--white);border:1.5px solid var(--sage-l);padding:4px 14px;border-radius:20px;font-size:.82rem;margin-bottom:12px;letter-spacing:.04em}
+.pg-head h1{font-family:var(--fh);font-size:2.2rem;color:var(--forest);margin-bottom:6px}
+.pg-head .sub{font-family:var(--fp);color:var(--slate);font-size:1rem}
+
+/* Cards */
+.card{background:var(--white);border:2px solid var(--sage-l);border-radius:20px;padding:28px 26px;box-shadow:0 2px 12px rgba(20,49,9,0.06)}
+.card-title{font-family:var(--fh);font-size:1.4rem;color:var(--forest);margin-bottom:14px}
+.card-title .num{font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.9rem;background:var(--sage-m);border-radius:8px;padding:2px 10px;margin-right:8px;vertical-align:middle}
+.body-text{font-family:var(--fp);font-size:1.04rem;color:var(--forest);line-height:1.7;margin-bottom:12px}
+.body-text:last-child{margin-bottom:0}
+.highlight-box{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:14px;padding:18px 22px;margin:14px 0}
+.sub-title{font-family:var(--fh);font-size:1.1rem;color:var(--forest);margin:18px 0 8px}
+.term-grid{display:grid;grid-template-columns:160px 1fr;gap:8px 16px;margin:12px 0}
+.term-sym{font-family:var(--fb);font-weight:700;color:var(--sage);text-align:right;font-size:1rem}
+.term-def{font-family:var(--fp);font-size:.98rem;color:var(--forest);line-height:1.6}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
+.site-btn{font-family:var(--fp);font-weight:600;font-size:.92rem;border:none;border-radius:30px;padding:8px 18px;cursor:pointer;transition:background .18s,transform .18s;background:var(--sage);color:var(--white)}
+.site-btn:hover{background:var(--forest);transform:translateY(-1px)}
+.site-btn.active{background:var(--forest)}
+.site-btn.secondary{background:var(--white);color:var(--forest);border:2px solid var(--sage-l)}
+.site-btn.secondary:hover{background:var(--sage-m)}
+.interactive-area{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:16px;padding:20px 18px;margin:16px 0}
+.ia-label{font-family:var(--fb);font-size:1rem;color:var(--slate);margin-bottom:10px;text-align:center;font-weight:700}
+.practice-box{background:var(--white);border:2px dashed var(--sage-l);border-radius:14px;padding:16px 20px;margin:10px 0}
+.practice-box .q{font-family:var(--fp);font-size:1rem;color:var(--forest);margin-bottom:8px;line-height:1.6}
+.practice-box .a{font-family:var(--fp);font-size:.95rem;color:var(--forest);display:none;margin-top:8px;padding:12px 14px;background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;line-height:1.65}
+.practice-box .a.show{display:block;animation:fadeIn .25s ease}
+.show-ans-btn{font-family:var(--fp);font-weight:600;font-size:.85rem;border:2px solid var(--sage-l);border-radius:20px;padding:5px 14px;cursor:pointer;background:var(--white);color:var(--sage);transition:background .18s}
+.show-ans-btn:hover{background:var(--sage-m)}
+.worked-example{background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 14px 14px 0;padding:16px 22px;margin:14px 0}
+.worked-example .step{font-family:var(--fp);font-size:.98rem;color:var(--forest);margin-bottom:6px;line-height:1.65}
+.worked-example .step-label{font-family:var(--fb);font-weight:700;color:var(--sage)}
+
+/* Topics list */
+.topics-list{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 18px;margin-top:8px}
+.topics-list .row{font-family:var(--fp);color:var(--forest);display:flex;gap:10px;font-size:.98rem;padding:3px 0}
+.topics-list .row .rn{font-family:var(--fb);color:var(--sage);min-width:28px;font-weight:700}
+.topics-list .row.current{background:var(--sage-m);border-radius:8px;padding:3px 8px;font-weight:600}
+
+/* Pick rows */
+.pick-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:8px 0}
+.pick-btn{font-family:var(--fb);font-size:.82rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:18px;padding:5px 12px;cursor:pointer;color:var(--forest);transition:background .15s}
+.pick-btn:hover{background:var(--sage-m)}
+.pick-btn.active{background:var(--sage);color:var(--white);border-color:var(--sage)}
+
+/* Bond comparison table */
+.bond-table{width:100%;border-collapse:collapse;margin:10px 0;background:var(--white);border:1.5px solid var(--sage-l);border-radius:12px;overflow:hidden;font-family:var(--fp)}
+.bond-table th,.bond-table td{padding:8px 12px;font-size:.92rem;text-align:left;border-bottom:1px solid var(--sage-l);border-right:1px solid var(--sage-l);color:var(--forest);vertical-align:top}
+.bond-table th{background:var(--sage-m);font-family:var(--fb);font-weight:700;color:var(--forest);font-size:.88rem;letter-spacing:.02em}
+.bond-table tr:last-child td{border-bottom:0}
+.bond-table th:last-child,.bond-table td:last-child{border-right:0}
+.bond-table td:first-child{font-family:var(--fb);font-weight:700;color:var(--slate);background:#f9faf4}
+
+/* Bond predictor / EN calculator widget */
+.bp-card{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px}
+.bp-row{display:grid;grid-template-columns:1fr 40px 1fr;gap:10px;align-items:center;margin:10px 0}
+.bp-cell{background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:8px 10px;text-align:center}
+.bp-cell .lbl{font-family:var(--fb);font-size:.7rem;color:var(--slate);letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+.bp-cell .sym{font-family:var(--fb);font-size:1.6rem;color:var(--forest);font-weight:700;line-height:1.1}
+.bp-cell .nm{font-family:var(--fp);font-size:.78rem;color:var(--slate);margin-top:2px}
+.bp-cell .en{font-family:var(--fb);font-size:.8rem;color:var(--sage);margin-top:2px}
+.bp-plus{font-family:var(--fb);font-size:1.4rem;color:var(--sage);text-align:center}
+.bp-atoms{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:5px;margin:8px 0;max-height:240px;overflow-y:auto;padding:6px;background:var(--bg);border-radius:10px}
+.bp-atom{font-family:var(--fb);font-weight:700;font-size:.95rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:8px;padding:6px 4px;cursor:pointer;text-align:center;transition:background .12s;line-height:1.1}
+.bp-atom small{display:block;font-family:var(--fp);font-weight:600;font-size:.65rem;color:var(--slate);margin-top:1px}
+.bp-atom:hover{background:var(--sage-m)}
+.bp-atom.metal{color:#8a3a2a}
+.bp-atom.nonmetal{color:var(--forest)}
+.bp-atom.metalloid{color:#9a6a00}
+.bp-atom.active{background:var(--sage);color:var(--white) !important;border-color:var(--sage)}
+.bp-atom.active small{color:rgba(255,255,255,.75)}
+.bp-result{background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 12px 12px 0;padding:14px 18px;margin-top:12px;font-family:var(--fp);font-size:.98rem;line-height:1.7;color:var(--forest)}
+.bp-result .verdict{font-family:var(--fh);font-size:1.2rem;color:var(--forest);margin-bottom:6px}
+.bp-result .delta{font-family:var(--fb);font-weight:700;color:var(--sage)}
+.bp-legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-family:var(--fp);font-size:.82rem;color:var(--slate);margin-top:6px}
+.bp-legend .swatch{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:4px;vertical-align:middle;border:1.5px solid currentColor}
+
+/* Lewis structure viewer */
+.lewis-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;text-align:center}
+.lewis-stage svg{max-width:100%;height:auto;display:block;margin:0 auto;width:100%;max-height:320px}
+.lewis-info{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.lewis-info .lcell{background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:8px 12px;font-family:var(--fp);font-size:.92rem;color:var(--forest);line-height:1.5}
+.lewis-info .lcell .lbl{font-family:var(--fb);font-size:.7rem;color:var(--slate);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.lewis-name{font-family:var(--fh);font-size:1.15rem;color:var(--forest);text-align:center;margin:6px 0 2px}
+.lewis-formula{font-family:var(--fb);font-size:1rem;color:var(--slate);text-align:center}
+
+/* Molecular polarity widget */
+.mp-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;text-align:center}
+.mp-stage svg{max-width:100%;height:auto;width:100%;max-height:260px}
+.mp-flow{background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:12px;padding:14px 18px;margin-top:10px;font-family:var(--fp);font-size:.95rem;color:var(--forest);line-height:1.65}
+.mp-flow .step-label{font-family:var(--fb);font-weight:700;color:var(--sage)}
+.mp-flow .pol{font-family:var(--fb);font-weight:700;color:var(--bad)}
+.mp-flow .nonpol{font-family:var(--fb);font-weight:700;color:var(--good)}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:640px){
+  .pg-head{padding:26px 18px}.pg-head h1{font-size:1.55rem}
+  .card{padding:22px 16px}.card-title{font-size:1.15rem}
+  .term-grid{grid-template-columns:110px 1fr}
+  .topics-list{grid-template-columns:1fr}
+  .bp-row{grid-template-columns:1fr;gap:6px}
+  .bp-plus{padding:6px 0}
+  .lewis-info{grid-template-columns:1fr}
+}
+
+/* ===== LWS SHELL (v2 UI) ===== */
+body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01","cv11"}
+.page{max-width:none;margin:0;display:block}
+.lws-backdrop{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(228,232,204,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(208,214,179,.5) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(228,232,204,.6) 0%,transparent 55%),
+             var(--bg)}
+.app{position:relative;z-index:1;display:grid;grid-template-columns:264px 1fr;grid-template-rows:64px 1fr;grid-template-areas:"side top" "side main";min-height:100vh}
+.side{grid-area:side;padding:16px 14px 14px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-right:1px solid var(--sage-l);overflow-y:auto;box-shadow:0 1px 0 rgba(255,255,255,0.9) inset}
+.top{grid-area:top;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-bottom:1px solid var(--sage-l);position:sticky;top:0;z-index:15}
+.main{grid-area:main;padding:24px 28px 56px;max-width:1320px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;padding:8px 12px}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--forest));color:#fff;display:grid;place-items:center;font-family:var(--fh);font-size:1.1rem;line-height:1;box-shadow:0 6px 20px -6px rgba(20,49,9,0.35)}
+.brand-name{font-family:var(--fh);color:var(--forest);font-size:1.05rem;line-height:1.05}
+.brand-name small{display:block;font-family:var(--fb);font-style:italic;color:#7C8172;font-size:.7rem;margin-top:3px}
+.ws-switch{margin:0 4px}
+.ws-switch-btn{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.62);border:1px solid rgba(255,255,255,0.55);border-radius:12px;backdrop-filter:blur(14px);text-align:left;transition:background .15s}
+.ws-switch-btn .ico{width:30px;height:30px;border-radius:8px;background:var(--sage-m);color:var(--forest);display:grid;place-items:center;flex-shrink:0;font-family:var(--fb);font-weight:700;font-size:.78rem}
+.ws-switch-btn .meta{flex:1;min-width:0}
+.ws-switch-btn .lbl{font-family:var(--fh);color:var(--forest);font-size:.95rem;line-height:1.1}
+.ws-switch-btn .sub{font-family:var(--fb);color:#7C8172;font-size:.68rem;margin-top:3px}
+.side-section-label{font-family:var(--fb);font-size:.66rem;letter-spacing:.14em;color:#7C8172;text-transform:uppercase;padding:14px 12px 4px}
+.side-nav{display:flex;flex-direction:column;gap:1px;padding:0 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;text-decoration:none;color:var(--forest);transition:background .15s;font-family:var(--fp);font-size:.86rem;font-weight:500}
+.nav-item .num{font-family:var(--fb);color:var(--sage);font-weight:700;font-size:.78rem;min-width:30px}
+.nav-item .t{flex:1;color:var(--forest)}
+.nav-item:hover{background:var(--sage-m)}
+.nav-item.active{background:var(--white);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 12px 40px -12px rgba(20,49,9,0.18),0 2px 8px rgba(20,49,9,0.06);border:1px solid var(--sage-l)}
+.nav-item.active .t{color:var(--forest);font-weight:700}
+.nav-item.locked{color:#a3a89a;cursor:not-allowed}
+.nav-item.locked:hover{background:transparent}
+.nav-item.locked .num,.nav-item.locked .t{color:#a3a89a}
+.bread{display:flex;flex-direction:column;gap:0;flex:0 0 auto;min-width:0}
+.bread-trail{font-family:var(--fp);color:var(--slate);font-size:.78rem}
+.bread-now{font-family:var(--fp);font-weight:700;color:var(--forest);font-size:1rem;line-height:1.1}
+.search{flex:1;max-width:520px;min-width:120px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.62);border:1px solid var(--sage-l);border-radius:99px;padding:8px 16px;color:var(--slate);backdrop-filter:blur(14px)}
+.search input{border:0;background:transparent;outline:none;flex:1;font-family:var(--fp);font-size:.9rem;color:var(--forest);min-width:0}
+.search svg{flex-shrink:0;color:var(--slate)}
+.top-actions{display:flex;align-items:center;gap:8px}
+.btn-icon{width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--sage-l);color:var(--slate);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;font-size:1rem;padding:0}
+.btn-icon:hover{background:var(--sage-m);color:var(--forest)}
+.pg-head{margin-top:0}
+@media(max-width:980px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;grid-template-areas:"side" "top" "main"}
+  .side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--sage-l);max-height:none}
+  .top{padding:10px 18px;flex-wrap:wrap}
+  .main{padding:16px 18px 48px}
+  .search{order:3;flex-basis:100%;max-width:none}
+}
+
+/* Dark mode */
+[data-theme="dark"]{
+  --white:#14170F; --sage-l:#2B3320; --sage:#A9B07A; --sage-m:#1E2416;
+  --slate:#AEB5C8; --forest:#E8EBDA; --bg:#0E1108;
+}
+[data-theme="dark"] body{color:var(--forest)}
+[data-theme="dark"] .lws-backdrop{
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(43,51,32,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(30,36,22,.55) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(43,51,32,.7) 0%,transparent 55%),
+             var(--bg)
+}
+[data-theme="dark"] .side,[data-theme="dark"] .top{background:rgba(20,23,15,0.7);border-color:#2B3320}
+[data-theme="dark"] .ws-switch-btn,[data-theme="dark"] .search,[data-theme="dark"] .btn-icon{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .lbl,[data-theme="dark"] .ws-switch-btn .ico{color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .ico{background:#2A3421}
+[data-theme="dark"] .nav-item,[data-theme="dark"] .nav-item .t{color:var(--forest)}
+[data-theme="dark"] .nav-item:hover{background:#2A3421}
+[data-theme="dark"] .nav-item.active{background:#2A3421;border-color:#3A4A2E;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 12px 40px -12px rgba(0,0,0,0.55),0 2px 8px rgba(0,0,0,0.35)}
+[data-theme="dark"] .btn-icon:hover{background:#2A3421;color:var(--forest)}
+[data-theme="dark"] .search input{color:var(--forest)}
+[data-theme="dark"] .search input::placeholder{color:#7e8775}
+[data-theme="dark"] .pg-head{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .pg-head h1,[data-theme="dark"] .pg-head .sub,[data-theme="dark"] .pg-head .topic-badge{color:var(--forest)}
+[data-theme="dark"] .pg-head .topic-badge{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .card{background:#14170F;border-color:#2B3320;color:var(--forest)}
+[data-theme="dark"] .card-title,[data-theme="dark"] .sub-title,[data-theme="dark"] .body-text,[data-theme="dark"] .term-def,[data-theme="dark"] .term-sym{color:var(--forest)}
+[data-theme="dark"] .card-title .num{background:#2A3421;color:var(--sage)}
+[data-theme="dark"] .highlight-box{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .interactive-area{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .ia-label{color:var(--forest)}
+[data-theme="dark"] .practice-box{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .practice-box .q,[data-theme="dark"] .practice-box .a{color:var(--forest)}
+[data-theme="dark"] .practice-box .a{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .show-ans-btn{background:#1E2416;color:var(--sage);border-color:#3A4A2E}
+[data-theme="dark"] .worked-example{background:#1A1F11;border-left-color:var(--sage);color:var(--forest)}
+[data-theme="dark"] .site-btn.secondary{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .topics-list .row.current{background:#2A3421}
+[data-theme="dark"] .bp-card,[data-theme="dark"] .lewis-stage,[data-theme="dark"] .mp-stage{background:#14170F;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .bp-cell,[data-theme="dark"] .lewis-info .lcell,[data-theme="dark"] .mp-flow{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .bp-cell .sym,[data-theme="dark"] .bp-cell .nm{color:var(--forest)}
+[data-theme="dark"] .bp-atoms{background:#0E1108}
+[data-theme="dark"] .bp-atom{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .bp-atom:hover{background:#2A3421}
+[data-theme="dark"] .bp-atom.metal{color:#e8a08a}
+[data-theme="dark"] .bp-atom.nonmetal{color:var(--forest)}
+[data-theme="dark"] .bp-atom.metalloid{color:#e0c684}
+[data-theme="dark"] .bp-atom.active{background:var(--sage);color:#0E1108 !important;border-color:var(--sage)}
+[data-theme="dark"] .bp-result{background:#1A1F11;border-left-color:var(--sage);color:var(--forest)}
+[data-theme="dark"] .pick-btn{background:#14170F;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .pick-btn:hover{background:#2A3421}
+[data-theme="dark"] .bond-table{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .bond-table th,[data-theme="dark"] .bond-table td{border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .bond-table th{background:#1E2416}
+[data-theme="dark"] .bond-table td:first-child{background:#1A1F11;color:var(--sage)}
+
+/* Heat-map periodic table */
+.hm-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;position:relative;overflow-x:auto}
+.hm-grid{display:grid;grid-template-columns:repeat(18, minmax(28px, 1fr));gap:2px;margin:0 auto;max-width:920px}
+.hm-grid.hm-lan,.hm-grid.hm-act{grid-template-columns:repeat(15, minmax(28px, 1fr));margin-top:8px;max-width:760px}
+.hm-cell{aspect-ratio:1;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;font-family:var(--fb);transition:transform .1s, box-shadow .1s;position:relative;min-height:30px;line-height:1}
+.hm-cell:hover{transform:scale(1.12);box-shadow:0 0 0 2px var(--forest);z-index:5}
+.hm-cell .z{font-size:.5em;color:rgba(0,0,0,0.65);font-weight:600;margin-top:1px}
+.hm-cell .s{font-size:.85em;font-weight:700;color:#000}
+.hm-cell.no-data{opacity:0.4;cursor:default;background:#dadada}
+.hm-cell.no-data:hover{transform:none;box-shadow:none}
+.hm-cell.placeholder{background:#ccc;color:#555;cursor:default}
+.hm-cell.placeholder:hover{transform:none;box-shadow:none}
+.hm-cell.placeholder .z,.hm-cell.placeholder .s{color:#555;font-size:.55em}
+.hm-legend{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:12px;font-family:var(--fp);font-size:.82rem;color:var(--slate);flex-wrap:wrap}
+.hm-legend .lo,.hm-legend .hi{font-family:var(--fb);font-size:.78rem}
+.hm-legend-bar{flex:0 0 240px;height:14px;border-radius:7px;background:linear-gradient(90deg, hsl(240,70%,60%), hsl(190,70%,60%), hsl(120,65%,55%), hsl(60,80%,55%), hsl(15,75%,55%))}
+.hm-tooltip{position:absolute;background:var(--forest);color:#fff;padding:8px 12px;border-radius:8px;font-family:var(--fp);font-size:.88rem;pointer-events:none;z-index:30;line-height:1.45;white-space:nowrap;box-shadow:0 6px 18px rgba(20,49,9,0.3)}
+.hm-tooltip .tn{font-family:var(--fh);font-size:1rem;line-height:1.2}
+.hm-tooltip .tz{font-family:var(--fb);font-size:.72rem;opacity:0.85;letter-spacing:.04em}
+.hm-tooltip .tv{font-family:var(--fb);font-size:.92rem;color:#FFE9A0;margin-top:3px}
+.hm-explain{margin-top:12px;font-family:var(--fp);font-size:.95rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:12px 16px;line-height:1.6}
+[data-theme="dark"] .hm-stage{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .hm-cell{filter:brightness(0.92)}
+[data-theme="dark"] .hm-cell.no-data{background:#2A3421}
+[data-theme="dark"] .hm-cell.placeholder{background:#2A3421}
+[data-theme="dark"] .hm-cell.placeholder .z,[data-theme="dark"] .hm-cell.placeholder .s{color:var(--slate)}
+[data-theme="dark"] .hm-explain{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .hm-tooltip{background:#2A3421}
+@media(max-width:640px){
+  .hm-grid{min-width:540px;grid-template-columns:repeat(18, minmax(22px, 1fr))}
+  .hm-grid.hm-lan,.hm-grid.hm-act{min-width:450px;grid-template-columns:repeat(15, minmax(22px, 1fr))}
+}
+
+/* Heat-map trend arrows */
+.hm-frame{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto 1fr;gap:6px;align-items:stretch}
+.hm-top-axis{grid-column:2;grid-row:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:6px 14px;background:var(--bg);border:1.5px dashed var(--sage-l);border-radius:10px;font-family:var(--fp);font-size:.86rem;color:var(--forest);flex-wrap:wrap}
+.hm-side-axis{grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px 6px;background:var(--bg);border:1.5px dashed var(--sage-l);border-radius:10px;min-width:64px;font-family:var(--fp);font-size:.74rem;color:var(--forest);text-align:center;line-height:1.25}
+.hm-grid-stack{grid-column:2;grid-row:2}
+.hm-axis-label{font-family:var(--fb);color:var(--slate);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.68rem}
+.hm-axis-arrow{font-family:var(--fb);color:var(--sage);font-weight:700;line-height:1}
+.hm-top-axis .hm-axis-arrow{font-size:1.4rem}
+.hm-side-axis .hm-axis-arrow{font-size:1.6rem;margin:2px 0}
+.hm-axis-value{font-family:var(--fb);color:var(--forest);font-weight:700;font-size:.86rem}
+.hm-side-axis .hm-axis-value{font-size:.74rem;line-height:1.2}
+[data-theme="dark"] .hm-top-axis,[data-theme="dark"] .hm-side-axis{background:#1A1F11;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .hm-axis-value{color:var(--forest)}
+@media(max-width:640px){
+  .hm-frame{grid-template-columns:1fr;grid-template-rows:auto auto auto}
+  .hm-top-axis{grid-column:1;grid-row:1}
+  .hm-side-axis{grid-column:1;grid-row:2;flex-direction:row;min-width:auto;padding:6px 14px}
+  .hm-side-axis .hm-axis-arrow{font-size:1.4rem;margin:0}
+  .hm-grid-stack{grid-column:1;grid-row:3}
+}
+
+/* Electron sharing animation widget */
+.es-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;text-align:center}
+.es-stage svg{max-width:100%;height:auto;width:100%;max-height:300px;display:block;margin:0 auto}
+.es-readout{font-family:var(--fp);font-size:.95rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:10px 14px;margin-top:10px;line-height:1.55}
+.es-readout strong{font-family:var(--fb)}
+[data-theme="dark"] .es-stage{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .es-readout{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+
+/* Sigma/pi diagram */
+.sp-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;text-align:center}
+.sp-stage svg{max-width:100%;height:auto;width:100%;max-height:200px;display:block;margin:0 auto}
+.sp-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:10px;margin:10px 0}
+.sp-card{background:var(--white);border:1.5px solid var(--sage-l);border-radius:12px;padding:10px}
+.sp-card .stitle{font-family:var(--fh);font-size:1rem;color:var(--forest);text-align:center;margin-bottom:6px}
+.sp-card .sdesc{font-family:var(--fp);font-size:.85rem;color:var(--forest);line-height:1.5}
+[data-theme="dark"] .sp-stage,[data-theme="dark"] .sp-card{background:#14170F;border-color:#3A4A2E;color:var(--forest)}
+@media(max-width:640px){
+  .sp-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body data-theme="light">
+<div class="lws-backdrop"></div>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark">L</div>
+    <div class="brand-name">learningwithsruthi <small>chemistry notes</small></div>
+  </div>
+  <div class="ws-switch">
+    <div class="ws-switch-btn">
+      <div class="ico">IV</div>
+      <div class="meta">
+        <div class="lbl">Chemical Bonding</div>
+        <div class="sub">Unit 4 of 10 &middot; Chemistry</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-section-label">Units</div>
+  <div class="side-nav">
+    <a class="nav-item" href="atomic-structure.html"><span class="num">I.</span><span class="t">Atomic Structure</span></a>
+    <a class="nav-item" href="periodic-table.html"><span class="num">II.</span><span class="t">The Periodic Table</span></a>
+    <a class="nav-item" href="stoichiometry.html"><span class="num">III.</span><span class="t">Stoichiometry</span></a>
+    <a class="nav-item active" href="chemical-bonding.html"><span class="num">IV.</span><span class="t">Chemical Bonding</span></a>
+    <a class="nav-item" href="physical-behavior-of-matter.html"><span class="num">V.</span><span class="t">Physical Behavior</span></a>
+    <a class="nav-item locked"><span class="num">VI.</span><span class="t">Equilibrium</span></a>
+    <a class="nav-item" href="unit-7-organic-chem.html"><span class="num">VII.</span><span class="t">Organic Chemistry</span></a>
+    <a class="nav-item locked"><span class="num">VIII.</span><span class="t">Redox</span></a>
+    <a class="nav-item locked"><span class="num">IX.</span><span class="t">Acids, Bases, Salts</span></a>
+    <a class="nav-item locked"><span class="num">X.</span><span class="t">Nuclear Chemistry</span></a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">Chemistry &middot; Unit 4 of 10</span>
+    <span class="bread-now">Chemical Bonding</span>
+  </div>
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input placeholder="Search topics, lessons, questions...">
+  </div>
+  <div class="top-actions">
+    <button class="btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleLwsTheme()">&#9790;</button>
+  </div>
+</header>
+
+<main class="main">
+
+<!-- ======== HEADER ======== -->
+<div class="pg-head">
+  <div class="topic-badge">Chemical Bonding Notes &middot; Unit 4 of 10</div>
+  <h1>Chemical Bonding</h1>
+  <p class="sub">Ionic, covalent, and metallic bonds. Lewis structures, electronegativity, polarity. The reasons matter sticks together.</p>
+</div>
+
+<!-- ======== OVERVIEW ======== -->
+<div class="card">
+  <div class="card-title"><span class="num">0</span>The Ten Units</div>
+  <p class="body-text">Unit 4 builds on the periodic-table reasoning from Unit 2. The whole point is to predict what happens when atoms come together. Will they share electrons, transfer them, or pool them in a sea? Will the resulting molecule have a positive end and a negative end? Bonding is the bridge from "what atoms are" to "what stuff is made of."</p>
+  <div class="highlight-box">
+    <div class="topics-list">
+      <div class="row"><span class="rn">I.</span> Atomic Structure</div>
+      <div class="row"><span class="rn">II.</span> The Periodic Table</div>
+      <div class="row"><span class="rn">III.</span> Stoichiometry</div>
+      <div class="row current"><span class="rn">IV.</span> Chemical Bonding</div>
+      <div class="row"><span class="rn">V.</span> Physical Behavior of Matter</div>
+      <div class="row"><span class="rn">VI.</span> Equilibrium</div>
+      <div class="row"><span class="rn">VII.</span> Organic Chemistry</div>
+      <div class="row"><span class="rn">VIII.</span> Oxidation-Reduction</div>
+      <div class="row"><span class="rn">IX.</span> Acids, Bases, and Salts</div>
+      <div class="row"><span class="rn">X.</span> Nuclear Chemistry</div>
+    </div>
+  </div>
+  <p class="body-text">By the end of this page you will be able to identify a bond as ionic, covalent, or metallic just from the two elements involved, draw the Lewis structure of any common molecule, calculate the electronegativity difference to classify a bond's polarity, and determine whether a whole molecule is polar or nonpolar based on its shape and bonds.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- ============ SECTION 1: WHY BONDS FORM ===================== -->
+<!-- ============================================================ -->
+
+<div class="card">
+  <div class="card-title"><span class="num">1</span>Why Atoms Bond</div>
+  <p class="body-text">Atoms bond to <strong>reach a more stable configuration</strong>, usually by getting a full outer shell of electrons. That target is the <strong>noble-gas configuration</strong>: 8 valence electrons (or 2 for hydrogen and helium). This is the <strong>octet rule</strong>.</p>
+
+  <p class="body-text">Different atoms get to a full octet different ways:</p>
+  <ul style="list-style:disc;padding-left:24px;line-height:1.8;font-family:var(--fp)">
+    <li>Atoms with <strong>almost no</strong> valence electrons (metals on the left side) prefer to <em>lose</em> them, leaving the next-shell-down full.</li>
+    <li>Atoms with <strong>almost full</strong> valence shells (nonmetals on the right side) prefer to <em>gain</em> a few to fill up.</li>
+    <li>If both atoms want to gain, they <em>share</em>.</li>
+  </ul>
+
+  <div class="highlight-box">
+    <strong>Energy and bonds (two facts the Regents loves).</strong>
+    <br><br>
+    <strong>Breaking a bond absorbs energy.</strong> You have to put energy in to pull bonded atoms apart.
+    <br>
+    <strong>Forming a bond releases energy.</strong> Energy comes out when atoms snap together into a more stable state.
+    <br><br>
+    A reaction is exothermic overall when more energy is released forming the new bonds than was absorbed breaking the old ones.
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">2</span>Three Types of Bonds</div>
+  <p class="body-text">Once you know whether an element is a metal or a nonmetal, you can predict the bond type. Three combinations, three bond types.</p>
+
+  <div class="highlight-box" style="font-family:var(--fb);font-size:1rem;line-height:1.9;text-align:center">
+    metal &nbsp;+&nbsp; nonmetal &nbsp;&rarr;&nbsp; <strong>ionic</strong>
+    <br>
+    nonmetal &nbsp;+&nbsp; nonmetal &nbsp;&rarr;&nbsp; <strong>covalent</strong>
+    <br>
+    metal &nbsp;+&nbsp; metal &nbsp;&rarr;&nbsp; <strong>metallic</strong>
+  </div>
+
+  <div class="sub-title">Side-by-side comparison</div>
+  <table class="bond-table">
+    <tr><th></th><th>Ionic</th><th>Covalent</th><th>Metallic</th></tr>
+    <tr><td>Made of</td><td>Metal + nonmetal</td><td>Nonmetal + nonmetal</td><td>Metal + metal</td></tr>
+    <tr><td>What happens</td><td>Electrons transferred</td><td>Electrons shared</td><td>Electrons pooled (sea)</td></tr>
+    <tr><td>Particles formed</td><td>Cations (+) and anions (-)</td><td>Molecules (neutral)</td><td>Metal cations in electron sea</td></tr>
+    <tr><td>Hardness</td><td>Hard but brittle</td><td>Often soft</td><td>Malleable, ductile</td></tr>
+    <tr><td>Melting point</td><td>High</td><td>Usually low</td><td>Variable (often high)</td></tr>
+    <tr><td>Conducts electricity</td><td>Only in solution / molten</td><td>Poor conductor</td><td>Excellent (solid or liquid)</td></tr>
+    <tr><td>Solubility in water</td><td>Often soluble</td><td>Varies (polar yes, nonpolar no)</td><td>Insoluble</td></tr>
+    <tr><td>Example</td><td>$\text{NaCl}$, $\text{MgO}$</td><td>$\text{H}_2\text{O}$, $\text{CO}_2$</td><td>$\text{Cu}$, $\text{Fe}$, brass</td></tr>
+  </table>
+
+  <p class="body-text">The Regents likes to give you the formula and ask which type of bond holds it together. Look at the elements. Two metals? Metallic. Mix? Ionic. Two nonmetals? Covalent. That covers almost every question on this topic.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 1: Identifying Bond Types</div>
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Classify each bond as ionic, covalent, or metallic: (a) $\text{NaCl}$, (b) $\text{H}_2\text{O}$, (c) $\text{Cu}$, (d) $\text{MgO}$, (e) $\text{CH}_4$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1_1')">Show Answer</button>
+    <div class="a" id="p1_1">(a) Ionic (Na metal + Cl nonmetal). (b) Covalent (H and O both nonmetals). (c) Metallic (pure copper, all metal atoms). (d) Ionic (Mg metal + O nonmetal). (e) Covalent (C and H both nonmetals).</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> Is breaking a bond endothermic or exothermic?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1_2')">Show Answer</button>
+    <div class="a" id="p1_2"><strong>Endothermic.</strong> Energy has to be absorbed to break a bond.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> Why do atoms bond at all?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1_3')">Show Answer</button>
+    <div class="a" id="p1_3">To reach a more stable electron configuration, usually a full octet (8 valence electrons, matching the nearest noble gas). Atoms achieve this by transferring, sharing, or pooling electrons.</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ============ SECTION 2: IONIC BONDS ======================== -->
+<!-- ============================================================ -->
+
+<div class="card">
+  <div class="card-title"><span class="num">3</span>Ionic Bonds</div>
+  <p class="body-text">An <strong>ionic bond</strong> forms when one atom <strong>transfers</strong> one or more electrons to another. The atom that lost electrons becomes a positive <strong>cation</strong>. The atom that gained electrons becomes a negative <strong>anion</strong>. Opposite charges attract, and the bond is that electrostatic pull.</p>
+
+  <div class="highlight-box">
+    <strong>Cation = positive (+).</strong> Atom <em>lost</em> electrons. Usually a metal. Examples: $\text{Na}^+$, $\text{Mg}^{2+}$, $\text{Al}^{3+}$.
+    <br><br>
+    <strong>Anion = negative (-).</strong> Atom <em>gained</em> electrons. Usually a nonmetal. Examples: $\text{Cl}^-$, $\text{O}^{2-}$, $\text{N}^{3-}$.
+    <br><br>
+    Memory hook: <em>cat</em>ions are <em>paws</em>itive.
+  </div>
+
+  <div class="sub-title">Worked example: forming $\text{NaCl}$</div>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Sodium. </span>Na has 1 valence electron. Group 1. Drops it to reach a full second shell.</div>
+    <div class="step"><span class="step-label">Chlorine. </span>Cl has 7 valence electrons. Group 17. Wants one more to reach a full third shell.</div>
+    <div class="step"><span class="step-label">Transfer. </span>The Na atom hands its 1 electron over to the Cl atom.</div>
+    <div class="step"><span class="step-label">Result. </span>$\text{Na}^+$ (positive cation) and $\text{Cl}^-$ (negative anion). They attract each other. That attraction is the ionic bond.</div>
+    <div class="step"><span class="step-label">Big picture. </span>Stacked in a 3D lattice this gives a crystal of table salt.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">4</span>Properties of Ionic Compounds</div>
+  <p class="body-text">Ionic compounds share a recognizable set of properties. The Regents will give you a property list and ask whether the substance is ionic, covalent, or metallic. Memorize these.</p>
+
+  <div class="highlight-box">
+    <strong>Ionic compounds are:</strong>
+    <ul style="list-style:disc;padding-left:24px;line-height:1.8;font-family:var(--fp);margin-top:6px">
+      <li><strong>Hard and brittle.</strong> The lattice is rigid. Hit it the wrong way and like-charges line up, repelling and shattering the crystal.</li>
+      <li><strong>High melting and boiling points.</strong> Lots of energy to overcome the strong attractions between ions.</li>
+      <li><strong>Poor conductors as solids.</strong> Ions are locked in place, so charge cannot flow.</li>
+      <li><strong>Good conductors when dissolved in water or melted.</strong> Ions are free to move, so they can carry current. Solutions of ionic compounds are called <strong>electrolytes</strong>.</li>
+      <li><strong>Often soluble in water.</strong> Polar water molecules can pry apart the lattice.</li>
+    </ul>
+  </div>
+
+  <p class="body-text">All five properties trace back to the same source: ionic bonds are <em>strong</em> (because charges are full + and -) and the substance is built as a rigid 3D lattice.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 2: Ionic Bonds</div>
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Predict the charge on each ion: (a) calcium, (b) sulfur, (c) potassium, (d) aluminum.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2_1')">Show Answer</button>
+    <div class="a" id="p2_1">(a) $\text{Ca}^{2+}$. (b) $\text{S}^{2-}$. (c) $\text{K}^+$. (d) $\text{Al}^{3+}$. Group number tells you charge. Group 1 loses 1, Group 2 loses 2, Group 13 loses 3, Group 16 gains 2, Group 17 gains 1.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> A white solid has a melting point of $800^\circ\text{C}$, dissolves in water, and conducts electricity in solution. What type of bonding does it have?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2_2')">Show Answer</button>
+    <div class="a" id="p2_2"><strong>Ionic.</strong> High melting point + soluble in water + conducts when dissolved is the classic ionic-compound signature.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> Why does solid $\text{NaCl}$ not conduct electricity, but a $\text{NaCl}$ solution does?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2_3')">Show Answer</button>
+    <div class="a" id="p2_3">In solid $\text{NaCl}$, the $\text{Na}^+$ and $\text{Cl}^-$ ions are locked in a rigid lattice and cannot move. In solution, water pulls the ions apart, and the now-free ions can carry charge through the liquid.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> Write the formula of the ionic compound formed between magnesium and chlorine.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2_4')">Show Answer</button>
+    <div class="a" id="p2_4"><strong>$\text{MgCl}_2$.</strong> Mg loses 2 electrons to form $\text{Mg}^{2+}$. Cl gains 1 electron to form $\text{Cl}^-$. You need two $\text{Cl}^-$ to balance the charge of one $\text{Mg}^{2+}$.</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ============ SECTION 3: COVALENT BONDS ===================== -->
+<!-- ============================================================ -->
+
+<div class="card">
+  <div class="card-title"><span class="num">5</span>Covalent Bonds</div>
+  <p class="body-text">A <strong>covalent bond</strong> forms when two nonmetal atoms <strong>share</strong> a pair of electrons. Each shared pair counts as one bond. Sometimes called <strong>molecular bonds</strong>, and the compounds formed are called <strong>molecular compounds</strong>.</p>
+
+  <div class="highlight-box">
+    <strong>One covalent bond = one shared pair of electrons (2 electrons).</strong>
+    <br><br>
+    Each atom in the bond gets to "count" the shared pair toward its own octet. That is why both atoms can be satisfied at once.
+  </div>
+
+  <div class="sub-title">See it: electron transfer vs sharing</div>
+  <p class="body-text">Ionic and covalent bonds both involve valence electrons reaching a stable arrangement, but the mechanism is different. Use the widget to watch the two side by side. In ionic, an electron <em>jumps</em>. In covalent, the electrons stay <em>between</em> the two atoms.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Electron Sharing: Ionic vs Covalent</div>
+    <div class="pick-row" id="esModePicker">
+      <button class="pick-btn active" data-mode="ionic">Ionic (Na + Cl)</button>
+      <button class="pick-btn" data-mode="cov-pure">Pure covalent (H + H)</button>
+      <button class="pick-btn" data-mode="cov-polar">Polar covalent (H + Cl)</button>
+    </div>
+    <div class="es-stage">
+      <svg id="esSvg" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="btn-row">
+      <button class="site-btn" id="esPlay" onclick="esPlay()">&#9658; Play animation</button>
+      <button class="site-btn secondary" onclick="esReset()">Reset</button>
+    </div>
+    <div class="es-readout" id="esReadout"></div>
+  </div>
+
+  <p class="body-text">Single, double, and triple bonds are exactly what they sound like.</p>
+
+  <div class="highlight-box">
+    <strong>Single bond.</strong> 1 shared pair (2 electrons). Drawn as a single line. Example: $\text{H}-\text{H}$ in $\text{H}_2$.
+    <br><br>
+    <strong>Double bond.</strong> 2 shared pairs (4 electrons). Drawn as a double line. Example: $\text{O}{=}\text{O}$ in $\text{O}_2$.
+    <br><br>
+    <strong>Triple bond.</strong> 3 shared pairs (6 electrons). Drawn as a triple line. Example: $\text{N}{\equiv}\text{N}$ in $\text{N}_2$.
+    <br><br>
+    More shared pairs means a stronger, shorter bond. $\text{N}_2$ has the shortest, strongest N-N bond. That is why nitrogen gas is so unreactive.
+  </div>
+
+  <div class="sub-title">Sigma ($\sigma$) and pi ($\pi$) bonds</div>
+  <p class="body-text">Every covalent bond is made of one or more components called <strong>sigma</strong> and <strong>pi</strong> bonds, depending on how the orbitals overlap. The Regents will sometimes ask which is which.</p>
+
+  <div class="highlight-box">
+    <strong>Sigma bond ($\sigma$).</strong> Head-on overlap of two orbitals along the line between the nuclei. Cylindrical, strongest type of single overlap. <em>Every</em> covalent bond starts with one sigma.
+    <br><br>
+    <strong>Pi bond ($\pi$).</strong> Side-by-side overlap of two p-orbitals above and below the line between the nuclei. Weaker than sigma. Only forms after a sigma is already in place.
+  </div>
+
+  <div class="sp-grid">
+    <div class="sp-card">
+      <div class="stitle">Single bond</div>
+      <div class="sp-stage">
+        <svg viewBox="0 0 200 90" preserveAspectRatio="xMidYMid meet">
+          <circle cx="50" cy="45" r="22" fill="#a8c6a8" stroke="var(--forest)" stroke-width="1.5"/>
+          <circle cx="150" cy="45" r="22" fill="#a8c6a8" stroke="var(--forest)" stroke-width="1.5"/>
+          <ellipse cx="100" cy="45" rx="60" ry="14" fill="rgba(91,138,63,0.35)" stroke="#5b8a3f" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <text x="100" y="80" font-family="Bitter,serif" font-size="11" text-anchor="middle" fill="var(--forest)">1 sigma ($\sigma$)</text>
+        </svg>
+      </div>
+      <div class="sdesc">Single bond = <strong>1 $\sigma$</strong>. Head-on orbital overlap, cylindrical. Example: $\text{H}-\text{H}$, $\text{Cl}-\text{Cl}$, every C-H bond.</div>
+    </div>
+    <div class="sp-card">
+      <div class="stitle">Double bond</div>
+      <div class="sp-stage">
+        <svg viewBox="0 0 200 90" preserveAspectRatio="xMidYMid meet">
+          <circle cx="50" cy="45" r="22" fill="#a8c6a8" stroke="var(--forest)" stroke-width="1.5"/>
+          <circle cx="150" cy="45" r="22" fill="#a8c6a8" stroke="var(--forest)" stroke-width="1.5"/>
+          <ellipse cx="100" cy="45" rx="60" ry="8" fill="rgba(91,138,63,0.35)" stroke="#5b8a3f" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <ellipse cx="100" cy="22" rx="40" ry="10" fill="rgba(181,80,62,0.35)" stroke="#b5503e" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <ellipse cx="100" cy="68" rx="40" ry="10" fill="rgba(181,80,62,0.35)" stroke="#b5503e" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <text x="100" y="86" font-family="Bitter,serif" font-size="11" text-anchor="middle" fill="var(--forest)">1 $\sigma$ + 1 $\pi$</text>
+        </svg>
+      </div>
+      <div class="sdesc">Double bond = <strong>1 $\sigma$ + 1 $\pi$</strong>. The sigma forms first along the axis, then a pi forms above/below from sideways p-orbital overlap. Example: $\text{O}{=}\text{O}$, $\text{C}{=}\text{O}$.</div>
+    </div>
+    <div class="sp-card">
+      <div class="stitle">Triple bond</div>
+      <div class="sp-stage">
+        <svg viewBox="0 0 200 90" preserveAspectRatio="xMidYMid meet">
+          <circle cx="50" cy="45" r="22" fill="#a8c6a8" stroke="var(--forest)" stroke-width="1.5"/>
+          <circle cx="150" cy="45" r="22" fill="#a8c6a8" stroke="var(--forest)" stroke-width="1.5"/>
+          <ellipse cx="100" cy="45" rx="60" ry="6" fill="rgba(91,138,63,0.35)" stroke="#5b8a3f" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <ellipse cx="100" cy="22" rx="40" ry="8" fill="rgba(181,80,62,0.35)" stroke="#b5503e" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <ellipse cx="100" cy="68" rx="40" ry="8" fill="rgba(181,80,62,0.35)" stroke="#b5503e" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <ellipse cx="100" cy="45" rx="8" ry="30" fill="rgba(82,91,118,0.35)" stroke="#525B76" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <text x="100" y="86" font-family="Bitter,serif" font-size="11" text-anchor="middle" fill="var(--forest)">1 $\sigma$ + 2 $\pi$</text>
+        </svg>
+      </div>
+      <div class="sdesc">Triple bond = <strong>1 $\sigma$ + 2 $\pi$</strong>. The two pi bonds are perpendicular to each other (one in/out of the page, one up/down). Example: $\text{N}{\equiv}\text{N}$, $\text{C}{\equiv}\text{C}$.</div>
+    </div>
+  </div>
+
+  <p class="body-text"><strong>The pattern.</strong> The number of sigma bonds equals the number of bonded atom pairs. The extra bonds in doubles and triples are always pi bonds. A pi bond never exists without a sigma already in place.</p>
+
+  <p class="body-text">Sigma bonds let atoms rotate freely around them (think single bonds in ethane). Pi bonds lock the geometry in place because the p-orbitals must stay parallel to overlap (think of why $\text{C}{=}\text{C}$ bonds in alkenes are rigid).</p>
+
+  <div class="sub-title">Properties of covalent compounds</div>
+  <ul style="list-style:disc;padding-left:24px;line-height:1.8;font-family:var(--fp)">
+    <li><strong>Often soft.</strong> Molecules are held to each other only by weak IFAs, so they slide apart easily.</li>
+    <li><strong>Low melting and boiling points</strong> compared to ionic. Examples: water boils at $100^\circ\text{C}$, ethanol at $78^\circ\text{C}$.</li>
+    <li><strong>Poor conductors</strong> of electricity. No free charges to move.</li>
+    <li><strong>Variable solubility.</strong> "Like dissolves like" - polar molecular compounds dissolve in water, nonpolar ones do not.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">6</span>Lewis (Electron Dot) Structures</div>
+  <p class="body-text">A <strong>Lewis structure</strong> is a drawing that shows every valence electron in a molecule. Each electron is a dot (or part of a line, if it is in a bond). Lewis structures are the standard way to depict covalent and ionic bonding visually.</p>
+
+  <div class="sub-title">How to draw one (Regents recipe)</div>
+  <ol style="padding-left:24px;line-height:1.8;font-family:var(--fp);margin:8px 0">
+    <li>Count total valence electrons across all atoms in the molecule.</li>
+    <li>Put the least electronegative atom (often carbon, often the only one of its kind) in the middle.</li>
+    <li>Connect the central atom to each other atom with a single bond (a line representing 2 shared electrons).</li>
+    <li>Distribute remaining electrons as <strong>lone pairs</strong> on the outer atoms first, until they have a full octet (or 2 for hydrogen).</li>
+    <li>If the central atom does not have an octet, convert lone pairs on outer atoms into double or triple bonds until it does.</li>
+  </ol>
+
+  <p class="body-text">For ionic compounds, you draw the cation alone (with its charge in brackets) and the anion alone (with its electrons and charge in brackets). No shared electrons. Example: $[\text{Na}]^+ [\,:\!\ddot{\text{Cl}}\!:\,]^-$.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Lewis Structure Library</div>
+    <div class="pick-row" id="lewisPicker"></div>
+    <div class="lewis-stage">
+      <svg id="lewisSvg" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="lewis-name" id="lewisName">Hydrogen</div>
+    <div class="lewis-formula" id="lewisFormula">H<sub>2</sub></div>
+    <div class="lewis-info">
+      <div class="lcell"><div class="lbl">Bond type</div><div id="lewisBondType">Single covalent bond</div></div>
+      <div class="lcell"><div class="lbl">Notes</div><div id="lewisNotes">Two hydrogen atoms share a single pair of electrons. Each gets a "full" outer shell of 2.</div></div>
+    </div>
+  </div>
+
+  <div class="sub-title">Two octet-rule exceptions worth knowing</div>
+  <p class="body-text">Hydrogen is happy with 2 electrons (not 8). It can only ever form one bond. Helium is similarly content with 2.</p>
+  <p class="body-text">Some larger atoms (like sulfur in $\text{SF}_6$) can have more than 8 valence electrons because they can use d-orbitals. The Regents rarely asks about expanded octets, so the standard "octet rule" is usually all you need.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 3: Covalent Bonds and Lewis Structures</div>
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> How many electrons are shared in a double bond?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3_1')">Show Answer</button>
+    <div class="a" id="p3_1"><strong>4 electrons (2 pairs).</strong> A single bond has 2 shared electrons (1 pair). Double has 4. Triple has 6.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> Draw the Lewis structure of $\text{H}_2\text{O}$. How many lone pairs are on the oxygen?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3_2')">Show Answer</button>
+    <div class="a" id="p3_2">H-O-H with two lone pairs on the oxygen (one above, one below). Oxygen has 6 valence electrons; two go into the two O-H bonds, leaving 4 electrons (2 pairs) as lone pairs. See the Lewis library above for the diagram.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> What is the bond order in $\text{N}_2$, and why is $\text{N}_2$ so unreactive?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3_3')">Show Answer</button>
+    <div class="a" id="p3_3"><strong>Triple bond (3 shared pairs, 6 electrons).</strong> Triple bonds are very strong and short. Breaking the N-N triple bond requires a huge amount of energy, so $\text{N}_2$ rarely reacts at room temperature. That is why the atmosphere is 78% $\text{N}_2$ and we are not all on fire.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> A substance has a low melting point, does not conduct electricity, and is made of two nonmetals. What kind of bonding does it have?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3_4')">Show Answer</button>
+    <div class="a" id="p3_4"><strong>Covalent (molecular).</strong> All three signals match.</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ============ SECTION 4: METALLIC BONDS ===================== -->
+<!-- ============================================================ -->
+
+<div class="card">
+  <div class="card-title"><span class="num">7</span>Metallic Bonds</div>
+  <p class="body-text">A <strong>metallic bond</strong> forms when metal atoms pool their valence electrons into a shared "<strong>sea of mobile electrons</strong>." The metal atoms become cations (because they have given up their valence electrons), and the sea of free electrons holds them all together.</p>
+
+  <div class="highlight-box" style="text-align:center;font-family:var(--fb);font-size:1rem;line-height:1.9">
+    Metal cations (+) immersed in a sea of mobile (-) electrons.
+    <br>
+    No electrons are stuck to any particular atom.
+  </div>
+
+  <div class="sub-title">Why metals do the things they do</div>
+  <p class="body-text">The "sea of electrons" model explains the standard list of metal properties almost perfectly:</p>
+  <ul style="list-style:disc;padding-left:24px;line-height:1.8;font-family:var(--fp)">
+    <li><strong>Excellent electrical conductors</strong> (solid or molten). The sea of electrons is already mobile - apply a voltage and current flows.</li>
+    <li><strong>Excellent thermal conductors.</strong> Mobile electrons also transfer kinetic energy quickly.</li>
+    <li><strong>Malleable and ductile.</strong> When you bend a metal, the layers of cations can slide past each other while the electron sea keeps them all held together. Ionic compounds shatter under the same pressure because layers of like charges line up and repel.</li>
+    <li><strong>Shiny (luster).</strong> Mobile electrons reflect light.</li>
+    <li><strong>Often high melting points.</strong> Many small + charges and one big sea give a strong overall bond. (Some exceptions: mercury is a liquid at room temperature.)</li>
+    <li><strong>Insoluble in water.</strong> The lattice is held together by a metallic bond, not by anything water can break.</li>
+  </ul>
+
+  <p class="body-text">Alloys (like brass, bronze, steel) are mixtures of two or more metals that still bond metallically. The "sea" works the same way even when the cations are different sizes.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 4: Metallic Bonds</div>
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Why are metals good conductors of electricity?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4_1')">Show Answer</button>
+    <div class="a" id="p4_1">Metallic bonds produce a "sea" of mobile valence electrons that are free to move through the lattice. When a voltage is applied, those electrons drift, and the drift is electric current.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> Why is copper malleable but $\text{NaCl}$ brittle?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4_2')">Show Answer</button>
+    <div class="a" id="p4_2">In copper, when layers of metal cations slide past each other, the electron sea moves with them and keeps everything held together. In $\text{NaCl}$, sliding aligns positive ions over positive ions (and negative over negative), so they repel and the lattice shatters.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> Pure iron and steel both conduct electricity. Why? (Steel is iron with carbon mixed in.)</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4_3')">Show Answer</button>
+    <div class="a" id="p4_3">Both are metallic. Mixing carbon (or other metals) into iron creates an <strong>alloy</strong>, but the bonding is still metallic. The sea of electrons is still there, so steel still conducts electricity (and is still malleable and shiny).</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ========= SECTION 5: ELECTRONEGATIVITY & POLARITY ========== -->
+<!-- ============================================================ -->
+
+<div class="card">
+  <div class="card-title"><span class="num">8</span>Electronegativity</div>
+  <p class="body-text"><strong>Electronegativity (EN)</strong> is how strongly an atom pulls on electrons in a chemical bond. It is a property of an atom inside a bond, not the atom by itself. Higher EN means the atom hogs the shared electrons more.</p>
+
+  <div class="highlight-box">
+    <strong>The scale.</strong> Electronegativity is measured on the Pauling scale, from 0.7 (cesium) to 3.98 (fluorine). All values are on <strong>Table S</strong> of the Reference Tables.
+    <br><br>
+    <strong>Most electronegative:</strong> fluorine (3.98), then oxygen (3.44), then chlorine (3.16) and nitrogen (3.04). "FONCl" is a useful mnemonic.
+    <br>
+    <strong>Least electronegative:</strong> cesium and francium (around 0.7-0.8). The far bottom-left of the periodic table.
+  </div>
+
+  <div class="sub-title">Periodic-table trends</div>
+  <ul style="list-style:disc;padding-left:24px;line-height:1.8;font-family:var(--fp)">
+    <li><strong>Across a period (left to right): EN increases.</strong> Nuclei have more protons and are pulling on a similar number of shells.</li>
+    <li><strong>Down a group (top to bottom): EN decreases.</strong> Extra inner shells shield the outer electrons from the nucleus, so the atom does not pull as hard.</li>
+  </ul>
+
+  <p class="body-text">Fluorine is the most electronegative because it is at the top-right corner of the periodic table. Cesium (bottom-left) is the least.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Electronegativity Heat Map</div>
+    <p class="body-text" style="text-align:center;font-size:.92rem;color:var(--slate);margin-bottom:8px">Hover any element to see its electronegativity value. Notice the gradient: red at top-right (high), blue at bottom-left (low). That is the trend, made visible.</p>
+    <div class="hm-stage" id="hmStage">
+      <div class="hm-frame">
+        <div class="hm-top-axis">
+          <span class="hm-axis-label">Across a period</span>
+          <span class="hm-axis-arrow">&rarr;</span>
+          <span class="hm-axis-value">EN increases</span>
+        </div>
+        <div class="hm-side-axis">
+          <span class="hm-axis-label">Down a group</span>
+          <span class="hm-axis-arrow">&darr;</span>
+          <span class="hm-axis-value">EN decreases</span>
+        </div>
+        <div class="hm-grid-stack">
+          <div class="hm-grid" id="hmGrid"></div>
+          <div class="hm-grid hm-lan" id="hmLan"></div>
+          <div class="hm-grid hm-act" id="hmAct"></div>
+        </div>
+      </div>
+      <div class="hm-tooltip" id="hmTooltip" style="display:none"></div>
+    </div>
+    <div class="hm-legend">
+      <span class="lo" id="hmLegendLow">Low EN (0.7)</span>
+      <div class="hm-legend-bar"></div>
+      <span class="hi" id="hmLegendHigh">High EN (3.98)</span>
+    </div>
+    <div class="hm-explain" id="hmExplain"></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">9</span>Bond Polarity</div>
+  <p class="body-text">In a covalent bond, both atoms pull on the shared electrons, but if one atom has higher EN, it pulls harder. The bigger the EN difference, the more lopsided the sharing.</p>
+
+  <div class="highlight-box">
+    <strong>Bond polarity from $\Delta$EN:</strong>
+    <br><br>
+    $\Delta$EN $\lt$ 0.5: <strong>nonpolar covalent</strong> bond. Electrons shared almost evenly.
+    <br>
+    0.5 $\le$ $\Delta$EN $\lt$ 1.7: <strong>polar covalent</strong> bond. Shared but pulled to one side. The atom with higher EN gets a partial negative charge ($\delta^-$); the other gets a partial positive ($\delta^+$).
+    <br>
+    $\Delta$EN $\ge$ 1.7: <strong>ionic</strong> bond. The pull is so lopsided that the electron is fully transferred.
+    <br><br>
+    These cutoffs are rules of thumb. Some textbooks use slightly different values. The Regents accepts these standard ranges.
+  </div>
+
+  <p class="body-text">A bond between two atoms of the <em>same</em> element (like H-H, O=O, N≡N) is always nonpolar. $\Delta$EN is zero, so the electrons are shared perfectly evenly.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Bond Predictor &amp; Electronegativity Calculator</div>
+    <div class="bp-card">
+      <div class="bp-row">
+        <div class="bp-cell" id="atomADisplay">
+          <div class="lbl">Atom A</div>
+          <div class="sym">--</div>
+          <div class="nm">Pick below</div>
+          <div class="en"></div>
+        </div>
+        <div class="bp-plus">+</div>
+        <div class="bp-cell" id="atomBDisplay">
+          <div class="lbl">Atom B</div>
+          <div class="sym">--</div>
+          <div class="nm">Pick below</div>
+          <div class="en"></div>
+        </div>
+      </div>
+      <div class="pick-row" style="margin:8px 0">
+        <button class="pick-btn active" data-target="A">Set Atom A</button>
+        <button class="pick-btn" data-target="B">Set Atom B</button>
+      </div>
+      <div class="bp-atoms" id="bpAtoms"></div>
+      <div class="bp-legend">
+        <span class="metal" style="color:#8a3a2a"><span class="swatch"></span>Metal</span>
+        <span class="nonmetal" style="color:var(--forest)"><span class="swatch"></span>Nonmetal</span>
+        <span class="metalloid" style="color:#9a6a00"><span class="swatch"></span>Metalloid</span>
+      </div>
+      <div class="bp-result" id="bpResult">Pick an atom for A and B to see the bond classification.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">10</span>Molecular Polarity</div>
+  <p class="body-text">A <em>bond</em> can be polar even when the whole <em>molecule</em> is not. Molecular polarity depends on two things together: the polarity of the bonds, and the <strong>shape</strong> of the molecule.</p>
+
+  <div class="highlight-box">
+    <strong>Definition (Regents-speak):</strong>
+    <br>
+    <strong>Polar molecule:</strong> asymmetrical distribution of charge. One end is partially positive, the other partially negative. The molecule has a net dipole.
+    <br><br>
+    <strong>Nonpolar molecule:</strong> symmetrical distribution of charge. Dipoles cancel out (or there are none). No net dipole.
+  </div>
+
+  <div class="sub-title">The two-question test</div>
+  <ol style="padding-left:24px;line-height:1.85;font-family:var(--fp);margin-top:6px">
+    <li><strong>Are the bonds polar?</strong> Use Table S to check $\Delta$EN. If $\Delta$EN $\lt$ 0.5 in every bond and there are no lone pairs, the molecule is nonpolar. Stop.</li>
+    <li><strong>Is the molecule symmetric?</strong> If the polar bonds all point at each other and cancel out, the molecule is nonpolar overall. If they do not cancel, the molecule is polar.</li>
+  </ol>
+
+  <div class="sub-title">Classic examples</div>
+  <ul style="list-style:disc;padding-left:24px;line-height:1.85;font-family:var(--fp)">
+    <li><strong>$\text{CO}_2$ (linear, nonpolar).</strong> Two polar C=O bonds, but they point in exactly opposite directions and cancel out. Net dipole = 0.</li>
+    <li><strong>$\text{H}_2\text{O}$ (bent, polar).</strong> Two polar O-H bonds, but the bent shape means they do NOT cancel. The oxygen end is $\delta^-$, the hydrogen side is $\delta^+$.</li>
+    <li><strong>$\text{NH}_3$ (pyramidal, polar).</strong> Three N-H bonds plus a lone pair sticking up on top. Lopsided. Nitrogen end is $\delta^-$, hydrogen side is $\delta^+$.</li>
+    <li><strong>$\text{CH}_4$ (tetrahedral, nonpolar).</strong> Four C-H bonds, all very slightly polar but perfectly symmetric. Dipoles cancel.</li>
+    <li><strong>$\text{H}_2$, $\text{O}_2$, $\text{N}_2$ (diatomic elements, nonpolar).</strong> Two atoms of the same element. $\Delta$EN = 0. No polarity to begin with.</li>
+  </ul>
+
+  <div class="interactive-area">
+    <div class="ia-label">Molecular Polarity Checker</div>
+    <div class="pick-row" id="mpPicker"></div>
+    <div class="mp-stage">
+      <svg id="mpSvg" viewBox="0 0 480 240" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="mp-flow" id="mpFlow"></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 5: Electronegativity and Polarity</div>
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Which atom has the highest electronegativity: $\text{F}$, $\text{O}$, $\text{N}$, $\text{Cl}$?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_1')">Show Answer</button>
+    <div class="a" id="p5_1"><strong>F (fluorine), at 3.98.</strong> Fluorine is the most electronegative element on the periodic table.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> Classify the bond between H (EN = 2.20) and Cl (EN = 3.16) as nonpolar covalent, polar covalent, or ionic.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_2')">Show Answer</button>
+    <div class="a" id="p5_2"><strong>Polar covalent.</strong> $\Delta$EN $= 3.16 - 2.20 = 0.96$, which falls in the 0.5 to 1.7 polar-covalent range. Cl gets the $\delta^-$ end, H gets the $\delta^+$ end.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> $\text{CO}_2$ has two polar C=O bonds, but the molecule is nonpolar. Why?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_3')">Show Answer</button>
+    <div class="a" id="p5_3"><strong>$\text{CO}_2$ is linear.</strong> The two C=O dipoles point in exactly opposite directions. They cancel out, leaving no net dipole on the molecule even though each individual bond is polar.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> Why is $\text{H}_2\text{O}$ polar but $\text{CH}_4$ is not, given both have polar bonds?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_4')">Show Answer</button>
+    <div class="a" id="p5_4"><strong>Shape.</strong> $\text{H}_2\text{O}$ is bent (because of two lone pairs on oxygen), so its two O-H dipoles do not cancel. $\text{CH}_4$ is tetrahedral, perfectly symmetric, so its four C-H dipoles cancel completely.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>5.</strong> A diatomic molecule made of two atoms of the same element (like $\text{O}_2$). Is the bond polar or nonpolar?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_5')">Show Answer</button>
+    <div class="a" id="p5_5"><strong>Nonpolar.</strong> $\Delta$EN = 0 because both atoms are the same. Electrons are shared perfectly evenly. Same goes for $\text{H}_2$, $\text{N}_2$, $\text{F}_2$, $\text{Cl}_2$, etc.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>6.</strong> An unknown compound has a high melting point, conducts electricity in solution but not as a solid, and is hard. Predict the bonding.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_6')">Show Answer</button>
+    <div class="a" id="p5_6"><strong>Ionic.</strong> All three signals match: high MP, conducts only when dissolved, hard. Likely a salt like $\text{NaCl}$, $\text{MgO}$, or similar metal-plus-nonmetal compound.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>7.</strong> Use Table S to classify the bond in $\text{NaF}$. (EN: Na = 0.93, F = 3.98.)</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_7')">Show Answer</button>
+    <div class="a" id="p5_7"><strong>Ionic.</strong> $\Delta$EN $= 3.98 - 0.93 = 3.05$, far above the 1.7 cutoff. Na transfers its 1 valence electron to F, giving $\text{Na}^+$ and $\text{F}^-$.</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ========== SECTION 6: INTERMOLECULAR FORCES (IFAs) ========= -->
+<!-- ============================================================ -->
+
+<div class="card">
+  <div class="card-title"><span class="num">11</span>Intermolecular Forces of Attraction (IFAs)</div>
+  <p class="body-text">Inside a molecule, atoms are held together by chemical bonds (covalent or ionic). Those are strong. But molecules also pull on <em>each other</em>, much more weakly. Those between-molecule pulls are called <strong>intermolecular forces of attraction</strong>, or <strong>IFAs</strong>. Sometimes called <strong>"weak bonds"</strong> or <strong>"non-bonds"</strong> because they are not real chemical bonds, just attractions.</p>
+
+  <div class="highlight-box">
+    <strong>Why IFAs matter.</strong> IFAs decide whether a substance is a solid, liquid, or gas at room temperature, what its boiling point is, its viscosity, its surface tension, its solubility, and even how slippery or sticky it feels. The bonds <em>inside</em> a water molecule never break when water boils. What breaks are the IFAs <em>between</em> water molecules.
+  </div>
+
+  <p class="body-text">Three types of IFAs, weakest to strongest:</p>
+
+  <div class="sub-title">1. London dispersion forces (LDFs)</div>
+  <p class="body-text"><strong>LDFs</strong> exist between <em>all</em> molecules, polar or nonpolar. They come from random, momentary fluctuations in electron position. At any instant, an atom's electron cloud might be slightly lopsided, creating a temporary partial charge. That instant charge induces a matching partial charge on a neighbor, and the two attract briefly.</p>
+
+  <div class="highlight-box">
+    <strong>LDFs are the only IFA between nonpolar molecules.</strong> $\text{O}_2$, $\text{N}_2$, $\text{CH}_4$, octane, hexane have no polarity. Their attractions come entirely from LDFs.
+    <br><br>
+    LDFs <strong>scale with molecule size</strong>. Bigger molecules have more electrons and more surface area, so they have stronger LDFs. That is why heavier nonpolar molecules (gasoline, oil) are liquids at room temperature while lighter ones (methane) are gases.
+  </div>
+
+  <div class="sub-title">2. Dipole-dipole forces</div>
+  <p class="body-text"><strong>Dipole-dipole</strong> forces exist between polar molecules. The $\delta^+$ end of one molecule attracts the $\delta^-$ end of a neighbor. Stronger than LDFs because the partial charges are permanent, not fleeting.</p>
+
+  <div class="highlight-box">
+    All polar molecules have dipole-dipole <em>and</em> LDFs at the same time. The dipole-dipole adds on top of the LDF baseline.
+    <br><br>
+    Examples: $\text{HCl}$, $\text{SO}_2$, $\text{CHCl}_3$ (chloroform), most polar molecular compounds.
+  </div>
+
+  <div class="sub-title">3. Hydrogen bonds (the strongest IFA)</div>
+  <p class="body-text">A <strong>hydrogen bond</strong> is an extra-strong dipole-dipole interaction that happens only when a molecule contains a hydrogen atom bonded directly to <strong>F, O, or N</strong>. The exposed proton on that hydrogen attracts to a lone pair on a neighboring molecule's F, O, or N.</p>
+
+  <div class="highlight-box" style="text-align:center;font-family:var(--fb);font-size:1.02rem;line-height:1.9">
+    H-bond rule: H must be covalently bonded to <strong>F, O, or N</strong>.
+    <br>
+    Common hydrogen-bonding molecules: $\text{HF}$, $\text{H}_2\text{O}$, $\text{NH}_3$.
+    <br>
+    NOT H-bonders: $\text{HCl}$ (Cl is electronegative but not F/O/N), $\text{CH}_4$ (H is on C, not F/O/N).
+  </div>
+
+  <p class="body-text">Hydrogen bonds are still much weaker than a covalent bond inside a molecule (about 5-10% as strong). But they are several times stronger than ordinary dipole-dipole forces. That is why molecules that hydrogen-bond have dramatically higher boiling points than you would otherwise predict from their size.</p>
+
+  <div class="sub-title">Comparison: ranking the bonds</div>
+  <table class="bond-table">
+    <tr><th>Type</th><th>Relative strength</th><th>Where it happens</th><th>Typical energy (kJ/mol)</th></tr>
+    <tr><td>Ionic bond</td><td>Very strong</td><td>Inside an ionic compound (metal + nonmetal)</td><td>600 - 4000</td></tr>
+    <tr><td>Covalent bond</td><td>Very strong</td><td>Inside a molecule (nonmetal + nonmetal)</td><td>150 - 1000</td></tr>
+    <tr><td>Hydrogen bond</td><td>Weak (strongest IFA)</td><td>Between molecules with H-F, H-O, or H-N</td><td>10 - 40</td></tr>
+    <tr><td>Dipole-dipole</td><td>Weak</td><td>Between any two polar molecules</td><td>5 - 25</td></tr>
+    <tr><td>London dispersion (LDF)</td><td>Very weak</td><td>Between any two molecules</td><td>0.05 - 40 (size-dependent)</td></tr>
+  </table>
+
+  <p class="body-text">Real chemical bonds (top two) are 5-50× stronger than even the strongest IFAs (bottom three). But IFAs are <em>everywhere</em>, and they decide the macroscopic properties you actually observe.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">12</span>Why Water is Weird: Hydrogen Bonding in $\text{H}_2\text{O}$</div>
+  <p class="body-text">Water is the most-tested substance on the Regents because it is the most useful and also the most chemically unusual. Almost every weird thing about water traces back to one fact: <strong>water molecules hydrogen-bond to each other</strong>, aggressively.</p>
+
+  <div class="highlight-box">
+    <strong>Each water molecule has:</strong>
+    <ul style="list-style:disc;padding-left:24px;line-height:1.8;font-family:var(--fp);margin-top:6px">
+      <li>2 H atoms attached to O (each can donate a hydrogen bond)</li>
+      <li>2 lone pairs on O (each can accept a hydrogen bond)</li>
+    </ul>
+    Every water molecule can both give <em>and</em> receive H-bonds, up to 4 at once. That is why water's H-bonding network is so dense.
+  </div>
+
+  <div class="sub-title">Properties of water that come from H-bonds</div>
+  <ul style="list-style:disc;padding-left:24px;line-height:1.85;font-family:var(--fp)">
+    <li><strong>Very high boiling point ($100^\circ\text{C}$).</strong> $\text{H}_2\text{S}$, water's heavier cousin, boils at $-60^\circ\text{C}$. Water "should" boil around $-90^\circ\text{C}$ based on molecular weight alone, but hydrogen bonds hold the molecules together so tightly that you need much more energy to vaporize them.</li>
+    <li><strong>High specific heat (4.18 J/g·°C).</strong> Hydrogen bonds absorb a lot of energy before they let go and let molecules speed up. This is why water resists temperature changes and is used in cooling systems (radiators, computer water-cooling loops, hot-water heating). Detailed coverage in Unit 5.</li>
+    <li><strong>Very high heat of vaporization ($H_v = 2260$ J/g).</strong> Breaking <em>all</em> the H-bonds to vaporize water takes huge energy. This is why sweat is such an effective cooling mechanism: each gram that evaporates carries away 2260 J of heat.</li>
+    <li><strong>Ice floats.</strong> Ice's crystal lattice forces molecules into an open, hexagonal pattern (so that every O can sit at the right H-bond angles to four neighbors). The lattice has empty space, making ice less dense than liquid water. Lakes freeze top-down, not bottom-up. Fish survive winter.</li>
+    <li><strong>High surface tension.</strong> Surface molecules can H-bond inward and sideways but not upward. The net inward pull creates a "skin" strong enough for insects to walk on water.</li>
+    <li><strong>Capillary action.</strong> Water can pull itself up narrow tubes (xylem in plants, paper towels) because H-bonding lets it grip both itself (cohesion) and other polar surfaces (adhesion).</li>
+    <li><strong>Universal polar solvent.</strong> Water dissolves a huge range of polar and ionic compounds because its dipoles can pry apart ionic lattices and surround polar solutes. More on this in Unit 5.</li>
+  </ul>
+
+  <div class="sub-title">Visual: water's hydrogen-bond network</div>
+  <p class="body-text">Picture a glass of liquid water as a constantly-rearranging mesh. Each H atom on a water molecule reaches out for a lone pair on a neighboring O. Each O lone pair is being approached by an H from a different molecule. The bonds are dotted lines (not full covalent bonds) but there are billions of them per drop. That mesh is why water flows, sticks to things, dissolves things, and resists temperature changes.</p>
+
+  <div class="highlight-box">
+    <strong>The takeaway for Regents and for life.</strong> Water's polarity (a single covalent bond property) combined with its tiny size and access to H-F/O/N bonding creates a unique substance. Nearly every "anomaly" about water that the Regents tests is downstream of this one fact: <strong>$\text{H}_2\text{O}$ is the smallest molecule that hydrogen-bonds with itself in every direction.</strong>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 6: IFAs and Hydrogen Bonds</div>
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Rank weakest to strongest: covalent bond, dipole-dipole, hydrogen bond, LDF, ionic bond.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p6_1')">Show Answer</button>
+    <div class="a" id="p6_1"><strong>LDF &lt; dipole-dipole &lt; hydrogen bond &lt; covalent bond &lt; ionic bond.</strong> Real bonds (covalent, ionic) are 5-50× stronger than even the strongest IFA (hydrogen bond).</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> Which of these molecules can form hydrogen bonds with another molecule of the same kind: $\text{HF}$, $\text{HCl}$, $\text{CH}_4$, $\text{H}_2\text{O}$, $\text{NH}_3$, $\text{CO}_2$?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p6_2')">Show Answer</button>
+    <div class="a" id="p6_2"><strong>$\text{HF}$, $\text{H}_2\text{O}$, and $\text{NH}_3$.</strong> All three have H bonded to F, O, or N. $\text{HCl}$ has H on Cl (electronegative but not F/O/N). $\text{CH}_4$ has H on C. $\text{CO}_2$ has no H at all.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> $\text{H}_2\text{O}$ boils at $100^\circ\text{C}$, but $\text{H}_2\text{S}$ (a heavier molecule with similar shape) boils at $-60^\circ\text{C}$. Why?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p6_3')">Show Answer</button>
+    <div class="a" id="p6_3">$\text{H}_2\text{O}$ has hydrogen bonds (H is on O, satisfies the F/O/N rule). $\text{H}_2\text{S}$ does NOT hydrogen-bond (H is on S, fails the rule). Water's molecules cling to each other much more tightly, so they take much more energy to vaporize, even though each molecule is lighter.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> $\text{O}_2$, $\text{N}_2$, and $\text{CH}_4$ are nonpolar. What kind of IFAs hold them together?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p6_4')">Show Answer</button>
+    <div class="a" id="p6_4"><strong>LDFs only.</strong> London dispersion forces exist between all molecules, including nonpolar ones, from momentary fluctuations in electron position. They are weak, which is why these substances are gases at room temperature.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>5.</strong> Why does ice float on water?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p6_5')">Show Answer</button>
+    <div class="a" id="p6_5">Hydrogen bonds force ice into a hexagonal lattice with open space inside. That makes solid water <strong>less dense</strong> than liquid water. The same number of molecules takes up more volume as ice. Lower density floats. Without H-bonds, ice would sink like every other solid does in its own liquid.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>6.</strong> Identify the dominant IFA in each: (a) $\text{CH}_4$, (b) $\text{HCl}$, (c) $\text{H}_2\text{O}$, (d) $\text{Br}_2$, (e) $\text{NH}_3$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p6_6')">Show Answer</button>
+    <div class="a" id="p6_6">(a) LDF (nonpolar). (b) Dipole-dipole (polar, no H-bonding because Cl is not F/O/N). (c) Hydrogen bond. (d) LDF (nonpolar diatomic). (e) Hydrogen bond.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>7.</strong> Sweat cooling works because water evaporating from your skin carries away a lot of heat. Which IFA is being broken when sweat evaporates, and which heat-equation term applies?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p6_7')">Show Answer</button>
+    <div class="a" id="p6_7"><strong>Hydrogen bonds.</strong> To evaporate, water molecules must break free of their H-bond network. The energy needed is the heat of vaporization, $q = m H_v$. For water, $H_v = 2260$ J/g. That is why even a small amount of evaporated sweat removes a lot of heat from your body.</div>
+  </div>
+</div>
+
+<div class="card" style="text-align:center">
+  <div class="card-title" style="margin-bottom:6px">Up Next</div>
+  <p class="body-text">Unit 5, Physical Behavior of Matter, takes the IFA story further: how H-bonds set water's specific heat, why "like dissolves like" works the way it does, and how water cooling exploits all of this.</p>
+</div>
+
+</main>
+</div>
+
+<script>
+/* ============================================================ */
+/* ============== Practice answer toggles ===================== */
+/* ============================================================ */
+function toggleAns(id){
+  const a = document.getElementById(id);
+  a.classList.toggle('show');
+}
+window.toggleAns = toggleAns;
+
+/* ============================================================ */
+/* ============== WIDGET 1: Lewis structure library =========== */
+/* ============================================================ */
+(function lewis(){
+  const svg = document.getElementById('lewisSvg');
+  const picker = document.getElementById('lewisPicker');
+  const nameEl = document.getElementById('lewisName');
+  const formulaEl = document.getElementById('lewisFormula');
+  const bondTypeEl = document.getElementById('lewisBondType');
+  const notesEl = document.getElementById('lewisNotes');
+
+  const W = 480, H = 280;
+
+  // Helper: draw a labeled atom with a name and (optional) lone-pair dots
+  function atom(x, y, label, lonepairs){
+    let s = `<circle cx="${x}" cy="${y}" r="20" fill="var(--white)" stroke="var(--forest)" stroke-width="1.5"/>`;
+    s += `<text x="${x}" y="${y + 6}" font-family="Bitter,serif" font-size="20" font-weight="700" text-anchor="middle" fill="var(--forest)">${label}</text>`;
+    // lonepairs is an array of {pos: 'top'|'bottom'|'left'|'right', count: 1|2}
+    if(lonepairs){
+      lonepairs.forEach(lp => {
+        const r = 26;
+        let dx = 0, dy = 0;
+        if(lp.pos === 'top'){ dy = -r; }
+        if(lp.pos === 'bottom'){ dy = r; }
+        if(lp.pos === 'left'){ dx = -r; }
+        if(lp.pos === 'right'){ dx = r; }
+        if(lp.pos === 'tl'){ dx = -r * 0.7; dy = -r * 0.7; }
+        if(lp.pos === 'tr'){ dx = r * 0.7; dy = -r * 0.7; }
+        if(lp.pos === 'bl'){ dx = -r * 0.7; dy = r * 0.7; }
+        if(lp.pos === 'br'){ dx = r * 0.7; dy = r * 0.7; }
+        // draw two dots side by side perpendicular to dx,dy
+        let nx = -dy, ny = dx;
+        const m = Math.hypot(nx, ny) || 1;
+        nx /= m; ny /= m;
+        const cx = x + dx, cy = y + dy;
+        const off = 4;
+        s += `<circle cx="${cx + nx * off}" cy="${cy + ny * off}" r="2.6" fill="var(--forest)"/>`;
+        s += `<circle cx="${cx - nx * off}" cy="${cy - ny * off}" r="2.6" fill="var(--forest)"/>`;
+      });
+    }
+    return s;
+  }
+
+  // Helper: draw bond between two centers, with N parallel lines
+  function bond(x1, y1, x2, y2, n){
+    let s = '';
+    // Direction unit
+    let dx = x2 - x1, dy = y2 - y1;
+    const len = Math.hypot(dx, dy);
+    if(!len) return '';
+    dx /= len; dy /= len;
+    // Perpendicular
+    const px = -dy, py = dx;
+    // Pull endpoints in by radius
+    const rad = 20;
+    const ax = x1 + dx * rad, ay = y1 + dy * rad;
+    const bx = x2 - dx * rad, by = y2 - dy * rad;
+    const off = n === 1 ? 0 : (n === 2 ? 4 : 6);
+    for(let i = 0; i < n; i++){
+      let o = 0;
+      if(n === 2) o = (i === 0 ? -off : off);
+      if(n === 3) o = (i === 0 ? -off : (i === 1 ? 0 : off));
+      s += `<line x1="${(ax + px * o).toFixed(1)}" y1="${(ay + py * o).toFixed(1)}" x2="${(bx + px * o).toFixed(1)}" y2="${(by + py * o).toFixed(1)}" stroke="var(--forest)" stroke-width="2.2" stroke-linecap="round"/>`;
+    }
+    return s;
+  }
+
+  // Helper: ionic brackets wrapper
+  function brackets(x, y, w, h, charge){
+    let s = '';
+    s += `<line x1="${x - w/2}" y1="${y - h/2}" x2="${x - w/2 + 8}" y2="${y - h/2}" stroke="var(--forest)" stroke-width="2"/>`;
+    s += `<line x1="${x - w/2}" y1="${y - h/2}" x2="${x - w/2}" y2="${y + h/2}" stroke="var(--forest)" stroke-width="2"/>`;
+    s += `<line x1="${x - w/2}" y1="${y + h/2}" x2="${x - w/2 + 8}" y2="${y + h/2}" stroke="var(--forest)" stroke-width="2"/>`;
+    s += `<line x1="${x + w/2}" y1="${y - h/2}" x2="${x + w/2 - 8}" y2="${y - h/2}" stroke="var(--forest)" stroke-width="2"/>`;
+    s += `<line x1="${x + w/2}" y1="${y - h/2}" x2="${x + w/2}" y2="${y + h/2}" stroke="var(--forest)" stroke-width="2"/>`;
+    s += `<line x1="${x + w/2}" y1="${y + h/2}" x2="${x + w/2 - 8}" y2="${y + h/2}" stroke="var(--forest)" stroke-width="2"/>`;
+    if(charge){
+      s += `<text x="${x + w/2 + 6}" y="${y - h/2 + 12}" font-family="Bitter,serif" font-size="14" font-weight="700" fill="var(--forest)">${charge}</text>`;
+    }
+    return s;
+  }
+
+  const MOLECULES = [
+    {
+      key:'H2', name:'Hydrogen', formula:'H<sub>2</sub>', bond:'Single covalent bond',
+      notes:'Two H atoms share one pair of electrons. Each gets a "full" outer shell of 2 (the H exception to the octet rule).',
+      draw: () => atom(180, 140, 'H') + atom(300, 140, 'H') + bond(180, 140, 300, 140, 1)
+    },
+    {
+      key:'F2', name:'Fluorine', formula:'F<sub>2</sub>', bond:'Single covalent bond (3 lone pairs on each F)',
+      notes:'Each F has 7 valence electrons. They share 1 pair to fill both octets. Each F still has 3 unshared lone pairs.',
+      draw: () => atom(170, 140, 'F', [{pos:'top'},{pos:'bottom'},{pos:'left'}]) +
+                   atom(310, 140, 'F', [{pos:'top'},{pos:'bottom'},{pos:'right'}]) +
+                   bond(170, 140, 310, 140, 1)
+    },
+    {
+      key:'O2', name:'Oxygen', formula:'O<sub>2</sub>', bond:'Double covalent bond',
+      notes:'O has 6 valence electrons. Two O atoms share 2 pairs (a double bond), giving each a full octet. Two lone pairs remain on each O.',
+      draw: () => atom(170, 140, 'O', [{pos:'top'},{pos:'bottom'}]) +
+                   atom(310, 140, 'O', [{pos:'top'},{pos:'bottom'}]) +
+                   bond(170, 140, 310, 140, 2)
+    },
+    {
+      key:'N2', name:'Nitrogen', formula:'N<sub>2</sub>', bond:'Triple covalent bond',
+      notes:'N has 5 valence electrons. Two N atoms share 3 pairs (triple bond), filling both octets. Each N has 1 lone pair. Very strong bond, very unreactive molecule.',
+      draw: () => atom(170, 140, 'N', [{pos:'left'}]) +
+                   atom(310, 140, 'N', [{pos:'right'}]) +
+                   bond(170, 140, 310, 140, 3)
+    },
+    {
+      key:'HCl', name:'Hydrogen chloride', formula:'HCl', bond:'Polar covalent bond',
+      notes:'Single bond between H and Cl. Cl is more electronegative ($\\Delta$EN $\\approx$ 0.96), so the Cl end is slightly negative and the H end slightly positive.',
+      draw: () => atom(170, 140, 'H') +
+                   atom(310, 140, 'Cl', [{pos:'top'},{pos:'bottom'},{pos:'right'}]) +
+                   bond(170, 140, 310, 140, 1)
+    },
+    {
+      key:'H2O', name:'Water', formula:'H<sub>2</sub>O', bond:'Two polar covalent bonds (bent geometry)',
+      notes:'O has 6 valence electrons. It shares two pairs (one with each H) and keeps 2 lone pairs. Molecule is bent because the lone pairs repel the bonded pairs.',
+      draw: () => {
+        let s = '';
+        s += atom(240, 100, 'O', [{pos:'top'},{pos:'left'}]);
+        s += atom(160, 200, 'H');
+        s += atom(320, 200, 'H');
+        s += bond(240, 100, 160, 200, 1);
+        s += bond(240, 100, 320, 200, 1);
+        return s;
+      }
+    },
+    {
+      key:'NH3', name:'Ammonia', formula:'NH<sub>3</sub>', bond:'Three polar covalent bonds (pyramidal)',
+      notes:'N has 5 valence electrons. Three go into N-H bonds, leaving 1 lone pair. The pair pushes the three H atoms into a pyramidal arrangement.',
+      draw: () => {
+        let s = '';
+        s += atom(240, 100, 'N', [{pos:'top'}]);
+        s += atom(140, 200, 'H');
+        s += atom(240, 220, 'H');
+        s += atom(340, 200, 'H');
+        s += bond(240, 100, 140, 200, 1);
+        s += bond(240, 100, 240, 220, 1);
+        s += bond(240, 100, 340, 200, 1);
+        return s;
+      }
+    },
+    {
+      key:'CH4', name:'Methane', formula:'CH<sub>4</sub>', bond:'Four nonpolar-ish covalent bonds (tetrahedral)',
+      notes:'C has 4 valence electrons. All 4 go into C-H bonds. No lone pairs. Tetrahedral, perfectly symmetric. Molecule is nonpolar even though each bond is slightly polar.',
+      draw: () => {
+        let s = '';
+        s += atom(240, 140, 'C');
+        s += atom(240, 50, 'H');
+        s += atom(120, 200, 'H');
+        s += atom(360, 200, 'H');
+        s += atom(240, 230, 'H');
+        s += bond(240, 140, 240, 50, 1);
+        s += bond(240, 140, 120, 200, 1);
+        s += bond(240, 140, 360, 200, 1);
+        s += bond(240, 140, 240, 230, 1);
+        return s;
+      }
+    },
+    {
+      key:'CO2', name:'Carbon dioxide', formula:'CO<sub>2</sub>', bond:'Two double bonds (linear)',
+      notes:'C has 4 valence electrons, O has 6. C shares 2 pairs with each O, giving two C=O double bonds and an octet on every atom. Linear shape; molecule is nonpolar overall.',
+      draw: () => {
+        let s = '';
+        s += atom(120, 140, 'O', [{pos:'top'},{pos:'bottom'}]);
+        s += atom(240, 140, 'C');
+        s += atom(360, 140, 'O', [{pos:'top'},{pos:'bottom'}]);
+        s += bond(120, 140, 240, 140, 2);
+        s += bond(240, 140, 360, 140, 2);
+        return s;
+      }
+    },
+    {
+      key:'NaCl', name:'Sodium chloride', formula:'NaCl', bond:'Ionic bond (electron transfer)',
+      notes:'Na gives up its 1 valence electron to Cl. Na becomes Na+ (no dots remaining in valence shell). Cl becomes Cl- with a full octet (8 dots, 4 lone pairs).',
+      draw: () => {
+        let s = '';
+        s += brackets(150, 140, 80, 80, '+');
+        s += `<text x="150" y="148" font-family="Bitter,serif" font-size="22" font-weight="700" text-anchor="middle" fill="var(--forest)">Na</text>`;
+        s += brackets(330, 140, 120, 100, '-');
+        s += atom(330, 140, 'Cl', [{pos:'top'},{pos:'bottom'},{pos:'left'},{pos:'right'}]);
+        return s;
+      }
+    },
+    {
+      key:'MgCl2', name:'Magnesium chloride', formula:'MgCl<sub>2</sub>', bond:'Ionic (Mg gives up 2 electrons, one to each Cl)',
+      notes:'Mg loses 2 valence electrons to form Mg2+. Each Cl gains 1 electron to form Cl-. You need 2 Cl- per Mg2+ to balance the charge.',
+      draw: () => {
+        let s = '';
+        s += brackets(80, 140, 110, 100, '-');
+        s += atom(80, 140, 'Cl', [{pos:'top'},{pos:'bottom'},{pos:'left'},{pos:'right'}]);
+        s += brackets(240, 140, 70, 80, '2+');
+        s += `<text x="240" y="148" font-family="Bitter,serif" font-size="20" font-weight="700" text-anchor="middle" fill="var(--forest)">Mg</text>`;
+        s += brackets(400, 140, 110, 100, '-');
+        s += atom(400, 140, 'Cl', [{pos:'top'},{pos:'bottom'},{pos:'left'},{pos:'right'}]);
+        return s;
+      }
+    }
+  ];
+
+  let cur = MOLECULES[0];
+
+  function render(){
+    svg.innerHTML = `<rect x="6" y="6" width="${W - 12}" height="${H - 12}" rx="14" ry="14" fill="rgba(208,214,179,0.18)" stroke="var(--sage-l)" stroke-width="1.5" stroke-dasharray="4 4"/>` + cur.draw();
+    nameEl.textContent = cur.name;
+    formulaEl.innerHTML = cur.formula;
+    bondTypeEl.textContent = cur.bond;
+    notesEl.innerHTML = cur.notes;
+    if(window.renderMathInElement) window.renderMathInElement(notesEl);
+  }
+
+  MOLECULES.forEach(m => {
+    const b = document.createElement('button');
+    b.className = 'pick-btn' + (m === cur ? ' active' : '');
+    b.innerHTML = m.formula;
+    b.addEventListener('click', () => {
+      cur = m;
+      picker.querySelectorAll('.pick-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      render();
+    });
+    picker.appendChild(b);
+  });
+  render();
+})();
+
+/* ============================================================ */
+/* ============== WIDGET 2: Bond predictor / EN calc ========== */
+/* ============================================================ */
+(function bp(){
+  const atomsEl = document.getElementById('bpAtoms');
+  const aDisp = document.getElementById('atomADisplay');
+  const bDisp = document.getElementById('atomBDisplay');
+  const result = document.getElementById('bpResult');
+  const targetBtns = document.querySelectorAll('.bp-card .pick-btn[data-target]');
+
+  // Approximate EN values (Pauling, Table S)
+  const ATOMS = [
+    {sym:'H',  name:'Hydrogen',  en:2.20, kind:'nonmetal'},
+    {sym:'Li', name:'Lithium',   en:0.98, kind:'metal'},
+    {sym:'Be', name:'Beryllium', en:1.57, kind:'metal'},
+    {sym:'B',  name:'Boron',     en:2.04, kind:'metalloid'},
+    {sym:'C',  name:'Carbon',    en:2.55, kind:'nonmetal'},
+    {sym:'N',  name:'Nitrogen',  en:3.04, kind:'nonmetal'},
+    {sym:'O',  name:'Oxygen',    en:3.44, kind:'nonmetal'},
+    {sym:'F',  name:'Fluorine',  en:3.98, kind:'nonmetal'},
+    {sym:'Na', name:'Sodium',    en:0.93, kind:'metal'},
+    {sym:'Mg', name:'Magnesium', en:1.31, kind:'metal'},
+    {sym:'Al', name:'Aluminum',  en:1.61, kind:'metal'},
+    {sym:'Si', name:'Silicon',   en:1.90, kind:'metalloid'},
+    {sym:'P',  name:'Phosphorus',en:2.19, kind:'nonmetal'},
+    {sym:'S',  name:'Sulfur',    en:2.58, kind:'nonmetal'},
+    {sym:'Cl', name:'Chlorine',  en:3.16, kind:'nonmetal'},
+    {sym:'K',  name:'Potassium', en:0.82, kind:'metal'},
+    {sym:'Ca', name:'Calcium',   en:1.00, kind:'metal'},
+    {sym:'Fe', name:'Iron',      en:1.83, kind:'metal'},
+    {sym:'Cu', name:'Copper',    en:1.90, kind:'metal'},
+    {sym:'Zn', name:'Zinc',      en:1.65, kind:'metal'},
+    {sym:'Br', name:'Bromine',   en:2.96, kind:'nonmetal'},
+    {sym:'I',  name:'Iodine',    en:2.66, kind:'nonmetal'}
+  ];
+
+  let target = 'A';
+  let pick = {A: null, B: null};
+
+  function setTarget(t){
+    target = t;
+    targetBtns.forEach(b => b.classList.toggle('active', b.dataset.target === t));
+  }
+
+  function updateDisplay(){
+    [['A', aDisp], ['B', bDisp]].forEach(([k, el]) => {
+      const a = pick[k];
+      if(!a){
+        el.querySelector('.sym').textContent = '--';
+        el.querySelector('.nm').textContent = 'Pick below';
+        el.querySelector('.en').textContent = '';
+      } else {
+        el.querySelector('.sym').textContent = a.sym;
+        el.querySelector('.nm').textContent = a.name;
+        el.querySelector('.en').textContent = 'EN = ' + a.en.toFixed(2);
+      }
+    });
+    // Update active atom highlights
+    atomsEl.querySelectorAll('.bp-atom').forEach(node => {
+      const sym = node.dataset.sym;
+      node.classList.toggle('active', (pick.A && pick.A.sym === sym) || (pick.B && pick.B.sym === sym));
+    });
+    computeResult();
+  }
+
+  function computeResult(){
+    if(!pick.A || !pick.B){
+      result.innerHTML = 'Pick an atom for A and B to see the bond classification.';
+      return;
+    }
+    const a = pick.A, b = pick.B;
+    // Bond type by metal/nonmetal logic
+    const ka = a.kind, kb = b.kind;
+    let bondType = '';
+    let bondReason = '';
+    if(ka === 'metal' && kb === 'metal'){
+      bondType = 'Metallic';
+      bondReason = 'Two metals share their valence electrons in a "sea of mobile electrons."';
+    } else if((ka === 'metal' && kb === 'nonmetal') || (ka === 'nonmetal' && kb === 'metal')){
+      bondType = 'Ionic';
+      bondReason = 'A metal and a nonmetal: the metal transfers its valence electrons to the nonmetal.';
+    } else if(ka === 'nonmetal' && kb === 'nonmetal'){
+      bondType = 'Covalent';
+      bondReason = 'Two nonmetals: they share a pair of electrons.';
+    } else {
+      bondType = 'Mixed (metalloid involved)';
+      bondReason = 'Metalloids can behave either way. Real-world bonding depends on the partner and context.';
+    }
+
+    const dEN = Math.abs(a.en - b.en);
+    let polarity = '';
+    if(dEN < 0.5){
+      polarity = 'Nonpolar covalent';
+    } else if(dEN < 1.7){
+      polarity = 'Polar covalent';
+    } else {
+      polarity = 'Ionic';
+    }
+
+    // If bond is metallic, polarity classification is moot
+    const polarityNote = (bondType === 'Metallic')
+      ? 'Polarity classification does not apply to metallic bonds.'
+      : (bondType === 'Ionic' && polarity !== 'Ionic')
+        ? `The $\\Delta$EN test classifies this as <strong>${polarity}</strong>, but the metal/nonmetal rule overrides: this is an <strong>ionic</strong> bond. Edge case.`
+        : `By $\\Delta$EN, this bond is classified as <strong>${polarity}</strong>.`;
+
+    const higherEN = a.en > b.en ? a.sym : (b.en > a.en ? b.sym : null);
+    const dipoleNote = (higherEN && bondType !== 'Metallic' && polarity === 'Polar covalent')
+      ? `<strong>${higherEN}</strong> has the higher EN, so it gets the $\\delta^-$ end. The other atom gets the $\\delta^+$ end.`
+      : '';
+
+    result.innerHTML =
+      `<div class="verdict">${a.sym}-${b.sym}: ${bondType} bond</div>` +
+      `${bondReason}<br><br>` +
+      `$\\Delta$EN = |${a.en.toFixed(2)} &minus; ${b.en.toFixed(2)}| = <span class="delta">${dEN.toFixed(2)}</span>. ` +
+      `${polarityNote}` +
+      (dipoleNote ? '<br><br>' + dipoleNote : '');
+    if(window.renderMathInElement) window.renderMathInElement(result);
+  }
+
+  // Build atom buttons
+  ATOMS.forEach(a => {
+    const btn = document.createElement('button');
+    btn.className = 'bp-atom ' + a.kind;
+    btn.dataset.sym = a.sym;
+    btn.innerHTML = a.sym + '<small>' + a.en.toFixed(2) + '</small>';
+    btn.addEventListener('click', () => {
+      pick[target] = a;
+      updateDisplay();
+      // Auto-switch target so consecutive clicks fill A then B
+      setTarget(target === 'A' ? 'B' : 'A');
+    });
+    atomsEl.appendChild(btn);
+  });
+  targetBtns.forEach(b => b.addEventListener('click', () => setTarget(b.dataset.target)));
+
+  // Preload a meaningful default
+  pick.A = ATOMS.find(x => x.sym === 'H');
+  pick.B = ATOMS.find(x => x.sym === 'O');
+  setTarget('A');
+  updateDisplay();
+})();
+
+/* ============================================================ */
+/* ============== WIDGET 3: Molecular polarity checker ======== */
+/* ============================================================ */
+(function mp(){
+  const svg = document.getElementById('mpSvg');
+  const picker = document.getElementById('mpPicker');
+  const flow = document.getElementById('mpFlow');
+  const W = 480, H = 240;
+
+  function atom(x, y, label, color){
+    let s = `<circle cx="${x}" cy="${y}" r="20" fill="${color || 'var(--white)'}" stroke="var(--forest)" stroke-width="1.5"/>`;
+    s += `<text x="${x}" y="${y + 6}" font-family="Bitter,serif" font-size="18" font-weight="700" text-anchor="middle" fill="var(--forest)">${label}</text>`;
+    return s;
+  }
+  function bond(x1, y1, x2, y2, n){
+    let dx = x2 - x1, dy = y2 - y1;
+    const len = Math.hypot(dx, dy);
+    if(!len) return '';
+    dx /= len; dy /= len;
+    const px = -dy, py = dx;
+    const rad = 20;
+    const ax = x1 + dx * rad, ay = y1 + dy * rad;
+    const bx = x2 - dx * rad, by = y2 - dy * rad;
+    let s = '';
+    const off = n === 1 ? 0 : 4;
+    for(let i = 0; i < n; i++){
+      let o = 0;
+      if(n === 2) o = (i === 0 ? -off : off);
+      s += `<line x1="${(ax + px * o).toFixed(1)}" y1="${(ay + py * o).toFixed(1)}" x2="${(bx + px * o).toFixed(1)}" y2="${(by + py * o).toFixed(1)}" stroke="var(--forest)" stroke-width="2.2" stroke-linecap="round"/>`;
+    }
+    return s;
+  }
+  // dipole arrow (small arrow pointing from positive end to negative)
+  function dipole(x1, y1, x2, y2){
+    const arrowId = 'mpArrow';
+    let s = `<defs><marker id="${arrowId}" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L6,3 z" fill="#b5503e"/></marker></defs>`;
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#b5503e" stroke-width="2.6" stroke-linecap="round" marker-end="url(#${arrowId})"/>`;
+    return s;
+  }
+
+  const MOLECULES = [
+    {
+      key:'CO2', name:'CO₂ (linear)',
+      draw: () => atom(120, 120, 'O', 'var(--c-o)') + atom(240, 120, 'C', 'var(--white)') + atom(360, 120, 'O', 'var(--c-o)') +
+                   bond(120, 120, 240, 120, 2) + bond(240, 120, 360, 120, 2) +
+                   dipole(220, 90, 140, 90) + dipole(260, 90, 340, 90),
+      polar: false,
+      bondsPolar: true,
+      shape: 'Linear (180°). Two C=O bonds point in exactly opposite directions.',
+      verdict: 'The two dipoles are equal and opposite, so they cancel out. Net dipole = 0.',
+      result: 'Nonpolar'
+    },
+    {
+      key:'H2O', name:'H₂O (bent)',
+      draw: () => atom(240, 80, 'O', 'var(--c-o)') + atom(160, 180, 'H') + atom(320, 180, 'H') +
+                   bond(240, 80, 160, 180, 1) + bond(240, 80, 320, 180, 1) +
+                   dipole(190, 150, 230, 100) + dipole(290, 150, 250, 100),
+      polar: true,
+      bondsPolar: true,
+      shape: 'Bent (about 105°), because oxygen has 2 lone pairs that push the H atoms down.',
+      verdict: 'Both dipoles point toward oxygen (up). They add together, not cancel. Oxygen end is $\\delta^-$, hydrogen side is $\\delta^+$.',
+      result: 'Polar'
+    },
+    {
+      key:'NH3', name:'NH₃ (pyramidal)',
+      draw: () => atom(240, 80, 'N', 'var(--c-n)') + atom(140, 180, 'H') + atom(240, 200, 'H') + atom(340, 180, 'H') +
+                   bond(240, 80, 140, 180, 1) + bond(240, 80, 240, 200, 1) + bond(240, 80, 340, 180, 1) +
+                   dipole(190, 140, 230, 100) + dipole(240, 170, 240, 110) + dipole(290, 140, 250, 100),
+      polar: true,
+      bondsPolar: true,
+      shape: 'Pyramidal. Three N-H bonds plus one lone pair on nitrogen, which pushes the H atoms down.',
+      verdict: 'All three N-H dipoles point up toward N. They add, not cancel. Net dipole points up toward nitrogen.',
+      result: 'Polar'
+    },
+    {
+      key:'CH4', name:'CH₄ (tetrahedral)',
+      draw: () => atom(240, 130, 'C') + atom(240, 50, 'H') + atom(120, 200, 'H') + atom(360, 200, 'H') + atom(240, 220, 'H') +
+                   bond(240, 130, 240, 50, 1) + bond(240, 130, 120, 200, 1) + bond(240, 130, 360, 200, 1) + bond(240, 130, 240, 220, 1),
+      polar: false,
+      bondsPolar: false,
+      shape: 'Tetrahedral (109.5° between bonds). Perfectly symmetric.',
+      verdict: 'Even if the bonds were polar, the perfect symmetry means dipoles cancel. C-H bonds are also barely polar to begin with.',
+      result: 'Nonpolar'
+    },
+    {
+      key:'HCl', name:'HCl (diatomic, asymmetric)',
+      draw: () => atom(160, 120, 'H') + atom(320, 120, 'Cl', 'var(--c-h)') +
+                   bond(160, 120, 320, 120, 1) +
+                   dipole(190, 90, 290, 90),
+      polar: true,
+      bondsPolar: true,
+      shape: 'Linear, only two atoms (one bond).',
+      verdict: 'A single polar bond between unequal atoms. Cl end is $\\delta^-$, H end is $\\delta^+$. No way to cancel a lone dipole.',
+      result: 'Polar'
+    },
+    {
+      key:'O2', name:'O₂ (diatomic element)',
+      draw: () => atom(180, 120, 'O', 'var(--c-o)') + atom(300, 120, 'O', 'var(--c-o)') +
+                   bond(180, 120, 300, 120, 2),
+      polar: false,
+      bondsPolar: false,
+      shape: 'Linear, two identical atoms.',
+      verdict: 'Both atoms have the same EN, so $\\Delta$EN = 0. No bond polarity, no molecular polarity. Any diatomic of one element is nonpolar.',
+      result: 'Nonpolar'
+    }
+  ];
+
+  let cur = MOLECULES[0];
+
+  function render(){
+    svg.innerHTML = `<rect x="6" y="6" width="${W - 12}" height="${H - 12}" rx="14" ry="14" fill="rgba(208,214,179,0.18)" stroke="var(--sage-l)" stroke-width="1.5" stroke-dasharray="4 4"/>` + cur.draw();
+    const verdictClass = cur.polar ? 'pol' : 'nonpol';
+    flow.innerHTML =
+      `<div><span class="step-label">Shape. </span>${cur.shape}</div>` +
+      `<div><span class="step-label">Step 1 (are the bonds polar?). </span>${cur.bondsPolar ? 'Yes. Polar bonds.' : 'No. The bonds are essentially nonpolar.'}</div>` +
+      `<div><span class="step-label">Step 2 (do the dipoles cancel?). </span>${cur.verdict}</div>` +
+      `<div style="margin-top:8px"><span class="step-label">Result. </span><span class="${verdictClass}">${cur.result}</span></div>`;
+    if(window.renderMathInElement) window.renderMathInElement(flow);
+  }
+
+  MOLECULES.forEach(m => {
+    const b = document.createElement('button');
+    b.className = 'pick-btn' + (m === cur ? ' active' : '');
+    b.innerHTML = m.name;
+    b.addEventListener('click', () => {
+      cur = m;
+      picker.querySelectorAll('.pick-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      render();
+    });
+    picker.appendChild(b);
+  });
+  render();
+})();
+
+/* ============================================================ */
+/* ============== LWS shell: theme toggle + search ============ */
+/* ============================================================ */
+function toggleLwsTheme(){
+  const cur = document.body.dataset.theme || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.body.dataset.theme = next;
+  try{ localStorage.setItem('lws-theme', next); }catch(e){}
+  const btn = document.getElementById('themeBtn');
+  if(btn) btn.innerHTML = next === 'dark' ? '&#9728;' : '&#9790;';
+}
+window.toggleLwsTheme = toggleLwsTheme;
+try{
+  const saved = localStorage.getItem('lws-theme');
+  if(saved === 'dark'){
+    document.body.dataset.theme = 'dark';
+    const btn = document.getElementById('themeBtn');
+    if(btn) btn.innerHTML = '&#9728;';
+  }
+}catch(e){}
+
+(function setupSearch(){
+  const input = document.querySelector('.search input');
+  if(!input) return;
+  const cards = Array.from(document.querySelectorAll('.main .card'));
+  let pgHead = document.querySelector('.main .pg-head');
+  let emptyMsg = null;
+  input.addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    let shown = 0;
+    cards.forEach(card => {
+      if(!q){ card.style.display = ''; shown++; return; }
+      const hit = card.textContent.toLowerCase().includes(q);
+      card.style.display = hit ? '' : 'none';
+      if(hit) shown++;
+    });
+    if(pgHead) pgHead.style.display = q ? 'none' : '';
+    if(q && shown === 0){
+      if(!emptyMsg){
+        emptyMsg = document.createElement('div');
+        emptyMsg.className = 'card';
+        emptyMsg.style.textAlign = 'center';
+        emptyMsg.innerHTML = '<div class="body-text" style="color:var(--slate)">No sections match that search.</div>';
+        document.querySelector('.main').appendChild(emptyMsg);
+      }
+      emptyMsg.style.display = '';
+    } else if(emptyMsg){
+      emptyMsg.style.display = 'none';
+    }
+  });
+  input.addEventListener('keydown', e => {
+    if(e.key === 'Escape'){ input.value = ''; input.dispatchEvent(new Event('input')); }
+  });
+})();
+
+/* ============================================================ */
+/* ============== Heat-map periodic table (EN only) =========== */
+/* ============================================================ */
+(function hm(){
+  const stage = document.getElementById('hmStage');
+  if(!stage) return;
+  const grid = document.getElementById('hmGrid');
+  const lanGrid = document.getElementById('hmLan');
+  const actGrid = document.getElementById('hmAct');
+  const tooltip = document.getElementById('hmTooltip');
+  const explainEl = document.getElementById('hmExplain');
+
+  const ELEMENTS = [
+    [1,'H','Hydrogen',1,1,2.20],[2,'He','Helium',1,18,null],
+    [3,'Li','Lithium',2,1,0.98],[4,'Be','Beryllium',2,2,1.57],
+    [5,'B','Boron',2,13,2.04],[6,'C','Carbon',2,14,2.55],[7,'N','Nitrogen',2,15,3.04],[8,'O','Oxygen',2,16,3.44],[9,'F','Fluorine',2,17,3.98],[10,'Ne','Neon',2,18,null],
+    [11,'Na','Sodium',3,1,0.93],[12,'Mg','Magnesium',3,2,1.31],
+    [13,'Al','Aluminum',3,13,1.61],[14,'Si','Silicon',3,14,1.90],[15,'P','Phosphorus',3,15,2.19],[16,'S','Sulfur',3,16,2.58],[17,'Cl','Chlorine',3,17,3.16],[18,'Ar','Argon',3,18,null],
+    [19,'K','Potassium',4,1,0.82],[20,'Ca','Calcium',4,2,1.00],
+    [21,'Sc','Scandium',4,3,1.36],[22,'Ti','Titanium',4,4,1.54],[23,'V','Vanadium',4,5,1.63],[24,'Cr','Chromium',4,6,1.66],[25,'Mn','Manganese',4,7,1.55],[26,'Fe','Iron',4,8,1.83],[27,'Co','Cobalt',4,9,1.88],[28,'Ni','Nickel',4,10,1.91],[29,'Cu','Copper',4,11,1.90],[30,'Zn','Zinc',4,12,1.65],
+    [31,'Ga','Gallium',4,13,1.81],[32,'Ge','Germanium',4,14,2.01],[33,'As','Arsenic',4,15,2.18],[34,'Se','Selenium',4,16,2.55],[35,'Br','Bromine',4,17,2.96],[36,'Kr','Krypton',4,18,3.00],
+    [37,'Rb','Rubidium',5,1,0.82],[38,'Sr','Strontium',5,2,0.95],
+    [39,'Y','Yttrium',5,3,1.22],[40,'Zr','Zirconium',5,4,1.33],[41,'Nb','Niobium',5,5,1.60],[42,'Mo','Molybdenum',5,6,2.16],[43,'Tc','Technetium',5,7,1.90],[44,'Ru','Ruthenium',5,8,2.20],[45,'Rh','Rhodium',5,9,2.28],[46,'Pd','Palladium',5,10,2.20],[47,'Ag','Silver',5,11,1.93],[48,'Cd','Cadmium',5,12,1.69],
+    [49,'In','Indium',5,13,1.78],[50,'Sn','Tin',5,14,1.96],[51,'Sb','Antimony',5,15,2.05],[52,'Te','Tellurium',5,16,2.10],[53,'I','Iodine',5,17,2.66],[54,'Xe','Xenon',5,18,2.60],
+    [55,'Cs','Cesium',6,1,0.79],[56,'Ba','Barium',6,2,0.89],
+    [57,'La','Lanthanum',-1,0,1.10],[58,'Ce','Cerium',-1,0,1.12],[59,'Pr','Praseodymium',-1,0,1.13],[60,'Nd','Neodymium',-1,0,1.14],[61,'Pm','Promethium',-1,0,1.13],[62,'Sm','Samarium',-1,0,1.17],[63,'Eu','Europium',-1,0,1.20],[64,'Gd','Gadolinium',-1,0,1.20],[65,'Tb','Terbium',-1,0,1.22],[66,'Dy','Dysprosium',-1,0,1.23],[67,'Ho','Holmium',-1,0,1.24],[68,'Er','Erbium',-1,0,1.24],[69,'Tm','Thulium',-1,0,1.25],[70,'Yb','Ytterbium',-1,0,1.10],[71,'Lu','Lutetium',-1,0,1.27],
+    [72,'Hf','Hafnium',6,4,1.30],[73,'Ta','Tantalum',6,5,1.50],[74,'W','Tungsten',6,6,2.36],[75,'Re','Rhenium',6,7,1.90],[76,'Os','Osmium',6,8,2.20],[77,'Ir','Iridium',6,9,2.20],[78,'Pt','Platinum',6,10,2.28],[79,'Au','Gold',6,11,2.54],[80,'Hg','Mercury',6,12,2.00],
+    [81,'Tl','Thallium',6,13,1.62],[82,'Pb','Lead',6,14,2.33],[83,'Bi','Bismuth',6,15,2.02],[84,'Po','Polonium',6,16,2.00],[85,'At','Astatine',6,17,2.20],[86,'Rn','Radon',6,18,null],
+    [87,'Fr','Francium',7,1,0.70],[88,'Ra','Radium',7,2,0.90],
+    [89,'Ac','Actinium',-2,0,1.10],[90,'Th','Thorium',-2,0,1.30],[91,'Pa','Protactinium',-2,0,1.50],[92,'U','Uranium',-2,0,1.38],[93,'Np','Neptunium',-2,0,1.36],[94,'Pu','Plutonium',-2,0,1.28],[95,'Am','Americium',-2,0,1.30],[96,'Cm','Curium',-2,0,1.30],[97,'Bk','Berkelium',-2,0,1.30],[98,'Cf','Californium',-2,0,1.30],[99,'Es','Einsteinium',-2,0,1.30],[100,'Fm','Fermium',-2,0,1.30],[101,'Md','Mendelevium',-2,0,1.30],[102,'No','Nobelium',-2,0,1.30],[103,'Lr','Lawrencium',-2,0,1.30],
+    [104,'Rf','Rutherfordium',7,4,null],[105,'Db','Dubnium',7,5,null],[106,'Sg','Seaborgium',7,6,null],[107,'Bh','Bohrium',7,7,null],[108,'Hs','Hassium',7,8,null],[109,'Mt','Meitnerium',7,9,null],[110,'Ds','Darmstadtium',7,10,null],[111,'Rg','Roentgenium',7,11,null],[112,'Cn','Copernicium',7,12,null],
+    [113,'Nh','Nihonium',7,13,null],[114,'Fl','Flerovium',7,14,null],[115,'Mc','Moscovium',7,15,null],[116,'Lv','Livermorium',7,16,null],[117,'Ts','Tennessine',7,17,null],[118,'Og','Oganesson',7,18,null]
+  ];
+
+  const MIN = 0.7, MAX = 4.0;
+
+  function colorFor(t){
+    t = Math.max(0, Math.min(1, t));
+    const stops = [[240,70,60],[190,70,60],[120,65,55],[60,80,55],[15,75,55]];
+    const seg = t * (stops.length - 1);
+    const i = Math.min(stops.length - 2, Math.floor(seg));
+    const f = seg - i;
+    const h = stops[i][0] + (stops[i+1][0] - stops[i][0]) * f;
+    const s = stops[i][1] + (stops[i+1][1] - stops[i][1]) * f;
+    const l = stops[i][2] + (stops[i+1][2] - stops[i][2]) * f;
+    return `hsl(${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%)`;
+  }
+
+  function render(){
+    grid.innerHTML = '';
+    lanGrid.innerHTML = '';
+    actGrid.innerHTML = '';
+    ELEMENTS.forEach(e => {
+      const [z, sym, name, period, group, en] = e;
+      const cell = document.createElement('div');
+      const hasValue = (en !== null && en !== undefined);
+      cell.className = 'hm-cell' + (hasValue ? '' : ' no-data');
+      if(hasValue){
+        cell.style.background = colorFor((en - MIN) / (MAX - MIN));
+      }
+      cell.innerHTML = `<span class="z">${z}</span><span class="s">${sym}</span>`;
+      cell.dataset.z = z;
+      cell.dataset.sym = sym;
+      cell.dataset.name = name;
+      cell.dataset.value = hasValue ? en : '';
+      if(period === -1){ cell.style.gridColumn = (z - 56); lanGrid.appendChild(cell); }
+      else if(period === -2){ cell.style.gridColumn = (z - 88); actGrid.appendChild(cell); }
+      else { cell.style.gridColumn = group; cell.style.gridRow = period; grid.appendChild(cell); }
+    });
+    const lanMarker = document.createElement('div');
+    lanMarker.className = 'hm-cell placeholder';
+    lanMarker.style.gridColumn = 3;
+    lanMarker.style.gridRow = 6;
+    lanMarker.innerHTML = '<span class="z">57-71</span><span class="s">La-Lu</span>';
+    grid.appendChild(lanMarker);
+    const actMarker = document.createElement('div');
+    actMarker.className = 'hm-cell placeholder';
+    actMarker.style.gridColumn = 3;
+    actMarker.style.gridRow = 7;
+    actMarker.innerHTML = '<span class="z">89-103</span><span class="s">Ac-Lr</span>';
+    grid.appendChild(actMarker);
+    explainEl.innerHTML = '<strong>Read the gradient:</strong> red = high electronegativity (atom pulls electrons hard), blue = low (atom gives electrons up easily). Fluorine (top-right) is the reddest at 3.98. Francium / cesium (bottom-left) are the bluest at 0.7-0.79. Noble gases are gray (typically not assigned an EN because they do not form bonds).';
+  }
+
+  stage.addEventListener('mousemove', (e) => {
+    const target = e.target.closest('.hm-cell');
+    if(!target || target.classList.contains('placeholder')){
+      tooltip.style.display = 'none';
+      return;
+    }
+    const z = target.dataset.z;
+    const sym = target.dataset.sym;
+    const name = target.dataset.name;
+    const value = target.dataset.value;
+    tooltip.innerHTML = `<div class="tn">${name}</div><div class="tz">${sym} &middot; Z = ${z}</div><div class="tv">EN: ${value === '' ? 'no data' : value}</div>`;
+    tooltip.style.display = 'block';
+    const rect = stage.getBoundingClientRect();
+    const tw = tooltip.offsetWidth || 180;
+    const th = tooltip.offsetHeight || 60;
+    let x = e.clientX - rect.left + 14;
+    let y = e.clientY - rect.top + 14;
+    if(x + tw > stage.clientWidth - 4) x = e.clientX - rect.left - tw - 8;
+    if(y + th > stage.clientHeight - 4) y = e.clientY - rect.top - th - 8;
+    tooltip.style.left = Math.max(4, x) + 'px';
+    tooltip.style.top = Math.max(4, y) + 'px';
+  });
+  stage.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+
+  render();
+})();
+
+/* ============================================================ */
+/* ============== Electron sharing animation (Bohr orbits) ==== */
+/* ============================================================ */
+(function es(){
+  const svg = document.getElementById('esSvg');
+  if(!svg) return;
+  const readout = document.getElementById('esReadout');
+  const playBtn = document.getElementById('esPlay');
+  const modeBtns = document.querySelectorAll('#esModePicker .pick-btn');
+  const W = 480, H = 280;
+
+  let mode = 'ionic';
+  let progress = 0;          // 0 = before transfer/share, 1 = after
+  let playing = false;
+  let spinTime = 0;          // continuously incremented; drives orbit rotation
+  let raf = null;
+
+  function lerp(a, b, t){ return a + (b - a) * t; }
+  function lerpO(a, b, t){ return { cx: lerp(a.cx, b.cx, t), cy: lerp(a.cy, b.cy, t), r: lerp(a.r, b.r, t) }; }
+
+  function nucleus(x, y, label, charge){
+    let s = `<circle cx="${x}" cy="${y}" r="22" fill="rgba(208,214,179,0.55)" stroke="var(--forest)" stroke-width="2"/>`;
+    s += `<text x="${x}" y="${y + 7}" font-family="Bitter,serif" font-size="20" font-weight="700" text-anchor="middle" fill="var(--forest)">${label}</text>`;
+    if(charge){
+      const color = (charge.indexOf('+') >= 0) ? '#b5503e' : '#525B76';
+      s += `<text x="${x + 24}" y="${y - 16}" font-family="Bitter,serif" font-size="15" font-weight="700" fill="${color}">${charge}</text>`;
+    }
+    return s;
+  }
+
+  function shell(cx, cy, r, opacity){
+    return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--slate)" stroke-width="1.2" stroke-dasharray="3 3" opacity="${(opacity !== undefined ? opacity : 0.45)}"/>`;
+  }
+
+  function electron(cx, cy, r, phase, color){
+    const a = spinTime * 1.5 + phase;
+    const x = cx + r * Math.cos(a);
+    const y = cy + r * Math.sin(a);
+    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" fill="${color}" stroke="#143109" stroke-width="1.2"/>`;
+  }
+
+  // ----- Mode renderers -----
+  function buildIonic(t){
+    const aX = 130, aY = 140, bX = 350, bY = 140;
+    const naR = 38, clR = 50;
+    let s = '';
+    // Shells: Na shell fades as it empties; Cl shell stays
+    s += shell(aX, aY, naR, 0.45 * (1 - t * 0.6));
+    s += shell(bX, bY, clR);
+    const aCharge = t > 0.7 ? '+' : '';
+    const bCharge = t > 0.7 ? '−' : '';
+    s += nucleus(aX, aY, 'Na', aCharge);
+    s += nucleus(bX, bY, 'Cl', bCharge);
+
+    // Cl's 7 valence electrons at 7 of 8 phase positions (gap at phase = π)
+    // We use 0, π/4, π/2, 3π/4, 5π/4, 3π/2, 7π/4 — leaves π open.
+    const phases7 = [0, Math.PI/4, Math.PI/2, 3*Math.PI/4, 5*Math.PI/4, 3*Math.PI/2, 7*Math.PI/4];
+    phases7.forEach(p => { s += electron(bX, bY, clR, p, '#525B76'); });
+
+    // Na's lone valence electron: starts orbiting Na, ends orbiting Cl in the gap (phase π)
+    const startO = { cx: aX, cy: aY, r: naR };
+    const endO = { cx: bX, cy: bY, r: clR };
+    const cur = lerpO(startO, endO, t);
+    s += electron(cur.cx, cur.cy, cur.r, Math.PI, '#b5503e');
+    return s;
+  }
+
+  function buildCovPure(t){
+    const aX = 160, aY = 140, bX = 320, bY = 140;
+    const hR = 30;
+    const midX = (aX + bX) / 2;
+    const sharedR = 42;
+    let s = '';
+    // Original H shells fade out, shared shell fades in
+    const fadeOut = Math.max(0.05, 0.55 - t * 0.5);
+    const fadeIn = Math.min(0.55, t * 0.8);
+    s += shell(aX, aY, hR, fadeOut);
+    s += shell(bX, bY, hR, fadeOut);
+    s += shell(midX, aY, sharedR, fadeIn);
+    s += nucleus(aX, aY, 'H', '');
+    s += nucleus(bX, bY, 'H', '');
+
+    // Electron A: orbit center migrates from atom A to midpoint
+    const eAStart = { cx: aX, cy: aY, r: hR };
+    const eAEnd = { cx: midX, cy: aY, r: sharedR };
+    const eA = lerpO(eAStart, eAEnd, t);
+    s += electron(eA.cx, eA.cy, eA.r, 0, '#5b8a3f');
+    // Electron B: opposite phase, migrates from atom B to midpoint
+    const eBStart = { cx: bX, cy: aY, r: hR };
+    const eBEnd = { cx: midX, cy: aY, r: sharedR };
+    const eB = lerpO(eBStart, eBEnd, t);
+    s += electron(eB.cx, eB.cy, eB.r, Math.PI, '#5b8a3f');
+    return s;
+  }
+
+  function buildCovPolar(t){
+    const aX = 140, aY = 140, bX = 340, bY = 140;
+    const hR = 28, clR = 50;
+    // Shared orbit center moves toward Cl: from midpoint to about 70% along the bond
+    const sharedCx = lerp((aX + bX) / 2, lerp(aX, bX, 0.72), t);
+    const sharedR = 38;
+    let s = '';
+    const fadeH = Math.max(0.05, 0.55 - t * 0.5);
+    s += shell(aX, aY, hR, fadeH);
+    s += shell(bX, bY, clR);
+    s += shell(sharedCx, aY, sharedR, Math.min(0.55, t * 0.8));
+    const aCharge = t > 0.7 ? 'δ+' : '';
+    const bCharge = t > 0.7 ? 'δ−' : '';
+    s += nucleus(aX, aY, 'H', aCharge);
+    s += nucleus(bX, bY, 'Cl', bCharge);
+
+    // Cl's 6 lone-pair electrons orbiting Cl (3 lone pairs at 6 phase positions)
+    const phases6 = [Math.PI/4, -Math.PI/4, 3*Math.PI/4, -3*Math.PI/4, Math.PI/2, -Math.PI/2];
+    phases6.forEach(p => { s += electron(bX, bY, clR, p, '#525B76'); });
+
+    // Shared electron A (from H): migrates into shared orbit
+    const eHStart = { cx: aX, cy: aY, r: hR };
+    const eHEnd = { cx: sharedCx, cy: aY, r: sharedR };
+    const eH = lerpO(eHStart, eHEnd, t);
+    s += electron(eH.cx, eH.cy, eH.r, 0, '#b5503e');
+    // Shared electron B (from Cl): migrates from Cl shell into shared orbit, opposite phase
+    const eClStart = { cx: bX, cy: aY, r: clR };
+    const eClEnd = { cx: sharedCx, cy: aY, r: sharedR };
+    const eCl = lerpO(eClStart, eClEnd, t);
+    s += electron(eCl.cx, eCl.cy, eCl.r, Math.PI, '#b5503e');
+    return s;
+  }
+
+  const MODES = {
+    ionic: {
+      build: buildIonic,
+      texts: {
+        start: '<strong>Ionic bond (Na + Cl).</strong> Na has 1 valence electron (red) on its outer shell. Cl has 7 (gray) on its outer shell. Click <em>Play animation</em> to watch the red electron jump.',
+        mid:   '<strong>Mid-transfer.</strong> The red electron leaves Na\'s shell and migrates to Cl\'s. This is one-way transfer, not sharing. Notice Na is losing it; Cl is gaining it.',
+        end:   '<strong>Result.</strong> Cl now has 8 electrons on its outer shell (full octet) and a $-1$ charge. Na lost its valence electron and has a $+1$ charge. Opposite charges hold them together — that is the <strong>ionic bond</strong>.'
+      }
+    },
+    'cov-pure': {
+      build: buildCovPure,
+      texts: {
+        start: '<strong>Pure covalent bond ($\\text{H}_2$).</strong> Each H atom has its own orbit with 1 valence electron. Same EN means they will share equally.',
+        mid:   '<strong>Mid-share.</strong> The two electrons drift inward. The individual H orbits fade out as a shared orbit fades in around both nuclei.',
+        end:   '<strong>Result.</strong> Both electrons now orbit a region <em>between</em> the two H atoms, equally pulled by both nuclei. Each H "counts" both shared electrons toward a full outer shell of 2. $\\Delta$EN = 0, so the bond is perfectly symmetric: <strong>nonpolar covalent</strong>.'
+      }
+    },
+    'cov-polar': {
+      build: buildCovPolar,
+      texts: {
+        start: '<strong>Polar covalent bond (HCl).</strong> H has 1 valence electron orbiting H. Cl has 7 orbiting Cl. Both atoms keep their nuclei in place; only the shared electrons will move.',
+        mid:   '<strong>Mid-share.</strong> One electron from each atom drifts into a new shared orbit. Cl has higher EN, so the shared orbit forms closer to Cl, not at the midpoint.',
+        end:   '<strong>Result.</strong> The shared pair orbits closer to Cl. Cl end is partially negative ($\\delta^-$). H end is partially positive ($\\delta^+$). Not a full transfer (would be ionic), just lopsided sharing — <strong>polar covalent</strong>.'
+      }
+    }
+  };
+
+  function stage(t){
+    if(t < 0.05) return 'start';
+    if(t < 0.92) return 'mid';
+    return 'end';
+  }
+
+  function render(){
+    const M = MODES[mode];
+    const body = M.build(progress);
+    svg.innerHTML = `<rect x="6" y="6" width="${W - 12}" height="${H - 12}" rx="14" ry="14" fill="rgba(208,214,179,0.10)" stroke="var(--sage-l)" stroke-width="1.5" stroke-dasharray="4 4"/>` + body;
+    readout.innerHTML = M.texts[stage(progress)];
+    if(window.renderMathInElement) window.renderMathInElement(readout);
+  }
+
+  function loop(ts){
+    spinTime = ts * 0.001;
+    if(playing && progress < 1){
+      progress = Math.min(1, progress + 0.011);
+      if(progress >= 1){
+        playing = false;
+        playBtn.innerHTML = '&#8635; Replay';
+      }
+    }
+    render();
+    raf = requestAnimationFrame(loop);
+  }
+
+  // Wire up controls
+  window.esPlay = function(){
+    if(playing){
+      playing = false;
+      playBtn.innerHTML = '&#9658; Play animation';
+    } else {
+      if(progress >= 1) progress = 0;
+      playing = true;
+      playBtn.innerHTML = '&#10074;&#10074; Pause';
+    }
+  };
+  window.esReset = function(){
+    playing = false;
+    progress = 0;
+    playBtn.innerHTML = '&#9658; Play animation';
+  };
+  modeBtns.forEach(b => {
+    b.addEventListener('click', () => {
+      modeBtns.forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      mode = b.dataset.mode;
+      window.esReset();
+    });
+  });
+  raf = requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

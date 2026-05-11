@@ -285,6 +285,74 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
 [data-theme="dark"] .pt-col-label,[data-theme="dark"] .pt-row-label,[data-theme="dark"] .pt-legend{color:var(--slate)}
 [data-theme="dark"] .trends-grid .el{background:#1E2416;color:var(--forest)}
 [data-theme="dark"] .trends-grid .el.lo{background:#2A3421}
+
+/* ===== Heat-map periodic table (hm-) ===== */
+.hm-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;position:relative;overflow-x:auto}
+.hm-grid{display:grid;grid-template-columns:repeat(18, minmax(28px, 1fr));gap:2px;margin:0 auto;max-width:920px}
+.hm-grid.hm-lan,.hm-grid.hm-act{grid-template-columns:repeat(15, minmax(28px, 1fr));margin-top:8px;max-width:760px}
+.hm-cell{aspect-ratio:1;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;font-family:var(--fb);transition:transform .1s, box-shadow .1s;position:relative;min-height:30px;line-height:1}
+.hm-cell:hover{transform:scale(1.12);box-shadow:0 0 0 2px var(--forest);z-index:5}
+.hm-cell .z{font-size:.5em;color:rgba(0,0,0,0.65);font-weight:600;margin-top:1px}
+.hm-cell .s{font-size:.85em;font-weight:700;color:#000}
+.hm-cell.no-data{opacity:0.4;cursor:default;background:#dadada}
+.hm-cell.no-data:hover{transform:none;box-shadow:none}
+.hm-cell.placeholder{background:#ccc;color:#555;cursor:default}
+.hm-cell.placeholder:hover{transform:none;box-shadow:none}
+.hm-cell.placeholder .z,.hm-cell.placeholder .s{color:#555;font-size:.55em}
+.hm-row-label{font-family:var(--fb);font-size:.7rem;color:var(--slate);display:flex;align-items:center;justify-content:center;padding-right:4px}
+.hm-legend{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:12px;font-family:var(--fp);font-size:.82rem;color:var(--slate);flex-wrap:wrap}
+.hm-legend .lo,.hm-legend .hi{font-family:var(--fb);font-size:.78rem}
+.hm-legend-bar{flex:0 0 240px;height:14px;border-radius:7px;background:linear-gradient(90deg, hsl(240,70%,60%), hsl(190,70%,60%), hsl(120,65%,55%), hsl(60,80%,55%), hsl(15,75%,55%))}
+.hm-tooltip{position:absolute;background:var(--forest);color:#fff;padding:8px 12px;border-radius:8px;font-family:var(--fp);font-size:.88rem;pointer-events:none;z-index:30;line-height:1.45;white-space:nowrap;box-shadow:0 6px 18px rgba(20,49,9,0.3)}
+.hm-tooltip .tn{font-family:var(--fh);font-size:1rem;line-height:1.2}
+.hm-tooltip .tz{font-family:var(--fb);font-size:.72rem;opacity:0.85;letter-spacing:.04em}
+.hm-tooltip .tv{font-family:var(--fb);font-size:.92rem;color:#FFE9A0;margin-top:3px}
+.hm-explain{margin-top:12px;font-family:var(--fp);font-size:.95rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:12px 16px;line-height:1.6}
+.hm-arrows{display:flex;flex-direction:column;align-items:center;gap:4px;margin:8px 0;font-family:var(--fb);font-size:.78rem;color:var(--slate)}
+[data-theme="dark"] .hm-stage{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .hm-cell{filter:brightness(0.92)}
+[data-theme="dark"] .hm-cell.no-data{background:#2A3421}
+[data-theme="dark"] .hm-cell.placeholder{background:#2A3421}
+[data-theme="dark"] .hm-cell.placeholder .z,[data-theme="dark"] .hm-cell.placeholder .s{color:var(--slate)}
+[data-theme="dark"] .hm-explain{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .hm-tooltip{background:#2A3421}
+@media(max-width:640px){
+  .hm-grid{min-width:540px;grid-template-columns:repeat(18, minmax(22px, 1fr))}
+  .hm-grid.hm-lan,.hm-grid.hm-act{min-width:450px;grid-template-columns:repeat(15, minmax(22px, 1fr))}
+}
+
+/* Heat-map segmented-control trend picker */
+.hm-controls{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+.hm-controls-label{font-family:var(--fb);font-size:.7rem;color:var(--slate);letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.hm-trend-picker{display:inline-flex;gap:3px;background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:24px;padding:4px}
+.hm-trend-btn{font-family:var(--fp);font-weight:600;font-size:.88rem;background:transparent;border:none;color:var(--forest);padding:7px 16px;border-radius:20px;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s;white-space:nowrap}
+.hm-trend-btn:hover{background:rgba(155,160,106,0.25)}
+.hm-trend-btn.active{background:var(--sage);color:var(--white);box-shadow:0 2px 6px rgba(20,49,9,0.15)}
+[data-theme="dark"] .hm-trend-picker{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .hm-trend-btn{color:var(--forest)}
+[data-theme="dark"] .hm-trend-btn:hover{background:rgba(169,176,122,0.18)}
+[data-theme="dark"] .hm-trend-btn.active{background:var(--sage);color:#0E1108}
+
+/* Heat-map trend arrows */
+.hm-frame{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto 1fr;gap:6px;align-items:stretch}
+.hm-top-axis{grid-column:2;grid-row:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:6px 14px;background:var(--bg);border:1.5px dashed var(--sage-l);border-radius:10px;font-family:var(--fp);font-size:.86rem;color:var(--forest);flex-wrap:wrap}
+.hm-side-axis{grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px 6px;background:var(--bg);border:1.5px dashed var(--sage-l);border-radius:10px;min-width:64px;font-family:var(--fp);font-size:.74rem;color:var(--forest);text-align:center;line-height:1.25}
+.hm-grid-stack{grid-column:2;grid-row:2}
+.hm-axis-label{font-family:var(--fb);color:var(--slate);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.68rem}
+.hm-axis-arrow{font-family:var(--fb);color:var(--sage);font-weight:700;line-height:1}
+.hm-top-axis .hm-axis-arrow{font-size:1.4rem}
+.hm-side-axis .hm-axis-arrow{font-size:1.6rem;margin:2px 0}
+.hm-axis-value{font-family:var(--fb);color:var(--forest);font-weight:700;font-size:.86rem}
+.hm-side-axis .hm-axis-value{font-size:.74rem;line-height:1.2}
+[data-theme="dark"] .hm-top-axis,[data-theme="dark"] .hm-side-axis{background:#1A1F11;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .hm-axis-value{color:var(--forest)}
+@media(max-width:640px){
+  .hm-frame{grid-template-columns:1fr;grid-template-rows:auto auto auto}
+  .hm-top-axis{grid-column:1;grid-row:1}
+  .hm-side-axis{grid-column:1;grid-row:2;flex-direction:row;min-width:auto;padding:6px 14px}
+  .hm-side-axis .hm-axis-arrow{font-size:1.4rem;margin:0}
+  .hm-grid-stack{grid-column:1;grid-row:3}
+}
 </style>
 </head>
 <body data-theme="light">
@@ -310,8 +378,8 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
     <a class="nav-item" href="atomic-structure.html"><span class="num">I.</span><span class="t">Atomic Structure</span></a>
     <a class="nav-item active" href="periodic-table.html"><span class="num">II.</span><span class="t">The Periodic Table</span></a>
     <a class="nav-item" href="stoichiometry.html"><span class="num">III.</span><span class="t">Stoichiometry</span></a>
-    <a class="nav-item locked"><span class="num">IV.</span><span class="t">Chemical Bonding</span></a>
-    <a class="nav-item locked"><span class="num">V.</span><span class="t">Physical Behavior</span></a>
+    <a class="nav-item" href="chemical-bonding.html"><span class="num">IV.</span><span class="t">Chemical Bonding</span></a>
+    <a class="nav-item" href="physical-behavior-of-matter.html"><span class="num">V.</span><span class="t">Physical Behavior</span></a>
     <a class="nav-item locked"><span class="num">VI.</span><span class="t">Equilibrium</span></a>
     <a class="nav-item" href="unit-7-organic-chem.html"><span class="num">VII.</span><span class="t">Organic Chemistry</span></a>
     <a class="nav-item locked"><span class="num">VIII.</span><span class="t">Redox</span></a>
@@ -652,6 +720,47 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
       </svg>
       <div class="trend-caption" id="trendCaption"></div>
     </div>
+  </div>
+
+  <div class="sub-title">Trend heat map: see it across the whole table</div>
+  <p class="body-text">The simple bars above show one period and one group. The heat map below shows every element at once. Hover any cell to see its exact value. Switch trends to see how each pattern looks across the whole table.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Periodic Table Trend Heat Map</div>
+    <div class="hm-controls">
+      <span class="hm-controls-label">Trend</span>
+      <div class="hm-trend-picker" id="hmTrendPicker">
+        <button class="hm-trend-btn active" data-trend="en">Electronegativity</button>
+        <button class="hm-trend-btn" data-trend="r">Atomic Radius</button>
+        <button class="hm-trend-btn" data-trend="ie">Ionization Energy</button>
+      </div>
+    </div>
+    <div class="hm-stage" id="hmStage">
+      <div class="hm-frame">
+        <div class="hm-top-axis">
+          <span class="hm-axis-label">Across a period</span>
+          <span class="hm-axis-arrow">&rarr;</span>
+          <span class="hm-axis-value" id="hmArrowAcross">EN increases</span>
+        </div>
+        <div class="hm-side-axis">
+          <span class="hm-axis-label">Down a group</span>
+          <span class="hm-axis-arrow">&darr;</span>
+          <span class="hm-axis-value" id="hmArrowDown">EN decreases</span>
+        </div>
+        <div class="hm-grid-stack">
+          <div class="hm-grid" id="hmGrid"></div>
+          <div class="hm-grid hm-lan" id="hmLan"></div>
+          <div class="hm-grid hm-act" id="hmAct"></div>
+        </div>
+      </div>
+      <div class="hm-tooltip" id="hmTooltip" style="display:none"></div>
+    </div>
+    <div class="hm-legend">
+      <span class="lo" id="hmLegendLow">low</span>
+      <div class="hm-legend-bar"></div>
+      <span class="hi" id="hmLegendHigh">high</span>
+    </div>
+    <div class="hm-explain" id="hmExplain"></div>
   </div>
 </div>
 
@@ -1623,6 +1732,172 @@ try{
   input.addEventListener('keydown', e => {
     if(e.key === 'Escape'){ input.value = ''; input.dispatchEvent(new Event('input')); }
   });
+})();
+
+/* ============================================================ */
+/* ============== Heat-map periodic table ===================== */
+/* ============================================================ */
+(function hm(){
+  const stage = document.getElementById('hmStage');
+  if(!stage) return;
+  const grid = document.getElementById('hmGrid');
+  const lanGrid = document.getElementById('hmLan');
+  const actGrid = document.getElementById('hmAct');
+  const tooltip = document.getElementById('hmTooltip');
+  const legendLow = document.getElementById('hmLegendLow');
+  const legendHigh = document.getElementById('hmLegendHigh');
+  const explainEl = document.getElementById('hmExplain');
+  const arrowAcross = document.getElementById('hmArrowAcross');
+  const arrowDown = document.getElementById('hmArrowDown');
+  const trendBtns = document.querySelectorAll('#hmTrendPicker .hm-trend-btn');
+
+  // [Z, sym, name, period, group, atomic radius (pm), 1st IE (kJ/mol), EN (Pauling). period=-1 lanthanide, -2 actinide. null=no data]
+  const ELEMENTS = [
+    [1,'H','Hydrogen',1,1,53,1312,2.20],
+    [2,'He','Helium',1,18,31,2372,null],
+    [3,'Li','Lithium',2,1,167,520,0.98],[4,'Be','Beryllium',2,2,112,900,1.57],
+    [5,'B','Boron',2,13,87,801,2.04],[6,'C','Carbon',2,14,67,1086,2.55],[7,'N','Nitrogen',2,15,56,1402,3.04],[8,'O','Oxygen',2,16,48,1314,3.44],[9,'F','Fluorine',2,17,42,1681,3.98],[10,'Ne','Neon',2,18,38,2081,null],
+    [11,'Na','Sodium',3,1,190,496,0.93],[12,'Mg','Magnesium',3,2,145,738,1.31],
+    [13,'Al','Aluminum',3,13,118,578,1.61],[14,'Si','Silicon',3,14,111,786,1.90],[15,'P','Phosphorus',3,15,98,1012,2.19],[16,'S','Sulfur',3,16,88,1000,2.58],[17,'Cl','Chlorine',3,17,79,1251,3.16],[18,'Ar','Argon',3,18,71,1521,null],
+    [19,'K','Potassium',4,1,243,419,0.82],[20,'Ca','Calcium',4,2,194,590,1.00],
+    [21,'Sc','Scandium',4,3,184,633,1.36],[22,'Ti','Titanium',4,4,176,659,1.54],[23,'V','Vanadium',4,5,171,651,1.63],[24,'Cr','Chromium',4,6,166,653,1.66],[25,'Mn','Manganese',4,7,161,717,1.55],[26,'Fe','Iron',4,8,156,762,1.83],[27,'Co','Cobalt',4,9,152,760,1.88],[28,'Ni','Nickel',4,10,149,737,1.91],[29,'Cu','Copper',4,11,145,745,1.90],[30,'Zn','Zinc',4,12,142,906,1.65],
+    [31,'Ga','Gallium',4,13,136,579,1.81],[32,'Ge','Germanium',4,14,125,762,2.01],[33,'As','Arsenic',4,15,114,947,2.18],[34,'Se','Selenium',4,16,103,941,2.55],[35,'Br','Bromine',4,17,94,1140,2.96],[36,'Kr','Krypton',4,18,88,1351,3.00],
+    [37,'Rb','Rubidium',5,1,265,403,0.82],[38,'Sr','Strontium',5,2,219,549,0.95],
+    [39,'Y','Yttrium',5,3,212,600,1.22],[40,'Zr','Zirconium',5,4,206,640,1.33],[41,'Nb','Niobium',5,5,198,652,1.60],[42,'Mo','Molybdenum',5,6,190,684,2.16],[43,'Tc','Technetium',5,7,183,702,1.90],[44,'Ru','Ruthenium',5,8,178,710,2.20],[45,'Rh','Rhodium',5,9,173,719,2.28],[46,'Pd','Palladium',5,10,169,804,2.20],[47,'Ag','Silver',5,11,165,731,1.93],[48,'Cd','Cadmium',5,12,161,868,1.69],
+    [49,'In','Indium',5,13,156,558,1.78],[50,'Sn','Tin',5,14,145,709,1.96],[51,'Sb','Antimony',5,15,133,834,2.05],[52,'Te','Tellurium',5,16,123,869,2.10],[53,'I','Iodine',5,17,115,1008,2.66],[54,'Xe','Xenon',5,18,108,1170,2.60],
+    [55,'Cs','Cesium',6,1,298,375,0.79],[56,'Ba','Barium',6,2,253,503,0.89],
+    [57,'La','Lanthanum',-1,0,226,538,1.10],[58,'Ce','Cerium',-1,0,210,534,1.12],[59,'Pr','Praseodymium',-1,0,247,527,1.13],[60,'Nd','Neodymium',-1,0,206,533,1.14],[61,'Pm','Promethium',-1,0,205,540,1.13],[62,'Sm','Samarium',-1,0,238,545,1.17],[63,'Eu','Europium',-1,0,231,547,1.20],[64,'Gd','Gadolinium',-1,0,233,593,1.20],[65,'Tb','Terbium',-1,0,225,566,1.22],[66,'Dy','Dysprosium',-1,0,228,573,1.23],[67,'Ho','Holmium',-1,0,226,581,1.24],[68,'Er','Erbium',-1,0,226,589,1.24],[69,'Tm','Thulium',-1,0,222,597,1.25],[70,'Yb','Ytterbium',-1,0,222,603,1.10],[71,'Lu','Lutetium',-1,0,217,524,1.27],
+    [72,'Hf','Hafnium',6,4,208,659,1.30],[73,'Ta','Tantalum',6,5,200,761,1.50],[74,'W','Tungsten',6,6,193,770,2.36],[75,'Re','Rhenium',6,7,188,760,1.90],[76,'Os','Osmium',6,8,185,840,2.20],[77,'Ir','Iridium',6,9,180,880,2.20],[78,'Pt','Platinum',6,10,177,870,2.28],[79,'Au','Gold',6,11,174,890,2.54],[80,'Hg','Mercury',6,12,171,1007,2.00],
+    [81,'Tl','Thallium',6,13,156,589,1.62],[82,'Pb','Lead',6,14,154,716,2.33],[83,'Bi','Bismuth',6,15,143,703,2.02],[84,'Po','Polonium',6,16,135,812,2.00],[85,'At','Astatine',6,17,127,890,2.20],[86,'Rn','Radon',6,18,120,1037,null],
+    [87,'Fr','Francium',7,1,348,380,0.70],[88,'Ra','Radium',7,2,283,509,0.90],
+    [89,'Ac','Actinium',-2,0,260,499,1.10],[90,'Th','Thorium',-2,0,237,587,1.30],[91,'Pa','Protactinium',-2,0,243,568,1.50],[92,'U','Uranium',-2,0,240,597,1.38],[93,'Np','Neptunium',-2,0,221,604,1.36],[94,'Pu','Plutonium',-2,0,243,584,1.28],[95,'Am','Americium',-2,0,244,578,1.30],[96,'Cm','Curium',-2,0,245,581,1.30],[97,'Bk','Berkelium',-2,0,244,601,1.30],[98,'Cf','Californium',-2,0,245,608,1.30],[99,'Es','Einsteinium',-2,0,245,619,1.30],[100,'Fm','Fermium',-2,0,245,627,1.30],[101,'Md','Mendelevium',-2,0,246,635,1.30],[102,'No','Nobelium',-2,0,246,642,1.30],[103,'Lr','Lawrencium',-2,0,246,470,1.30],
+    [104,'Rf','Rutherfordium',7,4,null,580,null],[105,'Db','Dubnium',7,5,null,665,null],[106,'Sg','Seaborgium',7,6,null,757,null],[107,'Bh','Bohrium',7,7,null,740,null],[108,'Hs','Hassium',7,8,null,730,null],[109,'Mt','Meitnerium',7,9,null,800,null],[110,'Ds','Darmstadtium',7,10,null,955,null],[111,'Rg','Roentgenium',7,11,null,1020,null],[112,'Cn','Copernicium',7,12,null,1155,null],
+    [113,'Nh','Nihonium',7,13,null,705,null],[114,'Fl','Flerovium',7,14,null,832,null],[115,'Mc','Moscovium',7,15,null,538,null],[116,'Lv','Livermorium',7,16,null,668,null],[117,'Ts','Tennessine',7,17,null,743,null],[118,'Og','Oganesson',7,18,null,839,null]
+  ];
+
+  const TRENDS = {
+    en: {idx: 7, label: 'Electronegativity', unit: '', min: 0.7, max: 4.0, lowLbl: 'Low EN (gives up electrons)', highLbl: 'High EN (hoards electrons)',
+      across: 'EN increases', down: 'EN decreases',
+      explain: '<strong>Electronegativity</strong> is how strongly an atom pulls on shared electrons in a bond. <strong>Increases left to right</strong> across a period (more nuclear pull on the same shell). <strong>Decreases top to bottom</strong> down a group (extra shells weaken the pull). Fluorine at top-right corner has the highest value (3.98). Francium/cesium at the bottom-left have the lowest.'},
+    r:  {idx: 5, label: 'Atomic Radius', unit: 'pm', min: 30, max: 350, lowLbl: 'Small atom', highLbl: 'Large atom',
+      across: 'Radius decreases', down: 'Radius increases',
+      explain: '<strong>Atomic radius</strong> is the size of an atom. <strong>Decreases left to right</strong> across a period (more protons squeeze the same shell). <strong>Increases top to bottom</strong> down a group (new shell added each row). Helium is smallest, francium is largest. The opposite pattern of EN.'},
+    ie: {idx: 6, label: 'First Ionization Energy', unit: 'kJ/mol', min: 350, max: 2400, lowLbl: 'Easy to remove electron', highLbl: 'Hard to remove electron',
+      across: 'IE increases', down: 'IE decreases',
+      explain: '<strong>First ionization energy</strong> is the energy required to remove the outermost electron. <strong>Increases left to right</strong> across a period (electrons more tightly bound). <strong>Decreases top to bottom</strong> down a group (outer electron farther from nucleus). Noble gases peak because their octets are extremely stable. Mirrors EN.'}
+  };
+
+  let curTrend = 'en';
+
+  function colorFor(t){
+    t = Math.max(0, Math.min(1, t));
+    // 5-stop blue→cyan→green→yellow→red
+    const stops = [[240,70,60],[190,70,60],[120,65,55],[60,80,55],[15,75,55]];
+    const seg = t * (stops.length - 1);
+    const i = Math.min(stops.length - 2, Math.floor(seg));
+    const f = seg - i;
+    const h = stops[i][0] + (stops[i+1][0] - stops[i][0]) * f;
+    const s = stops[i][1] + (stops[i+1][1] - stops[i][1]) * f;
+    const l = stops[i][2] + (stops[i+1][2] - stops[i][2]) * f;
+    return `hsl(${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%)`;
+  }
+
+  function makeCell(e, value, hasValue){
+    const [z, sym, name] = e;
+    const cell = document.createElement('div');
+    cell.className = 'hm-cell' + (hasValue ? '' : ' no-data');
+    if(hasValue){
+      const tr = TRENDS[curTrend];
+      const t = (value - tr.min) / (tr.max - tr.min);
+      cell.style.background = colorFor(t);
+    }
+    cell.innerHTML = `<span class="z">${z}</span><span class="s">${sym}</span>`;
+    cell.dataset.z = z;
+    cell.dataset.sym = sym;
+    cell.dataset.name = name;
+    cell.dataset.value = hasValue ? value : '';
+    return cell;
+  }
+
+  function renderAll(){
+    grid.innerHTML = '';
+    lanGrid.innerHTML = '';
+    actGrid.innerHTML = '';
+    const trend = TRENDS[curTrend];
+    ELEMENTS.forEach(e => {
+      const period = e[3], group = e[4];
+      const value = e[trend.idx];
+      const hasValue = (value !== null && value !== undefined);
+      const cell = makeCell(e, value, hasValue);
+      if(period === -1){
+        cell.style.gridColumn = (e[0] - 56);
+        lanGrid.appendChild(cell);
+      } else if(period === -2){
+        cell.style.gridColumn = (e[0] - 88);
+        actGrid.appendChild(cell);
+      } else {
+        cell.style.gridColumn = group;
+        cell.style.gridRow = period;
+        grid.appendChild(cell);
+      }
+    });
+    // Markers for lanthanide / actinide series in main grid (group 3, periods 6/7)
+    const lanMarker = document.createElement('div');
+    lanMarker.className = 'hm-cell placeholder';
+    lanMarker.style.gridColumn = 3;
+    lanMarker.style.gridRow = 6;
+    lanMarker.innerHTML = '<span class="z">57-71</span><span class="s">La-Lu</span>';
+    grid.appendChild(lanMarker);
+    const actMarker = document.createElement('div');
+    actMarker.className = 'hm-cell placeholder';
+    actMarker.style.gridColumn = 3;
+    actMarker.style.gridRow = 7;
+    actMarker.innerHTML = '<span class="z">89-103</span><span class="s">Ac-Lr</span>';
+    grid.appendChild(actMarker);
+
+    legendLow.textContent = `${trend.lowLbl} (${trend.min}${trend.unit ? ' ' + trend.unit : ''})`;
+    legendHigh.textContent = `${trend.highLbl} (${trend.max}${trend.unit ? ' ' + trend.unit : ''})`;
+    explainEl.innerHTML = trend.explain;
+    if(arrowAcross) arrowAcross.textContent = trend.across;
+    if(arrowDown) arrowDown.textContent = trend.down;
+  }
+
+  stage.addEventListener('mousemove', (e) => {
+    const target = e.target.closest('.hm-cell');
+    if(!target || target.classList.contains('placeholder')){
+      tooltip.style.display = 'none';
+      return;
+    }
+    const z = target.dataset.z;
+    const sym = target.dataset.sym;
+    const name = target.dataset.name;
+    const value = target.dataset.value;
+    const unit = TRENDS[curTrend].unit;
+    const valueLabel = value === '' ? 'no data' : (value + (unit ? ' ' + unit : ''));
+    tooltip.innerHTML = `<div class="tn">${name}</div><div class="tz">${sym} &middot; Z = ${z}</div><div class="tv">${TRENDS[curTrend].label}: ${valueLabel}</div>`;
+    tooltip.style.display = 'block';
+    const rect = stage.getBoundingClientRect();
+    const tw = tooltip.offsetWidth || 180;
+    const th = tooltip.offsetHeight || 60;
+    let x = e.clientX - rect.left + 14;
+    let y = e.clientY - rect.top + 14;
+    if(x + tw > stage.clientWidth - 4) x = e.clientX - rect.left - tw - 8;
+    if(y + th > stage.clientHeight - 4) y = e.clientY - rect.top - th - 8;
+    tooltip.style.left = Math.max(4, x) + 'px';
+    tooltip.style.top = Math.max(4, y) + 'px';
+  });
+  stage.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+
+  trendBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      trendBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      curTrend = btn.dataset.trend;
+      renderAll();
+    });
+  });
+
+  renderAll();
 })();
 </script>
 </body>

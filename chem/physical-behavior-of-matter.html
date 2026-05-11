@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physical Behavior of Matter Notes (Unit 5)</title>
+<meta name="description" content="Interactive Physical Behavior of Matter Notes (Unit 5 of 10). Mixtures and solutions, energy and heat, gases, phase changes, intermolecular forces, heating curves, vapor pressure. By tutoringwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<style>
+:root{
+  --white:#FFFFFF;--sage-l:#D0D6B3;--sage:#9BA06A;--slate:#525B76;--forest:#143109;
+  --bg:#f5f6ee;--sage-m:#e4e8cc;
+  --c-h:#a8c6a8;--c-c:#525B76;--c-o:#e8b0a0;--c-n:#c9b3d4;--c-other:#d9c59a;
+  --good:#5b8a3f;--bad:#b5503e;
+  --fh:'Young Serif',Georgia,serif;--fp:'Dosis','Trebuchet MS',Arial,sans-serif;--fb:'Bitter',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--fp);color:var(--forest);padding:18px 16px 52px;overflow-x:hidden}
+.page{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+
+/* Header */
+.pg-head{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:20px;padding:36px 28px;text-align:center}
+.pg-head .topic-badge{display:inline-block;font-family:var(--fb);font-weight:700;color:var(--slate);background:var(--white);border:1.5px solid var(--sage-l);padding:4px 14px;border-radius:20px;font-size:.82rem;margin-bottom:12px;letter-spacing:.04em}
+.pg-head h1{font-family:var(--fh);font-size:2.2rem;color:var(--forest);margin-bottom:6px}
+.pg-head .sub{font-family:var(--fp);color:var(--slate);font-size:1rem}
+
+/* Cards */
+.card{background:var(--white);border:2px solid var(--sage-l);border-radius:20px;padding:28px 26px;box-shadow:0 2px 12px rgba(20,49,9,0.06)}
+.card-title{font-family:var(--fh);font-size:1.4rem;color:var(--forest);margin-bottom:14px}
+.card-title .num{font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.9rem;background:var(--sage-m);border-radius:8px;padding:2px 10px;margin-right:8px;vertical-align:middle}
+.body-text{font-family:var(--fp);font-size:1.04rem;color:var(--forest);line-height:1.7;margin-bottom:12px}
+.body-text:last-child{margin-bottom:0}
+.highlight-box{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:14px;padding:18px 22px;margin:14px 0}
+.sub-title{font-family:var(--fh);font-size:1.1rem;color:var(--forest);margin:18px 0 8px}
+.term-grid{display:grid;grid-template-columns:160px 1fr;gap:8px 16px;margin:12px 0}
+.term-sym{font-family:var(--fb);font-weight:700;color:var(--sage);text-align:right;font-size:1rem}
+.term-def{font-family:var(--fp);font-size:.98rem;color:var(--forest);line-height:1.6}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
+.site-btn{font-family:var(--fp);font-weight:600;font-size:.92rem;border:none;border-radius:30px;padding:8px 18px;cursor:pointer;transition:background .18s,transform .18s;background:var(--sage);color:var(--white)}
+.site-btn:hover{background:var(--forest);transform:translateY(-1px)}
+.site-btn.active{background:var(--forest)}
+.site-btn.secondary{background:var(--white);color:var(--forest);border:2px solid var(--sage-l)}
+.site-btn.secondary:hover{background:var(--sage-m)}
+.interactive-area{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:16px;padding:20px 18px;margin:16px 0}
+.ia-label{font-family:var(--fb);font-size:1rem;color:var(--slate);margin-bottom:10px;text-align:center;font-weight:700}
+.practice-box{background:var(--white);border:2px dashed var(--sage-l);border-radius:14px;padding:16px 20px;margin:10px 0}
+.practice-box .q{font-family:var(--fp);font-size:1rem;color:var(--forest);margin-bottom:8px;line-height:1.6}
+.practice-box .a{font-family:var(--fp);font-size:.95rem;color:var(--forest);display:none;margin-top:8px;padding:12px 14px;background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;line-height:1.65}
+.practice-box .a.show{display:block;animation:fadeIn .25s ease}
+.show-ans-btn{font-family:var(--fp);font-weight:600;font-size:.85rem;border:2px solid var(--sage-l);border-radius:20px;padding:5px 14px;cursor:pointer;background:var(--white);color:var(--sage);transition:background .18s}
+.show-ans-btn:hover{background:var(--sage-m)}
+.worked-example{background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 14px 14px 0;padding:16px 22px;margin:14px 0}
+.worked-example .step{font-family:var(--fp);font-size:.98rem;color:var(--forest);margin-bottom:6px;line-height:1.65}
+.worked-example .step-label{font-family:var(--fb);font-weight:700;color:var(--sage)}
+
+/* Topics list */
+.topics-list{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 18px;margin-top:8px}
+.topics-list .row{font-family:var(--fp);color:var(--forest);display:flex;gap:10px;font-size:.98rem;padding:3px 0}
+.topics-list .row .rn{font-family:var(--fb);color:var(--sage);min-width:28px;font-weight:700}
+.topics-list .row.current{background:var(--sage-m);border-radius:8px;padding:3px 8px;font-weight:600}
+
+/* Pick rows (substance / mode pickers) */
+.pick-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:8px 0}
+.pick-btn{font-family:var(--fb);font-size:.82rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:18px;padding:5px 12px;cursor:pointer;color:var(--forest);transition:background .15s}
+.pick-btn:hover{background:var(--sage-m)}
+.pick-btn.active{background:var(--sage);color:var(--white);border-color:var(--sage)}
+
+/* Particle diagram (Widget 1) */
+.pd-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;text-align:center}
+.pd-stage svg{max-width:100%;height:auto;width:100%;display:block;margin:0 auto}
+.pd-readout{font-family:var(--fp);font-size:.95rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:10px 14px;margin-top:10px;line-height:1.55}
+.pd-readout strong{font-family:var(--fb)}
+
+/* Solubility curve (Widget 2) */
+.sol-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px}
+.sol-stage svg{max-width:100%;height:auto;width:100%;display:block;margin:0 auto}
+.sol-controls{display:flex;align-items:center;gap:10px;justify-content:center;margin:10px 0;flex-wrap:wrap}
+.sol-controls input[type=range]{width:220px;accent-color:var(--sage)}
+.sol-readout{font-family:var(--fb);font-size:.95rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:10px 14px;text-align:center;margin-top:8px}
+
+/* Molarity / ppm calculator (Widget 3) */
+.calc-card{background:var(--white);border:1.5px solid var(--sage-l);border-radius:12px;padding:14px}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.calc-cell{background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:8px 12px}
+.calc-cell .lbl{font-family:var(--fb);font-size:.72rem;color:var(--slate);letter-spacing:.05em;text-transform:uppercase}
+.calc-cell input{width:100%;border:none;background:transparent;text-align:left;font-family:var(--fb);font-size:1.05rem;color:var(--forest);outline:none;margin-top:2px}
+.calc-out{font-family:var(--fb);font-size:1.05rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:10px 14px;margin-top:8px;text-align:center}
+
+/* Combined gas law (Widget 5) */
+.gas-card{background:var(--white);border:1.5px solid var(--sage-l);border-radius:12px;padding:14px}
+.gas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gas-grid .lbl{grid-column:1 / -1;font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+.gas-cell{background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:6px 10px}
+.gas-cell .l{font-family:var(--fb);font-size:.7rem;color:var(--slate);letter-spacing:.05em;text-transform:uppercase}
+.gas-cell input{width:100%;border:none;background:transparent;font-family:var(--fb);font-size:1rem;color:var(--forest);outline:none;margin-top:2px}
+.gas-cell.solved{background:#fff7e0;border-color:#e8c971}
+.gas-cell.solved .l{color:#9a6a00}
+.gas-out{font-family:var(--fp);font-size:.95rem;color:var(--forest);background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 12px 12px 0;padding:12px 16px;margin-top:10px;line-height:1.6;min-height:60px}
+.gas-out .step-label{font-family:var(--fb);font-weight:700;color:var(--sage)}
+
+/* Heat calculator (Widget 4) */
+.heat-card{background:var(--white);border:1.5px solid var(--sage-l);border-radius:12px;padding:14px}
+.heat-row{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;justify-content:center;margin:8px 0}
+.heat-row .calc-cell{flex:1 1 130px;max-width:170px}
+.heat-out{font-family:var(--fp);font-size:.98rem;color:var(--forest);background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 12px 12px 0;padding:12px 16px;margin-top:10px;line-height:1.6}
+.heat-out .step-label{font-family:var(--fb);font-weight:700;color:var(--sage)}
+
+/* Heating curve walker (Widget 6) */
+.hc-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px}
+.hc-stage svg{max-width:100%;height:auto;width:100%;display:block;margin:0 auto}
+.hc-controls{display:flex;justify-content:center;gap:8px;margin:8px 0;flex-wrap:wrap}
+.hc-readout{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.hc-readout .cell{background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:8px 10px;text-align:center}
+.hc-readout .cell .lbl{font-family:var(--fb);font-size:.7rem;color:var(--slate);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.hc-readout .cell .val{font-family:var(--fb);font-size:.95rem;color:var(--forest);font-weight:700}
+.hc-segment-name{font-family:var(--fh);font-size:1.1rem;color:var(--forest);text-align:center;margin-top:6px}
+
+/* Vapor pressure (Widget 7) */
+.vp-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px}
+.vp-stage svg{max-width:100%;height:auto;width:100%;display:block;margin:0 auto}
+.vp-controls{display:flex;align-items:center;gap:10px;justify-content:center;margin:10px 0;flex-wrap:wrap}
+.vp-controls input[type=range]{width:220px;accent-color:var(--sage)}
+.vp-readout-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-top:10px}
+.vp-readout-grid .vp-cell{background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:8px 10px;font-family:var(--fp);font-size:.92rem;color:var(--forest)}
+.vp-readout-grid .vp-cell .nm{font-family:var(--fb);font-weight:700;color:var(--forest);display:block}
+.vp-readout-grid .vp-cell .pr{font-family:var(--fb);color:var(--slate)}
+
+/* Forms-of-energy grid */
+.foe-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:10px 0}
+.foe-card{background:var(--white);border:1.5px solid var(--sage-l);border-radius:12px;padding:12px}
+.foe-card .ft{font-family:var(--fh);color:var(--forest);font-size:1.02rem;margin-bottom:4px}
+.foe-card .fe{font-family:var(--fp);color:var(--slate);font-size:.88rem;line-height:1.5}
+
+/* States-of-matter comparison table */
+.state-table{width:100%;border-collapse:collapse;margin:10px 0;background:var(--white);border:1.5px solid var(--sage-l);border-radius:12px;overflow:hidden;font-family:var(--fp)}
+.state-table th,.state-table td{padding:8px 12px;font-size:.92rem;text-align:left;border-bottom:1px solid var(--sage-l);border-right:1px solid var(--sage-l);color:var(--forest);vertical-align:top}
+.state-table th{background:var(--sage-m);font-family:var(--fb);font-weight:700;color:var(--forest);font-size:.88rem;letter-spacing:.02em}
+.state-table tr:last-child td{border-bottom:0}
+.state-table th:last-child,.state-table td:last-child{border-right:0}
+.state-table td:first-child{font-family:var(--fb);font-weight:700;color:var(--slate);background:#f9faf4}
+[data-theme="dark"] .state-table{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .state-table th,[data-theme="dark"] .state-table td{border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .state-table th{background:#1E2416}
+[data-theme="dark"] .state-table td:first-child{background:#1A1F11;color:var(--sage)}
+
+/* Phase change cards */
+.pc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:10px 0}
+.pc-card{background:var(--white);border:1.5px solid var(--sage-l);border-radius:12px;padding:12px}
+.pc-card .pt{font-family:var(--fh);font-size:1.05rem;color:var(--forest);margin-bottom:4px}
+.pc-card .pa{font-family:var(--fb);font-size:.9rem;color:var(--sage);margin-bottom:6px}
+.pc-card .pn{font-family:var(--fp);font-size:.9rem;color:var(--forest);line-height:1.5}
+.pc-card.endo{border-left:4px solid var(--slate)}
+.pc-card.exo{border-left:4px solid var(--bad)}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1);opacity:1}}
+
+@media(max-width:640px){
+  .pg-head{padding:26px 18px}.pg-head h1{font-size:1.55rem}
+  .card{padding:22px 16px}.card-title{font-size:1.15rem}
+  .term-grid{grid-template-columns:110px 1fr}
+  .topics-list{grid-template-columns:1fr}
+  .calc-row{grid-template-columns:1fr}
+  .gas-grid{grid-template-columns:1fr 1fr}
+  .hc-readout{grid-template-columns:1fr}
+}
+
+/* ===== LWS SHELL (v2 UI) ===== */
+body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01","cv11"}
+.page{max-width:none;margin:0;display:block}
+.lws-backdrop{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(228,232,204,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(208,214,179,.5) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(228,232,204,.6) 0%,transparent 55%),
+             var(--bg)}
+.app{position:relative;z-index:1;display:grid;grid-template-columns:264px 1fr;grid-template-rows:64px 1fr;grid-template-areas:"side top" "side main";min-height:100vh}
+.side{grid-area:side;padding:16px 14px 14px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-right:1px solid var(--sage-l);overflow-y:auto;box-shadow:0 1px 0 rgba(255,255,255,0.9) inset}
+.top{grid-area:top;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-bottom:1px solid var(--sage-l);position:sticky;top:0;z-index:15}
+.main{grid-area:main;padding:24px 28px 56px;max-width:1320px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;padding:8px 12px}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--forest));color:#fff;display:grid;place-items:center;font-family:var(--fh);font-size:1.1rem;line-height:1;box-shadow:0 6px 20px -6px rgba(20,49,9,0.35)}
+.brand-name{font-family:var(--fh);color:var(--forest);font-size:1.05rem;line-height:1.05}
+.brand-name small{display:block;font-family:var(--fb);font-style:italic;color:#7C8172;font-size:.7rem;margin-top:3px}
+.ws-switch{margin:0 4px}
+.ws-switch-btn{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.62);border:1px solid rgba(255,255,255,0.55);border-radius:12px;backdrop-filter:blur(14px);text-align:left;transition:background .15s}
+.ws-switch-btn .ico{width:30px;height:30px;border-radius:8px;background:var(--sage-m);color:var(--forest);display:grid;place-items:center;flex-shrink:0;font-family:var(--fb);font-weight:700;font-size:.78rem}
+.ws-switch-btn .meta{flex:1;min-width:0}
+.ws-switch-btn .lbl{font-family:var(--fh);color:var(--forest);font-size:.95rem;line-height:1.1}
+.ws-switch-btn .sub{font-family:var(--fb);color:#7C8172;font-size:.68rem;margin-top:3px}
+.side-section-label{font-family:var(--fb);font-size:.66rem;letter-spacing:.14em;color:#7C8172;text-transform:uppercase;padding:14px 12px 4px}
+.side-nav{display:flex;flex-direction:column;gap:1px;padding:0 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;text-decoration:none;color:var(--forest);transition:background .15s;font-family:var(--fp);font-size:.86rem;font-weight:500}
+.nav-item .num{font-family:var(--fb);color:var(--sage);font-weight:700;font-size:.78rem;min-width:30px}
+.nav-item .t{flex:1;color:var(--forest)}
+.nav-item:hover{background:var(--sage-m)}
+.nav-item.active{background:var(--white);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 12px 40px -12px rgba(20,49,9,0.18),0 2px 8px rgba(20,49,9,0.06);border:1px solid var(--sage-l)}
+.nav-item.active .t{color:var(--forest);font-weight:700}
+.nav-item.locked{color:#a3a89a;cursor:not-allowed}
+.nav-item.locked:hover{background:transparent}
+.nav-item.locked .num,.nav-item.locked .t{color:#a3a89a}
+.bread{display:flex;flex-direction:column;gap:0;flex:0 0 auto;min-width:0}
+.bread-trail{font-family:var(--fp);color:var(--slate);font-size:.78rem}
+.bread-now{font-family:var(--fp);font-weight:700;color:var(--forest);font-size:1rem;line-height:1.1}
+.search{flex:1;max-width:520px;min-width:120px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.62);border:1px solid var(--sage-l);border-radius:99px;padding:8px 16px;color:var(--slate);backdrop-filter:blur(14px)}
+.search input{border:0;background:transparent;outline:none;flex:1;font-family:var(--fp);font-size:.9rem;color:var(--forest);min-width:0}
+.search svg{flex-shrink:0;color:var(--slate)}
+.top-actions{display:flex;align-items:center;gap:8px}
+.btn-icon{width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--sage-l);color:var(--slate);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;font-size:1rem;padding:0}
+.btn-icon:hover{background:var(--sage-m);color:var(--forest)}
+.pg-head{margin-top:0}
+@media(max-width:980px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;grid-template-areas:"side" "top" "main"}
+  .side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--sage-l);max-height:none}
+  .top{padding:10px 18px;flex-wrap:wrap}
+  .main{padding:16px 18px 48px}
+  .search{order:3;flex-basis:100%;max-width:none}
+}
+
+/* Dark mode */
+[data-theme="dark"]{
+  --white:#14170F; --sage-l:#2B3320; --sage:#A9B07A; --sage-m:#1E2416;
+  --slate:#AEB5C8; --forest:#E8EBDA; --bg:#0E1108;
+}
+[data-theme="dark"] body{color:var(--forest)}
+[data-theme="dark"] .lws-backdrop{
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(43,51,32,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(30,36,22,.55) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(43,51,32,.7) 0%,transparent 55%),
+             var(--bg)
+}
+[data-theme="dark"] .side,[data-theme="dark"] .top{background:rgba(20,23,15,0.7);border-color:#2B3320}
+[data-theme="dark"] .ws-switch-btn,[data-theme="dark"] .search,[data-theme="dark"] .btn-icon{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .lbl,[data-theme="dark"] .ws-switch-btn .ico{color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .ico{background:#2A3421}
+[data-theme="dark"] .nav-item,[data-theme="dark"] .nav-item .t{color:var(--forest)}
+[data-theme="dark"] .nav-item:hover{background:#2A3421}
+[data-theme="dark"] .nav-item.active{background:#2A3421;border-color:#3A4A2E;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 12px 40px -12px rgba(0,0,0,0.55),0 2px 8px rgba(0,0,0,0.35)}
+[data-theme="dark"] .btn-icon:hover{background:#2A3421;color:var(--forest)}
+[data-theme="dark"] .search input{color:var(--forest)}
+[data-theme="dark"] .search input::placeholder{color:#7e8775}
+[data-theme="dark"] .pg-head{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .pg-head h1,[data-theme="dark"] .pg-head .sub,[data-theme="dark"] .pg-head .topic-badge{color:var(--forest)}
+[data-theme="dark"] .pg-head .topic-badge{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .card{background:#14170F;border-color:#2B3320;color:var(--forest)}
+[data-theme="dark"] .card-title,[data-theme="dark"] .sub-title,[data-theme="dark"] .body-text,[data-theme="dark"] .term-def,[data-theme="dark"] .term-sym{color:var(--forest)}
+[data-theme="dark"] .card-title .num{background:#2A3421;color:var(--sage)}
+[data-theme="dark"] .highlight-box{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .interactive-area{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .ia-label{color:var(--forest)}
+[data-theme="dark"] .practice-box{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .practice-box .q,[data-theme="dark"] .practice-box .a{color:var(--forest)}
+[data-theme="dark"] .practice-box .a{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .show-ans-btn{background:#1E2416;color:var(--sage);border-color:#3A4A2E}
+[data-theme="dark"] .worked-example{background:#1A1F11;border-left-color:var(--sage);color:var(--forest)}
+[data-theme="dark"] .site-btn.secondary{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .topics-list .row.current{background:#2A3421}
+[data-theme="dark"] .pd-stage,[data-theme="dark"] .sol-stage,[data-theme="dark"] .calc-card,[data-theme="dark"] .gas-card,[data-theme="dark"] .heat-card,[data-theme="dark"] .hc-stage,[data-theme="dark"] .vp-stage,[data-theme="dark"] .foe-card,[data-theme="dark"] .pc-card{background:#14170F;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .pd-readout,[data-theme="dark"] .sol-readout,[data-theme="dark"] .calc-out,[data-theme="dark"] .calc-cell,[data-theme="dark"] .gas-cell,[data-theme="dark"] .hc-readout .cell,[data-theme="dark"] .vp-readout-grid .vp-cell{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .gas-out,[data-theme="dark"] .heat-out{background:#1A1F11;border-left-color:var(--sage);color:var(--forest)}
+[data-theme="dark"] .pick-btn{background:#14170F;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .pick-btn:hover{background:#2A3421}
+[data-theme="dark"] .calc-cell input,[data-theme="dark"] .gas-cell input,[data-theme="dark"] input[type=number],[data-theme="dark"] input[type=range]{background:#14170F;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .gas-cell.solved{background:#3a3320;border-color:#7a6624}
+[data-theme="dark"] .pc-card.endo{border-left-color:var(--slate)}
+[data-theme="dark"] .pc-card.exo{border-left-color:var(--bad)}
+</style>
+</head>
+<body data-theme="light">
+<div class="lws-backdrop"></div>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark">L</div>
+    <div class="brand-name">learningwithsruthi <small>chemistry notes</small></div>
+  </div>
+  <div class="ws-switch">
+    <div class="ws-switch-btn">
+      <div class="ico">V</div>
+      <div class="meta">
+        <div class="lbl">Physical Behavior</div>
+        <div class="sub">Unit 5 of 10 &middot; Chemistry</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-section-label">Units</div>
+  <div class="side-nav">
+    <a class="nav-item" href="atomic-structure.html"><span class="num">I.</span><span class="t">Atomic Structure</span></a>
+    <a class="nav-item" href="periodic-table.html"><span class="num">II.</span><span class="t">The Periodic Table</span></a>
+    <a class="nav-item" href="stoichiometry.html"><span class="num">III.</span><span class="t">Stoichiometry</span></a>
+    <a class="nav-item" href="chemical-bonding.html"><span class="num">IV.</span><span class="t">Chemical Bonding</span></a>
+    <a class="nav-item active" href="physical-behavior-of-matter.html"><span class="num">V.</span><span class="t">Physical Behavior</span></a>
+    <a class="nav-item locked"><span class="num">VI.</span><span class="t">Equilibrium</span></a>
+    <a class="nav-item" href="unit-7-organic-chem.html"><span class="num">VII.</span><span class="t">Organic Chemistry</span></a>
+    <a class="nav-item locked"><span class="num">VIII.</span><span class="t">Redox</span></a>
+    <a class="nav-item locked"><span class="num">IX.</span><span class="t">Acids, Bases, Salts</span></a>
+    <a class="nav-item locked"><span class="num">X.</span><span class="t">Nuclear Chemistry</span></a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">Chemistry &middot; Unit 5 of 10</span>
+    <span class="bread-now">Physical Behavior of Matter</span>
+  </div>
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input placeholder="Search topics, lessons, questions...">
+  </div>
+  <div class="top-actions">
+    <button class="btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleLwsTheme()">&#9790;</button>
+  </div>
+</header>
+
+<main class="main">
+
+<!-- ======== HEADER ======== -->
+<div class="pg-head">
+  <div class="topic-badge">Physical Behavior of Matter Notes &middot; Unit 5 of 10</div>
+  <h1>Physical Behavior of Matter</h1>
+  <p class="sub">Mixtures and solutions, energy and heat, gases, phase changes, intermolecular forces. The big one.</p>
+</div>
+
+<!-- ======== OVERVIEW ======== -->
+<div class="card">
+  <div class="card-title"><span class="num">0</span>The Ten Units</div>
+  <p class="body-text">Chemistry on the Regents is organized into ten major units. Unit 5 is the one your teacher probably calls the "big one" because it pulls in ideas from atomic structure, the periodic table, and bonding, and turns them into rules about how mixtures, solutions, gases, and phase changes actually behave.</p>
+  <div class="highlight-box">
+    <div class="topics-list">
+      <div class="row"><span class="rn">I.</span> Atomic Structure</div>
+      <div class="row"><span class="rn">II.</span> The Periodic Table</div>
+      <div class="row"><span class="rn">III.</span> Stoichiometry</div>
+      <div class="row"><span class="rn">IV.</span> Chemical Bonding</div>
+      <div class="row current"><span class="rn">V.</span> Physical Behavior of Matter</div>
+      <div class="row"><span class="rn">VI.</span> Equilibrium</div>
+      <div class="row"><span class="rn">VII.</span> Organic Chemistry</div>
+      <div class="row"><span class="rn">VIII.</span> Oxidation-Reduction</div>
+      <div class="row"><span class="rn">IX.</span> Acids, Bases, and Salts</div>
+      <div class="row"><span class="rn">X.</span> Nuclear Chemistry</div>
+    </div>
+  </div>
+  <p class="body-text">By the end of this page you will be able to classify any sample of matter, separate mixtures the right way, calculate concentrations, work the combined gas law, read solubility and vapor-pressure curves, walk through a heating curve and explain what energy is doing in every segment, and identify hydrogen bonding from a molecule's formula.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- ============== SECTION 1: MIXTURES & SOLUTIONS ============= -->
+<!-- ============================================================ -->
+
+<div class="card">
+  <div class="card-title"><span class="num">1</span>Classifying Matter</div>
+  <p class="body-text">Every sample of matter is either a <strong>pure substance</strong> or a <strong>mixture</strong>. A pure substance has only one kind of particle. A mixture has two or more, just blended together.</p>
+
+  <div class="highlight-box">
+    <div class="term-grid">
+      <div class="term-sym">Element</div><div class="term-def">A pure substance made of only one kind of atom. Listed on the periodic table. Examples: $\text{Cu}$, $\text{O}_2$, $\text{Fe}$.</div>
+      <div class="term-sym">Compound</div><div class="term-def">A pure substance made of two or more elements chemically bonded in fixed ratios. Examples: $\text{H}_2\text{O}$, $\text{NaCl}$, $\text{CO}_2$.</div>
+      <div class="term-sym">Homogeneous mixture</div><div class="term-def">Same composition throughout. Also called a <em>solution</em>. Looks like one phase. Example: salt water.</div>
+      <div class="term-sym">Heterogeneous mixture</div><div class="term-def">Different composition in different spots. You can see the parts. Example: salad, oil and water, sand in water.</div>
+    </div>
+  </div>
+
+  <p class="body-text">A pure substance has one set of fixed properties (boiling point, density, melting point). A mixture has a range, because the proportions can change. That is the reason "salt water" boils at slightly different temperatures depending on how salty it is.</p>
+
+  <div class="sub-title">Particle diagram check</div>
+  <p class="body-text">Regents loves particle diagrams. The rule is simple. Different colored circles mean different elements. Two circles bonded together mean a compound. A bunch of unconnected single circles all the same color mean an element. Toggle the diagram below to see all four cases plus the three phases.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Particle Diagram Builder</div>
+    <div class="pick-row" id="pdPhasePicker">
+      <button class="pick-btn active" data-phase="solid">Solid</button>
+      <button class="pick-btn" data-phase="liquid">Liquid</button>
+      <button class="pick-btn" data-phase="gas">Gas</button>
+    </div>
+    <div class="pick-row" id="pdKindPicker">
+      <button class="pick-btn active" data-kind="element">Element</button>
+      <button class="pick-btn" data-kind="compound">Compound</button>
+      <button class="pick-btn" data-kind="mixture-elements">Mixture of two elements</button>
+      <button class="pick-btn" data-kind="mixture-compounds">Mixture of two compounds</button>
+    </div>
+    <div class="pd-stage">
+      <svg id="pdSvg" viewBox="0 0 480 240" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="pd-readout" id="pdReadout"></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">2</span>Separating Mixtures</div>
+  <p class="body-text">Mixtures can be pulled apart by physical means. You do not need a chemical reaction. Pick the method that exploits whatever property is different between the parts.</p>
+
+  <div class="highlight-box">
+    <div class="term-grid">
+      <div class="term-sym">Filtration</div><div class="term-def">Separates by particle <strong>size</strong> (or by solubility, when one part dissolves and the other does not). A filter holds back the bigger particles. Example: sand from salt water.</div>
+      <div class="term-sym">Distillation</div><div class="term-def">Separates by <strong>boiling point</strong>. Heat the mixture, the lower-bp component evaporates first, then condenses back to liquid in a cooler tube. Example: alcohol from water, salt from salt water.</div>
+      <div class="term-sym">Chromatography</div><div class="term-def">Separates by <strong>polarity</strong> and how strongly each part sticks to a stationary medium versus how strongly it travels with a moving solvent. Example: separating dyes in ink.</div>
+    </div>
+  </div>
+
+  <p class="body-text">A pure substance cannot be separated by physical means. If you can boil, filter, or chromatograph it apart, it was a mixture.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">3</span>Solutions, Solute, and Solvent</div>
+  <p class="body-text">A <strong>solution</strong> is a homogeneous mixture. The component you have less of (and that gets dissolved) is the <strong>solute</strong>. The component you have more of (and that does the dissolving) is the <strong>solvent</strong>. In salt water, salt is the solute and water is the solvent.</p>
+
+  <div class="highlight-box">
+    <strong>Like dissolves like.</strong> Polar solutes dissolve in polar solvents. Nonpolar solutes dissolve in nonpolar solvents. Polar and nonpolar do not mix.
+    <br><br>
+    Water is polar, so it dissolves polar things (sugar, salt) and ionic compounds. Oil is nonpolar, so it does not dissolve in water but does dissolve other nonpolar things like grease.
+  </div>
+
+  <div class="sub-title">Solubility curve (Table G)</div>
+  <p class="body-text">Table G on the Reference Tables shows how many grams of a solute will dissolve in 100 g of water at a given temperature. The line is the saturation point. Below the line, unsaturated. On the line, saturated. Above the line, supersaturated.</p>
+
+  <p class="body-text">Most solid solutes get more soluble as temperature goes up. Most gas solutes get <em>less</em> soluble as temperature goes up. That is why a warm soda goes flat faster than a cold one.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Table G Solubility Curve Reader</div>
+    <div class="pick-row" id="solPicker"></div>
+    <div class="sol-stage">
+      <svg id="solSvg" viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="sol-controls">
+      <span style="font-family:var(--fb);font-size:.85rem;color:var(--slate)">temperature:</span>
+      <input id="solTemp" type="range" min="0" max="100" value="50" step="1">
+      <span class="sol-readout" id="solTempRead">50&deg;C</span>
+    </div>
+    <div class="sol-readout" id="solOut"></div>
+  </div>
+
+  <div class="sub-title">Worked example: reading Table G</div>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Question. </span>How many grams of $\text{KNO}_3$ can dissolve in 100 g of water at $60^\circ\text{C}$?</div>
+    <div class="step"><span class="step-label">Find the curve. </span>Pick the curve labeled $\text{KNO}_3$.</div>
+    <div class="step"><span class="step-label">Trace up. </span>Start at $60^\circ\text{C}$ on the x-axis, go up to the curve.</div>
+    <div class="step"><span class="step-label">Read across. </span>About 107 g.</div>
+    <div class="step"><span class="step-label">Meaning. </span>At $60^\circ\text{C}$, 100 g of water can hold about 107 g of $\text{KNO}_3$ before it stops dissolving.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">4</span>Concentration: Molarity and ppm</div>
+  <p class="body-text">"Concentration" is just how much solute is in a given amount of solution. Two ways the Regents asks for it:</p>
+
+  <div class="highlight-box" style="text-align:center;font-family:var(--fb);font-size:1.05rem;line-height:2">
+    Molarity (M) $= \dfrac{\text{moles of solute}}{\text{liters of solution}}$
+    <br>
+    ppm $= \dfrac{\text{grams of solute}}{\text{grams of solution}} \times 1{,}000{,}000$
+  </div>
+
+  <p class="body-text">Both formulas live on Table T. Use molarity for concentrated solutions (lab work, titrations). Use ppm for very dilute solutions (drinking-water contaminants, trace pollutants).</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Molarity / ppm Calculator</div>
+    <div class="pick-row" id="concMode">
+      <button class="pick-btn active" data-mode="M">Molarity</button>
+      <button class="pick-btn" data-mode="ppm">ppm</button>
+    </div>
+    <div class="calc-card">
+      <div id="concInputs"></div>
+      <div class="calc-out" id="concOut">Enter values to compute.</div>
+    </div>
+  </div>
+
+  <div class="sub-title">Worked example: molarity</div>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Question. </span>What is the molarity of a solution that contains 2 moles of $\text{NaCl}$ in 0.5 L of solution?</div>
+    <div class="step"><span class="step-label">Set up. </span>$M = \dfrac{2 \text{ mol}}{0.5 \text{ L}}$</div>
+    <div class="step"><span class="step-label">Solve. </span>$M = 4 \text{ M}$, read as "4 molar."</div>
+  </div>
+
+  <div class="sub-title">Worked example: ppm</div>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Question. </span>A 1000 g sample of water contains 0.05 g of fluoride. What is the concentration in ppm?</div>
+    <div class="step"><span class="step-label">Set up. </span>$\text{ppm} = \dfrac{0.05}{1000} \times 1{,}000{,}000$</div>
+    <div class="step"><span class="step-label">Solve. </span>$\text{ppm} = 50$. The water has 50 ppm fluoride.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">5</span>Boiling-Point Elevation and Freezing-Point Depression</div>
+  <p class="body-text">When you dissolve a solute in a solvent, two things happen to that solvent's phase change temperatures:</p>
+
+  <div class="highlight-box">
+    <strong>Boiling point goes UP.</strong> Solute particles get in the way of solvent particles trying to escape into the gas phase. You need more energy (more heat) to boil.
+    <br><br>
+    <strong>Freezing point goes DOWN.</strong> Solute particles disrupt the orderly lattice that solid would form. You have to cool further before freezing wins out.
+  </div>
+
+  <p class="body-text">Real-world examples. Salting roads in winter lowers the freezing point of water so ice melts. Adding salt to pasta water raises the boiling point a tiny bit (and seasons the pasta). The bigger the concentration, the bigger the shift.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 1: Mixtures and Solutions</div>
+  <p class="body-text">Try each one before opening the answer.</p>
+
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Classify each of the following as element, compound, homogeneous mixture, or heterogeneous mixture: (a) iron filings, (b) tap water, (c) chocolate chip cookie, (d) carbon dioxide.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1_1')">Show Answer</button>
+    <div class="a" id="p1_1">(a) Element. (b) Homogeneous mixture (water plus dissolved minerals). (c) Heterogeneous mixture (chips visible). (d) Compound ($\text{CO}_2$ is two elements bonded).</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> Which separation method would you use to remove sand from salt water?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1_2')">Show Answer</button>
+    <div class="a" id="p1_2"><strong>Filtration first.</strong> Sand is insoluble, so a filter catches it. Then distillation if you also want to recover the salt.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> A solution at $30^\circ\text{C}$ contains 30 g of $\text{KNO}_3$ in 100 g of water. Use Table G logic: is it saturated, unsaturated, or supersaturated?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1_3')">Show Answer</button>
+    <div class="a" id="p1_3"><strong>Unsaturated.</strong> At $30^\circ\text{C}$, $\text{KNO}_3$ saturation is about 45 g per 100 g water. 30 g is below the line, so the solvent could still dissolve more.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> Calculate the molarity of a solution made by dissolving 0.5 mol of $\text{HCl}$ in enough water to make 250 mL of solution.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1_4')">Show Answer</button>
+    <div class="a" id="p1_4"><strong>2 M.</strong> $M = \dfrac{0.5 \text{ mol}}{0.25 \text{ L}} = 2$. Convert mL to L first.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>5.</strong> Will adding salt to water raise or lower the freezing point? Explain in one sentence.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1_5')">Show Answer</button>
+    <div class="a" id="p1_5"><strong>Lower it.</strong> Salt particles get in the way of water trying to form an orderly solid lattice, so the water has to be cooled further before it freezes.</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ============== SECTION 2: ENERGY & HEAT ==================== -->
+<!-- ============================================================ -->
+
+<div class="card">
+  <div class="card-title"><span class="num">6</span>Forms of Energy</div>
+  <p class="body-text">Energy is the ability to do work or cause change. It comes in several forms. The Regents recognizes six.</p>
+
+  <div class="foe-grid">
+    <div class="foe-card"><div class="ft">Chemical</div><div class="fe">Stored in the bonds between atoms. Released or absorbed during reactions. A battery, gasoline, food.</div></div>
+    <div class="foe-card"><div class="ft">Electrical</div><div class="fe">Energy carried by moving charges. Current through a wire, lightning.</div></div>
+    <div class="foe-card"><div class="ft">Electromagnetic</div><div class="fe">Light. Radio waves, visible light, x-rays. Travels as waves with no medium needed.</div></div>
+    <div class="foe-card"><div class="ft">Thermal (heat)</div><div class="fe">Total kinetic energy of moving particles in a sample of matter.</div></div>
+    <div class="foe-card"><div class="ft">Mechanical</div><div class="fe">Energy of moving objects (kinetic) or position (potential). A swinging pendulum.</div></div>
+    <div class="foe-card"><div class="ft">Nuclear</div><div class="fe">Energy stored in the nucleus of an atom. Released in fission and fusion. Covered in Unit 10.</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">7</span>Heat, Temperature, and Kinetic Energy</div>
+  <p class="body-text">These three get mixed up constantly. They are not the same.</p>
+
+  <div class="highlight-box">
+    <div class="term-grid">
+      <div class="term-sym">Heat</div><div class="term-def">A <em>form of energy</em>. Heat is energy in transit. Measured in joules ($\text{J}$) or calories ($\text{cal}$).</div>
+      <div class="term-sym">Temperature</div><div class="term-def">A <em>measurement of average kinetic energy</em>. Measured in Celsius or Kelvin. Temperature is <strong>not</strong> a form of energy.</div>
+      <div class="term-sym">Kinetic energy</div><div class="term-def">Energy of motion. The faster the particles move (translation, rotation, vibration), the higher the temperature.</div>
+    </div>
+  </div>
+
+  <p class="body-text"><strong>Heat always flows from hot to cold.</strong> Always. It does not flow uphill on its own. When two objects touch, faster particles bang into slower particles, transferring kinetic energy until the temperatures match. That final state is called thermal equilibrium.</p>
+
+  <div class="sub-title">Celsius and Kelvin</div>
+  <p class="body-text">Both scales measure temperature. Kelvin starts at absolute zero (the lowest possible temperature, where all particle motion stops). Celsius starts at the freezing point of water. The conversion is on Table T.</p>
+
+  <div class="highlight-box" style="text-align:center;font-family:var(--fb);font-size:1.1rem">
+    $K = ^\circ\text{C} + 273$
+  </div>
+
+  <p class="body-text">Examples. Water freezes at $0^\circ\text{C}$ or 273 K. Water boils at $100^\circ\text{C}$ or 373 K. Room temperature is about $20^\circ\text{C}$ or 293 K.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">8</span>Endothermic vs Exothermic</div>
+  <p class="body-text">A reaction or phase change is described by which way energy flows.</p>
+
+  <div class="highlight-box">
+    <strong>Exothermic. </strong>Releases heat to the surroundings. Surroundings warm up. Examples: combustion, freezing water, condensing steam.
+    <br><br>
+    <strong>Endothermic. </strong>Absorbs heat from the surroundings. Surroundings cool down. Examples: melting ice, boiling water, photosynthesis, dissolving ammonium nitrate (an instant cold pack).
+  </div>
+
+  <p class="body-text">A way to remember it. <strong>Exo</strong> means out, like an exit. Heat exits the system. <strong>Endo</strong> means in. Heat enters the system.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">9</span>Calculating Heat Energy</div>
+  <p class="body-text">Three formulas live on Table T. Which one you use depends on whether the substance is changing temperature or changing phase.</p>
+
+  <div class="highlight-box" style="font-family:var(--fb);font-size:1.05rem;line-height:2">
+    <div style="text-align:center"><strong>Temperature change:</strong> $q = mc\Delta T$</div>
+    <div style="text-align:center"><strong>Melting / freezing:</strong> $q = mH_f$</div>
+    <div style="text-align:center"><strong>Boiling / condensing:</strong> $q = mH_v$</div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="term-grid">
+      <div class="term-sym">$q$</div><div class="term-def">Heat absorbed or released, in joules.</div>
+      <div class="term-sym">$m$</div><div class="term-def">Mass of the substance, in grams.</div>
+      <div class="term-sym">$c$</div><div class="term-def">Specific heat capacity. For water, $c = 4.18 \text{ J/g}\cdot^\circ\text{C}$.</div>
+      <div class="term-sym">$\Delta T$</div><div class="term-def">Change in temperature: $T_{\text{final}} - T_{\text{initial}}$.</div>
+      <div class="term-sym">$H_f$</div><div class="term-def">Heat of fusion. For water, $H_f = 334 \text{ J/g}$.</div>
+      <div class="term-sym">$H_v$</div><div class="term-def">Heat of vaporization. For water, $H_v = 2260 \text{ J/g}$.</div>
+    </div>
+  </div>
+
+  <p class="body-text">Notice the pattern. If the substance is changing temperature, you use $c$ and $\Delta T$. If the substance is changing phase, the temperature stays constant, so you use $H_f$ or $H_v$ instead. Use the right one or your numbers will be way off.</p>
+
+  <div class="sub-title">Worked example: heating water</div>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Question. </span>How much heat is needed to raise 50 g of water from $25^\circ\text{C}$ to $75^\circ\text{C}$?</div>
+    <div class="step"><span class="step-label">Pick formula. </span>Temperature change, no phase change. Use $q = mc\Delta T$.</div>
+    <div class="step"><span class="step-label">Plug in. </span>$q = (50)(4.18)(75 - 25) = (50)(4.18)(50)$</div>
+    <div class="step"><span class="step-label">Solve. </span>$q = 10{,}450 \text{ J}$, or about 10.5 kJ.</div>
+  </div>
+
+  <div class="sub-title">Worked example: melting ice</div>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Question. </span>How much heat is needed to melt 50 g of ice at $0^\circ\text{C}$?</div>
+    <div class="step"><span class="step-label">Pick formula. </span>Phase change at constant temperature. Use $q = mH_f$.</div>
+    <div class="step"><span class="step-label">Plug in. </span>$q = (50)(334)$</div>
+    <div class="step"><span class="step-label">Solve. </span>$q = 16{,}700 \text{ J}$.</div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Heat Energy Calculator</div>
+    <div class="pick-row" id="heatMode">
+      <button class="pick-btn active" data-mode="dt">Temperature change ($q=mc\Delta T$)</button>
+      <button class="pick-btn" data-mode="hf">Melting / freezing ($q=mH_f$)</button>
+      <button class="pick-btn" data-mode="hv">Boiling / condensing ($q=mH_v$)</button>
+    </div>
+    <div class="heat-card">
+      <div class="heat-row" id="heatInputs"></div>
+      <div class="heat-out" id="heatOut">Enter values to compute heat.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 2: Energy and Heat</div>
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Convert $25^\circ\text{C}$ to Kelvin.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2_1')">Show Answer</button>
+    <div class="a" id="p2_1"><strong>298 K.</strong> $K = 25 + 273 = 298$.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> A reaction releases heat to the surroundings. Endothermic or exothermic?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2_2')">Show Answer</button>
+    <div class="a" id="p2_2"><strong>Exothermic.</strong> Heat exits the system.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> How many joules of heat are needed to raise 200 g of water from $20^\circ\text{C}$ to $80^\circ\text{C}$? ($c = 4.18 \text{ J/g}\cdot^\circ\text{C}$.)</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2_3')">Show Answer</button>
+    <div class="a" id="p2_3"><strong>50,160 J.</strong> $q = (200)(4.18)(60) = 50{,}160 \text{ J}$.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> How much heat is needed to vaporize 25 g of water at $100^\circ\text{C}$? ($H_v = 2260 \text{ J/g}$.)</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2_4')">Show Answer</button>
+    <div class="a" id="p2_4"><strong>56,500 J.</strong> $q = (25)(2260) = 56{,}500 \text{ J}$.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>5.</strong> Two metal blocks are at $80^\circ\text{C}$ and $20^\circ\text{C}$. They are placed in contact. Which way does heat flow?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2_5')">Show Answer</button>
+    <div class="a" id="p2_5"><strong>From the hot block to the cold block.</strong> Heat always flows from higher temperature to lower temperature, until both reach the same final temperature.</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ============== SECTION 3: GASES ============================ -->
+<!-- ============================================================ -->
+
+<div class="card">
+  <div class="card-title"><span class="num">10</span>Ideal Gas Particles</div>
+  <p class="body-text">Real gases are messy. To make the math work, chemists invented an idealized model called the <strong>ideal gas</strong>. An ideal gas particle has three properties:</p>
+
+  <div class="highlight-box">
+    <ul style="list-style:disc;padding-left:24px;line-height:1.8">
+      <li>Particles move in <strong>random, straight-line motion</strong> until they collide.</li>
+      <li>Particles have <strong>negligible volume</strong>. Treat them as points.</li>
+      <li>Particles have <strong>no attractive forces</strong> between them. They do not stick to each other.</li>
+    </ul>
+  </div>
+
+  <p class="body-text">No real gas obeys these rules perfectly. But a real gas behaves <strong>most</strong> like an ideal gas at <strong>low pressure</strong> and <strong>high temperature</strong>. Why? Low pressure means particles are far apart, so their tiny volume does not matter. High temperature means particles move fast, so weak attractive forces are easy to overcome.</p>
+
+  <p class="body-text">The opposite is also true. At high pressure (squeezed close together) and low temperature (slow moving), real gases deviate the most from ideal behavior, because attractions and particle volume start to matter. Hydrogen and helium come closest to behaving ideally because their particles are small and weakly attracted.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">11</span>Combined Gas Law</div>
+  <p class="body-text">Pressure, volume, and temperature of a fixed amount of gas are linked by one equation on Table T.</p>
+
+  <div class="highlight-box" style="text-align:center;font-family:var(--fb);font-size:1.2rem">
+    $\dfrac{P_1 V_1}{T_1} = \dfrac{P_2 V_2}{T_2}$
+  </div>
+
+  <div class="highlight-box">
+    <strong>Critical rule. </strong>Temperature must be in <strong>Kelvin</strong>. If the problem gives Celsius, convert first ($K = ^\circ\text{C} + 273$). Use 0 K and you divide by zero. Use Celsius and your ratios are wrong.
+    <br><br>
+    Pressure can be in any unit (kPa, atm, mmHg) as long as both sides match. Volume the same way (L or mL). Just keep the units consistent across the two sides.
+  </div>
+
+  <p class="body-text">The relationships hidden in this one equation:</p>
+  <ul style="list-style:disc;padding-left:24px;line-height:1.8;font-family:var(--fp)">
+    <li><strong>Boyle</strong> (T constant): $P_1 V_1 = P_2 V_2$. Squeeze a balloon, pressure goes up.</li>
+    <li><strong>Charles</strong> (P constant): $\dfrac{V_1}{T_1} = \dfrac{V_2}{T_2}$. Heat a balloon, it expands.</li>
+    <li><strong>Gay-Lussac</strong> (V constant): $\dfrac{P_1}{T_1} = \dfrac{P_2}{T_2}$. Heat a sealed can, pressure goes up.</li>
+  </ul>
+
+  <div class="sub-title">Worked example</div>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Question. </span>A gas at $27^\circ\text{C}$ occupies 2.0 L at 100 kPa. What volume will it occupy at $127^\circ\text{C}$ and 50 kPa?</div>
+    <div class="step"><span class="step-label">Convert. </span>$T_1 = 27 + 273 = 300 \text{ K}$. $T_2 = 127 + 273 = 400 \text{ K}$.</div>
+    <div class="step"><span class="step-label">Set up. </span>$\dfrac{(100)(2.0)}{300} = \dfrac{(50)(V_2)}{400}$</div>
+    <div class="step"><span class="step-label">Solve. </span>$V_2 = \dfrac{(100)(2.0)(400)}{(300)(50)} = \dfrac{80{,}000}{15{,}000} \approx 5.3 \text{ L}$.</div>
+    <div class="step"><span class="step-label">Sanity check. </span>Lower pressure means more volume. Higher temperature means more volume. Both effects pull volume up, so 5.3 L (versus 2.0) makes sense.</div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Combined Gas Law Solver (leave one cell blank)</div>
+    <div class="gas-card">
+      <div class="gas-grid">
+        <div class="lbl">Initial</div>
+        <div class="gas-cell"><div class="l">P&#8321;</div><input id="gP1" type="number" step="any" placeholder="100"></div>
+        <div class="gas-cell"><div class="l">V&#8321;</div><input id="gV1" type="number" step="any" placeholder="2.0"></div>
+        <div class="gas-cell"><div class="l">T&#8321; (K)</div><input id="gT1" type="number" step="any" placeholder="300"></div>
+        <div class="lbl">Final</div>
+        <div class="gas-cell"><div class="l">P&#8322;</div><input id="gP2" type="number" step="any" placeholder="50"></div>
+        <div class="gas-cell"><div class="l">V&#8322;</div><input id="gV2" type="number" step="any" placeholder="?"></div>
+        <div class="gas-cell"><div class="l">T&#8322; (K)</div><input id="gT2" type="number" step="any" placeholder="400"></div>
+      </div>
+      <div class="gas-out" id="gasOut">Fill in five of the six values, leave one blank, and the solver will fill it in. Temperatures must be in Kelvin.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 3: Gases</div>
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Name the three properties of an ideal gas particle.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3_1')">Show Answer</button>
+    <div class="a" id="p3_1">Random straight-line motion. Negligible volume. No attractive forces between particles.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> Under what conditions does a real gas behave most like an ideal gas?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3_2')">Show Answer</button>
+    <div class="a" id="p3_2"><strong>Low pressure and high temperature.</strong> Particles are far apart and moving fast.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> A gas occupies 4.0 L at 200 K. What volume does it occupy at 400 K, with pressure constant?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3_3')">Show Answer</button>
+    <div class="a" id="p3_3"><strong>8.0 L.</strong> $V_1/T_1 = V_2/T_2$. $V_2 = (4.0)(400)/200 = 8.0$ L. Doubling absolute temperature at constant pressure doubles the volume.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> Why must temperature be in Kelvin for gas-law problems?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3_4')">Show Answer</button>
+    <div class="a" id="p3_4">Kelvin is an absolute scale that starts at zero motion. Celsius can be negative, which would give nonsense ratios. The gas laws describe how particle motion scales with absolute temperature, so only Kelvin works.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>5.</strong> A gas has $P_1 = 200$ kPa, $V_1 = 1.5$ L, $T_1 = 300$ K. After a change, $P_2 = 100$ kPa and $T_2 = 600$ K. Find $V_2$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3_5')">Show Answer</button>
+    <div class="a" id="p3_5"><strong>6.0 L.</strong> $V_2 = \dfrac{P_1 V_1 T_2}{T_1 P_2} = \dfrac{(200)(1.5)(600)}{(300)(100)} = 6.0$ L.</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ====== SECTION 4: PHASE CHANGES, IFAs, VAPOR PRESSURE ====== -->
+<!-- ============================================================ -->
+
+<div class="card">
+  <div class="card-title"><span class="num">12</span>States of Matter and Kinetic Molecular Theory</div>
+  <p class="body-text">All matter is made of tiny particles in constant motion. That idea is the <strong>kinetic molecular theory</strong>, or <strong>KMT</strong>. The state of a sample (solid, liquid, gas) depends on how much kinetic energy those particles carry and how strongly the IFAs pull them together.</p>
+
+  <div class="highlight-box">
+    <strong>The KMT in one paragraph.</strong> Particles in matter are always moving. The hotter the substance, the faster they move. Their motion is countered by intermolecular forces of attraction (IFAs) trying to pull them together. Whichever wins decides the state.
+    <br><br>
+    <strong>Solid:</strong> IFAs win. Particles vibrate but stay locked.
+    <br>
+    <strong>Liquid:</strong> a tie. Particles slip past each other but stay close.
+    <br>
+    <strong>Gas:</strong> kinetic energy wins. Particles fly apart and fill the container.
+  </div>
+
+  <div class="sub-title">Comparing the three states</div>
+  <table class="state-table">
+    <tr><th></th><th>Solid</th><th>Liquid</th><th>Gas</th></tr>
+    <tr><td>Shape</td><td>Definite</td><td>Takes shape of container</td><td>Fills container</td></tr>
+    <tr><td>Volume</td><td>Definite</td><td>Definite</td><td>Indefinite</td></tr>
+    <tr><td>Particle motion</td><td>Vibrate in place</td><td>Slide past each other</td><td>Fast, random, straight-line</td></tr>
+    <tr><td>Particle spacing</td><td>Tightly packed in a lattice</td><td>Close, irregular</td><td>Far apart</td></tr>
+    <tr><td>IFA strength</td><td>Strongest</td><td>Moderate</td><td>Negligible</td></tr>
+    <tr><td>Density</td><td>High</td><td>High (slightly less)</td><td>Very low</td></tr>
+    <tr><td>Compressibility</td><td>Very low</td><td>Very low</td><td>High</td></tr>
+    <tr><td>KE of particles</td><td>Lowest</td><td>Moderate</td><td>Highest</td></tr>
+  </table>
+
+  <p class="body-text">Water is a famous exception on density. <strong>Solid water (ice) is less dense than liquid water</strong>, which is why ice floats. Hydrogen bonds force water molecules into an open, hexagonal lattice when they freeze, leaving extra empty space inside the solid.</p>
+
+  <div class="sub-title">A note on plasma</div>
+  <p class="body-text">A fourth state, <strong>plasma</strong>, exists at extremely high temperatures (stars, lightning, fluorescent bulbs). Particles have so much kinetic energy that electrons strip off and the substance becomes a soup of charged particles. The Regents will sometimes mention plasma but rarely test it in depth.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">13</span>Phase Changes in Detail</div>
+  <p class="body-text">There are six named phase changes. Three add energy and lift the substance up the phase ladder. Three release energy and drop it down.</p>
+
+  <div class="pc-grid">
+    <div class="pc-card endo"><div class="pa">Solid &rarr; Liquid</div><div class="pt">Fusion (melting)</div><div class="pn">Endothermic. Heat goes into loosening IFAs in the lattice. Particles can now flow.</div></div>
+    <div class="pc-card endo"><div class="pa">Liquid &rarr; Gas</div><div class="pt">Vaporization (boiling)</div><div class="pn">Endothermic. Heat breaks <em>all</em> remaining IFAs. Particles fly free.</div></div>
+    <div class="pc-card endo"><div class="pa">Solid &rarr; Gas</div><div class="pt">Sublimation</div><div class="pn">Endothermic. Both fusion and vaporization at once. Examples: dry ice ($\text{CO}_2$), iodine, mothballs.</div></div>
+    <div class="pc-card exo"><div class="pa">Liquid &rarr; Solid</div><div class="pt">Freezing</div><div class="pn">Exothermic. Particles lose KE and get trapped by IFAs. Heat is released.</div></div>
+    <div class="pc-card exo"><div class="pa">Gas &rarr; Liquid</div><div class="pt">Condensation</div><div class="pn">Exothermic. Particles slow enough for IFAs to grab them. Dew on grass, steam on a cold mirror.</div></div>
+    <div class="pc-card exo"><div class="pa">Gas &rarr; Solid</div><div class="pt">Deposition</div><div class="pn">Exothermic. Frost on a window forms when water vapor skips the liquid phase entirely.</div></div>
+  </div>
+
+  <p class="body-text">Pattern. Going <strong>up</strong> the phase ladder (solid &rarr; liquid &rarr; gas) is endothermic and needs heat in. Going <strong>down</strong> is exothermic and gives heat out.</p>
+
+  <div class="sub-title">Why temperature stays constant during a phase change</div>
+  <p class="body-text">When ice melts at $0^\circ\text{C}$, you can keep dumping heat in but the thermometer reads $0^\circ\text{C}$ until the last bit melts. That confuses students. Where does the heat go if not into a higher reading?</p>
+
+  <p class="body-text">The heat is going into <strong>potential energy</strong>, not kinetic. Specifically, it pulls apart the IFAs holding the lattice together. Once the IFAs are broken (the substance has fully melted), heat starts being absorbed as kinetic energy again, and the temperature climbs.</p>
+
+  <div class="highlight-box">
+    During a phase change, every joule you add goes into breaking attractions. None of it speeds the particles up. Temperature, which measures average kinetic energy, stays flat.
+  </div>
+
+  <div class="sub-title">Why $H_v$ is much larger than $H_f$</div>
+  <p class="body-text">For water, $H_f = 334$ J/g but $H_v = 2260$ J/g. Vaporizing takes almost <strong>seven times</strong> more energy than melting. Why?</p>
+
+  <p class="body-text">Melting only loosens IFAs enough to let particles slide. Most attractions are still in play. Vaporizing has to break <em>every</em> IFA. The particles have to gain enough kinetic energy to fly apart and stop interacting. That is a much bigger energy bill.</p>
+
+  <p class="body-text">This is why a steam burn (gas condensing on your skin) is far worse than a hot-water burn at the same temperature. Condensing steam dumps 2260 J/g of latent heat into your skin before the water itself even starts to cool.</p>
+
+  <div class="sub-title">Boiling vs evaporation</div>
+  <p class="body-text">Both turn liquid into gas. The difference:</p>
+  <ul style="list-style:disc;padding-left:24px;line-height:1.8;font-family:var(--fp)">
+    <li><strong>Evaporation</strong> happens at the surface, at any temperature. Only the fastest molecules at the top escape. The liquid cools as a result, which is why sweat cools you down.</li>
+    <li><strong>Boiling</strong> happens throughout the liquid, at the boiling point. Bubbles of vapor form inside the liquid. It happens when the liquid's vapor pressure equals atmospheric pressure (covered later in card 17).</li>
+  </ul>
+
+  <div class="sub-title">Melting and freezing point are the same temperature</div>
+  <p class="body-text">A substance's melting point and freezing point are the same number. Water melts and freezes at $0^\circ\text{C}$. The difference is which direction heat is flowing. Add heat at that temperature and you melt. Remove heat at that temperature and you freeze. Both processes can happen simultaneously at equilibrium (which is exactly what is happening in a glass of ice water).</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">14</span>Kinetic Energy and Potential Energy on a Heating Curve</div>
+  <p class="body-text">A heating curve is a graph of temperature versus time as you steadily add heat to a substance. It has five segments. The flat segments are where the trick lives.</p>
+
+  <div class="highlight-box">
+    <strong>Sloped segments. </strong>Temperature is rising. The substance is in one phase and heating up. <strong>Kinetic energy increases.</strong> Potential energy stays the same.
+    <br><br>
+    <strong>Flat segments. </strong>Temperature is constant. The substance is changing phase. <strong>Kinetic energy stays the same.</strong> The added heat is going entirely into <strong>potential energy</strong>, breaking the attractions between particles.
+  </div>
+
+  <p class="body-text">This is the most-tested point in the whole unit. During a phase change, KE does <em>not</em> increase. The heat is going into PE. Read that twice. The Regents loves to trip students who say "kinetic energy goes up the whole time."</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Heating Curve Walker</div>
+    <div class="hc-stage">
+      <svg id="hcSvg" viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="hc-controls">
+      <button class="site-btn secondary" onclick="hcPrev()">&larr; Previous</button>
+      <button class="site-btn" id="hcPlay" onclick="hcTogglePlay()">Play</button>
+      <button class="site-btn secondary" onclick="hcNext()">Next &rarr;</button>
+    </div>
+    <div class="hc-segment-name" id="hcSegName">Solid heating up</div>
+    <div class="hc-readout">
+      <div class="cell"><div class="lbl">Phase</div><div class="val" id="hcPhase">Solid</div></div>
+      <div class="cell"><div class="lbl">Kinetic energy</div><div class="val" id="hcKE">Increasing</div></div>
+      <div class="cell"><div class="lbl">Potential energy</div><div class="val" id="hcPE">Constant</div></div>
+    </div>
+  </div>
+
+  <div class="sub-title">Cooling curves</div>
+  <p class="body-text">A cooling curve is the same graph in reverse. Slopes go down. The flat segments are still phase changes, but now the substance is releasing heat to its surroundings (freezing and condensation, both exothermic).</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">15</span>Calculating Heat Across a Heating Curve</div>
+  <p class="body-text">Real heating-curve problems usually ask for the total heat needed to take a substance from a starting state to a final state. The trick is to <strong>break the path into segments</strong> and use the right formula for each one. Sloped segments get $q = mc\Delta T$. Flat segments get $q = mH_f$ or $q = mH_v$.</p>
+
+  <div class="highlight-box">
+    <strong>The five-segment recipe (solid below freezing &rarr; gas above boiling):</strong>
+    <ol style="padding-left:24px;line-height:1.9;font-family:var(--fp);margin-top:6px">
+      <li>Heat the solid up to the melting point: $q_1 = m \, c_{\text{solid}} \, \Delta T$</li>
+      <li>Melt it (constant temperature): $q_2 = m H_f$</li>
+      <li>Heat the liquid up to the boiling point: $q_3 = m \, c_{\text{liquid}} \, \Delta T$</li>
+      <li>Boil it (constant temperature): $q_4 = m H_v$</li>
+      <li>Heat the gas up to the final temperature: $q_5 = m \, c_{\text{gas}} \, \Delta T$</li>
+    </ol>
+    Total heat = $q_1 + q_2 + q_3 + q_4 + q_5$.
+  </div>
+
+  <p class="body-text">If your start or end state stops in the middle of the curve, you only sum the segments your path actually crosses. For example, water at $25^\circ\text{C}$ to steam at $100^\circ\text{C}$ is just steps 3 and 4.</p>
+
+  <div class="sub-title">Worked example: 50 g of ice at $-10^\circ\text{C}$ to steam at $120^\circ\text{C}$</div>
+  <p class="body-text">Use water values from Table T (extended): $c_{\text{ice}} = 2.10 \text{ J/g}\cdot^\circ\text{C}$, $c_{\text{water}} = 4.18$, $c_{\text{steam}} = 2.01$, $H_f = 334$ J/g, $H_v = 2260$ J/g.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">1. Heat ice from -10 to 0. </span>$q_1 = (50)(2.10)(0 - (-10)) = (50)(2.10)(10) = 1050 \text{ J}$.</div>
+    <div class="step"><span class="step-label">2. Melt at 0. </span>$q_2 = (50)(334) = 16{,}700 \text{ J}$.</div>
+    <div class="step"><span class="step-label">3. Heat water from 0 to 100. </span>$q_3 = (50)(4.18)(100) = 20{,}900 \text{ J}$.</div>
+    <div class="step"><span class="step-label">4. Boil at 100. </span>$q_4 = (50)(2260) = 113{,}000 \text{ J}$.</div>
+    <div class="step"><span class="step-label">5. Heat steam from 100 to 120. </span>$q_5 = (50)(2.01)(20) = 2010 \text{ J}$.</div>
+    <div class="step"><span class="step-label">Total. </span>$1050 + 16{,}700 + 20{,}900 + 113{,}000 + 2010 = 153{,}660 \text{ J}$, about 154 kJ.</div>
+    <div class="step"><span class="step-label">Where the energy went. </span>The two phase-change steps (melt + boil = 129,700 J) account for about 84% of the total. Phase changes dominate the energy budget.</div>
+  </div>
+
+  <div class="sub-title">Reading a heating curve from a graph</div>
+  <p class="body-text">If a problem hands you a heating-curve graph, you can read off both phase-change temperatures (the y-values of the two flat segments) and even rank $H_f$ vs $H_v$ qualitatively (longer flat segment = bigger heat absorbed).</p>
+
+  <div class="highlight-box">
+    <strong>Graph-reading checklist.</strong>
+    <ol style="padding-left:24px;line-height:1.8;font-family:var(--fp);margin-top:6px">
+      <li>Lower flat segment temperature = melting point.</li>
+      <li>Upper flat segment temperature = boiling point.</li>
+      <li>Longer flat segment = more heat absorbed in that phase change.</li>
+      <li>Steeper slope on a heating segment = lower specific heat in that phase (less heat needed per degree).</li>
+      <li>Two flat segments and three sloped segments = full solid-to-gas walk.</li>
+    </ol>
+  </div>
+
+  <p class="body-text">A cooling curve flips this. The two flat segments now mark condensation (higher temperature) and freezing (lower temperature). Both are exothermic: the substance releases heat to its surroundings.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">16</span>Intermolecular Forces of Attraction (IFAs)</div>
+  <p class="body-text">Inside a molecule, atoms are held together by chemical bonds (covalent or ionic). Between separate molecules, weaker forces still pull them toward each other. These are <strong>intermolecular forces of attraction</strong>, or IFAs.</p>
+
+  <p class="body-text">IFAs are what hold a liquid together as a liquid. Stronger IFAs mean a higher boiling point, because more energy is needed to pull molecules apart into the gas phase.</p>
+
+  <div class="highlight-box">
+    <strong>IFA strength by phase: </strong> Solids &gt; Liquids &gt; Gases.
+    <br><br>
+    Solid particles are locked in place because IFAs hold them tightly. Liquid particles can flow but still feel each other. Gas particles barely interact at all (which is why gases approximate ideal behavior).
+  </div>
+
+  <div class="sub-title">Hydrogen bonds</div>
+  <p class="body-text">A <strong>hydrogen bond</strong> is the strongest type of IFA. It happens when a molecule contains a hydrogen atom bonded directly to <strong>F, O, or N</strong>. The exposed proton on hydrogen attracts to a lone pair on a neighboring molecule's F, O, or N.</p>
+
+  <div class="highlight-box" style="text-align:center;font-family:var(--fb);font-size:1.05rem">
+    Hydrogen bond rule: H bonded to F, O, or N
+    <br><br>
+    Common examples: $\text{HF}$, $\text{H}_2\text{O}$, $\text{NH}_3$
+  </div>
+
+  <p class="body-text">Hydrogen bonding explains why water has such a high boiling point compared to other small molecules ($\text{H}_2\text{S}$, $\text{H}_2\text{Se}$, etc. are gases at room temperature even though they are heavier). It is also why water has such high surface tension and why ice floats.</p>
+
+  <p class="body-text">If a molecule has H but not bonded to F, O, or N (for example, $\text{CH}_4$, $\text{HCl}$), it does <strong>not</strong> form hydrogen bonds. Common Regents trap.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">17</span>Vapor Pressure and Boiling (Table H)</div>
+  <p class="body-text"><strong>Vapor pressure</strong> is the pressure exerted by a liquid's vapor in equilibrium with the liquid. Higher temperature means more particles have enough energy to escape, so vapor pressure rises with temperature.</p>
+
+  <div class="highlight-box">
+    <strong>A liquid boils when its vapor pressure equals atmospheric pressure.</strong> Standard atmospheric pressure is 101.3 kPa.
+    <br><br>
+    On Table H, follow each substance's curve and find where it crosses 101.3 kPa. That x-value is the substance's normal boiling point.
+  </div>
+
+  <p class="body-text">A liquid with weaker IFAs has a higher vapor pressure at any given temperature (its molecules escape more easily). It also has a lower boiling point.</p>
+
+  <div class="highlight-box">
+    <strong>Table H ranking (weakest IFAs to strongest IFAs):</strong>
+    <br>
+    propanone &lt; ethanol &lt; water &lt; ethanoic acid
+    <br><br>
+    So at any temperature, propanone has the highest vapor pressure. Ethanoic acid has the lowest. The order of normal boiling points is the reverse: propanone $\sim 56^\circ\text{C}$, ethanol $\sim 78^\circ\text{C}$, water $100^\circ\text{C}$, ethanoic acid $\sim 118^\circ\text{C}$.
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Table H Vapor Pressure Reader</div>
+    <div class="vp-stage">
+      <svg id="vpSvg" viewBox="0 0 520 340" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="vp-controls">
+      <span style="font-family:var(--fb);font-size:.85rem;color:var(--slate)">temperature:</span>
+      <input id="vpTemp" type="range" min="0" max="125" value="60" step="1">
+      <span class="sol-readout" id="vpTempRead">60&deg;C</span>
+    </div>
+    <div class="vp-readout-grid" id="vpOut"></div>
+  </div>
+
+  <div class="sub-title">Worked example: reading Table H</div>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Question. </span>If atmospheric pressure drops to 80 kPa (high altitude), what is water's new boiling point?</div>
+    <div class="step"><span class="step-label">Find the curve. </span>Water curve.</div>
+    <div class="step"><span class="step-label">Find the pressure. </span>80 kPa on the y-axis.</div>
+    <div class="step"><span class="step-label">Read across to the curve. </span>Down to the x-axis.</div>
+    <div class="step"><span class="step-label">Answer. </span>About $93^\circ\text{C}$. Water boils at a lower temperature when atmospheric pressure is lower. That is why pasta takes longer to cook on a mountain.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">18</span>Why Water is the Most Useful Polar Covalent Compound</div>
+  <p class="body-text">Almost every interesting physical property of water comes from one fact: water is a <strong>polar covalent molecule</strong>, and a small one. That polarity, combined with water's ability to form <strong>hydrogen bonds</strong> (covered in Unit 4 and card 16), explains its specific heat, its solubility, and why we use it for cooling almost everything.</p>
+
+  <div class="highlight-box">
+    <strong>The chain of cause and effect:</strong>
+    <ol style="padding-left:24px;line-height:1.85;font-family:var(--fp);margin-top:6px">
+      <li>O is much more electronegative than H ($\Delta$EN $\approx$ 1.24). So each O-H bond is <strong>polar covalent</strong>.</li>
+      <li>The molecule is <strong>bent</strong> (two lone pairs on O), so the bond dipoles do not cancel. The whole molecule is polar.</li>
+      <li>H bonded to O satisfies the H-bond rule. So water molecules <strong>hydrogen-bond</strong> to each other (and to many other things).</li>
+      <li>That dense H-bond network is responsible for nearly every "weird" property of water.</li>
+    </ol>
+  </div>
+
+  <div class="sub-title">Why water has such a high specific heat</div>
+  <p class="body-text">Water's specific heat is $c = 4.18 \text{ J/g}\cdot^\circ\text{C}$, one of the highest of any substance. For comparison: aluminum is 0.90, copper is 0.39, iron is 0.45. To raise a gram of water by one degree takes about <strong>5 times</strong> as much energy as the same for aluminum.</p>
+
+  <p class="body-text">The reason traces straight back to hydrogen bonds. When you add heat to water, only some of it goes into speeding up the molecules (kinetic energy, which is what the thermometer reads). A big chunk goes into pulling against the hydrogen-bond network, stretching and breaking H-bonds, then letting them re-form. That "wasted" energy is stored in potential energy of the bond network, not in faster motion. So the temperature rises slowly per joule added.</p>
+
+  <div class="highlight-box">
+    <strong>Without H-bonds, water's specific heat would be much lower.</strong> Methane ($\text{CH}_4$), nonpolar and no H-bonds, has $c \approx 2.2 \text{ J/g}\cdot^\circ\text{C}$ as a gas. Ethanol, with some H-bonding but less dense, is $c \approx 2.44 \text{ J/g}\cdot^\circ\text{C}$ as a liquid. Water's 4.18 stands out specifically because every water molecule can form up to 4 H-bonds.
+  </div>
+
+  <div class="sub-title">Liquid cooling and why engineers love water</div>
+  <p class="body-text">High specific heat makes water the best general-purpose coolant on Earth. Examples:</p>
+  <ul style="list-style:disc;padding-left:24px;line-height:1.85;font-family:var(--fp)">
+    <li><strong>Car radiators.</strong> Hot engine, cooled by water (mixed with antifreeze to extend the liquid range). Water absorbs huge amounts of heat per degree before getting too hot.</li>
+    <li><strong>Computer water cooling.</strong> Gaming PCs and data centers loop water through CPU/GPU blocks because air alone is not dense or heat-hungry enough.</li>
+    <li><strong>Nuclear and fossil-fuel power plants.</strong> All use water as the working fluid: it absorbs reactor heat, boils to steam, drives a turbine, condenses back.</li>
+    <li><strong>The ocean.</strong> Earth's climate is moderated by oceans. They absorb summer heat slowly and release it in winter slowly, smoothing out temperature swings on coastal areas.</li>
+    <li><strong>Sweating.</strong> Mammals lose heat through evaporating water on skin. Each gram that evaporates carries away 2260 J (water's $H_v$). Massive cooling per drop.</li>
+  </ul>
+
+  <div class="sub-title">Why polarity drives "like dissolves like" for water</div>
+  <p class="body-text">Polar water molecules can pry apart polar and ionic solutes. Each $\text{Na}^+$ ion in salt water is surrounded by water molecules with their oxygen ends ($\delta^-$) pointed at it. Each $\text{Cl}^-$ is surrounded by water with hydrogen ends ($\delta^+$) pointed at it. The water-ion attractions overcome the ion-ion attractions in the salt lattice. The salt dissolves.</p>
+
+  <div class="highlight-box">
+    <strong>What dissolves in water:</strong>
+    <ul style="list-style:disc;padding-left:24px;line-height:1.7;font-family:var(--fp);margin-top:4px">
+      <li>Ionic compounds (most salts, like $\text{NaCl}$, $\text{KCl}$, $\text{MgSO}_4$)</li>
+      <li>Polar molecular compounds (sugar, ethanol, ammonia)</li>
+      <li>Compounds that can hydrogen-bond with water (alcohols, acids)</li>
+    </ul>
+    <strong>What does NOT dissolve in water:</strong>
+    <ul style="list-style:disc;padding-left:24px;line-height:1.7;font-family:var(--fp);margin-top:4px">
+      <li>Nonpolar molecules (oil, gasoline, methane, $\text{O}_2$ partially)</li>
+      <li>The reason: water would have to break its own H-bonds to make room, with no payoff. So it does not.</li>
+    </ul>
+  </div>
+
+  <div class="sub-title">Worked example: heat absorbed by water in a radiator</div>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Setup. </span>A car radiator holds 5000 g of water. The engine raises the water from $80^\circ\text{C}$ to $95^\circ\text{C}$ before the radiator dumps it.</div>
+    <div class="step"><span class="step-label">Heat absorbed by water. </span>$q = mc\Delta T = (5000)(4.18)(15) = 313{,}500 \text{ J}$, about 314 kJ.</div>
+    <div class="step"><span class="step-label">Compare. </span>If the radiator used aluminum (c = 0.90) instead, the same volume could only carry $q = (5000)(0.90)(15) = 67{,}500 \text{ J}$. Water carries <strong>about 4.6 times more heat</strong> for the same mass and temperature swing.</div>
+    <div class="step"><span class="step-label">Takeaway. </span>That capacity is why your engine does not melt. Hydrogen bonds soak up the kinetic energy before the temperature actually climbs.</div>
+  </div>
+
+  <div class="sub-title">Quick callouts</div>
+  <p class="body-text">A few more water-property highlights tied to its polar covalent / H-bonding nature:</p>
+  <ul style="list-style:disc;padding-left:24px;line-height:1.85;font-family:var(--fp)">
+    <li><strong>$H_v = 2260$ J/g</strong> is among the highest of common liquids. Why sweat cools. Why steam burns are so bad.</li>
+    <li><strong>$H_f = 334$ J/g</strong> is also unusually high. Why ice in a drink keeps the drink cold for so long.</li>
+    <li><strong>Ice floats.</strong> Hexagonal lattice from H-bonding leaves empty space, lowering density.</li>
+    <li><strong>Surface tension.</strong> H-bonds at the surface pull inward, creating a skin you can float a paper clip on.</li>
+    <li><strong>Universal solvent.</strong> Cell biology, blood, oceans, weather, agriculture, every chemistry lab.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 4: Phase Changes, IFAs, Vapor Pressure</div>
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Name the phase change for each: (a) solid to gas, (b) gas to liquid, (c) liquid to solid.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4_1')">Show Answer</button>
+    <div class="a" id="p4_1">(a) Sublimation. (b) Condensation. (c) Freezing.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> While a substance is melting at its melting point, what happens to its kinetic energy? Its potential energy?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4_2')">Show Answer</button>
+    <div class="a" id="p4_2"><strong>Kinetic energy stays the same</strong> (temperature is constant). <strong>Potential energy increases</strong>, because the heat being added is going into breaking attractions between particles, not into faster motion.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> Which of these molecules form hydrogen bonds: $\text{H}_2\text{O}$, $\text{CH}_4$, $\text{NH}_3$, $\text{HCl}$, $\text{HF}$?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4_3')">Show Answer</button>
+    <div class="a" id="p4_3"><strong>$\text{H}_2\text{O}$, $\text{NH}_3$, and $\text{HF}$.</strong> All three have H bonded to F, O, or N. $\text{CH}_4$ has H bonded to carbon (no). $\text{HCl}$ has H bonded to chlorine (no, even though Cl is electronegative, the rule is specifically F, O, or N).</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> On Table H, which substance has the strongest intermolecular forces of attraction?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4_4')">Show Answer</button>
+    <div class="a" id="p4_4"><strong>Ethanoic acid.</strong> It has the lowest vapor pressure at any given temperature and the highest boiling point on the chart, both of which signal the strongest IFAs.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>5.</strong> A flat segment on a heating curve at $0^\circ\text{C}$ on water tells you what is happening?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4_5')">Show Answer</button>
+    <div class="a" id="p4_5"><strong>The water is melting (or freezing).</strong> $0^\circ\text{C}$ is the melting/freezing point of water. The flat segment means temperature is constant during the phase change.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>6.</strong> A real gas behaves <em>least</em> like an ideal gas under what conditions? Why?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4_6')">Show Answer</button>
+    <div class="a" id="p4_6"><strong>High pressure and low temperature.</strong> Particles are squeezed close together (volume of each particle starts to matter) and move slowly (attractive forces start to matter), so the ideal-gas assumptions break down.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Practice 5: Heating Curves and Phase Changes</div>
+  <p class="body-text">These questions all hinge on what is happening at each segment of a heating or cooling curve. Use the walker in card 14 to visualize before answering.</p>
+
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> A heating curve has a flat segment at $0^\circ\text{C}$ and a longer flat segment at $100^\circ\text{C}$. What does the longer flat segment tell you?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_1')">Show Answer</button>
+    <div class="a" id="p5_1"><strong>The substance absorbs more heat at $100^\circ\text{C}$ than at $0^\circ\text{C}$.</strong> Both flat segments are phase changes (melting and boiling, here for water). The longer one means more total heat went in, which corresponds to a bigger $H_v$ compared to $H_f$. For water, $H_v = 2260$ J/g vs $H_f = 334$ J/g, almost seven times bigger.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> A 30 g sample of ice at $0^\circ\text{C}$ is heated until it becomes water at $0^\circ\text{C}$. How much heat was absorbed? ($H_f = 334$ J/g.)</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_2')">Show Answer</button>
+    <div class="a" id="p5_2"><strong>10,020 J.</strong> Phase change at constant temperature: $q = m H_f = (30)(334) = 10{,}020 \text{ J}$. No $\Delta T$ term because temperature is constant during melting.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> Identify what is happening to kinetic energy and potential energy on each part of a heating curve: <em>(a)</em> sloped segment, <em>(b)</em> flat segment.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_3')">Show Answer</button>
+    <div class="a" id="p5_3"><strong>(a) Sloped:</strong> kinetic energy is increasing, potential energy is constant. The substance is in one phase and warming up. <strong>(b) Flat:</strong> kinetic energy is constant, potential energy is increasing. The substance is changing phase, with the heat going into breaking IFAs.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> Compute the total heat needed to take 100 g of water from $25^\circ\text{C}$ liquid to steam at $100^\circ\text{C}$. ($c_{\text{water}} = 4.18$, $H_v = 2260$.)</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_4')">Show Answer</button>
+    <div class="a" id="p5_4"><strong>257,350 J, about 257 kJ.</strong><br>Step 1 (heat liquid 25 to 100): $q_1 = (100)(4.18)(75) = 31{,}350 \text{ J}$.<br>Step 2 (boil at 100): $q_2 = (100)(2260) = 226{,}000 \text{ J}$.<br>Total: $31{,}350 + 226{,}000 = 257{,}350 \text{ J}$. Most of the energy goes into the phase change.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>5.</strong> A cooling curve shows a substance going from gas to solid. Which two segments will be flat, what phase changes do they represent, and are they endothermic or exothermic?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_5')">Show Answer</button>
+    <div class="a" id="p5_5"><strong>Two flat segments: condensation and freezing.</strong> Condensation (gas to liquid) at the higher temperature, freezing (liquid to solid) at the lower one. Both are <strong>exothermic</strong> because the substance is releasing heat to its surroundings as it cools.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>6.</strong> Why does a steam burn at $100^\circ\text{C}$ cause more damage than a hot-water burn at $100^\circ\text{C}$?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_6')">Show Answer</button>
+    <div class="a" id="p5_6">Steam at $100^\circ\text{C}$ has to <strong>condense</strong> on your skin first, releasing 2260 J/g of latent heat ($H_v$) before it even starts to cool. Hot water at $100^\circ\text{C}$ skips that step. Same temperature, but steam delivers far more energy.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>7.</strong> On a particle-level basis, explain why solids have stronger IFAs than gases.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_7')">Show Answer</button>
+    <div class="a" id="p5_7">In a solid, particles are tightly packed and barely move, so IFAs have time and proximity to act. In a gas, particles are far apart and moving fast, so any attraction barely registers before the particles separate again. The stronger the IFAs in a substance, the higher its melting and boiling points.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>8.</strong> A heating curve for an unknown substance shows a melting plateau at $50^\circ\text{C}$ and a boiling plateau at $200^\circ\text{C}$. What are the substance's melting and boiling points, and at room temperature ($20^\circ\text{C}$) what state is it in?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_8')">Show Answer</button>
+    <div class="a" id="p5_8"><strong>MP = $50^\circ\text{C}$, BP = $200^\circ\text{C}$.</strong> At $20^\circ\text{C}$ (below the melting point) the substance is a <strong>solid</strong>.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>9.</strong> During a heating-curve flat segment, a student says "the heat is being lost because the temperature is not going up." Why is this wrong?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_9')">Show Answer</button>
+    <div class="a" id="p5_9">The heat is not lost. It is going into <strong>potential energy</strong>, breaking the IFAs that hold particles together. Temperature only measures average kinetic energy, so it stays flat while PE rises. Once the phase change is complete, additional heat starts going back into KE and the temperature climbs again.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>10.</strong> A 25 g sample of water at $100^\circ\text{C}$ is fully boiled into steam at $100^\circ\text{C}$. Then a separate 25 g sample of water at $100^\circ\text{C}$ is cooled to ice at $0^\circ\text{C}$. Which process releases more total energy in absolute value? ($c = 4.18$, $H_f = 334$, $H_v = 2260$.)</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5_10')">Show Answer</button>
+    <div class="a" id="p5_10"><strong>Boiling absorbs more energy than the full cool-and-freeze process releases.</strong><br>Boiling: $q = m H_v = (25)(2260) = 56{,}500 \text{ J}$ absorbed.<br>Cool 100 to 0: $q = (25)(4.18)(100) = 10{,}450 \text{ J}$ released.<br>Freeze at 0: $q = m H_f = (25)(334) = 8{,}350 \text{ J}$ released.<br>Total cool+freeze = $18{,}800 \text{ J}$ released, vs $56{,}500 \text{ J}$ for the boil. The single phase change at the top of the curve is bigger than the entire descent on the rest. That is how dominant $H_v$ is.</div>
+  </div>
+</div>
+
+<div class="card" style="text-align:center">
+  <div class="card-title" style="margin-bottom:6px">Up Next</div>
+  <p class="body-text">Unit 6 is Equilibrium, the natural sequel to phase changes and saturation. Coming soon.</p>
+</div>
+
+</main>
+</div>
+
+<script>
+/* ============================================================ */
+/* ============== Practice answer toggles ===================== */
+/* ============================================================ */
+function toggleAns(id){
+  const a = document.getElementById(id);
+  a.classList.toggle('show');
+}
+window.toggleAns = toggleAns;
+
+/* ============================================================ */
+/* ============== WIDGET 1: Particle diagram (animated) ======= */
+/* ============================================================ */
+(function pd(){
+  const svg = document.getElementById('pdSvg');
+  const readout = document.getElementById('pdReadout');
+  const W = 480, H = 240;
+  let phase = 'solid';
+  let kind = 'element';
+  let particles = [];
+  let lastT = 0;
+  let raf = null;
+
+  function rng(seed){
+    let s = seed % 2147483647;
+    return function(){ s = (s * 16807) % 2147483647; return s / 2147483647; };
+  }
+
+  function initParticles(){
+    particles = [];
+    const rand = rng(7);
+    if(phase === 'solid'){
+      const cols = 14, rows = 7;
+      const padX = (W - cols * 32) / 2 + 16;
+      const padY = (H - rows * 32) / 2 + 16;
+      for(let i = 0; i < rows; i++){
+        for(let j = 0; j < cols; j++){
+          const hx = padX + j * 32;
+          const hy = padY + i * 32;
+          particles.push({
+            x: hx, y: hy, homeX: hx, homeY: hy,
+            phase: rand() * Math.PI * 2,
+            phase2: rand() * Math.PI * 2
+          });
+        }
+      }
+    } else if(phase === 'liquid'){
+      const target = 38;
+      let tries = 0;
+      while(particles.length < target && tries < 4000){
+        const x = 30 + rand() * (W - 60);
+        const y = 30 + rand() * (H - 60);
+        let ok = true;
+        for(const p of particles){
+          if(Math.hypot(p.x - x, p.y - y) < 36){ ok = false; break; }
+        }
+        if(ok) particles.push({x, y, vx: (rand() - 0.5) * 0.7, vy: (rand() - 0.5) * 0.7});
+        tries++;
+      }
+    } else { /* gas */
+      const target = 22;
+      let tries = 0;
+      while(particles.length < target && tries < 2000){
+        const x = 28 + rand() * (W - 56);
+        const y = 28 + rand() * (H - 56);
+        let ok = true;
+        for(const p of particles){
+          if(Math.hypot(p.x - x, p.y - y) < 42){ ok = false; break; }
+        }
+        if(ok){
+          const speed = 1.5 + rand() * 2.4;
+          const a = rand() * Math.PI * 2;
+          particles.push({x, y, vx: Math.cos(a) * speed, vy: Math.sin(a) * speed});
+        }
+        tries++;
+      }
+    }
+  }
+
+  function updateParticles(dt){
+    if(phase === 'solid'){
+      particles.forEach(p => {
+        p.phase += dt * 6;
+        p.phase2 += dt * 8.5;
+        const amp = 3.4;
+        p.x = p.homeX + Math.cos(p.phase) * amp * 0.8 + Math.sin(p.phase2 * 1.4) * amp * 0.3;
+        p.y = p.homeY + Math.sin(p.phase * 1.2) * amp * 0.6 + Math.cos(p.phase2) * amp * 0.4;
+      });
+    } else if(phase === 'liquid'){
+      particles.forEach(p => {
+        // Stronger random kick and lighter damping so they actually flow
+        p.vx += (Math.random() - 0.5) * 0.35;
+        p.vy += (Math.random() - 0.5) * 0.35;
+        p.vx *= 0.96; p.vy *= 0.96;
+        p.x += p.vx; p.y += p.vy;
+        if(p.x < 18){ p.x = 18; p.vx = Math.abs(p.vx) * 0.7; }
+        if(p.x > W - 18){ p.x = W - 18; p.vx = -Math.abs(p.vx) * 0.7; }
+        if(p.y < 18){ p.y = 18; p.vy = Math.abs(p.vy) * 0.7; }
+        if(p.y > H - 18){ p.y = H - 18; p.vy = -Math.abs(p.vy) * 0.7; }
+      });
+      // Soft inter-particle repulsion: prevents overlap but lets them slide past
+      for(let i = 0; i < particles.length; i++){
+        for(let j = i + 1; j < particles.length; j++){
+          const dx = particles[j].x - particles[i].x;
+          const dy = particles[j].y - particles[i].y;
+          const d = Math.hypot(dx, dy);
+          if(d < 30 && d > 0.001){
+            const f = (30 - d) / 30 * 0.45;
+            const nx = dx / d, ny = dy / d;
+            particles[i].x -= nx * f;
+            particles[i].y -= ny * f;
+            particles[j].x += nx * f;
+            particles[j].y += ny * f;
+          }
+        }
+      }
+    } else { /* gas */
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if(p.x < 16){ p.x = 16; p.vx = Math.abs(p.vx); }
+        if(p.x > W - 16){ p.x = W - 16; p.vx = -Math.abs(p.vx); }
+        if(p.y < 16){ p.y = 16; p.vy = Math.abs(p.vy); }
+        if(p.y > H - 16){ p.y = H - 16; p.vy = -Math.abs(p.vy); }
+      });
+    }
+  }
+
+  function drawParticles(){
+    const r = phase === 'gas' ? 11 : 13;
+    let parts = '';
+    if(kind === 'element'){
+      particles.forEach(p => {
+        parts += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r}" fill="var(--c-h)" stroke="var(--forest)" stroke-width="1.2"/>`;
+      });
+    } else if(kind === 'compound'){
+      particles.forEach((p, i) => {
+        const ang = (i * 1.7) % (2 * Math.PI);
+        const px = p.x + Math.cos(ang) * (r * 1.15);
+        const py = p.y + Math.sin(ang) * (r * 1.15);
+        parts += `<line x1="${p.x.toFixed(1)}" y1="${p.y.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="var(--forest)" stroke-width="1.4"/>`;
+        parts += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r}" fill="var(--c-h)" stroke="var(--forest)" stroke-width="1.2"/>`;
+        parts += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${r * 0.78}" fill="var(--c-o)" stroke="var(--forest)" stroke-width="1.2"/>`;
+      });
+    } else if(kind === 'mixture-elements'){
+      particles.forEach((p, i) => {
+        const c = (i % 2 === 0) ? 'var(--c-h)' : 'var(--c-c)';
+        parts += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r}" fill="${c}" stroke="var(--forest)" stroke-width="1.2"/>`;
+      });
+    } else {
+      particles.forEach((p, i) => {
+        const ang = (i * 1.7) % (2 * Math.PI);
+        const px = p.x + Math.cos(ang) * (r * 1.15);
+        const py = p.y + Math.sin(ang) * (r * 1.15);
+        const isType1 = (i % 2 === 0);
+        const c1 = isType1 ? 'var(--c-h)' : 'var(--c-n)';
+        const c2 = isType1 ? 'var(--c-o)' : 'var(--c-other)';
+        parts += `<line x1="${p.x.toFixed(1)}" y1="${p.y.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="var(--forest)" stroke-width="1.4"/>`;
+        parts += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r}" fill="${c1}" stroke="var(--forest)" stroke-width="1.2"/>`;
+        parts += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${r * 0.78}" fill="${c2}" stroke="var(--forest)" stroke-width="1.2"/>`;
+      });
+    }
+    svg.innerHTML = `<rect x="6" y="6" width="${W - 12}" height="${H - 12}" rx="14" ry="14" fill="rgba(208,214,179,0.18)" stroke="var(--sage-l)" stroke-width="1.5" stroke-dasharray="4 4"/>${parts}`;
+  }
+
+  function updateReadout(){
+    const phaseText = {
+      solid:  '<strong>Solid:</strong> particles vibrate in place, locked in a regular lattice. <strong>Defined shape AND defined volume.</strong> Strongest IFAs.',
+      liquid: '<strong>Liquid:</strong> particles flow past each other but stay close-packed. <strong>Defined volume, takes the shape of its container.</strong> Moderate IFAs.',
+      gas:    '<strong>Gas:</strong> particles zoom around in fast, random straight-line motion. <strong>No defined shape, no defined volume.</strong> Fills its entire container. IFAs are negligible.'
+    }[phase];
+    const kindText = {
+      'element':           'One kind of particle, all the same color. No bonds shown because each particle is a single atom.',
+      'compound':          'Two elements bonded in a fixed ratio. Each unit looks the same. Cannot be separated by physical means.',
+      'mixture-elements':  'Two different elements blended together. Two distinct colors, no bonds. Can be pulled apart with the right separation method.',
+      'mixture-compounds': 'Two different compounds blended. Different paired units, but each unit stays intact. Still a mixture.'
+    }[kind];
+    readout.innerHTML = phaseText + '<br>' + kindText;
+  }
+
+  function loop(ts){
+    if(!lastT) lastT = ts;
+    const dt = Math.min(0.05, (ts - lastT) / 1000);
+    lastT = ts;
+    updateParticles(dt);
+    drawParticles();
+    raf = requestAnimationFrame(loop);
+  }
+
+  function reset(){
+    initParticles();
+    updateReadout();
+    lastT = 0;
+  }
+
+  document.querySelectorAll('#pdPhasePicker .pick-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#pdPhasePicker .pick-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      phase = btn.dataset.phase;
+      reset();
+    });
+  });
+  document.querySelectorAll('#pdKindPicker .pick-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#pdKindPicker .pick-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      kind = btn.dataset.kind;
+      updateReadout();
+    });
+  });
+
+  reset();
+  raf = requestAnimationFrame(loop);
+})();
+
+/* ============================================================ */
+/* ============== WIDGET 2: Solubility curve (Table G) ======== */
+/* ============================================================ */
+(function sol(){
+  const svg = document.getElementById('solSvg');
+  const picker = document.getElementById('solPicker');
+  const tempIn = document.getElementById('solTemp');
+  const tempRead = document.getElementById('solTempRead');
+  const out = document.getElementById('solOut');
+  const W = 520, H = 320, P = {l: 50, r: 20, t: 20, b: 40};
+
+  // Approximate Table G data: g per 100 g water at 0,10,...,100
+  const DATA = {
+    'KNO3':  {color:'#b5503e', vals:[13,21,32,45,63,84,107,137,167,200,247], type:'solid'},
+    'NaNO3': {color:'#143109', vals:[73,80,87,96,102,110,122,134,148,162,180], type:'solid'},
+    'NH4Cl': {color:'#525B76', vals:[29,33,37,41,46,50,55,60,65,71,77], type:'solid'},
+    'KCl':   {color:'#9BA06A', vals:[28,31,34,37,40,43,46,49,51,54,56], type:'solid'},
+    'NaCl':  {color:'#7C8172', vals:[35,35,36,36,36,37,37,38,39,40,40], type:'solid'},
+    'KClO3': {color:'#d9c59a', vals:[4,5,7,10,14,19,24,32,38,47,57], type:'solid'},
+    'NH3':   {color:'#c9b3d4', vals:[90,70,53,41,30,23,18,14,11,7,5], type:'gas'},
+    'HCl':   {color:'#e8b0a0', vals:[82,78,73,67,63,59,56,53,50,47,43], type:'gas'},
+    'SO2':   {color:'#a8c6a8', vals:[22,17,11,9,7,5,4,3,2,2,2], type:'gas'}
+  };
+  const NAMES = Object.keys(DATA);
+  let cur = 'KNO3';
+
+  function valAt(name, t){
+    const v = DATA[name].vals;
+    const idx = t / 10;
+    const lo = Math.floor(idx), hi = Math.ceil(idx);
+    if(lo === hi) return v[lo];
+    return v[lo] + (v[hi] - v[lo]) * (idx - lo);
+  }
+
+  function pxX(t){ return P.l + (t / 100) * (W - P.l - P.r); }
+  function pxY(g){ return H - P.b - (g / 250) * (H - P.t - P.b); }
+
+  function render(){
+    let svgInner = '';
+    // axes
+    svgInner += `<rect x="0" y="0" width="${W}" height="${H}" fill="transparent"/>`;
+    // grid + labels
+    for(let g = 0; g <= 250; g += 50){
+      const y = pxY(g);
+      svgInner += `<line x1="${P.l}" y1="${y}" x2="${W - P.r}" y2="${y}" stroke="#e4e8cc" stroke-width="1"/>`;
+      svgInner += `<text x="${P.l - 8}" y="${y + 4}" font-family="Bitter,serif" font-size="11" text-anchor="end" fill="var(--slate)">${g}</text>`;
+    }
+    for(let t = 0; t <= 100; t += 20){
+      const x = pxX(t);
+      svgInner += `<line x1="${x}" y1="${P.t}" x2="${x}" y2="${H - P.b}" stroke="#e4e8cc" stroke-width="1"/>`;
+      svgInner += `<text x="${x}" y="${H - P.b + 16}" font-family="Bitter,serif" font-size="11" text-anchor="middle" fill="var(--slate)">${t}</text>`;
+    }
+    // axis labels
+    svgInner += `<text x="${(W - P.l) / 2 + P.l}" y="${H - 6}" font-family="Bitter,serif" font-size="12" text-anchor="middle" fill="var(--slate)">Temperature (&deg;C)</text>`;
+    svgInner += `<text x="14" y="${(H - P.t - P.b) / 2 + P.t}" font-family="Bitter,serif" font-size="12" text-anchor="middle" fill="var(--slate)" transform="rotate(-90 14 ${(H - P.t - P.b) / 2 + P.t})">grams solute / 100 g water</text>`;
+    // box
+    svgInner += `<rect x="${P.l}" y="${P.t}" width="${W - P.l - P.r}" height="${H - P.t - P.b}" fill="none" stroke="var(--sage-l)" stroke-width="1.5"/>`;
+    // all faded curves
+    NAMES.forEach(n => {
+      if(n === cur) return;
+      const d = DATA[n];
+      let pts = '';
+      d.vals.forEach((v, i) => {
+        const x = pxX(i * 10), y = pxY(Math.min(v, 250));
+        pts += (i === 0 ? 'M' : 'L') + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+      });
+      svgInner += `<path d="${pts}" stroke="${d.color}" stroke-width="1.5" fill="none" opacity="0.35"/>`;
+      const lastY = pxY(Math.min(d.vals[10], 250));
+      svgInner += `<text x="${W - P.r - 4}" y="${lastY + 3}" font-family="Bitter,serif" font-size="10" text-anchor="end" fill="${d.color}" opacity="0.6">${n}</text>`;
+    });
+    // current curve highlighted
+    const d = DATA[cur];
+    let pts = '';
+    d.vals.forEach((v, i) => {
+      const x = pxX(i * 10), y = pxY(Math.min(v, 250));
+      pts += (i === 0 ? 'M' : 'L') + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+    });
+    svgInner += `<path d="${pts}" stroke="${d.color}" stroke-width="3" fill="none"/>`;
+    // marker for current temp
+    const t = +tempIn.value;
+    const g = valAt(cur, t);
+    const cx = pxX(t), cy = pxY(Math.min(g, 250));
+    svgInner += `<line x1="${cx}" y1="${P.t}" x2="${cx}" y2="${H - P.b}" stroke="var(--slate)" stroke-width="1" stroke-dasharray="4 3"/>`;
+    svgInner += `<line x1="${P.l}" y1="${cy}" x2="${cx}" y2="${cy}" stroke="var(--slate)" stroke-width="1" stroke-dasharray="4 3"/>`;
+    svgInner += `<circle cx="${cx}" cy="${cy}" r="6" fill="${d.color}" stroke="white" stroke-width="2"/>`;
+
+    svg.innerHTML = svgInner;
+    tempRead.textContent = t + '°C';
+    const trend = d.type === 'gas' ? 'Gas: solubility goes <em>down</em> as temperature rises.' : 'Solid: solubility goes <em>up</em> as temperature rises.';
+    out.innerHTML = `At <strong>${t}°C</strong>, 100 g of water can hold up to <strong>${g.toFixed(1)} g</strong> of <strong>${cur}</strong>. ${trend}`;
+  }
+
+  // build pickers
+  NAMES.forEach(n => {
+    const b = document.createElement('button');
+    b.className = 'pick-btn' + (n === cur ? ' active' : '');
+    b.textContent = n;
+    b.style.borderColor = DATA[n].color;
+    b.addEventListener('click', () => {
+      cur = n;
+      picker.querySelectorAll('.pick-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      render();
+    });
+    picker.appendChild(b);
+  });
+  tempIn.addEventListener('input', render);
+  render();
+})();
+
+/* ============================================================ */
+/* ============== WIDGET 3: Molarity / ppm calculator ========= */
+/* ============================================================ */
+(function conc(){
+  const inputs = document.getElementById('concInputs');
+  const out = document.getElementById('concOut');
+  const modeBtns = document.querySelectorAll('#concMode .pick-btn');
+  let mode = 'M';
+
+  const FIELDS = {
+    M: [
+      {id:'cMol',  lbl:'moles of solute',   ph:'2'},
+      {id:'cLit',  lbl:'liters of solution', ph:'0.5'}
+    ],
+    ppm: [
+      {id:'cGsol', lbl:'grams of solute',   ph:'0.05'},
+      {id:'cGtot', lbl:'grams of solution', ph:'1000'}
+    ]
+  };
+
+  function build(){
+    let html = '<div class="calc-row">';
+    FIELDS[mode].forEach(f => {
+      html += `<div class="calc-cell"><div class="lbl">${f.lbl}</div><input id="${f.id}" type="number" step="any" placeholder="${f.ph}"></div>`;
+    });
+    html += '</div>';
+    inputs.innerHTML = html;
+    FIELDS[mode].forEach(f => {
+      document.getElementById(f.id).addEventListener('input', compute);
+    });
+    compute();
+  }
+
+  function compute(){
+    if(mode === 'M'){
+      const mol = parseFloat(document.getElementById('cMol').value);
+      const lit = parseFloat(document.getElementById('cLit').value);
+      if(!isFinite(mol) || !isFinite(lit) || lit === 0){
+        out.innerHTML = 'Enter moles and liters to compute molarity.';
+        return;
+      }
+      const M = mol / lit;
+      out.innerHTML = `Molarity = ${mol} / ${lit} = <strong>${M.toFixed(3)} M</strong>`;
+    } else {
+      const gs = parseFloat(document.getElementById('cGsol').value);
+      const gt = parseFloat(document.getElementById('cGtot').value);
+      if(!isFinite(gs) || !isFinite(gt) || gt === 0){
+        out.innerHTML = 'Enter solute and solution masses to compute ppm.';
+        return;
+      }
+      const p = (gs / gt) * 1000000;
+      out.innerHTML = `ppm = (${gs} / ${gt}) &times; 1,000,000 = <strong>${p.toFixed(1)} ppm</strong>`;
+    }
+  }
+
+  modeBtns.forEach(b => {
+    b.addEventListener('click', () => {
+      modeBtns.forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      mode = b.dataset.mode;
+      build();
+    });
+  });
+  build();
+})();
+
+/* ============================================================ */
+/* ============== WIDGET 4: Heat energy calculator ============ */
+/* ============================================================ */
+(function heat(){
+  const inputs = document.getElementById('heatInputs');
+  const out = document.getElementById('heatOut');
+  const modeBtns = document.querySelectorAll('#heatMode .pick-btn');
+  let mode = 'dt';
+
+  function build(){
+    let html = '';
+    if(mode === 'dt'){
+      html = `
+        <div class="calc-cell"><div class="lbl">mass (g)</div><input id="hM" type="number" step="any" placeholder="50"></div>
+        <div class="calc-cell"><div class="lbl">c (J/g&middot;°C)</div><input id="hC" type="number" step="any" placeholder="4.18" value="4.18"></div>
+        <div class="calc-cell"><div class="lbl">T initial (°C)</div><input id="hTi" type="number" step="any" placeholder="25"></div>
+        <div class="calc-cell"><div class="lbl">T final (°C)</div><input id="hTf" type="number" step="any" placeholder="75"></div>
+      `;
+    } else if(mode === 'hf'){
+      html = `
+        <div class="calc-cell"><div class="lbl">mass (g)</div><input id="hM" type="number" step="any" placeholder="50"></div>
+        <div class="calc-cell"><div class="lbl">H_f (J/g)</div><input id="hHf" type="number" step="any" placeholder="334" value="334"></div>
+      `;
+    } else {
+      html = `
+        <div class="calc-cell"><div class="lbl">mass (g)</div><input id="hM" type="number" step="any" placeholder="25"></div>
+        <div class="calc-cell"><div class="lbl">H_v (J/g)</div><input id="hHv" type="number" step="any" placeholder="2260" value="2260"></div>
+      `;
+    }
+    inputs.innerHTML = html;
+    inputs.querySelectorAll('input').forEach(i => i.addEventListener('input', compute));
+    compute();
+  }
+
+  function compute(){
+    const m = parseFloat(document.getElementById('hM') ? document.getElementById('hM').value : NaN);
+    if(!isFinite(m)){
+      out.innerHTML = 'Enter mass to compute heat.';
+      return;
+    }
+    if(mode === 'dt'){
+      const c = parseFloat(document.getElementById('hC').value);
+      const ti = parseFloat(document.getElementById('hTi').value);
+      const tf = parseFloat(document.getElementById('hTf').value);
+      if(!isFinite(c) || !isFinite(ti) || !isFinite(tf)){
+        out.innerHTML = 'Enter mass, c, and both temperatures.';
+        return;
+      }
+      const dT = tf - ti;
+      const q = m * c * dT;
+      out.innerHTML = `<span class="step-label">Formula. </span>$q = mc\\Delta T$<br>` +
+        `<span class="step-label">Plug in. </span>$q = (${m})(${c})(${tf} - ${ti}) = (${m})(${c})(${dT})$<br>` +
+        `<span class="step-label">Answer. </span><strong>q = ${q.toFixed(2)} J</strong>${q < 0 ? ' (negative: heat is released)' : ''}`;
+    } else if(mode === 'hf'){
+      const hf = parseFloat(document.getElementById('hHf').value);
+      if(!isFinite(hf)){ out.innerHTML = 'Enter H_f.'; return; }
+      const q = m * hf;
+      out.innerHTML = `<span class="step-label">Formula. </span>$q = mH_f$<br>` +
+        `<span class="step-label">Plug in. </span>$q = (${m})(${hf})$<br>` +
+        `<span class="step-label">Answer. </span><strong>q = ${q.toFixed(0)} J</strong>`;
+    } else {
+      const hv = parseFloat(document.getElementById('hHv').value);
+      if(!isFinite(hv)){ out.innerHTML = 'Enter H_v.'; return; }
+      const q = m * hv;
+      out.innerHTML = `<span class="step-label">Formula. </span>$q = mH_v$<br>` +
+        `<span class="step-label">Plug in. </span>$q = (${m})(${hv})$<br>` +
+        `<span class="step-label">Answer. </span><strong>q = ${q.toFixed(0)} J</strong>`;
+    }
+    if(window.renderMathInElement){ window.renderMathInElement(out); }
+  }
+
+  modeBtns.forEach(b => {
+    b.addEventListener('click', () => {
+      modeBtns.forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      mode = b.dataset.mode;
+      build();
+    });
+  });
+  build();
+})();
+
+/* ============================================================ */
+/* ============== WIDGET 5: Combined gas law solver =========== */
+/* ============================================================ */
+(function gas(){
+  const ids = ['gP1','gV1','gT1','gP2','gV2','gT2'];
+  const out = document.getElementById('gasOut');
+  const inputs = ids.map(i => document.getElementById(i));
+
+  function compute(){
+    inputs.forEach(i => i.parentElement.classList.remove('solved'));
+    const vals = inputs.map(i => parseFloat(i.value));
+    const blanks = vals.map((v, i) => isFinite(v) ? null : i).filter(i => i !== null);
+    if(blanks.length !== 1){
+      if(blanks.length === 0){
+        // verify
+        const [P1, V1, T1, P2, V2, T2] = vals;
+        const lhs = (P1 * V1) / T1;
+        const rhs = (P2 * V2) / T2;
+        const ratio = Math.abs(lhs - rhs) / Math.max(Math.abs(lhs), Math.abs(rhs), 1);
+        out.innerHTML = `<span class="step-label">All filled. </span>$\\dfrac{P_1 V_1}{T_1} = ${lhs.toFixed(3)}$, $\\dfrac{P_2 V_2}{T_2} = ${rhs.toFixed(3)}$. ${ratio < 0.02 ? 'Consistent.' : '<strong>These do not match.</strong> Check your inputs (and make sure T is in Kelvin).'}`;
+      } else {
+        out.innerHTML = `Leave exactly one cell blank. Currently ${blanks.length} are blank.`;
+      }
+      if(window.renderMathInElement){ window.renderMathInElement(out); }
+      return;
+    }
+    const idx = blanks[0];
+    const [P1, V1, T1, P2, V2, T2] = vals;
+    let answer = NaN, label = '', formula = '';
+    // P1 V1 / T1 = P2 V2 / T2
+    if(idx === 0){ answer = (P2 * V2 * T1) / (V1 * T2); label = 'P₁'; formula = `\\dfrac{P_2 V_2 T_1}{V_1 T_2} = \\dfrac{(${P2})(${V2})(${T1})}{(${V1})(${T2})}`; }
+    if(idx === 1){ answer = (P2 * V2 * T1) / (P1 * T2); label = 'V₁'; formula = `\\dfrac{P_2 V_2 T_1}{P_1 T_2} = \\dfrac{(${P2})(${V2})(${T1})}{(${P1})(${T2})}`; }
+    if(idx === 2){ answer = (P1 * V1 * T2) / (P2 * V2); label = 'T₁'; formula = `\\dfrac{P_1 V_1 T_2}{P_2 V_2} = \\dfrac{(${P1})(${V1})(${T2})}{(${P2})(${V2})}`; }
+    if(idx === 3){ answer = (P1 * V1 * T2) / (V2 * T1); label = 'P₂'; formula = `\\dfrac{P_1 V_1 T_2}{V_2 T_1} = \\dfrac{(${P1})(${V1})(${T2})}{(${V2})(${T1})}`; }
+    if(idx === 4){ answer = (P1 * V1 * T2) / (P2 * T1); label = 'V₂'; formula = `\\dfrac{P_1 V_1 T_2}{P_2 T_1} = \\dfrac{(${P1})(${V1})(${T2})}{(${P2})(${T1})}`; }
+    if(idx === 5){ answer = (P2 * V2 * T1) / (P1 * V1); label = 'T₂'; formula = `\\dfrac{P_2 V_2 T_1}{P_1 V_1} = \\dfrac{(${P2})(${V2})(${T1})}{(${P1})(${V1})}`; }
+
+    if(!isFinite(answer)){
+      out.innerHTML = 'Cannot solve. Check that your other five values are nonzero.';
+      return;
+    }
+    inputs[idx].value = answer.toFixed(3);
+    inputs[idx].parentElement.classList.add('solved');
+    out.innerHTML = `<span class="step-label">Solving for ${label}. </span>$${label} = ${formula} = ${answer.toFixed(3)}$`;
+    if(window.renderMathInElement){ window.renderMathInElement(out); }
+  }
+
+  inputs.forEach(i => {
+    i.addEventListener('input', () => {
+      // Clear any previously auto-filled cell when user edits
+      const t = i.parentElement;
+      if(t.classList.contains('solved')) t.classList.remove('solved');
+      compute();
+    });
+  });
+  compute();
+})();
+
+/* ============================================================ */
+/* ============== WIDGET 6: Heating curve walker ============== */
+/* ============================================================ */
+(function hc(){
+  const svg = document.getElementById('hcSvg');
+  const segName = document.getElementById('hcSegName');
+  const phaseEl = document.getElementById('hcPhase');
+  const keEl = document.getElementById('hcKE');
+  const peEl = document.getElementById('hcPE');
+  const playBtn = document.getElementById('hcPlay');
+  const W = 520, H = 320, P = {l: 50, r: 24, t: 22, b: 40};
+
+  // 5 segments mapping (time, temperature):
+  // (0,-20) solid heating
+  // (15, 0) flat melt to (35, 0)
+  // (35, 0) liquid heating to (60, 100)
+  // (60, 100) flat boil to (90, 100)
+  // (90, 100) gas heating to (110, 140)
+  const PTS = [
+    {t: 0,   T: -20}, {t: 15,  T: 0},
+    {t: 35,  T: 0},   {t: 60,  T: 100},
+    {t: 90,  T: 100}, {t: 110, T: 140}
+  ];
+  const SEGMENTS = [
+    {label: 'Solid heating up',         phase: 'Solid',         ke: 'Increasing', pe: 'Constant',  range: [0, 15]},
+    {label: 'Melting (fusion)',         phase: 'Solid + Liquid', ke: 'Constant',   pe: 'Increasing', range: [15, 35]},
+    {label: 'Liquid heating up',        phase: 'Liquid',        ke: 'Increasing', pe: 'Constant',  range: [35, 60]},
+    {label: 'Boiling (vaporization)',   phase: 'Liquid + Gas',  ke: 'Constant',   pe: 'Increasing', range: [60, 90]},
+    {label: 'Gas heating up',           phase: 'Gas',           ke: 'Increasing', pe: 'Constant',  range: [90, 110]}
+  ];
+
+  function pxX(t){ return P.l + (t / 110) * (W - P.l - P.r); }
+  function pxY(T){ return H - P.b - ((T + 30) / 180) * (H - P.t - P.b); }
+
+  let curSeg = 0;
+  let walkerT = 0;
+  let playing = false;
+  let raf = null, last = 0;
+
+  function render(){
+    let s = '';
+    s += `<rect x="0" y="0" width="${W}" height="${H}" fill="transparent"/>`;
+    // grid
+    for(let T = -30; T <= 150; T += 30){
+      const y = pxY(T);
+      s += `<line x1="${P.l}" y1="${y}" x2="${W - P.r}" y2="${y}" stroke="#e4e8cc" stroke-width="1"/>`;
+      s += `<text x="${P.l - 8}" y="${y + 4}" font-family="Bitter,serif" font-size="11" text-anchor="end" fill="var(--slate)">${T}</text>`;
+    }
+    // axes labels
+    s += `<text x="${(W - P.l) / 2 + P.l}" y="${H - 6}" font-family="Bitter,serif" font-size="12" text-anchor="middle" fill="var(--slate)">Heat added (time) &rarr;</text>`;
+    s += `<text x="14" y="${(H - P.t - P.b) / 2 + P.t}" font-family="Bitter,serif" font-size="12" text-anchor="middle" fill="var(--slate)" transform="rotate(-90 14 ${(H - P.t - P.b) / 2 + P.t})">Temperature (°C)</text>`;
+    // box
+    s += `<rect x="${P.l}" y="${P.t}" width="${W - P.l - P.r}" height="${H - P.t - P.b}" fill="none" stroke="var(--sage-l)" stroke-width="1.5"/>`;
+
+    // Draw all segments lightly, then highlight current
+    for(let i = 0; i < SEGMENTS.length; i++){
+      const a = PTS[i], b = PTS[i + 1];
+      const x1 = pxX(a.t), y1 = pxY(a.T), x2 = pxX(b.t), y2 = pxY(b.T);
+      const isFlat = (a.T === b.T);
+      const baseColor = isFlat ? '#b5503e' : '#143109';
+      const highlight = (i === curSeg);
+      s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${baseColor}" stroke-width="${highlight ? 4 : 2}" opacity="${highlight ? 1 : 0.35}"/>`;
+    }
+    // segment labels in tiny text
+    SEGMENTS.forEach((seg, i) => {
+      const a = PTS[i], b = PTS[i + 1];
+      const mx = (pxX(a.t) + pxX(b.t)) / 2;
+      const my = (pxY(a.T) + pxY(b.T)) / 2 - 8;
+      s += `<text x="${mx}" y="${my}" font-family="Dosis,sans-serif" font-size="10" text-anchor="middle" fill="var(--slate)" opacity="${i === curSeg ? 1 : 0.5}">${seg.label.split(' ')[0]}</text>`;
+    });
+
+    // walker dot
+    const seg = SEGMENTS[curSeg];
+    const a = PTS[curSeg], b = PTS[curSeg + 1];
+    const local = (walkerT - seg.range[0]) / (seg.range[1] - seg.range[0]);
+    const wx = pxX(a.t + (b.t - a.t) * local);
+    const wy = pxY(a.T + (b.T - a.T) * local);
+    s += `<circle cx="${wx}" cy="${wy}" r="8" fill="var(--sage)" stroke="white" stroke-width="2"/>`;
+
+    svg.innerHTML = s;
+    segName.textContent = seg.label;
+    phaseEl.textContent = seg.phase;
+    keEl.textContent = seg.ke;
+    peEl.textContent = seg.pe;
+  }
+
+  function setSeg(i){
+    curSeg = Math.max(0, Math.min(SEGMENTS.length - 1, i));
+    walkerT = SEGMENTS[curSeg].range[0];
+    render();
+  }
+  window.hcPrev = function(){ stop(); setSeg(curSeg - 1); };
+  window.hcNext = function(){ stop(); setSeg(curSeg + 1); };
+  window.hcTogglePlay = function(){ playing ? stop() : play(); };
+
+  function step(ts){
+    if(!last) last = ts;
+    const dt = ts - last; last = ts;
+    walkerT += dt * 0.012; // adjust speed
+    while(walkerT > SEGMENTS[curSeg].range[1]){
+      if(curSeg < SEGMENTS.length - 1){
+        const overshoot = walkerT - SEGMENTS[curSeg].range[1];
+        curSeg++;
+        walkerT = SEGMENTS[curSeg].range[0] + overshoot;
+      } else {
+        walkerT = SEGMENTS[curSeg].range[1];
+        stop();
+        playBtn.textContent = 'Replay';
+        render();
+        return;
+      }
+    }
+    render();
+    raf = requestAnimationFrame(step);
+  }
+  function play(){
+    if(curSeg === SEGMENTS.length - 1 && walkerT >= SEGMENTS[curSeg].range[1]){
+      curSeg = 0; walkerT = 0;
+    }
+    playing = true;
+    last = 0;
+    playBtn.textContent = 'Pause';
+    raf = requestAnimationFrame(step);
+  }
+  function stop(){
+    playing = false;
+    if(raf) cancelAnimationFrame(raf);
+    playBtn.textContent = 'Play';
+  }
+
+  setSeg(0);
+})();
+
+/* ============================================================ */
+/* ============== WIDGET 7: Vapor pressure (Table H) ========== */
+/* ============================================================ */
+(function vp(){
+  const svg = document.getElementById('vpSvg');
+  const tempIn = document.getElementById('vpTemp');
+  const tempRead = document.getElementById('vpTempRead');
+  const out = document.getElementById('vpOut');
+  const W = 520, H = 340, P = {l: 50, r: 80, t: 20, b: 40};
+
+  // Approximate Table H curves: P (kPa) at T (°C). Use Antoine-style fit.
+  const SUBS = [
+    {name: 'Propanone',     color: '#b5503e', bp: 56,  pts: [[0,9],[20,24],[40,57],[56,101.3],[70,142],[85,193],[100,243]]},
+    {name: 'Ethanol',       color: '#9BA06A', bp: 78,  pts: [[0,2],[20,6],[40,18],[60,47],[78,101.3],[90,148],[110,232]]},
+    {name: 'Water',         color: '#525B76', bp: 100, pts: [[0,0.6],[20,2.3],[40,7.4],[60,19.9],[80,47.4],[100,101.3],[120,198]]},
+    {name: 'Ethanoic acid', color: '#143109', bp: 118, pts: [[0,0.5],[20,1.6],[40,5],[60,12],[80,30],[100,57],[118,101.3]]}
+  ];
+
+  function pxX(t){ return P.l + (t / 130) * (W - P.l - P.r); }
+  function pxY(p){ return H - P.b - (p / 220) * (H - P.t - P.b); }
+
+  function valAt(sub, t){
+    // linear interp between adjacent points, with extrapolation past last
+    const pts = sub.pts;
+    if(t <= pts[0][0]) return pts[0][1];
+    for(let i = 0; i < pts.length - 1; i++){
+      if(t <= pts[i + 1][0]){
+        const a = pts[i], b = pts[i + 1];
+        return a[1] + (b[1] - a[1]) * (t - a[0]) / (b[0] - a[0]);
+      }
+    }
+    const a = pts[pts.length - 2], b = pts[pts.length - 1];
+    return b[1] + (b[1] - a[1]) * (t - b[0]) / (b[0] - a[0]);
+  }
+
+  function render(){
+    let s = `<rect x="0" y="0" width="${W}" height="${H}" fill="transparent"/>`;
+    // grid
+    for(let pp = 0; pp <= 220; pp += 50){
+      const y = pxY(pp);
+      s += `<line x1="${P.l}" y1="${y}" x2="${W - P.r}" y2="${y}" stroke="#e4e8cc" stroke-width="1"/>`;
+      s += `<text x="${P.l - 8}" y="${y + 4}" font-family="Bitter,serif" font-size="11" text-anchor="end" fill="var(--slate)">${pp}</text>`;
+    }
+    for(let t = 0; t <= 130; t += 25){
+      const x = pxX(t);
+      s += `<line x1="${x}" y1="${P.t}" x2="${x}" y2="${H - P.b}" stroke="#e4e8cc" stroke-width="1"/>`;
+      s += `<text x="${x}" y="${H - P.b + 16}" font-family="Bitter,serif" font-size="11" text-anchor="middle" fill="var(--slate)">${t}</text>`;
+    }
+    // 101.3 reference line
+    const refY = pxY(101.3);
+    s += `<line x1="${P.l}" y1="${refY}" x2="${W - P.r}" y2="${refY}" stroke="#b5503e" stroke-width="1.4" stroke-dasharray="6 4"/>`;
+    s += `<text x="${W - P.r + 4}" y="${refY + 4}" font-family="Bitter,serif" font-size="10" fill="#b5503e">101.3 kPa (1 atm)</text>`;
+
+    // axes labels
+    s += `<text x="${(W - P.r - P.l) / 2 + P.l}" y="${H - 6}" font-family="Bitter,serif" font-size="12" text-anchor="middle" fill="var(--slate)">Temperature (°C)</text>`;
+    s += `<text x="14" y="${(H - P.t - P.b) / 2 + P.t}" font-family="Bitter,serif" font-size="12" text-anchor="middle" fill="var(--slate)" transform="rotate(-90 14 ${(H - P.t - P.b) / 2 + P.t})">Vapor pressure (kPa)</text>`;
+    // box
+    s += `<rect x="${P.l}" y="${P.t}" width="${W - P.l - P.r}" height="${H - P.t - P.b}" fill="none" stroke="var(--sage-l)" stroke-width="1.5"/>`;
+
+    // Draw curves
+    SUBS.forEach(sub => {
+      let pts = '';
+      for(let t = 0; t <= 130; t += 2){
+        const v = valAt(sub, t);
+        const x = pxX(t), y = pxY(Math.min(v, 220));
+        pts += (t === 0 ? 'M' : 'L') + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+      }
+      s += `<path d="${pts}" stroke="${sub.color}" stroke-width="2.5" fill="none"/>`;
+      // label at the right end (or BP)
+      const labelT = Math.min(125, sub.bp + 6);
+      const labelP = valAt(sub, labelT);
+      const lx = pxX(labelT) + 6;
+      const ly = pxY(Math.min(labelP, 220)) + 4;
+      s += `<text x="${lx}" y="${ly}" font-family="Bitter,serif" font-size="10" fill="${sub.color}">${sub.name}</text>`;
+    });
+
+    // marker at chosen temperature
+    const t = +tempIn.value;
+    const x = pxX(t);
+    s += `<line x1="${x}" y1="${P.t}" x2="${x}" y2="${H - P.b}" stroke="var(--slate)" stroke-width="1" stroke-dasharray="4 3"/>`;
+    SUBS.forEach(sub => {
+      const v = valAt(sub, t);
+      const y = pxY(Math.min(v, 220));
+      s += `<circle cx="${x}" cy="${y}" r="5" fill="${sub.color}" stroke="white" stroke-width="2"/>`;
+    });
+
+    svg.innerHTML = s;
+    tempRead.textContent = t + '°C';
+
+    // readout cards
+    let html = '';
+    SUBS.forEach(sub => {
+      const v = valAt(sub, t);
+      const boiling = v >= 101.3 ? ' <em>(boils)</em>' : '';
+      html += `<div class="vp-cell"><span class="nm" style="color:${sub.color}">${sub.name}</span><span class="pr">${v.toFixed(1)} kPa${boiling}</span></div>`;
+    });
+    out.innerHTML = html;
+  }
+  tempIn.addEventListener('input', render);
+  render();
+})();
+
+/* ============================================================ */
+/* ============== LWS shell: theme toggle + search ============ */
+/* ============================================================ */
+function toggleLwsTheme(){
+  const cur = document.body.dataset.theme || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.body.dataset.theme = next;
+  try{ localStorage.setItem('lws-theme', next); }catch(e){}
+  const btn = document.getElementById('themeBtn');
+  if(btn) btn.innerHTML = next === 'dark' ? '&#9728;' : '&#9790;';
+}
+window.toggleLwsTheme = toggleLwsTheme;
+try{
+  const saved = localStorage.getItem('lws-theme');
+  if(saved === 'dark'){
+    document.body.dataset.theme = 'dark';
+    const btn = document.getElementById('themeBtn');
+    if(btn) btn.innerHTML = '&#9728;';
+  }
+}catch(e){}
+
+(function setupSearch(){
+  const input = document.querySelector('.search input');
+  if(!input) return;
+  const cards = Array.from(document.querySelectorAll('.main .card'));
+  let pgHead = document.querySelector('.main .pg-head');
+  let emptyMsg = null;
+  input.addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    let shown = 0;
+    cards.forEach(card => {
+      if(!q){ card.style.display = ''; shown++; return; }
+      const hit = card.textContent.toLowerCase().includes(q);
+      card.style.display = hit ? '' : 'none';
+      if(hit) shown++;
+    });
+    if(pgHead) pgHead.style.display = q ? 'none' : '';
+    if(q && shown === 0){
+      if(!emptyMsg){
+        emptyMsg = document.createElement('div');
+        emptyMsg.className = 'card';
+        emptyMsg.style.textAlign = 'center';
+        emptyMsg.innerHTML = '<div class="body-text" style="color:var(--slate)">No sections match that search.</div>';
+        document.querySelector('.main').appendChild(emptyMsg);
+      }
+      emptyMsg.style.display = '';
+    } else if(emptyMsg){
+      emptyMsg.style.display = 'none';
+    }
+  });
+  input.addEventListener('keydown', e => {
+    if(e.key === 'Escape'){ input.value = ''; input.dispatchEvent(new Event('input')); }
+  });
+})();
+</script>
+</body>
+</html>
