@@ -69,6 +69,54 @@ MOLECULES = [
     ('4-isopropylheptane',        'CCCC(C(C)C)CCC',   340, 180),
     ('2,2,3,3-tetramethylbutane', 'CC(C)(C)C(C)(C)C', 280, 200),
     ('3-ethyl-3-methylhexane',    'CCC(C)(CC)CCC',    300, 180),
+
+    # Functional groups (Table R) - one example per family
+    ('ethene',           'C=C',           220, 100),
+    ('chloromethane',    'CCl',           200, 120),
+    ('1-chloropropane',  'CCCCl',         260, 140),
+    ('bromoethane',      'CCBr',          220, 140),
+    ('methanol',         'CO',            200, 120),
+    ('ethanol',          'CCO',           220, 120),
+    ('dimethyl-ether',   'COC',           220, 120),
+    ('ethoxyethane',     'CCOCC',         260, 140),
+    ('ethanal',          'CC=O',          220, 120),
+    ('propanal',         'CCC=O',         240, 140),
+    ('propanone',        'CC(=O)C',       240, 140),
+    ('butanone',         'CCC(=O)C',      260, 140),
+    ('ethanoic-acid',    'CC(=O)O',       240, 140),
+    ('methyl-ethanoate', 'CC(=O)OC',      260, 140),
+    ('methylamine',      'CN',            200, 120),
+    ('ethylamine',       'CCN',           220, 120),
+    ('ethanamide',       'CC(=O)N',       240, 140),
+    ('glycine',          'NCC(=O)O',      260, 160),
+
+    # Reaction products / extras
+    ('1,2-dibromoethane','BrCCBr',        240, 140),
+    ('1,2-dichloroethane','ClCCCl',       240, 140),
+    ('sodium-ethanoate', 'CC(=O)[O-].[Na+]', 260, 160),
+
+    # Functional groups practice quiz + transformer
+    ('propan-1-ol',      'CCCO',          240, 120),
+    ('propan-2-ol',      'CC(O)C',        240, 140),
+    ('butan-1-ol',       'CCCCO',         260, 120),
+    ('butan-2-ol',       'CCC(O)C',       260, 140),
+    ('butan-2-one',      'CCC(=O)C',      260, 140),
+    ('propanoic-acid',   'CCC(=O)O',      260, 140),
+    ('butanoic-acid',    'CCCC(=O)O',     280, 140),
+    ('propyl-ethanoate', 'CC(=O)OCCC',    300, 140),
+    ('methyl-propanoate','CCC(=O)OC',     280, 140),
+    ('ethyl-ethanoate',  'CC(=O)OCC',     280, 140),
+    ('propylamine',      'CCCN',          240, 120),
+    ('butan-1-amine',    'CCCCN',         260, 120),
+    ('propanamide',      'CCC(=O)N',      260, 140),
+    ('2-bromopropane',   'CC(Br)C',       240, 140),
+    ('1-bromopropane',   'CCCBr',         260, 140),
+    ('2-chlorobutane',   'CCC(Cl)C',      260, 140),
+    ('glycerol',         'OCC(O)CO',      240, 180),
+
+    # Animation building blocks
+    ('polyethylene-3',   '[*]CCCCCC[*]',  320, 100),
+    ('water',            'O',             100, 80),
 ]
 
 

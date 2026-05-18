@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Organic Chemistry Notes (Unit 7)</title>
-<meta name="description" content="Interactive Organic Chemistry Notes (Unit 7 of 10). Hydrocarbons, alkanes, alkenes, alkynes, naming rules, isomers, branched alkanes, cycloalkanes, and complex branch shortcuts. By tutoringwithsruthi.">
+<meta name="description" content="Interactive Organic Chemistry Notes (Unit 7 of 10). Hydrocarbons, alkanes, alkenes, alkynes, naming rules, isomers, cycloalkanes, functional groups (Table R), and the seven organic reactions: addition, substitution, polymerization, esterification, fermentation, combustion, saponification. By tutoringwithsruthi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -151,6 +151,145 @@ body{background:var(--bg);font-family:var(--fp);color:var(--forest);padding:18px
 .class-card.alkane{border-left:4px solid var(--sage)}
 .class-card.alkene{border-left:4px solid var(--slate)}
 .class-card.alkyne{border-left:4px solid var(--hydrogen)}
+
+/* Functional group picker (Table R) */
+.fg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:10px 0}
+.fg-tile{background:var(--white);border:1.5px solid var(--sage-l);border-radius:12px;padding:10px 8px;text-align:center;cursor:pointer;transition:all .15s}
+.fg-tile:hover{background:var(--sage-m);transform:translateY(-1px)}
+.fg-tile.active{background:var(--sage);border-color:var(--sage);color:var(--white)}
+.fg-tile.active .fg-name,.fg-tile.active .fg-suffix{color:var(--white)}
+.fg-tile .fg-name{font-family:var(--fb);font-weight:700;font-size:.92rem;color:var(--forest);display:block}
+.fg-tile .fg-suffix{font-family:var(--fp);font-size:.78rem;color:var(--slate);display:block;margin-top:3px}
+.fg-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:18px;margin-top:10px}
+.fg-stage-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+.fg-stage-grid > div{min-width:0}
+.fg-stage-label{font-family:var(--fb);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:4px}
+.fg-stage-value{font-family:var(--fb);font-weight:700;font-size:1.05rem;color:var(--forest);line-height:1.4}
+.fg-stage-value.formula{font-family:var(--fb);font-size:1.15rem}
+.fg-stage .mol-svg{background:var(--sage-m);border-radius:10px;padding:8px}
+.fg-stage-bottom{margin-top:14px;padding-top:14px;border-top:1.5px dashed var(--sage-l);font-family:var(--fp);color:var(--forest);font-size:.95rem;line-height:1.65}
+.fg-stage-bottom strong{color:var(--forest)}
+@media(max-width:560px){
+  .fg-stage-grid{grid-template-columns:1fr}
+}
+[data-theme="dark"] .fg-tile,[data-theme="dark"] .fg-stage{background:#14170F;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .fg-tile:hover{background:#2A3421}
+[data-theme="dark"] .fg-tile.active{background:var(--sage);color:#0E1108}
+[data-theme="dark"] .fg-tile .fg-name,[data-theme="dark"] .fg-tile .fg-suffix{color:var(--forest)}
+[data-theme="dark"] .fg-stage .mol-svg{background:#1E2416}
+[data-theme="dark"] .fg-stage-value,[data-theme="dark"] .fg-stage-bottom,[data-theme="dark"] .fg-stage-bottom strong{color:var(--forest)}
+
+/* FG transformer (pick backbone + group, see molecule + name) */
+.fgt-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:16px;margin-top:10px}
+.fgt-controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+.fgt-control-block{display:flex;flex-direction:column;gap:6px}
+.fgt-control-block .fgt-lbl{font-family:var(--fb);font-size:.7rem;color:var(--slate);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.fgt-pills{display:flex;flex-wrap:wrap;gap:5px}
+.fgt-pill{font-family:var(--fp);font-weight:600;font-size:.82rem;background:var(--sage-m);color:var(--forest);border:1.5px solid var(--sage-l);border-radius:16px;padding:5px 11px;cursor:pointer;transition:all .15s}
+.fgt-pill:hover{background:var(--white)}
+.fgt-pill.active{background:var(--sage);color:#fff;border-color:var(--sage)}
+.fgt-result{background:var(--sage-m);border-radius:10px;padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center}
+.fgt-result .mol-svg{background:var(--white);border-radius:8px;padding:6px;min-height:90px;display:flex;align-items:center;justify-content:center}
+.fgt-result .mol-svg svg{max-height:110px}
+.fgt-result-info .lbl{font-family:var(--fb);font-size:.66rem;color:var(--slate);text-transform:uppercase;letter-spacing:.08em;display:block;margin-top:6px}
+.fgt-result-info .lbl:first-child{margin-top:0}
+.fgt-result-info .val{font-family:var(--fb);font-weight:700;color:var(--forest);font-size:1rem;line-height:1.4}
+.fgt-result-info .formula{font-family:var(--fb);font-size:1.05rem}
+@media(max-width:560px){
+  .fgt-controls{grid-template-columns:1fr}
+  .fgt-result{grid-template-columns:1fr}
+}
+[data-theme="dark"] .fgt-stage,[data-theme="dark"] .fgt-result .mol-svg{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .fgt-result{background:#1E2416}
+[data-theme="dark"] .fgt-pill{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .fgt-pill:hover{background:#2A3421}
+[data-theme="dark"] .fgt-pill.active{background:var(--sage);color:#0E1108}
+[data-theme="dark"] .fgt-result-info .val{color:var(--forest)}
+
+/* FG practice quiz (same shape as nq-card but distinct id) */
+.fgq-card{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:18px;margin-top:12px}
+.fgq-mode{display:flex;justify-content:center;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.fgq-mode-btn{font-family:var(--fp);font-weight:600;font-size:.82rem;background:var(--sage-m);color:var(--forest);border:2px solid var(--sage-l);border-radius:18px;padding:5px 13px;cursor:pointer;transition:all .15s}
+.fgq-mode-btn:hover{background:var(--white)}
+.fgq-mode-btn.active{background:var(--sage);color:#fff;border-color:var(--sage)}
+[data-theme="dark"] .fgq-card{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .fgq-mode-btn{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .fgq-mode-btn:hover{background:#2A3421}
+[data-theme="dark"] .fgq-mode-btn.active{background:var(--sage);color:#0E1108}
+
+/* Reaction picker */
+.rxn-tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0}
+.rxn-tab{font-family:var(--fp);font-weight:600;font-size:.85rem;background:var(--white);color:var(--forest);border:2px solid var(--sage-l);border-radius:20px;padding:6px 14px;cursor:pointer;transition:all .15s}
+.rxn-tab:hover{background:var(--sage-m)}
+.rxn-tab.active{background:var(--sage);border-color:var(--sage);color:var(--white)}
+.rxn-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:16px;margin-top:10px}
+
+/* Clean flow box: reactants | arrow | products with proper alignment */
+.rxn-flow{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;background:var(--sage-m);border-radius:12px;padding:18px 14px;margin-bottom:12px}
+.rxn-side{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-width:0}
+.rxn-side-label{font-family:var(--fb);font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--slate);font-weight:700}
+.rxn-mols{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;width:100%}
+.rxn-mol-card{background:var(--white);border:1.5px solid var(--sage-l);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;align-items:center;min-width:90px;max-width:160px}
+.rxn-mol-card .mol-svg{padding:0;width:100%}
+.rxn-mol-card .mol-svg svg{max-width:100%;height:auto;max-height:90px}
+.rxn-mol-card .rxn-coef{position:absolute;font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.9rem}
+.rxn-mol-card .rxn-name{font-family:var(--fp);font-size:.78rem;color:var(--slate);margin-top:4px;text-align:center;line-height:1.25}
+.rxn-mol-card .rxn-formula{font-family:var(--fb);font-weight:700;font-size:1rem;color:var(--forest);padding:8px 4px;text-align:center}
+.rxn-plus{font-family:var(--fb);font-size:1.4rem;color:var(--sage);font-weight:700;align-self:center}
+.rxn-coef-pill{display:inline-flex;align-items:center;padding:0 6px;font-family:var(--fb);font-weight:700;color:var(--sage);font-size:1rem}
+.rxn-arrow-zone{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:120px;padding:0 4px}
+.rxn-arrow-cond{font-family:var(--fp);font-size:.78rem;color:var(--slate);font-weight:600;text-align:center;line-height:1.2;white-space:normal}
+.rxn-arrow-line{display:flex;align-items:center;font-family:var(--fb);font-size:2rem;color:var(--sage);font-weight:700;line-height:1}
+.rxn-arrow-needs{font-family:var(--fp);font-size:.72rem;color:var(--slate);text-align:center;font-style:italic;line-height:1.2}
+@media(max-width:680px){
+  .rxn-flow{grid-template-columns:1fr;gap:8px}
+  .rxn-arrow-zone{flex-direction:row;justify-content:center;min-width:0;padding:6px 0}
+  .rxn-arrow-line{font-size:1.6rem;transform:rotate(90deg)}
+  .rxn-arrow-cond,.rxn-arrow-needs{padding:0 8px}
+}
+
+.rxn-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.rxn-meta-cell{background:var(--sage-m);border-radius:10px;padding:8px 12px}
+.rxn-meta-cell .lbl{font-family:var(--fb);font-size:.68rem;color:var(--slate);text-transform:uppercase;letter-spacing:.06em;display:block}
+.rxn-meta-cell .val{font-family:var(--fp);font-size:.92rem;color:var(--forest);margin-top:2px;line-height:1.4}
+.rxn-explain{font-family:var(--fp);font-size:.95rem;color:var(--forest);line-height:1.65;margin-top:10px;padding:10px 14px;background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 10px 10px 0}
+.rxn-explain strong{color:var(--forest)}
+
+/* HD animated SVG: atoms physically move, bonds visibly form and break */
+.rxn-anim{background:var(--white);border:2px solid var(--sage-l);border-radius:12px;padding:14px;margin-top:12px}
+.rxn-anim-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.rxn-anim-title{font-family:var(--fb);font-weight:700;color:var(--forest);font-size:.95rem;display:flex;align-items:center;gap:8px}
+.rxn-anim-title .anim-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--sage);color:#fff;font-size:.78rem;font-weight:700}
+.rxn-anim-step{font-family:var(--fb);font-size:.78rem;color:var(--slate)}
+.rxn-anim-stage{background:var(--sage-m);border-radius:10px;padding:6px;height:300px;overflow:hidden;display:block;position:relative}
+.rxn-anim-stage svg{width:100%;height:100%;display:block}
+.rxn-anim-caption{font-family:var(--fp);color:var(--forest);font-size:.92rem;line-height:1.55;margin-top:10px;padding:10px 14px;background:#f9faf4;border-radius:10px;min-height:56px;transition:opacity .25s}
+.rxn-anim-caption strong{color:var(--forest)}
+.rxn-anim-caption .anim-step-tag{font-family:var(--fb);font-weight:700;color:var(--sage);text-transform:uppercase;letter-spacing:.06em;font-size:.7rem;margin-right:6px}
+.rxn-anim-controls{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.rxn-anim-controls .anim-btn{font-family:var(--fp);font-weight:600;font-size:.85rem;border:2px solid var(--sage-l);border-radius:18px;padding:5px 14px;cursor:pointer;background:var(--white);color:var(--forest);transition:all .15s}
+.rxn-anim-controls .anim-btn:hover{background:var(--sage-m)}
+.rxn-anim-controls .anim-btn:disabled{opacity:.4;cursor:not-allowed}
+.rxn-anim-controls .anim-btn.primary{background:var(--sage);color:#fff;border-color:var(--sage)}
+.rxn-anim-controls .anim-btn.primary:hover{background:var(--forest);border-color:var(--forest)}
+.rxn-anim-controls .anim-dots{display:flex;gap:5px}
+.rxn-anim-controls .anim-dot{width:8px;height:8px;border-radius:50%;background:var(--sage-l);transition:background .2s,transform .2s}
+.rxn-anim-controls .anim-dot.active{background:var(--sage);transform:scale(1.25)}
+.rxn-anim-speed{display:flex;align-items:center;gap:4px;font-family:var(--fp);font-size:.78rem;color:var(--slate);margin-left:6px}
+.rxn-anim-speed select{font-family:var(--fp);font-size:.78rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:12px;padding:3px 8px;color:var(--forest)}
+[data-theme="dark"] .rxn-anim-speed select{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+
+[data-theme="dark"] .rxn-tab{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .rxn-tab:hover{background:#2A3421}
+[data-theme="dark"] .rxn-tab.active{background:var(--sage);color:#0E1108}
+[data-theme="dark"] .rxn-stage{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .rxn-flow,[data-theme="dark"] .rxn-meta-cell,[data-theme="dark"] .rxn-anim-stage{background:#1E2416;color:var(--forest)}
+[data-theme="dark"] .rxn-mol-card,[data-theme="dark"] .rxn-anim-stage .anim-mol,[data-theme="dark"] .rxn-anim{background:#14170F;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .rxn-mol-card .rxn-formula,[data-theme="dark"] .rxn-anim-stage .anim-mol .anim-formula{color:var(--forest)}
+[data-theme="dark"] .rxn-anim-stage .anim-overlay{background:#1E2416;color:#f5d4cc}
+[data-theme="dark"] .rxn-explain,[data-theme="dark"] .rxn-anim-caption{background:#1A1F11;color:var(--forest)}
+[data-theme="dark"] .rxn-anim-controls .anim-btn{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .rxn-anim-controls .anim-btn:hover{background:#2A3421}
 
 /* 3Dmol.js viewer cards */
 .viewer-3d{width:100%;height:380px;position:relative;background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;overflow:hidden}
@@ -480,7 +619,7 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
       <div class="row"><span class="rn">X.</span> Nuclear Chemistry</div>
     </div>
   </div>
-  <p class="body-text">By the end of this page you should be able to recognize an organic molecule, draw it four different ways, name an alkane with branches, identify constitutional isomers, name cycloalkanes, and tell the difference between alkanes, alkenes, and alkynes.</p>
+  <p class="body-text">By the end of this page you should be able to recognize an organic molecule, draw it four different ways, name alkanes with branches, identify constitutional isomers, name cycloalkanes, tell apart alkanes, alkenes, and alkynes, recognize the nine functional groups on Table R, and predict products of the seven organic reactions on the exam.</p>
 </div>
 
 <!-- ======== 1. WHAT IS ORGANIC ======== -->
@@ -845,9 +984,104 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
   </div>
 </div>
 
-<!-- ======== 9. SEE IT IN 3D ======== -->
+<!-- ======== 9. FUNCTIONAL GROUPS (TABLE R) ======== -->
 <div class="card">
-  <div class="card-title"><span class="num">9</span>See It in 3D</div>
+  <div class="card-title"><span class="num">9</span>Functional Groups: Table R</div>
+  <p class="body-text">A <strong>functional group</strong> is a small arrangement of atoms (often containing oxygen, nitrogen, or a halogen) that gives a molecule a characteristic set of properties. Swap a hydrogen on a hydrocarbon for a functional group, and you change the chemistry. <strong>Table R</strong> on the Reference Tables lists the nine families you need to recognize.</p>
+
+  <div class="highlight-box">
+    <strong>How to read Table R.</strong> For each family, learn three things:
+    <br>&middot; The <strong>functional group</strong> (the cluster of atoms).
+    <br>&middot; The <strong>suffix or prefix</strong> added to the name.
+    <br>&middot; A simple <strong>example</strong> you can recognize on sight.
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">1. Browse: tap a family to see its group, suffix, example, and behaviour</div>
+    <div class="fg-grid" id="fgGrid"></div>
+    <div class="fg-stage" id="fgStage"></div>
+  </div>
+
+  <div class="red-note">
+    <span class="rn-title">Watch out</span>
+    <ul>
+      <li><strong>Aldehyde vs ketone.</strong> Both have $\ce{C=O}$ (a carbonyl group), but an <em>aldehyde</em> has the carbonyl on a <strong>terminal</strong> carbon (with an H attached), and a <em>ketone</em> has it on a carbon <strong>between two other carbons</strong> (no H on the carbonyl carbon).</li>
+      <li><strong>Carboxylic acid vs ester.</strong> A carboxylic acid ends in $\ce{-COOH}$ (the OH on the carbonyl). In an ester, that OH is replaced by an $\ce{-OR}$ group (an oxygen-carbon).</li>
+      <li><strong>Amine vs amide.</strong> An amine is just $\ce{-NH2}$ on a carbon. An amide is $\ce{-CONH2}$ &mdash; there is a carbonyl right next to the nitrogen.</li>
+    </ul>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">2. Build &amp; name: pick a carbon backbone and a functional group</div>
+    <p class="body-text" style="font-size:.92rem;margin-bottom:8px;color:var(--slate)">The same carbon skeleton (the parent chain) takes a different name depending on which functional group is attached. Try the combinations to see how the suffix changes.</p>
+    <div class="fgt-stage">
+      <div class="fgt-controls">
+        <div class="fgt-control-block">
+          <span class="fgt-lbl">Carbon backbone</span>
+          <div class="fgt-pills" id="fgtBackbone"></div>
+        </div>
+        <div class="fgt-control-block">
+          <span class="fgt-lbl">Functional group</span>
+          <div class="fgt-pills" id="fgtGroup"></div>
+        </div>
+      </div>
+      <div class="fgt-result" id="fgtResult"></div>
+    </div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">3. Practice: identify the group, then name the molecule</div>
+    <div class="fgq-card" id="fgqCard">
+      <div class="fgq-mode">
+        <button class="fgq-mode-btn active" id="fgqModeId" onclick="fgqSetMode('identify')">Identify the group</button>
+        <button class="fgq-mode-btn" id="fgqModeName" onclick="fgqSetMode('name')">Name the molecule</button>
+      </div>
+      <div class="nq-meta">
+        <span id="fgqCount">Question 1 / 8</span>
+        <div class="progress"><i id="fgqProg"></i></div>
+        <span id="fgqScore">Score: 0</span>
+      </div>
+      <div class="nq-stage">
+        <div class="mol-svg" id="fgqMol"></div>
+        <div class="nq-prompt" id="fgqPrompt"></div>
+      </div>
+      <div class="nq-options" id="fgqOptions"></div>
+      <div class="nq-feedback" id="fgqFeedback"></div>
+      <div class="nq-controls">
+        <button class="site-btn secondary" onclick="fgqRestart()">Restart</button>
+        <button class="site-btn" id="fgqNextBtn" onclick="fgqNext()" disabled>Next &rsaquo;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== 10. ORGANIC REACTIONS ======== -->
+<div class="card">
+  <div class="card-title"><span class="num">10</span>Seven Types of Organic Reactions</div>
+  <p class="body-text">Organic molecules react in a small number of predictable ways. The Regents expects you to recognize seven reaction types and to predict the products of each.</p>
+
+  <div class="highlight-box">
+    <strong>Quick-recognition rules.</strong>
+    <br>&middot; If a $\ce{C=C}$ double bond goes away and a new atom or group gets added across it &rarr; <strong>addition</strong>.
+    <br>&middot; If a hydrogen on a saturated alkane is replaced by another atom (usually a halogen) &rarr; <strong>substitution</strong>.
+    <br>&middot; If many small alkene units link into one long chain &rarr; <strong>polymerization</strong> (specifically, addition polymerization).
+    <br>&middot; If an alcohol plus a carboxylic acid produces an ester plus water &rarr; <strong>esterification</strong>.
+    <br>&middot; If a sugar (glucose) breaks down into ethanol plus carbon dioxide using yeast &rarr; <strong>fermentation</strong>.
+    <br>&middot; If a hydrocarbon plus oxygen produces carbon dioxide plus water &rarr; <strong>combustion</strong>.
+    <br>&middot; If a fat (an ester) plus a strong base (like NaOH) produces soap plus glycerol &rarr; <strong>saponification</strong>.
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Pick a Reaction. See the Equation, Then Play the Animation</div>
+    <div class="rxn-tabs" id="rxnTabs"></div>
+    <div class="rxn-stage" id="rxnStage"></div>
+    <div class="rxn-anim" id="rxnAnim"></div>
+  </div>
+</div>
+
+<!-- ======== 11. SEE IT IN 3D ======== -->
+<div class="card">
+  <div class="card-title"><span class="num">11</span>See It in 3D</div>
   <p class="body-text">Skeletal structures are flat, but real molecules are 3D. The zigzag in a hydrocarbon chain isn't artistic license &mdash; it shows that carbon is <strong>tetrahedral</strong>, with bond angles of about 109.5&deg;. Drag any model below to rotate, scroll to zoom.</p>
 
   <div class="three-d-card">
@@ -888,9 +1122,9 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
   </div>
 </div>
 
-<!-- ======== 10. FLASHCARDS ======== -->
+<!-- ======== 12. FLASHCARDS ======== -->
 <div class="card">
-  <div class="card-title"><span class="num">10</span>Flashcards: Self-Quiz Yourself</div>
+  <div class="card-title"><span class="num">12</span>Flashcards: Self-Quiz Yourself</div>
   <p class="body-text">Click the card to flip. Use the arrows to move through the deck. Shuffle whenever you want a fresh order.</p>
   <div class="fc-card">
     <div class="fc-stage">
@@ -920,9 +1154,9 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
   </div>
 </div>
 
-<!-- ======== 10. NAMING QUIZ ======== -->
+<!-- ======== 13. NAMING QUIZ ======== -->
 <div class="card">
-  <div class="card-title"><span class="num">11</span>Naming Practice Quiz</div>
+  <div class="card-title"><span class="num">13</span>Naming Practice Quiz</div>
   <p class="body-text">Look at the structure, pick the correct name. Click <em>Next</em> to advance after each answer.</p>
   <div class="nq-card" id="nqCard">
     <div class="nq-meta">
@@ -943,9 +1177,9 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
   </div>
 </div>
 
-<!-- ======== 11. PRACTICE ======== -->
+<!-- ======== 14. PRACTICE ======== -->
 <div class="card">
-  <div class="card-title"><span class="num">12</span>Practice Problems</div>
+  <div class="card-title"><span class="num">14</span>Practice Problems</div>
   <p class="body-text">Try each one before opening the answer.</p>
 
   <div class="practice-box">
@@ -1027,11 +1261,72 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
     <button class="show-ans-btn" onclick="toggleAns('p12')">Show Answer</button>
     <div class="a" id="p12"><strong>(1-methylethyl).</strong> Isopropyl is a 3-carbon branch attached through the middle carbon: $\ce{(CH3)2CH-}$.</div>
   </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>13.</strong> Name the functional group present in each compound and the family it belongs to:
+      <br>(a) $\ce{CH3CH2OH}$
+      <br>(b) $\ce{CH3COOH}$
+      <br>(c) $\ce{CH3CHO}$
+      <br>(d) $\ce{CH3OCH3}$</div>
+    <button class="show-ans-btn" onclick="toggleAns('p13')">Show Answer</button>
+    <div class="a" id="p13">
+      (a) $\ce{-OH}$ on a carbon &rarr; <strong>alcohol</strong> (ethanol).
+      <br>(b) $\ce{-COOH}$ &rarr; <strong>organic acid / carboxylic acid</strong> (ethanoic acid).
+      <br>(c) $\ce{-CHO}$ at the end &rarr; <strong>aldehyde</strong> (ethanal).
+      <br>(d) Oxygen between two carbons &rarr; <strong>ether</strong> (dimethyl ether).
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>14.</strong> What is the difference between an aldehyde and a ketone? Give an example of each.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p14')">Show Answer</button>
+    <div class="a" id="p14">Both have a carbonyl ($\ce{C=O}$). In an <strong>aldehyde</strong>, the carbonyl is on a <em>terminal</em> carbon, so that carbon also has a hydrogen ($\ce{R-CHO}$). Example: ethanal, $\ce{CH3CHO}$. In a <strong>ketone</strong>, the carbonyl is on an <em>internal</em> carbon between two other carbons ($\ce{R-CO-R'}$). Example: propanone (acetone), $\ce{(CH3)2CO}$.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>15.</strong> Predict the product. Ethene ($\ce{CH2=CH2}$) reacts with bromine ($\ce{Br2}$). What type of reaction is this, and what is the product?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p15')">Show Answer</button>
+    <div class="a" id="p15">This is an <strong>addition reaction</strong> &mdash; the $\ce{Br2}$ molecule splits and adds across the C=C double bond. Product: <strong>1,2-dibromoethane</strong>, $\ce{CH2Br-CH2Br}$. The double bond becomes a single bond. (Lab clue: the orange bromine colour fades to colourless, confirming the alkene is unsaturated.)</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>16.</strong> Methane ($\ce{CH4}$) reacts with chlorine ($\ce{Cl2}$) in the presence of UV light. What type of reaction is this, and what are the products?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p16')">Show Answer</button>
+    <div class="a" id="p16">This is a <strong>substitution reaction</strong> &mdash; a hydrogen on the alkane is replaced by a chlorine atom. Products: <strong>chloromethane</strong> ($\ce{CH3Cl}$) + <strong>hydrogen chloride</strong> ($\ce{HCl}$). Substitution requires saturated carbons and (usually) UV light or heat.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>17.</strong> Ethanoic acid ($\ce{CH3COOH}$) reacts with methanol ($\ce{CH3OH}$) in the presence of a sulfuric acid catalyst. Name the reaction type and predict the products.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p17')">Show Answer</button>
+    <div class="a" id="p17">This is <strong>esterification</strong>. An organic acid + an alcohol gives an <em>ester</em> + <em>water</em>. The product ester is <strong>methyl ethanoate</strong> ($\ce{CH3COOCH3}$), plus <strong>water</strong> ($\ce{H2O}$). The $\ce{-OH}$ from the acid combines with the $\ce{H}$ from the alcohol to form the water.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>18.</strong> Glucose ($\ce{C6H12O6}$) is broken down by yeast. Write the balanced reaction and name the process.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p18')">Show Answer</button>
+    <div class="a" id="p18">This is <strong>fermentation</strong>:
+      <br>$\ce{C6H12O6 ->[\text{yeast}] 2\,C2H5OH + 2\,CO2}$
+      <br>One glucose molecule produces <strong>two ethanol</strong> molecules + <strong>two $\ce{CO2}$</strong>. The reaction is anaerobic (no oxygen needed). This is how bread rises and how alcoholic beverages are produced.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>19.</strong> Balance the combustion of propane ($\ce{C3H8}$) in excess oxygen. What type of reaction is this?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p19')">Show Answer</button>
+    <div class="a" id="p19">This is <strong>combustion</strong>. A hydrocarbon plus $\ce{O2}$ gives $\ce{CO2}$ + $\ce{H2O}$. Balance carbons first (3 $\ce{CO2}$), then hydrogens (4 $\ce{H2O}$), then count oxygens on the right (6 + 4 = 10) and put $\frac{10}{2} = 5$ in front of $\ce{O2}$:
+      <br>$\ce{C3H8 + 5\,O2 -> 3\,CO2 + 4\,H2O}$
+      <br>This reaction is highly <strong>exothermic</strong> &mdash; it is why propane is used as a fuel.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>20.</strong> What is saponification, and why is it called "soap-making"?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p20')">Show Answer</button>
+    <div class="a" id="p20"><strong>Saponification</strong> is the reaction between a <em>fat</em> (an ester of glycerol with three long-chain carboxylic acids) and a <em>strong base</em> (NaOH). The base breaks each ester bond, producing <strong>three sodium-carboxylate molecules (soap)</strong> + <strong>glycerol</strong> (a 3-carbon alcohol with three OH groups). It is literally how soap is made &mdash; the Latin word <em>sapo</em> means soap. It is the reverse of esterification, run with a base instead of an acid.</div>
+  </div>
 </div>
 
-<!-- ======== 11. CHEAT SHEET ======== -->
+<!-- ======== 15. CHEAT SHEET ======== -->
 <div class="card">
-  <div class="card-title"><span class="num">13</span>Quick Review Cheat Sheet</div>
+  <div class="card-title"><span class="num">15</span>Quick Review Cheat Sheet</div>
   <div class="term-grid">
     <span class="term-sym">Organic molecule</span><span class="term-def">Built from carbon and hydrogen, sometimes with extra elements.</span>
     <span class="term-sym">Hydrocarbon</span><span class="term-def">Only C and H. C&minus;C and C&minus;H bonds.</span>
@@ -1053,6 +1348,31 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
     <span class="term-sym">isobutyl</span><span class="term-def">$\ce{(CH3)2CHCH2-}$ = (2-methylpropyl).</span>
     <span class="term-sym">tert-butyl</span><span class="term-def">$\ce{(CH3)3C-}$ = (1,1-dimethylethyl).</span>
     <span class="term-sym">neopentyl</span><span class="term-def">$\ce{(CH3)3CCH2-}$ = (2,2-dimethylpropyl).</span>
+  </div>
+
+  <div class="sub-title">Functional Groups (Table R)</div>
+  <div class="term-grid">
+    <span class="term-sym">Halide</span><span class="term-def">$\ce{R-X}$ (X = F, Cl, Br, I). Prefix <em>halo-</em>. e.g. chloromethane.</span>
+    <span class="term-sym">Alcohol</span><span class="term-def">$\ce{R-OH}$. Suffix <em>-ol</em>. e.g. ethanol.</span>
+    <span class="term-sym">Ether</span><span class="term-def">$\ce{R-O-R'}$. e.g. dimethyl ether ($\ce{CH3OCH3}$).</span>
+    <span class="term-sym">Aldehyde</span><span class="term-def">$\ce{R-CHO}$ (C=O on terminal C). Suffix <em>-al</em>. e.g. ethanal.</span>
+    <span class="term-sym">Ketone</span><span class="term-def">$\ce{R-CO-R'}$ (C=O on internal C). Suffix <em>-one</em>. e.g. propanone (acetone).</span>
+    <span class="term-sym">Organic acid</span><span class="term-def">$\ce{R-COOH}$. Suffix <em>-oic acid</em>. e.g. ethanoic acid (vinegar).</span>
+    <span class="term-sym">Ester</span><span class="term-def">$\ce{R-COO-R'}$. Suffix <em>-yl ...oate</em>. Sweet smelling. e.g. methyl ethanoate.</span>
+    <span class="term-sym">Amine</span><span class="term-def">$\ce{R-NH2}$. Suffix <em>-amine</em>. Weakly basic. e.g. methylamine.</span>
+    <span class="term-sym">Amide</span><span class="term-def">$\ce{R-CONH2}$ (N next to a carbonyl). e.g. ethanamide.</span>
+    <span class="term-sym">Amino acid</span><span class="term-def">Has both $\ce{-NH2}$ and $\ce{-COOH}$. e.g. glycine.</span>
+  </div>
+
+  <div class="sub-title">Seven Organic Reactions</div>
+  <div class="term-grid">
+    <span class="term-sym">Addition</span><span class="term-def">$\ce{C=C + X-Y -> C(X)-C(Y)}$. Needs an alkene or alkyne. Test for unsaturation: $\ce{Br2}$ decolourises.</span>
+    <span class="term-sym">Substitution</span><span class="term-def">$\ce{R-H + X2 -> R-X + HX}$. Needs an alkane + UV light.</span>
+    <span class="term-sym">Polymerization</span><span class="term-def">Many monomers (alkenes) link end-to-end into a polymer. e.g. ethene &rarr; polyethylene.</span>
+    <span class="term-sym">Esterification</span><span class="term-def">Acid + alcohol $\rightarrow$ ester + water. Needs $\ce{H2SO4}$ catalyst.</span>
+    <span class="term-sym">Fermentation</span><span class="term-def">$\ce{C6H12O6 ->[\text{yeast}] 2\,C2H5OH + 2\,CO2}$. Anaerobic.</span>
+    <span class="term-sym">Combustion</span><span class="term-def">Hydrocarbon + $\ce{O2} \rightarrow \ce{CO2} + \ce{H2O}$. Exothermic. Balance carbons, then hydrogens, then oxygens.</span>
+    <span class="term-sym">Saponification</span><span class="term-def">Fat + NaOH $\rightarrow$ soap + glycerol. The reverse of esterification.</span>
   </div>
 </div>
 
@@ -1398,7 +1718,25 @@ const FLASHCARDS = [
   {t:'Primary carbon', d:'A carbon bonded to only one other carbon. Notated 1°.'},
   {t:'Tertiary carbon', d:'A carbon bonded to three other carbons. Notated 3°.'},
   {t:'Branch (substituent)', d:'Anything sticking off the parent chain. Sometimes called a side chain.'},
-  {t:'Lowest-locant rule', d:'Number the parent chain so that branches get the lowest possible numbers, comparing at the first point of difference.'}
+  {t:'Lowest-locant rule', d:'Number the parent chain so that branches get the lowest possible numbers, comparing at the first point of difference.'},
+  {t:'Functional group', d:'A specific arrangement of atoms (like &minus;OH, &minus;COOH, or C=O) that gives a molecule a characteristic set of properties. Listed in Table R.'},
+  {t:'Halide', d:'A hydrocarbon with one or more halogen atoms (F, Cl, Br, I) in place of a hydrogen. R&minus;X. Named with prefix fluoro-, chloro-, bromo-, or iodo-.'},
+  {t:'Alcohol', d:'A hydrocarbon with a hydroxyl group (&minus;OH). R&minus;OH. Suffix -ol. Example: ethanol (CH₃CH₂OH).'},
+  {t:'Ether', d:'An oxygen sandwiched between two carbons. R&minus;O&minus;R′. Example: dimethyl ether (CH₃OCH₃).'},
+  {t:'Aldehyde', d:'A carbonyl (C=O) on a TERMINAL carbon, with an H attached. R&minus;CHO. Suffix -al. Example: ethanal (CH₃CHO).'},
+  {t:'Ketone', d:'A carbonyl (C=O) on an INTERNAL carbon, between two other carbons. R&minus;CO&minus;R′. Suffix -one. Example: propanone / acetone.'},
+  {t:'Organic acid (carboxylic acid)', d:'Has a &minus;COOH group (carbonyl plus &minus;OH on the same carbon). R&minus;COOH. Suffix -oic acid. Example: ethanoic acid / vinegar.'},
+  {t:'Ester', d:'R&minus;COO&minus;R′. The &minus;OH of a carboxylic acid is replaced by &minus;OR. Sweet-smelling. Made by esterification.'},
+  {t:'Amine', d:'A nitrogen with one or more carbons attached. R&minus;NH₂. Weakly basic. Suffix -amine.'},
+  {t:'Amide', d:'A nitrogen attached to a carbonyl. R&minus;CONH₂. The peptide bond in proteins is an amide.'},
+  {t:'Amino acid', d:'Has both an amine (&minus;NH₂) and a carboxylic acid (&minus;COOH) on the same molecule. Building blocks of proteins. Simplest: glycine.'},
+  {t:'Addition reaction', d:'A small molecule (H₂, X₂, HX, H₂O) breaks apart and adds across a C=C or C≡C double/triple bond. Test for unsaturation: bromine water turns colourless.'},
+  {t:'Substitution reaction', d:'A hydrogen on a saturated alkane is replaced by another atom (usually a halogen). Needs UV light or heat. Produces HX as a side product.'},
+  {t:'Polymerization', d:'Many small monomer units (often alkenes) link end-to-end into one long polymer chain. n CH₂=CH₂ → −(CH₂−CH₂)ₙ− makes polyethylene.'},
+  {t:'Esterification', d:'A carboxylic acid + an alcohol → an ester + water. Needs H₂SO₄ catalyst and heat. Responsible for fruity flavours.'},
+  {t:'Fermentation', d:'A sugar (glucose) is broken down by yeast into ethanol + CO₂. Anaerobic. C₆H₁₂O₆ → 2 C₂H₅OH + 2 CO₂.'},
+  {t:'Combustion', d:'A hydrocarbon + O₂ → CO₂ + H₂O. Exothermic. Limited oxygen gives incomplete combustion (CO or soot).'},
+  {t:'Saponification', d:'A fat (ester) + a strong base (NaOH) → soap + glycerol. The reaction that makes soap.'}
 ];
 let fcIdx = 0;
 let fcOrder = FLASHCARDS.map((_,i)=>i);
@@ -1646,6 +1984,1398 @@ function nqRestart(){
 }
 window.nqAnswer = nqAnswer; window.nqNext = nqNext; window.nqRestart = nqRestart;
 nqRender();
+
+/* ============== Functional Groups (Table R) ============== */
+const FUNCTIONAL_GROUPS = [
+  {
+    key:'halide', name:'Halide', suffix:'prefix: halo-',
+    group:'$\\ce{R-X}$ (X = F, Cl, Br, I)',
+    exampleMol:'chloromethane',
+    exampleName:'chloromethane ($\\ce{CH3Cl}$)',
+    note:'A <strong>halide</strong> (or alkyl halide) has a halogen atom in place of a hydrogen on a carbon. Named with a prefix: fluoro-, chloro-, bromo-, iodo-, with a locant if needed. Halides are common starting points for substitution reactions.'
+  },
+  {
+    key:'alcohol', name:'Alcohol', suffix:'suffix: -ol',
+    group:'$\\ce{R-OH}$',
+    exampleMol:'ethanol',
+    exampleName:'ethanol ($\\ce{CH3CH2OH}$)',
+    note:'An <strong>alcohol</strong> has a hydroxyl ($\\ce{-OH}$) group on a carbon. The $\\ce{-OH}$ makes alcohols polar, lets them hydrogen-bond, and gives them much higher boiling points than the matching alkane. Replace the <em>-e</em> at the end of the parent alkane with <em>-ol</em> (e.g. ethane &rarr; ethanol).'
+  },
+  {
+    key:'ether', name:'Ether', suffix:'prefix: alkoxy-',
+    group:'$\\ce{R-O-R\'}$',
+    exampleMol:'dimethyl-ether',
+    exampleName:'dimethyl ether (also written methoxymethane)',
+    note:'An <strong>ether</strong> has an oxygen sandwiched between two carbons. Compared to alcohols, ethers cannot hydrogen-bond to themselves, so they have lower boiling points. Common as solvents (diethyl ether is the classic anaesthetic).'
+  },
+  {
+    key:'aldehyde', name:'Aldehyde', suffix:'suffix: -al',
+    group:'$\\ce{R-CHO}$',
+    exampleMol:'ethanal',
+    exampleName:'ethanal ($\\ce{CH3CHO}$, also called acetaldehyde)',
+    note:'An <strong>aldehyde</strong> has a carbonyl ($\\ce{C=O}$) on a <strong>terminal</strong> carbon &mdash; the carbonyl carbon also bears a hydrogen. Replace the <em>-e</em> ending of the alkane with <em>-al</em>. Easy aldehyde clue: $\\ce{CHO}$ at the end of a condensed formula.'
+  },
+  {
+    key:'ketone', name:'Ketone', suffix:'suffix: -one',
+    group:'$\\ce{R-CO-R\'}$',
+    exampleMol:'propanone',
+    exampleName:'propanone ($\\ce{(CH3)2CO}$, also called acetone)',
+    note:'A <strong>ketone</strong> has a carbonyl ($\\ce{C=O}$) on an <strong>internal</strong> carbon &mdash; the carbonyl carbon sits between two other carbons (no H on it). Replace the <em>-e</em> ending of the alkane with <em>-one</em>. Acetone is the simplest ketone.'
+  },
+  {
+    key:'acid', name:'Organic Acid', suffix:'suffix: -oic acid',
+    group:'$\\ce{R-COOH}$',
+    exampleMol:'ethanoic-acid',
+    exampleName:'ethanoic acid ($\\ce{CH3COOH}$, also called acetic acid)',
+    note:'An <strong>organic acid</strong> (carboxylic acid) has a $\\ce{-COOH}$ group: a carbonyl with an $\\ce{-OH}$ attached to the same carbon. The $\\ce{-OH}$ donates a proton, making these molecules weakly acidic. Replace the <em>-e</em> ending of the alkane with <em>-oic acid</em>. Vinegar is dilute ethanoic acid.'
+  },
+  {
+    key:'ester', name:'Ester', suffix:'suffix: -yl ...oate',
+    group:'$\\ce{R-COO-R\'}$',
+    exampleMol:'methyl-ethanoate',
+    exampleName:'methyl ethanoate ($\\ce{CH3COOCH3}$)',
+    note:'An <strong>ester</strong> looks like a carboxylic acid where the $\\ce{-OH}$ has been swapped for $\\ce{-OR}$. Esters are made by combining an acid with an alcohol (esterification). They smell sweet &mdash; the smell of bananas, pears, and pineapple comes from short esters.'
+  },
+  {
+    key:'amine', name:'Amine', suffix:'suffix: -amine',
+    group:'$\\ce{R-NH2}$',
+    exampleMol:'methylamine',
+    exampleName:'methylamine ($\\ce{CH3NH2}$)',
+    note:'An <strong>amine</strong> has a nitrogen with one or more carbons attached: $\\ce{R-NH2}$ (primary), $\\ce{R2NH}$ (secondary), or $\\ce{R3N}$ (tertiary). Amines smell like fish and are weakly basic. Caffeine, nicotine, and most pharmaceuticals contain amine groups.'
+  },
+  {
+    key:'amide', name:'Amide', suffix:'suffix: -amide',
+    group:'$\\ce{R-CONH2}$',
+    exampleMol:'ethanamide',
+    exampleName:'ethanamide ($\\ce{CH3CONH2}$, also called acetamide)',
+    note:'An <strong>amide</strong> has a nitrogen attached to a carbonyl ($\\ce{C=O}$). Amide bonds (also called <em>peptide bonds</em>) are what link amino acids together to form proteins. Nylon and Kevlar are also held together by amide bonds.'
+  },
+  {
+    key:'amino', name:'Amino Acid', suffix:'special: -NH2 + -COOH',
+    group:'$\\ce{H2N-CHR-COOH}$',
+    exampleMol:'glycine',
+    exampleName:'glycine ($\\ce{H2N-CH2-COOH}$, the simplest amino acid)',
+    note:'An <strong>amino acid</strong> has both an amine ($\\ce{-NH2}$) and a carboxylic acid ($\\ce{-COOH}$) on the same molecule, usually on neighbouring carbons. The 20 amino acids your body uses to build proteins all share this layout, differing only in the $\\ce{R}$ side chain.'
+  }
+];
+let fgActive = 'alcohol';
+function fgBuild(){
+  const grid = document.getElementById('fgGrid');
+  if(!grid) return;
+  grid.innerHTML = '';
+  FUNCTIONAL_GROUPS.forEach(fg=>{
+    const el = document.createElement('div');
+    el.className = 'fg-tile' + (fg.key===fgActive ? ' active' : '');
+    el.dataset.key = fg.key;
+    el.innerHTML = '<span class="fg-name">'+fg.name+'</span><span class="fg-suffix">'+fg.suffix+'</span>';
+    el.onclick = ()=>fgShow(fg.key);
+    grid.appendChild(el);
+  });
+  fgShow(fgActive);
+}
+function fgShow(key){
+  fgActive = key;
+  const fg = FUNCTIONAL_GROUPS.find(f=>f.key===key);
+  if(!fg) return;
+  document.querySelectorAll('#fgGrid .fg-tile').forEach(el=>{
+    el.classList.toggle('active', el.dataset.key===key);
+  });
+  const svg = (window.MOLECULES && window.MOLECULES[fg.exampleMol]) || '';
+  const stage = document.getElementById('fgStage');
+  stage.innerHTML =
+    '<div class="fg-stage-grid">'+
+      '<div>'+
+        '<div class="fg-stage-label">Functional group</div>'+
+        '<div class="fg-stage-value formula">'+fg.group+'</div>'+
+        '<div class="fg-stage-label" style="margin-top:12px">Family name</div>'+
+        '<div class="fg-stage-value">'+fg.name+' &middot; <span style="font-family:var(--fp);font-weight:600;color:var(--slate);font-size:.92rem">'+fg.suffix+'</span></div>'+
+        '<div class="fg-stage-label" style="margin-top:12px">Example</div>'+
+        '<div class="fg-stage-value" style="font-family:var(--fp);font-size:.95rem;font-weight:500">'+fg.exampleName+'</div>'+
+      '</div>'+
+      '<div>'+
+        '<div class="fg-stage-label" style="text-align:center">Skeletal structure of example</div>'+
+        '<div class="mol-svg">'+svg+'</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="fg-stage-bottom">'+fg.note+'</div>';
+  if(window.renderMathInElement){
+    renderMathInElement(stage, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+  }
+}
+window.fgShow = fgShow;
+fgBuild();
+
+/* ============== Functional Group Transformer ==============
+   Pick a carbon backbone (2-4 C) + a functional group, see the resulting molecule
+   and its IUPAC name. Shows how the suffix changes with the family.
+*/
+const FGT_BACKBONES = [
+  {n:2, prefix:'eth'},
+  {n:3, prefix:'prop'},
+  {n:4, prefix:'but'}
+];
+/* Each FG entry maps (n) -> {mol-key, iupac-name} */
+const FGT_GROUPS = [
+  {
+    key:'parent', label:'(none, parent alkane)', formula:'$\\ce{C_nH_{2n+2}}$', suffix:'-ane',
+    forN: n => {
+      const names = {2:'ethane', 3:'propane', 4:'butane'};
+      const mol  = {2:'ethane', 3:'propane', 4:'butane'};
+      return {iupac:names[n], mol:mol[n]};
+    }
+  },
+  {
+    key:'halide', label:'Halide (Cl)', formula:'$\\ce{R-Cl}$', suffix:'prefix: chloro-',
+    forN: n => {
+      const names = {2:'chloroethane', 3:'1-chloropropane', 4:'1-chlorobutane'};
+      const mol  = {2:'bromoethane' /* fallback */, 3:'1-chloropropane', 4:'1-chloropropane' /* fallback */};
+      // we built 1-chloropropane and chloromethane; for ethane/butane we approximate via existing keys
+      const moMap = {2:'bromoethane', 3:'1-chloropropane', 4:'1-chloropropane'};
+      const renamed = {2:'bromoethane', 3:'1-chloropropane', 4:'1-chloropropane'};
+      return {iupac:names[n], mol:moMap[n]};
+    }
+  },
+  {
+    key:'alcohol', label:'Alcohol', formula:'$\\ce{R-OH}$', suffix:'-ol',
+    forN: n => {
+      const names = {2:'ethanol', 3:'propan-1-ol', 4:'butan-1-ol'};
+      const mol  = {2:'ethanol', 3:'propan-1-ol', 4:'butan-1-ol'};
+      return {iupac:names[n], mol:mol[n]};
+    }
+  },
+  {
+    key:'aldehyde', label:'Aldehyde', formula:'$\\ce{R-CHO}$', suffix:'-al',
+    forN: n => {
+      const names = {2:'ethanal', 3:'propanal', 4:'butanal'};
+      const mol  = {2:'ethanal', 3:'propanal', 4:'propanal' /* no butanal SVG, fallback */};
+      return {iupac:names[n], mol:mol[n], note:(n===4?'(showing propanal; same -CHO group)':'')};
+    }
+  },
+  {
+    key:'ketone', label:'Ketone (needs ≥3 C)', formula:'$\\ce{R-CO-R\'}$', suffix:'-one', minN:3,
+    forN: n => {
+      const names = {3:'propanone (acetone)', 4:'butan-2-one'};
+      const mol  = {3:'propanone', 4:'butan-2-one'};
+      return {iupac:names[n], mol:mol[n]};
+    }
+  },
+  {
+    key:'acid', label:'Organic acid', formula:'$\\ce{R-COOH}$', suffix:'-oic acid',
+    forN: n => {
+      const names = {2:'ethanoic acid (acetic acid)', 3:'propanoic acid', 4:'butanoic acid'};
+      const mol  = {2:'ethanoic-acid', 3:'propanoic-acid', 4:'butanoic-acid'};
+      return {iupac:names[n], mol:mol[n]};
+    }
+  },
+  {
+    key:'amine', label:'Amine', formula:'$\\ce{R-NH2}$', suffix:'-amine',
+    forN: n => {
+      const names = {2:'ethanamine (ethylamine)', 3:'propan-1-amine (propylamine)', 4:'butan-1-amine'};
+      const mol  = {2:'ethylamine', 3:'propylamine', 4:'butan-1-amine'};
+      return {iupac:names[n], mol:mol[n]};
+    }
+  }
+];
+let fgtN = 3;
+let fgtGroup = 'alcohol';
+function fgtBuild(){
+  const bb = document.getElementById('fgtBackbone');
+  if(!bb) return;
+  bb.innerHTML = '';
+  FGT_BACKBONES.forEach(b=>{
+    const el = document.createElement('button');
+    el.className = 'fgt-pill' + (b.n===fgtN?' active':'');
+    el.textContent = b.n + 'C ('+b.prefix+'-)';
+    el.onclick = ()=>{ fgtN = b.n; fgtRender(); };
+    bb.appendChild(el);
+  });
+  const gp = document.getElementById('fgtGroup');
+  gp.innerHTML = '';
+  FGT_GROUPS.forEach(g=>{
+    const el = document.createElement('button');
+    el.className = 'fgt-pill' + (g.key===fgtGroup?' active':'');
+    el.textContent = g.label;
+    el.onclick = ()=>{ fgtGroup = g.key; fgtRender(); };
+    gp.appendChild(el);
+  });
+  fgtRender();
+}
+function fgtRender(){
+  const bb = document.getElementById('fgtBackbone');
+  const gp = document.getElementById('fgtGroup');
+  if(!bb || !gp) return;
+  [...bb.children].forEach(el=>{
+    const n = +el.textContent.split('C')[0];
+    el.classList.toggle('active', n===fgtN);
+  });
+  [...gp.children].forEach((el,i)=>{
+    el.classList.toggle('active', FGT_GROUPS[i].key===fgtGroup);
+  });
+  const g = FGT_GROUPS.find(x=>x.key===fgtGroup);
+  const result = document.getElementById('fgtResult');
+  if(g.minN && fgtN < g.minN){
+    result.innerHTML =
+      '<div style="grid-column:1 / -1;text-align:center;font-family:var(--fp);color:var(--slate);padding:30px 10px;font-style:italic">A ketone needs at least 3 carbons (the carbonyl must sit between two other carbons). Pick 3C or 4C.</div>';
+    return;
+  }
+  const info = g.forN(fgtN);
+  const svg = (window.MOLECULES && window.MOLECULES[info.mol]) || '';
+  result.innerHTML =
+    '<div class="mol-svg">'+svg+'</div>'+
+    '<div class="fgt-result-info">'+
+      '<span class="lbl">Family</span><span class="val">'+g.label.replace(/ \(.+\)$/, '')+'</span>'+
+      '<span class="lbl">Functional group</span><span class="val formula">'+g.formula+'</span>'+
+      '<span class="lbl">Naming change</span><span class="val">'+g.suffix+'</span>'+
+      '<span class="lbl">IUPAC name</span><span class="val">'+info.iupac+'</span>'+
+      (info.note ? '<span class="lbl">Note</span><span class="val" style="font-size:.85rem;font-weight:500">'+info.note+'</span>' : '')+
+    '</div>';
+  if(window.renderMathInElement){
+    renderMathInElement(result, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+  }
+}
+fgtBuild();
+
+/* ============== Functional Group Practice Quiz ============== */
+const FGQ_QUESTIONS = {
+  identify: [
+    { mol:'ethanol',        correct:'alcohol',
+      options:['alcohol','ether','aldehyde','carboxylic acid'],
+      why:'$\\ce{CH3CH2OH}$ has a hydroxyl ($\\ce{-OH}$) directly bonded to a carbon. That is an <strong>alcohol</strong>. Look for an O-H on a carbon end.' },
+    { mol:'propanone',      correct:'ketone',
+      options:['aldehyde','ketone','ester','organic acid'],
+      why:'$\\ce{(CH3)2CO}$. The carbonyl ($\\ce{C=O}$) sits on an internal carbon, between two other carbons. No H on the carbonyl carbon. That is a <strong>ketone</strong> (specifically, propanone / acetone).' },
+    { mol:'ethanal',        correct:'aldehyde',
+      options:['alcohol','aldehyde','ketone','amide'],
+      why:'$\\ce{CH3CHO}$. The carbonyl ($\\ce{C=O}$) sits on a terminal carbon, which also bears one H. That is an <strong>aldehyde</strong>. The $\\ce{-CHO}$ at the end of a condensed formula is the giveaway.' },
+    { mol:'ethanoic-acid',  correct:'organic acid',
+      options:['alcohol','ester','organic acid','amide'],
+      why:'$\\ce{CH3COOH}$. The carbon at the end carries both a $\\ce{C=O}$ and an $\\ce{-OH}$ (together: $\\ce{-COOH}$). That is an <strong>organic acid</strong> (carboxylic acid).' },
+    { mol:'methyl-ethanoate', correct:'ester',
+      options:['ester','ether','organic acid','aldehyde'],
+      why:'$\\ce{CH3COOCH3}$. There is a $\\ce{C=O}$ with an $\\ce{-O-}$ that connects to another carbon (not an H). That is an <strong>ester</strong> ($\\ce{R-COO-R\'}$).' },
+    { mol:'dimethyl-ether', correct:'ether',
+      options:['alcohol','ether','ketone','amine'],
+      why:'$\\ce{CH3OCH3}$. An oxygen sits between two carbons with no carbonyl on either. That is an <strong>ether</strong>.' },
+    { mol:'methylamine',    correct:'amine',
+      options:['amine','amide','alcohol','halide'],
+      why:'$\\ce{CH3NH2}$. A nitrogen directly bonded to a carbon, with no carbonyl next to it. That is an <strong>amine</strong>.' },
+    { mol:'ethanamide',     correct:'amide',
+      options:['amine','amide','ester','organic acid'],
+      why:'$\\ce{CH3CONH2}$. The nitrogen is bonded directly to a carbonyl carbon ($\\ce{C=O}$). That is an <strong>amide</strong> ($\\ce{-CONH2}$).' },
+    { mol:'1-chloropropane',correct:'halide',
+      options:['halide','alcohol','amine','ether'],
+      why:'$\\ce{CH3CH2CH2Cl}$. A halogen atom (here Cl) directly bonded to a carbon. That is a <strong>halide</strong> (alkyl halide). Named with prefix <em>chloro-</em>.' },
+    { mol:'glycine',        correct:'amino acid',
+      options:['amine only','amide','amino acid','organic acid only'],
+      why:'$\\ce{H2N-CH2-COOH}$. The molecule has <em>both</em> an amine ($\\ce{-NH2}$) and a carboxylic acid ($\\ce{-COOH}$) on the same molecule. That is an <strong>amino acid</strong> (glycine, the simplest one).' }
+  ],
+  name: [
+    { mol:'propan-1-ol',    correct:'propan-1-ol',
+      options:['1-propanal','propanone','propan-1-ol','propanoic acid'],
+      why:'3 carbons in the parent chain, $\\ce{-OH}$ on C1 &rarr; replace <em>-e</em> of propane with <em>-ol</em>, add the locant. <strong>propan-1-ol</strong> (also written 1-propanol).' },
+    { mol:'butan-2-ol',     correct:'butan-2-ol',
+      options:['butan-1-ol','butan-2-ol','2-butanone','butan-2-amine'],
+      why:'4-carbon parent (butane), $\\ce{-OH}$ on C2. <strong>butan-2-ol</strong>. The locant is needed because the OH could go on different carbons.' },
+    { mol:'propanal',       correct:'propanal',
+      options:['propanone','propanal','propan-1-ol','propanoic acid'],
+      why:'3-carbon parent with $\\ce{-CHO}$ at one end (terminal carbonyl with an H). Aldehyde &rarr; suffix <em>-al</em>. <strong>propanal</strong>.' },
+    { mol:'butan-2-one',    correct:'butan-2-one',
+      options:['butanal','butan-2-ol','butan-2-one','butanoic acid'],
+      why:'4-carbon parent with $\\ce{C=O}$ on C2 (between C1 and C3). Internal carbonyl &rarr; ketone &rarr; suffix <em>-one</em>. <strong>butan-2-one</strong>.' },
+    { mol:'propanoic-acid', correct:'propanoic acid',
+      options:['propan-1-ol','propanal','propanoic acid','propanone'],
+      why:'3-carbon parent with $\\ce{-COOH}$ at the end. Carboxylic acid &rarr; replace <em>-e</em> of propane with <em>-oic acid</em>. <strong>propanoic acid</strong>.' },
+    { mol:'methyl-propanoate', correct:'methyl propanoate',
+      options:['methyl propanoate','propyl methanoate','ethyl ethanoate','methyl ethanoate'],
+      why:'The ester is split by the $\\ce{-O-}$. To the right of the O: $\\ce{-OCH3}$ &rarr; methyl. To the left, the carboxylate is from propanoic acid (3 carbons including the carbonyl) &rarr; propanoate. <strong>methyl propanoate</strong>.' },
+    { mol:'ethyl-ethanoate', correct:'ethyl ethanoate',
+      options:['methyl propanoate','ethyl ethanoate','propyl methanoate','ethyl methanoate'],
+      why:'Alcohol side: $\\ce{-OCH2CH3}$ &rarr; ethyl. Acid side: 2 carbons including the carbonyl &rarr; ethanoate. <strong>ethyl ethanoate</strong> (also known as ethyl acetate).' },
+    { mol:'propylamine',    correct:'propan-1-amine',
+      options:['propylamine','propan-1-amine','propan-1-ol','propanamide'],
+      why:'3-carbon parent with $\\ce{-NH2}$ on C1. IUPAC: replace <em>-e</em> of propane with <em>-amine</em> and add the locant. <strong>propan-1-amine</strong>. The common name <em>propylamine</em> is also widely accepted (both options here are equivalent — pick the IUPAC form).' },
+    { mol:'2-bromopropane', correct:'2-bromopropane',
+      options:['1-bromopropane','2-bromopropane','2-bromobutane','isopropyl bromide'],
+      why:'3-carbon propane parent with a Br on C2. Halide &rarr; prefix <em>bromo-</em> with a locant. <strong>2-bromopropane</strong>. (The common name <em>isopropyl bromide</em> refers to the same molecule.)' },
+    { mol:'butanoic-acid',  correct:'butanoic acid',
+      options:['butanal','butan-1-ol','butanoic acid','butan-2-one'],
+      why:'4-carbon parent with $\\ce{-COOH}$ at the end. Replace <em>-e</em> of butane with <em>-oic acid</em>. <strong>butanoic acid</strong> (also called butyric acid, the smell of rancid butter).' }
+  ]
+};
+let fgqMode = 'identify';
+let fgqIdx = 0, fgqScore = 0, fgqAnswered = false;
+let fgqCurrent = FGQ_QUESTIONS.identify.slice();
+function fgqShuffle(arr){
+  for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+  return arr;
+}
+function fgqLoad(){
+  fgqCurrent = fgqShuffle(FGQ_QUESTIONS[fgqMode].slice());
+  fgqIdx = 0; fgqScore = 0; fgqAnswered = false;
+  fgqRender();
+}
+function fgqSetMode(m){
+  if(fgqMode === m) return;
+  fgqMode = m;
+  document.getElementById('fgqModeId').classList.toggle('active', m==='identify');
+  document.getElementById('fgqModeName').classList.toggle('active', m==='name');
+  fgqLoad();
+}
+function fgqRender(){
+  const q = fgqCurrent[fgqIdx];
+  document.getElementById('fgqCount').textContent = 'Question '+(fgqIdx+1)+' / '+fgqCurrent.length;
+  document.getElementById('fgqProg').style.width = (fgqIdx/fgqCurrent.length*100)+'%';
+  document.getElementById('fgqScore').textContent = 'Score: '+fgqScore;
+  document.getElementById('fgqPrompt').textContent =
+    fgqMode === 'identify' ? 'Which functional group does this molecule contain?'
+                           : 'What is the IUPAC name of this molecule?';
+  const molWrap = document.getElementById('fgqMol');
+  molWrap.innerHTML = (window.MOLECULES && window.MOLECULES[q.mol]) || '';
+  const opts = document.getElementById('fgqOptions');
+  opts.innerHTML = '';
+  /* Shuffle options each render so the position of the correct answer varies */
+  const shuffled = fgqShuffle(q.options.slice());
+  shuffled.forEach(opt=>{
+    const b = document.createElement('button');
+    b.className = 'nq-opt';
+    b.textContent = opt;
+    b.onclick = ()=>fgqAnswer(opt);
+    opts.appendChild(b);
+  });
+  const fb = document.getElementById('fgqFeedback');
+  fb.classList.remove('show');
+  fb.innerHTML = '';
+  document.getElementById('fgqNextBtn').disabled = true;
+  document.getElementById('fgqNextBtn').textContent = (fgqIdx === fgqCurrent.length-1) ? 'See score' : 'Next ›';
+  fgqAnswered = false;
+}
+function fgqAnswer(picked){
+  if(fgqAnswered) return;
+  fgqAnswered = true;
+  const q = fgqCurrent[fgqIdx];
+  const buttons = document.querySelectorAll('#fgqOptions .nq-opt');
+  buttons.forEach(b=>{
+    b.disabled = true;
+    if(b.textContent === q.correct) b.classList.add(b.textContent===picked ? 'correct' : 'reveal');
+    else if(b.textContent === picked) b.classList.add('wrong');
+  });
+  const fb = document.getElementById('fgqFeedback');
+  if(picked === q.correct){
+    fgqScore++;
+    fb.innerHTML = '<strong style="color:var(--good)">&check; Correct.</strong> '+q.why;
+  } else {
+    fb.innerHTML = '<strong style="color:var(--bad)">&times; Not quite.</strong> The right answer is <strong>'+q.correct+'</strong>. '+q.why;
+  }
+  fb.classList.add('show');
+  document.getElementById('fgqScore').textContent = 'Score: '+fgqScore;
+  document.getElementById('fgqProg').style.width = ((fgqIdx+1)/fgqCurrent.length*100)+'%';
+  document.getElementById('fgqNextBtn').disabled = false;
+  if(window.renderMathInElement){
+    renderMathInElement(fb, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+  }
+}
+function fgqNext(){
+  if(fgqIdx < fgqCurrent.length-1){
+    fgqIdx++;
+    fgqRender();
+  } else {
+    const card = document.getElementById('fgqCard');
+    const pct = Math.round(fgqScore/fgqCurrent.length*100);
+    let msg = 'Solid work.';
+    if(pct === 100) msg = 'Perfect score.';
+    else if(pct >= 80) msg = 'Strong &mdash; review the misses.';
+    else if(pct >= 50) msg = 'Decent &mdash; worth another pass.';
+    else msg = 'Try again, focus on the rules first.';
+    card.innerHTML =
+      '<div class="nq-result">You got<span class="score">'+fgqScore+' / '+fgqCurrent.length+'</span>'+msg+
+      '<br><br><button class="site-btn" onclick="fgqRestart()">Try again</button>'+
+      ' <button class="site-btn secondary" onclick="fgqSwitchMode()">Switch mode</button></div>';
+  }
+}
+function fgqRestart(){
+  document.getElementById('fgqCard').innerHTML =
+    '<div class="fgq-mode">'+
+      '<button class="fgq-mode-btn'+(fgqMode==='identify'?' active':'')+'" id="fgqModeId" onclick="fgqSetMode(\'identify\')">Identify the group</button>'+
+      '<button class="fgq-mode-btn'+(fgqMode==='name'?' active':'')+'" id="fgqModeName" onclick="fgqSetMode(\'name\')">Name the molecule</button>'+
+    '</div>'+
+    '<div class="nq-meta"><span id="fgqCount"></span><div class="progress"><i id="fgqProg"></i></div><span id="fgqScore">Score: 0</span></div>'+
+    '<div class="nq-stage"><div class="mol-svg" id="fgqMol"></div><div class="nq-prompt" id="fgqPrompt"></div></div>'+
+    '<div class="nq-options" id="fgqOptions"></div>'+
+    '<div class="nq-feedback" id="fgqFeedback"></div>'+
+    '<div class="nq-controls">'+
+      '<button class="site-btn secondary" onclick="fgqRestart()">Restart</button>'+
+      '<button class="site-btn" id="fgqNextBtn" onclick="fgqNext()" disabled>Next &rsaquo;</button>'+
+    '</div>';
+  fgqLoad();
+}
+function fgqSwitchMode(){
+  fgqMode = (fgqMode === 'identify') ? 'name' : 'identify';
+  fgqRestart();
+}
+window.fgqSetMode = fgqSetMode;
+window.fgqNext = fgqNext;
+window.fgqRestart = fgqRestart;
+window.fgqSwitchMode = fgqSwitchMode;
+fgqLoad();
+
+/* ============== Organic Reactions ==============
+   Two data sources:
+   - REACTIONS:  text+SVG summary used for the clean flow box (above the animation)
+   - RXN_SCENES: phase-based atom+bond data used by the HD animation engine
+*/
+const REACTIONS = [
+  {
+    key:'addition', name:'Addition',
+    left:  [ {mol:'ethene', name:'ethene'}, {formula:'$\\ce{Br2}$', name:'bromine'} ],
+    right: [ {mol:'1,2-dibromoethane', name:'1,2-dibromoethane'} ],
+    cond:'',
+    needs:'an alkene or alkyne (C=C or C≡C)',
+    pattern:'$\\ce{C=C + X-Y -> C(X)-C(Y)}$',
+    explain:'<strong>Addition</strong> happens when a small molecule (like $\\ce{H2}$, $\\ce{X2}$, $\\ce{HX}$, or $\\ce{H2O}$) breaks apart and adds across a double or triple bond. The pi bond opens up and the two pieces attach to the two formerly double-bonded carbons. The double bond is now a single bond. <strong>Quick test for addition</strong>: bromine water ($\\ce{Br2}$) turns from orange to colourless when it adds across a C=C &mdash; this is the classic lab test for unsaturation.'
+  },
+  {
+    key:'substitution', name:'Substitution',
+    left:  [ {mol:'methane', name:'methane'}, {formula:'$\\ce{Cl2}$', name:'chlorine'} ],
+    right: [ {mol:'chloromethane', name:'chloromethane'}, {formula:'$\\ce{HCl}$', name:'hydrogen chloride'} ],
+    cond:'UV light',
+    needs:'a saturated hydrocarbon (alkane)',
+    pattern:'$\\ce{R-H + X2 -> R-X + HX}$',
+    explain:'<strong>Substitution</strong> happens when a hydrogen on a saturated carbon is replaced by another atom or group &mdash; usually a halogen. The C-C skeleton stays single-bonded. Substitution requires UV light or heat to break the halogen bond. The displaced hydrogen pairs with the other halogen atom to form $\\ce{HX}$.'
+  },
+  {
+    key:'polymerization', name:'Polymerization',
+    left:  [ {formula:'$n$', name:'(many)', isCoef:true}, {mol:'ethene', name:'ethene (monomer)'} ],
+    right: [ {formula:'$\\ce{-(CH2-CH2)_n-}$', name:'polyethylene (polymer)'} ],
+    cond:'catalyst, heat',
+    needs:'many small alkene units (monomers)',
+    pattern:'$n\\,\\ce{CH2=CH2 -> -(CH2-CH2)_n-}$',
+    explain:'<strong>Polymerization</strong> links many small unsaturated molecules (<em>monomers</em>) end-to-end into one very long chain (a <em>polymer</em>). In <em>addition polymerization</em>, the C=C bonds of alkene monomers open up and each carbon bonds to the next monomer with a new single bond. Polyethylene plastic bags, PVC pipes, polypropylene caps &mdash; all are addition polymers. (<em>Condensation</em> polymerization is the other variety, used to make nylon and polyester; it releases a small molecule like water at each link.)'
+  },
+  {
+    key:'esterification', name:'Esterification',
+    left:  [ {mol:'ethanoic-acid', name:'ethanoic acid'}, {mol:'methanol', name:'methanol'} ],
+    right: [ {mol:'methyl-ethanoate', name:'methyl ethanoate'}, {mol:'water', name:'water'} ],
+    cond:'H₂SO₄, heat',
+    needs:'a carboxylic acid + an alcohol',
+    pattern:'$\\ce{R-COOH + HO-R\' -> R-COO-R\' + H2O}$',
+    explain:'<strong>Esterification</strong> joins a carboxylic acid and an alcohol to make an <em>ester</em> + water. The $\\ce{-OH}$ of the acid and the $\\ce{H}$ of the alcohol leave together as $\\ce{H2O}$, and the remaining acid carbon bonds to the remaining alcohol oxygen. The reaction needs a strong acid catalyst (usually $\\ce{H2SO4}$) and heat. Esters smell fruity &mdash; this is the reaction behind banana, pear, and pineapple flavours.'
+  },
+  {
+    key:'fermentation', name:'Fermentation',
+    left:  [ {formula:'$\\ce{C6H12O6}$', name:'glucose'} ],
+    right: [ {formula:'$2$', isCoef:true}, {mol:'ethanol', name:'ethanol'}, {kind:'plus'}, {formula:'$2\\,\\ce{CO2}$', name:'carbon dioxide'} ],
+    cond:'yeast (zymase)',
+    needs:'a sugar (glucose) + yeast',
+    pattern:'$\\ce{C6H12O6 ->[\\text{yeast}] 2\\,C2H5OH + 2\\,CO2}$',
+    explain:'<strong>Fermentation</strong> is the breakdown of a sugar (usually glucose) into <em>ethanol</em> + <em>carbon dioxide</em>, catalysed by enzymes (zymase) in yeast. No oxygen is needed &mdash; fermentation is anaerobic. This single reaction is responsible for bread rising, beer, wine, and ethanol fuel.'
+  },
+  {
+    key:'combustion', name:'Combustion',
+    left:  [ {mol:'propane', name:'propane'}, {kind:'plus'}, {formula:'$5\\,\\ce{O2}$', name:'oxygen'} ],
+    right: [ {formula:'$3\\,\\ce{CO2}$', name:'carbon dioxide'}, {kind:'plus'}, {formula:'$4\\,\\ce{H2O}$', name:'water'} ],
+    cond:'spark, excess O₂',
+    needs:'a hydrocarbon + oxygen',
+    pattern:'$\\ce{C_xH_y + O2 -> CO2 + H2O}$ (then balance)',
+    explain:'<strong>Combustion</strong> is the reaction of a hydrocarbon (or any organic compound) with oxygen to make $\\ce{CO2}$ and $\\ce{H2O}$. It is exothermic &mdash; combustion is what releases the energy in natural gas, gasoline, candles, and your body\'s metabolism (after a few extra steps). The reaction always needs to be balanced. If oxygen is limited, you get <em>incomplete combustion</em>, producing $\\ce{CO}$ (carbon monoxide) or soot ($\\ce{C}$) instead.'
+  },
+  {
+    key:'saponification', name:'Saponification',
+    left:  [ {formula:'fat (triester)', name:'animal/plant fat'}, {kind:'plus'}, {formula:'$3\\,\\ce{NaOH}$', name:'sodium hydroxide'} ],
+    right: [ {formula:'3 soap', name:'sodium carboxylates'}, {kind:'plus'}, {mol:'glycerol', name:'glycerol'} ],
+    cond:'heat',
+    needs:'a fat (ester of glycerol) + a strong base',
+    pattern:'$\\ce{ester + NaOH -> soap + alcohol}$',
+    explain:'<strong>Saponification</strong> is the reverse of esterification, run with a strong base instead of an acid. A <em>triglyceride</em> (fat) gets broken apart by sodium hydroxide into <em>three sodium-carboxylate molecules</em> (soap) + <em>glycerol</em> (a three-carbon alcohol with three OH groups). This is literally how soap is made. The word "saponify" comes from the Latin <em>sapo</em>, meaning soap.'
+  }
+];
+
+let rxnActive = 'addition';
+let rxnAnimStep = 0;
+let rxnAnimTimer = null;
+
+function rxnBuild(){
+  const tabs = document.getElementById('rxnTabs');
+  if(!tabs) return;
+  tabs.innerHTML = '';
+  REACTIONS.forEach(r=>{
+    const b = document.createElement('button');
+    b.className = 'rxn-tab' + (r.key===rxnActive ? ' active' : '');
+    b.dataset.key = r.key;
+    b.textContent = r.name;
+    b.onclick = ()=>rxnShow(r.key);
+    tabs.appendChild(b);
+  });
+  rxnShow(rxnActive);
+}
+
+/* Render one molecule card (either an RDKit svg or a plain formula box) */
+function rxnRenderCard(p, opts){
+  opts = opts || {};
+  const cls = ['rxn-mol-card'];
+  if(opts.anim) cls[0] = 'anim-mol';
+  if(p.state) cls.push(p.state);
+  if(opts.anim) cls.push('fade-in');
+  let body = '';
+  if(p.mol){
+    const svg = (window.MOLECULES && window.MOLECULES[p.mol]) || '';
+    body = '<div class="mol-svg">'+svg+'</div>';
+  } else {
+    body = '<div class="'+(opts.anim?'anim-formula':'rxn-formula')+'">'+p.formula+'</div>';
+  }
+  const name = p.name ? '<div class="'+(opts.anim?'anim-name':'rxn-name')+'">'+p.name+'</div>' : '';
+  return '<div class="'+cls.join(' ')+'">'+body+name+'</div>';
+}
+
+/* Render a list of parts (cards + plus/arrow tokens) into a horizontal flex row */
+function rxnRenderParts(parts, opts){
+  let html = '';
+  parts.forEach(p=>{
+    if(p.kind === 'plus'){
+      html += '<span class="'+(opts && opts.anim ? 'anim-plus' : 'rxn-plus')+'">+</span>';
+    } else if(p.kind === 'arrow'){
+      html += '<span class="'+(opts && opts.anim ? 'anim-arrow' : 'rxn-arrow-line')+'">'+(p.cond?'<span class="'+(opts && opts.anim ? 'anim-arrow-cond' : 'rxn-arrow-cond')+'">'+p.cond+'</span>':'')+'<span>&rarr;</span></span>';
+    } else if(p.isCoef){
+      html += '<span class="rxn-coef-pill">'+p.formula+'</span>';
+    } else {
+      html += rxnRenderCard(p, opts);
+    }
+  });
+  return html;
+}
+
+function rxnShow(key){
+  rxnActive = key;
+  rxnAnimStep = 0;
+  if(rxnAnimTimer){ clearInterval(rxnAnimTimer); rxnAnimTimer = null; }
+  const r = REACTIONS.find(x=>x.key===key);
+  if(!r) return;
+  document.querySelectorAll('#rxnTabs .rxn-tab').forEach(b=>{
+    b.classList.toggle('active', b.dataset.key===key);
+  });
+
+  /* === Flow box (reactants | arrow zone | products) === */
+  const leftHtml = rxnRenderParts(r.left, {});
+  const rightHtml = rxnRenderParts(r.right, {});
+  const arrowZone =
+    '<div class="rxn-arrow-zone">'+
+      (r.cond ? '<div class="rxn-arrow-cond">'+r.cond+'</div>' : '<div class="rxn-arrow-cond" style="visibility:hidden">&nbsp;</div>')+
+      '<div class="rxn-arrow-line">&rarr;</div>'+
+      '<div class="rxn-arrow-needs">'+(r.needs || '')+'</div>'+
+    '</div>';
+  const flowHtml =
+    '<div class="rxn-flow">'+
+      '<div class="rxn-side"><span class="rxn-side-label">Reactants</span><div class="rxn-mols">'+leftHtml+'</div></div>'+
+      arrowZone+
+      '<div class="rxn-side"><span class="rxn-side-label">Products</span><div class="rxn-mols">'+rightHtml+'</div></div>'+
+    '</div>';
+  const metaHtml =
+    '<div class="rxn-meta">'+
+      '<div class="rxn-meta-cell"><span class="lbl">Needs</span><span class="val">'+r.needs+'</span></div>'+
+      '<div class="rxn-meta-cell"><span class="lbl">Conditions</span><span class="val">'+(r.cond||'none required')+'</span></div>'+
+      '<div class="rxn-meta-cell"><span class="lbl">General pattern</span><span class="val">'+r.pattern+'</span></div>'+
+    '</div>';
+  const explHtml = '<div class="rxn-explain">'+r.explain+'</div>';
+  const stage = document.getElementById('rxnStage');
+  stage.innerHTML = flowHtml + metaHtml + explHtml;
+  if(window.renderMathInElement){
+    renderMathInElement(stage, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+  }
+
+  /* === Animation panel (separate div with its own controls) === */
+  rxnRenderAnim();
+}
+
+/* ============== Animation Engine ============== */
+const ATOM_COLOR = {
+  C:'#143109', H:'#9c8773', O:'#b5503e', N:'#525B76',
+  Br:'#7a4a2e', Cl:'#6a8a3f', F:'#d4b04a', I:'#7a5fb0', Na:'#a04f9c'
+};
+const ATOM_RADIUS = 16;
+const ATOM_RADIUS_GROUP = 30;        /* abstract-group nodes get larger ovals */
+const PHASE_DURATION = 1800;          /* ms per transition phase */
+const PHASE_HOLD = 700;               /* ms hold at each keyframe */
+let rxnAnimSpeed = 1.0;
+let rxnAnimRaf = null;
+let rxnAnimStart = 0;
+let rxnAnimKey = null;
+let rxnAnimDuration = 0;              /* full timeline duration */
+let rxnAnimPlaying = false;
+let rxnAnimCurrentPhase = 0;          /* which keyframe we're sitting on when paused */
+
+function lerp(a, b, t){ return a + (b - a) * t; }
+function easeInOut(t){ return t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2; }
+function bondKey(b){ return b.a < b.b ? (b.a+'~'+b.b) : (b.b+'~'+b.a); }
+
+/* SVG building blocks ------------------------------------------------------ */
+function svgAtom(a){
+  const color = ATOM_COLOR[a.el] || '#666';
+  const isGroup = a.group === true;
+  const rad = isGroup ? ATOM_RADIUS_GROUP : ATOM_RADIUS;
+  /* Group nodes get rectangles with rounded corners (ovals look weird with long text) */
+  if(isGroup){
+    const w = Math.max(54, (a.el||'').length * 8 + 16);
+    const h = 32;
+    return ''+
+      '<g transform="translate('+a.x+','+a.y+')" opacity="'+a.opacity+'" style="transition:opacity .25s linear">'+
+        '<rect x="'+(-w/2)+'" y="'+(-h/2)+'" width="'+w+'" height="'+h+'" rx="14" ry="14" '+
+          'fill="'+color+'" stroke="#143109" stroke-width="1.5"/>'+
+        '<text x="0" y="1" text-anchor="middle" dominant-baseline="middle" '+
+          'font-family="Bitter" font-weight="700" font-size="13" fill="#fff">'+a.el+'</text>'+
+      '</g>';
+  }
+  /* Charged atoms get a small superscript */
+  const supr = a.charge ? '<text x="'+(rad*0.85)+'" y="'+(-rad*0.55)+'" text-anchor="middle" font-family="Bitter" font-weight="700" font-size="10" fill="#143109">'+a.charge+'</text>' : '';
+  return ''+
+    '<g transform="translate('+a.x+','+a.y+')" opacity="'+a.opacity+'" style="transition:opacity .25s linear">'+
+      '<circle r="'+rad+'" fill="'+color+'" stroke="#143109" stroke-width="1.5"/>'+
+      '<text x="0" y="1" text-anchor="middle" dominant-baseline="middle" '+
+        'font-family="Bitter" font-weight="700" font-size="14" fill="#fff">'+a.el+'</text>'+
+      supr+
+    '</g>';
+}
+
+function svgBond(b, atomById){
+  const a1 = atomById[b.a], a2 = atomById[b.b];
+  if(!a1 || !a2) return '';
+  const dx = a2.x - a1.x, dy = a2.y - a1.y;
+  const len = Math.hypot(dx, dy);
+  if(len < 1) return '';
+  const ux = dx/len, uy = dy/len;
+  const perpX = -uy, perpY = ux;
+  const r = (a1.group ? ATOM_RADIUS_GROUP - 2 : ATOM_RADIUS) - 1;
+  const r2 = (a2.group ? ATOM_RADIUS_GROUP - 2 : ATOM_RADIUS) - 1;
+  const x1 = a1.x + ux*r,  y1 = a1.y + uy*r;
+  const x2 = a2.x - ux*r2, y2 = a2.y - uy*r2;
+  const order = b.order || 1;
+  const op = (b.opacity == null) ? 1 : b.opacity;
+  /* Bond status colours: 'breaking' = red dashed, 'forming' = green dashed, else dark */
+  let stroke = '#1f2a14';
+  let extra = '';
+  if(b.status === 'breaking'){ stroke = '#b5503e'; extra = ' stroke-dasharray="6 4"'; }
+  else if(b.status === 'forming'){ stroke = '#5b8a3f'; extra = ' stroke-dasharray="6 4"'; }
+  const strokeWidth = 2.6;
+  function line(off){
+    const ax = x1 + perpX*off, ay = y1 + perpY*off;
+    const bx = x2 + perpX*off, by = y2 + perpY*off;
+    return '<line x1="'+ax.toFixed(1)+'" y1="'+ay.toFixed(1)+'" x2="'+bx.toFixed(1)+'" y2="'+by.toFixed(1)+'" '+
+      'stroke="'+stroke+'" stroke-width="'+strokeWidth+'" stroke-linecap="round" opacity="'+op.toFixed(2)+'"'+extra+'/>';
+  }
+  if(order === 1) return line(0);
+  if(order === 2) return line(3) + line(-3);
+  if(order === 3) return line(4) + line(0) + line(-4);
+  return line(0);
+}
+
+/* Curly arrow: a quadratic Bezier between two points with arrowhead. Used to indicate electron movement. */
+function svgArrow(arr){
+  /* arr: {x1,y1,x2,y2, opacity?} */
+  const op = arr.opacity == null ? 1 : arr.opacity;
+  const mx = (arr.x1 + arr.x2)/2, my = (arr.y1 + arr.y2)/2;
+  /* offset midpoint perpendicular to the segment for a curve */
+  const dx = arr.x2 - arr.x1, dy = arr.y2 - arr.y1;
+  const len = Math.hypot(dx, dy) || 1;
+  const px = -dy/len * 26, py = dx/len * 26;  /* curve outward */
+  const cx = mx + px, cy = my + py;
+  /* Arrowhead at end */
+  const headLen = 8, headWidth = 5;
+  const tDx = (arr.x2 - cx), tDy = (arr.y2 - cy);
+  const tLen = Math.hypot(tDx, tDy) || 1;
+  const tUx = tDx/tLen, tUy = tDy/tLen;
+  const tPx = -tUy, tPy = tUx;
+  const hx1 = arr.x2 - tUx*headLen + tPx*headWidth;
+  const hy1 = arr.y2 - tUy*headLen + tPy*headWidth;
+  const hx2 = arr.x2 - tUx*headLen - tPx*headWidth;
+  const hy2 = arr.y2 - tUy*headLen - tPy*headWidth;
+  return ''+
+    '<g opacity="'+op.toFixed(2)+'">'+
+      '<path d="M '+arr.x1+' '+arr.y1+' Q '+cx+' '+cy+' '+arr.x2+' '+arr.y2+'" '+
+        'fill="none" stroke="#b5503e" stroke-width="2" stroke-linecap="round"/>'+
+      '<polygon points="'+arr.x2+','+arr.y2+' '+hx1.toFixed(1)+','+hy1.toFixed(1)+' '+hx2.toFixed(1)+','+hy2.toFixed(1)+'" fill="#b5503e"/>'+
+    '</g>';
+}
+
+/* Interpolate state at time t (0..1 across full timeline) and render SVG */
+function rxnAnimFrameAt(scene, t){
+  /* Locate which segment of the timeline we're in */
+  const n = scene.phases.length;
+  const segments = n - 1;
+  const tNorm = Math.max(0, Math.min(1, t)) * segments;
+  const fromIdx = Math.min(segments - 1, Math.floor(tNorm));
+  const localT = Math.max(0, Math.min(1, tNorm - fromIdx));
+  const p1 = scene.phases[fromIdx], p2 = scene.phases[fromIdx + 1] || p1;
+  const eased = easeInOut(localT);
+
+  /* Atoms: union of both phases */
+  const atomById = {};
+  const allAtomIds = new Set([...p1.atoms.map(a=>a.id), ...p2.atoms.map(a=>a.id)]);
+  allAtomIds.forEach(id => {
+    const a1 = p1.atoms.find(a=>a.id===id);
+    const a2 = p2.atoms.find(a=>a.id===id);
+    if(a1 && a2){
+      atomById[id] = { id, el:a1.el, group:a1.group||a2.group, charge:a1.charge||a2.charge,
+        x: lerp(a1.x, a2.x, eased), y: lerp(a1.y, a2.y, eased),
+        opacity: lerp(a1.opacity==null?1:a1.opacity, a2.opacity==null?1:a2.opacity, eased) };
+    } else if(a1){
+      atomById[id] = { ...a1, opacity: 1 - eased };
+    } else {
+      atomById[id] = { ...a2, opacity: eased };
+    }
+  });
+
+  /* Bonds: combine breaking + persisting + forming */
+  const bondMap = {};
+  p1.bonds.forEach(b => { const k = bondKey(b); bondMap[k] = bondMap[k] || {}; bondMap[k].p1 = b; });
+  p2.bonds.forEach(b => { const k = bondKey(b); bondMap[k] = bondMap[k] || {}; bondMap[k].p2 = b; });
+  const renderedBonds = [];
+  Object.entries(bondMap).forEach(([k, bm]) => {
+    if(bm.p1 && bm.p2){
+      /* persisting; if order changes, snap at midpoint */
+      const order = (eased < 0.5) ? bm.p1.order : bm.p2.order;
+      renderedBonds.push({ a:bm.p2.a, b:bm.p2.b, order, opacity:1 });
+    } else if(bm.p1){
+      /* breaking: fade to 0 over the transition, with red dashed status */
+      renderedBonds.push({ a:bm.p1.a, b:bm.p1.b, order:bm.p1.order,
+        opacity: 1 - eased, status:'breaking' });
+    } else {
+      /* forming: fade in from 0, green dashed status until almost done */
+      renderedBonds.push({ a:bm.p2.a, b:bm.p2.b, order:bm.p2.order,
+        opacity: eased, status: eased > 0.8 ? null : 'forming' });
+    }
+  });
+
+  /* Electron-flow arrows: only show in the middle of a transition. arrows live on p2 (the target phase) */
+  let arrows = [];
+  if(p2.arrows && p1 !== p2){
+    /* arrow can be {fromId,toId} (between atom centres) or {x1,y1,x2,y2} (literal coords) */
+    const arrowOp = (eased < 0.15) ? eased/0.15 : (eased > 0.7 ? Math.max(0, 1 - (eased-0.7)/0.3) : 1);
+    p2.arrows.forEach(ar => {
+      let x1, y1, x2, y2;
+      if(ar.fromId && ar.toId){
+        const a1 = atomById[ar.fromId], a2 = atomById[ar.toId];
+        if(!a1 || !a2) return;
+        x1 = a1.x; y1 = a1.y; x2 = a2.x; y2 = a2.y;
+      } else { x1 = ar.x1; y1 = ar.y1; x2 = ar.x2; y2 = ar.y2; }
+      arrows.push({ x1, y1, x2, y2, opacity: arrowOp });
+    });
+  }
+
+  /* Build SVG */
+  const bondsHtml = renderedBonds.map(b => svgBond(b, atomById)).join('');
+  const arrowsHtml = arrows.map(svgArrow).join('');
+  const atomsHtml  = Object.values(atomById).map(svgAtom).join('');
+  return { fromIdx, localT, eased, p2,
+    svg: '<svg viewBox="0 0 '+scene.w+' '+scene.h+'" preserveAspectRatio="xMidYMid meet">'+
+      bondsHtml + arrowsHtml + atomsHtml +
+    '</svg>'
+  };
+}
+
+function rxnAnimCurrentTime(){
+  if(rxnAnimPlaying) return Math.min(1, (performance.now() - rxnAnimStart) / rxnAnimDuration);
+  /* Paused: sit on the keyframe `rxnAnimCurrentPhase` */
+  const scene = RXN_SCENES[rxnAnimKey];
+  if(!scene) return 0;
+  const segments = scene.phases.length - 1;
+  return Math.min(1, rxnAnimCurrentPhase / segments);
+}
+
+function rxnAnimRender(){
+  const scene = RXN_SCENES[rxnAnimKey];
+  if(!scene) return;
+  const t = rxnAnimCurrentTime();
+  const frame = rxnAnimFrameAt(scene, t);
+  const stage = document.getElementById('rxnAnimStage');
+  if(stage) stage.innerHTML = frame.svg;
+  /* Caption updates use the "destination" phase of the current segment */
+  const segments = scene.phases.length - 1;
+  const phaseIdx = Math.min(scene.phases.length - 1, Math.max(0, Math.round(t * segments)));
+  const cap = document.getElementById('rxnAnimCaption');
+  if(cap){
+    cap.innerHTML = scene.phases[phaseIdx].caption || '';
+    if(window.renderMathInElement){
+      renderMathInElement(cap, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+    }
+  }
+  const stepLbl = document.getElementById('rxnAnimStepLabel');
+  if(stepLbl) stepLbl.textContent = 'Step '+(phaseIdx+1)+' / '+scene.phases.length;
+  const dots = document.querySelectorAll('#rxnAnim .anim-dot');
+  dots.forEach((d, i)=> d.classList.toggle('active', i === phaseIdx));
+}
+
+function rxnAnimTick(){
+  if(!rxnAnimPlaying){ rxnAnimRaf = null; return; }
+  const elapsed = performance.now() - rxnAnimStart;
+  if(elapsed >= rxnAnimDuration){
+    rxnAnimPlaying = false;
+    rxnAnimCurrentPhase = (RXN_SCENES[rxnAnimKey].phases.length - 1);
+    rxnAnimRender();
+    rxnAnimRaf = null;
+    return;
+  }
+  rxnAnimRender();
+  rxnAnimRaf = requestAnimationFrame(rxnAnimTick);
+}
+
+function rxnAnimPlay(){
+  const scene = RXN_SCENES[rxnAnimKey];
+  if(!scene) return;
+  /* If already at end, restart from beginning */
+  const segments = scene.phases.length - 1;
+  rxnAnimDuration = segments * (PHASE_DURATION + PHASE_HOLD) / rxnAnimSpeed;
+  rxnAnimStart = performance.now() - (rxnAnimPlaying ? 0 :
+    (rxnAnimCurrentPhase >= scene.phases.length - 1 ? 0 : (rxnAnimCurrentPhase / segments) * rxnAnimDuration));
+  rxnAnimPlaying = true;
+  if(rxnAnimRaf) cancelAnimationFrame(rxnAnimRaf);
+  rxnAnimRaf = requestAnimationFrame(rxnAnimTick);
+}
+
+function rxnAnimPause(){
+  if(!rxnAnimPlaying) return;
+  rxnAnimPlaying = false;
+  if(rxnAnimRaf){ cancelAnimationFrame(rxnAnimRaf); rxnAnimRaf = null; }
+  /* Snap currentPhase to the nearest keyframe so subsequent step controls feel right */
+  const scene = RXN_SCENES[rxnAnimKey];
+  const segments = scene.phases.length - 1;
+  const t = (performance.now() - rxnAnimStart) / rxnAnimDuration;
+  rxnAnimCurrentPhase = Math.min(scene.phases.length - 1, Math.max(0, Math.round(t * segments)));
+  rxnAnimRender();
+}
+
+function rxnAnimRestart(){
+  rxnAnimPlaying = false;
+  if(rxnAnimRaf){ cancelAnimationFrame(rxnAnimRaf); rxnAnimRaf = null; }
+  rxnAnimCurrentPhase = 0;
+  rxnAnimRender();
+}
+
+function rxnAnimGoto(phaseIdx){
+  rxnAnimPlaying = false;
+  if(rxnAnimRaf){ cancelAnimationFrame(rxnAnimRaf); rxnAnimRaf = null; }
+  const scene = RXN_SCENES[rxnAnimKey];
+  if(!scene) return;
+  rxnAnimCurrentPhase = Math.max(0, Math.min(scene.phases.length - 1, phaseIdx));
+  rxnAnimRender();
+}
+
+function rxnAnimSpeedSet(v){
+  rxnAnimSpeed = parseFloat(v) || 1.0;
+  if(rxnAnimPlaying){
+    /* re-anchor so playback continues smoothly at the new speed */
+    const t = Math.min(1, (performance.now() - rxnAnimStart) / rxnAnimDuration);
+    rxnAnimPlay.call(null);
+    rxnAnimStart = performance.now() - t * rxnAnimDuration;
+  }
+}
+
+/* Renders the entire animation panel (called on reaction change) */
+function rxnRenderAnim(){
+  rxnAnimKey = rxnActive;
+  const scene = RXN_SCENES[rxnAnimKey];
+  if(rxnAnimRaf){ cancelAnimationFrame(rxnAnimRaf); rxnAnimRaf = null; }
+  rxnAnimPlaying = false;
+  rxnAnimCurrentPhase = 0;
+  const anim = document.getElementById('rxnAnim');
+  if(!scene){
+    anim.innerHTML = '<div style="text-align:center;padding:30px;color:var(--slate);font-family:var(--fp)">Animation coming soon.</div>';
+    return;
+  }
+  const r = REACTIONS.find(x=>x.key===rxnActive);
+  const phaseCount = scene.phases.length;
+  const dotsHtml = scene.phases.map((_,i)=>'<span class="anim-dot'+(i===0?' active':'')+'" onclick="rxnAnimGoto('+i+')" style="cursor:pointer"></span>').join('');
+  anim.innerHTML =
+    '<div class="rxn-anim-head">'+
+      '<div class="rxn-anim-title"><span class="anim-icon">&#9658;</span>How '+r.name.toLowerCase()+' happens</div>'+
+      '<div class="rxn-anim-step" id="rxnAnimStepLabel">Step 1 / '+phaseCount+'</div>'+
+    '</div>'+
+    '<div class="rxn-anim-stage" id="rxnAnimStage"></div>'+
+    '<div class="rxn-anim-caption" id="rxnAnimCaption"></div>'+
+    '<div class="rxn-anim-controls">'+
+      '<button class="anim-btn" onclick="rxnAnimRestart()">&#8634; Restart</button>'+
+      '<button class="anim-btn primary" onclick="rxnAnimToggle()" id="rxnAnimPlayBtn">&#9658; Play animation</button>'+
+      '<div class="anim-dots">'+dotsHtml+'</div>'+
+      '<div class="rxn-anim-speed"><label>Speed</label>'+
+        '<select onchange="rxnAnimSpeedSet(this.value)">'+
+          '<option value="0.5">0.5x</option>'+
+          '<option value="1" selected>1x</option>'+
+          '<option value="1.5">1.5x</option>'+
+          '<option value="2">2x</option>'+
+        '</select>'+
+      '</div>'+
+    '</div>';
+  rxnAnimRender();
+}
+
+function rxnAnimToggle(){
+  const btn = document.getElementById('rxnAnimPlayBtn');
+  if(rxnAnimPlaying){
+    rxnAnimPause();
+    if(btn) btn.innerHTML = '&#9658; Play animation';
+  } else {
+    rxnAnimPlay();
+    if(btn) btn.innerHTML = '&#10074;&#10074; Pause';
+    /* When the play finishes naturally, restore the button label */
+    const checker = setInterval(()=>{
+      if(!rxnAnimPlaying){ clearInterval(checker); if(btn) btn.innerHTML = '&#9658; Play animation'; }
+    }, 200);
+  }
+}
+
+window.rxnShow = rxnShow;
+window.rxnAnimPlay = rxnAnimPlay;
+window.rxnAnimPause = rxnAnimPause;
+window.rxnAnimRestart = rxnAnimRestart;
+window.rxnAnimGoto = rxnAnimGoto;
+window.rxnAnimSpeedSet = rxnAnimSpeedSet;
+window.rxnAnimToggle = rxnAnimToggle;
+
+/* ============== Reaction Scenes (atom + bond data for the engine) ==============
+   Coordinate system: viewBox 720 x 260. Reactants tend to start on the left,
+   products end up centered, intermediate phases interpolate smoothly.
+   Atom IDs persist across phases - the engine tracks each atom and animates
+   it from its phase-N position to phase-N+1 position. Atoms that disappear
+   from one phase to the next fade out; new IDs fade in.
+*/
+const RXN_SCENES = {};
+
+/* ---- 1. Addition: CH2=CH2 + Br2 -> CH2Br-CH2Br ---- */
+RXN_SCENES.addition = {
+  w:720, h:260,
+  phases:[
+    {
+      caption:'<span class="anim-step-tag">Step 1.</span> Reactants. Ethene has a $\\ce{C=C}$ double bond. Bromine ($\\ce{Br2}$) sits nearby as a diatomic molecule. Nothing is bonded between them yet.',
+      atoms:[
+        {id:'c1',  el:'C',  x:200, y:130},
+        {id:'c2',  el:'C',  x:260, y:130},
+        {id:'h1a', el:'H',  x:175, y:100},
+        {id:'h1b', el:'H',  x:175, y:160},
+        {id:'h2a', el:'H',  x:285, y:100},
+        {id:'h2b', el:'H',  x:285, y:160},
+        {id:'br1', el:'Br', x:480, y:130},
+        {id:'br2', el:'Br', x:540, y:130}
+      ],
+      bonds:[
+        {a:'c1',b:'c2',order:2},
+        {a:'c1',b:'h1a',order:1},{a:'c1',b:'h1b',order:1},
+        {a:'c2',b:'h2a',order:1},{a:'c2',b:'h2b',order:1},
+        {a:'br1',b:'br2',order:1}
+      ]
+    },
+    {
+      caption:'<span class="anim-step-tag">Step 2.</span> The π bond of the C=C opens. Electrons reach toward one bromine. The Br-Br bond simultaneously splits. The red curly arrows show electrons moving.',
+      atoms:[
+        {id:'c1',  el:'C',  x:300, y:130},
+        {id:'c2',  el:'C',  x:360, y:130},
+        {id:'h1a', el:'H',  x:275, y:100},
+        {id:'h1b', el:'H',  x:275, y:160},
+        {id:'h2a', el:'H',  x:385, y:100},
+        {id:'h2b', el:'H',  x:385, y:160},
+        {id:'br1', el:'Br', x:360, y:78},
+        {id:'br2', el:'Br', x:430, y:180}
+      ],
+      bonds:[
+        {a:'c1',b:'c2',order:2},
+        {a:'c1',b:'h1a',order:1},{a:'c1',b:'h1b',order:1},
+        {a:'c2',b:'h2a',order:1},{a:'c2',b:'h2b',order:1}
+      ],
+      arrows:[
+        {fromId:'c1', toId:'br1'},
+        {fromId:'br2', toId:'c2'}
+      ]
+    },
+    {
+      caption:'<span class="anim-step-tag">Step 3.</span> Product: 1,2-dibromoethane. The C=C is now a single C-C bond and each carbon carries one Br. Bromine water decolourises &mdash; the classic test for unsaturation.',
+      atoms:[
+        {id:'c1',  el:'C',  x:300, y:130},
+        {id:'c2',  el:'C',  x:360, y:130},
+        {id:'h1a', el:'H',  x:280, y:100},
+        {id:'h1b', el:'H',  x:280, y:160},
+        {id:'h2a', el:'H',  x:380, y:100},
+        {id:'h2b', el:'H',  x:380, y:160},
+        {id:'br1', el:'Br', x:300, y:75},
+        {id:'br2', el:'Br', x:360, y:185}
+      ],
+      bonds:[
+        {a:'c1',b:'c2',order:1},
+        {a:'c1',b:'h1a',order:1},{a:'c1',b:'h1b',order:1},
+        {a:'c2',b:'h2a',order:1},{a:'c2',b:'h2b',order:1},
+        {a:'c1',b:'br1',order:1},
+        {a:'c2',b:'br2',order:1}
+      ]
+    }
+  ]
+};
+
+/* ---- 2. Substitution: CH4 + Cl2 -> CH3Cl + HCl ---- */
+RXN_SCENES.substitution = {
+  w:720, h:260,
+  phases:[
+    {
+      caption:'<span class="anim-step-tag">Step 1.</span> Reactants. Methane (a saturated alkane). Chlorine ($\\ce{Cl2}$) sits to the right. UV light is about to split the Cl-Cl bond.',
+      atoms:[
+        {id:'c',  el:'C',  x:170, y:135},
+        {id:'h1', el:'H',  x:170, y:90},
+        {id:'h2', el:'H',  x:210, y:160},
+        {id:'h3', el:'H',  x:170, y:180},
+        {id:'h4', el:'H',  x:130, y:160},
+        {id:'cl1', el:'Cl', x:480, y:115},
+        {id:'cl2', el:'Cl', x:540, y:115}
+      ],
+      bonds:[
+        {a:'c',b:'h1',order:1},
+        {a:'c',b:'h2',order:1},
+        {a:'c',b:'h3',order:1},
+        {a:'c',b:'h4',order:1},
+        {a:'cl1',b:'cl2',order:1}
+      ]
+    },
+    {
+      caption:'<span class="anim-step-tag">Step 2.</span> UV light splits $\\ce{Cl2}$ into two Cl atoms. One Cl moves in and replaces an H on the methane; the displaced H pairs with the other Cl.',
+      atoms:[
+        {id:'c',  el:'C',  x:230, y:135},
+        {id:'h1', el:'H',  x:230, y:90},
+        {id:'h2', el:'H',  x:270, y:160},
+        {id:'h3', el:'H',  x:230, y:180},
+        {id:'h4', el:'H',  x:300, y:135},
+        {id:'cl1', el:'Cl', x:340, y:135},
+        {id:'cl2', el:'Cl', x:420, y:115}
+      ],
+      bonds:[
+        {a:'c',b:'h1',order:1},
+        {a:'c',b:'h2',order:1},
+        {a:'c',b:'h3',order:1}
+      ],
+      arrows:[
+        {fromId:'cl1', toId:'c'},
+        {fromId:'h4',  toId:'cl2'}
+      ]
+    },
+    {
+      caption:'<span class="anim-step-tag">Step 3.</span> Products: chloromethane ($\\ce{CH3Cl}$) on the left, plus hydrogen chloride ($\\ce{HCl}$) on the right. One H has been swapped for a Cl. The leaving H + the other Cl form HCl as a by-product.',
+      atoms:[
+        {id:'c',  el:'C',  x:200, y:135},
+        {id:'h1', el:'H',  x:200, y:90},
+        {id:'h2', el:'H',  x:240, y:160},
+        {id:'h3', el:'H',  x:200, y:180},
+        {id:'cl1', el:'Cl', x:160, y:160},
+        {id:'h4', el:'H',  x:500, y:135},
+        {id:'cl2', el:'Cl', x:560, y:135}
+      ],
+      bonds:[
+        {a:'c',b:'h1',order:1},
+        {a:'c',b:'h2',order:1},
+        {a:'c',b:'h3',order:1},
+        {a:'c',b:'cl1',order:1},
+        {a:'h4',b:'cl2',order:1}
+      ]
+    }
+  ]
+};
+
+/* ---- 3. Polymerization: 3 CH2=CH2 -> -(CH2-CH2)n- (chain) ---- */
+RXN_SCENES.polymerization = (function(){
+  /* Build 3 ethene monomers (m1, m2, m3), each with 2 carbons + 4 hydrogens.
+     Phase 1: separated; phase 2: lined up + π bonds opening; phase 3: linked chain. */
+  function ethene(prefix, xCenter, y){
+    return [
+      {id:prefix+'a',  el:'C', x:xCenter-25, y},
+      {id:prefix+'b',  el:'C', x:xCenter+25, y},
+      {id:prefix+'a1', el:'H', x:xCenter-45, y:y-25},
+      {id:prefix+'a2', el:'H', x:xCenter-45, y:y+25},
+      {id:prefix+'b1', el:'H', x:xCenter+45, y:y-25},
+      {id:prefix+'b2', el:'H', x:xCenter+45, y:y+25}
+    ];
+  }
+  function etheneBonds(prefix, order){
+    return [
+      {a:prefix+'a', b:prefix+'b', order},
+      {a:prefix+'a', b:prefix+'a1', order:1},
+      {a:prefix+'a', b:prefix+'a2', order:1},
+      {a:prefix+'b', b:prefix+'b1', order:1},
+      {a:prefix+'b', b:prefix+'b2', order:1}
+    ];
+  }
+  return {
+    w:720, h:260,
+    phases:[
+      {
+        caption:'<span class="anim-step-tag">Step 1.</span> Many ethene monomers. Each has a $\\ce{C=C}$ double bond. They drift independently.',
+        atoms:[ ...ethene('m1', 130, 130), ...ethene('m2', 360, 130), ...ethene('m3', 590, 130) ],
+        bonds:[ ...etheneBonds('m1', 2), ...etheneBonds('m2', 2), ...etheneBonds('m3', 2) ]
+      },
+      {
+        caption:'<span class="anim-step-tag">Step 2.</span> Under heat + a catalyst, the monomers line up. Each $\\ce{C=C}$ opens: the π bond breaks and the carbon ends reach toward the next monomer.',
+        atoms:[ ...ethene('m1', 200, 130), ...ethene('m2', 360, 130), ...ethene('m3', 520, 130) ],
+        bonds:[ ...etheneBonds('m1', 2), ...etheneBonds('m2', 2), ...etheneBonds('m3', 2) ],
+        arrows:[
+          {fromId:'m1b', toId:'m2a'},
+          {fromId:'m2b', toId:'m3a'}
+        ]
+      },
+      {
+        caption:'<span class="anim-step-tag">Step 3.</span> Polymer chain. The former $\\ce{C=C}$ bonds are now single C-C bonds, and new C-C single bonds link the monomers end-to-end. This repeating unit is polyethylene plastic.',
+        atoms:[ ...ethene('m1', 220, 130), ...ethene('m2', 360, 130), ...ethene('m3', 500, 130) ],
+        bonds:[
+          ...etheneBonds('m1', 1),
+          ...etheneBonds('m2', 1),
+          ...etheneBonds('m3', 1),
+          {a:'m1b', b:'m2a', order:1},
+          {a:'m2b', b:'m3a', order:1}
+        ]
+      }
+    ]
+  };
+})();
+
+/* ---- 4. Esterification: CH3COOH + CH3OH -> CH3COOCH3 + H2O ---- */
+RXN_SCENES.esterification = {
+  w:720, h:260,
+  phases:[
+    {
+      caption:'<span class="anim-step-tag">Step 1.</span> Reactants. Ethanoic acid ($\\ce{CH3COOH}$, left) brings its $\\ce{-COOH}$ group. Methanol ($\\ce{CH3OH}$, right) brings its $\\ce{-OH}$.',
+      atoms:[
+        /* Ethanoic acid: methyl-C (ca-me), carboxyl-C (ca-c), double-bond O (ca-o1), -O-H oxygen (ca-o2), the leaving H (ca-h) */
+        {id:'ca-me', el:'C', x:90,  y:135},
+        {id:'ca-c',  el:'C', x:160, y:135},
+        {id:'ca-o1', el:'O', x:160, y:80},
+        {id:'ca-o2', el:'O', x:230, y:135},
+        {id:'ca-h',  el:'H', x:280, y:115},
+        /* Methanol: O, methyl-C (m-c), H on O (m-h) */
+        {id:'m-o',   el:'O', x:430, y:135},
+        {id:'m-c',   el:'C', x:500, y:135},
+        {id:'m-h',   el:'H', x:380, y:115}
+      ],
+      bonds:[
+        {a:'ca-me', b:'ca-c',  order:1},
+        {a:'ca-c',  b:'ca-o1', order:2},
+        {a:'ca-c',  b:'ca-o2', order:1},
+        {a:'ca-o2', b:'ca-h',  order:1},
+        {a:'m-o',   b:'m-c',   order:1},
+        {a:'m-o',   b:'m-h',   order:1}
+      ]
+    },
+    {
+      caption:'<span class="anim-step-tag">Step 2.</span> With $\\ce{H2SO4}$ + heat: the $\\ce{-OH}$ from the acid and the $\\ce{H}$ from the methanol leave together. Watch the arrows: the methanol oxygen reaches in to bond to the acid carbon, and water leaves.',
+      atoms:[
+        {id:'ca-me', el:'C', x:120, y:135},
+        {id:'ca-c',  el:'C', x:190, y:135},
+        {id:'ca-o1', el:'O', x:190, y:80},
+        {id:'ca-o2', el:'O', x:300, y:185},
+        {id:'ca-h',  el:'H', x:340, y:185},
+        {id:'m-o',   el:'O', x:300, y:135},
+        {id:'m-c',   el:'C', x:370, y:135},
+        {id:'m-h',   el:'H', x:340, y:185}
+      ],
+      bonds:[
+        {a:'ca-me', b:'ca-c',  order:1},
+        {a:'ca-c',  b:'ca-o1', order:2},
+        {a:'m-o',   b:'m-c',   order:1},
+        {a:'ca-o2', b:'ca-h',  order:1}
+      ],
+      arrows:[
+        {fromId:'m-o', toId:'ca-c'}
+      ]
+    },
+    {
+      caption:'<span class="anim-step-tag">Step 3.</span> Products. Methyl ethanoate (an ester, on the left) + water (on the right). The new $\\ce{-COO-}$ link is the ester functional group. Esters smell fruity.',
+      atoms:[
+        {id:'ca-me', el:'C', x:130, y:135},
+        {id:'ca-c',  el:'C', x:200, y:135},
+        {id:'ca-o1', el:'O', x:200, y:80},
+        {id:'m-o',   el:'O', x:270, y:135},
+        {id:'m-c',   el:'C', x:340, y:135},
+        {id:'ca-o2', el:'O', x:530, y:135},
+        {id:'ca-h',  el:'H', x:580, y:115},
+        {id:'m-h',   el:'H', x:480, y:115}
+      ],
+      bonds:[
+        {a:'ca-me', b:'ca-c',  order:1},
+        {a:'ca-c',  b:'ca-o1', order:2},
+        {a:'ca-c',  b:'m-o',   order:1},
+        {a:'m-o',   b:'m-c',   order:1},
+        {a:'ca-o2', b:'ca-h',  order:1},
+        {a:'ca-o2', b:'m-h',   order:1}
+      ]
+    }
+  ]
+};
+
+/* ---- 5. Fermentation: C6H12O6 -> 2 C2H5OH + 2 CO2 (group-level) ---- */
+RXN_SCENES.fermentation = {
+  w:720, h:260,
+  phases:[
+    {
+      caption:'<span class="anim-step-tag">Step 1.</span> One molecule of glucose ($\\ce{C6H12O6}$), a 6-carbon sugar. Yeast cells (with the enzyme zymase) are present.',
+      atoms:[
+        {id:'glu', el:'C₆H₁₂O₆ glucose', x:360, y:130, group:true}
+      ],
+      bonds:[]
+    },
+    {
+      caption:'<span class="anim-step-tag">Step 2.</span> Enzymes in the yeast (zymase) catalyse the breakdown. The 6-carbon sugar reorganises into smaller pieces. No oxygen is involved &mdash; fermentation is anaerobic.',
+      atoms:[
+        {id:'glu',   el:'C₆H₁₂O₆ breaking', x:360, y:130, group:true},
+        {id:'yeast', el:'+ yeast (zymase)', x:360, y:60, group:true}
+      ],
+      bonds:[]
+    },
+    {
+      caption:'<span class="anim-step-tag">Step 3.</span> Products: two ethanol ($\\ce{C2H5OH}$) molecules + two carbon dioxide ($\\ce{CO2}$). The $\\ce{CO2}$ bubbles make bread rise; the ethanol is what makes beer and wine.',
+      atoms:[
+        {id:'e1', el:'C₂H₅OH ethanol', x:175, y:130, group:true},
+        {id:'e2', el:'C₂H₅OH ethanol', x:175, y:200, group:true},
+        {id:'c1', el:'CO₂', x:520, y:130, group:true},
+        {id:'c2', el:'CO₂', x:520, y:200, group:true}
+      ],
+      bonds:[]
+    }
+  ]
+};
+
+/* ---- 6. Combustion: C3H8 + 5 O2 -> 3 CO2 + 4 H2O (atom-level) ---- */
+RXN_SCENES.combustion = (function(){
+  /* 3 C + 8 H from propane; 10 O from 5 O2; product has 3 C + 8 H + 10 O. Atoms conserved. */
+  const carbons = [ {id:'c1', el:'C'}, {id:'c2', el:'C'}, {id:'c3', el:'C'} ];
+  const hydrogens = Array.from({length:8}, (_,i) => ({id:'h'+(i+1), el:'H'}));
+  const oxygens = Array.from({length:10}, (_,i) => ({id:'o'+(i+1), el:'O'}));
+  /* Phase 1: propane chain on left, 5 O2 molecules on right */
+  function p1(){
+    return [
+      {...carbons[0], x:90,  y:135},
+      {...carbons[1], x:150, y:115},
+      {...carbons[2], x:210, y:135},
+      {...hydrogens[0], x:80,  y:100},
+      {...hydrogens[1], x:60,  y:155},
+      {...hydrogens[2], x:90,  y:175},
+      {...hydrogens[3], x:130, y:85},
+      {...hydrogens[4], x:170, y:85},
+      {...hydrogens[5], x:220, y:175},
+      {...hydrogens[6], x:240, y:155},
+      {...hydrogens[7], x:210, y:175},
+      {...oxygens[0], x:380, y:50}, {...oxygens[1], x:425, y:50},
+      {...oxygens[2], x:480, y:50}, {...oxygens[3], x:525, y:50},
+      {...oxygens[4], x:580, y:50}, {...oxygens[5], x:625, y:50},
+      {...oxygens[6], x:380, y:230}, {...oxygens[7], x:425, y:230},
+      {...oxygens[8], x:520, y:230}, {...oxygens[9], x:565, y:230}
+    ];
+  }
+  function p1bonds(){
+    return [
+      {a:'c1',b:'c2',order:1},{a:'c2',b:'c3',order:1},
+      {a:'c1',b:'h1',order:1},{a:'c1',b:'h2',order:1},{a:'c1',b:'h3',order:1},
+      {a:'c2',b:'h4',order:1},{a:'c2',b:'h5',order:1},
+      {a:'c3',b:'h6',order:1},{a:'c3',b:'h7',order:1},{a:'c3',b:'h8',order:1},
+      {a:'o1',b:'o2',order:2},{a:'o3',b:'o4',order:2},{a:'o5',b:'o6',order:2},
+      {a:'o7',b:'o8',order:2},{a:'o9',b:'o10',order:2}
+    ];
+  }
+  /* Phase 3: products - 3 CO2 (C with two O's) + 4 H2O (O with two H's) */
+  function p3(){
+    /* 3 CO2 across top row, 4 H2O across bottom row */
+    /* CO2 #1: o-c-o */
+    /* CO2 #2: o-c-o */
+    /* CO2 #3: o-c-o */
+    /* assign:  CO2 #1 = c1, o1, o2;  CO2 #2 = c2, o3, o4;  CO2 #3 = c3, o5, o6 */
+    /* H2O #1 = o7, h1, h2;  #2 = o8, h3, h4;  #3 = o9, h5, h6;  #4 = o10, h7, h8 */
+    return [
+      /* CO2 row at y=60 */
+      {...carbons[0], x:130, y:70}, {...oxygens[0], x:90,  y:70}, {...oxygens[1], x:170, y:70},
+      {...carbons[1], x:360, y:70}, {...oxygens[2], x:320, y:70}, {...oxygens[3], x:400, y:70},
+      {...carbons[2], x:580, y:70}, {...oxygens[4], x:540, y:70}, {...oxygens[5], x:620, y:70},
+      /* H2O row at y=200 */
+      {...oxygens[6], x:120, y:200}, {...hydrogens[0], x:90,  y:175}, {...hydrogens[1], x:150, y:175},
+      {...oxygens[7], x:280, y:200}, {...hydrogens[2], x:250, y:175}, {...hydrogens[3], x:310, y:175},
+      {...oxygens[8], x:440, y:200}, {...hydrogens[4], x:410, y:175}, {...hydrogens[5], x:470, y:175},
+      {...oxygens[9], x:600, y:200}, {...hydrogens[6], x:570, y:175}, {...hydrogens[7], x:630, y:175}
+    ];
+  }
+  function p3bonds(){
+    return [
+      /* CO2's: O=C=O each */
+      {a:'c1',b:'o1',order:2},{a:'c1',b:'o2',order:2},
+      {a:'c2',b:'o3',order:2},{a:'c2',b:'o4',order:2},
+      {a:'c3',b:'o5',order:2},{a:'c3',b:'o6',order:2},
+      /* H2O's: O-H each */
+      {a:'o7',b:'h1',order:1},{a:'o7',b:'h2',order:1},
+      {a:'o8',b:'h3',order:1},{a:'o8',b:'h4',order:1},
+      {a:'o9',b:'h5',order:1},{a:'o9',b:'h6',order:1},
+      {a:'o10',b:'h7',order:1},{a:'o10',b:'h8',order:1}
+    ];
+  }
+  return {
+    w:720, h:260,
+    phases:[
+      {
+        caption:'<span class="anim-step-tag">Step 1.</span> Reactants. Propane ($\\ce{C3H8}$, 3 carbons + 8 hydrogens) sits on the left. Five $\\ce{O2}$ molecules (10 oxygens) surround it. A spark provides activation energy.',
+        atoms:p1(), bonds:p1bonds()
+      },
+      {
+        caption:'<span class="anim-step-tag">Step 2.</span> All C-C, C-H, and O=O bonds break. Carbon atoms grab two oxygens each to form $\\ce{CO2}$. Hydrogen atoms each grab an oxygen to form $\\ce{H2O}$. Watch the atoms re-pair.',
+        atoms:p1().map(a => ({...a, x:lerp(a.x, p3().find(p=>p.id===a.id).x, 0.5), y:lerp(a.y, p3().find(p=>p.id===a.id).y, 0.5)})),
+        bonds:[]   /* mid-reaction: bonds breaking, nothing held */
+      },
+      {
+        caption:'<span class="anim-step-tag">Step 3.</span> Products: 3 $\\ce{CO2}$ (top row) + 4 $\\ce{H2O}$ (bottom row). All 3 carbons + 8 hydrogens + 10 oxygens are accounted for &mdash; the reaction is balanced. Combustion is highly exothermic.',
+        atoms:p3(), bonds:p3bonds()
+      }
+    ]
+  };
+})();
+
+/* ---- 7. Saponification: fat + 3 NaOH -> 3 soap + glycerol (group-level) ---- */
+RXN_SCENES.saponification = {
+  w:720, h:260,
+  phases:[
+    {
+      caption:'<span class="anim-step-tag">Step 1.</span> Reactants. A fat is a triester: three long-chain fatty acids ($\\ce{R-COO-}$) attached to a glycerol backbone. Three molecules of $\\ce{NaOH}$ (a strong base) are about to attack.',
+      atoms:[
+        /* Fat: a glycerol backbone with 3 ester chains */
+        {id:'gly', el:'glycerol', x:230, y:130, group:true},
+        {id:'r1', el:'R₁-COO-', x:100, y:60,  group:true},
+        {id:'r2', el:'R₂-COO-', x:100, y:130, group:true},
+        {id:'r3', el:'R₃-COO-', x:100, y:200, group:true},
+        /* NaOH */
+        {id:'n1', el:'NaOH', x:540, y:60,  group:true},
+        {id:'n2', el:'NaOH', x:540, y:130, group:true},
+        {id:'n3', el:'NaOH', x:540, y:200, group:true}
+      ],
+      bonds:[
+        {a:'r1', b:'gly', order:1},
+        {a:'r2', b:'gly', order:1},
+        {a:'r3', b:'gly', order:1}
+      ]
+    },
+    {
+      caption:'<span class="anim-step-tag">Step 2.</span> Each $\\ce{OH-}$ attacks one ester linkage. The three ester bonds break, the carboxylate ends grab a $\\ce{Na+}$, and the glycerol backbone keeps its oxygens as new $\\ce{-OH}$ groups.',
+      atoms:[
+        {id:'gly', el:'glycerol', x:360, y:130, group:true},
+        {id:'r1', el:'R₁-COO-', x:200, y:60,  group:true},
+        {id:'r2', el:'R₂-COO-', x:200, y:130, group:true},
+        {id:'r3', el:'R₃-COO-', x:200, y:200, group:true},
+        {id:'n1', el:'NaOH', x:340, y:60,  group:true},
+        {id:'n2', el:'NaOH', x:440, y:130, group:true},
+        {id:'n3', el:'NaOH', x:340, y:200, group:true}
+      ],
+      bonds:[],
+      arrows:[
+        {fromId:'n1', toId:'r1'},
+        {fromId:'n2', toId:'r2'},
+        {fromId:'n3', toId:'r3'}
+      ]
+    },
+    {
+      caption:'<span class="anim-step-tag">Step 3.</span> Products: three soap molecules ($\\ce{R-COO^-\\,Na^+}$) on the left + one glycerol (with three $\\ce{-OH}$ groups) on the right. The Latin <em>sapo</em> means soap.',
+      atoms:[
+        {id:'r1', el:'R₁-COO⁻ Na⁺', x:160, y:60,  group:true},
+        {id:'r2', el:'R₂-COO⁻ Na⁺', x:160, y:130, group:true},
+        {id:'r3', el:'R₃-COO⁻ Na⁺', x:160, y:200, group:true},
+        {id:'gly', el:'glycerol (HOCH₂CHOHCH₂OH)', x:520, y:130, group:true}
+      ],
+      bonds:[]
+    }
+  ]
+};
+
+rxnBuild();
 
 /* ============== 3Dmol.js viewers ============== */
 let td3Viewer = null;
