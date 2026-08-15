@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Showcase — Interactive Notes</title>
+<meta name="description" content="A demonstration page showing how the math-toolkit skill renders algebra, trigonometry, 2D and 3D geometry, statistics, calculus, vectors, and matrices using free open-source tools. By tutoringwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<script src="https://unpkg.com/d3@6"></script>
+<script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script src="https://unpkg.com/mathjs@13/lib/browser/math.js"></script>
+<script src="https://unpkg.com/simple-statistics@7/dist/simple-statistics.min.js"></script>
+<script defer src="https://unpkg.com/mathlive"></script>
+<style>
+:root{
+  --white:#FFFFFF;--sage-l:#D0D6B3;--sage:#9BA06A;--slate:#525B76;--forest:#143109;
+  --bg:#f5f6ee;--sage-m:#e4e8cc;
+  --good:#5b8a3f;--bad:#b5503e;--accent2:#525B76;--accent3:#8a2f8a;
+  --fh:'Young Serif',Georgia,serif;--fp:'Dosis','Trebuchet MS',Arial,sans-serif;--fb:'Bitter',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--fp);color:var(--forest);overflow-x:auto;font-feature-settings:"ss01","cv11"}
+
+/* LWS shell */
+.lws-backdrop{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(1200px 600px at 8% -10%,rgba(228,232,204,.7) 0%,transparent 60%),radial-gradient(900px 500px at 110% 0%,rgba(208,214,179,.5) 0%,transparent 55%),radial-gradient(800px 400px at 50% 120%,rgba(228,232,204,.6) 0%,transparent 55%),var(--bg)}
+.app{position:relative;z-index:1;display:grid;grid-template-columns:264px 1fr;grid-template-rows:64px 1fr;grid-template-areas:"side top" "side main";min-height:100vh}
+.side{grid-area:side;padding:16px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);border-right:1px solid var(--sage-l);overflow-y:auto}
+.top{grid-area:top;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);border-bottom:1px solid var(--sage-l);position:sticky;top:0;z-index:15}
+.main{grid-area:main;padding:24px 28px 56px;max-width:1320px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;padding:8px 12px}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--forest));color:#fff;display:grid;place-items:center;font-family:var(--fh);font-size:1.1rem;line-height:1;box-shadow:0 6px 20px -6px rgba(20,49,9,0.35)}
+.brand-name{font-family:var(--fh);color:var(--forest);font-size:1.05rem;line-height:1.05}
+.brand-name small{display:block;font-family:var(--fb);font-style:italic;color:#7C8172;font-size:.7rem;margin-top:3px}
+.side-section-label{font-family:var(--fb);font-size:.66rem;letter-spacing:.14em;color:#7C8172;text-transform:uppercase;padding:14px 12px 4px}
+.side-nav{display:flex;flex-direction:column;gap:1px;padding:0 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;text-decoration:none;color:var(--forest);transition:background .15s;font-family:var(--fp);font-size:.86rem;font-weight:500}
+.nav-item:hover{background:var(--sage-m)}
+.nav-item.active{background:var(--white);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 12px 40px -12px rgba(20,49,9,0.18),0 2px 8px rgba(20,49,9,0.06);border:1px solid var(--sage-l);font-weight:700}
+.nav-item .num{font-family:var(--fb);color:var(--sage);font-weight:700;font-size:.78rem;min-width:30px}
+.bread{display:flex;flex-direction:column}
+.bread-trail{font-family:var(--fp);color:var(--slate);font-size:.78rem}
+.bread-now{font-family:var(--fp);font-weight:700;color:var(--forest);font-size:1rem;line-height:1.1}
+
+/* Page header */
+.pg-head{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:20px;padding:36px 28px;text-align:center}
+.pg-head .topic-badge{display:inline-block;font-family:var(--fb);font-weight:700;color:var(--slate);background:var(--white);border:1.5px solid var(--sage-l);padding:4px 14px;border-radius:20px;font-size:.82rem;margin-bottom:12px;letter-spacing:.04em}
+.pg-head h1{font-family:var(--fh);font-size:2.2rem;color:var(--forest);margin-bottom:6px}
+.pg-head .sub{font-family:var(--fp);color:var(--slate);font-size:1rem}
+
+/* Cards */
+.card{background:var(--white);border:2px solid var(--sage-l);border-radius:20px;padding:28px 26px;box-shadow:0 2px 12px rgba(20,49,9,0.06)}
+.card-title{font-family:var(--fh);font-size:1.4rem;color:var(--forest);margin-bottom:14px}
+.card-title .num{font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.9rem;background:var(--sage-m);border-radius:8px;padding:2px 10px;margin-right:8px;vertical-align:middle}
+.body-text{font-family:var(--fp);font-size:1.04rem;color:var(--forest);line-height:1.7;margin-bottom:12px}
+.body-text:last-child{margin-bottom:0}
+.highlight-box{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:14px;padding:18px 22px;margin:14px 0}
+.sub-title{font-family:var(--fh);font-size:1.1rem;color:var(--forest);margin:18px 0 8px}
+.formula{text-align:center;font-size:1.15rem;padding:14px;background:var(--sage-m);border-radius:12px;margin:12px 0}
+
+/* Widgets */
+.widget{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;margin:14px 0}
+.widget-label{font-family:var(--fb);font-size:.85rem;color:var(--slate);text-transform:uppercase;letter-spacing:.05em;text-align:center;margin-bottom:8px;font-weight:700}
+.btn{font-family:var(--fp);font-weight:600;font-size:.88rem;border:none;border-radius:18px;padding:7px 14px;cursor:pointer;transition:all .15s;background:var(--sage);color:var(--white)}
+.btn:hover{background:var(--forest)}
+.btn.secondary{background:var(--white);color:var(--forest);border:1.5px solid var(--sage-l)}
+.btn.secondary:hover{background:var(--sage-m)}
+.btn-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:8px 0}
+
+/* Plot containers */
+.plot-host{width:100%;min-height:340px;background:var(--white);border-radius:10px}
+.fp-host{width:100%;height:380px;background:var(--white);border-radius:10px;overflow:hidden}
+.three-host{width:100%;height:380px;background:var(--white);border-radius:10px;border:1px solid var(--sage-l);position:relative}
+
+/* Matrix calculator */
+.mat-grid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;font-family:var(--fb);margin:14px 0}
+.mat-cell{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.mat-cell input{width:50px;padding:6px;border:1.5px solid var(--sage-l);border-radius:6px;font-family:var(--fb);text-align:center;font-size:.95rem;background:var(--white);color:var(--forest);outline:none}
+.mat-cell input:focus{border-color:var(--sage)}
+.mat-op{font-size:1.4rem;color:var(--forest);text-align:center}
+.mat-result{background:var(--sage-m);border-radius:10px;padding:12px;font-family:var(--fb);font-size:.95rem;text-align:center;margin-top:10px}
+
+/* Stats panel */
+.stat-readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-top:10px}
+.stat-cell{background:var(--sage-m);border-radius:10px;padding:8px;text-align:center}
+.stat-cell .lbl{font-family:var(--fb);font-size:.7rem;color:var(--slate);text-transform:uppercase}
+.stat-cell .val{font-family:var(--fb);font-size:1.05rem;color:var(--forest);font-weight:700}
+
+/* Trig output panel */
+.trig-readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-top:10px}
+.trig-readout .stat-cell .val{font-family:'Times New Roman',serif;font-size:1.1rem}
+
+/* Vector widget */
+.vec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;align-items:center;margin:10px 0}
+.vec-input{display:flex;align-items:center;gap:6px;font-family:var(--fb);font-size:.95rem;color:var(--forest)}
+.vec-input input{width:42px;padding:5px;border:1.5px solid var(--sage-l);border-radius:6px;text-align:center;font-family:var(--fb);background:var(--white);color:var(--forest);outline:none}
+
+/* Section anchor offset for sticky top */
+.card[id]{scroll-margin-top:80px}
+
+@media(max-width:980px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;grid-template-areas:"side" "top" "main"}
+  .side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--sage-l)}
+  .top{padding:10px 18px;flex-wrap:wrap}
+  .main{padding:16px 18px 48px}
+}
+@media(max-width:640px){
+  .pg-head{padding:26px 18px}.pg-head h1{font-size:1.55rem}
+  .card{padding:22px 16px}.card-title{font-size:1.15rem}
+  .mat-grid{grid-template-columns:1fr}
+  .mat-op{transform:rotate(90deg)}
+}
+</style>
+</head>
+<body>
+<div class="lws-backdrop"></div>
+<div class="app">
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark">M</div>
+    <div class="brand-name">math showcase <small>built on math-toolkit</small></div>
+  </div>
+  <div class="side-section-label">On this page</div>
+  <div class="side-nav">
+    <a class="nav-item" href="#sec-algebra"><span class="num">1.</span>Algebra</a>
+    <a class="nav-item" href="#sec-trig"><span class="num">2.</span>Trigonometry</a>
+    <a class="nav-item" href="#sec-geom2d"><span class="num">3.</span>Geometry (2D)</a>
+    <a class="nav-item" href="#sec-geom3d"><span class="num">4.</span>Geometry (3D)</a>
+    <a class="nav-item" href="#sec-stats"><span class="num">5.</span>Statistics</a>
+    <a class="nav-item" href="#sec-calc"><span class="num">6.</span>Calculus</a>
+    <a class="nav-item" href="#sec-vectors"><span class="num">7.</span>Vectors</a>
+    <a class="nav-item" href="#sec-matrices"><span class="num">8.</span>Matrices</a>
+    <a class="nav-item" href="#sec-grapher"><span class="num">9.</span>Equation Grapher</a>
+    <a class="nav-item" href="#sec-calculator"><span class="num">10.</span>Calculator</a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">tutoringwithsruthi · math-toolkit demo</span>
+    <span class="bread-now">Math Showcase</span>
+  </div>
+</header>
+
+<main class="main">
+
+<div class="pg-head">
+  <div class="topic-badge">math-toolkit · interactive showcase</div>
+  <h1>Math Showcase</h1>
+  <p class="sub">One page demonstrating how the math-toolkit skill renders algebra, trigonometry, 2D and 3D geometry, statistics, calculus, vectors, matrices, and a working calculator + grapher — all with free open-source libraries.</p>
+</div>
+
+<!-- ==================== 1. ALGEBRA ==================== -->
+<div class="card" id="sec-algebra">
+  <div class="card-title"><span class="num">1</span>Algebra: Quadratic Functions</div>
+  <p class="body-text">A quadratic function has the form $f(x) = ax^2 + bx + c$. Its graph is a parabola. The roots (zeros) are where the parabola crosses the x-axis.</p>
+  <div class="formula">$f(x) = x^2 - 5x + 6 = (x-2)(x-3)$</div>
+  <p class="body-text">Roots: $x = 2$ and $x = 3$. The vertex is at $x = -b/(2a) = 2.5$, $y = -0.25$.</p>
+
+  <div class="widget">
+    <div class="widget-label">Live Graph (function-plot)</div>
+    <div class="fp-host" id="fp-quadratic"></div>
+  </div>
+</div>
+
+<!-- ==================== 2. TRIGONOMETRY ==================== -->
+<div class="card" id="sec-trig">
+  <div class="card-title"><span class="num">2</span>Trigonometry: The Unit Circle</div>
+  <p class="body-text">For an angle $\theta$ measured counter-clockwise from the positive x-axis, the point on the unit circle is at $(\cos\theta, \sin\theta)$. The unit circle is the source of every trig identity.</p>
+
+  <div class="widget">
+    <div class="widget-label">Unit Circle (drag the point or use the buttons)</div>
+    <div style="text-align:center"><svg id="ucSvg" viewBox="-180 -180 360 360" style="max-width:380px;width:100%;height:auto"></svg></div>
+    <div class="btn-row" style="margin-top:8px">
+      <button class="btn secondary" onclick="ucSet(0)">0°</button>
+      <button class="btn secondary" onclick="ucSet(30)">30°</button>
+      <button class="btn secondary" onclick="ucSet(45)">45°</button>
+      <button class="btn secondary" onclick="ucSet(60)">60°</button>
+      <button class="btn secondary" onclick="ucSet(90)">90°</button>
+      <button class="btn secondary" onclick="ucSet(120)">120°</button>
+      <button class="btn secondary" onclick="ucSet(135)">135°</button>
+      <button class="btn secondary" onclick="ucSet(180)">180°</button>
+      <button class="btn secondary" onclick="ucSet(270)">270°</button>
+    </div>
+    <div class="trig-readout">
+      <div class="stat-cell"><div class="lbl">θ (deg)</div><div class="val" id="ucDeg">0°</div></div>
+      <div class="stat-cell"><div class="lbl">θ (rad)</div><div class="val" id="ucRad">0</div></div>
+      <div class="stat-cell"><div class="lbl">cos θ</div><div class="val" id="ucCos">1</div></div>
+      <div class="stat-cell"><div class="lbl">sin θ</div><div class="val" id="ucSin">0</div></div>
+      <div class="stat-cell"><div class="lbl">tan θ</div><div class="val" id="ucTan">0</div></div>
+    </div>
+  </div>
+
+  <p class="body-text">Sine and cosine repeat every $2\pi$ radians (360°). On the same graph below: $y=\sin x$ in green and $y=\cos x$ in red.</p>
+  <div class="widget">
+    <div class="widget-label">Sine and Cosine Waves (function-plot)</div>
+    <div class="fp-host" id="fp-trig"></div>
+  </div>
+</div>
+
+<!-- ==================== 3. GEOMETRY 2D ==================== -->
+<div class="card" id="sec-geom2d">
+  <div class="card-title"><span class="num">3</span>Geometry: 2D Figures</div>
+  <p class="body-text">For a right triangle with legs $a$ and $b$ and hypotenuse $c$, the Pythagorean theorem says $a^2 + b^2 = c^2$. With $a=3$ and $b=4$, the hypotenuse is $c=5$ — the famous 3-4-5 triangle.</p>
+
+  <div class="widget">
+    <div class="widget-label">Right Triangle (3-4-5)</div>
+    <div style="text-align:center">
+      <svg viewBox="-150 -150 300 300" style="max-width:340px;width:100%;height:auto">
+        <defs>
+          <marker id="arrSmall" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#525B76"/></marker>
+        </defs>
+        <!-- Triangle: A=(-80,60), B=(80,60), C=(-80,-60) -->
+        <polygon points="-80,60 80,60 -80,-60" fill="#e4e8cc" stroke="#143109" stroke-width="2.5"/>
+        <!-- Right-angle marker at A -->
+        <polyline points="-80,40 -60,40 -60,60" fill="none" stroke="#143109" stroke-width="1.5"/>
+        <!-- Vertex labels -->
+        <text x="-94" y="76" font-family="serif" font-size="13" font-style="italic" fill="#143109">A</text>
+        <text x="86"  y="76" font-family="serif" font-size="13" font-style="italic" fill="#143109">B</text>
+        <text x="-94" y="-66" font-family="serif" font-size="13" font-style="italic" fill="#143109">C</text>
+        <!-- Side labels: a (bottom AB), b (left AC), c (hypotenuse BC) -->
+        <text x="0"   y="80"  text-anchor="middle" font-family="serif" font-size="14" fill="#143109">a = 3</text>
+        <text x="-94" y="3"   text-anchor="end"    font-family="serif" font-size="14" fill="#143109">b = 4</text>
+        <text x="14"  y="-2"  font-family="serif" font-size="14" fill="#143109" transform="rotate(-37 14 -2)">c = 5</text>
+        <!-- 90° label -->
+        <text x="-50" y="50" font-family="serif" font-size="11" fill="#525B76">90°</text>
+      </svg>
+    </div>
+    <div class="formula">$a^2 + b^2 = c^2 \;\Rightarrow\; 3^2 + 4^2 = 9 + 16 = 25 = 5^2$ ✓</div>
+  </div>
+
+  <p class="body-text">Below, a regular hexagon with side length $s$. Area: $A = \frac{3\sqrt{3}}{2}s^2$, perimeter: $P = 6s$.</p>
+  <div class="widget">
+    <div class="widget-label">Regular Hexagon</div>
+    <div style="text-align:center">
+      <svg viewBox="-130 -130 260 260" style="max-width:260px;width:100%;height:auto">
+        <polygon points="0,-80 69.3,-40 69.3,40 0,80 -69.3,40 -69.3,-40" fill="#e4e8cc" stroke="#143109" stroke-width="2.5"/>
+        <!-- One side labeled -->
+        <text x="86" y="3" text-anchor="start" font-family="serif" font-size="13" fill="#143109">s</text>
+        <text x="0" y="100" text-anchor="middle" font-family="serif" font-size="11" fill="#525B76">side length s, perimeter 6s, area = (3√3/2)s²</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 4. GEOMETRY 3D ==================== -->
+<div class="card" id="sec-geom3d">
+  <div class="card-title"><span class="num">4</span>Geometry: 3D Solids</div>
+  <p class="body-text">Drag any solid below to rotate. Use the picker to switch between cube, cylinder, cone, and sphere. The volume and surface area formulas update as you switch.</p>
+
+  <div class="widget">
+    <div class="widget-label">3D Solid Viewer (Three.js — drag to rotate, scroll to zoom)</div>
+    <div class="btn-row">
+      <button class="btn" id="solidCube" onclick="solidShow('cube')">Cube</button>
+      <button class="btn secondary" id="solidCyl" onclick="solidShow('cylinder')">Cylinder</button>
+      <button class="btn secondary" id="solidCone" onclick="solidShow('cone')">Cone</button>
+      <button class="btn secondary" id="solidSphere" onclick="solidShow('sphere')">Sphere</button>
+      <button class="btn secondary" id="solidCombo" onclick="solidShow('combo')">Cylinder + Hemisphere</button>
+    </div>
+    <div class="three-host" id="solidViewer"></div>
+    <div class="formula" id="solidFormula" style="font-size:1rem">Volume: $V = s^3$ &nbsp;·&nbsp; Surface area: $A = 6s^2$</div>
+  </div>
+</div>
+
+<!-- ==================== 5. STATISTICS ==================== -->
+<div class="card" id="sec-stats">
+  <div class="card-title"><span class="num">5</span>Statistics: Distributions</div>
+  <p class="body-text">A sample of 200 measurements drawn from a normal distribution with mean 50 and standard deviation 10. Three views of the same data: histogram with theoretical normal curve overlay, box-and-whisker, and 5-number summary.</p>
+
+  <div class="stat-readout" style="margin-bottom:12px">
+    <div class="stat-cell"><div class="lbl">n</div><div class="val" id="statN">—</div></div>
+    <div class="stat-cell"><div class="lbl">mean (x̄)</div><div class="val" id="statMean">—</div></div>
+    <div class="stat-cell"><div class="lbl">sd (s)</div><div class="val" id="statSd">—</div></div>
+    <div class="stat-cell"><div class="lbl">min</div><div class="val" id="statMin">—</div></div>
+    <div class="stat-cell"><div class="lbl">Q1</div><div class="val" id="statQ1">—</div></div>
+    <div class="stat-cell"><div class="lbl">median</div><div class="val" id="statMed">—</div></div>
+    <div class="stat-cell"><div class="lbl">Q3</div><div class="val" id="statQ3">—</div></div>
+    <div class="stat-cell"><div class="lbl">max</div><div class="val" id="statMax">—</div></div>
+  </div>
+
+  <div class="widget">
+    <div class="widget-label">Histogram with Normal Curve Overlay (Plotly.js)</div>
+    <div class="plot-host" id="histPlot"></div>
+  </div>
+  <div class="widget">
+    <div class="widget-label">Box-and-Whisker (Plotly.js)</div>
+    <div class="plot-host" id="boxPlot" style="min-height:240px"></div>
+  </div>
+</div>
+
+<!-- ==================== 6. CALCULUS ==================== -->
+<div class="card" id="sec-calc">
+  <div class="card-title"><span class="num">6</span>Calculus: Definite Integrals</div>
+  <p class="body-text">The definite integral $\int_a^b f(x)\,dx$ is the signed area between $f(x)$ and the x-axis from $a$ to $b$. For $f(x) = x^2$ from 0 to 2:</p>
+  <div class="formula">$\displaystyle \int_0^2 x^2 \, dx = \left[ \frac{x^3}{3} \right]_0^2 = \frac{8}{3} \approx 2.667$</div>
+
+  <div class="widget">
+    <div class="widget-label">Shaded Area Under f(x) = x² on [0, 2] (function-plot)</div>
+    <div class="fp-host" id="fp-integral"></div>
+  </div>
+
+  <p class="body-text">The derivative $f'(x)$ gives the slope of the tangent line at any point. For $f(x) = x^2$, $f'(x) = 2x$. At $x = 1.5$, the tangent has slope $3$.</p>
+  <div class="widget">
+    <div class="widget-label">Tangent Line at x = 1.5 (function-plot, hover to see live derivative)</div>
+    <div class="fp-host" id="fp-tangent"></div>
+  </div>
+</div>
+
+<!-- ==================== 7. VECTORS ==================== -->
+<div class="card" id="sec-vectors">
+  <div class="card-title"><span class="num">7</span>Vectors: 2D and 3D</div>
+  <p class="body-text">A vector has both magnitude and direction. To add two vectors, place the tail of the second vector at the head of the first; the resultant goes from the original tail to the final head.</p>
+
+  <div class="widget">
+    <div class="widget-label">2D Vector Addition: $\vec{a} + \vec{b}$ (head-to-tail)</div>
+    <div style="text-align:center">
+      <svg viewBox="-50 -130 320 200" style="max-width:480px;width:100%;height:auto">
+        <defs>
+          <marker id="arrRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#b5503e"/></marker>
+          <marker id="arrBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#525B76"/></marker>
+          <marker id="arrGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5b8a3f"/></marker>
+        </defs>
+        <!-- Axes -->
+        <line x1="-30" y1="0" x2="280" y2="0" stroke="#9BA06A" stroke-width="0.8"/>
+        <line x1="0" y1="40" x2="0" y2="-120" stroke="#9BA06A" stroke-width="0.8"/>
+        <text x="285" y="4" font-style="italic" font-size="11" fill="#525B76">x</text>
+        <text x="-4" y="-118" text-anchor="end" font-style="italic" font-size="11" fill="#525B76">y</text>
+        <!-- a = ⟨80, -40⟩ -->
+        <line x1="0" y1="0" x2="80" y2="-40" stroke="#b5503e" stroke-width="2.5" marker-end="url(#arrRed)"/>
+        <!-- b = ⟨60, -60⟩ from end of a -->
+        <line x1="80" y1="-40" x2="140" y2="-100" stroke="#525B76" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+        <!-- a + b = resultant -->
+        <line x1="0" y1="0" x2="140" y2="-100" stroke="#5b8a3f" stroke-width="2.5" stroke-dasharray="6 3" marker-end="url(#arrGreen)"/>
+        <!-- Labels -->
+        <text x="35" y="-30" font-style="italic" font-size="14" fill="#b5503e" font-weight="700">a</text>
+        <text x="115" y="-60" font-style="italic" font-size="14" fill="#525B76" font-weight="700">b</text>
+        <text x="55" y="-75" font-style="italic" font-size="14" fill="#5b8a3f" font-weight="700">a + b</text>
+      </svg>
+    </div>
+    <div class="formula">$\vec{a} = \langle 4, 2 \rangle, \;\vec{b} = \langle 3, 3 \rangle, \;\vec{a}+\vec{b} = \langle 7, 5 \rangle$</div>
+  </div>
+
+  <p class="body-text">Type vector components below to compute the sum, magnitude, and dot product.</p>
+  <div class="widget">
+    <div class="widget-label">2D Vector Calculator</div>
+    <div class="vec-grid">
+      <div class="vec-input">$\vec{a}$ = ⟨ <input id="ax" type="number" value="4"> , <input id="ay" type="number" value="2"> ⟩</div>
+      <div class="vec-input">$\vec{b}$ = ⟨ <input id="bx" type="number" value="3"> , <input id="by" type="number" value="3"> ⟩</div>
+      <button class="btn" onclick="vecCompute()">Compute</button>
+    </div>
+    <div class="mat-result" id="vecOut">Click compute to see the sum, magnitudes, and dot product.</div>
+  </div>
+
+  <p class="body-text">In 3D, vectors live in space. Drag the viewer below to see the standard basis vectors $\hat{i}, \hat{j}, \hat{k}$ and a sample vector $\vec{v} = \langle 2, 3, 1 \rangle$.</p>
+  <div class="widget">
+    <div class="widget-label">3D Vector Visualization (Three.js)</div>
+    <div class="three-host" id="vec3dViewer" style="height:340px"></div>
+  </div>
+</div>
+
+<!-- ==================== 8. MATRICES ==================== -->
+<div class="card" id="sec-matrices">
+  <div class="card-title"><span class="num">8</span>Matrices: 2×2 Operations</div>
+  <p class="body-text">A matrix is a rectangular array of numbers. Matrix multiplication is row-by-column: $(AB)_{ij} = \sum_k A_{ik}B_{kj}$.</p>
+  <div class="formula">$\begin{pmatrix}1&2\\3&4\end{pmatrix} \begin{pmatrix}5&6\\7&8\end{pmatrix} = \begin{pmatrix}19&22\\43&50\end{pmatrix}$</div>
+
+  <div class="widget">
+    <div class="widget-label">Matrix Calculator (math.js): edit values, click an operation</div>
+    <div class="mat-grid">
+      <div class="mat-cell">
+        <input id="A11" value="1"><input id="A12" value="2">
+        <input id="A21" value="3"><input id="A22" value="4">
+      </div>
+      <div class="mat-op" id="opLabel">×</div>
+      <div class="mat-cell">
+        <input id="B11" value="5"><input id="B12" value="6">
+        <input id="B21" value="7"><input id="B22" value="8">
+      </div>
+      <div class="mat-op">=</div>
+      <div class="mat-cell" style="background:var(--sage-m);border-radius:8px;padding:6px">
+        <div id="R11" style="text-align:center;font-family:var(--fb);padding:4px">19</div>
+        <div id="R12" style="text-align:center;font-family:var(--fb);padding:4px">22</div>
+        <div id="R21" style="text-align:center;font-family:var(--fb);padding:4px">43</div>
+        <div id="R22" style="text-align:center;font-family:var(--fb);padding:4px">50</div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="matOp('multiply')">A × B</button>
+      <button class="btn secondary" onclick="matOp('add')">A + B</button>
+      <button class="btn secondary" onclick="matOp('det-A')">det(A)</button>
+      <button class="btn secondary" onclick="matOp('inv-A')">A⁻¹</button>
+      <button class="btn secondary" onclick="matOp('transpose-A')">Aᵀ</button>
+    </div>
+    <div class="mat-result" id="matExtra">det(A) = 1·4 - 2·3 = -2</div>
+  </div>
+</div>
+
+<!-- ==================== 9. EQUATION GRAPHER ==================== -->
+<div class="card" id="sec-grapher">
+  <div class="card-title"><span class="num">9</span>Equation Grapher</div>
+  <p class="body-text">Type any function of $x$ in the box. Multiple equations stack with their own colors. The full version (with solver and zoom controls) is available as <code>assets/grapher.html</code> in the math-toolkit skill.</p>
+
+  <div class="widget">
+    <div class="widget-label">Mini Grapher (MathLive structured editor)</div>
+    <p class="body-text" style="font-size:.86rem;color:var(--slate);margin-bottom:8px">Type plain math or LaTeX. Press <code>^</code> for a superscript box, <code>/</code> for a fraction, click √ for a radical, etc.</p>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+      <button class="btn secondary" onclick="mgInsert('\\\\frac{#0}{#?}')" title="Fraction">a/b</button>
+      <button class="btn secondary" onclick="mgInsert('\\\\sqrt{#0}')" title="Square root">√</button>
+      <button class="btn secondary" onclick="mgInsert('^{#0}')" title="Power">xⁿ</button>
+      <button class="btn secondary" onclick="mgInsert('\\\\sin\\\\left(#0\\\\right)')" title="Sine">sin</button>
+      <button class="btn secondary" onclick="mgInsert('\\\\cos\\\\left(#0\\\\right)')" title="Cosine">cos</button>
+      <button class="btn secondary" onclick="mgInsert('\\\\pi')" title="Pi">π</button>
+      <button class="btn secondary" onclick="mgInsert('e^{#0}')" title="Exponential">eˣ</button>
+      <button class="btn secondary" onclick="mgInsert('\\\\theta')" title="Theta">θ</button>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap">
+      <span style="font-family:var(--fb)">y =</span>
+      <math-field id="grapherInput" style="flex:1;min-width:200px;border:1.5px solid var(--sage-l);border-radius:8px;padding:7px 10px;background:var(--white);color:var(--forest);font-size:1.05rem;--primary-color:var(--sage);--placeholder-color:var(--slate)" virtual-keyboard-mode="off">x^2-2x-3</math-field>
+      <button class="btn" onclick="graphIt()">Plot</button>
+    </div>
+    <div class="fp-host" id="fp-grapher"></div>
+  </div>
+</div>
+
+<!-- ==================== 10. CALCULATOR ==================== -->
+<div class="card" id="sec-calculator">
+  <div class="card-title"><span class="num">10</span>Calculator</div>
+  <p class="body-text">A graphing calculator (unbranded), backed by math.js. Type any expression and press <strong>=</strong>. Trig functions respect the DEG/RAD toggle. The full TI-style version is available as <code>assets/calculator.html</code> in the math-toolkit skill.</p>
+
+  <div class="widget" style="max-width:480px;margin-left:auto;margin-right:auto">
+    <div style="display:flex;gap:8px;margin-bottom:8px">
+      <input id="calcInput" style="flex:1;border:1.5px solid var(--sage-l);border-radius:8px;padding:10px 12px;font-family:var(--fb);font-size:1rem;background:#a3b88a;color:#0a0e0a;outline:none" value="2 + 3 * 4" placeholder="enter expression">
+      <button class="btn" onclick="calcEval()">=</button>
+    </div>
+    <div class="mat-result" id="calcOut">14</div>
+    <div class="btn-row">
+      <button class="btn secondary" onclick="calcInsert('sin(')">sin</button>
+      <button class="btn secondary" onclick="calcInsert('cos(')">cos</button>
+      <button class="btn secondary" onclick="calcInsert('tan(')">tan</button>
+      <button class="btn secondary" onclick="calcInsert('log(')">log</button>
+      <button class="btn secondary" onclick="calcInsert('sqrt(')">√</button>
+      <button class="btn secondary" onclick="calcInsert('pi')">π</button>
+      <button class="btn secondary" onclick="calcInsert('^')">^</button>
+      <button class="btn secondary" onclick="calcInsert('!')">n!</button>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<!-- Three.js (loaded as ES modules) -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// =================== 3D SOLID VIEWER ===================
+const solidContainer = document.getElementById('solidViewer');
+let solidScene, solidCamera, solidRenderer, solidControls;
+let solidMesh = null, solidEdges = null;
+
+function initSolid(){
+  solidScene = new THREE.Scene();
+  solidScene.background = null;
+  const w = solidContainer.clientWidth, h = solidContainer.clientHeight;
+  solidCamera = new THREE.PerspectiveCamera(45, w/h, 0.1, 100);
+  solidCamera.position.set(4, 3, 5);
+  solidRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  solidRenderer.setSize(w, h);
+  solidRenderer.setPixelRatio(window.devicePixelRatio);
+  solidContainer.appendChild(solidRenderer.domElement);
+  solidControls = new OrbitControls(solidCamera, solidRenderer.domElement);
+  solidControls.enableDamping = true;
+  solidScene.add(new THREE.AmbientLight(0xffffff, 0.6));
+  const dl = new THREE.DirectionalLight(0xffffff, 0.8);
+  dl.position.set(5, 10, 7);
+  solidScene.add(dl);
+  // axes for orientation
+  const axes = new THREE.AxesHelper(3);
+  solidScene.add(axes);
+  buildSolid('cube');
+  animateSolid();
+}
+
+function clearSolid(){
+  if(solidMesh){ solidScene.remove(solidMesh); solidMesh.geometry.dispose(); solidMesh.material.dispose(); solidMesh = null; }
+  if(solidEdges){ solidScene.remove(solidEdges); solidEdges.geometry.dispose(); solidEdges.material.dispose(); solidEdges = null; }
+  // Remove any composite parts
+  if(solidScene._extra){ solidScene._extra.forEach(o => solidScene.remove(o)); solidScene._extra = null; }
+}
+
+function buildSolid(kind){
+  clearSolid();
+  const mat = new THREE.MeshStandardMaterial({ color: 0x9BA06A, roughness: 0.45 });
+  const edgeMat = new THREE.LineBasicMaterial({ color: 0x143109 });
+  let geom;
+  if(kind === 'cube'){
+    geom = new THREE.BoxGeometry(2, 2, 2);
+  } else if(kind === 'cylinder'){
+    geom = new THREE.CylinderGeometry(1, 1, 2.5, 32);
+  } else if(kind === 'cone'){
+    geom = new THREE.ConeGeometry(1, 2.5, 32);
+  } else if(kind === 'sphere'){
+    geom = new THREE.SphereGeometry(1.3, 32, 32);
+  } else if(kind === 'combo'){
+    // Cylinder + hemisphere
+    const cyl = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, 2, 32), mat);
+    cyl.position.y = 0;
+    solidScene.add(cyl);
+    const hemi = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 16, 0, 2*Math.PI, 0, Math.PI/2), mat);
+    hemi.position.y = 1;
+    solidScene.add(hemi);
+    solidScene._extra = [cyl, hemi];
+    return;
+  }
+  solidMesh = new THREE.Mesh(geom, mat);
+  solidScene.add(solidMesh);
+  solidEdges = new THREE.LineSegments(new THREE.EdgesGeometry(geom), edgeMat);
+  solidScene.add(solidEdges);
+}
+
+function animateSolid(){
+  requestAnimationFrame(animateSolid);
+  if(solidControls) solidControls.update();
+  if(solidRenderer && solidScene && solidCamera) solidRenderer.render(solidScene, solidCamera);
+}
+
+window.solidShow = function(kind){
+  buildSolid(kind);
+  ['cube','cyl','cone','sphere','combo'].forEach((k, i)=>{
+    const map = {cube:'cube', cyl:'cylinder', cone:'cone', sphere:'sphere', combo:'combo'};
+    const id = 'solid' + (k === 'cyl' ? 'Cyl' : k.charAt(0).toUpperCase() + k.slice(1));
+    const b = document.getElementById(id);
+    if(b){
+      b.classList.toggle('secondary', map[k] !== kind);
+    }
+  });
+  const formulas = {
+    cube: 'Volume: $V = s^3$ &nbsp;·&nbsp; Surface area: $A = 6s^2$',
+    cylinder: 'Volume: $V = \\pi r^2 h$ &nbsp;·&nbsp; Surface area: $A = 2\\pi r h + 2\\pi r^2$',
+    cone: 'Volume: $V = \\tfrac{1}{3}\\pi r^2 h$ &nbsp;·&nbsp; Surface area: $A = \\pi r^2 + \\pi r s$ where $s=\\sqrt{r^2+h^2}$',
+    sphere: 'Volume: $V = \\tfrac{4}{3}\\pi r^3$ &nbsp;·&nbsp; Surface area: $A = 4\\pi r^2$',
+    combo: 'Total volume: $V_\\text{cyl}+V_\\text{hemi} = \\pi r^2 h + \\tfrac{2}{3}\\pi r^3$ &nbsp;·&nbsp; Surface area (excluding interface disc): $2\\pi r h + \\pi r^2 + 2\\pi r^2$'
+  };
+  const fmt = document.getElementById('solidFormula');
+  fmt.innerHTML = formulas[kind] || '';
+  if(window.renderMathInElement){ renderMathInElement(fmt, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]}); }
+};
+
+initSolid();
+
+// =================== 3D VECTOR VIEWER ===================
+const vec3dContainer = document.getElementById('vec3dViewer');
+function initVec3d(){
+  const scene = new THREE.Scene();
+  const w = vec3dContainer.clientWidth, h = vec3dContainer.clientHeight;
+  const camera = new THREE.PerspectiveCamera(45, w/h, 0.1, 100);
+  camera.position.set(4, 3, 5);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(w, h);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  vec3dContainer.appendChild(renderer.domElement);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+  const dl = new THREE.DirectionalLight(0xffffff, 0.6);
+  dl.position.set(5, 10, 7);
+  scene.add(dl);
+
+  // Axes
+  scene.add(new THREE.AxesHelper(3.5));
+
+  // Standard basis vectors as ArrowHelpers (scaled smaller so they don't clutter)
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(1,0,0), new THREE.Vector3(0,0,0), 1, 0xb5503e, 0.2, 0.12));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,1,0), new THREE.Vector3(0,0,0), 1, 0x5b8a3f, 0.2, 0.12));
+  scene.add(new THREE.ArrowHelper(new THREE.Vector3(0,0,1), new THREE.Vector3(0,0,0), 1, 0x525B76, 0.2, 0.12));
+
+  // Sample vector v = ⟨2, 3, 1⟩
+  const v = new THREE.Vector3(2, 3, 1);
+  const len = v.length();
+  scene.add(new THREE.ArrowHelper(v.clone().normalize(), new THREE.Vector3(0,0,0), len, 0x9BA06A, 0.4, 0.22));
+
+  function animate(){ requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); }
+  animate();
+}
+initVec3d();
+</script>
+
+<script>
+// =================== FUNCTION-PLOT WIDGETS ===================
+function makePlots(){
+  // Quadratic
+  functionPlot({
+    target: '#fp-quadratic', width: document.getElementById('fp-quadratic').clientWidth, height: 380,
+    grid: true, xAxis: { label: 'x', domain: [-2, 6] }, yAxis: { label: 'y', domain: [-3, 8] },
+    data: [
+      { fn: 'x^2 - 5*x + 6', color: '#143109' },
+      { points: [[2,0],[3,0]], fnType: 'points', graphType: 'scatter', color: '#b5503e' }
+    ]
+  });
+  // Trig
+  functionPlot({
+    target: '#fp-trig', width: document.getElementById('fp-trig').clientWidth, height: 380,
+    grid: true, xAxis: { label: 'x', domain: [-2*Math.PI, 2*Math.PI] }, yAxis: { label: 'y', domain: [-1.5, 1.5] },
+    data: [
+      { fn: 'sin(x)', color: '#5b8a3f' },
+      { fn: 'cos(x)', color: '#b5503e' }
+    ]
+  });
+  // Definite integral (shaded)
+  functionPlot({
+    target: '#fp-integral', width: document.getElementById('fp-integral').clientWidth, height: 380,
+    grid: true, xAxis: { label: 'x', domain: [-1, 3] }, yAxis: { label: 'y', domain: [-1, 5] },
+    data: [
+      { fn: 'x^2', color: '#143109', closed: true, range: [0, 2] }
+    ]
+  });
+  // Tangent
+  functionPlot({
+    target: '#fp-tangent', width: document.getElementById('fp-tangent').clientWidth, height: 380,
+    grid: true, xAxis: { label: 'x', domain: [-2, 4] }, yAxis: { label: 'y', domain: [-2, 8] },
+    data: [
+      { fn: 'x^2', color: '#143109',
+        derivative: { fn: '2*x', x0: 1.5, updateOnMouseMove: true }
+      }
+    ]
+  });
+}
+
+// =================== UNIT CIRCLE ===================
+const UC_ANGLES = [
+  // [degrees, label-deg, label-rad-html, cos-pretty, sin-pretty, tan-pretty]
+  [0,   '0°',   '0',         '1',       '0',       '0'],
+  [30,  '30°',  'π/6',       '√3/2',    '½',       '√3/3'],
+  [45,  '45°',  'π/4',       '√2/2',    '√2/2',    '1'],
+  [60,  '60°',  'π/3',       '½',       '√3/2',    '√3'],
+  [90,  '90°',  'π/2',       '0',       '1',       '∞'],
+  [120, '120°', '2π/3',      '−½',      '√3/2',    '−√3'],
+  [135, '135°', '3π/4',      '−√2/2',   '√2/2',    '−1'],
+  [150, '150°', '5π/6',      '−√3/2',   '½',       '−√3/3'],
+  [180, '180°', 'π',         '−1',      '0',       '0'],
+  [210, '210°', '7π/6',      '−√3/2',   '−½',      '√3/3'],
+  [225, '225°', '5π/4',      '−√2/2',   '−√2/2',   '1'],
+  [240, '240°', '4π/3',      '−½',      '−√3/2',   '√3'],
+  [270, '270°', '3π/2',      '0',       '−1',      '∞'],
+  [300, '300°', '5π/3',      '½',       '−√3/2',   '−√3'],
+  [315, '315°', '7π/4',      '√2/2',    '−√2/2',   '−1'],
+  [330, '330°', '11π/6',     '√3/2',    '−½',      '−√3/3']
+];
+let ucCurrent = 0;
+
+function buildUnitCircle(){
+  const svg = document.getElementById('ucSvg');
+  const R = 105;
+  const labelR = R * 1.18;
+  let html = '';
+  // Quadrant labels
+  ['I','II','III','IV'].forEach((label, i) => {
+    const angle = (45 + i * 90) * Math.PI / 180;
+    const x = (R * 0.6) * Math.cos(angle);
+    const y = -(R * 0.6) * Math.sin(angle);
+    html += `<text x="${x}" y="${y+4}" text-anchor="middle" font-family="serif" font-size="13" fill="#9BA06A" font-style="italic" opacity="0.6">${label}</text>`;
+  });
+  // Axes
+  html += `<line x1="${-R-25}" y1="0" x2="${R+25}" y2="0" stroke="#525B76" stroke-width="1.2"/>`;
+  html += `<line x1="0" y1="${-R-25}" x2="0" y2="${R+25}" stroke="#525B76" stroke-width="1.2"/>`;
+  html += `<text x="${R+30}" y="4" font-family="serif" font-size="11" font-style="italic" fill="#525B76">x</text>`;
+  html += `<text x="-4" y="${-R-28}" text-anchor="end" font-family="serif" font-size="11" font-style="italic" fill="#525B76">y</text>`;
+  // Circle
+  html += `<circle cx="0" cy="0" r="${R}" fill="none" stroke="#143109" stroke-width="2"/>`;
+  // Each angle's tick + label
+  for (const [deg, , radLbl, , , ] of UC_ANGLES) {
+    const t = deg * Math.PI / 180;
+    const x = R * Math.cos(t), y = -R * Math.sin(t);
+    const lx = labelR * Math.cos(t), ly = -labelR * Math.sin(t);
+    // small dot at point
+    html += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.2" fill="#143109"/>`;
+    // label outside
+    const anchor = lx > 5 ? 'start' : (lx < -5 ? 'end' : 'middle');
+    const dx = lx > 5 ? 4 : (lx < -5 ? -4 : 0);
+    html += `<text x="${(lx+dx).toFixed(1)}" y="${(ly+3).toFixed(1)}" text-anchor="${anchor}" font-family="serif" font-size="9" fill="#143109">${radLbl}</text>`;
+  }
+  // Active radius (drawn last so it's on top)
+  html += `<g id="ucActive"></g>`;
+  // Origin
+  html += `<circle cx="0" cy="0" r="2.5" fill="#143109"/>`;
+  svg.innerHTML = html;
+  drawUcActive();
+}
+
+function drawUcActive(){
+  const R = 105;
+  const t = ucCurrent * Math.PI / 180;
+  const x = R * Math.cos(t), y = -R * Math.sin(t);
+  const g = document.getElementById('ucActive');
+  let html = '';
+  // Vertical/horizontal projections (sin in red on the y-axis, cos in green on the x-axis)
+  html += `<line x1="${x.toFixed(1)}" y1="0" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#b5503e" stroke-width="2" stroke-dasharray="3 2"/>`;
+  html += `<line x1="0" y1="${y.toFixed(1)}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#5b8a3f" stroke-width="2" stroke-dasharray="3 2"/>`;
+  // Active radius
+  html += `<line x1="0" y1="0" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#143109" stroke-width="2.2"/>`;
+  // Active point (larger, draggable indicator)
+  html += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="7" fill="#143109" stroke="#fff" stroke-width="2" id="ucDragPt" style="cursor:grab"/>`;
+  // Angle arc (small, in the corner)
+  const arcR = 22;
+  const ex = arcR * Math.cos(t), ey = -arcR * Math.sin(t);
+  const largeArc = ucCurrent > 180 ? 1 : 0;
+  html += `<path d="M ${arcR} 0 A ${arcR} ${arcR} 0 ${largeArc} 0 ${ex.toFixed(1)} ${ey.toFixed(1)}" fill="none" stroke="#525B76" stroke-width="1.2"/>`;
+  g.innerHTML = html;
+
+  // Update readout. Use exact-value table when current angle is one of the 16; otherwise compute decimals.
+  const entry = UC_ANGLES.find(a => a[0] === ucCurrent);
+  if(entry){
+    const [, degLbl, radLbl, cosLbl, sinLbl, tanLbl] = entry;
+    document.getElementById('ucDeg').textContent = degLbl;
+    document.getElementById('ucRad').textContent = radLbl;
+    document.getElementById('ucCos').textContent = cosLbl;
+    document.getElementById('ucSin').textContent = sinLbl;
+    document.getElementById('ucTan').textContent = tanLbl;
+  } else {
+    document.getElementById('ucDeg').textContent = ucCurrent.toFixed(1) + '°';
+    document.getElementById('ucRad').textContent = (ucCurrent * Math.PI / 180).toFixed(3);
+    document.getElementById('ucCos').textContent = Math.cos(t).toFixed(3);
+    document.getElementById('ucSin').textContent = Math.sin(t).toFixed(3);
+    const tanVal = Math.tan(t);
+    document.getElementById('ucTan').textContent = (Math.abs(Math.cos(t)) < 1e-9) ? 'undef' : tanVal.toFixed(3);
+  }
+}
+
+window.ucSet = function(deg){ ucCurrent = deg; drawUcActive(); };
+
+/* ============== Unit-circle drag interaction ============== */
+function setupUcDrag(){
+  const svg = document.getElementById('ucSvg');
+  if (!svg) return;
+  let dragging = false;
+
+  function svgPointToAngle(clientX, clientY){
+    const pt = svg.createSVGPoint();
+    pt.x = clientX; pt.y = clientY;
+    const ctm = svg.getScreenCTM().inverse();
+    const local = pt.matrixTransform(ctm);
+    // local.x is the SVG x, local.y is the SVG y (y-down)
+    // Math angle (CCW from +x): atan2(-y, x)
+    let theta = Math.atan2(-local.y, local.x) * 180 / Math.PI;
+    if (theta < 0) theta += 360;
+    return theta;
+  }
+
+  function handleMove(clientX, clientY){
+    let deg = svgPointToAngle(clientX, clientY);
+    // Snap to standard 16 angles when within 4°
+    const snap = UC_ANGLES.map(a => a[0]).find(a => {
+      const d = Math.abs(((deg - a + 540) % 360) - 180);
+      return d < 4;
+    });
+    ucCurrent = (snap !== undefined) ? snap : deg;
+    drawUcActive();
+  }
+
+  svg.addEventListener('mousedown', e => {
+    dragging = true;
+    handleMove(e.clientX, e.clientY);
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', e => {
+    if (dragging) handleMove(e.clientX, e.clientY);
+  });
+  window.addEventListener('mouseup', () => { dragging = false; });
+  // Touch
+  svg.addEventListener('touchstart', e => {
+    dragging = true;
+    handleMove(e.touches[0].clientX, e.touches[0].clientY);
+    e.preventDefault();
+  }, { passive: false });
+  window.addEventListener('touchmove', e => {
+    if (dragging){ handleMove(e.touches[0].clientX, e.touches[0].clientY); e.preventDefault(); }
+  }, { passive: false });
+  window.addEventListener('touchend', () => { dragging = false; });
+}
+
+buildUnitCircle();
+setupUcDrag();
+
+// =================== STATISTICS ===================
+function makeStats(){
+  // Generate 200 normal samples (Box-Muller), mean=50, sd=10
+  const data = [];
+  for(let i = 0; i < 200; i++){
+    const u1 = Math.random() || 1e-10, u2 = Math.random();
+    data.push(50 + 10 * Math.sqrt(-2*Math.log(u1)) * Math.cos(2*Math.PI*u2));
+  }
+  const mean = ss.mean(data), sd = ss.standardDeviation(data);
+  const sorted = [...data].sort((a,b)=>a-b);
+  const q1 = ss.quantile(sorted, 0.25), med = ss.quantile(sorted, 0.5), q3 = ss.quantile(sorted, 0.75);
+  document.getElementById('statN').textContent = data.length;
+  document.getElementById('statMean').textContent = mean.toFixed(2);
+  document.getElementById('statSd').textContent = sd.toFixed(2);
+  document.getElementById('statMin').textContent = ss.min(data).toFixed(2);
+  document.getElementById('statQ1').textContent = q1.toFixed(2);
+  document.getElementById('statMed').textContent = med.toFixed(2);
+  document.getElementById('statQ3').textContent = q3.toFixed(2);
+  document.getElementById('statMax').textContent = ss.max(data).toFixed(2);
+
+  // Theoretical normal curve
+  const lo = mean - 4*sd, hi = mean + 4*sd, step = (hi-lo)/200;
+  const xs = [], ys = [];
+  for(let x = lo; x <= hi; x += step){
+    xs.push(x);
+    ys.push(Math.exp(-((x-mean)**2)/(2*sd**2)) / (sd * Math.sqrt(2*Math.PI)));
+  }
+
+  const baseLayout = {
+    paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+    font: { family: 'Dosis, sans-serif', size: 12, color: '#143109' },
+    margin: { l: 50, r: 20, t: 20, b: 40 },
+    xaxis: { gridcolor: '#D0D6B3', linecolor: '#525B76' },
+    yaxis: { gridcolor: '#D0D6B3', linecolor: '#525B76' },
+    showlegend: true, legend: { x: 1, xanchor: 'right', y: 1 }
+  };
+
+  Plotly.newPlot('histPlot', [
+    { x: data, type: 'histogram', histnorm: 'probability density',
+      name: 'sample', marker: { color: '#9BA06A', line: { color: '#143109', width: 1 } } },
+    { x: xs, y: ys, type: 'scatter', mode: 'lines',
+      name: `N(${mean.toFixed(1)}, ${(sd*sd).toFixed(1)})`,
+      line: { color: '#b5503e', width: 3 } }
+  ], { ...baseLayout, bargap: 0.05, xaxis: { ...baseLayout.xaxis, title: 'value' }, yaxis: { ...baseLayout.yaxis, title: 'density' } },
+     { responsive: true, displayModeBar: false });
+
+  Plotly.newPlot('boxPlot', [
+    { y: data, type: 'box', boxmean: 'sd', name: 'sample',
+      marker: { color: '#9BA06A' }, line: { color: '#143109' } }
+  ], { ...baseLayout, yaxis: { ...baseLayout.yaxis, title: 'value' } },
+     { responsive: true, displayModeBar: false });
+}
+
+// =================== VECTOR CALC ===================
+window.vecCompute = function(){
+  const ax = +document.getElementById('ax').value, ay = +document.getElementById('ay').value;
+  const bx = +document.getElementById('bx').value, by = +document.getElementById('by').value;
+  const sumX = ax+bx, sumY = ay+by;
+  const magA = Math.sqrt(ax*ax+ay*ay).toFixed(3);
+  const magB = Math.sqrt(bx*bx+by*by).toFixed(3);
+  const dot = ax*bx + ay*by;
+  document.getElementById('vecOut').innerHTML =
+    `$\\vec{a}+\\vec{b} = \\langle ${sumX}, ${sumY} \\rangle$ &nbsp;·&nbsp; $|\\vec{a}| = ${magA}$ &nbsp;·&nbsp; $|\\vec{b}| = ${magB}$ &nbsp;·&nbsp; $\\vec{a}\\cdot\\vec{b} = ${dot}$`;
+  if(window.renderMathInElement){ renderMathInElement(document.getElementById('vecOut'), {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]}); }
+};
+
+// =================== MATRIX CALC ===================
+function readMatA(){
+  return math.matrix([
+    [ +document.getElementById('A11').value, +document.getElementById('A12').value ],
+    [ +document.getElementById('A21').value, +document.getElementById('A22').value ]
+  ]);
+}
+function readMatB(){
+  return math.matrix([
+    [ +document.getElementById('B11').value, +document.getElementById('B12').value ],
+    [ +document.getElementById('B21').value, +document.getElementById('B22').value ]
+  ]);
+}
+function setResult(R){
+  const arr = R.toArray ? R.toArray() : R;
+  document.getElementById('R11').textContent = formatMat(arr[0][0]);
+  document.getElementById('R12').textContent = formatMat(arr[0][1]);
+  document.getElementById('R21').textContent = formatMat(arr[1][0]);
+  document.getElementById('R22').textContent = formatMat(arr[1][1]);
+}
+function formatMat(v){
+  if(typeof v !== 'number') return String(v);
+  return Number.parseFloat(v.toPrecision(6)).toString();
+}
+window.matOp = function(op){
+  try {
+    const A = readMatA(), B = readMatB();
+    const opLabel = document.getElementById('opLabel');
+    const extra = document.getElementById('matExtra');
+    if(op === 'multiply'){
+      opLabel.textContent = '×';
+      setResult(math.multiply(A, B));
+      extra.textContent = 'Result: A × B';
+    } else if(op === 'add'){
+      opLabel.textContent = '+';
+      setResult(math.add(A, B));
+      extra.textContent = 'Result: A + B';
+    } else if(op === 'det-A'){
+      opLabel.textContent = ' ';
+      const d = math.det(A);
+      ['R11','R12','R21','R22'].forEach(id => document.getElementById(id).textContent = '');
+      document.getElementById('R11').textContent = 'det(A) = ' + formatMat(d);
+      extra.textContent = 'Determinant of A: ' + d;
+    } else if(op === 'inv-A'){
+      opLabel.textContent = ' ';
+      if(math.det(A) === 0){
+        extra.textContent = 'Matrix A is singular (det = 0); no inverse.';
+        return;
+      }
+      setResult(math.inv(A));
+      extra.textContent = 'Inverse of A';
+    } else if(op === 'transpose-A'){
+      opLabel.textContent = ' ';
+      setResult(math.transpose(A));
+      extra.textContent = 'Transpose of A: rows become columns';
+    }
+  } catch(e){
+    document.getElementById('matExtra').textContent = 'Error: ' + e.message;
+  }
+};
+
+// =================== MINI GRAPHER ===================
+/* Lightweight LaTeX → math.js converter (subset of the standalone grapher's converter) */
+function latexToMathjs(s){
+  if (!s) return s;
+  let out = String(s).replace(/\\left/g, '').replace(/\\right/g, '');
+  for (let i = 0; i < 4; i++){
+    const before = out;
+    out = out.replace(/\\frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, '(($1)/($2))');
+    if (out === before) break;
+  }
+  out = out.replace(/\\sqrt\s*\[([^[\]]+)\]\s*\{([^{}]*)\}/g, '(($2)^(1/($1)))')
+           .replace(/\\sqrt\s*\{([^{}]*)\}/g, 'sqrt($1)')
+           .replace(/\\pi\b/g, 'pi').replace(/\\theta\b/g, 'theta')
+           .replace(/\\(sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|sec|csc|cot|exp|abs)\b/g, '$1')
+           .replace(/\\ln\b/g, 'log').replace(/\\log\b/g, 'log10')
+           .replace(/\\cdot\b/g, '*').replace(/\\times\b/g, '*').replace(/\\div\b/g, '/')
+           .replace(/\^\s*\{([^{}]*)\}/g, '^($1)')
+           .replace(/(^|[^a-zA-Z_])e\^\(([^()]+)\)/g, '$1exp($2)');
+  for (let i = 0; i < 2; i++){
+    out = out.replace(/(\d)\s*([a-zA-Z(])/g, '$1*$2').replace(/\)\s*([a-zA-Z(0-9])/g, ')*$1');
+  }
+  out = out.replace(/\b(sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|sqrt|log|log10|exp|abs)\s*\*\s*\(/g, '$1(');
+  return out.trim();
+}
+
+window.mgInsert = function(latex){
+  const mf = document.getElementById('grapherInput');
+  if (!mf) return;
+  mf.focus();
+  if (typeof mf.insert === 'function'){
+    mf.insert(latex, { focus: true, format: 'latex', selectionMode: 'placeholder' });
+  } else if (typeof mf.executeCommand === 'function'){
+    mf.executeCommand(['insert', latex]);
+  }
+};
+
+window.graphIt = function(){
+  const mf = document.getElementById('grapherInput');
+  const raw = (mf && mf.value) || '';
+  const fn = latexToMathjs(raw);
+  const host = document.getElementById('fp-grapher');
+  host.innerHTML = '';
+  if (!fn.trim()){
+    host.innerHTML = '<p style="padding:20px;color:var(--slate);text-align:center;font-family:var(--fp)">Type a function above and press Plot</p>';
+    return;
+  }
+  try {
+    functionPlot({
+      target: '#fp-grapher', width: host.clientWidth, height: 380,
+      grid: true, xAxis: { domain: [-10, 10] }, yAxis: { domain: [-10, 10] },
+      data: [{ fn: fn, color: '#5b8a3f' }]
+    });
+  } catch(e){
+    host.innerHTML = '<p style="padding:20px;color:#b5503e">Plot error: ' + e.message + '</p>';
+  }
+};
+
+// =================== MINI CALCULATOR ===================
+window.calcEval = function(){
+  const expr = document.getElementById('calcInput').value;
+  try {
+    const result = math.evaluate(expr);
+    document.getElementById('calcOut').textContent = String(result);
+  } catch(e){
+    document.getElementById('calcOut').textContent = 'Error: ' + e.message;
+  }
+};
+window.calcInsert = function(token){
+  const inp = document.getElementById('calcInput');
+  inp.value += token;
+  inp.focus();
+};
+document.getElementById('calcInput').addEventListener('keydown', e => {
+  if(e.key === 'Enter') calcEval();
+});
+
+// =================== INITIALIZE ===================
+window.addEventListener('load', () => {
+  makePlots();
+  graphIt();
+  makeStats();
+});
+</script>
+</body>
+</html>
