@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8th Grade Recap (Before Integrated Math 1)</title>
+<meta name="description" content="An Integrated Math 1 readiness recap of 8th grade mathematics: functions, linear equations and slope, exponents and roots, systems, the real number system, the Pythagorean theorem, and bivariate data. Includes a scored diagnostic and a map of where each skill reappears. By tutoringwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<style>
+:root{
+  --white:#FFFFFF;--sage-l:#D0D6B3;--sage:#9BA06A;--slate:#525B76;--forest:#143109;
+  --bg:#f5f6ee;--sage-m:#e4e8cc;
+  --good:#5b8a3f;--bad:#b5503e;
+  --arith:#5b7fa8;--geo:#a86b5b;
+  --fh:'Young Serif',Georgia,serif;--fp:'Dosis','Trebuchet MS',Arial,sans-serif;--fb:'Bitter',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--fp);color:var(--forest);padding:18px 16px 52px;overflow-x:hidden}
+.page{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.pg-head{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:20px;padding:36px 28px;text-align:center}
+.pg-head .topic-badge{display:inline-block;font-family:var(--fb);font-weight:700;color:var(--slate);background:var(--white);border:1.5px solid var(--sage-l);padding:4px 14px;border-radius:20px;font-size:.82rem;margin-bottom:12px;letter-spacing:.04em}
+.pg-head h1{font-family:var(--fh);font-size:2.2rem;color:var(--forest);margin-bottom:6px}
+.pg-head .sub{font-family:var(--fp);color:var(--slate);font-size:1rem}
+.card{background:var(--white);border:2px solid var(--sage-l);border-radius:20px;padding:28px 26px;box-shadow:0 2px 12px rgba(20,49,9,0.06);scroll-margin-top:84px}
+.card-title{font-family:var(--fh);font-size:1.4rem;color:var(--forest);margin-bottom:14px}
+.card-title .num{font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.9rem;background:var(--sage-m);border-radius:8px;padding:2px 10px;margin-right:8px;vertical-align:middle}
+.body-text{font-family:var(--fp);font-size:1.04rem;color:var(--forest);line-height:1.7;margin-bottom:12px}
+.body-text:last-child{margin-bottom:0}
+.highlight-box{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:14px;padding:18px 22px;margin:14px 0}
+.sub-title{font-family:var(--fh);font-size:1.1rem;color:var(--forest);margin:18px 0 8px}
+.term-grid{display:grid;grid-template-columns:170px 1fr;gap:8px 16px;margin:12px 0}
+.term-sym{font-family:var(--fb);font-weight:700;color:var(--sage);text-align:right;font-size:1rem}
+.term-def{font-family:var(--fp);font-size:.98rem;color:var(--forest);line-height:1.6}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
+.site-btn{font-family:var(--fp);font-weight:600;font-size:.92rem;border:none;border-radius:30px;padding:8px 18px;cursor:pointer;transition:background .18s,transform .18s;background:var(--sage);color:var(--white)}
+.site-btn:hover{background:var(--forest);transform:translateY(-1px)}
+.site-btn.secondary{background:var(--white);color:var(--forest);border:2px solid var(--sage-l)}
+.site-btn.secondary:hover{background:var(--sage-m)}
+.interactive-area{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:16px;padding:20px 18px;margin:16px 0}
+.ia-label{font-family:var(--fb);font-size:1rem;color:var(--slate);margin-bottom:10px;text-align:center;font-weight:700}
+.practice-box{background:var(--white);border:2px dashed var(--sage-l);border-radius:14px;padding:16px 20px;margin:10px 0}
+.practice-box .q{font-family:var(--fp);font-size:1rem;color:var(--forest);margin-bottom:8px;line-height:1.6}
+.practice-box .a{font-family:var(--fp);font-size:.95rem;color:var(--forest);display:none;margin-top:8px;padding:12px 14px;background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;line-height:1.65}
+.practice-box .a.show{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.show-ans-btn{font-family:var(--fp);font-weight:600;font-size:.85rem;border:2px solid var(--sage-l);border-radius:20px;padding:5px 14px;cursor:pointer;background:var(--white);color:var(--sage);transition:background .18s}
+.show-ans-btn:hover{background:var(--sage-m)}
+.worked-example{background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 14px 14px 0;padding:16px 22px;margin:14px 0}
+.worked-example .step{font-family:var(--fp);font-size:.98rem;color:var(--forest);margin-bottom:6px;line-height:1.65}
+.worked-example .step-label{font-family:var(--fb);font-weight:700;color:var(--sage)}
+.pick-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:8px 0}
+.pick-btn{font-family:var(--fb);font-size:.82rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:18px;padding:5px 12px;cursor:pointer;color:var(--forest);transition:background .15s}
+.pick-btn:hover{background:var(--sage-m)}
+.pick-btn.active{background:var(--sage);color:var(--white);border-color:var(--sage)}
+.stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;text-align:center}
+.stage svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.readout{font-family:var(--fp);font-size:.95rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:12px 16px;margin-top:10px;line-height:1.6;text-align:left}
+.readout strong{font-family:var(--fb)}
+.ctrl-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin:10px 0}
+.ctrl{display:flex;align-items:center;gap:8px;font-family:var(--fp);font-size:.9rem;color:var(--forest)}
+.ctrl label{font-family:var(--fb);font-weight:700;font-size:.82rem;color:var(--slate)}
+.ctrl input[type=range]{width:140px;accent-color:var(--sage)}
+.ctrl input[type=number]{width:74px;font-family:var(--fb);font-size:.92rem;padding:5px 8px;border:1.5px solid var(--sage-l);border-radius:8px;background:var(--white);color:var(--forest)}
+.val-chip{font-family:var(--fb);font-weight:700;background:var(--white);border:1.5px solid var(--sage-l);border-radius:10px;padding:2px 10px;min-width:38px;display:inline-block;text-align:center}
+.seq-table{width:100%;border-collapse:collapse;font-family:var(--fb);font-size:.9rem;margin:10px 0;background:var(--white)}
+.seq-table th,.seq-table td{border:1.5px solid var(--sage-l);padding:7px 9px;text-align:center;color:var(--forest)}
+.seq-table th{background:var(--sage-m);font-weight:700;font-size:.82rem}
+.seq-table td.diff{color:var(--arith);font-weight:700}
+.fb{font-family:var(--fp);font-size:.95rem;border-radius:10px;padding:11px 14px;margin-top:10px;line-height:1.6;display:none;text-align:left}
+.fb.show{display:block;animation:fadeIn .2s ease}
+.fb.ok{background:#eaf3e2;border:1.5px solid var(--good);color:#2f4d1c}
+.fb.no{background:#f7e9e6;border:1.5px solid var(--bad);color:#6d2d21}
+
+/* diagnostic */
+.dg-q{border:1.5px solid var(--sage-l);border-radius:12px;padding:14px 16px;margin:10px 0;background:var(--white)}
+.dg-q .qhead{display:flex;align-items:baseline;gap:9px;margin-bottom:9px}
+.dg-q .qnum{font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.9rem;flex-shrink:0}
+.dg-q .qtext{font-family:var(--fp);font-size:1rem;color:var(--forest);line-height:1.6}
+.dg-q .strand{font-family:var(--fb);font-size:.66rem;font-weight:700;color:var(--white);background:var(--slate);border-radius:5px;padding:2px 7px;margin-left:auto;flex-shrink:0;letter-spacing:.03em}
+.dg-report{margin-top:16px}
+.bar-row{display:grid;grid-template-columns:150px 1fr 62px;gap:10px;align-items:center;margin:7px 0;font-family:var(--fp);font-size:.92rem}
+.bar-track{height:16px;background:var(--white);border:1.5px solid var(--sage-l);border-radius:9px;overflow:hidden}
+.bar-fill{height:100%;border-radius:8px;transition:width .5s ease}
+.bar-fill.hi{background:var(--good)}
+.bar-fill.mid{background:#c9a227}
+.bar-fill.lo{background:var(--bad)}
+.bar-val{font-family:var(--fb);font-weight:700;font-size:.85rem;text-align:right;color:var(--forest)}
+.bar-row a{color:var(--forest);text-decoration:none;border-bottom:1.5px dotted var(--sage)}
+.bar-row a:hover{color:var(--sage)}
+
+/* forward map */
+.map-table{width:100%;border-collapse:collapse;font-family:var(--fp);font-size:.93rem;margin:12px 0;background:var(--white)}
+.map-table th,.map-table td{border:1.5px solid var(--sage-l);padding:9px 11px;text-align:left;color:var(--forest);vertical-align:top;line-height:1.55}
+.map-table th{background:var(--sage-m);font-family:var(--fb);font-weight:700;font-size:.82rem}
+.map-table td.code{font-family:var(--fb);font-weight:700;color:var(--sage);white-space:nowrap;font-size:.85rem}
+.map-table tr.hot td{background:#f9faf4}
+
+.note-flag{border-left:4px solid var(--bad);background:#fbf3f1;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
+.note-flag .flag-label{font-family:var(--fb);font-weight:700;color:var(--bad);display:block;margin-bottom:4px}
+.fwd{border-left:4px solid var(--arith);background:#f2f6fa;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
+.fwd .fwd-label{font-family:var(--fb);font-weight:700;color:var(--arith);display:block;margin-bottom:4px}
+.fwd a{color:var(--forest);font-weight:600}
+
+/* ===== LWS SHELL (v2 UI) ===== */
+body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01","cv11"}
+.page{max-width:none;margin:0;display:block}
+.lws-backdrop{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(228,232,204,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(208,214,179,.5) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(228,232,204,.6) 0%,transparent 55%),
+             var(--bg)}
+.app{position:relative;z-index:1;display:grid;grid-template-columns:264px 1fr;grid-template-rows:64px 1fr;grid-template-areas:"side top" "side main";min-height:100vh}
+.side{grid-area:side;padding:16px 14px 14px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-right:1px solid var(--sage-l);overflow-y:auto;box-shadow:0 1px 0 rgba(255,255,255,0.9) inset}
+.top{grid-area:top;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-bottom:1px solid var(--sage-l);position:sticky;top:0;z-index:15}
+.main{grid-area:main;padding:24px 28px 56px;max-width:1320px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;padding:8px 12px}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--forest));color:#fff;display:grid;place-items:center;font-family:var(--fh);font-size:1.1rem;line-height:1;box-shadow:0 6px 20px -6px rgba(20,49,9,0.35)}
+.brand-name{font-family:var(--fh);color:var(--forest);font-size:1.05rem;line-height:1.05}
+.brand-name small{display:block;font-family:var(--fb);font-style:italic;color:#7C8172;font-size:.7rem;margin-top:3px}
+.ws-switch{margin:0 4px}
+.ws-switch-btn{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.62);border:1px solid rgba(255,255,255,0.55);border-radius:12px;backdrop-filter:blur(14px);text-align:left;transition:background .15s}
+.ws-switch-btn .ico{width:30px;height:30px;border-radius:8px;background:var(--sage-m);color:var(--forest);display:grid;place-items:center;flex-shrink:0;font-family:var(--fb);font-weight:700;font-size:.78rem}
+.ws-switch-btn .meta{flex:1;min-width:0}
+.ws-switch-btn .lbl{font-family:var(--fh);color:var(--forest);font-size:.95rem;line-height:1.1}
+.ws-switch-btn .sub{font-family:var(--fb);color:#7C8172;font-size:.68rem;margin-top:3px}
+.side-section-label{font-family:var(--fb);font-size:.66rem;letter-spacing:.14em;color:#7C8172;text-transform:uppercase;padding:14px 12px 4px}
+.side-nav{display:flex;flex-direction:column;gap:1px;padding:0 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;text-decoration:none;color:var(--forest);transition:background .15s;font-family:var(--fp);font-size:.86rem;font-weight:500}
+.nav-item .num{font-family:var(--fb);color:var(--sage);font-weight:700;font-size:.78rem;min-width:30px}
+.nav-item .t{flex:1;color:var(--forest)}
+.nav-item:hover{background:var(--sage-m)}
+.nav-item.active{background:var(--white);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 12px 40px -12px rgba(20,49,9,0.18),0 2px 8px rgba(20,49,9,0.06);border:1px solid var(--sage-l)}
+.nav-item.active .t{color:var(--forest);font-weight:700}
+.nav-item.locked{color:#a3a89a;cursor:not-allowed}
+.nav-item.locked:hover{background:transparent}
+.nav-item.locked .num,.nav-item.locked .t{color:#a3a89a}
+.bread{display:flex;flex-direction:column;gap:0;flex:0 0 auto;min-width:0}
+.bread-trail{font-family:var(--fp);color:var(--slate);font-size:.78rem}
+.bread-now{font-family:var(--fp);font-weight:700;color:var(--forest);font-size:1rem;line-height:1.1}
+.search{flex:1;max-width:520px;min-width:120px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.62);border:1px solid var(--sage-l);border-radius:99px;padding:8px 16px;color:var(--slate);backdrop-filter:blur(14px)}
+.search input{border:0;background:transparent;outline:none;flex:1;font-family:var(--fp);font-size:.9rem;color:var(--forest);min-width:0}
+.search svg{flex-shrink:0;color:var(--slate)}
+.top-actions{display:flex;align-items:center;gap:8px}
+.btn-icon{width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--sage-l);color:var(--slate);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;font-size:1rem;padding:0}
+.btn-icon:hover{background:var(--sage-m);color:var(--forest)}
+.pg-head{margin-top:0}
+@media(max-width:980px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;grid-template-areas:"side" "top" "main"}
+  .side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--sage-l);max-height:none}
+  .top{padding:10px 18px;flex-wrap:wrap}
+  .main{padding:16px 18px 48px}
+  .search{order:3;flex-basis:100%;max-width:none}
+  .term-grid{grid-template-columns:1fr}
+  .term-sym{text-align:left}
+  .bar-row{grid-template-columns:110px 1fr 54px}
+}
+[data-theme="dark"]{
+  --white:#14170F; --sage-l:#2B3320; --sage:#A9B07A; --sage-m:#1E2416;
+  --slate:#AEB5C8; --forest:#E8EBDA; --bg:#0E1108;
+  --arith:#8fb4dd; --geo:#dda28f;
+}
+[data-theme="dark"] body{color:var(--forest)}
+[data-theme="dark"] .lws-backdrop{
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(43,51,32,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(30,36,22,.55) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(43,51,32,.7) 0%,transparent 55%),
+             var(--bg)
+}
+[data-theme="dark"] .side,[data-theme="dark"] .top{background:rgba(20,23,15,0.7);border-color:#2B3320}
+[data-theme="dark"] .ws-switch-btn,[data-theme="dark"] .search,[data-theme="dark"] .btn-icon{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .lbl,[data-theme="dark"] .ws-switch-btn .ico{color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .ico{background:#2A3421}
+[data-theme="dark"] .nav-item,[data-theme="dark"] .nav-item .t{color:var(--forest)}
+[data-theme="dark"] .nav-item:hover{background:#2A3421}
+[data-theme="dark"] .nav-item.active{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .btn-icon:hover{background:#2A3421;color:var(--forest)}
+[data-theme="dark"] .search input{color:var(--forest)}
+[data-theme="dark"] .search input::placeholder{color:#7e8775}
+[data-theme="dark"] .pg-head{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .pg-head h1,[data-theme="dark"] .pg-head .sub,[data-theme="dark"] .pg-head .topic-badge{color:var(--forest)}
+[data-theme="dark"] .pg-head .topic-badge{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .card{background:#14170F;border-color:#2B3320;color:var(--forest)}
+[data-theme="dark"] .card-title,[data-theme="dark"] .sub-title,[data-theme="dark"] .body-text,[data-theme="dark"] .term-def,[data-theme="dark"] .term-sym{color:var(--forest)}
+[data-theme="dark"] .card-title .num{background:#2A3421;color:var(--sage)}
+[data-theme="dark"] .highlight-box{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .interactive-area{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .ia-label{color:var(--forest)}
+[data-theme="dark"] .practice-box,[data-theme="dark"] .dg-q{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .practice-box .q,[data-theme="dark"] .practice-box .a,[data-theme="dark"] .dg-q .qtext{color:var(--forest)}
+[data-theme="dark"] .practice-box .a{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .show-ans-btn{background:#1E2416;color:var(--sage);border-color:#3A4A2E}
+[data-theme="dark"] .worked-example{background:#1A1F11;border-left-color:var(--sage);color:var(--forest)}
+[data-theme="dark"] .site-btn.secondary{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .pick-btn{background:#14170F;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .pick-btn:hover{background:#2A3421}
+[data-theme="dark"] .stage{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .readout{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .seq-table,[data-theme="dark"] .map-table{background:#14170F}
+[data-theme="dark"] .seq-table th,[data-theme="dark"] .map-table th{background:#1E2416}
+[data-theme="dark"] .seq-table th,[data-theme="dark"] .seq-table td,[data-theme="dark"] .map-table th,[data-theme="dark"] .map-table td{border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .map-table tr.hot td{background:#1A1F11}
+[data-theme="dark"] .ctrl input[type=number]{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .val-chip,[data-theme="dark"] .bar-track{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .note-flag{background:#241a17;color:var(--forest)}
+[data-theme="dark"] .fwd{background:#161d24;color:var(--forest)}
+[data-theme="dark"] .fb.ok{background:#1d2a15;color:#cfe4bd}
+[data-theme="dark"] .fb.no{background:#2c1a16;color:#e8c3b9}
+[data-theme="dark"] .bar-row a{color:var(--forest)}
+[data-theme="dark"] .katex{color:var(--forest)}
+</style>
+</head>
+<body data-theme="light">
+<div class="lws-backdrop"></div>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark">L</div>
+    <div class="brand-name">learningwithsruthi <small>nc math 1 notes</small></div>
+  </div>
+  <div class="ws-switch">
+    <div class="ws-switch-btn">
+      <div class="ico">0</div>
+      <div class="meta">
+        <div class="lbl">8th Grade Recap</div>
+        <div class="sub">Before Unit 1 &middot; NC Math 1</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-section-label">Start here</div>
+  <div class="side-nav">
+    <a class="nav-item active" href="unit-0-eighth-grade-recap.html"><span class="num">0.</span><span class="t">8th Grade Recap</span></a>
+  </div>
+  <div class="side-section-label">Units</div>
+  <div class="side-nav">
+    <a class="nav-item" href="unit-1-sequences.html"><span class="num">1.</span><span class="t">Sequences</span></a>
+    <a class="nav-item locked"><span class="num">2.</span><span class="t">Linear &amp; Exponential Functions</span></a>
+    <a class="nav-item locked"><span class="num">3.</span><span class="t">Features of Functions</span></a>
+    <a class="nav-item locked"><span class="num">4.</span><span class="t">Equations &amp; Inequalities</span></a>
+    <a class="nav-item locked"><span class="num">5.</span><span class="t">Systems of Equations</span></a>
+    <a class="nav-item locked"><span class="num">6.</span><span class="t">Quadratic Functions</span></a>
+    <a class="nav-item locked"><span class="num">7.</span><span class="t">Structures of Expressions</span></a>
+    <a class="nav-item locked"><span class="num">8.</span><span class="t">Modeling Data</span></a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">NC Math 1 &middot; Before Unit 1</span>
+    <span class="bread-now">8th Grade Recap</span>
+  </div>
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input placeholder="Search topics, skills, questions...">
+  </div>
+  <div class="top-actions">
+    <button class="btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleLwsTheme()">&#9790;</button>
+  </div>
+</header>
+
+<main class="main">
+
+<div class="pg-head">
+  <div class="topic-badge">Recap &middot; Before NC Math 1, Unit 1</div>
+  <h1>Everything from 8th Grade You Are About to Need</h1>
+  <p class="sub">Not all of 8th grade &mdash; the parts Integrated Math 1 actually builds on, in the order it builds on them.</p>
+</div>
+
+<!-- ======== HOW TO USE ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">Start</span>How to use this page</h2>
+  <p class="body-text">Integrated Math 1 does not start from scratch. It assumes a specific set of 8th grade skills and then moves fast. The trouble is that the gaps do not announce themselves &mdash; a student who is shaky on exponent rules does not fail Unit 1, they just find geometric sequences mysteriously hard three weeks in.</p>
+  <p class="body-text">So: <strong>take the diagnostic first.</strong> It is 24 questions and takes about 25 minutes. It scores itself by strand and tells you which sections below are worth your time. Then read only those.</p>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">If you would rather skip the diagnostic, the two sections that matter most for the first half of Math 1 are <a href="#sec-functions" style="color:var(--forest);font-weight:700">Functions</a> and <a href="#sec-linear" style="color:var(--forest);font-weight:700">Linear equations and slope</a>. Nearly everything in Units 1 through 5 leans on those two.</p>
+  </div>
+</div>
+
+<!-- ======== DIAGNOSTIC ======== -->
+<div class="card" id="sec-diagnostic">
+  <h2 class="card-title"><span class="num">Test</span>Readiness diagnostic</h2>
+  <p class="body-text">Answer all 24, then press <strong>Score it</strong>. Nothing is graded or stored &mdash; this is only to point you at the right sections. Guessing defeats the purpose, so if you genuinely do not know, pick the honest option and let the report flag it.</p>
+  <div id="dgWrap"></div>
+  <div class="btn-row">
+    <button class="site-btn" id="dgScore">Score it</button>
+    <button class="site-btn secondary" id="dgReset">Clear answers</button>
+  </div>
+  <div id="dgReport" class="dg-report"></div>
+</div>
+
+<!-- ======== A. FUNCTIONS ======== -->
+<div class="card" id="sec-functions">
+  <h2 class="card-title"><span class="num">A</span>Functions</h2>
+  <p class="body-text">This is the single most important strand for Math 1. Almost the entire course is the word "function" getting progressively more specific.</p>
+
+  <h3 class="sub-title">What a function is</h3>
+  <p class="body-text">A <strong>function</strong> is a rule that assigns to each input <em>exactly one</em> output. That is the whole definition. An input is never allowed two different outputs.</p>
+  <p class="body-text">The test on a graph is the <strong>vertical line test</strong>: if any vertical line crosses the graph twice, some input has two outputs, so it is not a function. The test on a table is simpler &mdash; look for a repeated input with different outputs.</p>
+
+  <h3 class="sub-title">Function notation</h3>
+  <p class="body-text">$f(3) = 7$ means "the input 3 produces the output 7". It is <strong>not</strong> $f$ times 3. Getting comfortable reading this now saves a lot of confusion later, because Math 1 writes almost everything this way.</p>
+
+  <h3 class="sub-title">Rate of change and initial value</h3>
+  <p class="body-text">In $y = mx + b$: &nbsp;$m$ is the <strong>rate of change</strong> (how much $y$ moves when $x$ goes up by 1) and $b$ is the <strong>initial value</strong> (the output when $x = 0$).</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Move the sliders and watch the line, the table, and the meaning change together</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>rate of change $m$</label><input type="range" id="slM" min="-5" max="5" step="0.5" value="2"><span class="val-chip" id="slMVal">2</span></div>
+      <div class="ctrl"><label>initial value $b$</label><input type="range" id="slB" min="-8" max="8" step="1" value="3"><span class="val-chip" id="slBVal">3</span></div>
+    </div>
+    <div class="stage"><svg id="slSvg" viewBox="0 0 620 300" role="img" aria-label="Line with adjustable slope and intercept"></svg></div>
+    <div id="slTableWrap"></div>
+    <div class="readout" id="slOut"></div>
+  </div>
+
+  <h3 class="sub-title">Linear or not</h3>
+  <p class="body-text">A relationship is <strong>linear</strong> when the rate of change is constant &mdash; equal steps in the input always produce equal steps in the output. In a table, subtract neighbouring outputs and see whether you always get the same number.</p>
+
+  <div class="practice-box">
+    <div class="q"><strong>Which of these tables is linear?</strong><br>
+      Table P: inputs 1, 2, 3, 4 &rarr; outputs 6, 10, 14, 18<br>
+      Table Q: inputs 1, 2, 3, 4 &rarr; outputs 2, 4, 8, 16</div>
+    <button class="show-ans-btn" onclick="toggleAns('a1')">Show answer</button>
+    <div class="a" id="a1">
+      P is linear. Differences are 4, 4, 4 &mdash; constant. Its rule is $y = 4x + 2$.<br>
+      Q is not linear. Differences are 2, 4, 8 &mdash; growing. But its <em>ratios</em> are 2, 2, 2, which makes it exponential.<br>
+      <em>Holding on to both tests, differences and ratios, is exactly what Unit 1 asks you to do.</em>
+    </div>
+  </div>
+
+  <div class="fwd">
+    <span class="fwd-label">Where this goes</span>
+    Sequences in <a href="unit-1-sequences.html">Unit 1</a> are functions whose inputs are position numbers. The "constant difference" test you just used <em>is</em> the test for an arithmetic sequence, and the "constant ratio" test is the test for a geometric one.
+  </div>
+</div>
+
+<!-- ======== B. LINEAR EQUATIONS & SLOPE ======== -->
+<div class="card" id="sec-linear">
+  <h2 class="card-title"><span class="num">B</span>Linear equations, slope, and solving</h2>
+
+  <h3 class="sub-title">Slope from two points</h3>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">$$m = \frac{y_2 - y_1}{x_2 - x_1}$$</p>
+  </div>
+  <p class="body-text">Change in output over change in input. Keep the order consistent &mdash; whichever point you call "2" in the top, use in the bottom too.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Through $(2, 3)$ and $(6, 11)$:</span></div>
+    <div class="step">$m = \dfrac{11 - 3}{6 - 2} = \dfrac{8}{4} = 2$</div>
+    <div class="step"><span class="step-label">Then find $b$:</span> substitute a point into $y = 2x + b$. Using $(2,3)$: $3 = 4 + b$, so $b = -1$.</div>
+    <div class="step"><span class="step-label">Equation:</span> $y = 2x - 1$</div>
+  </div>
+
+  <h3 class="sub-title">Solving equations in one variable</h3>
+  <p class="body-text">The rule that never changes: whatever you do to one side, do to the other. Work toward getting the variable alone.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Solve</span> $3(x + 2) = 5x - 4$</div>
+    <div class="step">$3x + 6 = 5x - 4$ &nbsp;&nbsp;<span style="color:var(--slate)">distribute</span></div>
+    <div class="step">$6 = 2x - 4$ &nbsp;&nbsp;<span style="color:var(--slate)">subtract $3x$</span></div>
+    <div class="step">$10 = 2x$ &nbsp;&nbsp;<span style="color:var(--slate)">add 4</span></div>
+    <div class="step">$x = 5$ &nbsp;&nbsp;<span style="color:var(--slate)">divide by 2</span></div>
+    <div class="step"><span class="step-label">Check:</span> $3(7) = 21$ and $5(5) - 4 = 21$. Equal, so it is right.</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">Two answers that are not numbers</span>
+    If everything cancels and you are left with something true like $5 = 5$, every number works &mdash; <strong>infinitely many solutions</strong>. If you are left with something false like $5 = 7$, nothing works &mdash; <strong>no solution</strong>. Both are legitimate answers, not signs you made a mistake.
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Solve $4x - 7 = 21$, then solve $\frac{2}{3}x + 5 = 11$.</strong></div>
+    <button class="show-ans-btn" onclick="toggleAns('b1')">Show answer</button>
+    <div class="a" id="b1">
+      $4x - 7 = 21 \Rightarrow 4x = 28 \Rightarrow x = 7$<br>
+      $\frac{2}{3}x + 5 = 11 \Rightarrow \frac{2}{3}x = 6 \Rightarrow x = 6 \cdot \frac{3}{2} = 9$
+    </div>
+  </div>
+
+  <div class="fwd">
+    <span class="fwd-label">Where this goes</span>
+    Solving for $n$ in <a href="unit-1-sequences.html">Unit 1</a> ("which row has 94 seats?") is exactly this skill. Unit 4 formalises it and adds inequalities.
+  </div>
+</div>
+
+<!-- ======== C. EXPONENTS & ROOTS ======== -->
+<div class="card" id="sec-exponents">
+  <h2 class="card-title"><span class="num">C</span>Exponents and roots</h2>
+  <p class="body-text">Small topic, oversized consequences. Every exponential function in Math 1 is unreadable without these.</p>
+
+  <div class="term-grid">
+    <div class="term-sym">$a^m \cdot a^n = a^{m+n}$</div><div class="term-def">same base, multiply &rarr; add the exponents</div>
+    <div class="term-sym">$\dfrac{a^m}{a^n} = a^{m-n}$</div><div class="term-def">same base, divide &rarr; subtract the exponents</div>
+    <div class="term-sym">$(a^m)^n = a^{mn}$</div><div class="term-def">power of a power &rarr; multiply the exponents</div>
+    <div class="term-sym">$a^0 = 1$</div><div class="term-def">any nonzero base to the zero power is 1</div>
+    <div class="term-sym">$a^{-n} = \dfrac{1}{a^n}$</div><div class="term-def">a negative exponent means reciprocal, not a negative answer</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">The two everyone gets wrong</span>
+    $a^0 = 1$, not 0. And $2^{-3} = \frac{1}{8}$, not $-8$ &mdash; a negative exponent flips the number over, it never makes it negative.
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Exponent rules drill</div>
+    <div class="qtext" id="expQ" style="font-family:var(--fb);font-size:1.3rem;text-align:center;padding:14px 6px"></div>
+    <div class="pick-row" id="expOpts"></div>
+    <div class="fb" id="expFb"></div>
+    <div class="readout" id="expScore" style="text-align:center"></div>
+    <div class="btn-row"><button class="site-btn secondary" id="expNext">New question</button></div>
+  </div>
+
+  <h3 class="sub-title">Square and cube roots</h3>
+  <p class="body-text">$\sqrt{p}$ undoes squaring and $\sqrt[3]{p}$ undoes cubing. Solving $x^2 = 49$ gives $x = 7$ <strong>or</strong> $x = -7$, because both square to 49. Solving $x^3 = 27$ gives only $x = 3$.</p>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">Even roots give two answers, odd roots give one. That asymmetry comes back in Unit 1 when you fill gaps in a geometric sequence, and again in Unit 6 when you solve quadratics.</p>
+  </div>
+
+  <div class="fwd">
+    <span class="fwd-label">Where this goes</span>
+    $r^0 = 1$ is what makes $a_1 \cdot r^{\,n-1}$ produce the right first term in <a href="unit-1-sequences.html">Unit 1</a>. All the rules reappear in Unit 2 for exponential functions and in Unit 7 for expression structure.
+  </div>
+</div>
+
+<!-- ======== D. SYSTEMS ======== -->
+<div class="card" id="sec-systems">
+  <h2 class="card-title"><span class="num">D</span>Systems of two linear equations</h2>
+  <p class="body-text">Two equations, two unknowns. The <strong>solution</strong> is the point that satisfies both at once &mdash; which on a graph is exactly where the two lines cross.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Two lines and their intersection</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Line 1: $y =$</label><input type="number" id="sysM1" value="2" step="0.5"><label>$x +$</label><input type="number" id="sysB1" value="1" step="1"></div>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Line 2: $y =$</label><input type="number" id="sysM2" value="-1" step="0.5"><label>$x +$</label><input type="number" id="sysB2" value="7" step="1"></div>
+    </div>
+    <div class="stage"><svg id="sysSvg" viewBox="0 0 620 320" role="img" aria-label="Two lines and their intersection"></svg></div>
+    <div class="readout" id="sysOut"></div>
+  </div>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Solve algebraically:</span> $y = 2x + 1$ and $y = -x + 7$</div>
+    <div class="step">Both equal $y$, so set them equal: $2x + 1 = -x + 7$</div>
+    <div class="step">$3x = 6$, so $x = 2$</div>
+    <div class="step">Substitute back: $y = 2(2) + 1 = 5$</div>
+    <div class="step"><span class="step-label">Solution:</span> $(2, 5)$ &mdash; and that is where the lines cross on the graph.</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">When there is no crossing point</span>
+    Parallel lines (same slope, different intercept) never meet &mdash; <strong>no solution</strong>. Identical lines overlap everywhere &mdash; <strong>infinitely many solutions</strong>. Try it above by setting both slopes to 2.
+  </div>
+
+  <div class="fwd">
+    <span class="fwd-label">Where this goes</span>
+    Unit 5 is this topic taken further &mdash; substitution and elimination instead of graphing, and equations not already in slope-intercept form.
+  </div>
+</div>
+
+<!-- ======== E. REAL NUMBER SYSTEM ======== -->
+<div class="card" id="sec-numbers">
+  <h2 class="card-title"><span class="num">E</span>The real number system</h2>
+  <p class="body-text">Every real number has a decimal expansion, and the kind of expansion tells you what kind of number it is.</p>
+  <div class="term-grid">
+    <div class="term-sym">Rational</div><div class="term-def">a decimal that either <strong>terminates</strong> (0.75) or <strong>repeats</strong> ($0.\overline{3}$). Equivalently, writable as a fraction of integers.</div>
+    <div class="term-sym">Irrational</div><div class="term-def">a decimal that <strong>never terminates and never repeats</strong>. Examples: $\sqrt{2}$, $\pi$.</div>
+  </div>
+  <p class="body-text">Nesting, from smallest out: natural numbers sit inside whole numbers, inside integers, inside rationals. The irrationals sit alongside the rationals, sharing no members, and together the two make up the reals.</p>
+  <div class="note-flag">
+    <span class="flag-label">Roots are not automatically irrational</span>
+    $\sqrt{16} = 4$, which is perfectly rational. Only roots of non-perfect squares like $\sqrt{2}$ or $\sqrt{20}$ are irrational. Check whether the number under the root is a perfect square before deciding.
+  </div>
+  <p class="body-text">To place $\sqrt{20}$ on a number line, find the perfect squares either side: $16 &lt; 20 &lt; 25$, so $4 &lt; \sqrt{20} &lt; 5$. Since 20 sits closer to 16 than to 25, the value lands just below the midpoint 4.5 &mdash; it is about 4.47.</p>
+</div>
+
+<!-- ======== F. PYTHAGOREAN & DISTANCE ======== -->
+<div class="card" id="sec-pythag">
+  <h2 class="card-title"><span class="num">F</span>The Pythagorean theorem and distance</h2>
+  <p class="body-text">For a right triangle with legs $a$ and $b$ and hypotenuse $c$: &nbsp;$a^2 + b^2 = c^2$. The hypotenuse is always the side opposite the right angle, and always the longest.</p>
+  <p class="body-text">The <strong>converse</strong> is just as useful: if $a^2 + b^2 = c^2$ holds for three side lengths, the triangle must be right-angled.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Distance between two points is the Pythagorean theorem in disguise</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Point 1</label><input type="number" id="dxA" value="1" step="1"><input type="number" id="dyA" value="2" step="1"></div>
+      <div class="ctrl"><label>Point 2</label><input type="number" id="dxB" value="4" step="1"><input type="number" id="dyB" value="6" step="1"></div>
+    </div>
+    <div class="stage"><svg id="distSvg" viewBox="0 0 620 320" role="img" aria-label="Distance between two points as a right triangle"></svg></div>
+    <div class="readout" id="distOut"></div>
+  </div>
+
+  <p class="body-text">Drawing the horizontal and vertical legs turns any two points into a right triangle, so the distance formula is not a new fact to memorise &mdash; it is the Pythagorean theorem with the legs written as coordinate differences.</p>
+
+  <div class="fwd">
+    <span class="fwd-label">Where this goes</span>
+    Math 1 uses this for coordinate geometry proofs &mdash; showing a quadrilateral is a rhombus by checking side lengths, or finding a point that partitions a segment.
+  </div>
+</div>
+
+<!-- ======== G. BIVARIATE DATA ======== -->
+<div class="card" id="sec-data">
+  <h2 class="card-title"><span class="num">G</span>Scatter plots and two-way tables</h2>
+  <p class="body-text">A <strong>scatter plot</strong> puts one dot per individual, using two measurements as coordinates. What you look for:</p>
+  <div class="term-grid">
+    <div class="term-sym">Direction</div><div class="term-def">positive (both rise together), negative (one rises as the other falls), or none</div>
+    <div class="term-sym">Form</div><div class="term-def">roughly linear, curved, or no pattern</div>
+    <div class="term-sym">Strength</div><div class="term-def">how tightly the dots hug the pattern</div>
+    <div class="term-sym">Outliers</div><div class="term-def">points sitting far away from everything else</div>
+  </div>
+  <p class="body-text">When the pattern looks linear you can fit a line through it and use that line's equation to make predictions. The interpretation matters more than the arithmetic:</p>
+  <div class="highlight-box">
+    <p class="body-text" style="margin-bottom:6px"><strong>Slope in context:</strong> "for each additional unit of $x$, $y$ changes by about $m$."</p>
+    <p class="body-text" style="margin:0"><strong>Intercept in context:</strong> "when $x$ is zero, $y$ is about $b$" &mdash; which is sometimes meaningless in the real situation, and saying so is a correct answer.</p>
+  </div>
+  <div class="note-flag">
+    <span class="flag-label">Association is not cause</span>
+    Two things moving together does not mean one causes the other. Ice cream sales and drownings both rise in summer; neither causes the other. Math 1 asks about this explicitly.
+  </div>
+  <p class="body-text">A <strong>two-way table</strong> does the same job for categorical data, counting how many fall into each combination of two categories. Relative frequencies (converting counts to percentages of a row or column) reveal association that raw counts can hide.</p>
+
+  <div class="fwd">
+    <span class="fwd-label">Where this goes</span>
+    Unit 8 is this strand extended &mdash; correlation coefficients, residuals, and being more careful about what a linear model does and does not license you to claim.
+  </div>
+</div>
+
+<!-- ======== H. GEOMETRY FOR LATER ======== -->
+<div class="card" id="sec-geometry">
+  <h2 class="card-title"><span class="num">H</span>Geometry you can park for now</h2>
+  <p class="body-text">Three 8th grade geometry topics barely appear in Math 1 but return in force in Math 2. Worth knowing they exist, not worth drilling before Unit 1.</p>
+  <div class="term-grid">
+    <div class="term-sym">Transformations</div><div class="term-def">translations, reflections, rotations, and dilations. Two figures are <strong>congruent</strong> if one maps onto the other using only the first three; <strong>similar</strong> if a dilation is allowed too.</div>
+    <div class="term-sym">Angle relationships</div><div class="term-def">angles formed by parallel lines and a transversal; the angles of a triangle summing to 180 degrees; the exterior angle rule.</div>
+    <div class="term-sym">Volume</div><div class="term-def">cylinders, cones, and spheres. The relationship worth remembering: a cone is exactly one third of the cylinder with the same base and height.</div>
+  </div>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">The one piece of this that <em>does</em> matter soon is <strong>dilations</strong>. Stretching a graph vertically is the same idea applied to functions, which is how Math 1 and Math 2 talk about transforming parent functions.</p>
+  </div>
+</div>
+
+<!-- ======== FORWARD MAP ======== -->
+<div class="card" id="sec-map">
+  <h2 class="card-title"><span class="num">Map</span>Where each skill reappears</h2>
+  <p class="body-text">Shaded rows are the ones you need before Unit 1 starts. The rest you can shore up as they come.</p>
+  <table class="map-table">
+    <tr><th>8th grade standard</th><th>Skill</th><th>Where it comes back</th></tr>
+    <tr class="hot"><td class="code">NC.8.F.1</td><td>Definition of a function</td><td>Unit 1 &mdash; why a sequence counts as a function. Unit 3 &mdash; function notation throughout.</td></tr>
+    <tr class="hot"><td class="code">NC.8.F.3</td><td>Spotting linear from a table</td><td>Unit 1 &mdash; the constant-difference test for arithmetic sequences.</td></tr>
+    <tr class="hot"><td class="code">NC.8.F.4</td><td>Rate of change and initial value</td><td>Unit 1 &mdash; common difference is a rate of change. Unit 2 &mdash; building linear models.</td></tr>
+    <tr class="hot"><td class="code">NC.8.EE.1</td><td>Integer exponents</td><td>Unit 1 &mdash; geometric sequences and the $n-1$ exponent. Unit 2 &mdash; exponential functions.</td></tr>
+    <tr class="hot"><td class="code">NC.8.EE.7</td><td>Solving linear equations</td><td>Unit 1 &mdash; solving for a position. Unit 4 &mdash; equations and inequalities in full.</td></tr>
+    <tr><td class="code">NC.8.F.2</td><td>Comparing functions across representations</td><td>Unit 3 &mdash; comparing key features of functions.</td></tr>
+    <tr><td class="code">NC.8.F.5</td><td>Describing a graph qualitatively</td><td>Unit 3 &mdash; increasing, decreasing, maxima, minima.</td></tr>
+    <tr><td class="code">NC.8.EE.8</td><td>Systems by graphing</td><td>Unit 5 &mdash; substitution, elimination, and systems of inequalities.</td></tr>
+    <tr><td class="code">NC.8.EE.2</td><td>Square and cube roots</td><td>Unit 6 &mdash; solving quadratics. Even roots giving two answers matters in Unit 1 too.</td></tr>
+    <tr><td class="code">NC.8.NS.1&ndash;2</td><td>Rational and irrational numbers</td><td>Unit 7 &mdash; the real number system and closure under operations.</td></tr>
+    <tr><td class="code">NC.8.EE.3&ndash;4</td><td>Scientific notation</td><td>Unit 2 &mdash; exponential contexts with very large or very small quantities.</td></tr>
+    <tr><td class="code">NC.8.G.6&ndash;8</td><td>Pythagorean theorem and distance</td><td>Coordinate geometry proofs &mdash; side lengths, midpoints, partitioning segments.</td></tr>
+    <tr><td class="code">NC.8.SP.1&ndash;4</td><td>Scatter plots and two-way tables</td><td>Unit 8 &mdash; modeling data, correlation, residuals.</td></tr>
+    <tr><td class="code">NC.8.G.2&ndash;5, 9</td><td>Transformations, angles, volume</td><td>Mostly Math 2. Dilations inform how Math 1 transforms parent functions.</td></tr>
+  </table>
+</div>
+
+<!-- ======== THE BIG CONNECTION ======== -->
+<div class="card" id="sec-connection">
+  <h2 class="card-title"><span class="num">&rarr;</span>The connection worth seeing before you start</h2>
+  <p class="body-text">Math 1 can feel like a pile of separate topics. It is not. Almost the whole first half is one idea seen from four angles, and knowing that in advance makes the sequencing feel deliberate instead of random.</p>
+
+  <div class="highlight-box">
+    <p class="body-text"><strong>8th grade</strong> gave you $y = mx + b$ &mdash; a constant rate of change, defined for every input.</p>
+    <p class="body-text"><strong>Unit 1</strong> takes the same rule and only lets you ask for whole-number positions. That is an arithmetic sequence: the common difference $d$ is the old rate of change $m$, and the terms are a handful of dots plucked off the line.</p>
+    <p class="body-text"><strong>Unit 1 also</strong> introduces the multiplying version &mdash; geometric sequences &mdash; which are dots plucked off an exponential curve, even though you have not formally met one yet.</p>
+    <p class="body-text" style="margin:0"><strong>Unit 2</strong> fills the gaps back in. It takes those two dotted patterns and lets the input be any number again, producing linear and exponential <em>functions</em>. Nothing new is invented; the domain is just reconnected.</p>
+  </div>
+
+  <table class="map-table">
+    <tr><th></th><th>Arithmetic</th><th>Geometric</th></tr>
+    <tr><td class="code">Step rule</td><td>add $d$</td><td>multiply by $r$</td></tr>
+    <tr><td class="code">Sequence form</td><td>$a_n = a_1 + d(n-1)$</td><td>$a_n = a_1 \cdot r^{\,n-1}$</td></tr>
+    <tr><td class="code">Function form</td><td>$f(x) = mx + b$</td><td>$f(x) = a \cdot b^{\,x}$</td></tr>
+    <tr><td class="code">Graph</td><td>separate dots on a line</td><td>separate dots on a curve</td></tr>
+    <tr><td class="code">Domain</td><td colspan="2">sequence: whole-number positions only &nbsp;&middot;&nbsp; function: every real number</td></tr>
+  </table>
+
+  <p class="body-text">The two columns of that table are the same objects with the holes filled in. When Unit 2 opens by asking you to compare a savings account that adds \$50 a month with one that grows 3% a month, you are looking at an arithmetic sequence and a geometric sequence that have been allowed to breathe.</p>
+
+  <div class="btn-row" style="margin-top:18px">
+    <a class="site-btn" href="unit-1-sequences.html" style="text-decoration:none;display:inline-block">Start Unit 1: Sequences &rarr;</a>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+function toggleAns(id){ const a=document.getElementById(id); a.classList.toggle('show'); }
+window.toggleAns = toggleAns;
+
+function mathify(el){
+  if(window.renderMathInElement && el){
+    try{ renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]}); }catch(e){}
+  }
+}
+function fmt(x){
+  if(!isFinite(x)) return '?';
+  if(Number.isInteger(x)) return x.toLocaleString('en-US');
+  return (Math.round(x*1000)/1000).toString();
+}
+
+/* ===== theme + search ===== */
+function toggleLwsTheme(){
+  const cur = document.body.dataset.theme || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.body.dataset.theme = next;
+  try{ localStorage.setItem('lws-theme', next); }catch(e){}
+  const btn = document.getElementById('themeBtn');
+  if(btn) btn.innerHTML = next === 'dark' ? '&#9728;' : '&#9790;';
+}
+window.toggleLwsTheme = toggleLwsTheme;
+try{
+  const saved = localStorage.getItem('lws-theme');
+  if(saved === 'dark'){
+    document.body.dataset.theme = 'dark';
+    const btn = document.getElementById('themeBtn');
+    if(btn) btn.innerHTML = '&#9728;';
+  }
+}catch(e){}
+
+(function setupSearch(){
+  const input = document.querySelector('.search input');
+  if(!input) return;
+  const cards = Array.from(document.querySelectorAll('.main .card'));
+  const pgHead = document.querySelector('.main .pg-head');
+  let emptyMsg = null;
+  input.addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    let shown = 0;
+    cards.forEach(card => {
+      if(!q){ card.style.display=''; shown++; return; }
+      const hit = card.textContent.toLowerCase().includes(q);
+      card.style.display = hit ? '' : 'none';
+      if(hit) shown++;
+    });
+    if(pgHead) pgHead.style.display = q ? 'none' : '';
+    if(q && shown === 0){
+      if(!emptyMsg){
+        emptyMsg = document.createElement('div');
+        emptyMsg.className = 'card';
+        emptyMsg.style.textAlign = 'center';
+        emptyMsg.innerHTML = '<div class="body-text" style="color:var(--slate)">No sections match that search.</div>';
+        document.querySelector('.main').appendChild(emptyMsg);
+      }
+      emptyMsg.style.display = '';
+    } else if(emptyMsg){ emptyMsg.style.display = 'none'; }
+  });
+  input.addEventListener('keydown', e => {
+    if(e.key === 'Escape'){ input.value=''; input.dispatchEvent(new Event('input')); }
+  });
+})();
+
+/* ============================================================ */
+/* ============== Diagnostic ================================== */
+/* ============================================================ */
+const STRANDS = {
+  FUN: {name:'Functions',                 sec:'#sec-functions'},
+  LIN: {name:'Linear & solving',          sec:'#sec-linear'},
+  EXP: {name:'Exponents & roots',         sec:'#sec-exponents'},
+  SYS: {name:'Systems',                   sec:'#sec-systems'},
+  NUM: {name:'Real numbers',              sec:'#sec-numbers'},
+  PYT: {name:'Pythagorean & distance',    sec:'#sec-pythag'},
+  DAT: {name:'Data & scatter plots',      sec:'#sec-data'}
+};
+
+const DIAG = [
+  {s:'FUN', q:'A relation pairs the input 3 with the output 7, and also pairs the input 3 with the output 9. Is it a function?',
+   o:['Yes, both outputs are listed','No, one input has two outputs','Only if you graph it','Not enough information'], c:1,
+   w:'One input may have only one output. This is the definition you will use in Unit 1 to argue that a sequence is a function.'},
+  {s:'FUN', q:'In $y = 3x - 7$, what is the rate of change?',
+   o:['$-7$','3','7','$-3$'], c:1,
+   w:'The coefficient of $x$ is the rate of change. The $-7$ is the initial value.'},
+  {s:'FUN', q:'A table gives outputs 6, 10, 14, 18 for inputs 1, 2, 3, 4. Is it linear?',
+   o:['Yes, it goes up by 4 each time','No, the outputs are too large','Yes, because all outputs are even','No, it is exponential'], c:0,
+   w:'A constant difference between outputs means a constant rate of change, which is exactly what linear means.'},
+  {s:'FUN', q:'If $f(4) = 11$, what does that tell you?',
+   o:['$f$ multiplied by 4 equals 11','The input 4 gives the output 11','The output 4 gives the input 11','$f = 11 \\div 4$'], c:1,
+   w:'Function notation names an input and its output. It is never multiplication.'},
+  {s:'LIN', q:'Solve $4x - 7 = 21$.',
+   o:['$x = 3.5$','$x = 7$','$x = 14$','$x = 28$'], c:1,
+   w:'Add 7 to get $4x = 28$, then divide by 4.'},
+  {s:'LIN', q:'Solve $3(x + 2) = 5x - 4$.',
+   o:['$x = 1$','$x = 5$','$x = -5$','no solution'], c:1,
+   w:'Distribute to $3x + 6 = 5x - 4$, then $10 = 2x$, so $x = 5$.'},
+  {s:'LIN', q:'What is the slope of the line through $(2, 3)$ and $(6, 11)$?',
+   o:['2','$\\frac{1}{2}$','8','4'], c:0,
+   w:'$m = \\dfrac{11-3}{6-2} = \\dfrac{8}{4} = 2$.'},
+  {s:'LIN', q:'A tank holds 12 litres and drains 3 litres per hour. Which rule gives the amount left after $x$ hours?',
+   o:['$y = 3x + 12$','$y = -3x + 12$','$y = 12x - 3$','$y = -3x - 12$'], c:1,
+   w:'Draining makes the rate of change negative; 12 is the starting amount.'},
+  {s:'EXP', q:'Simplify $2^3 \\cdot 2^4$.',
+   o:['$2^{12}$','$2^7$','$4^7$','$2^{1}$'], c:1,
+   w:'Same base multiplied means you add exponents: $2^{3+4} = 2^7 = 128$.'},
+  {s:'EXP', q:'What is $5^0$?',
+   o:['0','1','5','undefined'], c:1,
+   w:'Any nonzero base to the zero power is 1. This is what makes the geometric sequence formula produce the correct first term.'},
+  {s:'EXP', q:'What is $3^{-2}$?',
+   o:['$-9$','$-6$','$\\frac{1}{9}$','$\\frac{1}{6}$'], c:2,
+   w:'A negative exponent means reciprocal: $3^{-2} = \\dfrac{1}{3^2} = \\dfrac{1}{9}$. It never makes the answer negative.'},
+  {s:'EXP', q:'Solve $x^2 = 49$.',
+   o:['$x = 7$ only','$x = 7$ or $x = -7$','$x = 24.5$','$x = \\sqrt{7}$'], c:1,
+   w:'Even powers give two answers, since $(-7)^2 = 49$ too. Odd powers give one.'},
+  {s:'SYS', q:'What does the solution to a system of two linear equations represent?',
+   o:['The steeper slope','The point where the graphs cross','The sum of the intercepts','The average of the two lines'], c:1,
+   w:'The intersection satisfies both equations at once, which is what "solution to the system" means.'},
+  {s:'SYS', q:'Solve the system $y = 2x + 1$ and $y = -x + 7$.',
+   o:['$(2, 5)$','$(5, 2)$','$(1, 3)$','$(3, 4)$'], c:0,
+   w:'Set them equal: $2x + 1 = -x + 7$, so $3x = 6$ and $x = 2$. Then $y = 5$.'},
+  {s:'SYS', q:'Two lines both have slope 3 but different y-intercepts. How many solutions?',
+   o:['One','None','Infinitely many','Two'], c:1,
+   w:'Same slope and different intercepts means parallel, so they never cross.'},
+  {s:'NUM', q:'Which of these is irrational?',
+   o:['$0.75$','$\\frac{1}{3}$','$\\sqrt{16}$','$\\sqrt{2}$'], c:3,
+   w:'$\\sqrt{2}$ never terminates or repeats. Note $\\sqrt{16} = 4$, which is rational &mdash; a root is not automatically irrational.'},
+  {s:'NUM', q:'Which of these has a decimal that terminates?',
+   o:['$\\frac{1}{3}$','$\\frac{1}{8}$','$\\sqrt{2}$','$\\pi$'], c:1,
+   w:'$\\frac{1}{8} = 0.125$, which stops. $\\frac{1}{3} = 0.\\overline{3}$ repeats, and the last two never terminate or repeat.'},
+  {s:'NUM', q:'Between which two whole numbers does $\\sqrt{20}$ lie?',
+   o:['3 and 4','4 and 5','5 and 6','9 and 11'], c:1,
+   w:'The nearest perfect squares are $16$ and $25$, so $4 < \\sqrt{20} < 5$. Since 20 is closer to 16, the value is a little above 4.4.'},
+  {s:'PYT', q:'A triangle has sides 5, 12, and 13. Is it a right triangle?',
+   o:['Yes, because $5^2 + 12^2 = 13^2$','No, the sides are too different','Yes, because all sides are whole numbers','Not enough information'], c:0,
+   w:'$25 + 144 = 169 = 13^2$, so the converse of the Pythagorean theorem says it must be right-angled.'},
+  {s:'DAT', q:'On a scatter plot the points fall steadily from upper-left to lower-right. The association is:',
+   o:['Positive','Negative','None','Impossible to say'], c:1,
+   w:'As one variable increases the other decreases, which is a negative association. The fitted line would have a negative slope.'},
+  {s:'PYT', q:'A right triangle has legs 6 and 8. How long is the hypotenuse?',
+   o:['10','14','48','$\\sqrt{14}$'], c:0,
+   w:'$6^2 + 8^2 = 36 + 64 = 100$, so $c = 10$.'},
+  {s:'PYT', q:'What is the distance between $(1, 2)$ and $(4, 6)$?',
+   o:['5','7','$\\sqrt{7}$','25'], c:0,
+   w:'Legs of 3 and 4 give $\\sqrt{9 + 16} = \\sqrt{25} = 5$. The distance formula is the Pythagorean theorem.'},
+  {s:'DAT', q:'A scatter plot of study hours against test score has a line with slope 4. What does the 4 mean?',
+   o:['Four students were surveyed','Each extra hour of study is associated with about 4 more points','The lowest score was 4','Scores rose 4% overall'], c:1,
+   w:'Slope is the change in the output per one-unit change in the input, stated in context.'},
+  {s:'DAT', q:'Ice cream sales and drowning deaths both rise in summer. What can you conclude?',
+   o:['Ice cream causes drownings','They are associated but neither causes the other','Drownings cause ice cream sales','There is no association'], c:1,
+   w:'Association is not causation. A third factor &mdash; hot weather &mdash; drives both.'}
+];
+
+(function diagnostic(){
+  const wrap = document.getElementById('dgWrap');
+  const report = document.getElementById('dgReport');
+  if(!wrap) return;
+  const answers = {};
+
+  let html = '';
+  DIAG.forEach((item, i) => {
+    html += '<div class="dg-q" id="dgq'+i+'">';
+    html += '<div class="qhead"><span class="qnum">'+(i+1)+'.</span><span class="qtext">'+item.q+'</span><span class="strand">'+item.s+'</span></div>';
+    html += '<div class="pick-row">';
+    item.o.forEach((o, j) => {
+      html += '<button class="pick-btn" data-dq="'+i+'" data-opt="'+j+'">'+o+'</button>';
+    });
+    html += '</div><div class="fb" id="dgfb'+i+'"></div></div>';
+  });
+  wrap.innerHTML = html;
+  mathify(wrap);
+
+  wrap.querySelectorAll('button[data-opt]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = +btn.dataset.dq, j = +btn.dataset.opt;
+      answers[i] = j;
+      wrap.querySelectorAll('button[data-dq="'+i+'"]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  document.getElementById('dgReset').addEventListener('click', () => {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    wrap.querySelectorAll('.pick-btn').forEach(b => b.classList.remove('active'));
+    wrap.querySelectorAll('.fb').forEach(f => { f.className='fb'; f.innerHTML=''; });
+    report.innerHTML = '';
+  });
+
+  document.getElementById('dgScore').addEventListener('click', () => {
+    const tally = {};
+    Object.keys(STRANDS).forEach(k => tally[k] = {right:0, total:0});
+    let right = 0, answered = 0;
+
+    DIAG.forEach((item, i) => {
+      tally[item.s].total++;
+      const fb = document.getElementById('dgfb'+i);
+      if(!(i in answers)){
+        fb.className = 'fb show no';
+        fb.innerHTML = '<strong>Not answered.</strong> ' + item.w;
+        mathify(fb);
+        return;
+      }
+      answered++;
+      const ok = (answers[i] === item.c);
+      if(ok){ right++; tally[item.s].right++; }
+      fb.className = 'fb show ' + (ok ? 'ok' : 'no');
+      fb.innerHTML = (ok ? '<strong>Correct.</strong> ' : '<strong>Not quite &mdash; the answer is ' + item.o[item.c] + '.</strong> ') + item.w;
+      mathify(fb);
+    });
+
+    let r = '<div class="highlight-box"><p class="body-text" style="margin-bottom:10px"><strong>Overall: ' + right + ' of ' + DIAG.length + '</strong>'
+          + (answered < DIAG.length ? ' &nbsp;<span style="color:var(--bad)">(' + (DIAG.length - answered) + ' left blank, counted as incorrect)</span>' : '')
+          + '</p>';
+
+    const weak = [];
+    Object.keys(STRANDS).forEach(k => {
+      const t = tally[k];
+      const pct = t.total ? Math.round(100 * t.right / t.total) : 0;
+      const cls = pct >= 80 ? 'hi' : (pct >= 50 ? 'mid' : 'lo');
+      if(pct < 80) weak.push(k);
+      r += '<div class="bar-row"><a href="' + STRANDS[k].sec + '">' + STRANDS[k].name + '</a>'
+        + '<div class="bar-track"><div class="bar-fill ' + cls + '" style="width:' + pct + '%"></div></div>'
+        + '<span class="bar-val">' + t.right + '/' + t.total + '</span></div>';
+    });
+
+    r += '<p class="body-text" style="margin:14px 0 0">';
+    if(weak.length === 0){
+      r += '<strong>Nothing flagged.</strong> Every strand is at 80% or better. Skim the '
+        + '<a href="#sec-connection" style="color:var(--forest);font-weight:700">connection section</a> at the bottom and go straight to Unit 1.';
+    } else {
+      const priority = weak.filter(k => ['FUN','LIN','EXP'].indexOf(k) >= 0);
+      r += '<strong>Review these before Unit 1:</strong> '
+        + weak.map(k => '<a href="' + STRANDS[k].sec + '" style="color:var(--forest);font-weight:700">' + STRANDS[k].name + '</a>').join(', ') + '.';
+      if(priority.length){
+        r += '<br><br>Start with ' + priority.map(k => STRANDS[k].name).join(' and ')
+          + ' &mdash; ' + (priority.length > 1 ? 'those are' : 'that is') + ' load-bearing for Unit 1 itself. The others can wait until the unit that needs them.';
+      } else {
+        r += '<br><br>None of these block Unit 1, so you can start it now and come back to these before the units that use them.';
+      }
+    }
+    r += '</p></div>';
+    report.innerHTML = r;
+    mathify(report);
+    report.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+})();
+
+/* ============================================================ */
+/* ============== Slope / intercept explorer ================== */
+/* ============================================================ */
+(function slopeExplorer(){
+  const svg = document.getElementById('slSvg');
+  const mEl = document.getElementById('slM'), bEl = document.getElementById('slB');
+  const mVal = document.getElementById('slMVal'), bVal = document.getElementById('slBVal');
+  const tw = document.getElementById('slTableWrap'), out = document.getElementById('slOut');
+  if(!svg) return;
+
+  function draw(){
+    const m = +mEl.value, b = +bEl.value;
+    mVal.textContent = m; bVal.textContent = b;
+
+    const L=50, R=590, T=20, B=250;
+    const xMin=-6, xMax=6, yMin=-12, yMax=12;
+    const sx = x => L + ((x - xMin)/(xMax - xMin))*(R - L);
+    const sy = y => B - ((y - yMin)/(yMax - yMin))*(B - T);
+
+    let s = '';
+    for(let g=xMin; g<=xMax; g++){
+      s += '<line x1="'+sx(g)+'" y1="'+T+'" x2="'+sx(g)+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="'+(g===0?2:0.6)+'" opacity="'+(g===0?1:0.55)+'"/>';
+    }
+    for(let g=yMin; g<=yMax; g+=2){
+      s += '<line x1="'+L+'" y1="'+sy(g)+'" x2="'+R+'" y2="'+sy(g)+'" stroke="var(--sage-l)" stroke-width="'+(g===0?2:0.6)+'" opacity="'+(g===0?1:0.55)+'"/>';
+    }
+    // the line, clipped to the window
+    const y1 = m*xMin + b, y2 = m*xMax + b;
+    s += '<line x1="'+sx(xMin)+'" y1="'+sy(Math.max(yMin,Math.min(yMax,y1)))+'" x2="'+sx(xMax)+'" y2="'+sy(Math.max(yMin,Math.min(yMax,y2)))+'" stroke="var(--arith)" stroke-width="2.5"/>';
+    // intercept marker
+    if(b >= yMin && b <= yMax){
+      s += '<circle cx="'+sx(0)+'" cy="'+sy(b)+'" r="6" fill="var(--geo)"/>';
+      s += '<text x="'+(sx(0)-11)+'" y="'+(sy(b)-10)+'" text-anchor="end" font-family="Bitter,serif" font-size="12" fill="var(--geo)">initial value '+b+'</text>';
+    }
+    // one step of rise/run
+    if(b >= yMin && b <= yMax && (m+b) >= yMin && (m+b) <= yMax){
+      s += '<line x1="'+sx(0)+'" y1="'+sy(b)+'" x2="'+sx(1)+'" y2="'+sy(b)+'" stroke="var(--forest)" stroke-width="1.6" stroke-dasharray="4 3"/>';
+      s += '<line x1="'+sx(1)+'" y1="'+sy(b)+'" x2="'+sx(1)+'" y2="'+sy(b+m)+'" stroke="var(--forest)" stroke-width="1.6" stroke-dasharray="4 3"/>';
+      s += '<text x="'+(sx(1)+6)+'" y="'+((sy(b)+sy(b+m))/2)+'" font-family="Bitter,serif" font-size="12" fill="var(--forest)">'+(m>=0?'+':'')+m+'</text>';
+    }
+    s += '<text x="'+((L+R)/2)+'" y="284" text-anchor="middle" font-family="Dosis,sans-serif" font-size="13" fill="var(--slate)">one step right changes y by the rate of change</text>';
+    svg.innerHTML = s;
+
+    let h = '<table class="seq-table"><tr><th>$x$</th>';
+    for(let x=0; x<=4; x++) h += '<th>'+x+'</th>';
+    h += '</tr><tr><th>$y$</th>';
+    for(let x=0; x<=4; x++) h += '<td>'+fmt(m*x+b)+'</td>';
+    h += '</tr><tr><th>Change</th><td style="background:var(--sage-m)">&mdash;</td>';
+    for(let x=1; x<=4; x++) h += '<td class="diff">'+(m>=0?'+':'')+fmt(m)+'</td>';
+    h += '</tr></table>';
+    tw.innerHTML = h;
+    mathify(tw);
+
+    out.innerHTML = '<strong>Equation:</strong> $y = ' + m + 'x ' + (b>=0 ? '+ '+b : '- '+Math.abs(b)) + '$<br>'
+      + '<strong>Rate of change:</strong> every step right changes $y$ by ' + fmt(m) + '.<br>'
+      + '<strong>Initial value:</strong> when $x = 0$, $y = ' + b + '$.<br>'
+      + (m === 0 ? 'With a rate of change of 0 the line is flat &mdash; the output never changes.' :
+         'Notice the bottom row of the table is constant. That constant row is what makes this linear, and in Unit 1 it becomes the common difference of an arithmetic sequence.');
+    mathify(out);
+  }
+  mEl.addEventListener('input', draw); bEl.addEventListener('input', draw);
+  draw();
+})();
+
+/* ============================================================ */
+/* ============== Exponent drill ============================== */
+/* ============================================================ */
+(function expDrill(){
+  const qEl = document.getElementById('expQ'), optsEl = document.getElementById('expOpts');
+  const fbEl = document.getElementById('expFb'), scoreEl = document.getElementById('expScore');
+  if(!qEl) return;
+  let right=0, asked=0, cur=null, answered=false;
+
+  function make(){
+    const kind = Math.floor(Math.random()*5);
+    const a = [2,3,5][Math.floor(Math.random()*3)];
+    if(kind === 0){
+      const m=Math.floor(Math.random()*3)+2, n=Math.floor(Math.random()*3)+1;
+      return {q:'$'+a+'^{'+m+'} \\cdot '+a+'^{'+n+'}$', ans:a+'^{'+(m+n)+'}',
+        opts:[a+'^{'+(m+n)+'}', a+'^{'+(m*n)+'}', (a*a)+'^{'+(m+n)+'}', a+'^{'+(m-n)+'}'],
+        w:'Same base multiplied means add the exponents: $'+a+'^{'+m+'+'+n+'} = '+a+'^{'+(m+n)+'}$.'};
+    }
+    if(kind === 1){
+      const m=Math.floor(Math.random()*3)+4, n=Math.floor(Math.random()*3)+1;
+      return {q:'$\\dfrac{'+a+'^{'+m+'}}{'+a+'^{'+n+'}}$', ans:a+'^{'+(m-n)+'}',
+        opts:[a+'^{'+(m-n)+'}', a+'^{'+(m+n)+'}', a+'^{'+Math.round(m/n)+'}', '1'],
+        w:'Same base divided means subtract the exponents: $'+a+'^{'+m+'-'+n+'} = '+a+'^{'+(m-n)+'}$.'};
+    }
+    if(kind === 2){
+      const m=Math.floor(Math.random()*3)+2, n=Math.floor(Math.random()*2)+2;
+      return {q:'$\\left('+a+'^{'+m+'}\\right)^{'+n+'}$', ans:a+'^{'+(m*n)+'}',
+        opts:[a+'^{'+(m*n)+'}', a+'^{'+(m+n)+'}', a+'^{'+(n)+'}', (a*n)+'^{'+m+'}'],
+        w:'A power of a power multiplies the exponents: $'+a+'^{'+m+' \\cdot '+n+'} = '+a+'^{'+(m*n)+'}$.'};
+    }
+    if(kind === 3){
+      return {q:'$'+a+'^{0}$', ans:'1', opts:['1','0',''+a,'undefined'],
+        w:'Any nonzero base to the zero power is 1. This is the fact that makes $a_1 \\cdot r^{0} = a_1$ work.'};
+    }
+    const n=Math.floor(Math.random()*3)+2;
+    return {q:'$'+a+'^{-'+n+'}$', ans:'\\dfrac{1}{'+Math.pow(a,n)+'}',
+      opts:['\\dfrac{1}{'+Math.pow(a,n)+'}', '-'+Math.pow(a,n), '-\\dfrac{1}{'+Math.pow(a,n)+'}', ''+(a*n)],
+      w:'A negative exponent means reciprocal: $'+a+'^{-'+n+'} = \\dfrac{1}{'+a+'^{'+n+'}} = \\dfrac{1}{'+Math.pow(a,n)+'}$. It never makes the answer negative.'};
+  }
+
+  function shuffle(arr){
+    const a = arr.slice();
+    for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; }
+    return a;
+  }
+
+  function next(){
+    cur = make(); answered = false;
+    qEl.innerHTML = cur.q;
+    const opts = shuffle(cur.opts);
+    optsEl.innerHTML = opts.map(o => '<button class="pick-btn" data-v="'+o.replace(/"/g,'&quot;')+'">$'+o+'$</button>').join('');
+    optsEl.querySelectorAll('button').forEach(b => {
+      b.addEventListener('click', () => {
+        if(answered) return;
+        answered = true; asked++;
+        const ok = (b.dataset.v === cur.ans);
+        if(ok) right++;
+        fbEl.className = 'fb show ' + (ok ? 'ok' : 'no');
+        fbEl.innerHTML = (ok ? '<strong>Correct.</strong> ' : '<strong>Not quite.</strong> ') + cur.w;
+        scoreEl.textContent = 'Score: ' + right + ' of ' + asked;
+        mathify(fbEl);
+      });
+    });
+    fbEl.className = 'fb'; fbEl.innerHTML = '';
+    mathify(qEl); mathify(optsEl);
+  }
+  document.getElementById('expNext').addEventListener('click', next);
+  scoreEl.textContent = 'Score: 0 of 0';
+  next();
+})();
+
+/* ============================================================ */
+/* ============== Systems grapher ============================= */
+/* ============================================================ */
+(function systems(){
+  const svg = document.getElementById('sysSvg'), out = document.getElementById('sysOut');
+  const m1El=document.getElementById('sysM1'), b1El=document.getElementById('sysB1');
+  const m2El=document.getElementById('sysM2'), b2El=document.getElementById('sysB2');
+  if(!svg) return;
+
+  function draw(){
+    const m1=+m1El.value, b1=+b1El.value, m2=+m2El.value, b2=+b2El.value;
+    const L=50, R=590, T=20, B=270;
+    const xMin=-4, xMax=10, yMin=-6, yMax=14;
+    const sx = x => L + ((x-xMin)/(xMax-xMin))*(R-L);
+    const sy = y => B - ((y-yMin)/(yMax-yMin))*(B-T);
+    const clamp = y => Math.max(yMin, Math.min(yMax, y));
+
+    let s='';
+    for(let g=xMin; g<=xMax; g+=2) s += '<line x1="'+sx(g)+'" y1="'+T+'" x2="'+sx(g)+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="'+(g===0?2:0.6)+'" opacity="0.6"/>';
+    for(let g=yMin; g<=yMax; g+=2) s += '<line x1="'+L+'" y1="'+sy(g)+'" x2="'+R+'" y2="'+sy(g)+'" stroke="var(--sage-l)" stroke-width="'+(g===0?2:0.6)+'" opacity="0.6"/>';
+
+    s += '<line x1="'+sx(xMin)+'" y1="'+sy(clamp(m1*xMin+b1))+'" x2="'+sx(xMax)+'" y2="'+sy(clamp(m1*xMax+b1))+'" stroke="var(--arith)" stroke-width="2.5"/>';
+    s += '<line x1="'+sx(xMin)+'" y1="'+sy(clamp(m2*xMin+b2))+'" x2="'+sx(xMax)+'" y2="'+sy(clamp(m2*xMax+b2))+'" stroke="var(--geo)" stroke-width="2.5"/>';
+
+    let msg;
+    if(m1 === m2){
+      if(b1 === b2){
+        msg = 'Both lines are identical, so every point on the line satisfies both equations &mdash; <strong>infinitely many solutions</strong>.';
+      } else {
+        msg = 'Same slope, different intercepts. The lines are <strong>parallel</strong> and never meet, so there is <strong>no solution</strong>.';
+      }
+    } else {
+      const x = (b2-b1)/(m1-m2);
+      const y = m1*x + b1;
+      if(x>=xMin && x<=xMax && y>=yMin && y<=yMax){
+        s += '<circle cx="'+sx(x)+'" cy="'+sy(y)+'" r="7" fill="var(--forest)"/>';
+        s += '<text x="'+(sx(x)+12)+'" y="'+(sy(y)-10)+'" font-family="Bitter,serif" font-size="13" font-weight="700" fill="var(--forest)">('+fmt(x)+', '+fmt(y)+')</text>';
+      }
+      msg = 'The lines cross at <strong>(' + fmt(x) + ', ' + fmt(y) + ')</strong>. '
+          + 'Check by setting them equal: $' + m1 + 'x ' + (b1>=0?'+ '+b1:'- '+Math.abs(b1)) + ' = ' + m2 + 'x ' + (b2>=0?'+ '+b2:'- '+Math.abs(b2)) + '$, which gives $x = ' + fmt(x) + '$.'
+          + (x>=xMin && x<=xMax && y>=yMin && y<=yMax ? '' : ' The crossing point is off the visible grid.');
+    }
+    svg.innerHTML = s;
+    out.innerHTML = msg;
+    mathify(out);
+  }
+  [m1El,b1El,m2El,b2El].forEach(el => el.addEventListener('input', draw));
+  draw();
+})();
+
+/* ============================================================ */
+/* ============== Distance / Pythagorean ====================== */
+/* ============================================================ */
+(function distance(){
+  const svg=document.getElementById('distSvg'), out=document.getElementById('distOut');
+  const xa=document.getElementById('dxA'), ya=document.getElementById('dyA');
+  const xb=document.getElementById('dxB'), yb=document.getElementById('dyB');
+  if(!svg) return;
+
+  function draw(){
+    const x1=+xa.value, y1=+ya.value, x2=+xb.value, y2=+yb.value;
+    const L=50, R=590, T=20, B=270;
+    const xMin=-2, xMax=10, yMin=-2, yMax=10;
+    const sx=x=>L+((x-xMin)/(xMax-xMin))*(R-L);
+    const sy=y=>B-((y-yMin)/(yMax-yMin))*(B-T);
+
+    let s='';
+    for(let g=xMin; g<=xMax; g++) s += '<line x1="'+sx(g)+'" y1="'+T+'" x2="'+sx(g)+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="'+(g===0?2:0.5)+'" opacity="0.6"/>';
+    for(let g=yMin; g<=yMax; g++) s += '<line x1="'+L+'" y1="'+sy(g)+'" x2="'+R+'" y2="'+sy(g)+'" stroke="var(--sage-l)" stroke-width="'+(g===0?2:0.5)+'" opacity="0.6"/>';
+
+    const dx = x2-x1, dy = y2-y1;
+    if(dx !== 0 || dy !== 0){
+      s += '<line x1="'+sx(x1)+'" y1="'+sy(y1)+'" x2="'+sx(x2)+'" y2="'+sy(y1)+'" stroke="var(--geo)" stroke-width="2.5"/>';
+      s += '<line x1="'+sx(x2)+'" y1="'+sy(y1)+'" x2="'+sx(x2)+'" y2="'+sy(y2)+'" stroke="var(--geo)" stroke-width="2.5"/>';
+      s += '<line x1="'+sx(x1)+'" y1="'+sy(y1)+'" x2="'+sx(x2)+'" y2="'+sy(y2)+'" stroke="var(--arith)" stroke-width="3"/>';
+      s += '<text x="'+((sx(x1)+sx(x2))/2)+'" y="'+(sy(y1)+18)+'" text-anchor="middle" font-family="Bitter,serif" font-size="12" fill="var(--geo)">'+Math.abs(dx)+'</text>';
+      s += '<text x="'+(sx(x2)+8)+'" y="'+((sy(y1)+sy(y2))/2)+'" font-family="Bitter,serif" font-size="12" fill="var(--geo)">'+Math.abs(dy)+'</text>';
+    }
+    s += '<circle cx="'+sx(x1)+'" cy="'+sy(y1)+'" r="6" fill="var(--forest)"/>';
+    s += '<circle cx="'+sx(x2)+'" cy="'+sy(y2)+'" r="6" fill="var(--forest)"/>';
+    s += '<text x="'+(sx(x1)-6)+'" y="'+(sy(y1)-11)+'" text-anchor="end" font-family="Bitter,serif" font-size="12" fill="var(--forest)">('+x1+', '+y1+')</text>';
+    s += '<text x="'+(sx(x2)+9)+'" y="'+(sy(y2)-11)+'" font-family="Bitter,serif" font-size="12" fill="var(--forest)">('+x2+', '+y2+')</text>';
+    svg.innerHTML = s;
+
+    const d2 = dx*dx + dy*dy;
+    const d = Math.sqrt(d2);
+    const exact = Number.isInteger(d);
+    out.innerHTML = '<strong>Horizontal leg:</strong> $|' + x2 + ' - ' + x1 + '| = ' + Math.abs(dx) + '$ &nbsp;&middot;&nbsp; '
+      + '<strong>Vertical leg:</strong> $|' + y2 + ' - ' + y1 + '| = ' + Math.abs(dy) + '$<br>'
+      + '<strong>Pythagoras:</strong> $' + Math.abs(dx) + '^2 + ' + Math.abs(dy) + '^2 = ' + (dx*dx) + ' + ' + (dy*dy) + ' = ' + d2 + '$<br>'
+      + '<strong>Distance:</strong> $\\sqrt{' + d2 + '} = ' + (exact ? d : fmt(Math.round(d*1000)/1000)) + '$'
+      + (exact ? ' &mdash; a whole number, so this is a Pythagorean triple.' : ' &mdash; irrational, so leaving it as $\\sqrt{' + d2 + '}$ is the exact answer.');
+    mathify(out);
+  }
+  [xa,ya,xb,yb].forEach(el => el.addEventListener('input', draw));
+  draw();
+})();
+</script>
+</body>
+</html>

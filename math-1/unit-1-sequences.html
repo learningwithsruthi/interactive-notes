@@ -146,6 +146,13 @@ body{background:var(--bg);font-family:var(--fp);color:var(--forest);padding:18px
 
 .note-flag{border-left:4px solid var(--bad);background:#fbf3f1;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
 .note-flag .flag-label{font-family:var(--fb);font-weight:700;color:var(--bad);display:block;margin-bottom:4px}
+.fwd{border-left:4px solid var(--arith);background:#f2f6fa;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
+.fwd .fwd-label{font-family:var(--fb);font-weight:700;color:var(--arith);display:block;margin-bottom:4px}
+.fwd a{color:var(--forest);font-weight:600}
+.map-table{width:100%;border-collapse:collapse;font-family:var(--fp);font-size:.93rem;margin:12px 0;background:var(--white)}
+.map-table th,.map-table td{border:1.5px solid var(--sage-l);padding:9px 11px;text-align:left;color:var(--forest);vertical-align:top;line-height:1.55}
+.map-table th{background:var(--sage-m);font-family:var(--fb);font-weight:700;font-size:.82rem}
+.map-table td.code{font-family:var(--fb);font-weight:700;color:var(--sage);white-space:nowrap;font-size:.85rem}
 
 /* ===== LWS SHELL (v2 UI) ===== */
 body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01","cv11"}
@@ -263,6 +270,11 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
 [data-theme="dark"] .ctrl input[type=number]{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
 [data-theme="dark"] .val-chip{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
 [data-theme="dark"] .note-flag{background:#241a17;color:var(--forest)}
+[data-theme="dark"] .fwd{background:#161d24;color:var(--forest)}
+[data-theme="dark"] .fwd a{color:var(--forest)}
+[data-theme="dark"] .map-table{background:#14170F}
+[data-theme="dark"] .map-table th{background:#1E2416}
+[data-theme="dark"] .map-table th,[data-theme="dark"] .map-table td{border-color:#3A4A2E;color:var(--forest)}
 [data-theme="dark"] .drill-fb.ok{background:#1d2a15;color:#cfe4bd}
 [data-theme="dark"] .drill-fb.no{background:#2c1a16;color:#e8c3b9}
 [data-theme="dark"] .katex{color:var(--forest)}
@@ -285,6 +297,10 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
         <div class="sub">Unit 1 of 8 &middot; NC Math 1</div>
       </div>
     </div>
+  </div>
+  <div class="side-section-label">Start here</div>
+  <div class="side-nav">
+    <a class="nav-item" href="unit-0-eighth-grade-recap.html"><span class="num">0.</span><span class="t">8th Grade Recap</span></a>
   </div>
   <div class="side-section-label">Units</div>
   <div class="side-nav">
@@ -347,6 +363,10 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
 <div class="card">
   <h2 class="card-title"><span class="num">0</span>Before you start: the 8th grade pieces you need</h2>
   <p class="body-text">Unit 1 does not actually introduce many new ideas. It renames ideas you built in 8th grade and pushes them one step further. If any of these five feel shaky, patch them first &mdash; everything in the unit leans on them. Tap a row to open it.</p>
+  <div class="fwd">
+    <span class="fwd-label">Coming from 8th grade</span>
+    These five are the pieces Unit 1 leans on directly. For the fuller picture &mdash; every 8th grade strand Math 1 uses, plus a scored readiness diagnostic &mdash; work through the <a href="unit-0-eighth-grade-recap.html">8th Grade Recap</a> first.
+  </div>
 
   <div class="gap-item" id="gap1">
     <div class="gap-head"><span class="code">NC.8.F.1</span><span>A function gives each input exactly one output</span><span class="chev">&#8250;</span></div>
@@ -1078,6 +1098,51 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
       <span class="val-chip" id="fcCount" style="align-self:center"></span>
       <button class="site-btn" id="fcNext">Next &rarr;</button>
     </div>
+  </div>
+</div>
+
+<!-- ======== WHERE THIS GOES NEXT ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">&rarr;</span>Where this goes next</h2>
+  <p class="body-text">Unit 1 can look like a self-contained topic about number patterns. It is not. It is the on-ramp to the two function families that carry the rest of Math 1, and the handover happens immediately in Unit 2.</p>
+
+  <p class="body-text">Here is the whole relationship in one table. Read it left to right and the only thing that changes is <strong>which inputs you are allowed to ask for</strong>.</p>
+
+  <table class="map-table">
+    <tr><th></th><th>Arithmetic</th><th>Geometric</th></tr>
+    <tr><td class="code">Step rule</td><td>add $d$ each time</td><td>multiply by $r$ each time</td></tr>
+    <tr><td class="code">Sequence form</td><td>$a_n = a_1 + d(n-1)$</td><td>$a_n = a_1 \cdot r^{\,n-1}$</td></tr>
+    <tr><td class="code">Function form</td><td>$f(x) = mx + b$</td><td>$f(x) = a \cdot b^{\,x}$</td></tr>
+    <tr><td class="code">Parent family</td><td>linear</td><td>exponential</td></tr>
+    <tr><td class="code">Graph</td><td>dots on a straight line</td><td>dots on a curve</td></tr>
+    <tr><td class="code">Domain</td><td colspan="2">sequence: whole-number positions only &nbsp;&middot;&nbsp; function: every real number</td></tr>
+  </table>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">An arithmetic sequence <strong>is</strong> a linear function that has only been asked about at positions 1, 2, 3, and so on. A geometric sequence <strong>is</strong> an exponential function under the same restriction. Unit 2 removes the restriction and lets the input be any number &mdash; that is genuinely the only difference.</p>
+  </div>
+
+  <p class="body-text">This is also why the $n-1$ appears in sequences and vanishes in functions. Sequences conventionally start counting at position 1, so the formula has to step back one to reach the intercept. Functions start at $x = 0$, where the intercept simply <em>is</em> the starting value. Same line, different starting post.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Watch it happen:</span> the sequence 3, 7, 11, 15, &hellip;</div>
+    <div class="step"><span class="step-label">As a sequence:</span> $a_n = 3 + 4(n-1) = 4n - 1$, defined only for $n = 1, 2, 3, \ldots$</div>
+    <div class="step"><span class="step-label">As a linear function:</span> $f(x) = 4x - 1$, defined for every real $x$ &mdash; including $f(2.5) = 9$, which the sequence has no opinion about.</div>
+    <div class="step"><span class="step-label">Same rule.</span> The sequence is the function sampled at whole numbers.</div>
+  </div>
+
+  <div class="fwd">
+    <span class="fwd-label">Unit 2: Linear and Exponential Functions</span>
+    Opens by comparing a quantity that grows by a fixed <em>amount</em> against one that grows by a fixed <em>percent</em> &mdash; an arithmetic and a geometric sequence, now allowed continuous inputs. Everything you built here transfers directly; only the domain changes.
+  </div>
+
+  <div class="fwd">
+    <span class="fwd-label">Further out</span>
+    Unit 3 formalises domain, range, and function notation. Unit 4 uses the "solve for $n$" skill on equations and inequalities generally. Unit 8 comes back to exponential models when fitting real data.
+  </div>
+
+  <div class="btn-row" style="margin-top:16px">
+    <a class="site-btn secondary" href="unit-0-eighth-grade-recap.html" style="text-decoration:none;display:inline-block">&larr; 8th Grade Recap</a>
   </div>
 </div>
 
