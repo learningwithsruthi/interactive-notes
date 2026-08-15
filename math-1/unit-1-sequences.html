@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sequences Notes (NC Math 1, Unit 1)</title>
-<meta name="description" content="Interactive NC Math 1 Unit 1 notes: sequences as functions, arithmetic and geometric sequences, recursive and explicit form, and the n-1 rule. Built to follow the Open Up Resources Volume 1 packet. By tutoringwithsruthi.">
+<meta name="description" content="Interactive Integrated Math 1 notes on sequences: sequences as functions, arithmetic and geometric sequences, recursive and explicit form, arithmetic and geometric means, and the n-1 rule. Covers the full ten-lesson unit. By tutoringwithsruthi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -297,10 +297,6 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
     <a class="nav-item locked"><span class="num">7.</span><span class="t">Structures of Expressions</span></a>
     <a class="nav-item locked"><span class="num">8.</span><span class="t">Modeling Data</span></a>
   </div>
-  <div class="side-section-label">Also here</div>
-  <div class="side-nav">
-    <a class="nav-item" href="../chem/atomic-structure.html"><span class="num">&#8250;</span><span class="t">Chemistry notes</span></a>
-  </div>
 </aside>
 
 <header class="top">
@@ -329,18 +325,18 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
 <!-- ======== ROADMAP ======== -->
 <div class="card">
   <h2 class="card-title"><span class="num">Map</span>What this unit covers</h2>
-  <p class="body-text">Your class packet works through ten lessons. They all circle the same three questions: <em>how is this pattern growing</em>, <em>how do I write that growth down</em>, and <em>how do I jump straight to the 100th term without listing all of them</em>.</p>
+  <p class="body-text">Integrated Math 1 opens with ten lessons on sequences. They all circle the same three questions: <em>how is this pattern growing</em>, <em>how do I write that growth down</em>, and <em>how do I jump straight to the 100th term without listing all of them</em>.</p>
   <div class="topics-list">
-    <div class="row current"><span class="rn">L1</span><span>Checkerboard Borders &mdash; seeing a pattern</span></div>
-    <div class="row current"><span class="rn">L2</span><span>Growing Dots &mdash; constant difference</span></div>
-    <div class="row current"><span class="rn">L3</span><span>Growing, Growing Dots &mdash; constant ratio</span></div>
-    <div class="row"><span class="rn">L4</span><span>Scott's Workout</span></div>
-    <div class="row"><span class="rn">L5</span><span>Don't Break the Chain</span></div>
-    <div class="row"><span class="rn">L6</span><span>Home on the Range &mdash; domain &amp; range</span></div>
-    <div class="row"><span class="rn">L7</span><span>What Comes Next? What Comes Later?</span></div>
-    <div class="row"><span class="rn">L8</span><span>What Does It Mean?</span></div>
-    <div class="row"><span class="rn">L9</span><span>Geometric Meanies</span></div>
-    <div class="row"><span class="rn">L10</span><span>I Know; What Do You Know?</span></div>
+    <div class="row current"><span class="rn">L1</span><span>Seeing a pattern &mdash; equivalent expressions</span></div>
+    <div class="row current"><span class="rn">L2</span><span>Constant difference &mdash; arithmetic</span></div>
+    <div class="row current"><span class="rn">L3</span><span>Constant ratio &mdash; geometric</span></div>
+    <div class="row current"><span class="rn">L4</span><span>One sequence, four representations</span></div>
+    <div class="row current"><span class="rn">L5</span><span>Sequences inside story problems</span></div>
+    <div class="row current"><span class="rn">L6</span><span>Sequences that shrink</span></div>
+    <div class="row current"><span class="rn">L7</span><span>From a table to both equations</span></div>
+    <div class="row current"><span class="rn">L8</span><span>Missing terms &mdash; arithmetic mean</span></div>
+    <div class="row current"><span class="rn">L9</span><span>Missing terms &mdash; geometric mean</span></div>
+    <div class="row current"><span class="rn">L10</span><span>Putting it all together</span></div>
   </div>
   <div class="highlight-box" style="margin-top:16px">
     <p class="body-text" style="margin:0"><strong>The one sentence that holds the unit together:</strong> a sequence is a function whose inputs are position numbers. Arithmetic sequences are linear functions in disguise; geometric sequences are exponential functions in disguise.</p>
@@ -394,7 +390,7 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
     <div class="gap-body">
       <p>Half the questions in this unit run the formula <em>backwards</em>: "which row has 94 seats?", "which figure has 72 tiles?". You set the explicit formula equal to a number and solve for $n$.</p>
       <p>So you need to comfortably undo $58 + 4(n-1) = 94$ &mdash; distribute or divide first, then isolate.</p>
-      <div class="why"><strong>Why it matters now:</strong> without this, you can only go forwards, and half the packet asks you to go backwards.</div>
+      <div class="why"><strong>Why it matters now:</strong> without this, you can only go forwards, and half the questions in this unit ask you to go backwards.</div>
     </div>
   </div>
 
@@ -407,7 +403,7 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
 <!-- ======== LESSON 1 ======== -->
 <div class="card">
   <h2 class="card-title"><span class="num">L1</span>Checkerboard Borders: two people, two expressions, same answer</h2>
-  <p class="body-text">The packet opens with a square of white tiles wrapped in a checkerboard border, and asks you to <em>group</em> the coloured tiles so you can count them fast. The point is not the count. The point is that different ways of seeing the picture give different-looking expressions that are <strong>equivalent</strong>.</p>
+  <p class="body-text">This unit opens with a square of white tiles wrapped in a checkerboard border, and asks you to <em>group</em> the coloured tiles so you can count them fast. The point is not the count. The point is that different ways of seeing the picture give different-looking expressions that are <strong>equivalent</strong>.</p>
 
   <div class="interactive-area">
     <div class="ia-label">Drag the slider to change the white square, then try each way of seeing it</div>
@@ -424,14 +420,14 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
   </div>
 
   <div class="highlight-box">
-    <p class="body-text" style="margin:0">Every expression in that list produces the same number for every $N$. That is what <strong>equivalent expressions</strong> means. In your packet's words: the contractor does not care how you saw it, only that your rule works for any size.</p>
+    <p class="body-text" style="margin:0">Every expression in that list produces the same number for every $N$. That is what <strong>equivalent expressions</strong> means. Put back in context: the contractor does not care how you saw it, only that your rule works for any size.</p>
   </div>
 </div>
 
 <!-- ======== LESSON 2 ======== -->
 <div class="card">
   <h2 class="card-title"><span class="num">L2</span>Growing Dots: adding the same amount every time</h2>
-  <p class="body-text">In the packet, a dot pattern starts with 1 dot and gains 4 more each minute. Step through it and watch two things at once: the picture, and the running table.</p>
+  <p class="body-text">A dot pattern starts with 1 dot and gains 4 more each minute. Step through it and watch two things at once: the picture, and the running table.</p>
 
   <div class="interactive-area">
     <div class="ia-label">Growing Dots &mdash; step through the minutes</div>
@@ -484,7 +480,7 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
 <!-- ======== ARITHMETIC VS GEOMETRIC ======== -->
 <div class="card">
   <h2 class="card-title"><span class="num">Key</span>Telling arithmetic and geometric apart</h2>
-  <p class="body-text">Given a list of numbers, run two tests in order. Subtract neighbours; if you always get the same thing, it is arithmetic. If not, divide neighbours; if you always get the same thing, it is geometric. If neither, it is some other kind of sequence &mdash; those exist, and the packet shows a few.</p>
+  <p class="body-text">Given a list of numbers, run two tests in order. Subtract neighbours; if you always get the same thing, it is arithmetic. If not, divide neighbours; if you always get the same thing, it is geometric. If neither, it is some other kind of sequence &mdash; those exist, and you will meet a few.</p>
 
   <div class="cmp">
     <div class="cmp-col a">
@@ -527,7 +523,7 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
     <div class="term-sym">the step</div><div class="term-def">how to turn any term into the one after it</div>
     <div class="term-sym">the starting value</div><div class="term-def">which term you begin from, usually $a_1$</div>
   </div>
-  <p class="body-text">Your class may have started with <strong>NOW&ndash;NEXT</strong> language: <em>NEXT = NOW + 4, starting at 1</em>. That is a fine way in, and the NC standards explicitly allow it as a stepping stone. But the standards are equally explicit that you are expected to move to <strong>subscript notation</strong>, and that is what will appear on assessments.</p>
+  <p class="body-text">Many courses start with <strong>NOW&ndash;NEXT</strong> language: <em>NEXT = NOW + 4, starting at 1</em>. That is a fine way in, and the NC standards explicitly allow it as a stepping stone. But the standards are equally explicit that you are expected to move to <strong>subscript notation</strong>, and that is what will appear on assessments.</p>
 
   <div class="highlight-box">
     <p class="body-text"><strong>Arithmetic, recursive:</strong> $a_n = a_{n-1} + d$, &nbsp;given $a_1$</p>
@@ -644,10 +640,338 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
   </div>
 </div>
 
+<!-- ======== L4: FOUR REPRESENTATIONS ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L4</span>One sequence, four representations</h2>
+  <p class="body-text">Once you can write both forms, the next job is recognising the <em>same</em> sequence when it shows up as a table, a graph, an explicit equation, or a recursive equation. The common difference is hiding in all four, in a different disguise each time.</p>
+
+  <p class="body-text">Take a push-up routine: 3 push-ups on day 1, adding 2 more each day.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Where the common difference hides in each representation</div>
+    <div class="expr-list">
+      <div class="expr-row" style="cursor:default"><span class="tag">Table</span><span>The amount $y$ jumps each time $x$ goes up by 1.<br><span style="font-family:var(--fb);color:var(--slate)">3, 5, 7, 9, 11 &mdash; each gap is 2</span></span></div>
+      <div class="expr-row" style="cursor:default"><span class="tag">Graph</span><span>The vertical rise from one dot to the next. Same as slope.<br><span style="font-family:var(--fb);color:var(--slate)">up 2 for every 1 across</span></span></div>
+      <div class="expr-row" style="cursor:default"><span class="tag">Explicit</span><span>The number multiplying $n$.<br><span style="font-family:var(--fb);color:var(--slate)">$a_n = 3 + 2(n-1) = 2n + 1$</span></span></div>
+      <div class="expr-row" style="cursor:default"><span class="tag">Recursive</span><span>The number being added to the previous term.<br><span style="font-family:var(--fb);color:var(--slate)">$a_n = a_{n-1} + 2$, &nbsp;$a_1 = 3$</span></span></div>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>How many push-ups on day 10?</strong></div>
+    <button class="show-ans-btn" onclick="toggleAns('l4a')">Show answer</button>
+    <div class="a" id="l4a">$a_{10} = 3 + 2(9) = 21$ push-ups.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Someone else does a flat 15 push-ups every single day and claims they always do more. Are they right?</strong></div>
+    <button class="show-ans-btn" onclick="toggleAns('l4b')">Show answer</button>
+    <div class="a" id="l4b">
+      Only at first. Solve $3 + 2(n-1) = 15$: &nbsp;$2(n-1) = 12$, so $n = 7$. On day 7 both do 15.<br>
+      From day 8 onward the growing routine wins &mdash; day 8 is $3 + 2(7) = 17$.<br>
+      <em>A constant sequence has $d = 0$. Any sequence with $d &gt; 0$ eventually passes it, no matter how big the head start.</em>
+    </div>
+  </div>
+</div>
+
+<!-- ======== L5: STORY CONTEXTS ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L5</span>Sequences hiding in story problems</h2>
+  <p class="body-text">Chain letters are the classic geometric story. One person emails 8 friends on day 1. Each of those forwards it to 10 more people, so day 2 reaches 80. The chain stays unbroken.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Spot the type:</span> each day's count is the previous day's count <em>times</em> 10. Multiplying means geometric, $r = 10$.</div>
+    <div class="step"><span class="step-label">Starting value:</span> $a_1 = 8$ people on day 1.</div>
+    <div class="step"><span class="step-label">Recursive:</span> $a_n = a_{n-1} \cdot 10$, &nbsp;$a_1 = 8$</div>
+    <div class="step"><span class="step-label">Explicit:</span> $a_n = 8 \cdot 10^{\,n-1}$</div>
+    <div class="step"><span class="step-label">Day 7:</span> $a_7 = 8 \cdot 10^{6} = 8{,}000{,}000$ people. On day 7 alone.</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">The modelling question worth asking</span>
+    By day 10 the formula predicts 8 billion &mdash; more people than exist. The mathematics is fine; the <em>model</em> stopped describing reality several days earlier. Knowing when a model breaks is part of the answer, not a side note.
+  </div>
+
+  <p class="body-text">The habit that makes story problems routine: before writing anything, ask <strong>"is each step adding or multiplying?"</strong> Adding gives arithmetic, multiplying gives geometric. Then find the starting value and say clearly which term you are calling $a_1$.</p>
+</div>
+
+<!-- ======== L6: DECREASING SEQUENCES ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L6</span>Sequences that shrink</h2>
+  <p class="body-text">Everything so far grew. Sequences shrink just as often, and the two families shrink in genuinely different ways &mdash; different enough that one of them eventually stops making sense in context.</p>
+
+  <div class="cmp">
+    <div class="cmp-col a">
+      <h4>Decreasing arithmetic</h4>
+      <p><strong>Condition:</strong> $d &lt; 0$ &mdash; you subtract the same amount each step.</p>
+      <p><strong>Example:</strong> a reserve losing 7.5 acres a year from 120: &nbsp;120, 112.5, 105, 97.5, 90</p>
+      <p><strong>Explicit:</strong> $a_n = 120 - 7.5(n-1)$</p>
+      <p><strong>Long run:</strong> it crosses zero and keeps going negative.</p>
+    </div>
+    <div class="cmp-col g">
+      <h4>Decreasing geometric</h4>
+      <p><strong>Condition:</strong> $0 &lt; r &lt; 1$ &mdash; you keep a fraction each step.</p>
+      <p><strong>Example:</strong> a population of 600 falling 20% a year: &nbsp;600, 480, 384, 307.2</p>
+      <p><strong>Explicit:</strong> $a_n = 600(0.8)^{\,n-1}$</p>
+      <p><strong>Long run:</strong> it approaches zero but never reaches it.</p>
+    </div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Watch both shrink &mdash; note where each one ends up</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Years shown</label><input type="range" id="decN" min="4" max="20" value="10"><span class="val-chip" id="decNVal">10</span></div>
+    </div>
+    <div class="stage"><svg id="decSvg" viewBox="0 0 640 300" role="img" aria-label="Decreasing arithmetic versus decreasing geometric"></svg></div>
+    <div class="readout" id="decOut"></div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">The percent-decrease trap</span>
+    "Declines 20% per year" does <strong>not</strong> mean $r = 0.2$. You keep 80%, so $r = 0.8$. Write $r = 1 - 0.20$. The same trap in reverse: a 20% <em>increase</em> gives $r = 1.20$, not $r = 0.2$.
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>In what year does the 120-acre reserve run out entirely?</strong></div>
+    <button class="show-ans-btn" onclick="toggleAns('l6a')">Show answer</button>
+    <div class="a" id="l6a">
+      Set $120 - 7.5(n-1) = 0$: &nbsp;$7.5(n-1) = 120$, so $n - 1 = 16$ and $n = 17$.<br>
+      Year 17. And because this is arithmetic, year 18 would give $-7.5$ acres &mdash; the point where the model stops describing anything real.
+    </div>
+  </div>
+</div>
+
+<!-- ======== L7: TABLE TO FORMULA ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L7</span>From a table to both equations, every time</h2>
+  <p class="body-text">This is the workhorse routine of the unit. Given a table, five steps get you everything.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">1.</span> Arithmetic, geometric, or neither? Subtract neighbours, then divide neighbours.</div>
+    <div class="step"><span class="step-label">2.</span> Say in words how to get the next term.</div>
+    <div class="step"><span class="step-label">3.</span> Write the recursive equation &mdash; the step plus the starting value.</div>
+    <div class="step"><span class="step-label">4.</span> Say in words how to jump straight to the $n$th term.</div>
+    <div class="step"><span class="step-label">5.</span> Write the explicit equation.</div>
+  </div>
+
+  <p class="body-text">Three worked examples, covering the three things a table can be:</p>
+
+  <div class="practice-box">
+    <div class="q"><strong>A.</strong> &nbsp;3, 15, 27, 39, 51, &hellip; &nbsp;(positions 1 through 5)</div>
+    <button class="show-ans-btn" onclick="toggleAns('l7a')">Show answer</button>
+    <div class="a" id="l7a">
+      Differences: 12, 12, 12, 12 &mdash; arithmetic, $d = 12$.<br>
+      Recursive: $a_n = a_{n-1} + 12$, &nbsp;$a_1 = 3$<br>
+      Explicit: $a_n = 3 + 12(n-1) = 12n - 9$
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>B.</strong> &nbsp;5, 10, 20, 40, &hellip;</div>
+    <button class="show-ans-btn" onclick="toggleAns('l7b')">Show answer</button>
+    <div class="a" id="l7b">
+      Differences: 5, 10, 20 &mdash; not constant. Ratios: 2, 2, 2 &mdash; geometric, $r = 2$.<br>
+      Recursive: $a_n = a_{n-1} \cdot 2$, &nbsp;$a_1 = 5$<br>
+      Explicit: $a_n = 5 \cdot 2^{\,n-1}$
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>C.</strong> &nbsp;$-8$, $-17$, $-26$, $-35$, $-44$, $-53$, &hellip;</div>
+    <button class="show-ans-btn" onclick="toggleAns('l7c')">Show answer</button>
+    <div class="a" id="l7c">
+      Differences: $-9$ every time &mdash; arithmetic, $d = -9$.<br>
+      Recursive: $a_n = a_{n-1} - 9$, &nbsp;$a_1 = -8$<br>
+      Explicit: $a_n = -8 - 9(n-1) = -9n + 1$<br>
+      <em>Check $n = 6$: $-54 + 1 = -53$. Correct. Always test one term you were given.</em>
+    </div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">When the table starts at 0 instead of 1</span>
+    Some tables index from $n = 0$. Then the first term <em>is</em> the y-intercept and the explicit form loses its $-1$: for 5, 8, 11, 14 starting at $n=0$, the rule is $f(n) = 5 + 3n$, not $5 + 3(n-1)$.<br>
+    Nothing deep is going on &mdash; it is the same line, counted from a different starting post. Always check the first position before writing the formula.
+  </div>
+</div>
+
+<!-- ======== L8: ARITHMETIC MEAN ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L8</span>Filling gaps: the arithmetic mean</h2>
+  <p class="body-text">Now the harder question: you are handed two terms that are <em>not</em> neighbours and asked for everything between them. Guessing and checking works but is slow. There is a formula.</p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">If position $p$ holds $a_p$ and position $q$ holds $a_q$, then $$d = \frac{a_q - a_p}{q - p}$$</p>
+  </div>
+
+  <p class="body-text">Read it as <em>total change divided by number of steps</em>. It is the slope formula wearing sequence clothing, and it is why the graph of an arithmetic sequence is a straight line.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Given:</span> position 1 holds 5, position 3 holds 11. Find the middle term.</div>
+    <div class="step"><span class="step-label">Steps between:</span> $3 - 1 = 2$</div>
+    <div class="step"><span class="step-label">Common difference:</span> $d = \dfrac{11 - 5}{2} = 3$</div>
+    <div class="step"><span class="step-label">Middle term:</span> $5 + 3 = 8$</div>
+    <div class="step"><span class="step-label">Shortcut worth knowing:</span> a term exactly halfway between two others is their average &mdash; $\dfrac{5 + 11}{2} = 8$. That average is called the <strong>arithmetic mean</strong>, and it only works when the gap is even on both sides.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Position 1 holds 40 and position 6 holds 10. Fill in the middle, then find the 20th term.</strong></div>
+    <button class="show-ans-btn" onclick="toggleAns('l8a')">Show answer</button>
+    <div class="a" id="l8a">
+      $d = \dfrac{10 - 40}{6 - 1} = \dfrac{-30}{5} = -6$<br>
+      Sequence: 40, 34, 28, 22, 16, 10<br>
+      $a_{20} = 40 + (-6)(19) = 40 - 114 = -74$
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Position 1 holds $-23$ and position 8 holds 5. Find every term between.</strong></div>
+    <button class="show-ans-btn" onclick="toggleAns('l8b')">Show answer</button>
+    <div class="a" id="l8b">
+      $d = \dfrac{5 - (-23)}{8 - 1} = \dfrac{28}{7} = 4$<br>
+      Sequence: $-23$, $-19$, $-15$, $-11$, $-7$, $-3$, 1, 5
+    </div>
+  </div>
+</div>
+
+<!-- ======== L9: GEOMETRIC MEAN ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L9</span>Filling gaps: the geometric mean, and why it bites</h2>
+  <p class="body-text">The same problem for geometric sequences has the same shape &mdash; and one genuine surprise that gives the lesson its name.</p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">If position $p$ holds $a_p$ and position $q$ holds $a_q$, then $$r^{\,q-p} = \frac{a_q}{a_p}$$</p>
+  </div>
+
+  <p class="body-text">Divide instead of subtract, and the number of steps becomes an <em>exponent</em> instead of a divisor. Then take that root.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Given:</span> position 1 holds 3, position 3 holds 12.</div>
+    <div class="step"><span class="step-label">Steps between:</span> 2, so $r^2 = \dfrac{12}{3} = 4$</div>
+    <div class="step"><span class="step-label">Solve:</span> $r = 2$ &nbsp;<strong>or</strong>&nbsp; $r = -2$. Both square to 4.</div>
+    <div class="step"><span class="step-label">So there are two answers:</span> &nbsp;3, 6, 12 &nbsp;and&nbsp; 3, $-6$, 12. Check the second: $3 \times -2 = -6$, and $-6 \times -2 = 12$. It works.</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">This is the whole point of the lesson</span>
+    An <strong>even</strong> number of steps between the known terms gives <strong>two</strong> answers, positive and negative. An <strong>odd</strong> number of steps gives <strong>one</strong>. Odd roots of a positive number have a single real value; even roots have two.<br>
+    A question asking for "the" missing term when the gap is even is asking an incomplete question. Give both.
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Missing-terms solver &mdash; enter two known terms and their positions</div>
+    <div class="pick-row">
+      <button class="pick-btn active" data-mt="arithmetic">Arithmetic</button>
+      <button class="pick-btn" data-mt="geometric">Geometric</button>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Position $p$</label><input type="number" id="mtP" value="1" step="1"></div>
+      <div class="ctrl"><label>holds</label><input type="number" id="mtAp" value="6" step="any"></div>
+      <div class="ctrl"><label>Position $q$</label><input type="number" id="mtQ" value="5" step="1"></div>
+      <div class="ctrl"><label>holds</label><input type="number" id="mtAq" value="96" step="any"></div>
+    </div>
+    <div id="mtTableWrap"></div>
+    <div class="readout" id="mtOut"></div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Same two endpoints, both families.</strong> Fill in three terms between 4 and 324, first as a geometric sequence, then as an arithmetic one.</div>
+    <button class="show-ans-btn" onclick="toggleAns('l9a')">Show answer</button>
+    <div class="a" id="l9a">
+      <strong>Geometric:</strong> 4 steps, so $r^4 = \dfrac{324}{4} = 81$, giving $r = 3$ or $r = -3$.<br>
+      &nbsp;&nbsp;4, 12, 36, 108, 324 &nbsp;&nbsp;or&nbsp;&nbsp; 4, $-12$, 36, $-108$, 324<br><br>
+      <strong>Arithmetic:</strong> $d = \dfrac{324 - 4}{4} = 80$.<br>
+      &nbsp;&nbsp;4, 84, 164, 244, 324<br><br>
+      <em>Same two endpoints, completely different middles. The endpoints alone never tell you which family you are in &mdash; you have to be told.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Position 1 holds 7 and position 4 holds 875. How many answers this time?</strong></div>
+    <button class="show-ans-btn" onclick="toggleAns('l9b')">Show answer</button>
+    <div class="a" id="l9b">
+      3 steps, so $r^3 = \dfrac{875}{7} = 125$, giving $r = 5$ only. An odd root has one real value.<br>
+      Sequence: 7, 35, 175, 875. Exactly one answer.
+    </div>
+  </div>
+</div>
+
+<!-- ======== L10: SYNTHESIS ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L10</span>I know one thing &mdash; what else do I know?</h2>
+  <p class="body-text">The unit closes by running the whole machine backwards. Given <em>any</em> single piece of information about a sequence, how much of the rest can you recover? Usually all of it.</p>
+
+  <p class="body-text">From any one of these, you should be able to produce the other four: a table, a graph, an explicit equation, a recursive equation, the common difference or ratio, the type, and a story that fits.</p>
+
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> I know the first five terms are 0, $-6$, $-12$, $-18$, $-24$. What else do you know?</div>
+    <button class="show-ans-btn" onclick="toggleAns('l10a')">Show answer</button>
+    <div class="a" id="l10a">
+      Arithmetic, $d = -6$, $a_1 = 0$, decreasing.<br>
+      Recursive: $a_n = a_{n-1} - 6$, $a_1 = 0$ &nbsp;&middot;&nbsp; Explicit: $a_n = -6(n-1) = -6n + 6$<br>
+      Graph: separate dots falling in a straight line. Parent function linear.<br>
+      Story: a well 6 feet deeper each hour, starting at ground level.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> I know $f(1) = 5$ and the constant ratio is 3.</div>
+    <button class="show-ans-btn" onclick="toggleAns('l10b')">Show answer</button>
+    <div class="a" id="l10b">
+      Geometric, $r = 3$, increasing.<br>
+      Recursive: $f(n) = 3f(n-1)$, $f(1) = 5$ &nbsp;&middot;&nbsp; Explicit: $f(n) = 5 \cdot 3^{\,n-1}$<br>
+      Terms: 5, 15, 45, 135, 405 &nbsp;&middot;&nbsp; Parent function exponential.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> I know the explicit equation is $f(n) = -10(3)^{\,n-1}$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('l10c')">Show answer</button>
+    <div class="a" id="l10c">
+      Geometric, $a_1 = -10$, $r = 3$.<br>
+      Terms: $-10$, $-30$, $-90$, $-270$ &mdash; getting <em>more</em> negative, so decreasing.<br>
+      Recursive: $f(n) = 3f(n-1)$, $f(1) = -10$<br>
+      <em>Worth noticing: $r &gt; 1$ but the sequence falls, because the first term is negative. "Increasing" depends on both $r$ and the sign of $a_1$.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> I know the recursive equation is $f(1) = -12$, &nbsp;$f(n) = f(n-1) + 4$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('l10d')">Show answer</button>
+    <div class="a" id="l10d">
+      Arithmetic, $d = 4$, $a_1 = -12$, increasing.<br>
+      Explicit: $f(n) = -12 + 4(n-1) = 4n - 16$<br>
+      Terms: $-12$, $-8$, $-4$, 0, 4 &mdash; it crosses zero at $n = 4$.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>5.</strong> I know the sequence models a car that cost \$26,500 and loses 10% of its value each year.</div>
+    <button class="show-ans-btn" onclick="toggleAns('l10e')">Show answer</button>
+    <div class="a" id="l10e">
+      Geometric decay. Losing 10% means keeping 90%, so $r = 0.9$ &mdash; not 0.1.<br>
+      Explicit: $f(n) = 26500(0.9)^{\,n-1}$ with $f(1)$ the purchase price.<br>
+      Recursive: $f(n) = 0.9f(n-1)$, $f(1) = 26500$<br>
+      After 5 years: $26500(0.9)^4 = \$17{,}386.65$. The value approaches zero but never quite reaches it.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>6.</strong> I know the first term is $-2$ and the fifth term is $-\frac{1}{8}$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('l10f')">Show answer</button>
+    <div class="a" id="l10f">
+      If geometric: 4 steps, so $r^4 = \dfrac{-1/8}{-2} = \dfrac{1}{16}$, giving $r = \frac{1}{2}$ or $r = -\frac{1}{2}$.<br>
+      With $r = \frac{1}{2}$: &nbsp;$-2, -1, -\frac{1}{2}, -\frac{1}{4}, -\frac{1}{8}$<br>
+      With $r = -\frac{1}{2}$: &nbsp;$-2, 1, -\frac{1}{2}, \frac{1}{4}, -\frac{1}{8}$<br>
+      Even gap, so two answers again &mdash; exactly the geometric-mean situation.<br>
+      <em>It could also be arithmetic, with $d = \frac{15}{32}$. Nothing in the question rules that out.</em>
+    </div>
+  </div>
+</div>
+
 <!-- ======== DOMAIN & RANGE ======== -->
 <div class="card">
-  <h2 class="card-title"><span class="num">L6</span>Domain and range of a sequence</h2>
-  <p class="body-text">Lesson 6, "Home on the Range", asks a question that sounds fussy and is actually the reason sequences get their own unit.</p>
+  <h2 class="card-title"><span class="num">D&amp;R</span>Domain and range of a sequence</h2>
+  <p class="body-text">One more idea threads through the whole unit, and it is the reason sequences get separated from ordinary functions in the first place.</p>
   <div class="term-grid">
     <div class="term-sym">Domain</div><div class="term-def">the positions you are allowed to ask for &mdash; a subset of the integers, usually $1, 2, 3, \ldots$. There is no term number 2.5.</div>
     <div class="term-sym">Range</div><div class="term-def">the terms themselves &mdash; the actual values the sequence takes.</div>
@@ -768,6 +1092,9 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
     <div class="term-sym">Explicit</div><div class="term-def">$a_n = a_1 + d(n-1)$ or $a_n = a_1 \cdot r^{\,n-1}$</div>
     <div class="term-sym">Intercept</div><div class="term-def">expanding the arithmetic explicit form gives $a_n = dn + (a_1 - d)$, so the intercept is $a_1 - d$</div>
     <div class="term-sym">Graph</div><div class="term-def">separate dots, never connected &mdash; there is no term number 2.5</div>
+    <div class="term-sym">Filling a gap</div><div class="term-def">arithmetic: $d = \dfrac{a_q - a_p}{q - p}$ &nbsp;&middot;&nbsp; geometric: $r^{\,q-p} = \dfrac{a_q}{a_p}$</div>
+    <div class="term-sym">Two answers</div><div class="term-def">a geometric gap of an even number of steps has both a positive and a negative $r$</div>
+    <div class="term-sym">Percent change</div><div class="term-def">down 20% means $r = 0.8$, up 20% means $r = 1.2$ &mdash; never $r = 0.2$</div>
   </div>
   <div class="highlight-box">
     <p class="body-text" style="margin:0"><strong>If you remember one thing:</strong> before writing any formula, decide which term you are calling $a_1$ and say it out loud. Nearly every wrong answer in this unit is a correct calculation that started counting from the wrong place.</p>
@@ -1368,6 +1695,170 @@ try{
 })();
 
 /* ============================================================ */
+/* ============== W8: Decreasing sequences ==================== */
+/* ============================================================ */
+(function decreasing(){
+  const svg = document.getElementById('decSvg');
+  const out = document.getElementById('decOut');
+  const slider = document.getElementById('decN');
+  const nVal = document.getElementById('decNVal');
+  if(!svg) return;
+
+  function draw(){
+    const N = +slider.value;
+    nVal.textContent = N;
+
+    const A = [], G = [];
+    for(let n = 1; n <= N; n++){
+      A.push(120 - 7.5*(n-1));
+      G.push(600 * Math.pow(0.8, n-1));
+    }
+    // Scale each series to its own axis so both stay readable side by side.
+    const aMax = 120, gMax = 600;
+    const lo = Math.min(0, Math.min.apply(null, A));
+
+    const L = 60, R = 610, T = 26, B = 240;
+    const sx = n => L + ((n - 1) / Math.max(1, N - 1)) * (R - L);
+    const syA = v => B - ((v - lo) / (aMax - lo)) * (B - T);
+    const syG = v => B - (v / gMax) * (B - T);
+
+    let s = '';
+    const zeroY = syA(0);
+    s += '<line x1="' + L + '" y1="' + zeroY + '" x2="' + R + '" y2="' + zeroY + '" stroke="var(--bad)" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.75"/>';
+    s += '<text x="' + (L + 6) + '" y="' + (zeroY - 6) + '" font-family="Bitter,serif" font-size="11" fill="var(--bad)">zero</text>';
+    s += '<line x1="' + L + '" y1="' + T + '" x2="' + L + '" y2="' + B + '" stroke="var(--sage-l)" stroke-width="2"/>';
+
+    for(let n = 1; n <= N; n++){
+      s += '<circle cx="' + sx(n) + '" cy="' + syA(A[n-1]) + '" r="5" fill="var(--arith)"/>';
+      s += '<circle cx="' + sx(n) + '" cy="' + syG(G[n-1]) + '" r="5" fill="var(--geo)"/>';
+    }
+    s += '<text x="' + ((L+R)/2) + '" y="284" text-anchor="middle" font-family="Dosis,sans-serif" font-size="14" fill="var(--slate)">year</text>';
+    s += '<circle cx="' + (R-250) + '" cy="' + (T+2) + '" r="5" fill="var(--arith)"/>';
+    s += '<text x="' + (R-238) + '" y="' + (T+7) + '" font-family="Dosis,sans-serif" font-size="12.5" fill="var(--forest)">acres, minus 7.5 each year</text>';
+    s += '<circle cx="' + (R-250) + '" cy="' + (T+20) + '" r="5" fill="var(--geo)"/>';
+    s += '<text x="' + (R-238) + '" y="' + (T+25) + '" font-family="Dosis,sans-serif" font-size="12.5" fill="var(--forest)">population, times 0.8 each year</text>';
+    s += '<text x="' + (R-250) + '" y="' + (T+42) + '" font-family="Bitter,serif" font-size="11" fill="var(--slate)">each series has its own vertical scale</text>';
+    svg.innerHTML = s;
+
+    const aLast = A[N-1], gLast = G[N-1];
+    const crossed = aLast < 0;
+    out.innerHTML = 'By year ' + N + ' the acreage is <strong>' + fmt(Math.round(aLast*100)/100) + '</strong> and the population is <strong>' + fmt(Math.round(gLast*100)/100) + '</strong>.<br><br>'
+      + (crossed
+          ? 'The acreage has gone <strong>negative</strong>. Subtracting a fixed amount forever always crosses zero eventually, which is where an arithmetic model stops describing anything real.'
+          : 'Push the slider further and watch the acreage cross zero &mdash; subtracting a fixed amount forever always gets there.')
+      + ' The population keeps shrinking but stays positive: multiplying by 0.8 can make a number as small as you like without ever reaching zero.'
+      + '<br><br><span style="color:var(--slate);font-size:.9rem">The two series are drawn on separate vertical scales (acres out of 120, population out of 600) so both stay readable. Compare the <em>shapes</em>, not the heights.</span>';
+    mathify(out);
+  }
+
+  slider.addEventListener('input', draw);
+  draw();
+})();
+
+/* ============================================================ */
+/* ============== W9: Missing-terms solver ==================== */
+/* ============================================================ */
+(function missingTerms(){
+  const tw = document.getElementById('mtTableWrap');
+  const out = document.getElementById('mtOut');
+  const pEl = document.getElementById('mtP');
+  const qEl = document.getElementById('mtQ');
+  const apEl = document.getElementById('mtAp');
+  const aqEl = document.getElementById('mtAq');
+  if(!tw) return;
+
+  let kind = 'arithmetic';
+
+  document.querySelectorAll('button[data-mt]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('button[data-mt]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      kind = btn.dataset.mt;
+      draw();
+    });
+  });
+
+  function row(label, vals, p, q, cls){
+    let h = '<tr><th>' + label + '</th>';
+    vals.forEach((v, i) => {
+      const pos = p + i;
+      const known = (pos === p || pos === q);
+      h += '<td' + (cls ? ' class="' + cls + '"' : '') + (known ? ' style="background:var(--sage-m);font-weight:700"' : '') + '>' + fmt(v) + '</td>';
+    });
+    return h + '</tr>';
+  }
+
+  function draw(){
+    const p = Math.round(+pEl.value), q = Math.round(+qEl.value);
+    const ap = +apEl.value, aq = +aqEl.value;
+    const steps = q - p;
+
+    if(!isFinite(ap) || !isFinite(aq) || steps <= 0){
+      tw.innerHTML = '';
+      out.innerHTML = 'Position <strong>q</strong> must be greater than position <strong>p</strong>.';
+      return;
+    }
+    if(steps > 12){
+      tw.innerHTML = '';
+      out.innerHTML = 'Keep the two positions within 12 steps of each other so the table stays readable.';
+      return;
+    }
+
+    let head = '<table class="seq-table"><tr><th>Position</th>';
+    for(let i = 0; i <= steps; i++) head += '<th>' + (p + i) + '</th>';
+    head += '</tr>';
+
+    if(kind === 'arithmetic'){
+      const d = (aq - ap) / steps;
+      const vals = [];
+      for(let i = 0; i <= steps; i++) vals.push(ap + d*i);
+      tw.innerHTML = head + row('Term', vals, p, q, 'diff') + '</table>';
+      const b = ap - d*p;
+      const expanded = fmt(d) + 'n ' + (b >= 0 ? '+ ' + fmt(b) : '- ' + fmt(Math.abs(b)));
+      out.innerHTML = '<strong>Steps between:</strong> $' + q + ' - ' + p + ' = ' + steps + '$<br>'
+        + '<strong>Common difference:</strong> $d = \\dfrac{' + fmt(aq) + ' - ' + fmt(ap) + '}{' + steps + '} = ' + fmt(d) + '$<br>'
+        + '<strong>Explicit:</strong> $a_n = ' + expanded + '$<br>'
+        + '<strong>One answer only.</strong> Arithmetic gaps never branch &mdash; dividing gives a single number.';
+    } else {
+      if(ap === 0){
+        tw.innerHTML = '';
+        out.innerHTML = 'A geometric sequence cannot have a term equal to zero.';
+        return;
+      }
+      const ratioPow = aq / ap;
+      const evenGap = (steps % 2 === 0);
+      if(ratioPow < 0 && evenGap){
+        tw.innerHTML = '';
+        out.innerHTML = '$r^{' + steps + '} = ' + fmt(ratioPow) + '$, which is negative. An even power can never be negative, so <strong>no real geometric sequence</strong> connects these two terms.';
+        mathify(out); return;
+      }
+      const mag = Math.pow(Math.abs(ratioPow), 1/steps);
+      const rPos = ratioPow < 0 ? -mag : mag;
+      const roots = evenGap ? [mag, -mag] : [rPos];
+
+      let body = head;
+      roots.forEach((r, ri) => {
+        const vals = [];
+        for(let i = 0; i <= steps; i++) vals.push(ap * Math.pow(r, i));
+        body += row(roots.length > 1 ? ('r = ' + fmt(Math.round(r*10000)/10000)) : 'Term', vals, p, q, 'ratio');
+      });
+      tw.innerHTML = body + '</table>';
+
+      out.innerHTML = '<strong>Steps between:</strong> $' + q + ' - ' + p + ' = ' + steps + '$<br>'
+        + '<strong>Set up:</strong> $r^{' + steps + '} = \\dfrac{' + fmt(aq) + '}{' + fmt(ap) + '} = ' + fmt(Math.round(ratioPow*10000)/10000) + '$<br>'
+        + (evenGap
+            ? '<strong>Even gap &rarr; two answers:</strong> $r = ' + fmt(Math.round(mag*10000)/10000) + '$ or $r = ' + fmt(Math.round(-mag*10000)/10000) + '$. Both rows above are valid sequences.'
+            : '<strong>Odd gap &rarr; one answer:</strong> $r = ' + fmt(Math.round(rPos*10000)/10000) + '$. Odd roots of a real number have a single real value.');
+    }
+    mathify(tw);
+    mathify(out);
+  }
+
+  [pEl, qEl, apEl, aqEl].forEach(el => el.addEventListener('input', draw));
+  draw();
+})();
+
+/* ============================================================ */
 /* ============== W7: Vocabulary flashcards =================== */
 /* ============================================================ */
 (function flashcards(){
@@ -1389,7 +1880,11 @@ try{
     ['Exponential function', 'A function where the variable is in the exponent. The parent function behind every geometric sequence.'],
     ['Domain of a sequence', 'The set of positions you are allowed to ask for, usually $1, 2, 3, \\ldots$ There is no position 2.5.'],
     ['Range of a sequence', 'The set of terms the sequence actually produces.'],
-    ['Equivalent expressions', 'Different-looking expressions that give the same value for every input. Lesson 1 is built on this idea.']
+    ['Equivalent expressions', 'Different-looking expressions that give the same value for every input. Lesson 1 is built on this idea.'],
+    ['Arithmetic mean', 'The term exactly halfway between two others, found by averaging them. More generally $d = \\dfrac{a_q - a_p}{q - p}$ fills any gap.'],
+    ['Geometric mean', 'The term between two others in a geometric sequence, from $r^{q-p} = \\dfrac{a_q}{a_p}$. An even gap gives two answers, positive and negative.'],
+    ['Decreasing arithmetic', 'A sequence with $d < 0$. It crosses zero and keeps going negative.'],
+    ['Decreasing geometric', 'A sequence with $0 < r < 1$. It approaches zero but never reaches it.']
   ];
 
   let i = 0;
