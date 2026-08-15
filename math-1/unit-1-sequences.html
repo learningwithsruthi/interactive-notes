@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sequences Notes (NC Math 1, Unit 1)</title>
+<meta name="description" content="Interactive NC Math 1 Unit 1 notes: sequences as functions, arithmetic and geometric sequences, recursive and explicit form, and the n-1 rule. Built to follow the Open Up Resources Volume 1 packet. By tutoringwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<style>
+:root{
+  --white:#FFFFFF;--sage-l:#D0D6B3;--sage:#9BA06A;--slate:#525B76;--forest:#143109;
+  --bg:#f5f6ee;--sage-m:#e4e8cc;
+  --good:#5b8a3f;--bad:#b5503e;
+  --arith:#5b7fa8;--geo:#a86b5b;
+  --fh:'Young Serif',Georgia,serif;--fp:'Dosis','Trebuchet MS',Arial,sans-serif;--fb:'Bitter',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--fp);color:var(--forest);padding:18px 16px 52px;overflow-x:hidden}
+.page{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+
+/* Header */
+.pg-head{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:20px;padding:36px 28px;text-align:center}
+.pg-head .topic-badge{display:inline-block;font-family:var(--fb);font-weight:700;color:var(--slate);background:var(--white);border:1.5px solid var(--sage-l);padding:4px 14px;border-radius:20px;font-size:.82rem;margin-bottom:12px;letter-spacing:.04em}
+.pg-head h1{font-family:var(--fh);font-size:2.2rem;color:var(--forest);margin-bottom:6px}
+.pg-head .sub{font-family:var(--fp);color:var(--slate);font-size:1rem}
+
+/* Cards */
+.card{background:var(--white);border:2px solid var(--sage-l);border-radius:20px;padding:28px 26px;box-shadow:0 2px 12px rgba(20,49,9,0.06)}
+.card-title{font-family:var(--fh);font-size:1.4rem;color:var(--forest);margin-bottom:14px}
+.card-title .num{font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.9rem;background:var(--sage-m);border-radius:8px;padding:2px 10px;margin-right:8px;vertical-align:middle}
+.body-text{font-family:var(--fp);font-size:1.04rem;color:var(--forest);line-height:1.7;margin-bottom:12px}
+.body-text:last-child{margin-bottom:0}
+.highlight-box{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:14px;padding:18px 22px;margin:14px 0}
+.sub-title{font-family:var(--fh);font-size:1.1rem;color:var(--forest);margin:18px 0 8px}
+.term-grid{display:grid;grid-template-columns:160px 1fr;gap:8px 16px;margin:12px 0}
+.term-sym{font-family:var(--fb);font-weight:700;color:var(--sage);text-align:right;font-size:1rem}
+.term-def{font-family:var(--fp);font-size:.98rem;color:var(--forest);line-height:1.6}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
+.site-btn{font-family:var(--fp);font-weight:600;font-size:.92rem;border:none;border-radius:30px;padding:8px 18px;cursor:pointer;transition:background .18s,transform .18s;background:var(--sage);color:var(--white)}
+.site-btn:hover{background:var(--forest);transform:translateY(-1px)}
+.site-btn.active{background:var(--forest)}
+.site-btn.secondary{background:var(--white);color:var(--forest);border:2px solid var(--sage-l)}
+.site-btn.secondary:hover{background:var(--sage-m)}
+.interactive-area{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:16px;padding:20px 18px;margin:16px 0}
+.ia-label{font-family:var(--fb);font-size:1rem;color:var(--slate);margin-bottom:10px;text-align:center;font-weight:700}
+.practice-box{background:var(--white);border:2px dashed var(--sage-l);border-radius:14px;padding:16px 20px;margin:10px 0}
+.practice-box .q{font-family:var(--fp);font-size:1rem;color:var(--forest);margin-bottom:8px;line-height:1.6}
+.practice-box .a{font-family:var(--fp);font-size:.95rem;color:var(--forest);display:none;margin-top:8px;padding:12px 14px;background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;line-height:1.65}
+.practice-box .a.show{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.show-ans-btn{font-family:var(--fp);font-weight:600;font-size:.85rem;border:2px solid var(--sage-l);border-radius:20px;padding:5px 14px;cursor:pointer;background:var(--white);color:var(--sage);transition:background .18s}
+.show-ans-btn:hover{background:var(--sage-m)}
+.worked-example{background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 14px 14px 0;padding:16px 22px;margin:14px 0}
+.worked-example .step{font-family:var(--fp);font-size:.98rem;color:var(--forest);margin-bottom:6px;line-height:1.65}
+.worked-example .step-label{font-family:var(--fb);font-weight:700;color:var(--sage)}
+.topics-list{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 18px;margin-top:8px}
+.topics-list .row{font-family:var(--fp);color:var(--forest);display:flex;gap:10px;font-size:.98rem;padding:3px 0}
+.topics-list .row .rn{font-family:var(--fb);color:var(--sage);min-width:28px;font-weight:700}
+.topics-list .row.current{background:var(--sage-m);border-radius:8px;padding:3px 8px;font-weight:600}
+.pick-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:8px 0}
+.pick-btn{font-family:var(--fb);font-size:.82rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:18px;padding:5px 12px;cursor:pointer;color:var(--forest);transition:background .15s}
+.pick-btn:hover{background:var(--sage-m)}
+.pick-btn.active{background:var(--sage);color:var(--white);border-color:var(--sage)}
+
+/* ===== Unit-1 specific widgets ===== */
+.stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;text-align:center}
+.stage svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.readout{font-family:var(--fp);font-size:.95rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:12px 16px;margin-top:10px;line-height:1.6;text-align:left}
+.readout strong{font-family:var(--fb)}
+.ctrl-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin:10px 0}
+.ctrl{display:flex;align-items:center;gap:8px;font-family:var(--fp);font-size:.9rem;color:var(--forest)}
+.ctrl label{font-family:var(--fb);font-weight:700;font-size:.82rem;color:var(--slate)}
+.ctrl input[type=range]{width:150px;accent-color:var(--sage)}
+.ctrl input[type=number]{width:74px;font-family:var(--fb);font-size:.92rem;padding:5px 8px;border:1.5px solid var(--sage-l);border-radius:8px;background:var(--white);color:var(--forest)}
+.val-chip{font-family:var(--fb);font-weight:700;background:var(--white);border:1.5px solid var(--sage-l);border-radius:10px;padding:2px 10px;min-width:38px;display:inline-block;text-align:center}
+
+/* checkerboard */
+.cb-grid{display:grid;gap:1px;margin:0 auto;max-width:340px}
+.cb-cell{aspect-ratio:1;border:1px solid var(--sage-l);border-radius:2px;background:var(--white);transition:background .2s,box-shadow .2s}
+.cb-cell.colored{background:#9BBF8A}
+.cb-cell.center{background:var(--white);border-color:#e2e6d4}
+.cb-cell.hl{box-shadow:0 0 0 2px var(--forest);z-index:2}
+.expr-list{display:grid;gap:8px;margin-top:10px}
+.expr-row{display:flex;align-items:center;gap:10px;background:var(--white);border:1.5px solid var(--sage-l);border-radius:10px;padding:9px 13px;cursor:pointer;font-family:var(--fp);font-size:.95rem;text-align:left;transition:background .15s}
+.expr-row:hover{background:var(--sage-m)}
+.expr-row.active{background:var(--sage-m);border-color:var(--sage)}
+.expr-row .tag{font-family:var(--fb);font-weight:700;font-size:.72rem;color:var(--white);background:var(--sage);border-radius:6px;padding:2px 7px;flex-shrink:0}
+.expr-row .val{margin-left:auto;font-family:var(--fb);font-weight:700;color:var(--forest)}
+
+/* dot growth */
+.dots-stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:8px;overflow-x:auto}
+
+/* tables */
+.seq-table{width:100%;border-collapse:collapse;font-family:var(--fb);font-size:.9rem;margin:10px 0;background:var(--white)}
+.seq-table th,.seq-table td{border:1.5px solid var(--sage-l);padding:7px 9px;text-align:center;color:var(--forest)}
+.seq-table th{background:var(--sage-m);font-weight:700;font-size:.82rem}
+.seq-table td.diff{color:var(--arith);font-weight:700}
+.seq-table td.ratio{color:var(--geo);font-weight:700}
+.seq-table caption{font-family:var(--fp);font-size:.85rem;color:var(--slate);caption-side:bottom;padding-top:6px}
+
+/* classifier drill */
+.drill-seq{font-family:var(--fb);font-size:1.5rem;font-weight:700;color:var(--forest);letter-spacing:.06em;padding:16px 8px;text-align:center}
+.drill-fb{font-family:var(--fp);font-size:.97rem;border-radius:10px;padding:11px 14px;margin-top:10px;line-height:1.6;display:none;text-align:left}
+.drill-fb.show{display:block;animation:fadeIn .2s ease}
+.drill-fb.ok{background:#eaf3e2;border:1.5px solid var(--good);color:#2f4d1c}
+.drill-fb.no{background:#f7e9e6;border:1.5px solid var(--bad);color:#6d2d21}
+.score-chip{font-family:var(--fb);font-size:.84rem;color:var(--slate);text-align:center;margin-top:8px}
+
+/* flashcards */
+.fc-stage{perspective:1100px;max-width:440px;margin:0 auto}
+.fc-card{position:relative;width:100%;height:190px;cursor:pointer;transform-style:preserve-3d;transition:transform .5s}
+.fc-card.flipped{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;border:2px solid var(--sage-l);display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;background:var(--white)}
+.fc-face.front{font-family:var(--fh);font-size:1.3rem;color:var(--forest)}
+.fc-face.back{transform:rotateY(180deg);background:var(--sage-m);font-family:var(--fp);font-size:1rem;line-height:1.6;color:var(--forest)}
+.fc-hint{font-family:var(--fp);font-size:.82rem;color:var(--slate);text-align:center;margin-top:8px}
+
+/* two-column compare */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.cmp-col{border:2px solid var(--sage-l);border-radius:14px;padding:16px 18px;background:var(--white)}
+.cmp-col.a{border-color:var(--arith)}
+.cmp-col.g{border-color:var(--geo)}
+.cmp-col h4{font-family:var(--fh);font-size:1.05rem;margin-bottom:8px;color:var(--forest)}
+.cmp-col.a h4{color:var(--arith)}
+.cmp-col.g h4{color:var(--geo)}
+.cmp-col p{font-family:var(--fp);font-size:.94rem;line-height:1.6;margin-bottom:7px}
+.cmp-col p:last-child{margin-bottom:0}
+
+/* gap check */
+.gap-item{border:1.5px solid var(--sage-l);border-radius:12px;margin:10px 0;overflow:hidden;background:var(--white)}
+.gap-head{display:flex;align-items:center;gap:10px;padding:12px 15px;cursor:pointer;font-family:var(--fp);font-weight:600;font-size:.98rem;color:var(--forest);transition:background .15s}
+.gap-head:hover{background:var(--sage-m)}
+.gap-head .code{font-family:var(--fb);font-size:.7rem;font-weight:700;color:var(--white);background:var(--slate);border-radius:6px;padding:3px 8px;flex-shrink:0}
+.gap-head .chev{margin-left:auto;color:var(--sage);font-family:var(--fb);font-weight:700;transition:transform .2s}
+.gap-item.open .gap-head .chev{transform:rotate(90deg)}
+.gap-body{display:none;padding:0 15px 15px;font-family:var(--fp);font-size:.95rem;line-height:1.7;color:var(--forest);border-top:1px solid var(--sage-l)}
+.gap-item.open .gap-body{display:block;animation:fadeIn .2s ease}
+.gap-body .why{background:var(--sage-m);border-radius:10px;padding:10px 13px;margin-top:10px;font-size:.92rem}
+
+.note-flag{border-left:4px solid var(--bad);background:#fbf3f1;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
+.note-flag .flag-label{font-family:var(--fb);font-weight:700;color:var(--bad);display:block;margin-bottom:4px}
+
+/* ===== LWS SHELL (v2 UI) ===== */
+body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01","cv11"}
+.page{max-width:none;margin:0;display:block}
+.lws-backdrop{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(228,232,204,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(208,214,179,.5) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(228,232,204,.6) 0%,transparent 55%),
+             var(--bg)}
+.app{position:relative;z-index:1;display:grid;grid-template-columns:264px 1fr;grid-template-rows:64px 1fr;grid-template-areas:"side top" "side main";min-height:100vh}
+.side{grid-area:side;padding:16px 14px 14px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-right:1px solid var(--sage-l);overflow-y:auto;box-shadow:0 1px 0 rgba(255,255,255,0.9) inset}
+.top{grid-area:top;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-bottom:1px solid var(--sage-l);position:sticky;top:0;z-index:15}
+.main{grid-area:main;padding:24px 28px 56px;max-width:1320px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;padding:8px 12px}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--forest));color:#fff;display:grid;place-items:center;font-family:var(--fh);font-size:1.1rem;line-height:1;box-shadow:0 6px 20px -6px rgba(20,49,9,0.35)}
+.brand-name{font-family:var(--fh);color:var(--forest);font-size:1.05rem;line-height:1.05}
+.brand-name small{display:block;font-family:var(--fb);font-style:italic;color:#7C8172;font-size:.7rem;margin-top:3px}
+.ws-switch{margin:0 4px}
+.ws-switch-btn{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.62);border:1px solid rgba(255,255,255,0.55);border-radius:12px;backdrop-filter:blur(14px);text-align:left;transition:background .15s}
+.ws-switch-btn .ico{width:30px;height:30px;border-radius:8px;background:var(--sage-m);color:var(--forest);display:grid;place-items:center;flex-shrink:0;font-family:var(--fb);font-weight:700;font-size:.78rem}
+.ws-switch-btn .meta{flex:1;min-width:0}
+.ws-switch-btn .lbl{font-family:var(--fh);color:var(--forest);font-size:.95rem;line-height:1.1}
+.ws-switch-btn .sub{font-family:var(--fb);color:#7C8172;font-size:.68rem;margin-top:3px}
+.side-section-label{font-family:var(--fb);font-size:.66rem;letter-spacing:.14em;color:#7C8172;text-transform:uppercase;padding:14px 12px 4px}
+.side-nav{display:flex;flex-direction:column;gap:1px;padding:0 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;text-decoration:none;color:var(--forest);transition:background .15s;font-family:var(--fp);font-size:.86rem;font-weight:500}
+.nav-item .num{font-family:var(--fb);color:var(--sage);font-weight:700;font-size:.78rem;min-width:30px}
+.nav-item .t{flex:1;color:var(--forest)}
+.nav-item:hover{background:var(--sage-m)}
+.nav-item.active{background:var(--white);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 12px 40px -12px rgba(20,49,9,0.18),0 2px 8px rgba(20,49,9,0.06);border:1px solid var(--sage-l)}
+.nav-item.active .t{color:var(--forest);font-weight:700}
+.nav-item.locked{color:#a3a89a;cursor:not-allowed}
+.nav-item.locked:hover{background:transparent}
+.nav-item.locked .num,.nav-item.locked .t{color:#a3a89a}
+.bread{display:flex;flex-direction:column;gap:0;flex:0 0 auto;min-width:0}
+.bread-trail{font-family:var(--fp);color:var(--slate);font-size:.78rem}
+.bread-now{font-family:var(--fp);font-weight:700;color:var(--forest);font-size:1rem;line-height:1.1}
+.search{flex:1;max-width:520px;min-width:120px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.62);border:1px solid var(--sage-l);border-radius:99px;padding:8px 16px;color:var(--slate);backdrop-filter:blur(14px)}
+.search input{border:0;background:transparent;outline:none;flex:1;font-family:var(--fp);font-size:.9rem;color:var(--forest);min-width:0}
+.search svg{flex-shrink:0;color:var(--slate)}
+.top-actions{display:flex;align-items:center;gap:8px}
+.btn-icon{width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--sage-l);color:var(--slate);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;font-size:1rem;padding:0}
+.btn-icon:hover{background:var(--sage-m);color:var(--forest)}
+.pg-head{margin-top:0}
+@media(max-width:980px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;grid-template-areas:"side" "top" "main"}
+  .side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--sage-l);max-height:none}
+  .top{padding:10px 18px;flex-wrap:wrap}
+  .main{padding:16px 18px 48px}
+  .search{order:3;flex-basis:100%;max-width:none}
+  .cmp{grid-template-columns:1fr}
+  .topics-list{grid-template-columns:1fr}
+}
+
+/* Dark mode */
+[data-theme="dark"]{
+  --white:#14170F; --sage-l:#2B3320; --sage:#A9B07A; --sage-m:#1E2416;
+  --slate:#AEB5C8; --forest:#E8EBDA; --bg:#0E1108;
+  --arith:#8fb4dd; --geo:#dda28f;
+}
+[data-theme="dark"] body{color:var(--forest)}
+[data-theme="dark"] .lws-backdrop{
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(43,51,32,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(30,36,22,.55) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(43,51,32,.7) 0%,transparent 55%),
+             var(--bg)
+}
+[data-theme="dark"] .side,[data-theme="dark"] .top{background:rgba(20,23,15,0.7);border-color:#2B3320}
+[data-theme="dark"] .ws-switch-btn,[data-theme="dark"] .search,[data-theme="dark"] .btn-icon{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .lbl,[data-theme="dark"] .ws-switch-btn .ico{color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .ico{background:#2A3421}
+[data-theme="dark"] .nav-item,[data-theme="dark"] .nav-item .t{color:var(--forest)}
+[data-theme="dark"] .nav-item:hover{background:#2A3421}
+[data-theme="dark"] .nav-item.active{background:#2A3421;border-color:#3A4A2E;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 12px 40px -12px rgba(0,0,0,0.55),0 2px 8px rgba(0,0,0,0.35)}
+[data-theme="dark"] .btn-icon:hover{background:#2A3421;color:var(--forest)}
+[data-theme="dark"] .search input{color:var(--forest)}
+[data-theme="dark"] .search input::placeholder{color:#7e8775}
+[data-theme="dark"] .pg-head{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .pg-head h1,[data-theme="dark"] .pg-head .sub,[data-theme="dark"] .pg-head .topic-badge{color:var(--forest)}
+[data-theme="dark"] .pg-head .topic-badge{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .card{background:#14170F;border-color:#2B3320;color:var(--forest)}
+[data-theme="dark"] .card-title,[data-theme="dark"] .sub-title,[data-theme="dark"] .body-text,[data-theme="dark"] .term-def,[data-theme="dark"] .term-sym{color:var(--forest)}
+[data-theme="dark"] .card-title .num{background:#2A3421;color:var(--sage)}
+[data-theme="dark"] .highlight-box{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .interactive-area{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .ia-label{color:var(--forest)}
+[data-theme="dark"] .practice-box{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .practice-box .q,[data-theme="dark"] .practice-box .a{color:var(--forest)}
+[data-theme="dark"] .practice-box .a{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .show-ans-btn{background:#1E2416;color:var(--sage);border-color:#3A4A2E}
+[data-theme="dark"] .worked-example{background:#1A1F11;border-left-color:var(--sage);color:var(--forest)}
+[data-theme="dark"] .site-btn.secondary{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .topics-list .row.current{background:#2A3421}
+[data-theme="dark"] .pick-btn{background:#14170F;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .pick-btn:hover{background:#2A3421}
+[data-theme="dark"] .stage,[data-theme="dark"] .dots-stage{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .readout{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .seq-table{background:#14170F}
+[data-theme="dark"] .seq-table th{background:#1E2416}
+[data-theme="dark"] .seq-table th,[data-theme="dark"] .seq-table td{border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .cb-cell{background:#1A1F11;border-color:#3A4A2E}
+[data-theme="dark"] .cb-cell.colored{background:#5f8a52}
+[data-theme="dark"] .cb-cell.center{background:#14170F;border-color:#2B3320}
+[data-theme="dark"] .cb-cell.hl{box-shadow:0 0 0 2px var(--sage)}
+[data-theme="dark"] .expr-row{background:#14170F;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .expr-row:hover,[data-theme="dark"] .expr-row.active{background:#2A3421}
+[data-theme="dark"] .cmp-col{background:#14170F}
+[data-theme="dark"] .fc-face{background:#14170F;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .fc-face.back{background:#1E2416}
+[data-theme="dark"] .gap-item{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .gap-head{color:var(--forest)}
+[data-theme="dark"] .gap-head:hover{background:#2A3421}
+[data-theme="dark"] .gap-body{color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .gap-body .why{background:#1E2416}
+[data-theme="dark"] .ctrl input[type=number]{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .val-chip{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .note-flag{background:#241a17;color:var(--forest)}
+[data-theme="dark"] .drill-fb.ok{background:#1d2a15;color:#cfe4bd}
+[data-theme="dark"] .drill-fb.no{background:#2c1a16;color:#e8c3b9}
+[data-theme="dark"] .katex{color:var(--forest)}
+</style>
+</head>
+<body data-theme="light">
+<div class="lws-backdrop"></div>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark">L</div>
+    <div class="brand-name">learningwithsruthi <small>nc math 1 notes</small></div>
+  </div>
+  <div class="ws-switch">
+    <div class="ws-switch-btn">
+      <div class="ico">1</div>
+      <div class="meta">
+        <div class="lbl">Sequences</div>
+        <div class="sub">Unit 1 of 8 &middot; NC Math 1</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-section-label">Units</div>
+  <div class="side-nav">
+    <a class="nav-item active" href="unit-1-sequences.html"><span class="num">1.</span><span class="t">Sequences</span></a>
+    <a class="nav-item locked"><span class="num">2.</span><span class="t">Linear &amp; Exponential Functions</span></a>
+    <a class="nav-item locked"><span class="num">3.</span><span class="t">Features of Functions</span></a>
+    <a class="nav-item locked"><span class="num">4.</span><span class="t">Equations &amp; Inequalities</span></a>
+    <a class="nav-item locked"><span class="num">5.</span><span class="t">Systems of Equations</span></a>
+    <a class="nav-item locked"><span class="num">6.</span><span class="t">Quadratic Functions</span></a>
+    <a class="nav-item locked"><span class="num">7.</span><span class="t">Structures of Expressions</span></a>
+    <a class="nav-item locked"><span class="num">8.</span><span class="t">Modeling Data</span></a>
+  </div>
+  <div class="side-section-label">Also here</div>
+  <div class="side-nav">
+    <a class="nav-item" href="../chem/atomic-structure.html"><span class="num">&#8250;</span><span class="t">Chemistry notes</span></a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">NC Math 1 &middot; Unit 1 of 8</span>
+    <span class="bread-now">Sequences</span>
+  </div>
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input placeholder="Search topics, lessons, questions...">
+  </div>
+  <div class="top-actions">
+    <button class="btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleLwsTheme()">&#9790;</button>
+  </div>
+</header>
+
+<main class="main">
+
+<!-- HEADER -->
+<div class="pg-head">
+  <div class="topic-badge">Sequences &middot; NC Math 1, Unit 1</div>
+  <h1>Sequences</h1>
+  <p class="sub">Patterns that grow by a rule &mdash; and why every one of them is secretly a function you already met in 8th grade.</p>
+</div>
+
+<!-- ======== ROADMAP ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">Map</span>What this unit covers</h2>
+  <p class="body-text">Your class packet works through ten lessons. They all circle the same three questions: <em>how is this pattern growing</em>, <em>how do I write that growth down</em>, and <em>how do I jump straight to the 100th term without listing all of them</em>.</p>
+  <div class="topics-list">
+    <div class="row current"><span class="rn">L1</span><span>Checkerboard Borders &mdash; seeing a pattern</span></div>
+    <div class="row current"><span class="rn">L2</span><span>Growing Dots &mdash; constant difference</span></div>
+    <div class="row current"><span class="rn">L3</span><span>Growing, Growing Dots &mdash; constant ratio</span></div>
+    <div class="row"><span class="rn">L4</span><span>Scott's Workout</span></div>
+    <div class="row"><span class="rn">L5</span><span>Don't Break the Chain</span></div>
+    <div class="row"><span class="rn">L6</span><span>Home on the Range &mdash; domain &amp; range</span></div>
+    <div class="row"><span class="rn">L7</span><span>What Comes Next? What Comes Later?</span></div>
+    <div class="row"><span class="rn">L8</span><span>What Does It Mean?</span></div>
+    <div class="row"><span class="rn">L9</span><span>Geometric Meanies</span></div>
+    <div class="row"><span class="rn">L10</span><span>I Know; What Do You Know?</span></div>
+  </div>
+  <div class="highlight-box" style="margin-top:16px">
+    <p class="body-text" style="margin:0"><strong>The one sentence that holds the unit together:</strong> a sequence is a function whose inputs are position numbers. Arithmetic sequences are linear functions in disguise; geometric sequences are exponential functions in disguise.</p>
+  </div>
+</div>
+
+<!-- ======== 8TH GRADE GAP CHECK ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">0</span>Before you start: the 8th grade pieces you need</h2>
+  <p class="body-text">Unit 1 does not actually introduce many new ideas. It renames ideas you built in 8th grade and pushes them one step further. If any of these five feel shaky, patch them first &mdash; everything in the unit leans on them. Tap a row to open it.</p>
+
+  <div class="gap-item" id="gap1">
+    <div class="gap-head"><span class="code">NC.8.F.1</span><span>A function gives each input exactly one output</span><span class="chev">&#8250;</span></div>
+    <div class="gap-body">
+      <p>A function is a rule that takes an input and hands back <em>exactly one</em> output. No input is allowed two different answers.</p>
+      <p>In this unit the input is the <strong>position</strong> in the list (1st term, 2nd term, 3rd term&hellip;) and the output is the <strong>term</strong> sitting in that spot. Position 5 cannot hold two different numbers, so a sequence is automatically a function.</p>
+      <div class="why"><strong>Why it matters now:</strong> NC.M1.F-IF.3 asks you to explain <em>why</em> a sequence is a function. The answer is this sentence, not a calculation.</div>
+    </div>
+  </div>
+
+  <div class="gap-item" id="gap2">
+    <div class="gap-head"><span class="code">NC.8.F.4</span><span>Rate of change and initial value in $y = mx + b$</span><span class="chev">&#8250;</span></div>
+    <div class="gap-body">
+      <p>In $y = mx + b$, the $m$ is the <strong>rate of change</strong> (how much $y$ moves each time $x$ goes up by 1) and $b$ is the <strong>initial value</strong> (the $y$ when $x = 0$).</p>
+      <p>An arithmetic sequence is the same object. Its constant difference $d$ plays the role of $m$. The only twist is <em>where the counting starts</em> &mdash; and that twist is the single most common mistake in this unit. It gets its own section below.</p>
+      <div class="why"><strong>Why it matters now:</strong> every explicit formula you write in Unit 1 is a rearranged $y = mx + b$.</div>
+    </div>
+  </div>
+
+  <div class="gap-item" id="gap3">
+    <div class="gap-head"><span class="code">NC.8.F.3</span><span>Spotting a linear relationship in a table</span><span class="chev">&#8250;</span></div>
+    <div class="gap-body">
+      <p>A table is linear when the output changes by the <strong>same amount</strong> every time the input goes up by 1. Equal steps in, equal steps out.</p>
+      <p>Unit 1 adds a second test right next to it: if the output is <em>multiplied</em> by the same amount each step instead of added to, the pattern is exponential, not linear. Learning to check both &mdash; differences <em>and</em> ratios &mdash; is the core skill of Lessons 2 and 3.</p>
+      <div class="why"><strong>Why it matters now:</strong> this is exactly how you tell arithmetic from geometric.</div>
+    </div>
+  </div>
+
+  <div class="gap-item" id="gap4">
+    <div class="gap-head"><span class="code">NC.8.EE.1</span><span>Integer exponents</span><span class="chev">&#8250;</span></div>
+    <div class="gap-body">
+      <p>You need $r^{n-1}$ to behave. Three facts do most of the work:</p>
+      <p>$r^0 = 1$ for any nonzero $r$ &nbsp;&middot;&nbsp; $r^a \cdot r^b = r^{a+b}$ &nbsp;&middot;&nbsp; $r^{-a} = \dfrac{1}{r^a}$</p>
+      <p>The first one is the one that trips people up. When $n = 1$, the explicit geometric formula gives $a_1 \cdot r^{0} = a_1 \cdot 1 = a_1$. That is <em>why</em> the exponent is $n-1$ and not $n$ &mdash; it makes the first term come out right.</p>
+      <div class="why"><strong>Why it matters now:</strong> geometric sequences are unreadable without comfortable exponent rules.</div>
+    </div>
+  </div>
+
+  <div class="gap-item" id="gap5">
+    <div class="gap-head"><span class="code">NC.8.EE.7</span><span>Solving a linear equation in one variable</span><span class="chev">&#8250;</span></div>
+    <div class="gap-body">
+      <p>Half the questions in this unit run the formula <em>backwards</em>: "which row has 94 seats?", "which figure has 72 tiles?". You set the explicit formula equal to a number and solve for $n$.</p>
+      <p>So you need to comfortably undo $58 + 4(n-1) = 94$ &mdash; distribute or divide first, then isolate.</p>
+      <div class="why"><strong>Why it matters now:</strong> without this, you can only go forwards, and half the packet asks you to go backwards.</div>
+    </div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Quick self-check &mdash; five questions, one per skill</div>
+    <div id="gapQuiz"></div>
+  </div>
+</div>
+
+<!-- ======== LESSON 1 ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L1</span>Checkerboard Borders: two people, two expressions, same answer</h2>
+  <p class="body-text">The packet opens with a square of white tiles wrapped in a checkerboard border, and asks you to <em>group</em> the coloured tiles so you can count them fast. The point is not the count. The point is that different ways of seeing the picture give different-looking expressions that are <strong>equivalent</strong>.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Drag the slider to change the white square, then try each way of seeing it</div>
+    <div class="ctrl-row">
+      <div class="ctrl">
+        <label>White square is $N \times N$, &nbsp;N =</label>
+        <input type="range" id="cbN" min="1" max="9" value="5">
+        <span class="val-chip" id="cbNVal">5</span>
+      </div>
+    </div>
+    <div class="stage"><div class="cb-grid" id="cbGrid"></div></div>
+    <div class="expr-list" id="cbExprs"></div>
+    <div class="readout" id="cbOut"></div>
+  </div>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">Every expression in that list produces the same number for every $N$. That is what <strong>equivalent expressions</strong> means. In your packet's words: the contractor does not care how you saw it, only that your rule works for any size.</p>
+  </div>
+</div>
+
+<!-- ======== LESSON 2 ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L2</span>Growing Dots: adding the same amount every time</h2>
+  <p class="body-text">In the packet, a dot pattern starts with 1 dot and gains 4 more each minute. Step through it and watch two things at once: the picture, and the running table.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Growing Dots &mdash; step through the minutes</div>
+    <div class="dots-stage"><svg id="gdSvg" viewBox="0 0 640 200" role="img" aria-label="Growing dot pattern"></svg></div>
+    <div class="btn-row">
+      <button class="site-btn secondary" id="gdBack">&larr; Back</button>
+      <button class="site-btn" id="gdNext">Next minute &rarr;</button>
+      <button class="site-btn secondary" id="gdReset">Reset</button>
+    </div>
+    <div id="gdTableWrap"></div>
+    <div class="readout" id="gdOut"></div>
+  </div>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">What stays the same:</span> the 1 dot in the middle. It was there at the beginning and never leaves.</div>
+    <div class="step"><span class="step-label">What changes:</span> 4 new dots every minute, one on each arm.</div>
+    <div class="step"><span class="step-label">So at $t$ minutes:</span> $f(t) = 4t + 1$. The 4 is the rate of change, the 1 is the initial value &mdash; exactly $y = mx + b$ from 8th grade.</div>
+    <div class="step"><span class="step-label">At 100 minutes:</span> $f(100) = 4(100) + 1 = 401$ dots, without drawing anything.</div>
+  </div>
+
+  <p class="body-text">A sequence where you <strong>add the same number</strong> each step is called <strong>arithmetic</strong>. That repeated number is the <strong>common difference</strong>, written $d$. Here $d = 4$.</p>
+</div>
+
+<!-- ======== LESSON 3 ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L3</span>Growing, Growing Dots: multiplying instead of adding</h2>
+  <p class="body-text">Lesson 3 looks almost identical on the page and behaves completely differently. Instead of gaining a fixed number of dots, the pattern <em>triples</em>. Watch how fast the two part ways.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Same starting dot &mdash; one pattern adds 4, the other multiplies by 3</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Minutes shown</label>
+        <input type="range" id="cmpN" min="2" max="8" value="5">
+        <span class="val-chip" id="cmpNVal">5</span>
+      </div>
+    </div>
+    <div class="stage"><svg id="cmpSvg" viewBox="0 0 640 300" role="img" aria-label="Arithmetic versus geometric growth"></svg></div>
+    <div id="cmpTableWrap"></div>
+    <div class="readout" id="cmpOut"></div>
+  </div>
+
+  <p class="body-text">A sequence where you <strong>multiply by the same number</strong> each step is <strong>geometric</strong>. That repeated multiplier is the <strong>common ratio</strong>, written $r$. Here $r = 3$.</p>
+
+  <div class="note-flag">
+    <span class="flag-label">Watch the scale</span>
+    By minute 8 the arithmetic pattern has 33 dots and the geometric one has 6,561. This is the whole reason the two get taught side by side: a graph that looks like a gentle curve early on is about to leave the page.
+  </div>
+</div>
+
+<!-- ======== ARITHMETIC VS GEOMETRIC ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">Key</span>Telling arithmetic and geometric apart</h2>
+  <p class="body-text">Given a list of numbers, run two tests in order. Subtract neighbours; if you always get the same thing, it is arithmetic. If not, divide neighbours; if you always get the same thing, it is geometric. If neither, it is some other kind of sequence &mdash; those exist, and the packet shows a few.</p>
+
+  <div class="cmp">
+    <div class="cmp-col a">
+      <h4>Arithmetic</h4>
+      <p><strong>Test:</strong> subtract. $a_n - a_{n-1}$ is constant.</p>
+      <p><strong>That constant is</strong> $d$, the common difference.</p>
+      <p><strong>Graph:</strong> points sitting on a straight line.</p>
+      <p><strong>Parent function:</strong> linear.</p>
+      <p><strong>Example:</strong> 3, 7, 11, 15 &nbsp;($d = 4$)</p>
+    </div>
+    <div class="cmp-col g">
+      <h4>Geometric</h4>
+      <p><strong>Test:</strong> divide. $a_n \div a_{n-1}$ is constant.</p>
+      <p><strong>That constant is</strong> $r$, the common ratio.</p>
+      <p><strong>Graph:</strong> points sitting on a curve.</p>
+      <p><strong>Parent function:</strong> exponential.</p>
+      <p><strong>Example:</strong> 3, 6, 12, 24 &nbsp;($r = 2$)</p>
+    </div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Drill &mdash; classify the sequence</div>
+    <div class="drill-seq" id="drillSeq">&nbsp;</div>
+    <div class="btn-row">
+      <button class="site-btn" data-drill="arithmetic">Arithmetic</button>
+      <button class="site-btn" data-drill="geometric">Geometric</button>
+      <button class="site-btn secondary" data-drill="neither">Neither</button>
+    </div>
+    <div class="drill-fb" id="drillFb"></div>
+    <div class="score-chip" id="drillScore">Score: 0 of 0</div>
+    <div class="btn-row"><button class="site-btn secondary" id="drillNext">New sequence</button></div>
+  </div>
+</div>
+
+<!-- ======== RECURSIVE ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">R</span>Recursive form: describing the step</h2>
+  <p class="body-text">A <strong>recursive</strong> rule says how to get from one term to the next. It needs two pieces, and it is incomplete without both:</p>
+  <div class="term-grid">
+    <div class="term-sym">the step</div><div class="term-def">how to turn any term into the one after it</div>
+    <div class="term-sym">the starting value</div><div class="term-def">which term you begin from, usually $a_1$</div>
+  </div>
+  <p class="body-text">Your class may have started with <strong>NOW&ndash;NEXT</strong> language: <em>NEXT = NOW + 4, starting at 1</em>. That is a fine way in, and the NC standards explicitly allow it as a stepping stone. But the standards are equally explicit that you are expected to move to <strong>subscript notation</strong>, and that is what will appear on assessments.</p>
+
+  <div class="highlight-box">
+    <p class="body-text"><strong>Arithmetic, recursive:</strong> $a_n = a_{n-1} + d$, &nbsp;given $a_1$</p>
+    <p class="body-text" style="margin-bottom:0"><strong>Geometric, recursive:</strong> $a_n = a_{n-1} \cdot r$, &nbsp;given $a_1$</p>
+  </div>
+
+  <p class="body-text">Read $a_{n-1}$ out loud as "the term one before the one I want". The subscript is a <em>position</em>, not a multiplication.</p>
+
+  <div class="note-flag">
+    <span class="flag-label">The most common notation slip</span>
+    $a_{n-1}$ means the previous <em>term</em>. It does not mean $a_n - 1$. Writing $a_n - 1$ says "take my term and subtract one", which is a completely different instruction. Keep the subscript small and low.
+  </div>
+
+  <p class="body-text">Recursive form is excellent for describing what is happening and terrible for answering "what is the 100th term?" &mdash; you would have to walk all 99 steps. That is what explicit form fixes.</p>
+</div>
+
+<!-- ======== EXPLICIT ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">E</span>Explicit form: jumping straight to any term</h2>
+  <p class="body-text">An <strong>explicit</strong> rule takes the position $n$ and hands you the term directly, with no walking.</p>
+
+  <div class="highlight-box">
+    <p class="body-text"><strong>Arithmetic, explicit:</strong> $a_n = a_1 + d(n-1)$</p>
+    <p class="body-text" style="margin-bottom:0"><strong>Geometric, explicit:</strong> $a_n = a_1 \cdot r^{\,n-1}$</p>
+  </div>
+
+  <p class="body-text">Both formulas carry the same $n-1$, and it is there for the same reason in each. To reach the $n$th term you take $n-1$ steps, not $n$ &mdash; you are already standing on term 1 before you move at all.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Check it:</span> put $n = 1$ into the arithmetic formula.</div>
+    <div class="step">$a_1 = a_1 + d(1-1) = a_1 + d \cdot 0 = a_1$. &nbsp;Correct &mdash; zero steps taken.</div>
+    <div class="step"><span class="step-label">Now $n = 4$:</span> $a_4 = a_1 + d(3)$. Three steps from term 1 to term 4. Count the arrows: 1&rarr;2, 2&rarr;3, 3&rarr;4. Three.</div>
+  </div>
+</div>
+
+<!-- ======== THE n-1 TRAP ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">!</span>The $n-1$ trap: why the first term is not the y-intercept</h2>
+  <p class="body-text">This is the single most-tested subtlety in Unit 1, and the NC unpacking document calls it out directly. It catches almost everybody once.</p>
+
+  <p class="body-text">Take the sequence defined by $a_n = a_{n-1} + 12$ with $a_1 = 4$. The sequence runs 4, 16, 28, 40, &hellip;</p>
+
+  <p class="body-text">It is very tempting to write $a_n = 12n + 4$, reading the 4 as the y-intercept. <strong>That is wrong</strong>, and the interactive below shows exactly where it breaks.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Compare the correct formula with the tempting-but-wrong one</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>First term $a_1$</label><input type="number" id="trapA1" value="4" step="1"></div>
+      <div class="ctrl"><label>Common difference $d$</label><input type="number" id="trapD" value="12" step="1"></div>
+    </div>
+    <div id="trapTableWrap"></div>
+    <div class="readout" id="trapOut"></div>
+  </div>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Do it properly:</span> start from $a_n = a_1 + d(n-1)$.</div>
+    <div class="step">$a_n = 4 + 12(n-1)$</div>
+    <div class="step">$a_n = 4 + 12n - 12$</div>
+    <div class="step">$a_n = 12n - 8$</div>
+    <div class="step"><span class="step-label">So the y-intercept is $-8$, not 4.</span> The value $-8$ is what the pattern <em>would</em> have been at position 0 &mdash; one step before the sequence starts. The sequence never actually has that term, which is why it feels invisible.</div>
+  </div>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0"><strong>The reliable habit:</strong> never guess the intercept. Write $a_n = a_1 + d(n-1)$ first, then expand. The intercept falls out as $a_1 - d$ every time.</p>
+  </div>
+</div>
+
+<!-- ======== SEQUENCE EXPLORER ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">Lab</span>Sequence explorer</h2>
+  <p class="body-text">Set the pieces and watch all four representations move together: the list, the table, the graph, and both formulas. Changing one changes all of them &mdash; that connection <em>is</em> the unit.</p>
+
+  <div class="interactive-area">
+    <div class="pick-row">
+      <button class="pick-btn active" data-sx="arithmetic">Arithmetic</button>
+      <button class="pick-btn" data-sx="geometric">Geometric</button>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>First term $a_1$</label><input type="number" id="sxA1" value="3" step="1"></div>
+      <div class="ctrl"><label id="sxStepLabel">Common difference $d$</label><input type="number" id="sxStep" value="4" step="1"></div>
+      <div class="ctrl"><label>Terms</label><input type="range" id="sxCount" min="4" max="10" value="6"><span class="val-chip" id="sxCountVal">6</span></div>
+    </div>
+    <div class="stage"><svg id="sxSvg" viewBox="0 0 640 300" role="img" aria-label="Sequence graph"></svg></div>
+    <div id="sxTableWrap"></div>
+    <div class="readout" id="sxOut"></div>
+  </div>
+</div>
+
+<!-- ======== TRANSLATING ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">&harr;</span>Translating between the two forms</h2>
+  <p class="body-text">NC.M1.F-BF.2 asks you to move both directions on demand. Both trips are short once you know what to look for.</p>
+
+  <h3 class="sub-title">Recursive &rarr; explicit</h3>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Given:</span> $a_n = a_{n-1} + 7$, &nbsp;$a_1 = 5$</div>
+    <div class="step"><span class="step-label">Step 1.</span> The rule adds, so it is arithmetic with $d = 7$.</div>
+    <div class="step"><span class="step-label">Step 2.</span> Read off $a_1 = 5$.</div>
+    <div class="step"><span class="step-label">Step 3.</span> Drop into $a_n = a_1 + d(n-1)$: &nbsp;$a_n = 5 + 7(n-1)$</div>
+    <div class="step"><span class="step-label">Step 4 (optional).</span> Expand: $a_n = 7n - 2$</div>
+  </div>
+
+  <h3 class="sub-title">Explicit &rarr; recursive</h3>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Given:</span> $a_n = 6 \cdot 2^{\,n-1}$</div>
+    <div class="step"><span class="step-label">Step 1.</span> There is a base raised to $n-1$, so it is geometric with $r = 2$.</div>
+    <div class="step"><span class="step-label">Step 2.</span> The number out front is $a_1 = 6$.</div>
+    <div class="step"><span class="step-label">Step 3.</span> Write the step and the start: &nbsp;$a_n = a_{n-1} \cdot 2$, &nbsp;$a_1 = 6$</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">Do not drop the starting value</span>
+    A recursive answer without $a_1$ is incomplete and loses credit. $a_n = a_{n-1} + 7$ describes infinitely many different sequences until you say where it starts.
+  </div>
+</div>
+
+<!-- ======== DOMAIN & RANGE ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">L6</span>Domain and range of a sequence</h2>
+  <p class="body-text">Lesson 6, "Home on the Range", asks a question that sounds fussy and is actually the reason sequences get their own unit.</p>
+  <div class="term-grid">
+    <div class="term-sym">Domain</div><div class="term-def">the positions you are allowed to ask for &mdash; a subset of the integers, usually $1, 2, 3, \ldots$. There is no term number 2.5.</div>
+    <div class="term-sym">Range</div><div class="term-def">the terms themselves &mdash; the actual values the sequence takes.</div>
+  </div>
+  <p class="body-text">This is why a sequence graph is a set of <strong>separate dots</strong>, never a connected line. The dots sit on a line (arithmetic) or a curve (geometric), but the in-between points are not part of the sequence. Connecting them claims term 2.5 exists.</p>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">Said the way NC.M1.F-IF.3 says it: the terms of an arithmetic sequence are a <strong>subset of the range</strong> of a linear function, and the terms of a geometric sequence are a <strong>subset of the range</strong> of an exponential function. The sequence is the dots; the function is the whole line or curve they were cut from.</p>
+  </div>
+  <p class="body-text">In a word problem, say what the domain <em>means</em>: "the domain is the row numbers 1 through 34" beats "the domain is $1 \le n \le 34$" when the question asks you to interpret in context.</p>
+</div>
+
+<!-- ======== PRACTICE ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">P</span>Practice</h2>
+  <p class="body-text">These follow the style of the NC assessment indicators for this unit. Work each one on paper before opening the answer.</p>
+
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> A theater has 60 seats in row 1, 68 in row 2, 76 in row 3, continuing the same way. (a) How many seats in row 20? (b) Explain why this is a function. (c) State the domain and range in context if there are 20 rows.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1')">Show answer</button>
+    <div class="a" id="p1">
+      (a) Arithmetic with $a_1 = 60$, $d = 8$. So $a_{20} = 60 + 8(19) = 60 + 152 = 212$ seats.<br>
+      (b) Each row number produces exactly one seat count, so it is a function.<br>
+      (c) Domain: the row numbers $1, 2, 3, \ldots, 20$. Range: the seat counts $60, 68, 76, \ldots, 212$.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> A nursery plants trees in the pattern 2, 8, 32, 128, &hellip; Write a recursive formula using $a_n$ and $a_{n-1}$, then convert it to explicit form.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2')">Show answer</button>
+    <div class="a" id="p2">
+      Ratios: $8 \div 2 = 4$, $32 \div 8 = 4$, $128 \div 32 = 4$. Geometric, $r = 4$.<br>
+      Recursive: $a_n = a_{n-1} \cdot 4$, with $a_1 = 2$.<br>
+      Explicit: $a_n = 2 \cdot 4^{\,n-1}$.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> One bacterium splits into two every minute. (a) How many after 5 minutes? After 15? (b) Recursive rule. (c) Explicit rule, and the count after one hour.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3')">Show answer</button>
+    <div class="a" id="p3">
+      Let $a_1 = 1$ be the count at minute 0, so term $n$ is the count after $n-1$ minutes.<br>
+      (a) After 5 minutes: $2^5 = 32$. After 15 minutes: $2^{15} = 32{,}768$.<br>
+      (b) $a_n = a_{n-1} \cdot 2$, with $a_1 = 1$.<br>
+      (c) $a_n = 1 \cdot 2^{\,n-1}$. After one hour (60 minutes) the count is $2^{60} \approx 1.15 \times 10^{18}$.<br>
+      <em>Notice how much the answer depends on saying clearly where you started counting. State it every time.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>4.</strong> A concert hall has 58 seats in row 1, 62 in row 2, 66 in row 3, for 34 rows. (a) Recursive formula, and the seats in row 5. (b) Which row has 94 seats?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4')">Show answer</button>
+    <div class="a" id="p4">
+      (a) $a_n = a_{n-1} + 4$, with $a_1 = 58$. Row 5: $58 + 4(4) = 74$ seats.<br>
+      (b) Explicit: $a_n = 58 + 4(n-1)$. Set it equal to 94:<br>
+      $58 + 4(n-1) = 94 \Rightarrow 4(n-1) = 36 \Rightarrow n - 1 = 9 \Rightarrow n = 10$. Row 10.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>5.</strong> Given $a_{n+1} = a_n + 12$ with $a_1 = 4$, write an explicit rule. Then state the y-intercept of the matching linear function.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5')">Show answer</button>
+    <div class="a" id="p5">
+      Arithmetic, $d = 12$, $a_1 = 4$. Explicit: $a_n = 4 + 12(n-1) = 12n - 8$.<br>
+      The y-intercept is $\mathbf{-8}$, not 4. The 4 is the value at $n = 1$, and the intercept is the value at $n = 0$ &mdash; one step earlier.<br>
+      <em>This is the trap from the section above. It is on the NC indicator list verbatim.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>6.</strong> Represent this sequence in explicit form: 1, 4, 9, 16, 25.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p6')">Show answer</button>
+    <div class="a" id="p6">
+      Differences: 3, 5, 7, 9 &mdash; not constant, so not arithmetic. Ratios: 4, 2.25, 1.78 &mdash; not constant, so not geometric.<br>
+      These are the perfect squares: $a_n = n^2$.<br>
+      <em>The point of this one: sequences do not have to be arithmetic or geometric. Always run both tests before assuming.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>7.</strong> The Fibonacci sequence is $a_n = a_{n-1} + a_{n-2}$ with $a_0 = 0$ and $a_1 = 1$. List the first 10 terms. Could you easily write this explicitly?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p7')">Show answer</button>
+    <div class="a" id="p7">
+      0, 1, 1, 2, 3, 5, 8, 13, 21, 34.<br>
+      Not easily. Each term needs the <em>two</em> before it, so no simple $a_1 + d(n-1)$ style rule exists. An explicit formula does exist but it is well beyond Math 1.<br>
+      <em>The takeaway: recursive form is sometimes the only practical description. It is not just a warm-up for explicit form.</em>
+    </div>
+  </div>
+</div>
+
+<!-- ======== FLASHCARDS ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">V</span>Vocabulary</h2>
+  <p class="body-text">These are the words the NC standards list as new for this unit. Click the card to flip.</p>
+  <div class="interactive-area">
+    <div class="fc-stage">
+      <div class="fc-card" id="fcCard">
+        <div class="fc-face front" id="fcFront"></div>
+        <div class="fc-face back" id="fcBack"></div>
+      </div>
+    </div>
+    <div class="fc-hint">Click the card to flip</div>
+    <div class="btn-row">
+      <button class="site-btn secondary" id="fcPrev">&larr; Previous</button>
+      <span class="val-chip" id="fcCount" style="align-self:center"></span>
+      <button class="site-btn" id="fcNext">Next &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======== QUICK REVIEW ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">&#10003;</span>Quick review</h2>
+  <div class="term-grid">
+    <div class="term-sym">Sequence</div><div class="term-def">an ordered list of numbers; a function whose domain is a subset of the integers</div>
+    <div class="term-sym">Arithmetic</div><div class="term-def">constant difference $d$; linear parent function</div>
+    <div class="term-sym">Geometric</div><div class="term-def">constant ratio $r$; exponential parent function</div>
+    <div class="term-sym">Recursive</div><div class="term-def">$a_n = a_{n-1} + d$ or $a_n = a_{n-1} \cdot r$, plus the starting value</div>
+    <div class="term-sym">Explicit</div><div class="term-def">$a_n = a_1 + d(n-1)$ or $a_n = a_1 \cdot r^{\,n-1}$</div>
+    <div class="term-sym">Intercept</div><div class="term-def">expanding the arithmetic explicit form gives $a_n = dn + (a_1 - d)$, so the intercept is $a_1 - d$</div>
+    <div class="term-sym">Graph</div><div class="term-def">separate dots, never connected &mdash; there is no term number 2.5</div>
+  </div>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0"><strong>If you remember one thing:</strong> before writing any formula, decide which term you are calling $a_1$ and say it out loud. Nearly every wrong answer in this unit is a correct calculation that started counting from the wrong place.</p>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+/* ============================================================ */
+/* ============== Shared helpers ============================== */
+/* ============================================================ */
+function toggleAns(id){
+  const a = document.getElementById(id);
+  a.classList.toggle('show');
+}
+window.toggleAns = toggleAns;
+
+function mathify(el){
+  if(window.renderMathInElement && el){
+    try{
+      renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+    }catch(e){}
+  }
+}
+
+function fmt(x){
+  if(!isFinite(x)) return '?';
+  if(Number.isInteger(x)) return x.toLocaleString('en-US');
+  return (Math.round(x*1000)/1000).toString();
+}
+
+/* ============================================================ */
+/* ============== Theme + search (shell) ====================== */
+/* ============================================================ */
+function toggleLwsTheme(){
+  const cur = document.body.dataset.theme || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.body.dataset.theme = next;
+  try{ localStorage.setItem('lws-theme', next); }catch(e){}
+  const btn = document.getElementById('themeBtn');
+  if(btn) btn.innerHTML = next === 'dark' ? '&#9728;' : '&#9790;';
+}
+window.toggleLwsTheme = toggleLwsTheme;
+try{
+  const saved = localStorage.getItem('lws-theme');
+  if(saved === 'dark'){
+    document.body.dataset.theme = 'dark';
+    const btn = document.getElementById('themeBtn');
+    if(btn) btn.innerHTML = '&#9728;';
+  }
+}catch(e){}
+
+(function setupSearch(){
+  const input = document.querySelector('.search input');
+  if(!input) return;
+  const cards = Array.from(document.querySelectorAll('.main .card'));
+  let pgHead = document.querySelector('.main .pg-head');
+  let emptyMsg = null;
+  input.addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    let shown = 0;
+    cards.forEach(card => {
+      if(!q){ card.style.display = ''; shown++; return; }
+      const hit = card.textContent.toLowerCase().includes(q);
+      card.style.display = hit ? '' : 'none';
+      if(hit) shown++;
+    });
+    if(pgHead) pgHead.style.display = q ? 'none' : '';
+    if(q && shown === 0){
+      if(!emptyMsg){
+        emptyMsg = document.createElement('div');
+        emptyMsg.className = 'card';
+        emptyMsg.style.textAlign = 'center';
+        emptyMsg.innerHTML = '<div class="body-text" style="color:var(--slate)">No sections match that search.</div>';
+        document.querySelector('.main').appendChild(emptyMsg);
+      }
+      emptyMsg.style.display = '';
+    } else if(emptyMsg){
+      emptyMsg.style.display = 'none';
+    }
+  });
+  input.addEventListener('keydown', e => {
+    if(e.key === 'Escape'){ input.value = ''; input.dispatchEvent(new Event('input')); }
+  });
+})();
+
+/* ============================================================ */
+/* ============== 8th grade gap accordions + quiz ============= */
+/* ============================================================ */
+(function gaps(){
+  document.querySelectorAll('.gap-item').forEach(item => {
+    const head = item.querySelector('.gap-head');
+    head.addEventListener('click', () => item.classList.toggle('open'));
+  });
+
+  const QS = [
+    { code:'NC.8.F.1',
+      q:'A relation pairs input 3 with output 7, and also input 3 with output 9. Is it a function?',
+      opts:['Yes','No'], correct:1,
+      why:'No. One input is giving two different outputs. A function allows each input exactly one output. This is why sequences are safe &mdash; position 3 holds one term.' },
+    { code:'NC.8.F.4',
+      q:'In $y = -5x + 12$, what is the rate of change?',
+      opts:['12','$-5$','5','$-12$'], correct:1,
+      why:'$-5$. The coefficient of $x$ is the rate of change; 12 is the initial value. In a sequence the rate of change becomes the common difference $d$.' },
+    { code:'NC.8.F.3',
+      q:'A table shows outputs 6, 10, 14, 18 for inputs 1, 2, 3, 4. Linear or not?',
+      opts:['Linear','Not linear'], correct:0,
+      why:'Linear. The output goes up by 4 every single step, so the rate of change is constant. That constant step is exactly what makes a sequence arithmetic.' },
+    { code:'NC.8.EE.1',
+      q:'What is $7^0$?',
+      opts:['0','1','7','undefined'], correct:1,
+      why:'1. Any nonzero base to the zero power is 1. This is the fact that makes $a_1 \\cdot r^{0} = a_1$ work in the geometric explicit formula.' },
+    { code:'NC.8.EE.7',
+      q:'Solve $58 + 4(n-1) = 94$.',
+      opts:['$n = 9$','$n = 10$','$n = 36$','$n = 4$'], correct:1,
+      why:'$n = 10$. Subtract 58 to get $4(n-1) = 36$, divide by 4 to get $n - 1 = 9$, add 1. This is exactly the "which row has 94 seats?" move.' }
+  ];
+
+  const wrap = document.getElementById('gapQuiz');
+  if(!wrap) return;
+  let html = '';
+  QS.forEach((item, i) => {
+    html += '<div class="practice-box" data-gq="'+i+'">';
+    html += '<div class="q"><strong>'+(i+1)+'.</strong> <span style="font-family:var(--fb);font-size:.72rem;color:var(--slate)">'+item.code+'</span><br>'+item.q+'</div>';
+    html += '<div class="pick-row">';
+    item.opts.forEach((o, j) => {
+      html += '<button class="pick-btn" data-gq="'+i+'" data-opt="'+j+'">'+o+'</button>';
+    });
+    html += '</div>';
+    html += '<div class="drill-fb" id="gqfb'+i+'"></div>';
+    html += '</div>';
+  });
+  wrap.innerHTML = html;
+
+  wrap.querySelectorAll('button[data-opt]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = +btn.dataset.gq, j = +btn.dataset.opt;
+      const item = QS[i];
+      const fb = document.getElementById('gqfb'+i);
+      wrap.querySelectorAll('button[data-gq="'+i+'"]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const right = (j === item.correct);
+      fb.className = 'drill-fb show ' + (right ? 'ok' : 'no');
+      fb.innerHTML = (right ? '<strong>Correct.</strong> ' : '<strong>Not quite.</strong> ') + item.why;
+      mathify(fb);
+    });
+  });
+  mathify(wrap);
+})();
+
+/* ============================================================ */
+/* ============== W1: Checkerboard borders ==================== */
+/* ============================================================ */
+(function checkerboard(){
+  const grid = document.getElementById('cbGrid');
+  const slider = document.getElementById('cbN');
+  const nVal = document.getElementById('cbNVal');
+  const out = document.getElementById('cbOut');
+  const exprWrap = document.getElementById('cbExprs');
+  if(!grid) return;
+
+  // Model: N x N white centre, border 2 tiles wide all around.
+  // Outer square is (N+4) x (N+4). Border cells are coloured in a
+  // checkerboard by parity, so exactly half of them are coloured.
+  let highlight = 0;
+
+  const EXPRS = [
+    { tag:'A', label:'Four 2-by-(N+2) rectangles, pinwheel style, half of each coloured',
+      f: N => 4 * (N + 2), tex: '4(N+2)' },
+    { tag:'B', label:'Count the whole border, then halve it',
+      f: N => ((N+4)*(N+4) - N*N) / 2, tex: '\\dfrac{(N+4)^2 - N^2}{2}' },
+    { tag:'C', label:'Expand it out',
+      f: N => 4*N + 8, tex: '4N + 8' }
+  ];
+
+  function build(){
+    const N = +slider.value;
+    nVal.textContent = N;
+    const size = N + 4;
+    grid.style.gridTemplateColumns = 'repeat(' + size + ', 1fr)';
+
+    let coloured = 0;
+    let cells = '';
+    for(let r = 0; r < size; r++){
+      for(let c = 0; c < size; c++){
+        const inCentre = (r >= 2 && r < size - 2 && c >= 2 && c < size - 2);
+        if(inCentre){
+          cells += '<div class="cb-cell center"></div>';
+        } else {
+          const isColoured = ((r + c) % 2 === 0);
+          if(isColoured) coloured++;
+          // Which pinwheel rectangle is this cell in? Used for highlight A.
+          let band = 0;
+          if(r < 2 && c < size - 2) band = 1;
+          else if(c >= size - 2 && r < size - 2) band = 2;
+          else if(r >= size - 2 && c >= 2) band = 3;
+          else band = 4;
+          const hl = (highlight === 1 && isColoured) ? ' hl' : '';
+          cells += '<div class="cb-cell' + (isColoured ? ' colored' : '') + hl + '" data-band="' + band + '"></div>';
+        }
+      }
+    }
+    grid.innerHTML = cells;
+
+    const totalBorder = size*size - N*N;
+
+    let ehtml = '';
+    EXPRS.forEach((e, i) => {
+      ehtml += '<button class="expr-row' + (highlight === i+1 ? ' active' : '') + '" data-expr="' + (i+1) + '">';
+      ehtml += '<span class="tag">' + e.tag + '</span>';
+      ehtml += '<span>' + e.label + '<br><span style="font-family:var(--fb);color:var(--slate)">$' + e.tex + '$</span></span>';
+      ehtml += '<span class="val">' + e.f(N) + '</span>';
+      ehtml += '</button>';
+    });
+    exprWrap.innerHTML = ehtml;
+    exprWrap.querySelectorAll('.expr-row').forEach(b => {
+      b.addEventListener('click', () => {
+        const v = +b.dataset.expr;
+        highlight = (highlight === v) ? 0 : v;
+        build();
+      });
+    });
+    mathify(exprWrap);
+
+    const agree = EXPRS.every(e => e.f(N) === coloured);
+    out.innerHTML = 'White centre: <strong>' + N + ' &times; ' + N + '</strong> = ' + (N*N) + ' tiles. '
+      + 'Whole board: <strong>' + size + ' &times; ' + size + '</strong>. '
+      + 'Border ring: <strong>' + totalBorder + '</strong> tiles, of which <strong>' + coloured + '</strong> are coloured.<br>'
+      + (agree
+          ? 'All three expressions give <strong>' + coloured + '</strong>, and they match the tiles actually drawn above. Different ways of seeing, same rule.'
+          : 'Expressions disagree with the drawing at this N.');
+    mathify(out);
+  }
+
+  slider.addEventListener('input', build);
+  build();
+})();
+
+/* ============================================================ */
+/* ============== W2: Growing Dots ============================ */
+/* ============================================================ */
+(function growingDots(){
+  const svg = document.getElementById('gdSvg');
+  const out = document.getElementById('gdOut');
+  const tw = document.getElementById('gdTableWrap');
+  if(!svg) return;
+
+  let t = 0;
+  const MAXT = 4;
+
+  function draw(){
+    const cx0 = 90, spacing = 140, cy = 100, arm = 26;
+    let s = '';
+    for(let k = 0; k <= t; k++){
+      const cx = cx0 + k * spacing;
+      if(cx > 620) break;
+      // centre dot, always present
+      s += '<circle cx="' + cx + '" cy="' + cy + '" r="7" fill="var(--forest)"/>';
+      // k dots out on each of 4 arms
+      for(let j = 1; j <= k; j++){
+        const d = j * arm;
+        s += '<circle cx="' + cx + '" cy="' + (cy - d) + '" r="7" fill="var(--arith)"/>';
+        s += '<circle cx="' + cx + '" cy="' + (cy + d) + '" r="7" fill="var(--arith)"/>';
+        s += '<circle cx="' + (cx - d) + '" cy="' + cy + '" r="7" fill="var(--arith)"/>';
+        s += '<circle cx="' + (cx + d) + '" cy="' + cy + '" r="7" fill="var(--arith)"/>';
+      }
+      const label = (k === 0) ? 'At the beginning' : (k + ' min');
+      s += '<text x="' + cx + '" y="188" text-anchor="middle" font-family="Dosis,sans-serif" font-size="14" fill="var(--slate)">' + label + '</text>';
+      const nDots = 4*k + 1;
+      s += '<text x="' + cx + '" y="18" text-anchor="middle" font-family="Bitter,serif" font-size="14" font-weight="700" fill="var(--forest)">' + nDots + (nDots === 1 ? ' dot' : ' dots') + '</text>';
+    }
+    svg.innerHTML = s;
+
+    let rows = '<table class="seq-table"><tr><th>Minutes $t$</th>';
+    for(let k = 0; k <= t; k++) rows += '<th>' + k + '</th>';
+    rows += '</tr><tr><th>Dots</th>';
+    for(let k = 0; k <= t; k++) rows += '<td>' + (4*k + 1) + '</td>';
+    rows += '</tr>';
+    if(t >= 1){
+      rows += '<tr><th>Change</th><td style="background:var(--sage-m)">&mdash;</td>';
+      for(let k = 1; k <= t; k++) rows += '<td class="diff">+4</td>';
+      rows += '</tr>';
+    }
+    rows += '</table>';
+    tw.innerHTML = rows;
+    mathify(tw);
+
+    out.innerHTML = t === 0
+      ? 'One dot to start. Press <strong>Next minute</strong> and watch what gets added.'
+      : 'Every minute adds <strong>4</strong> dots, one on each arm, and the original centre dot never moves. '
+        + 'That makes this <strong>arithmetic</strong> with $d = 4$ and a starting value of 1, so $f(t) = 4t + 1$. '
+        + 'At $t = ' + t + '$: $f(' + t + ') = 4(' + t + ') + 1 = ' + (4*t+1) + '$.';
+    mathify(out);
+  }
+
+  document.getElementById('gdNext').addEventListener('click', () => { if(t < MAXT){ t++; draw(); } });
+  document.getElementById('gdBack').addEventListener('click', () => { if(t > 0){ t--; draw(); } });
+  document.getElementById('gdReset').addEventListener('click', () => { t = 0; draw(); });
+  draw();
+})();
+
+/* ============================================================ */
+/* ============== W3: Arithmetic vs geometric growth ========== */
+/* ============================================================ */
+(function compareGrowth(){
+  const svg = document.getElementById('cmpSvg');
+  const out = document.getElementById('cmpOut');
+  const tw = document.getElementById('cmpTableWrap');
+  const slider = document.getElementById('cmpN');
+  const nVal = document.getElementById('cmpNVal');
+  if(!svg) return;
+
+  function draw(){
+    const N = +slider.value;
+    nVal.textContent = N;
+
+    const A = [], G = [];
+    for(let k = 0; k <= N; k++){ A.push(4*k + 1); G.push(Math.pow(3, k)); }
+    const maxV = Math.max(G[G.length-1], A[A.length-1]);
+
+    const L = 56, R = 620, T = 24, B = 250;
+    const sx = k => L + (k / N) * (R - L);
+    const sy = v => B - (v / maxV) * (B - T);
+
+    let s = '';
+    s += '<line x1="' + L + '" y1="' + B + '" x2="' + R + '" y2="' + B + '" stroke="var(--sage-l)" stroke-width="2"/>';
+    s += '<line x1="' + L + '" y1="' + T + '" x2="' + L + '" y2="' + B + '" stroke="var(--sage-l)" stroke-width="2"/>';
+    s += '<text x="' + ((L+R)/2) + '" y="285" text-anchor="middle" font-family="Dosis,sans-serif" font-size="14" fill="var(--slate)">minutes</text>';
+
+    for(let k = 0; k <= N; k++){
+      s += '<text x="' + sx(k) + '" y="' + (B+18) + '" text-anchor="middle" font-family="Bitter,serif" font-size="12" fill="var(--slate)">' + k + '</text>';
+    }
+
+    // Points only - a sequence is not a connected curve.
+    for(let k = 0; k <= N; k++){
+      s += '<circle cx="' + sx(k) + '" cy="' + sy(A[k]) + '" r="5.5" fill="var(--arith)"/>';
+    }
+    for(let k = 0; k <= N; k++){
+      s += '<circle cx="' + sx(k) + '" cy="' + sy(G[k]) + '" r="5.5" fill="var(--geo)"/>';
+    }
+    s += '<circle cx="' + (R-150) + '" cy="' + (T+6) + '" r="5.5" fill="var(--arith)"/>';
+    s += '<text x="' + (R-138) + '" y="' + (T+11) + '" font-family="Dosis,sans-serif" font-size="13" fill="var(--forest)">add 4</text>';
+    s += '<circle cx="' + (R-70) + '" cy="' + (T+6) + '" r="5.5" fill="var(--geo)"/>';
+    s += '<text x="' + (R-58) + '" y="' + (T+11) + '" font-family="Dosis,sans-serif" font-size="13" fill="var(--forest)">times 3</text>';
+    svg.innerHTML = s;
+
+    let h = '<table class="seq-table"><tr><th>Minute</th>';
+    for(let k = 0; k <= N; k++) h += '<th>' + k + '</th>';
+    h += '</tr><tr><th>Add 4</th>';
+    for(let k = 0; k <= N; k++) h += '<td>' + fmt(A[k]) + '</td>';
+    h += '</tr><tr><th>Times 3</th>';
+    for(let k = 0; k <= N; k++) h += '<td>' + fmt(G[k]) + '</td>';
+    h += '</tr></table>';
+    tw.innerHTML = h;
+
+    out.innerHTML = 'At minute ' + N + ' the adding pattern has <strong>' + fmt(A[N]) + '</strong> dots and the multiplying pattern has <strong>' + fmt(G[N]) + '</strong>. '
+      + 'They started from the same single dot. '
+      + 'The dots are drawn <em>separate</em> on purpose &mdash; there is no such thing as minute 2.5 in a sequence.';
+    mathify(out);
+  }
+
+  slider.addEventListener('input', draw);
+  draw();
+})();
+
+/* ============================================================ */
+/* ============== W4: Classifier drill ======================== */
+/* ============================================================ */
+(function drill(){
+  const seqEl = document.getElementById('drillSeq');
+  const fb = document.getElementById('drillFb');
+  const scoreEl = document.getElementById('drillScore');
+  if(!seqEl) return;
+
+  let right = 0, asked = 0, current = null, answered = false;
+
+  function makeSeq(){
+    const kind = ['arithmetic','geometric','neither'][Math.floor(Math.random()*3)];
+    let terms = [], a1, step;
+    if(kind === 'arithmetic'){
+      a1 = Math.floor(Math.random()*9) + 2;
+      step = (Math.floor(Math.random()*7) + 2) * (Math.random() < 0.25 ? -1 : 1);
+      for(let i = 0; i < 5; i++) terms.push(a1 + step*i);
+      return { kind, terms, note: 'Differences are all ' + step + ', so it is arithmetic with $d = ' + step + '$.' };
+    }
+    if(kind === 'geometric'){
+      a1 = Math.floor(Math.random()*4) + 1;
+      step = Math.floor(Math.random()*3) + 2;
+      for(let i = 0; i < 5; i++) terms.push(a1 * Math.pow(step, i));
+      return { kind, terms, note: 'Each term is the one before it times ' + step + ', so it is geometric with $r = ' + step + '$.' };
+    }
+    // neither: squares, or fibonacci-ish, or add-an-increasing-amount
+    const which = Math.floor(Math.random()*3);
+    if(which === 0){
+      const s = Math.floor(Math.random()*3) + 1;
+      for(let i = 0; i < 5; i++) terms.push(Math.pow(s + i, 2));
+      return { kind, terms, note: 'These are perfect squares. The differences grow (they are not constant) and the ratios shrink, so it is neither.' };
+    }
+    if(which === 1){
+      let a = Math.floor(Math.random()*3) + 1, b = a + Math.floor(Math.random()*3) + 1;
+      terms = [a, b];
+      for(let i = 0; i < 3; i++) terms.push(terms[terms.length-1] + terms[terms.length-2]);
+      return { kind, terms, note: 'Each term is the sum of the two before it, Fibonacci style. No constant difference and no constant ratio.' };
+    }
+    a1 = Math.floor(Math.random()*5) + 2;
+    let acc = a1, inc = 2;
+    terms = [acc];
+    for(let i = 0; i < 4; i++){ acc += inc; inc += 2; terms.push(acc); }
+    return { kind, terms, note: 'The amount added grows each step (+2, +4, +6, ...), so the difference is not constant. Neither arithmetic nor geometric.' };
+  }
+
+  function next(){
+    current = makeSeq();
+    answered = false;
+    seqEl.textContent = current.terms.join(',  ') + ',  ...';
+    fb.className = 'drill-fb';
+    fb.innerHTML = '';
+  }
+
+  document.querySelectorAll('button[data-drill]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(!current || answered) return;
+      answered = true;
+      asked++;
+      const pick = btn.dataset.drill;
+      const ok = (pick === current.kind);
+      if(ok) right++;
+      fb.className = 'drill-fb show ' + (ok ? 'ok' : 'no');
+      fb.innerHTML = (ok ? '<strong>Correct.</strong> ' : '<strong>Not quite &mdash; it is ' + current.kind + '.</strong> ') + current.note;
+      scoreEl.textContent = 'Score: ' + right + ' of ' + asked;
+      mathify(fb);
+    });
+  });
+
+  document.getElementById('drillNext').addEventListener('click', next);
+  next();
+})();
+
+/* ============================================================ */
+/* ============== W5: The n-1 trap ============================ */
+/* ============================================================ */
+(function trap(){
+  const a1El = document.getElementById('trapA1');
+  const dEl = document.getElementById('trapD');
+  const tw = document.getElementById('trapTableWrap');
+  const out = document.getElementById('trapOut');
+  if(!a1El) return;
+
+  function draw(){
+    const a1 = +a1El.value || 0;
+    const d = +dEl.value || 0;
+
+    let h = '<table class="seq-table"><tr><th>Position $n$</th><th>0</th>';
+    for(let n = 1; n <= 5; n++) h += '<th>' + n + '</th>';
+    h += '</tr>';
+
+    h += '<tr><th>Actual term</th><td style="background:var(--sage-m);color:var(--slate)">none</td>';
+    for(let n = 1; n <= 5; n++) h += '<td>' + fmt(a1 + d*(n-1)) + '</td>';
+    h += '</tr>';
+
+    h += '<tr><th>Correct: $a_1 + d(n-1)$</th><td style="color:var(--good);font-weight:700">' + fmt(a1 - d) + '</td>';
+    for(let n = 1; n <= 5; n++) h += '<td style="color:var(--good)">' + fmt(a1 + d*(n-1)) + '</td>';
+    h += '</tr>';
+
+    h += '<tr><th>Tempting: $dn + a_1$</th><td style="color:var(--bad);font-weight:700">' + fmt(a1) + '</td>';
+    for(let n = 1; n <= 5; n++) h += '<td style="color:var(--bad)">' + fmt(d*n + a1) + '</td>';
+    h += '</tr></table>';
+    tw.innerHTML = h;
+    mathify(tw);
+
+    const expanded = 'a_n = ' + d + 'n ' + (a1 - d >= 0 ? '+ ' + (a1-d) : '- ' + Math.abs(a1-d));
+    out.innerHTML = 'The wrong version is off by exactly <strong>' + fmt(d) + '</strong> at every single position &mdash; it is the right pattern shifted one step too far.<br><br>'
+      + 'Correct explicit form: $a_n = ' + a1 + ' + ' + d + '(n-1)$, which expands to $' + expanded + '$.<br>'
+      + 'So the y-intercept is $a_1 - d = ' + fmt(a1 - d) + '$, <strong>not</strong> ' + fmt(a1) + '. '
+      + 'Position 0 is not part of the sequence &mdash; it is where the line <em>would</em> have been one step before the sequence began.';
+    mathify(out);
+  }
+
+  a1El.addEventListener('input', draw);
+  dEl.addEventListener('input', draw);
+  draw();
+})();
+
+/* ============================================================ */
+/* ============== W6: Sequence explorer ======================= */
+/* ============================================================ */
+(function explorer(){
+  const svg = document.getElementById('sxSvg');
+  const tw = document.getElementById('sxTableWrap');
+  const out = document.getElementById('sxOut');
+  const a1El = document.getElementById('sxA1');
+  const stepEl = document.getElementById('sxStep');
+  const stepLabel = document.getElementById('sxStepLabel');
+  const countEl = document.getElementById('sxCount');
+  const countVal = document.getElementById('sxCountVal');
+  if(!svg) return;
+
+  let kind = 'arithmetic';
+
+  document.querySelectorAll('button[data-sx]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('button[data-sx]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      kind = btn.dataset.sx;
+      stepLabel.innerHTML = kind === 'arithmetic' ? 'Common difference $d$' : 'Common ratio $r$';
+      stepEl.value = kind === 'arithmetic' ? 4 : 2;
+      mathify(stepLabel);
+      draw();
+    });
+  });
+
+  function draw(){
+    const a1 = +a1El.value || 0;
+    const st = +stepEl.value || (kind === 'arithmetic' ? 0 : 1);
+    const N = +countEl.value;
+    countVal.textContent = N;
+
+    const terms = [];
+    for(let n = 1; n <= N; n++){
+      terms.push(kind === 'arithmetic' ? a1 + st*(n-1) : a1 * Math.pow(st, n-1));
+    }
+
+    const lo = Math.min(0, Math.min.apply(null, terms));
+    const hi = Math.max.apply(null, terms);
+    const span = (hi - lo) || 1;
+
+    const L = 60, R = 610, T = 26, B = 244;
+    const sx = n => L + ((n - 1) / Math.max(1, N - 1)) * (R - L);
+    const sy = v => B - ((v - lo) / span) * (B - T);
+
+    let s = '';
+    // zero line if the range crosses it
+    if(lo < 0 && hi > 0){
+      s += '<line x1="' + L + '" y1="' + sy(0) + '" x2="' + R + '" y2="' + sy(0) + '" stroke="var(--sage-l)" stroke-width="1.5" stroke-dasharray="4 4"/>';
+    }
+    s += '<line x1="' + L + '" y1="' + B + '" x2="' + R + '" y2="' + B + '" stroke="var(--sage-l)" stroke-width="2"/>';
+    s += '<line x1="' + L + '" y1="' + T + '" x2="' + L + '" y2="' + B + '" stroke="var(--sage-l)" stroke-width="2"/>';
+
+    // the parent function it was cut from, drawn faintly and continuously
+    let path = '';
+    for(let px = 0; px <= 120; px++){
+      const nn = 1 + (px/120) * (N - 1);
+      const vv = kind === 'arithmetic' ? a1 + st*(nn-1) : a1 * Math.pow(st, nn-1);
+      path += (px === 0 ? 'M' : 'L') + sx(nn) + ' ' + sy(vv) + ' ';
+    }
+    const col = kind === 'arithmetic' ? 'var(--arith)' : 'var(--geo)';
+    s += '<path d="' + path + '" fill="none" stroke="' + col + '" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.45"/>';
+
+    terms.forEach((v, i) => {
+      s += '<circle cx="' + sx(i+1) + '" cy="' + sy(v) + '" r="6" fill="' + col + '"/>';
+      s += '<text x="' + sx(i+1) + '" y="' + (B+18) + '" text-anchor="middle" font-family="Bitter,serif" font-size="12" fill="var(--slate)">' + (i+1) + '</text>';
+    });
+    s += '<text x="' + ((L+R)/2) + '" y="284" text-anchor="middle" font-family="Dosis,sans-serif" font-size="14" fill="var(--slate)">position n</text>';
+    s += '<text x="' + (R-210) + '" y="' + (T+4) + '" font-family="Dosis,sans-serif" font-size="12" fill="var(--slate)">dashed = the '
+      + (kind === 'arithmetic' ? 'linear' : 'exponential') + ' function the dots were cut from</text>';
+    svg.innerHTML = s;
+
+    let h = '<table class="seq-table"><tr><th>$n$</th>';
+    for(let n = 1; n <= N; n++) h += '<th>' + n + '</th>';
+    h += '</tr><tr><th>$a_n$</th>';
+    terms.forEach(v => h += '<td>' + fmt(v) + '</td>');
+    h += '</tr>';
+    if(kind === 'arithmetic'){
+      h += '<tr><th>Difference</th><td style="background:var(--sage-m)">&mdash;</td>';
+      for(let n = 1; n < N; n++) h += '<td class="diff">' + (st >= 0 ? '+' : '') + fmt(st) + '</td>';
+      h += '</tr>';
+    } else {
+      h += '<tr><th>Ratio</th><td style="background:var(--sage-m)">&mdash;</td>';
+      for(let n = 1; n < N; n++) h += '<td class="ratio">&times;' + fmt(st) + '</td>';
+      h += '</tr>';
+    }
+    h += '</table>';
+    tw.innerHTML = h;
+    mathify(tw);
+
+    let body = '';
+    if(kind === 'arithmetic'){
+      const b = a1 - st;
+      const expanded = st + 'n ' + (b >= 0 ? '+ ' + b : '- ' + Math.abs(b));
+      body = '<strong>Recursive:</strong> $a_n = a_{n-1} + ' + st + '$, with $a_1 = ' + a1 + '$<br>'
+           + '<strong>Explicit:</strong> $a_n = ' + a1 + ' + ' + st + '(n-1)$<br>'
+           + '<strong>Expanded:</strong> $a_n = ' + expanded + '$ &nbsp; so the y-intercept is $' + fmt(b) + '$<br>'
+           + '<strong>Parent function:</strong> linear &mdash; the dots sit on a straight line.';
+    } else {
+      body = '<strong>Recursive:</strong> $a_n = a_{n-1} \\cdot ' + st + '$, with $a_1 = ' + a1 + '$<br>'
+           + '<strong>Explicit:</strong> $a_n = ' + a1 + ' \\cdot ' + st + '^{\\,n-1}$<br>'
+           + '<strong>Check $n=1$:</strong> $' + a1 + ' \\cdot ' + st + '^{0} = ' + a1 + '$ &nbsp; which is why the exponent is $n-1$<br>'
+           + '<strong>Parent function:</strong> exponential &mdash; the dots sit on a curve.';
+    }
+    out.innerHTML = body;
+    mathify(out);
+  }
+
+  [a1El, stepEl, countEl].forEach(el => el.addEventListener('input', draw));
+  draw();
+})();
+
+/* ============================================================ */
+/* ============== W7: Vocabulary flashcards =================== */
+/* ============================================================ */
+(function flashcards(){
+  const card = document.getElementById('fcCard');
+  const front = document.getElementById('fcFront');
+  const back = document.getElementById('fcBack');
+  const count = document.getElementById('fcCount');
+  if(!card) return;
+
+  const CARDS = [
+    ['Sequence', 'An ordered list of numbers. Formally, a function whose domain is a subset of the integers.'],
+    ['Term', 'One number in the sequence. $a_5$ means the term sitting in position 5.'],
+    ['Arithmetic sequence', 'A sequence where you add the same number each step. That number is the common difference $d$.'],
+    ['Geometric sequence', 'A sequence where you multiply by the same number each step. That number is the common ratio $r$.'],
+    ['Common difference', 'The constant you add. Found by $a_n - a_{n-1}$.'],
+    ['Common ratio', 'The constant you multiply by. Found by $a_n \\div a_{n-1}$.'],
+    ['Recursive form', 'A rule describing the step from one term to the next, plus a starting value. Example: $a_n = a_{n-1} + 4$, $a_1 = 3$.'],
+    ['Explicit form', 'A rule that gives any term directly from its position. Example: $a_n = 3 + 4(n-1)$.'],
+    ['Exponential function', 'A function where the variable is in the exponent. The parent function behind every geometric sequence.'],
+    ['Domain of a sequence', 'The set of positions you are allowed to ask for, usually $1, 2, 3, \\ldots$ There is no position 2.5.'],
+    ['Range of a sequence', 'The set of terms the sequence actually produces.'],
+    ['Equivalent expressions', 'Different-looking expressions that give the same value for every input. Lesson 1 is built on this idea.']
+  ];
+
+  let i = 0;
+
+  function show(){
+    card.classList.remove('flipped');
+    front.innerHTML = CARDS[i][0];
+    back.innerHTML = CARDS[i][1];
+    count.textContent = (i+1) + ' / ' + CARDS.length;
+    mathify(back);
+  }
+
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+  document.getElementById('fcNext').addEventListener('click', () => { i = (i+1) % CARDS.length; show(); });
+  document.getElementById('fcPrev').addEventListener('click', () => { i = (i-1+CARDS.length) % CARDS.length; show(); });
+  show();
+})();
+</script>
+</body>
+</html>
