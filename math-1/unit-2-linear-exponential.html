@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linear &amp; Exponential Functions (Integrated Math 1, Unit 2)</title>
+<meta name="description" content="Interactive Integrated Math 1 notes on linear and exponential functions: why arithmetic sequences are linear functions and geometric sequences are exponential functions, discrete versus continuous models, equal differences versus equal factors, growth factors, and negative exponents. By tutoringwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<style>
+:root{
+  --white:#FFFFFF;--sage-l:#D0D6B3;--sage:#9BA06A;--slate:#525B76;--forest:#143109;
+  --bg:#f5f6ee;--sage-m:#e4e8cc;
+  --good:#5b8a3f;--bad:#b5503e;
+  --arith:#5b7fa8;--geo:#a86b5b;
+  --fh:'Young Serif',Georgia,serif;--fp:'Dosis','Trebuchet MS',Arial,sans-serif;--fb:'Bitter',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--fp);color:var(--forest);padding:18px 16px 52px;overflow-x:hidden}
+.page{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.pg-head{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:20px;padding:36px 28px;text-align:center}
+.pg-head .topic-badge{display:inline-block;font-family:var(--fb);font-weight:700;color:var(--slate);background:var(--white);border:1.5px solid var(--sage-l);padding:4px 14px;border-radius:20px;font-size:.82rem;margin-bottom:12px;letter-spacing:.04em}
+.pg-head h1{font-family:var(--fh);font-size:2.2rem;color:var(--forest);margin-bottom:6px}
+.pg-head .sub{font-family:var(--fp);color:var(--slate);font-size:1rem}
+.card{background:var(--white);border:2px solid var(--sage-l);border-radius:20px;padding:28px 26px;box-shadow:0 2px 12px rgba(20,49,9,0.06);scroll-margin-top:84px}
+.card-title{font-family:var(--fh);font-size:1.4rem;color:var(--forest);margin-bottom:14px}
+.card-title .num{font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.9rem;background:var(--sage-m);border-radius:8px;padding:2px 10px;margin-right:8px;vertical-align:middle}
+.body-text{font-family:var(--fp);font-size:1.04rem;color:var(--forest);line-height:1.7;margin-bottom:12px}
+.body-text:last-child{margin-bottom:0}
+.highlight-box{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:14px;padding:18px 22px;margin:14px 0}
+.sub-title{font-family:var(--fh);font-size:1.1rem;color:var(--forest);margin:18px 0 8px}
+.term-grid{display:grid;grid-template-columns:180px 1fr;gap:8px 16px;margin:12px 0}
+.term-sym{font-family:var(--fb);font-weight:700;color:var(--sage);text-align:right;font-size:1rem}
+.term-def{font-family:var(--fp);font-size:.98rem;color:var(--forest);line-height:1.6}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
+.site-btn{font-family:var(--fp);font-weight:600;font-size:.92rem;border:none;border-radius:30px;padding:8px 18px;cursor:pointer;transition:background .18s,transform .18s;background:var(--sage);color:var(--white)}
+.site-btn:hover{background:var(--forest);transform:translateY(-1px)}
+.site-btn.secondary{background:var(--white);color:var(--forest);border:2px solid var(--sage-l)}
+.site-btn.secondary:hover{background:var(--sage-m)}
+.interactive-area{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:16px;padding:20px 18px;margin:16px 0}
+.ia-label{font-family:var(--fb);font-size:1rem;color:var(--slate);margin-bottom:10px;text-align:center;font-weight:700}
+.practice-box{background:var(--white);border:2px dashed var(--sage-l);border-radius:14px;padding:16px 20px;margin:10px 0}
+.practice-box .q{font-family:var(--fp);font-size:1rem;color:var(--forest);margin-bottom:8px;line-height:1.6}
+.practice-box .a{font-family:var(--fp);font-size:.95rem;color:var(--forest);display:none;margin-top:8px;padding:12px 14px;background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;line-height:1.65}
+.practice-box .a.show{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.show-ans-btn{font-family:var(--fp);font-weight:600;font-size:.85rem;border:2px solid var(--sage-l);border-radius:20px;padding:5px 14px;cursor:pointer;background:var(--white);color:var(--sage);transition:background .18s}
+.show-ans-btn:hover{background:var(--sage-m)}
+.worked-example{background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 14px 14px 0;padding:16px 22px;margin:14px 0}
+.worked-example .step{font-family:var(--fp);font-size:.98rem;color:var(--forest);margin-bottom:6px;line-height:1.65}
+.worked-example .step-label{font-family:var(--fb);font-weight:700;color:var(--sage)}
+.topics-list{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 18px;margin-top:8px}
+.topics-list .row{font-family:var(--fp);color:var(--forest);display:flex;gap:10px;font-size:.98rem;padding:3px 0}
+.topics-list .row .rn{font-family:var(--fb);color:var(--sage);min-width:32px;font-weight:700}
+.topics-list .row.current{background:var(--sage-m);border-radius:8px;padding:3px 8px;font-weight:600}
+.pick-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:8px 0}
+.pick-btn{font-family:var(--fb);font-size:.82rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:18px;padding:5px 12px;cursor:pointer;color:var(--forest);transition:background .15s}
+.pick-btn:hover{background:var(--sage-m)}
+.pick-btn.active{background:var(--sage);color:var(--white);border-color:var(--sage)}
+.stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;text-align:center}
+.stage svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.readout{font-family:var(--fp);font-size:.95rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:12px 16px;margin-top:10px;line-height:1.6;text-align:left}
+.readout strong{font-family:var(--fb)}
+.ctrl-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin:10px 0}
+.ctrl{display:flex;align-items:center;gap:8px;font-family:var(--fp);font-size:.9rem;color:var(--forest)}
+.ctrl label{font-family:var(--fb);font-weight:700;font-size:.82rem;color:var(--slate)}
+.ctrl input[type=range]{width:140px;accent-color:var(--sage)}
+.ctrl input[type=number]{width:76px;font-family:var(--fb);font-size:.92rem;padding:5px 8px;border:1.5px solid var(--sage-l);border-radius:8px;background:var(--white);color:var(--forest)}
+.val-chip{font-family:var(--fb);font-weight:700;background:var(--white);border:1.5px solid var(--sage-l);border-radius:10px;padding:2px 10px;min-width:38px;display:inline-block;text-align:center}
+.seq-table{width:100%;border-collapse:collapse;font-family:var(--fb);font-size:.9rem;margin:10px 0;background:var(--white)}
+.seq-table th,.seq-table td{border:1.5px solid var(--sage-l);padding:7px 9px;text-align:center;color:var(--forest)}
+.seq-table th{background:var(--sage-m);font-weight:700;font-size:.82rem}
+.seq-table td.diff{color:var(--arith);font-weight:700}
+.seq-table td.ratio{color:var(--geo);font-weight:700}
+.fb{font-family:var(--fp);font-size:.95rem;border-radius:10px;padding:11px 14px;margin-top:10px;line-height:1.6;display:none;text-align:left}
+.fb.show{display:block;animation:fadeIn .2s ease}
+.fb.ok{background:#eaf3e2;border:1.5px solid var(--good);color:#2f4d1c}
+.fb.no{background:#f7e9e6;border:1.5px solid var(--bad);color:#6d2d21}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.cmp-col{border:2px solid var(--sage-l);border-radius:14px;padding:16px 18px;background:var(--white)}
+.cmp-col.a{border-color:var(--arith)}
+.cmp-col.g{border-color:var(--geo)}
+.cmp-col h4{font-family:var(--fh);font-size:1.05rem;margin-bottom:8px;color:var(--forest)}
+.cmp-col.a h4{color:var(--arith)}
+.cmp-col.g h4{color:var(--geo)}
+.cmp-col p{font-family:var(--fp);font-size:.94rem;line-height:1.6;margin-bottom:7px}
+.cmp-col p:last-child{margin-bottom:0}
+.map-table{width:100%;border-collapse:collapse;font-family:var(--fp);font-size:.93rem;margin:12px 0;background:var(--white)}
+.map-table th,.map-table td{border:1.5px solid var(--sage-l);padding:9px 11px;text-align:left;color:var(--forest);vertical-align:top;line-height:1.55}
+.map-table th{background:var(--sage-m);font-family:var(--fb);font-weight:700;font-size:.82rem}
+.map-table td.code{font-family:var(--fb);font-weight:700;color:var(--sage);white-space:nowrap;font-size:.85rem}
+.map-table td.ctr{text-align:center}
+.note-flag{border-left:4px solid var(--bad);background:#fbf3f1;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
+.note-flag .flag-label{font-family:var(--fb);font-weight:700;color:var(--bad);display:block;margin-bottom:4px}
+.fwd{border-left:4px solid var(--arith);background:#f2f6fa;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
+.fwd .fwd-label{font-family:var(--fb);font-weight:700;color:var(--arith);display:block;margin-bottom:4px}
+.fwd a{color:var(--forest);font-weight:600}
+/* 2x2 grid */
+.quad{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;margin:14px 0;font-family:var(--fp)}
+.quad .qh{font-family:var(--fb);font-weight:700;font-size:.84rem;color:var(--slate);display:flex;align-items:center;justify-content:center;text-align:center;padding:6px}
+.quad .qcell{border:2px solid var(--sage-l);border-radius:12px;padding:12px 14px;background:var(--white);font-size:.92rem;line-height:1.55}
+.quad .qcell .qt{font-family:var(--fb);font-weight:700;color:var(--forest);display:block;margin-bottom:4px}
+.quad .qcell .qs{color:var(--slate);font-size:.86rem}
+.quad .qcell.lin{border-color:var(--arith)}
+.quad .qcell.exp{border-color:var(--geo)}
+
+/* ===== LWS SHELL (v2 UI) ===== */
+body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01","cv11"}
+.page{max-width:none;margin:0;display:block}
+.lws-backdrop{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(228,232,204,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(208,214,179,.5) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(228,232,204,.6) 0%,transparent 55%),
+             var(--bg)}
+.app{position:relative;z-index:1;display:grid;grid-template-columns:264px 1fr;grid-template-rows:64px 1fr;grid-template-areas:"side top" "side main";min-height:100vh}
+.side{grid-area:side;padding:16px 14px 14px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-right:1px solid var(--sage-l);overflow-y:auto;box-shadow:0 1px 0 rgba(255,255,255,0.9) inset}
+.top{grid-area:top;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-bottom:1px solid var(--sage-l);position:sticky;top:0;z-index:15}
+.main{grid-area:main;padding:24px 28px 56px;max-width:1320px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;padding:8px 12px}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--forest));color:#fff;display:grid;place-items:center;font-family:var(--fh);font-size:1.1rem;line-height:1;box-shadow:0 6px 20px -6px rgba(20,49,9,0.35)}
+.brand-name{font-family:var(--fh);color:var(--forest);font-size:1.05rem;line-height:1.05}
+.brand-name small{display:block;font-family:var(--fb);font-style:italic;color:#7C8172;font-size:.7rem;margin-top:3px}
+.ws-switch{margin:0 4px}
+.ws-switch-btn{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.62);border:1px solid rgba(255,255,255,0.55);border-radius:12px;backdrop-filter:blur(14px);text-align:left;transition:background .15s}
+.ws-switch-btn .ico{width:30px;height:30px;border-radius:8px;background:var(--sage-m);color:var(--forest);display:grid;place-items:center;flex-shrink:0;font-family:var(--fb);font-weight:700;font-size:.78rem}
+.ws-switch-btn .meta{flex:1;min-width:0}
+.ws-switch-btn .lbl{font-family:var(--fh);color:var(--forest);font-size:.95rem;line-height:1.1}
+.ws-switch-btn .sub{font-family:var(--fb);color:#7C8172;font-size:.68rem;margin-top:3px}
+.side-section-label{font-family:var(--fb);font-size:.66rem;letter-spacing:.14em;color:#7C8172;text-transform:uppercase;padding:14px 12px 4px}
+.side-nav{display:flex;flex-direction:column;gap:1px;padding:0 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;text-decoration:none;color:var(--forest);transition:background .15s;font-family:var(--fp);font-size:.86rem;font-weight:500}
+.nav-item .num{font-family:var(--fb);color:var(--sage);font-weight:700;font-size:.78rem;min-width:30px}
+.nav-item .t{flex:1;color:var(--forest)}
+.nav-item:hover{background:var(--sage-m)}
+.nav-item.active{background:var(--white);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 12px 40px -12px rgba(20,49,9,0.18),0 2px 8px rgba(20,49,9,0.06);border:1px solid var(--sage-l)}
+.nav-item.active .t{color:var(--forest);font-weight:700}
+.nav-item.locked{color:#a3a89a;cursor:not-allowed}
+.nav-item.locked:hover{background:transparent}
+.nav-item.locked .num,.nav-item.locked .t{color:#a3a89a}
+.bread{display:flex;flex-direction:column;gap:0;flex:0 0 auto;min-width:0}
+.bread-trail{font-family:var(--fp);color:var(--slate);font-size:.78rem}
+.bread-now{font-family:var(--fp);font-weight:700;color:var(--forest);font-size:1rem;line-height:1.1}
+.search{flex:1;max-width:520px;min-width:120px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.62);border:1px solid var(--sage-l);border-radius:99px;padding:8px 16px;color:var(--slate);backdrop-filter:blur(14px)}
+.search input{border:0;background:transparent;outline:none;flex:1;font-family:var(--fp);font-size:.9rem;color:var(--forest);min-width:0}
+.search svg{flex-shrink:0;color:var(--slate)}
+.top-actions{display:flex;align-items:center;gap:8px}
+.btn-icon{width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--sage-l);color:var(--slate);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;font-size:1rem;padding:0}
+.btn-icon:hover{background:var(--sage-m);color:var(--forest)}
+.pg-head{margin-top:0}
+@media(max-width:980px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;grid-template-areas:"side" "top" "main"}
+  .side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--sage-l);max-height:none}
+  .top{padding:10px 18px;flex-wrap:wrap}
+  .main{padding:16px 18px 48px}
+  .search{order:3;flex-basis:100%;max-width:none}
+  .cmp{grid-template-columns:1fr}
+  .topics-list{grid-template-columns:1fr}
+  .term-grid{grid-template-columns:1fr}
+  .term-sym{text-align:left}
+  .quad{grid-template-columns:1fr}
+  .quad .qh{justify-content:flex-start}
+}
+[data-theme="dark"]{
+  --white:#14170F; --sage-l:#2B3320; --sage:#A9B07A; --sage-m:#1E2416;
+  --slate:#AEB5C8; --forest:#E8EBDA; --bg:#0E1108;
+  --arith:#8fb4dd; --geo:#dda28f;
+}
+[data-theme="dark"] body{color:var(--forest)}
+[data-theme="dark"] .lws-backdrop{
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(43,51,32,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(30,36,22,.55) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(43,51,32,.7) 0%,transparent 55%),
+             var(--bg)
+}
+[data-theme="dark"] .side,[data-theme="dark"] .top{background:rgba(20,23,15,0.7);border-color:#2B3320}
+[data-theme="dark"] .ws-switch-btn,[data-theme="dark"] .search,[data-theme="dark"] .btn-icon{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .lbl,[data-theme="dark"] .ws-switch-btn .ico{color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .ico{background:#2A3421}
+[data-theme="dark"] .nav-item,[data-theme="dark"] .nav-item .t{color:var(--forest)}
+[data-theme="dark"] .nav-item:hover{background:#2A3421}
+[data-theme="dark"] .nav-item.active{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .btn-icon:hover{background:#2A3421;color:var(--forest)}
+[data-theme="dark"] .search input{color:var(--forest)}
+[data-theme="dark"] .search input::placeholder{color:#7e8775}
+[data-theme="dark"] .pg-head{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .pg-head h1,[data-theme="dark"] .pg-head .sub,[data-theme="dark"] .pg-head .topic-badge{color:var(--forest)}
+[data-theme="dark"] .pg-head .topic-badge{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .card{background:#14170F;border-color:#2B3320;color:var(--forest)}
+[data-theme="dark"] .card-title,[data-theme="dark"] .sub-title,[data-theme="dark"] .body-text,[data-theme="dark"] .term-def,[data-theme="dark"] .term-sym{color:var(--forest)}
+[data-theme="dark"] .card-title .num{background:#2A3421;color:var(--sage)}
+[data-theme="dark"] .highlight-box{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .interactive-area{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .ia-label{color:var(--forest)}
+[data-theme="dark"] .practice-box{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .practice-box .q,[data-theme="dark"] .practice-box .a{color:var(--forest)}
+[data-theme="dark"] .practice-box .a{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .show-ans-btn{background:#1E2416;color:var(--sage);border-color:#3A4A2E}
+[data-theme="dark"] .worked-example{background:#1A1F11;border-left-color:var(--sage);color:var(--forest)}
+[data-theme="dark"] .site-btn.secondary{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .topics-list .row.current{background:#2A3421}
+[data-theme="dark"] .pick-btn{background:#14170F;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .pick-btn:hover{background:#2A3421}
+[data-theme="dark"] .stage{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .readout{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .seq-table,[data-theme="dark"] .map-table{background:#14170F}
+[data-theme="dark"] .seq-table th,[data-theme="dark"] .map-table th{background:#1E2416}
+[data-theme="dark"] .seq-table th,[data-theme="dark"] .seq-table td,[data-theme="dark"] .map-table th,[data-theme="dark"] .map-table td{border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .cmp-col,[data-theme="dark"] .quad .qcell{background:#14170F}
+[data-theme="dark"] .ctrl input[type=number]{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .val-chip{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .note-flag{background:#241a17;color:var(--forest)}
+[data-theme="dark"] .fwd{background:#161d24;color:var(--forest)}
+[data-theme="dark"] .fwd a{color:var(--forest)}
+[data-theme="dark"] .fb.ok{background:#1d2a15;color:#cfe4bd}
+[data-theme="dark"] .fb.no{background:#2c1a16;color:#e8c3b9}
+[data-theme="dark"] .katex{color:var(--forest)}
+</style>
+</head>
+<body data-theme="light">
+<div class="lws-backdrop"></div>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark">L</div>
+    <div class="brand-name">learningwithsruthi <small>nc math 1 notes</small></div>
+  </div>
+  <div class="ws-switch">
+    <div class="ws-switch-btn">
+      <div class="ico">2</div>
+      <div class="meta">
+        <div class="lbl">Linear &amp; Exponential</div>
+        <div class="sub">Unit 2 of 8 &middot; NC Math 1</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-section-label">Start here</div>
+  <div class="side-nav">
+    <a class="nav-item" href="unit-0-eighth-grade-recap.html"><span class="num">0.</span><span class="t">8th Grade Recap</span></a>
+  </div>
+  <div class="side-section-label">Units</div>
+  <div class="side-nav">
+    <a class="nav-item" href="unit-1-sequences.html"><span class="num">1.</span><span class="t">Sequences</span></a>
+    <a class="nav-item active" href="unit-2-linear-exponential.html"><span class="num">2.</span><span class="t">Linear &amp; Exponential Functions</span></a>
+    <a class="nav-item locked"><span class="num">3.</span><span class="t">Features of Functions</span></a>
+    <a class="nav-item locked"><span class="num">4.</span><span class="t">Equations &amp; Inequalities</span></a>
+    <a class="nav-item locked"><span class="num">5.</span><span class="t">Systems of Equations</span></a>
+    <a class="nav-item locked"><span class="num">6.</span><span class="t">Quadratic Functions</span></a>
+    <a class="nav-item locked"><span class="num">7.</span><span class="t">Structures of Expressions</span></a>
+    <a class="nav-item locked"><span class="num">8.</span><span class="t">Modeling Data</span></a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">NC Math 1 &middot; Unit 2 of 8</span>
+    <span class="bread-now">Linear &amp; Exponential Functions</span>
+  </div>
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input placeholder="Search topics, lessons, questions...">
+  </div>
+  <div class="top-actions">
+    <button class="btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleLwsTheme()">&#9790;</button>
+  </div>
+</header>
+
+<main class="main">
+
+<div class="pg-head">
+  <div class="topic-badge">Linear &amp; Exponential &middot; NC Math 1, Unit 2</div>
+  <h1>Linear &amp; Exponential Functions</h1>
+  <p class="sub">The unit where the sequences you just built turn out to have been functions all along.</p>
+</div>
+
+<!-- ======== MAP ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">Map</span>What this unit covers</h2>
+  <p class="body-text">Unit 1 restricted you to whole-number positions. Unit 2 lifts that restriction and asks what happens in between &mdash; which turns out to be the difference between a <em>sequence</em> and a <em>function</em>.</p>
+  <div class="topics-list">
+    <div class="row current"><span class="rn">L1</span><span>Piggies and Pools &mdash; four kinds of growth</span></div>
+    <div class="row current"><span class="rn">L2</span><span>Discrete or continuous?</span></div>
+    <div class="row current"><span class="rn">L3</span><span>Identifying the type from any representation</span></div>
+    <div class="row current"><span class="rn">L4</span><span>Twin Powers &mdash; exponents and key features</span></div>
+    <div class="row"><span class="rn">L5+</span><span>Comparing growth rates, modelling, and features</span></div>
+  </div>
+  <div class="highlight-box" style="margin-top:16px">
+    <p class="body-text" style="margin:0"><strong>The sentence that holds this unit together:</strong> arithmetic sequences belong to the linear family of functions, and geometric sequences belong to the exponential family. Everything else in Unit 2 is working out what that means.</p>
+  </div>
+</div>
+
+<!-- ======== THE TIE-BACK ======== -->
+<div class="card" id="sec-tieback">
+  <h2 class="card-title"><span class="num">Key</span>The tie-back: your sequences were functions</h2>
+  <p class="body-text">In Unit 1 you wrote $a_n = a_1 + d(n-1)$ and $a_n = a_1 \cdot r^{\,n-1}$ and only ever asked for positions 1, 2, 3, and so on. That restriction was the <em>only</em> thing separating those objects from the two function families this unit is named after.</p>
+
+  <p class="body-text">Press the button below and watch it happen: the dots stay exactly where they were, and a curve appears through them.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Fill in the gaps between the terms</div>
+    <div class="pick-row">
+      <button class="pick-btn active" data-tb="arithmetic">Arithmetic &rarr; linear</button>
+      <button class="pick-btn" data-tb="geometric">Geometric &rarr; exponential</button>
+    </div>
+    <div class="stage"><svg id="tbSvg" viewBox="0 0 640 320" role="img" aria-label="A sequence becoming a continuous function"></svg></div>
+    <div class="btn-row">
+      <button class="site-btn" id="tbFill">Fill in the gaps</button>
+      <button class="site-btn secondary" id="tbReset">Back to the sequence</button>
+    </div>
+    <div class="readout" id="tbOut"></div>
+  </div>
+
+  <h3 class="sub-title">Side by side</h3>
+  <table class="map-table">
+    <tr><th></th><th>Arithmetic sequence</th><th>Linear function</th></tr>
+    <tr><td class="code">Rule</td><td>$a_n = a_1 + d(n-1)$</td><td>$f(x) = mx + b$</td></tr>
+    <tr><td class="code">Step</td><td>add $d$ per position</td><td>add $m$ per unit of $x$</td></tr>
+    <tr><td class="code">Inputs</td><td>$n = 1, 2, 3, \ldots$</td><td>every real number</td></tr>
+    <tr><td class="code">Graph</td><td>separate dots</td><td>an unbroken line</td></tr>
+  </table>
+  <table class="map-table">
+    <tr><th></th><th>Geometric sequence</th><th>Exponential function</th></tr>
+    <tr><td class="code">Rule</td><td>$a_n = a_1 \cdot r^{\,n-1}$</td><td>$f(x) = a \cdot b^{\,x}$</td></tr>
+    <tr><td class="code">Step</td><td>multiply by $r$ per position</td><td>multiply by $b$ per unit of $x$</td></tr>
+    <tr><td class="code">Inputs</td><td>$n = 1, 2, 3, \ldots$</td><td>every real number</td></tr>
+    <tr><td class="code">Graph</td><td>separate dots</td><td>an unbroken curve</td></tr>
+  </table>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Concretely:</span> the sequence 3, 7, 11, 15, &hellip; from Unit 1.</div>
+    <div class="step"><span class="step-label">As a sequence:</span> $a_n = 3 + 4(n-1) = 4n - 1$, and $a_{2.5}$ is a meaningless question.</div>
+    <div class="step"><span class="step-label">As a linear function:</span> $f(x) = 4x - 1$, and $f(2.5) = 9$ is a perfectly good answer.</div>
+    <div class="step"><span class="step-label">Same rule, wider door.</span> The sequence is the function sampled at whole numbers; the function is the sequence with the gaps filled in.</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">Where the $n-1$ went</span>
+    Sequences start counting at position 1, so the formula steps back once to reach the intercept. Functions start at $x = 0$, where the intercept simply <em>is</em> the starting value. That is the whole reason $a_n = a_1 + d(n-1)$ becomes $f(x) = mx + b$ with no $-1$ in sight. Same line, different starting post.
+  </div>
+</div>
+
+<!-- ======== L3: EQUAL DIFFERENCES / EQUAL FACTORS ======== -->
+<div class="card" id="sec-defining">
+  <h2 class="card-title"><span class="num">L3</span>The defining characteristic of each family</h2>
+  <p class="body-text">Now that the inputs can be any number, the Unit 1 tests need restating. "Subtract neighbours" assumed the neighbours were one position apart. The grown-up version:</p>
+
+  <div class="cmp">
+    <div class="cmp-col a">
+      <h4>Linear functions</h4>
+      <p style="font-size:1rem"><strong>Grow by equal differences over equal intervals.</strong></p>
+      <p>Step forward by the same amount in $x$, and $y$ always changes by the same amount.</p>
+      <p><strong>Test:</strong> subtract. The differences are constant.</p>
+      <p><strong>Family member from Unit 1:</strong> arithmetic sequences.</p>
+    </div>
+    <div class="cmp-col g">
+      <h4>Exponential functions</h4>
+      <p style="font-size:1rem"><strong>Grow by equal factors over equal intervals.</strong></p>
+      <p>Step forward by the same amount in $x$, and $y$ is always multiplied by the same amount.</p>
+      <p><strong>Test:</strong> divide. The ratios are constant.</p>
+      <p><strong>Family member from Unit 1:</strong> geometric sequences.</p>
+    </div>
+  </div>
+
+  <p class="body-text">The phrase "over equal intervals" is doing real work. It means the test still applies when the inputs step by 2, or by 0.5, or by anything else &mdash; as long as the step is consistent.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Change the input step and watch both tests stay valid</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Input step</label>
+        <select id="edStep" style="font-family:var(--fb);font-size:.9rem;padding:5px 8px;border:1.5px solid var(--sage-l);border-radius:8px;background:var(--white);color:var(--forest)">
+          <option value="1">1</option><option value="2">2</option><option value="0.5">0.5</option><option value="3">3</option>
+        </select>
+      </div>
+      <div class="pick-row" style="margin:0">
+        <button class="pick-btn active" data-ed="linear">Linear</button>
+        <button class="pick-btn" data-ed="exponential">Exponential</button>
+      </div>
+    </div>
+    <div id="edTableWrap"></div>
+    <div class="readout" id="edOut"></div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">A trap the wider inputs create</span>
+    With whole-number positions, "the ratio between neighbours" was unambiguous. With any real input it is not &mdash; a function can look like it has a constant ratio if you only sample it at convenient places. Always check that your inputs are <em>equally spaced</em> before trusting either test.
+  </div>
+</div>
+
+<!-- ======== L1: FOUR KINDS OF GROWTH ======== -->
+<div class="card" id="sec-piggies">
+  <h2 class="card-title"><span class="num">L1</span>Four situations, two questions</h2>
+  <p class="body-text">Two independent questions decide how you model a situation, and they are easy to conflate:</p>
+  <div class="term-grid">
+    <div class="term-sym">Adding or multiplying?</div><div class="term-def">a fixed amount each step means the linear family; a fixed percent or factor means the exponential family</div>
+    <div class="term-sym">Can the input be a fraction?</div><div class="term-def">if yes the model is <strong>continuous</strong>; if it only makes sense at whole steps it is <strong>discrete</strong></div>
+  </div>
+  <p class="body-text">Those two questions are independent, which gives four combinations. All four are real.</p>
+
+  <div class="quad">
+    <div class="qh"></div><div class="qh">Discrete</div><div class="qh">Continuous</div>
+    <div class="qh">Linear<br>family</div>
+    <div class="qcell lin"><span class="qt">Pennies in a piggy bank</span>Start with 5 pennies, add 3 each day after school.<br><span class="qs">$p(n) = 5 + 3n$ &mdash; only whole days happen</span></div>
+    <div class="qcell lin"><span class="qt">Filling a pool</span>Timer starts at 5 gallons, hose adds 2 gallons a minute.<br><span class="qs">$g(t) = 5 + 2t$ &mdash; water flows at every instant</span></div>
+    <div class="qh">Exponential<br>family</div>
+    <div class="qcell exp"><span class="qt">Interest paid monthly</span>\$50 in an account earning 3% at the <em>end</em> of each month.<br><span class="qs">$A(m) = 50(1.03)^m$ &mdash; nothing happens mid-month</span></div>
+    <div class="qcell exp"><span class="qt">Draining a pool</span>1500 gallons, losing 3% of what is left every minute.<br><span class="qs">$g(t) = 1500(0.97)^t$ &mdash; draining never pauses</span></div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Pick a situation and see how it is modelled</div>
+    <div class="pick-row">
+      <button class="pick-btn active" data-sit="0">Piggy bank</button>
+      <button class="pick-btn" data-sit="1">Filling pool</button>
+      <button class="pick-btn" data-sit="2">Bank interest</button>
+      <button class="pick-btn" data-sit="3">Draining pool</button>
+    </div>
+    <div class="stage"><svg id="sitSvg" viewBox="0 0 640 300" role="img" aria-label="Model of the selected situation"></svg></div>
+    <div id="sitTableWrap"></div>
+    <div class="readout" id="sitOut"></div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Compare the piggy bank and the bank account.</strong> What is the same and what is different?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1')">Show answer</button>
+    <div class="a" id="p1">
+      <strong>Same:</strong> both are discrete &mdash; the amount only changes at whole-numbered moments, so both graph as separate dots. Both start small and grow.<br>
+      <strong>Different:</strong> the piggy bank <em>adds</em> a fixed 3 pennies (arithmetic, linear family). The account <em>multiplies</em> by 1.03 (geometric, exponential family). Early on the piggy bank is well ahead; eventually the account overtakes it, because multiplying always beats adding in the long run.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Compare the two pools.</strong> Both are continuous, so what separates them?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2')">Show answer</button>
+    <div class="a" id="p2">
+      Filling adds a fixed 2 gallons every minute regardless of how much is in there, so it is linear and the graph is a straight line.<br>
+      Draining removes 3% <em>of what remains</em>, so the amount lost shrinks as the pool empties. That is exponential decay and the graph is a curve flattening out.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>When is the draining pool empty?</strong></div>
+    <button class="show-ans-btn" onclick="toggleAns('p3')">Show answer</button>
+    <div class="a" id="p3">
+      Never, according to the model. $1500(0.97)^t$ gets arbitrarily close to zero but never reaches it &mdash; taking 3% of a positive number always leaves a positive number.<br>
+      After 100 minutes about 71 gallons remain; after 200 minutes about 3.4 gallons; after 500 minutes about 0.0004 gallons.<br>
+      <em>In reality the pool does empty. This is a model breaking down at the edges, and saying so is the correct answer.</em>
+    </div>
+  </div>
+</div>
+
+<!-- ======== L2: DISCRETE VS CONTINUOUS ======== -->
+<div class="card" id="sec-discrete">
+  <h2 class="card-title"><span class="num">L2</span>Discrete or continuous, and how to decide</h2>
+  <p class="body-text">The deciding question is about the <strong>domain</strong> &mdash; the set of inputs the situation actually allows.</p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0"><strong>The test that settles it:</strong> pick a value between two of your inputs and ask whether it means anything. If there can genuinely be a moment when 32.5 books have been shipped, the model is continuous. If books arrive only in whole boxes, it is discrete.</p>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Drill &mdash; discrete or continuous?</div>
+    <div id="dcQ" style="font-family:var(--fp);font-size:1.02rem;text-align:center;padding:16px 10px;line-height:1.6"></div>
+    <div class="btn-row">
+      <button class="site-btn" data-dc="discrete">Discrete</button>
+      <button class="site-btn" data-dc="continuous">Continuous</button>
+    </div>
+    <div class="fb" id="dcFb"></div>
+    <div class="readout" id="dcScore" style="text-align:center"></div>
+    <div class="btn-row"><button class="site-btn secondary" id="dcNext">New situation</button></div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">The two questions people merge</span>
+    <strong>Discrete does not mean arithmetic, and continuous does not mean exponential.</strong> The paper-cutting pattern (1, 3, 9, 27 pieces) is geometric <em>and</em> discrete &mdash; you cannot make half a cut. A filling pool is linear <em>and</em> continuous. Decide the two questions separately, every time.
+  </div>
+
+  <p class="body-text">Answering the Learning Focus questions this lesson poses directly:</p>
+  <div class="term-grid">
+    <div class="term-sym">Are all linear functions continuous?</div><div class="term-def">No. The function $f(x) = mx + b$ is continuous, but a linear <em>model</em> of a discrete situation is not &mdash; the piggy bank uses a linear rule on a whole-number domain.</div>
+    <div class="term-sym">Are all arithmetic sequences discrete?</div><div class="term-def">Yes. A sequence's domain is positions, which are whole numbers by definition.</div>
+    <div class="term-sym">Are all geometric sequences discrete?</div><div class="term-def">Yes, for the same reason.</div>
+    <div class="term-sym">Are all exponential functions continuous?</div><div class="term-def">The function itself is, but again an exponential <em>model</em> can sit on a discrete domain, like interest paid only at month end.</div>
+  </div>
+</div>
+
+<!-- ======== GROWTH FACTORS ======== -->
+<div class="card" id="sec-growth">
+  <h2 class="card-title"><span class="num">%</span>Growth factors and percents</h2>
+  <p class="body-text">In $f(x) = a \cdot b^{\,x}$, the $a$ is the starting value and the $b$ is the <strong>growth factor</strong> &mdash; what you multiply by each step. Translating a percent into a growth factor is where most errors happen.</p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin-bottom:6px"><strong>Growth:</strong> up $p$ percent means $b = 1 + \dfrac{p}{100}$. &nbsp; Up 3% gives $b = 1.03$.</p>
+    <p class="body-text" style="margin:0"><strong>Decay:</strong> down $p$ percent means $b = 1 - \dfrac{p}{100}$. &nbsp; Down 3% gives $b = 0.97$.</p>
+  </div>
+
+  <div class="term-grid">
+    <div class="term-sym">$b &gt; 1$</div><div class="term-def">growth &mdash; the curve rises</div>
+    <div class="term-sym">$0 &lt; b &lt; 1$</div><div class="term-def">decay &mdash; the curve falls toward zero</div>
+    <div class="term-sym">$b = 1$</div><div class="term-def">no change &mdash; a flat line</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">The mistake to inoculate against</span>
+    A 3% decrease does <strong>not</strong> give $b = 0.03$. You keep 97%, so $b = 0.97$. Writing $b = 1 - 0.03$ every single time makes this automatic. Using $b = 0.03$ would mean losing 97% per step, which is a wildly different situation.
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Write the function.</strong> A town of 12,000 people grows 2.5% per year. What is the population after 10 years?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4')">Show answer</button>
+    <div class="a" id="p4">
+      $b = 1 + 0.025 = 1.025$, so $P(t) = 12000(1.025)^t$.<br>
+      $P(10) = 12000(1.025)^{10} \approx 15{,}361$ people.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Write the function.</strong> A \$28,000 car loses 15% of its value each year. What is it worth after 6 years?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5')">Show answer</button>
+    <div class="a" id="p5">
+      $b = 1 - 0.15 = 0.85$, so $V(t) = 28000(0.85)^t$.<br>
+      $V(6) = 28000(0.85)^6 \approx \$10{,}560$.
+    </div>
+  </div>
+</div>
+
+<!-- ======== L4: TWIN POWERS ======== -->
+<div class="card" id="sec-twinpowers">
+  <h2 class="card-title"><span class="num">L4</span>Negative exponents and what the graph does</h2>
+  <p class="body-text">The exponent rules from 8th grade are not just algebra housekeeping here &mdash; they explain the <em>shape</em> of an exponential graph, particularly the part to the left of the y-axis.</p>
+
+  <p class="body-text">Look at $f(x) = 2^x$ for negative inputs. The graph hugs the x-axis without ever touching it, and the exponent rules say exactly why:</p>
+
+  <div class="worked-example">
+    <div class="step">$2^{-1} = \dfrac{1}{2^1} = 0.5$</div>
+    <div class="step">$2^{-2} = \dfrac{1}{2^2} = 0.25$</div>
+    <div class="step">$2^{-5} = \dfrac{1}{32} = 0.03125$</div>
+    <div class="step">$2^{-10} = \dfrac{1}{1024} \approx 0.00098$</div>
+    <div class="step"><span class="step-label">The pattern:</span> a negative exponent gives a reciprocal, and reciprocals of huge numbers are tiny positive numbers. Tiny but never zero &mdash; which is why the curve approaches the x-axis forever and never crosses it.</div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Exponential explorer &mdash; watch the left tail</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>starting value $a$</label><input type="number" id="exA" value="1" step="1"></div>
+      <div class="ctrl"><label>growth factor $b$</label><input type="range" id="exB" min="0.2" max="3" step="0.1" value="2"><span class="val-chip" id="exBVal">2</span></div>
+    </div>
+    <div class="stage"><svg id="exSvg" viewBox="0 0 640 320" role="img" aria-label="Exponential function graph"></svg></div>
+    <div id="exTableWrap"></div>
+    <div class="readout" id="exOut"></div>
+  </div>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">That flat line the curve chases is called a <strong>horizontal asymptote</strong>. For $f(x) = a \cdot b^{\,x}$ it sits at $y = 0$. An exponential function never outputs zero, no matter how far you go.</p>
+  </div>
+
+  <p class="body-text">And $b^0 = 1$ is why every one of these curves passes through $(0, a)$ &mdash; the same fact that made $a_1 \cdot r^0 = a_1$ produce the correct first term back in Unit 1.</p>
+</div>
+
+<!-- ======== COMPARING GROWTH ======== -->
+<div class="card" id="sec-compare">
+  <h2 class="card-title"><span class="num">vs</span>Linear against exponential, in the long run</h2>
+  <p class="body-text">A question this unit returns to repeatedly: given a head start, can a linear function stay ahead of an exponential one?</p>
+  <p class="body-text">For a while, easily. Forever, never.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Give the linear function any head start you like</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Linear: start</label><input type="number" id="cpB" value="100" step="10"><label>+ per step</label><input type="number" id="cpM" value="10" step="1"></div>
+    </div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Exponential: start</label><input type="number" id="cpA" value="1" step="1"><label>&times; per step</label><input type="number" id="cpR" value="1.5" step="0.1"></div>
+      <div class="ctrl"><label>steps shown</label><input type="range" id="cpN" min="10" max="60" value="25"><span class="val-chip" id="cpNVal">25</span></div>
+    </div>
+    <div class="stage"><svg id="cpSvg" viewBox="0 0 640 300" role="img" aria-label="Linear versus exponential growth"></svg></div>
+    <div class="readout" id="cpOut"></div>
+  </div>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">Any exponential with $b &gt; 1$ eventually exceeds any linear function, whatever head start the linear one gets. The crossover can be pushed far to the right, but it always arrives.</p>
+  </div>
+</div>
+
+<!-- ======== VOCABULARY & REVIEW ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">&#10003;</span>Quick review</h2>
+  <div class="term-grid">
+    <div class="term-sym">Linear function</div><div class="term-def">$f(x) = mx + b$; grows by equal differences over equal intervals</div>
+    <div class="term-sym">Exponential function</div><div class="term-def">$f(x) = a \cdot b^{\,x}$; grows by equal factors over equal intervals</div>
+    <div class="term-sym">Discrete</div><div class="term-def">the domain only allows separated values; the graph is dots</div>
+    <div class="term-sym">Continuous</div><div class="term-def">the domain allows every value in a range; the graph is unbroken</div>
+    <div class="term-sym">Domain</div><div class="term-def">the set of inputs the function or situation actually permits</div>
+    <div class="term-sym">Growth factor</div><div class="term-def">the $b$ in $a \cdot b^{\,x}$; up $p$% gives $1 + p/100$, down $p$% gives $1 - p/100$</div>
+    <div class="term-sym">Horizontal asymptote</div><div class="term-def">the line $y = 0$ that an exponential curve approaches but never reaches</div>
+    <div class="term-sym">The tie-back</div><div class="term-def">arithmetic sequences are linear functions on a whole-number domain; geometric sequences are exponential functions on a whole-number domain</div>
+  </div>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0"><strong>If you remember one thing:</strong> ask the two questions separately. <em>Adding or multiplying?</em> picks the family. <em>Can the input be a fraction?</em> picks discrete or continuous. Merging them is the most common source of wrong models in this unit.</p>
+  </div>
+  <div class="btn-row" style="margin-top:16px">
+    <a class="site-btn secondary" href="unit-1-sequences.html" style="text-decoration:none;display:inline-block">&larr; Unit 1: Sequences</a>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+function toggleAns(id){ const a=document.getElementById(id); a.classList.toggle('show'); }
+window.toggleAns = toggleAns;
+function mathify(el){
+  if(window.renderMathInElement && el){
+    try{ renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]}); }catch(e){}
+  }
+}
+function fmt(x){
+  if(!isFinite(x)) return '?';
+  if(Number.isInteger(x)) return x.toLocaleString('en-US');
+  return (Math.round(x*1000)/1000).toString();
+}
+
+function toggleLwsTheme(){
+  const cur = document.body.dataset.theme || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.body.dataset.theme = next;
+  try{ localStorage.setItem('lws-theme', next); }catch(e){}
+  const btn = document.getElementById('themeBtn');
+  if(btn) btn.innerHTML = next === 'dark' ? '&#9728;' : '&#9790;';
+}
+window.toggleLwsTheme = toggleLwsTheme;
+try{
+  const saved = localStorage.getItem('lws-theme');
+  if(saved === 'dark'){
+    document.body.dataset.theme = 'dark';
+    const btn = document.getElementById('themeBtn');
+    if(btn) btn.innerHTML = '&#9728;';
+  }
+}catch(e){}
+
+(function setupSearch(){
+  const input = document.querySelector('.search input');
+  if(!input) return;
+  const cards = Array.from(document.querySelectorAll('.main .card'));
+  const pgHead = document.querySelector('.main .pg-head');
+  let emptyMsg = null;
+  input.addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    let shown = 0;
+    cards.forEach(card => {
+      if(!q){ card.style.display=''; shown++; return; }
+      const hit = card.textContent.toLowerCase().includes(q);
+      card.style.display = hit ? '' : 'none';
+      if(hit) shown++;
+    });
+    if(pgHead) pgHead.style.display = q ? 'none' : '';
+    if(q && shown === 0){
+      if(!emptyMsg){
+        emptyMsg = document.createElement('div');
+        emptyMsg.className = 'card'; emptyMsg.style.textAlign='center';
+        emptyMsg.innerHTML = '<div class="body-text" style="color:var(--slate)">No sections match that search.</div>';
+        document.querySelector('.main').appendChild(emptyMsg);
+      }
+      emptyMsg.style.display='';
+    } else if(emptyMsg){ emptyMsg.style.display='none'; }
+  });
+  input.addEventListener('keydown', e => {
+    if(e.key === 'Escape'){ input.value=''; input.dispatchEvent(new Event('input')); }
+  });
+})();
+
+/* ============================================================ */
+/* ====== W1: the tie-back, sequence morphing into function === */
+/* ============================================================ */
+(function tieback(){
+  const svg = document.getElementById('tbSvg'), out = document.getElementById('tbOut');
+  if(!svg) return;
+  let kind = 'arithmetic', filled = false;
+
+  const A1 = 3, D = 4, R = 1.6;
+
+  document.querySelectorAll('button[data-tb]').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('button[data-tb]').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      kind = b.dataset.tb; filled = false; draw();
+    });
+  });
+  document.getElementById('tbFill').addEventListener('click', () => { filled = true; draw(); });
+  document.getElementById('tbReset').addEventListener('click', () => { filled = false; draw(); });
+
+  function val(x){ return kind === 'arithmetic' ? A1 + D*(x-1) : A1 * Math.pow(R, x-1); }
+
+  function draw(){
+    const N = 6;
+    const L=60, Rt=600, T=26, B=248;
+    const xMin=0, xMax=N+0.6;
+    let hi = 0;
+    for(let n=1;n<=N;n++) hi = Math.max(hi, val(n));
+    hi *= 1.12;
+    const sx = x => L + ((x-xMin)/(xMax-xMin))*(Rt-L);
+    const sy = y => B - (y/hi)*(B-T);
+
+    let s='';
+    s += '<line x1="'+L+'" y1="'+B+'" x2="'+Rt+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="2"/>';
+    s += '<line x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="2"/>';
+
+    const col = kind === 'arithmetic' ? 'var(--arith)' : 'var(--geo)';
+
+    if(filled){
+      let path='';
+      for(let i=0;i<=160;i++){
+        const x = xMin + (i/160)*(xMax-xMin);
+        const v = val(x);
+        if(v < 0 || v > hi) continue;
+        path += (path===''?'M':'L') + sx(x) + ' ' + sy(v) + ' ';
+      }
+      s += '<path d="'+path+'" fill="none" stroke="'+col+'" stroke-width="2.5"/>';
+      // a between-the-dots sample to make the point
+      const xs = 2.5, vs = val(xs);
+      if(vs <= hi){
+        s += '<line x1="'+sx(xs)+'" y1="'+B+'" x2="'+sx(xs)+'" y2="'+sy(vs)+'" stroke="var(--forest)" stroke-width="1.5" stroke-dasharray="4 3"/>';
+        s += '<circle cx="'+sx(xs)+'" cy="'+sy(vs)+'" r="6" fill="var(--forest)"/>';
+        s += '<text x="'+(sx(xs)+13)+'" y="'+(sy(vs)-17)+'" font-family="Bitter,serif" font-size="12.5" font-weight="700" fill="var(--forest)">x = 2.5 now works</text>';
+      }
+    }
+
+    for(let n=1;n<=N;n++){
+      s += '<circle cx="'+sx(n)+'" cy="'+sy(val(n))+'" r="6.5" fill="'+col+'" stroke="var(--white)" stroke-width="1.5"/>';
+      s += '<text x="'+sx(n)+'" y="'+(B+19)+'" text-anchor="middle" font-family="Bitter,serif" font-size="12" fill="var(--slate)">'+n+'</text>';
+    }
+    s += '<text x="'+((L+Rt)/2)+'" y="290" text-anchor="middle" font-family="Dosis,sans-serif" font-size="13.5" fill="var(--slate)">'
+       + (filled ? 'the dots never moved &mdash; the curve was always there, you just could not ask for the points between'
+                 : 'only whole-number positions exist')+'</text>';
+    svg.innerHTML = s;
+
+    if(kind === 'arithmetic'){
+      const b = A1 - D;
+      out.innerHTML = filled
+        ? '<strong>Now a linear function:</strong> $f(x) = ' + D + 'x ' + (b>=0?'+ '+b:'- '+Math.abs(b)) + '$, defined for every real $x$.<br>'
+          + 'The six original terms are still there, sitting on the line. What changed is that $f(2.5) = ' + fmt(val(2.5)) + '$ is now a legitimate question.<br>'
+          + '<strong>An arithmetic sequence is a linear function restricted to whole-number inputs.</strong>'
+        : '<strong>An arithmetic sequence:</strong> $a_n = ' + A1 + ' + ' + D + '(n-1)$, with $d = ' + D + '$.<br>'
+          + 'Only positions 1, 2, 3, &hellip; exist, so the graph is six separate dots. Asking for $a_{2.5}$ is meaningless.';
+    } else {
+      out.innerHTML = filled
+        ? '<strong>Now an exponential function:</strong> $f(x) = ' + A1 + ' \\cdot ' + R + '^{\\,x-1}$, defined for every real $x$.<br>'
+          + 'Same dots, and now $f(2.5) = ' + fmt(Math.round(val(2.5)*1000)/1000) + '$ exists too.<br>'
+          + '<strong>A geometric sequence is an exponential function restricted to whole-number inputs.</strong>'
+        : '<strong>A geometric sequence:</strong> $a_n = ' + A1 + ' \\cdot ' + R + '^{\\,n-1}$, with $r = ' + R + '$.<br>'
+          + 'Only whole positions exist, so the graph is six separate dots on a curve you cannot yet draw.';
+    }
+    mathify(out);
+  }
+  draw();
+})();
+
+/* ============================================================ */
+/* ====== W2: equal differences vs equal factors ============== */
+/* ============================================================ */
+(function equalSteps(){
+  const tw = document.getElementById('edTableWrap'), out = document.getElementById('edOut');
+  const stepEl = document.getElementById('edStep');
+  if(!tw) return;
+  let kind = 'linear';
+
+  document.querySelectorAll('button[data-ed]').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('button[data-ed]').forEach(x => x.classList.remove('active'));
+      b.classList.add('active'); kind = b.dataset.ed; draw();
+    });
+  });
+  stepEl.addEventListener('change', draw);
+
+  function draw(){
+    const st = parseFloat(stepEl.value);
+    const xs = [0, st, 2*st, 3*st, 4*st];
+    const f = kind === 'linear' ? (x => 3*x + 2) : (x => 2 * Math.pow(2, x));
+    const ys = xs.map(f);
+
+    let h = '<table class="seq-table"><tr><th>$x$</th>';
+    xs.forEach(x => h += '<th>'+fmt(x)+'</th>');
+    h += '</tr><tr><th>$y$</th>';
+    ys.forEach(y => h += '<td>'+fmt(Math.round(y*1000)/1000)+'</td>');
+    h += '</tr>';
+    h += '<tr><th>Difference</th><td style="background:var(--sage-m)">&mdash;</td>';
+    for(let i=1;i<ys.length;i++) h += '<td class="diff">'+fmt(Math.round((ys[i]-ys[i-1])*1000)/1000)+'</td>';
+    h += '</tr><tr><th>Ratio</th><td style="background:var(--sage-m)">&mdash;</td>';
+    for(let i=1;i<ys.length;i++) h += '<td class="ratio">'+fmt(Math.round((ys[i]/ys[i-1])*1000)/1000)+'</td>';
+    h += '</tr></table>';
+    tw.innerHTML = h; mathify(tw);
+
+    const diffs = ys.slice(1).map((y,i)=>y-ys[i]);
+    const ratios = ys.slice(1).map((y,i)=>y/ys[i]);
+    const same = a => a.every(v => Math.abs(v-a[0]) < 1e-9);
+
+    out.innerHTML = kind === 'linear'
+      ? '<strong>$f(x) = 3x + 2$ with inputs stepping by ' + fmt(st) + '.</strong><br>'
+        + 'Differences are ' + (same(diffs) ? 'all <strong>' + fmt(diffs[0]) + '</strong> &mdash; constant' : 'not constant') + '. '
+        + 'Ratios are ' + (same(ratios) ? 'constant' : '<strong>not</strong> constant') + '.<br>'
+        + 'Equal differences over equal intervals, so this is <strong>linear</strong>. '
+        + 'Note the difference is $3 \\times ' + fmt(st) + ' = ' + fmt(3*st) + '$ &mdash; it tracks the step size, but it stays the same all the way across.'
+      : '<strong>$f(x) = 2 \\cdot 2^{\\,x}$ with inputs stepping by ' + fmt(st) + '.</strong><br>'
+        + 'Differences are ' + (same(diffs) ? 'constant' : '<strong>not</strong> constant') + '. '
+        + 'Ratios are ' + (same(ratios) ? 'all <strong>' + fmt(Math.round(ratios[0]*1000)/1000) + '</strong> &mdash; constant' : 'not constant') + '.<br>'
+        + 'Equal factors over equal intervals, so this is <strong>exponential</strong>. '
+        + 'The ratio is $2^{' + fmt(st) + '} = ' + fmt(Math.round(Math.pow(2,st)*1000)/1000) + '$ &mdash; change the step and the ratio changes, but it is still the same at every point in the row.';
+    mathify(out);
+  }
+  draw();
+})();
+
+/* ============================================================ */
+/* ====== W3: the four situations ============================= */
+/* ============================================================ */
+(function situations(){
+  const svg=document.getElementById('sitSvg'), tw=document.getElementById('sitTableWrap'), out=document.getElementById('sitOut');
+  if(!svg) return;
+
+  const SITS = [
+    {name:'Piggy bank', unit:'day', yl:'pennies', disc:true, lin:true,
+     f:n => 5 + 3*n, n:8,
+     eq:'$p(n) = 5 + 3n$',
+     why:'<strong>Linear family, discrete.</strong> A fixed 3 pennies is added, so differences are constant. Pennies arrive once a day after school, so there is no such thing as day 2.5 &mdash; the graph is separate dots.'},
+    {name:'Filling pool', unit:'minute', yl:'gallons', disc:false, lin:true,
+     f:t => 5 + 2*t, n:8,
+     eq:'$g(t) = 5 + 2t$',
+     why:'<strong>Linear family, continuous.</strong> Still a fixed 2 gallons per minute, but water flows at every instant, so 2.5 minutes is a real moment with a real amount in the pool. The graph is an unbroken line.'},
+    {name:'Bank interest', unit:'month', yl:'dollars', disc:true, lin:false,
+     f:m => 50*Math.pow(1.03,m), n:8,
+     eq:'$A(m) = 50(1.03)^m$',
+     why:'<strong>Exponential family, discrete.</strong> Interest multiplies the balance by 1.03, but only at the end of each month &mdash; nothing happens on day 12. Discrete, and geometric rather than arithmetic.'},
+    {name:'Draining pool', unit:'minute', yl:'gallons', disc:false, lin:false,
+     f:t => 1500*Math.pow(0.97,t), n:8,
+     eq:'$g(t) = 1500(0.97)^t$',
+     why:'<strong>Exponential family, continuous.</strong> 3% of whatever remains drains away each minute, so the amount lost shrinks as the pool empties. Draining never pauses, so every fractional minute counts.'}
+  ];
+  let idx = 0;
+
+  document.querySelectorAll('button[data-sit]').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('button[data-sit]').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); idx = +b.dataset.sit; draw();
+    });
+  });
+
+  function draw(){
+    const S = SITS[idx];
+    const N = S.n;
+    const L=64, R=600, T=24, B=240;
+    const vals=[]; for(let i=0;i<=N;i++) vals.push(S.f(i));
+    const hi = Math.max.apply(null, vals)*1.1, lo = Math.min(0, Math.min.apply(null, vals));
+    const sx = x => L + (x/N)*(R-L);
+    const sy = y => B - ((y-lo)/(hi-lo))*(B-T);
+    const col = S.lin ? 'var(--arith)' : 'var(--geo)';
+
+    let s='';
+    s += '<line x1="'+L+'" y1="'+B+'" x2="'+R+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="2"/>';
+    s += '<line x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="2"/>';
+    if(!S.disc){
+      let path='';
+      for(let i=0;i<=150;i++){ const x=(i/150)*N; path += (i?'L':'M')+sx(x)+' '+sy(S.f(x))+' '; }
+      s += '<path d="'+path+'" fill="none" stroke="'+col+'" stroke-width="2.5"/>';
+    }
+    for(let i=0;i<=N;i++){
+      s += '<circle cx="'+sx(i)+'" cy="'+sy(vals[i])+'" r="'+(S.disc?6:4.5)+'" fill="'+col+'"'+(S.disc?' stroke="var(--white)" stroke-width="1.5"':'')+'/>';
+      s += '<text x="'+sx(i)+'" y="'+(B+18)+'" text-anchor="middle" font-family="Bitter,serif" font-size="11.5" fill="var(--slate)">'+i+'</text>';
+    }
+    s += '<text x="'+((L+R)/2)+'" y="278" text-anchor="middle" font-family="Dosis,sans-serif" font-size="13" fill="var(--slate)">'+S.unit+'s &mdash; '+(S.disc?'dots only, nothing in between':'unbroken, every instant counts')+'</text>';
+    svg.innerHTML = s;
+
+    let h='<table class="seq-table"><tr><th>'+S.unit+'</th>';
+    for(let i=0;i<=Math.min(N,6);i++) h+='<th>'+i+'</th>';
+    h+='</tr><tr><th>'+S.yl+'</th>';
+    for(let i=0;i<=Math.min(N,6);i++) h+='<td>'+fmt(Math.round(vals[i]*100)/100)+'</td>';
+    h+='</tr></table>';
+    tw.innerHTML=h;
+
+    out.innerHTML = '<strong>Model:</strong> ' + S.eq + '<br>' + S.why;
+    mathify(out);
+  }
+  draw();
+})();
+
+/* ============================================================ */
+/* ====== W4: discrete/continuous drill ======================= */
+/* ============================================================ */
+(function dcDrill(){
+  const qEl=document.getElementById('dcQ'), fb=document.getElementById('dcFb'), scoreEl=document.getElementById('dcScore');
+  if(!qEl) return;
+  const ITEMS = [
+    {t:'A library receives boxes of books. Each box holds 8 books. You model the total books against the number of boxes.', a:'discrete',
+     w:'Boxes arrive whole. There is no moment when 3.5 boxes have been received, so the domain is whole numbers.'},
+    {t:'A hose fills a pool at 2 gallons per minute. You model gallons against time.', a:'continuous',
+     w:'Water flows continuously, so 2.5 minutes is a real moment with a real amount in the pool.'},
+    {t:'A giant sheet of paper is cut into 3 pieces, then each piece into 3, and so on. You model pieces against rounds of cutting.', a:'discrete',
+     w:'You cannot perform half a round of cutting. Note this is geometric AND discrete &mdash; the two questions are separate.'},
+    {t:'A savings account pays 3% interest at the end of each month. You model the balance against months.', a:'discrete',
+     w:'The balance only changes at month end, so nothing happens at month 2.5. Exponential and discrete.'},
+    {t:'A car depreciates continuously, losing value every moment it exists. You model value against time.', a:'continuous',
+     w:'Value drifts down at every instant, so any fractional time has a meaningful value.'},
+    {t:'A student earns \\$15 for each lawn mowed. You model earnings against lawns mowed.', a:'discrete',
+     w:'Lawns are counted whole. Earnings jump by 15 at each whole lawn rather than drifting up continuously.'},
+    {t:'A candle burns down 2 cm every hour. You model height against time.', a:'continuous',
+     w:'The candle shortens steadily, so at 1.5 hours it has a definite height. Linear and continuous.'},
+    {t:'A bacterial culture doubles every 20 minutes, measured as a population that changes smoothly over time.', a:'continuous',
+     w:'Modelled as a smooth population over time, any fractional time has a value. The same situation counted as "doublings" would be discrete instead.'}
+  ];
+  let i=0, right=0, asked=0, answered=false, order=[];
+
+  function reshuffle(){
+    order = ITEMS.map((_,k)=>k);
+    for(let k=order.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); const t=order[k]; order[k]=order[j]; order[j]=t; }
+    i=0;
+  }
+  function show(){
+    if(i>=order.length) reshuffle();
+    qEl.innerHTML = ITEMS[order[i]].t;
+    fb.className='fb'; fb.innerHTML=''; answered=false;
+    mathify(qEl);
+  }
+  document.querySelectorAll('button[data-dc]').forEach(b=>{
+    b.addEventListener('click',()=>{
+      if(answered) return; answered=true; asked++;
+      const item = ITEMS[order[i]];
+      const ok = b.dataset.dc === item.a;
+      if(ok) right++;
+      fb.className='fb show '+(ok?'ok':'no');
+      fb.innerHTML = (ok?'<strong>Correct.</strong> ':'<strong>Not quite &mdash; it is '+item.a+'.</strong> ') + item.w;
+      scoreEl.textContent = 'Score: '+right+' of '+asked;
+      mathify(fb);
+    });
+  });
+  document.getElementById('dcNext').addEventListener('click',()=>{ i++; show(); });
+  reshuffle(); scoreEl.textContent='Score: 0 of 0'; show();
+})();
+
+/* ============================================================ */
+/* ====== W5: exponential explorer ============================ */
+/* ============================================================ */
+(function expExplorer(){
+  const svg=document.getElementById('exSvg'), tw=document.getElementById('exTableWrap'), out=document.getElementById('exOut');
+  const aEl=document.getElementById('exA'), bEl=document.getElementById('exB'), bVal=document.getElementById('exBVal');
+  if(!svg) return;
+
+  function draw(){
+    const a=+aEl.value||1, b=+bEl.value;
+    bVal.textContent=b;
+    const L=60, R=600, T=24, B=250;
+    const xMin=-5, xMax=5;
+    let hi=0; for(let x=xMin;x<=xMax;x+=0.5) hi=Math.max(hi, Math.abs(a*Math.pow(b,x)));
+    hi=Math.min(hi, Math.abs(a)*16)*1.1 || 1;
+    const sx=x=>L+((x-xMin)/(xMax-xMin))*(R-L);
+    const sy=y=>B-(y/hi)*(B-T);
+
+    let s='';
+    for(let g=xMin;g<=xMax;g++) s+='<line x1="'+sx(g)+'" y1="'+T+'" x2="'+sx(g)+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="'+(g===0?2:0.6)+'" opacity="0.6"/>';
+    // asymptote
+    s+='<line x1="'+L+'" y1="'+sy(0)+'" x2="'+R+'" y2="'+sy(0)+'" stroke="var(--bad)" stroke-width="2" stroke-dasharray="6 4"/>';
+    s+='<text x="'+(R-8)+'" y="'+(sy(0)-8)+'" text-anchor="end" font-family="Bitter,serif" font-size="12" fill="var(--bad)">y = 0, the asymptote &mdash; never touched</text>';
+
+    let path='';
+    for(let i=0;i<=240;i++){
+      const x=xMin+(i/240)*(xMax-xMin);
+      const y=a*Math.pow(b,x);
+      if(y>hi||y< -hi) { path=''; continue; }
+      path += (path===''?'M':'L')+sx(x)+' '+sy(y)+' ';
+    }
+    s+='<path d="'+path+'" fill="none" stroke="var(--geo)" stroke-width="2.6"/>';
+    if(a<=hi && a>=0) s+='<circle cx="'+sx(0)+'" cy="'+sy(a)+'" r="6" fill="var(--forest)"/><text x="'+(sx(0)+10)+'" y="'+(sy(a)-10)+'" font-family="Bitter,serif" font-size="12" fill="var(--forest)">(0, '+fmt(a)+')</text>';
+    svg.innerHTML=s;
+
+    let h='<table class="seq-table"><tr><th>$x$</th>';
+    [-3,-2,-1,0,1,2,3].forEach(x=>h+='<th>'+x+'</th>');
+    h+='</tr><tr><th>$f(x)$</th>';
+    [-3,-2,-1,0,1,2,3].forEach(x=>{const v=a*Math.pow(b,x); h+='<td>'+fmt(Math.round(v*10000)/10000)+'</td>';});
+    h+='</tr></table>';
+    tw.innerHTML=h; mathify(tw);
+
+    const kindTxt = b>1 ? 'growth &mdash; the curve rises to the right' : (b<1 ? 'decay &mdash; the curve falls to the right' : 'no change &mdash; a flat line at y = '+fmt(a));
+    out.innerHTML='<strong>$f(x) = ' + fmt(a) + ' \\cdot ' + fmt(b) + '^{\\,x}$</strong><br>'
+      + 'Growth factor $b = ' + fmt(b) + '$, so this is ' + kindTxt + '.<br>'
+      + 'At $x = 0$: $' + fmt(a) + ' \\cdot ' + fmt(b) + '^{0} = ' + fmt(a) + '$, because any nonzero base to the zero power is 1.<br>'
+      + 'For negative $x$ the outputs are reciprocals: $' + fmt(b) + '^{-3} = ' + fmt(Math.round(Math.pow(b,-3)*10000)/10000) + '$. Small, but never zero &mdash; which is why the curve approaches the dashed line without ever reaching it.';
+    mathify(out);
+  }
+  [aEl,bEl].forEach(el=>el.addEventListener('input',draw));
+  draw();
+})();
+
+/* ============================================================ */
+/* ====== W6: linear vs exponential race ====================== */
+/* ============================================================ */
+(function race(){
+  const svg=document.getElementById('cpSvg'), out=document.getElementById('cpOut');
+  const bEl=document.getElementById('cpB'), mEl=document.getElementById('cpM');
+  const aEl=document.getElementById('cpA'), rEl=document.getElementById('cpR');
+  const nEl=document.getElementById('cpN'), nVal=document.getElementById('cpNVal');
+  if(!svg) return;
+
+  function draw(){
+    const b=+bEl.value, m=+mEl.value, a=+aEl.value, r=+rEl.value, N=+nEl.value;
+    nVal.textContent=N;
+    const lin=x=>b+m*x, exp=x=>a*Math.pow(r,x);
+
+    const L=60, R=600, T=24, B=240;
+    let hi=0;
+    for(let x=0;x<=N;x++) hi=Math.max(hi, lin(x), exp(x));
+    hi*=1.08; if(!isFinite(hi)||hi<=0) hi=1;
+    const sx=x=>L+(x/N)*(R-L), sy=y=>B-(y/hi)*(B-T);
+
+    let s='';
+    s+='<line x1="'+L+'" y1="'+B+'" x2="'+R+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="2"/>';
+    s+='<line x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="2"/>';
+    let p1='',p2='';
+    for(let i=0;i<=200;i++){
+      const x=(i/200)*N;
+      p1+=(i?'L':'M')+sx(x)+' '+sy(Math.min(lin(x),hi))+' ';
+      const e=exp(x); if(e<=hi) p2+=(p2===''?'M':'L')+sx(x)+' '+sy(e)+' ';
+    }
+    s+='<path d="'+p1+'" fill="none" stroke="var(--arith)" stroke-width="2.5"/>';
+    s+='<path d="'+p2+'" fill="none" stroke="var(--geo)" stroke-width="2.5"/>';
+
+    // crossover
+    let cross=null;
+    for(let x=0;x<=N;x+=0.05){ if(exp(x)>lin(x)){ cross=x; break; } }
+    if(cross!==null && cross>0){
+      s+='<line x1="'+sx(cross)+'" y1="'+T+'" x2="'+sx(cross)+'" y2="'+B+'" stroke="var(--forest)" stroke-width="1.5" stroke-dasharray="5 4"/>';
+      s+='<text x="'+(sx(cross)+7)+'" y="'+(T+14)+'" font-family="Bitter,serif" font-size="12" font-weight="700" fill="var(--forest)">overtakes at x &asymp; '+fmt(Math.round(cross*10)/10)+'</text>';
+    }
+    s+='<circle cx="'+(L+12)+'" cy="'+(T+4)+'" r="5" fill="var(--arith)"/><text x="'+(L+24)+'" y="'+(T+9)+'" font-family="Dosis,sans-serif" font-size="12.5" fill="var(--forest)">linear</text>';
+    s+='<circle cx="'+(L+84)+'" cy="'+(T+4)+'" r="5" fill="var(--geo)"/><text x="'+(L+96)+'" y="'+(T+9)+'" font-family="Dosis,sans-serif" font-size="12.5" fill="var(--forest)">exponential</text>';
+    s+='<text x="'+((L+R)/2)+'" y="278" text-anchor="middle" font-family="Dosis,sans-serif" font-size="13" fill="var(--slate)">steps</text>';
+    svg.innerHTML=s;
+
+    let msg = '<strong>Linear:</strong> $f(x) = ' + fmt(b) + ' + ' + fmt(m) + 'x$ &nbsp;&middot;&nbsp; <strong>Exponential:</strong> $g(x) = ' + fmt(a) + ' \\cdot ' + fmt(r) + '^{\\,x}$<br>';
+    if(r<=1){
+      msg += 'With a growth factor of ' + fmt(r) + ' the exponential is not growing, so it never overtakes. Set the factor above 1 to see the race.';
+    } else if(cross!==null && cross>0){
+      msg += 'The exponential overtakes at about step <strong>' + fmt(Math.round(cross*10)/10) + '</strong>, despite starting at ' + fmt(a) + ' against a head start of ' + fmt(b) + '.<br>'
+           + 'At step ' + N + ': linear is ' + fmt(Math.round(lin(N))) + ', exponential is ' + fmt(Math.round(exp(N))) + '.';
+    } else {
+      msg += 'The exponential has not overtaken within ' + N + ' steps &mdash; but it will. Push the step slider higher and watch it happen.<br>'
+           + 'At step ' + N + ': linear is ' + fmt(Math.round(lin(N))) + ', exponential is ' + fmt(Math.round(exp(N))) + '.';
+    }
+    out.innerHTML = msg;
+    mathify(out);
+  }
+  [bEl,mEl,aEl,rEl,nEl].forEach(el=>el.addEventListener('input',draw));
+  draw();
+})();
+</script>
+</body>
+</html>
