@@ -288,7 +288,11 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
     <div class="row current"><span class="rn">L2</span><span>Discrete or continuous?</span></div>
     <div class="row current"><span class="rn">L3</span><span>Identifying the type from any representation</span></div>
     <div class="row current"><span class="rn">L4</span><span>Twin Powers &mdash; exponents and key features</span></div>
-    <div class="row"><span class="rn">L5+</span><span>Comparing growth rates, modelling, and features</span></div>
+    <div class="row current"><span class="rn">L5</span><span>Which model fits a situation</span></div>
+    <div class="row current"><span class="rn">L6</span><span>Average rate of change</span></div>
+    <div class="row current"><span class="rn">L7</span><span>Which grows faster in the long run</span></div>
+    <div class="row current"><span class="rn">L8</span><span>Reading parameters in context</span></div>
+    <div class="row current"><span class="rn">L9</span><span>Comparing across representations</span></div>
   </div>
   <div class="highlight-box" style="margin-top:16px">
     <p class="body-text" style="margin:0"><strong>The sentence that holds this unit together:</strong> arithmetic sequences belong to the linear family of functions, and geometric sequences belong to the exponential family. Everything else in Unit 2 is working out what that means.</p>
@@ -562,6 +566,94 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
   <p class="body-text">And $b^0 = 1$ is why every one of these curves passes through $(0, a)$ &mdash; the same fact that made $a_1 \cdot r^0 = a_1$ produce the correct first term back in Unit 1.</p>
 </div>
 
+<!-- ======== L5: WHICH MODEL FITS ======== -->
+<div class="card" id="sec-whichmodel">
+  <h2 class="card-title"><span class="num">L5</span>Which model fits this situation?</h2>
+  <p class="body-text">Given a described situation and no numbers at all, you should be able to say which family it belongs to and defend the choice. The whole argument rests on one question: <strong>is the change a fixed amount, or a fixed share of what is already there?</strong></p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin-bottom:6px"><strong>Linear</strong> if the quantity changes by the same <em>amount</em> each period. Look for words like "per", "each", "every" attached to a fixed number of things.</p>
+    <p class="body-text" style="margin:0"><strong>Exponential</strong> if it changes by the same <em>percent or fraction</em> each period. Look for percentages, "doubles", "halves", "of what remains".</p>
+  </div>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">The classic contrast:</span> two towns each have 145 residents. Town A adds 10 people a year. Town B grows 10% a year.</div>
+    <div class="step"><span class="step-label">Town A:</span> a fixed 10 people regardless of size. Linear. $A(t) = 145 + 10t$.</div>
+    <div class="step"><span class="step-label">Town B:</span> 10% <em>of the current population</em>, which is a bigger number every year. Exponential. $B(t) = 145(1.10)^t$.</div>
+    <div class="step"><span class="step-label">Year 1:</span> A has 155, B has 159.5 &mdash; B is already ahead, because 10% of 145 is more than 10.</div>
+    <div class="step"><span class="step-label">Year 20:</span> A has 345, B has about 975. The gap is not close.</div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Drill &mdash; linear or exponential?</div>
+    <div id="lmQ" style="font-family:var(--fp);font-size:1.02rem;text-align:center;padding:16px 10px;line-height:1.6"></div>
+    <div class="btn-row">
+      <button class="site-btn" data-lm="linear">Linear</button>
+      <button class="site-btn" data-lm="exponential">Exponential</button>
+    </div>
+    <div class="fb" id="lmFb"></div>
+    <div class="readout" id="lmScore" style="text-align:center"></div>
+    <div class="btn-row"><button class="site-btn secondary" id="lmNext">New situation</button></div>
+  </div>
+</div>
+
+<!-- ======== AVERAGE RATE OF CHANGE ======== -->
+<div class="card" id="sec-arc">
+  <h2 class="card-title"><span class="num">ARC</span>Average rate of change</h2>
+  <p class="body-text">Slope only makes sense for a straight line. For any function &mdash; curve included &mdash; the equivalent idea is the <strong>average rate of change</strong> over a chosen interval.</p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">Over the interval $a \le x \le b$: $$\text{average rate of change} = \frac{\Delta y}{\Delta x} = \frac{f(b) - f(a)}{b - a}$$</p>
+  </div>
+
+  <p class="body-text">It is the slope of the straight line joining the two endpoints of that interval, and it answers "on average, how fast did this change across that stretch?"</p>
+
+  <p class="body-text">The result is the sharpest test yet for telling the families apart:</p>
+  <div class="cmp">
+    <div class="cmp-col a">
+      <h4>Linear</h4>
+      <p>The average rate of change is <strong>the same over every interval</strong>, and it always equals the slope.</p>
+      <p>For $f(x) = 3x - 7$ it is 3 over $[1,5]$, over $[0,1]$, over $[10,20]$ &mdash; always 3.</p>
+    </div>
+    <div class="cmp-col g">
+      <h4>Exponential</h4>
+      <p>The average rate of change <strong>keeps growing</strong>. It depends entirely on which interval you pick.</p>
+      <p>For $h(x) = 3(2)^x$ it is 6 over $[1,2]$ but 48 over $[4,5]$.</p>
+    </div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Slide the interval and compare</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>from $a =$</label><input type="range" id="arcA" min="0" max="5" step="1" value="1"><span class="val-chip" id="arcAVal">1</span></div>
+      <div class="ctrl"><label>to $b =$</label><input type="range" id="arcB" min="1" max="6" step="1" value="5"><span class="val-chip" id="arcBVal">5</span></div>
+    </div>
+    <div class="stage"><svg id="arcSvg" viewBox="0 0 640 300" role="img" aria-label="Average rate of change over an interval"></svg></div>
+    <div class="readout" id="arcOut"></div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Reading it from a table.</strong> Temperature in Tucson, $t$ hours after midnight: at $t=0$ it is 85&deg;F, at $t=3$ it is 76&deg;F, at $t=4$ it is 70&deg;F. When is the temperature falling fastest &mdash; between midnight and 3am, or between 3am and 4am?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p6')">Show answer</button>
+    <div class="a" id="p6">
+      Midnight to 3am: $\dfrac{76 - 85}{3 - 0} = \dfrac{-9}{3} = -3$ degrees per hour.<br>
+      3am to 4am: $\dfrac{70 - 76}{4 - 3} = \dfrac{-6}{1} = -6$ degrees per hour.<br>
+      It falls twice as fast between 3 and 4am.<br>
+      <em>The total drop from midnight to 3am is larger (9 degrees vs 6), but it is spread over three hours. Rate is change divided by time, not change alone.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Find the average rate of change over $1 \le x \le 5$</strong> for $f(x) = 3x - 7$ and for $h(x) = 3(2)^x$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p7')">Show answer</button>
+    <div class="a" id="p7">
+      $f$: &nbsp;$f(1) = -4$, $f(5) = 8$, so $\dfrac{8 - (-4)}{4} = 3$. Same as its slope, as it must be.<br>
+      $h$: &nbsp;$h(1) = 6$, $h(5) = 96$, so $\dfrac{96 - 6}{4} = 22.5$.<br>
+      <em>The 22.5 describes only that stretch. Over $[5,9]$ the same function averages 360.</em>
+    </div>
+  </div>
+</div>
+
 <!-- ======== COMPARING GROWTH ======== -->
 <div class="card" id="sec-compare">
   <h2 class="card-title"><span class="num">vs</span>Linear against exponential, in the long run</h2>
@@ -584,6 +676,152 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
   <div class="highlight-box">
     <p class="body-text" style="margin:0">Any exponential with $b &gt; 1$ eventually exceeds any linear function, whatever head start the linear one gets. The crossover can be pushed far to the right, but it always arrives.</p>
   </div>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">The problem that makes the point:</span> Kevin and Joseph each invest \$100. Kevin's account earns a flat \$5 every month. Joseph's earns 3% interest every month.</div>
+    <div class="step"><span class="step-label">(a) Who has more after two years?</span> At 24 months Kevin has $100 + 5(24) = \$220$. Joseph has $100(1.03)^{24} \approx \$203.28$. <strong>Kevin is ahead</strong> &mdash; which surprises people who have been told exponentials always win.</div>
+    <div class="step"><span class="step-label">(b) When do they tie?</span> Month 32: Kevin \$260, Joseph \$257.51. Month 33: Kevin \$265, Joseph \$265.23. Joseph passes him during month 33.</div>
+    <div class="step"><span class="step-label">(c) And afterwards?</span> The gap only widens. At 5 years Kevin has \$400 and Joseph has about \$589.</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">"Eventually" is doing real work in that sentence</span>
+    Exponential growth beats linear growth <em>in the long run</em>, not immediately. For the first 32 months the flat \$5 was the better deal. Any claim about which model is bigger has to name a time frame, and questions in this unit are often built to catch the assumption that exponential wins from the start.
+  </div>
+
+  <h3 class="sub-title">End behaviour</h3>
+  <p class="body-text">The formal way to describe "in the long run" is <strong>end behaviour</strong> &mdash; what a function does as the input grows without bound. The notation is $x \to \infty$, read "as $x$ goes to infinity".</p>
+  <div class="term-grid">
+    <div class="term-sym">Linear, $m &gt; 0$</div><div class="term-def">as $x \to \infty$, $f(x) \to \infty$ &mdash; rising steadily, at a fixed rate forever</div>
+    <div class="term-sym">Exponential, $b &gt; 1$</div><div class="term-def">as $x \to \infty$, $f(x) \to \infty$ &mdash; also rising, but the rate itself keeps increasing</div>
+    <div class="term-sym">Exponential, $0 &lt; b &lt; 1$</div><div class="term-def">as $x \to \infty$, $f(x) \to 0$ &mdash; falling toward the asymptote, never reaching it</div>
+  </div>
+  <p class="body-text">Both growing families head to infinity, so "which is bigger at the end" cannot be settled by end behaviour alone. It is settled by the <em>average rate of change</em>: an exponential's keeps climbing, so it eventually overtakes any fixed rate. Unit 6 adds quadratics to this comparison, and exponentials outgrow those too.</p>
+</div>
+
+<!-- ======== PARAMETERS IN CONTEXT ======== -->
+<div class="card" id="sec-parameters">
+  <h2 class="card-title"><span class="num">a,b</span>Reading the parameters in context</h2>
+  <p class="body-text">Once a function models something real, every symbol in it means something real. Being asked "what does the 1.04 represent?" is a standard question, and the answer is never "the growth factor" on its own &mdash; it has to be said in the language of the situation.</p>
+
+  <div class="cmp">
+    <div class="cmp-col a">
+      <h4>Linear: $f(x) = ax + b$</h4>
+      <p><strong>$a$</strong> is the constant rate of change &mdash; how much the quantity moves per unit.</p>
+      <p><strong>$b$</strong> is the initial value &mdash; the amount before anything happens.</p>
+    </div>
+    <div class="cmp-col g">
+      <h4>Exponential: $g(x) = a \cdot b^{\,x}$</h4>
+      <p><strong>$a$</strong> is the initial value &mdash; the amount at $x = 0$.</p>
+      <p><strong>$b$</strong> is the growth or decay factor &mdash; what you multiply by each period.</p>
+    </div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">Factor and rate are not the same number</span>
+    A factor of 0.85 means a decay <em>rate</em> of 15%. A factor of 1.05 means a growth <em>rate</em> of 5%. If a question asks for the rate, subtract 1 from the factor and convert to a percent; do not hand back the factor.
+  </div>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">A plumber</span> charges \$50 for the house call plus \$85 an hour: $y = 85x + 50$.</div>
+    <div class="step"><span class="step-label">Raise the hourly rate to \$90:</span> $y = 90x + 50$. Only $a$ changes &mdash; the call-out fee is unaffected, so the graph keeps the same intercept and gets steeper.</div>
+    <div class="step"><span class="step-label">Raise the call-out fee instead:</span> only $b$ changes &mdash; the line shifts up without changing steepness.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> $y = 8000(1.04)^x$ models a city of 8,000 growing 4% a year. (a) What changes if the city starts at 12,000 instead? (b) What if the growth rate were 6% instead of 4% &mdash; how different is the population after 25 years?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p8')">Show answer</button>
+    <div class="a" id="p8">
+      (a) Only the initial value changes: $y = 12000(1.04)^x$. The shape of the curve is identical, just started higher.<br>
+      (b) $y = 8000(1.06)^x$. After 25 years: at 4% the city reaches about <strong>21,327</strong>; at 6% about <strong>34,335</strong>.<br>
+      <em>Two percentage points of growth rate produced roughly 13,000 extra people. Changing $b$ has a far bigger long-run effect than changing $a$, because $b$ is applied over and over.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> $f(n) = P(1 + r)^n$ models a savings account earning 8% compounded annually, $n$ years after the deposit. (a) What is $r$ and what does it mean? (b) What does $P$ mean? (c) Will $n$ or $f(n)$ ever equal 0?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p9')">Show answer</button>
+    <div class="a" id="p9">
+      (a) $r = 0.08$, the annual interest <em>rate</em>. The growth <em>factor</em> is $1 + r = 1.08$.<br>
+      (b) $P$ is the principal &mdash; the amount deposited at the start. It is the value when $n = 0$, since $(1.08)^0 = 1$.<br>
+      (c) $n = 0$ is fine: that is the moment of deposit. But $f(n)$ is never 0 &mdash; multiplying a positive principal by 1.08 repeatedly can never produce zero. That is the horizontal asymptote again.
+    </div>
+  </div>
+</div>
+
+<!-- ======== DOMAIN & RANGE IN CONTEXT ======== -->
+<div class="card" id="sec-domain">
+  <h2 class="card-title"><span class="num">D&amp;R</span>Domain and range in context</h2>
+  <p class="body-text">A function written on its own usually accepts any input. The moment it models a situation, reality starts refusing inputs, and saying which ones is part of the answer.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Take the draining pool:</span> $g(t) = 1500(0.97)^t$.</div>
+    <div class="step"><span class="step-label">Mathematically</span> $t$ can be any real number &mdash; including $t = -20$, which the algebra handles happily.</div>
+    <div class="step"><span class="step-label">In context</span> $t$ cannot be negative, because there was no draining before it started. The domain is $t \ge 0$.</div>
+    <div class="step"><span class="step-label">The range</span> in context runs from just above 0 up to 1500 gallons &mdash; it never reaches 0, and it never exceeds what the pool held.</div>
+  </div>
+
+  <p class="body-text">Three restrictions come up again and again:</p>
+  <div class="term-grid">
+    <div class="term-sym">No negative time</div><div class="term-def">most models start at $t = 0$, so the domain begins there</div>
+    <div class="term-sym">No fractional counts</div><div class="term-def">people, boxes, and cuts are whole numbers, which makes the domain discrete</div>
+    <div class="term-sym">A natural ceiling</div><div class="term-def">a pool holds 1500 gallons, a class has 30 students &mdash; the model stops applying past that</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>State a reasonable domain and range in context.</strong> A \$28,000 car loses 15% of its value each year: $V(t) = 28000(0.85)^t$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p10')">Show answer</button>
+    <div class="a" id="p10">
+      <strong>Domain:</strong> $t \ge 0$, measured in years since purchase. Negative time would describe a car that did not exist yet. You might also cap it at the car's realistic lifespan.<br>
+      <strong>Range:</strong> values from just above \$0 up to \$28,000. The model never reaches zero, though in reality the car eventually becomes worthless &mdash; another place the model breaks at the edges.<br>
+      <em>Both answers are stated in the language of the situation, not just as inequalities. That is what "in context" asks for.</em>
+    </div>
+  </div>
+</div>
+
+<!-- ======== COMPARING REPRESENTATIONS ======== -->
+<div class="card" id="sec-representations">
+  <h2 class="card-title"><span class="num">&#8644;</span>Comparing two functions given differently</h2>
+  <p class="body-text">A common exam setup: one function arrives as an equation, the other as a table, a graph, or a sentence, and you are asked which grows faster or which is bigger at some point. The trap is assuming you must convert one into the other's form.</p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">You usually do not need to. Pull the <strong>key features</strong> out of each representation &mdash; initial value, rate of change or growth factor, type &mdash; and compare those directly.</p>
+  </div>
+
+  <p class="body-text">Where each feature hides:</p>
+  <table class="map-table">
+    <tr><th>Feature</th><th>In an equation</th><th>In a table</th><th>In a graph</th></tr>
+    <tr><td class="code">Initial value</td><td>the constant, or $a$</td><td>the output when input is 0</td><td>where it crosses the y-axis</td></tr>
+    <tr><td class="code">Rate / factor</td><td>$m$, or the base $b$</td><td>differences, or ratios</td><td>steepness, or how fast it bends</td></tr>
+    <tr><td class="code">Type</td><td>is $x$ in the exponent?</td><td>constant differences or constant ratios</td><td>straight line or curve</td></tr>
+  </table>
+
+  <div class="practice-box">
+    <div class="q"><strong>Which is bigger at $x = 6$, and which grows faster?</strong><br>
+      Function P: &nbsp;$P(x) = 40x + 30$<br>
+      Function Q: given by the table &mdash; $x$: 0, 1, 2, 3 &nbsp;&rarr;&nbsp; $Q(x)$: 20, 40, 80, 160</div>
+    <button class="show-ans-btn" onclick="toggleAns('p11')">Show answer</button>
+    <div class="a" id="p11">
+      <strong>Read Q from the table:</strong> ratios are $40/20 = 2$, $80/40 = 2$, $160/80 = 2$. Exponential with $a = 20$ and $b = 2$, so $Q(x) = 20 \cdot 2^{\,x}$.<br>
+      <strong>At $x = 6$:</strong> $P(6) = 40(6) + 30 = 270$. &nbsp;$Q(6) = 20 \cdot 64 = 1280$. Q is far bigger.<br>
+      <strong>Which grows faster?</strong> Q &mdash; it doubles, while P adds a fixed 40. Note P starts ahead ($P(0) = 30$ against $Q(0) = 20$) and stays ahead briefly: at $x = 1$, P is 70 and Q is 40. Q overtakes between $x = 2$ and $x = 3$.<br>
+      <em>Notice nothing was converted. Both were read for their key features and compared.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Which has the greater initial value, and which the greater rate of change over $0 \le x \le 4$?</strong><br>
+      Function R: &nbsp;"starts at 5 and increases by 12 each step"<br>
+      Function S: &nbsp;$S(x) = 3 \cdot 2^{\,x}$</div>
+    <button class="show-ans-btn" onclick="toggleAns('p12')">Show answer</button>
+    <div class="a" id="p12">
+      <strong>Initial values:</strong> R starts at 5, S starts at $3 \cdot 2^0 = 3$. R is higher.<br>
+      <strong>Average rate of change on $[0,4]$:</strong> R goes from 5 to $5 + 48 = 53$, giving $\dfrac{53-5}{4} = 12$ &mdash; the same as its step, as expected for a linear function.<br>
+      S goes from 3 to 48, giving $\dfrac{48-3}{4} = 11.25$.<br>
+      <strong>So R wins on that interval</strong>, narrowly. Extend to $[0,6]$ and S averages $\dfrac{192-3}{6} = 31.5$ against R's 12.<br>
+      <em>Which function "changes faster" is not a property of the function alone &mdash; it depends on the interval. Always name the interval.</em>
+    </div>
+  </div>
 </div>
 
 <!-- ======== VOCABULARY & REVIEW ======== -->
@@ -598,6 +836,10 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
     <div class="term-sym">Growth factor</div><div class="term-def">the $b$ in $a \cdot b^{\,x}$; up $p$% gives $1 + p/100$, down $p$% gives $1 - p/100$</div>
     <div class="term-sym">Horizontal asymptote</div><div class="term-def">the line $y = 0$ that an exponential curve approaches but never reaches</div>
     <div class="term-sym">The tie-back</div><div class="term-def">arithmetic sequences are linear functions on a whole-number domain; geometric sequences are exponential functions on a whole-number domain</div>
+    <div class="term-sym">Average rate of change</div><div class="term-def">$\dfrac{f(b)-f(a)}{b-a}$ over $a \le x \le b$; constant for linear, always climbing for exponential growth</div>
+    <div class="term-sym">Growth rate vs factor</div><div class="term-def">a factor of 1.05 is a rate of 5%; a factor of 0.85 is a decay rate of 15%</div>
+    <div class="term-sym">End behaviour</div><div class="term-def">what happens as $x \to \infty$; exponential growth eventually exceeds any linear function</div>
+    <div class="term-sym">"Eventually"</div><div class="term-def">the crossover can be far out &mdash; a linear function with a head start can lead for a long time first</div>
   </div>
   <div class="highlight-box">
     <p class="body-text" style="margin:0"><strong>If you remember one thing:</strong> ask the two questions separately. <em>Adding or multiplying?</em> picks the family. <em>Can the input be a fraction?</em> picks discrete or continuous. Merging them is the most common source of wrong models in this unit.</p>
@@ -986,6 +1228,124 @@ try{
       + 'Growth factor $b = ' + fmt(b) + '$, so this is ' + kindTxt + '.<br>'
       + 'At $x = 0$: $' + fmt(a) + ' \\cdot ' + fmt(b) + '^{0} = ' + fmt(a) + '$, because any nonzero base to the zero power is 1.<br>'
       + 'For negative $x$ the outputs are reciprocals: $' + fmt(b) + '^{-3} = ' + fmt(Math.round(Math.pow(b,-3)*10000)/10000) + '$. Small, but never zero &mdash; which is why the curve approaches the dashed line without ever reaching it.';
+    mathify(out);
+  }
+  [aEl,bEl].forEach(el=>el.addEventListener('input',draw));
+  draw();
+})();
+
+/* ============================================================ */
+/* ====== W7: which model fits drill ========================== */
+/* ============================================================ */
+(function modelDrill(){
+  const qEl=document.getElementById('lmQ'), fb=document.getElementById('lmFb'), scoreEl=document.getElementById('lmScore');
+  if(!qEl) return;
+  const ITEMS=[
+    {t:'A savings account that earns no interest receives a deposit of \\$723 every month.', a:'linear',
+     w:'The same \\$723 is added regardless of the balance, so the change is a fixed amount. Linear.'},
+    {t:'The value of a machine depreciates by 17% per year.', a:'exponential',
+     w:'17% <em>of the current value</em>, which shrinks as the value does. A fixed percent means exponential, with a decay factor of 0.83.'},
+    {t:'Every week, 9/10 of a radioactive substance remains from the beginning of the week.', a:'exponential',
+     w:'You keep a fixed fraction of what is left, so the amount lost shrinks each week. Exponential, with a factor of 0.9.'},
+    {t:'One liter of water evaporates from a swimming pool every day.', a:'linear',
+     w:'A fixed one liter regardless of how full the pool is. Linear, with a rate of change of &minus;1 liter per day.'},
+    {t:'Every 124 minutes, half of a drug dosage remains in the body.', a:'exponential',
+     w:'Halving is multiplying by a fixed factor of 0.5. Exponential decay &mdash; this is what a half-life is.'},
+    {t:'A town of 145 people adds 10 residents per year.', a:'linear',
+     w:'A fixed 10 people no matter the town size. Linear.'},
+    {t:'A town of 145 people grows by 10% per year.', a:'exponential',
+     w:'10% of a growing population is a growing number of people. Exponential, factor 1.10.'},
+    {t:'A phone plan charges \\$30 a month plus \\$0.05 per text message.', a:'linear',
+     w:'A fixed 5 cents per text. The cost climbs at a constant rate. Linear.'},
+    {t:'A bacterial culture doubles every 20 minutes.', a:'exponential',
+     w:'Doubling is multiplying by 2 each period. Exponential.'},
+    {t:'A tree grows 2 feet taller every year.', a:'linear',
+     w:'A fixed 2 feet regardless of current height. Linear.'}
+  ];
+  let right=0, asked=0, answered=false, order=[], i=0;
+  function reshuffle(){
+    order=ITEMS.map((_,k)=>k);
+    for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));const t=order[k];order[k]=order[j];order[j]=t;}
+    i=0;
+  }
+  function show(){
+    if(i>=order.length) reshuffle();
+    qEl.innerHTML=ITEMS[order[i]].t; fb.className='fb'; fb.innerHTML=''; answered=false; mathify(qEl);
+  }
+  document.querySelectorAll('button[data-lm]').forEach(b=>{
+    b.addEventListener('click',()=>{
+      if(answered) return; answered=true; asked++;
+      const it=ITEMS[order[i]]; const ok=b.dataset.lm===it.a;
+      if(ok) right++;
+      fb.className='fb show '+(ok?'ok':'no');
+      fb.innerHTML=(ok?'<strong>Correct.</strong> ':'<strong>Not quite &mdash; it is '+it.a+'.</strong> ')+it.w;
+      scoreEl.textContent='Score: '+right+' of '+asked;
+      mathify(fb);
+    });
+  });
+  document.getElementById('lmNext').addEventListener('click',()=>{ i++; show(); });
+  reshuffle(); scoreEl.textContent='Score: 0 of 0'; show();
+})();
+
+/* ============================================================ */
+/* ====== W8: average rate of change ========================== */
+/* ============================================================ */
+(function arcWidget(){
+  const svg=document.getElementById('arcSvg'), out=document.getElementById('arcOut');
+  const aEl=document.getElementById('arcA'), bEl=document.getElementById('arcB');
+  const aVal=document.getElementById('arcAVal'), bVal=document.getElementById('arcBVal');
+  if(!svg) return;
+
+  const lin=x=>3*x-7, ex=x=>3*Math.pow(2,x);
+
+  function draw(){
+    let a=+aEl.value, b=+bEl.value;
+    if(b<=a){ b=a+1; bEl.value=b; }
+    aVal.textContent=a; bVal.textContent=b;
+
+    const L=58, R=600, T=22, B=240;
+    const xMin=0, xMax=6;
+    let hi=0; for(let x=xMin;x<=xMax;x+=0.25) hi=Math.max(hi, ex(x), lin(x));
+    const lo=Math.min(0, lin(xMin));
+    hi*=1.08;
+    const sx=x=>L+((x-xMin)/(xMax-xMin))*(R-L);
+    const sy=y=>B-((y-lo)/(hi-lo))*(B-T);
+
+    let s='';
+    for(let g=xMin;g<=xMax;g++) s+='<line x1="'+sx(g)+'" y1="'+T+'" x2="'+sx(g)+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="0.6" opacity="0.6"/>';
+    s+='<line x1="'+L+'" y1="'+sy(0)+'" x2="'+R+'" y2="'+sy(0)+'" stroke="var(--sage-l)" stroke-width="2"/>';
+
+    let p1='',p2='';
+    for(let k=0;k<=180;k++){
+      const x=xMin+(k/180)*(xMax-xMin);
+      p1+=(k?'L':'M')+sx(x)+' '+sy(lin(x))+' ';
+      const e=ex(x); if(e<=hi) p2+=(p2===''?'M':'L')+sx(x)+' '+sy(e)+' ';
+    }
+    s+='<path d="'+p1+'" fill="none" stroke="var(--arith)" stroke-width="2.4"/>';
+    s+='<path d="'+p2+'" fill="none" stroke="var(--geo)" stroke-width="2.4"/>';
+
+    // secant lines across the chosen interval
+    s+='<line x1="'+sx(a)+'" y1="'+sy(lin(a))+'" x2="'+sx(b)+'" y2="'+sy(lin(b))+'" stroke="var(--arith)" stroke-width="3" stroke-dasharray="6 4" opacity="0.95"/>';
+    s+='<line x1="'+sx(a)+'" y1="'+sy(ex(a))+'" x2="'+sx(b)+'" y2="'+sy(ex(b))+'" stroke="var(--geo)" stroke-width="3" stroke-dasharray="6 4" opacity="0.95"/>';
+    [[a,lin(a)],[b,lin(b)]].forEach(pt=>{ s+='<circle cx="'+sx(pt[0])+'" cy="'+sy(pt[1])+'" r="5" fill="var(--arith)"/>'; });
+    [[a,ex(a)],[b,ex(b)]].forEach(pt=>{ if(pt[1]<=hi) s+='<circle cx="'+sx(pt[0])+'" cy="'+sy(pt[1])+'" r="5" fill="var(--geo)"/>'; });
+
+    // interval shading markers
+    s+='<line x1="'+sx(a)+'" y1="'+T+'" x2="'+sx(a)+'" y2="'+B+'" stroke="var(--forest)" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.5"/>';
+    s+='<line x1="'+sx(b)+'" y1="'+T+'" x2="'+sx(b)+'" y2="'+B+'" stroke="var(--forest)" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.5"/>';
+    for(let g=xMin;g<=xMax;g++) s+='<text x="'+sx(g)+'" y="'+(B+18)+'" text-anchor="middle" font-family="Bitter,serif" font-size="11.5" fill="var(--slate)">'+g+'</text>';
+    s+='<circle cx="'+(L+10)+'" cy="'+(T+2)+'" r="5" fill="var(--arith)"/><text x="'+(L+22)+'" y="'+(T+7)+'" font-family="Dosis,sans-serif" font-size="12.5" fill="var(--forest)">f(x) = 3x - 7</text>';
+    s+='<circle cx="'+(L+128)+'" cy="'+(T+2)+'" r="5" fill="var(--geo)"/><text x="'+(L+140)+'" y="'+(T+7)+'" font-family="Dosis,sans-serif" font-size="12.5" fill="var(--forest)">h(x) = 3(2)^x</text>';
+    s+='<text x="'+((L+R)/2)+'" y="278" text-anchor="middle" font-family="Dosis,sans-serif" font-size="13" fill="var(--slate)">the dashed lines are the average rates of change across the chosen interval</text>';
+    svg.innerHTML=s;
+
+    const arcL=(lin(b)-lin(a))/(b-a), arcE=(ex(b)-ex(a))/(b-a);
+    out.innerHTML='<strong>Interval $'+a+' \\le x \\le '+b+'$</strong><br>'
+      + '<strong>Linear</strong> $f(x)=3x-7$: &nbsp;$\\dfrac{'+fmt(lin(b))+' - '+(lin(a)<0 ? '('+fmt(lin(a))+')' : fmt(lin(a)))+'}{'+b+' - '+a+'} = '+fmt(arcL)+'$ &mdash; always 3, whatever interval you choose.<br>'
+      + '<strong>Exponential</strong> $h(x)=3(2)^x$: &nbsp;$\\dfrac{'+fmt(ex(b))+' - '+fmt(ex(a))+'}{'+b+' - '+a+'} = '+fmt(Math.round(arcE*100)/100)+'$ &mdash; move the interval right and this number climbs.<br><br>'
+      + (arcE > arcL
+          ? 'On this interval the exponential is changing <strong>faster</strong> on average.'
+          : 'On this interval the linear function is changing <strong>faster</strong> on average &mdash; slide the interval right and watch that flip.');
     mathify(out);
   }
   [aEl,bEl].forEach(el=>el.addEventListener('input',draw));
