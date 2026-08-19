@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features of Functions (Integrated Math 1, Unit 3)</title>
+<meta name="description" content="Interactive Integrated Math 1 notes on features of functions: the formal definition of a function, function notation, reading intercepts, increasing and decreasing intervals, positive and negative intervals, maximums and minimums, domain and range, and building functions by combining them. By tutoringwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<style>
+:root{
+  --white:#FFFFFF;--sage-l:#D0D6B3;--sage:#9BA06A;--slate:#525B76;--forest:#143109;
+  --bg:#f5f6ee;--sage-m:#e4e8cc;
+  --good:#5b8a3f;--bad:#b5503e;
+  --arith:#5b7fa8;--geo:#a86b5b;
+  --fh:'Young Serif',Georgia,serif;--fp:'Dosis','Trebuchet MS',Arial,sans-serif;--fb:'Bitter',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--fp);color:var(--forest);padding:18px 16px 52px;overflow-x:hidden}
+.page{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.pg-head{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:20px;padding:36px 28px;text-align:center}
+.pg-head .topic-badge{display:inline-block;font-family:var(--fb);font-weight:700;color:var(--slate);background:var(--white);border:1.5px solid var(--sage-l);padding:4px 14px;border-radius:20px;font-size:.82rem;margin-bottom:12px;letter-spacing:.04em}
+.pg-head h1{font-family:var(--fh);font-size:2.2rem;color:var(--forest);margin-bottom:6px}
+.pg-head .sub{font-family:var(--fp);color:var(--slate);font-size:1rem}
+.card{background:var(--white);border:2px solid var(--sage-l);border-radius:20px;padding:28px 26px;box-shadow:0 2px 12px rgba(20,49,9,0.06);scroll-margin-top:84px}
+.card-title{font-family:var(--fh);font-size:1.4rem;color:var(--forest);margin-bottom:14px}
+.card-title .num{font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.9rem;background:var(--sage-m);border-radius:8px;padding:2px 10px;margin-right:8px;vertical-align:middle}
+.body-text{font-family:var(--fp);font-size:1.04rem;color:var(--forest);line-height:1.7;margin-bottom:12px}
+.body-text:last-child{margin-bottom:0}
+.highlight-box{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:14px;padding:18px 22px;margin:14px 0}
+.sub-title{font-family:var(--fh);font-size:1.1rem;color:var(--forest);margin:18px 0 8px}
+.term-grid{display:grid;grid-template-columns:180px 1fr;gap:8px 16px;margin:12px 0}
+.term-sym{font-family:var(--fb);font-weight:700;color:var(--sage);text-align:right;font-size:1rem}
+.term-def{font-family:var(--fp);font-size:.98rem;color:var(--forest);line-height:1.6}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
+.site-btn{font-family:var(--fp);font-weight:600;font-size:.92rem;border:none;border-radius:30px;padding:8px 18px;cursor:pointer;transition:background .18s,transform .18s;background:var(--sage);color:var(--white)}
+.site-btn:hover{background:var(--forest);transform:translateY(-1px)}
+.site-btn.secondary{background:var(--white);color:var(--forest);border:2px solid var(--sage-l)}
+.site-btn.secondary:hover{background:var(--sage-m)}
+.interactive-area{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:16px;padding:20px 18px;margin:16px 0}
+.ia-label{font-family:var(--fb);font-size:1rem;color:var(--slate);margin-bottom:10px;text-align:center;font-weight:700}
+.practice-box{background:var(--white);border:2px dashed var(--sage-l);border-radius:14px;padding:16px 20px;margin:10px 0}
+.practice-box .q{font-family:var(--fp);font-size:1rem;color:var(--forest);margin-bottom:8px;line-height:1.6}
+.practice-box .a{font-family:var(--fp);font-size:.95rem;color:var(--forest);display:none;margin-top:8px;padding:12px 14px;background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;line-height:1.65}
+.practice-box .a.show{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.show-ans-btn{font-family:var(--fp);font-weight:600;font-size:.85rem;border:2px solid var(--sage-l);border-radius:20px;padding:5px 14px;cursor:pointer;background:var(--white);color:var(--sage);transition:background .18s}
+.show-ans-btn:hover{background:var(--sage-m)}
+.worked-example{background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 14px 14px 0;padding:16px 22px;margin:14px 0}
+.worked-example .step{font-family:var(--fp);font-size:.98rem;color:var(--forest);margin-bottom:6px;line-height:1.65}
+.worked-example .step-label{font-family:var(--fb);font-weight:700;color:var(--sage)}
+.topics-list{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 18px;margin-top:8px}
+.topics-list .row{font-family:var(--fp);color:var(--forest);display:flex;gap:10px;font-size:.98rem;padding:3px 0}
+.topics-list .row .rn{font-family:var(--fb);color:var(--sage);min-width:32px;font-weight:700}
+.topics-list .row.current{background:var(--sage-m);border-radius:8px;padding:3px 8px;font-weight:600}
+.pick-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:8px 0}
+.pick-btn{font-family:var(--fb);font-size:.82rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:18px;padding:5px 12px;cursor:pointer;color:var(--forest);transition:background .15s}
+.pick-btn:hover{background:var(--sage-m)}
+.pick-btn.active{background:var(--sage);color:var(--white);border-color:var(--sage)}
+.stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;text-align:center}
+.stage svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.readout{font-family:var(--fp);font-size:.95rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:12px 16px;margin-top:10px;line-height:1.6;text-align:left}
+.readout strong{font-family:var(--fb)}
+.ctrl-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin:10px 0}
+.ctrl{display:flex;align-items:center;gap:8px;font-family:var(--fp);font-size:.9rem;color:var(--forest)}
+.ctrl label{font-family:var(--fb);font-weight:700;font-size:.82rem;color:var(--slate)}
+.ctrl input[type=range]{width:140px;accent-color:var(--sage)}
+.ctrl input[type=number]{width:76px;font-family:var(--fb);font-size:.92rem;padding:5px 8px;border:1.5px solid var(--sage-l);border-radius:8px;background:var(--white);color:var(--forest)}
+.val-chip{font-family:var(--fb);font-weight:700;background:var(--white);border:1.5px solid var(--sage-l);border-radius:10px;padding:2px 10px;min-width:38px;display:inline-block;text-align:center}
+.seq-table{width:100%;border-collapse:collapse;font-family:var(--fb);font-size:.9rem;margin:10px 0;background:var(--white)}
+.seq-table th,.seq-table td{border:1.5px solid var(--sage-l);padding:7px 9px;text-align:center;color:var(--forest)}
+.seq-table th{background:var(--sage-m);font-weight:700;font-size:.82rem}
+.seq-table td.diff{color:var(--arith);font-weight:700}
+.seq-table td.ratio{color:var(--geo);font-weight:700}
+.fb{font-family:var(--fp);font-size:.95rem;border-radius:10px;padding:11px 14px;margin-top:10px;line-height:1.6;display:none;text-align:left}
+.fb.show{display:block;animation:fadeIn .2s ease}
+.fb.ok{background:#eaf3e2;border:1.5px solid var(--good);color:#2f4d1c}
+.fb.no{background:#f7e9e6;border:1.5px solid var(--bad);color:#6d2d21}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.cmp-col{border:2px solid var(--sage-l);border-radius:14px;padding:16px 18px;background:var(--white)}
+.cmp-col.a{border-color:var(--arith)}
+.cmp-col.g{border-color:var(--geo)}
+.cmp-col h4{font-family:var(--fh);font-size:1.05rem;margin-bottom:8px;color:var(--forest)}
+.cmp-col.a h4{color:var(--arith)}
+.cmp-col.g h4{color:var(--geo)}
+.cmp-col p{font-family:var(--fp);font-size:.94rem;line-height:1.6;margin-bottom:7px}
+.cmp-col p:last-child{margin-bottom:0}
+.map-table{width:100%;border-collapse:collapse;font-family:var(--fp);font-size:.93rem;margin:12px 0;background:var(--white)}
+.map-table th,.map-table td{border:1.5px solid var(--sage-l);padding:9px 11px;text-align:left;color:var(--forest);vertical-align:top;line-height:1.55}
+.map-table th{background:var(--sage-m);font-family:var(--fb);font-weight:700;font-size:.82rem}
+.map-table td.code{font-family:var(--fb);font-weight:700;color:var(--sage);white-space:nowrap;font-size:.85rem}
+.map-table td.ctr{text-align:center}
+.note-flag{border-left:4px solid var(--bad);background:#fbf3f1;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
+.note-flag .flag-label{font-family:var(--fb);font-weight:700;color:var(--bad);display:block;margin-bottom:4px}
+.fwd{border-left:4px solid var(--arith);background:#f2f6fa;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
+.fwd .fwd-label{font-family:var(--fb);font-weight:700;color:var(--arith);display:block;margin-bottom:4px}
+.fwd a{color:var(--forest);font-weight:600}
+/* 2x2 grid */
+.quad{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;margin:14px 0;font-family:var(--fp)}
+.quad .qh{font-family:var(--fb);font-weight:700;font-size:.84rem;color:var(--slate);display:flex;align-items:center;justify-content:center;text-align:center;padding:6px}
+.quad .qcell{border:2px solid var(--sage-l);border-radius:12px;padding:12px 14px;background:var(--white);font-size:.92rem;line-height:1.55}
+.quad .qcell .qt{font-family:var(--fb);font-weight:700;color:var(--forest);display:block;margin-bottom:4px}
+.quad .qcell .qs{color:var(--slate);font-size:.86rem}
+.quad .qcell.lin{border-color:var(--arith)}
+.quad .qcell.exp{border-color:var(--geo)}
+
+/* ===== LWS SHELL (v2 UI) ===== */
+body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01","cv11"}
+.page{max-width:none;margin:0;display:block}
+.lws-backdrop{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(228,232,204,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(208,214,179,.5) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(228,232,204,.6) 0%,transparent 55%),
+             var(--bg)}
+.app{position:relative;z-index:1;display:grid;grid-template-columns:264px 1fr;grid-template-rows:64px 1fr;grid-template-areas:"side top" "side main";min-height:100vh}
+.side{grid-area:side;padding:16px 14px 14px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-right:1px solid var(--sage-l);overflow-y:auto;box-shadow:0 1px 0 rgba(255,255,255,0.9) inset}
+.top{grid-area:top;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-bottom:1px solid var(--sage-l);position:sticky;top:0;z-index:15}
+.main{grid-area:main;padding:24px 28px 56px;max-width:1320px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;padding:8px 12px}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--forest));color:#fff;display:grid;place-items:center;font-family:var(--fh);font-size:1.1rem;line-height:1;box-shadow:0 6px 20px -6px rgba(20,49,9,0.35)}
+.brand-name{font-family:var(--fh);color:var(--forest);font-size:1.05rem;line-height:1.05}
+.brand-name small{display:block;font-family:var(--fb);font-style:italic;color:#7C8172;font-size:.7rem;margin-top:3px}
+.ws-switch{margin:0 4px}
+.ws-switch-btn{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.62);border:1px solid rgba(255,255,255,0.55);border-radius:12px;backdrop-filter:blur(14px);text-align:left;transition:background .15s}
+.ws-switch-btn .ico{width:30px;height:30px;border-radius:8px;background:var(--sage-m);color:var(--forest);display:grid;place-items:center;flex-shrink:0;font-family:var(--fb);font-weight:700;font-size:.78rem}
+.ws-switch-btn .meta{flex:1;min-width:0}
+.ws-switch-btn .lbl{font-family:var(--fh);color:var(--forest);font-size:.95rem;line-height:1.1}
+.ws-switch-btn .sub{font-family:var(--fb);color:#7C8172;font-size:.68rem;margin-top:3px}
+.side-section-label{font-family:var(--fb);font-size:.66rem;letter-spacing:.14em;color:#7C8172;text-transform:uppercase;padding:14px 12px 4px}
+.side-nav{display:flex;flex-direction:column;gap:1px;padding:0 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;text-decoration:none;color:var(--forest);transition:background .15s;font-family:var(--fp);font-size:.86rem;font-weight:500}
+.nav-item .num{font-family:var(--fb);color:var(--sage);font-weight:700;font-size:.78rem;min-width:30px}
+.nav-item .t{flex:1;color:var(--forest)}
+.nav-item:hover{background:var(--sage-m)}
+.nav-item.active{background:var(--white);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 12px 40px -12px rgba(20,49,9,0.18),0 2px 8px rgba(20,49,9,0.06);border:1px solid var(--sage-l)}
+.nav-item.active .t{color:var(--forest);font-weight:700}
+.nav-item.locked{color:#a3a89a;cursor:not-allowed}
+.nav-item.locked:hover{background:transparent}
+.nav-item.locked .num,.nav-item.locked .t{color:#a3a89a}
+.bread{display:flex;flex-direction:column;gap:0;flex:0 0 auto;min-width:0}
+.bread-trail{font-family:var(--fp);color:var(--slate);font-size:.78rem}
+.bread-now{font-family:var(--fp);font-weight:700;color:var(--forest);font-size:1rem;line-height:1.1}
+.search{flex:1;max-width:520px;min-width:120px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.62);border:1px solid var(--sage-l);border-radius:99px;padding:8px 16px;color:var(--slate);backdrop-filter:blur(14px)}
+.search input{border:0;background:transparent;outline:none;flex:1;font-family:var(--fp);font-size:.9rem;color:var(--forest);min-width:0}
+.search svg{flex-shrink:0;color:var(--slate)}
+.top-actions{display:flex;align-items:center;gap:8px}
+.btn-icon{width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--sage-l);color:var(--slate);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;font-size:1rem;padding:0}
+.btn-icon:hover{background:var(--sage-m);color:var(--forest)}
+.pg-head{margin-top:0}
+@media(max-width:980px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;grid-template-areas:"side" "top" "main"}
+  .side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--sage-l);max-height:none}
+  .top{padding:10px 18px;flex-wrap:wrap}
+  .main{padding:16px 18px 48px}
+  .search{order:3;flex-basis:100%;max-width:none}
+  .cmp{grid-template-columns:1fr}
+  .topics-list{grid-template-columns:1fr}
+  .term-grid{grid-template-columns:1fr}
+  .term-sym{text-align:left}
+  .quad{grid-template-columns:1fr}
+  .quad .qh{justify-content:flex-start}
+}
+[data-theme="dark"]{
+  --white:#14170F; --sage-l:#2B3320; --sage:#A9B07A; --sage-m:#1E2416;
+  --slate:#AEB5C8; --forest:#E8EBDA; --bg:#0E1108;
+  --arith:#8fb4dd; --geo:#dda28f;
+}
+[data-theme="dark"] body{color:var(--forest)}
+[data-theme="dark"] .lws-backdrop{
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(43,51,32,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(30,36,22,.55) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(43,51,32,.7) 0%,transparent 55%),
+             var(--bg)
+}
+[data-theme="dark"] .side,[data-theme="dark"] .top{background:rgba(20,23,15,0.7);border-color:#2B3320}
+[data-theme="dark"] .ws-switch-btn,[data-theme="dark"] .search,[data-theme="dark"] .btn-icon{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .lbl,[data-theme="dark"] .ws-switch-btn .ico{color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .ico{background:#2A3421}
+[data-theme="dark"] .nav-item,[data-theme="dark"] .nav-item .t{color:var(--forest)}
+[data-theme="dark"] .nav-item:hover{background:#2A3421}
+[data-theme="dark"] .nav-item.active{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .btn-icon:hover{background:#2A3421;color:var(--forest)}
+[data-theme="dark"] .search input{color:var(--forest)}
+[data-theme="dark"] .search input::placeholder{color:#7e8775}
+[data-theme="dark"] .pg-head{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .pg-head h1,[data-theme="dark"] .pg-head .sub,[data-theme="dark"] .pg-head .topic-badge{color:var(--forest)}
+[data-theme="dark"] .pg-head .topic-badge{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .card{background:#14170F;border-color:#2B3320;color:var(--forest)}
+[data-theme="dark"] .card-title,[data-theme="dark"] .sub-title,[data-theme="dark"] .body-text,[data-theme="dark"] .term-def,[data-theme="dark"] .term-sym{color:var(--forest)}
+[data-theme="dark"] .card-title .num{background:#2A3421;color:var(--sage)}
+[data-theme="dark"] .highlight-box{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .interactive-area{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .ia-label{color:var(--forest)}
+[data-theme="dark"] .practice-box{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .practice-box .q,[data-theme="dark"] .practice-box .a{color:var(--forest)}
+[data-theme="dark"] .practice-box .a{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .show-ans-btn{background:#1E2416;color:var(--sage);border-color:#3A4A2E}
+[data-theme="dark"] .worked-example{background:#1A1F11;border-left-color:var(--sage);color:var(--forest)}
+[data-theme="dark"] .site-btn.secondary{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .topics-list .row.current{background:#2A3421}
+[data-theme="dark"] .pick-btn{background:#14170F;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .pick-btn:hover{background:#2A3421}
+[data-theme="dark"] .stage{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .readout{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .seq-table,[data-theme="dark"] .map-table{background:#14170F}
+[data-theme="dark"] .seq-table th,[data-theme="dark"] .map-table th{background:#1E2416}
+[data-theme="dark"] .seq-table th,[data-theme="dark"] .seq-table td,[data-theme="dark"] .map-table th,[data-theme="dark"] .map-table td{border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .cmp-col,[data-theme="dark"] .quad .qcell{background:#14170F}
+[data-theme="dark"] .ctrl input[type=number]{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .val-chip{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .note-flag{background:#241a17;color:var(--forest)}
+[data-theme="dark"] .fwd{background:#161d24;color:var(--forest)}
+[data-theme="dark"] .fwd a{color:var(--forest)}
+[data-theme="dark"] .fb.ok{background:#1d2a15;color:#cfe4bd}
+[data-theme="dark"] .fb.no{background:#2c1a16;color:#e8c3b9}
+[data-theme="dark"] .katex{color:var(--forest)}
+
+/* feature toggles */
+.feat-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0}
+.feat-btn{font-family:var(--fb);font-size:.8rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:18px;padding:6px 13px;cursor:pointer;color:var(--forest);transition:background .15s}
+.feat-btn:hover{background:var(--sage-m)}
+.feat-btn.on{background:var(--forest);color:var(--white);border-color:var(--forest)}
+.notation-grid{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:12px 0;align-items:start}
+.notation-grid .nsym{font-family:var(--fb);font-weight:700;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:9px;padding:6px 12px;white-space:nowrap;text-align:center}
+.notation-grid .nmean{font-family:var(--fp);font-size:.97rem;color:var(--forest);line-height:1.6;padding-top:6px}
+[data-theme="dark"] .feat-btn{background:#14170F;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .feat-btn:hover{background:#2A3421}
+[data-theme="dark"] .feat-btn.on{background:var(--sage);color:#0E1108;border-color:var(--sage)}
+[data-theme="dark"] .notation-grid .nsym{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .notation-grid .nmean{color:var(--forest)}
+@media(max-width:640px){ .notation-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body data-theme="light">
+<div class="lws-backdrop"></div>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark">L</div>
+    <div class="brand-name">learningwithsruthi <small>nc math 1 notes</small></div>
+  </div>
+  <div class="ws-switch">
+    <div class="ws-switch-btn">
+      <div class="ico">3</div>
+      <div class="meta">
+        <div class="lbl">Features of Functions</div>
+        <div class="sub">Unit 3 of 8 &middot; NC Math 1</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-section-label">Start here</div>
+  <div class="side-nav">
+    <a class="nav-item" href="unit-0-eighth-grade-recap.html"><span class="num">0.</span><span class="t">8th Grade Recap</span></a>
+  </div>
+  <div class="side-section-label">Units</div>
+  <div class="side-nav">
+    <a class="nav-item" href="unit-1-sequences.html"><span class="num">1.</span><span class="t">Sequences</span></a>
+    <a class="nav-item" href="unit-2-linear-exponential.html"><span class="num">2.</span><span class="t">Linear &amp; Exponential Functions</span></a>
+    <a class="nav-item active" href="unit-3-features-of-functions.html"><span class="num">3.</span><span class="t">Features of Functions</span></a>
+    <a class="nav-item locked"><span class="num">4.</span><span class="t">Equations &amp; Inequalities</span></a>
+    <a class="nav-item locked"><span class="num">5.</span><span class="t">Systems of Equations</span></a>
+    <a class="nav-item locked"><span class="num">6.</span><span class="t">Quadratic Functions</span></a>
+    <a class="nav-item locked"><span class="num">7.</span><span class="t">Structures of Expressions</span></a>
+    <a class="nav-item locked"><span class="num">8.</span><span class="t">Modeling Data</span></a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">NC Math 1 &middot; Unit 3 of 8</span>
+    <span class="bread-now">Features of Functions</span>
+  </div>
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input placeholder="Search topics, lessons, questions...">
+  </div>
+  <div class="top-actions">
+    <button class="btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleLwsTheme()">&#9790;</button>
+  </div>
+</header>
+
+<main class="main">
+
+<div class="pg-head">
+  <div class="topic-badge">Features of Functions &middot; NC Math 1, Unit 3</div>
+  <h1>Features of Functions</h1>
+  <p class="sub">Reading a graph the way you read a sentence &mdash; and saying what every part of it means.</p>
+</div>
+
+<!-- ======== MAP ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">Map</span>What this unit covers</h2>
+  <p class="body-text">Units 1 and 2 were about two specific families. Unit 3 steps back and asks what you can say about <em>any</em> function &mdash; including ones you could never solve algebraically.</p>
+  <div class="topics-list">
+    <div class="row current"><span class="rn">L1</span><span>What a function actually is</span></div>
+    <div class="row current"><span class="rn">L2</span><span>Function notation, and reading statements</span></div>
+    <div class="row current"><span class="rn">L3</span><span>Key features of a graph</span></div>
+    <div class="row current"><span class="rn">L4</span><span>Increasing is not the same as positive</span></div>
+    <div class="row current"><span class="rn">L5</span><span>The same features in every representation</span></div>
+    <div class="row current"><span class="rn">L6</span><span>Building functions by combining them</span></div>
+  </div>
+  <div class="highlight-box" style="margin-top:16px">
+    <p class="body-text" style="margin:0"><strong>What makes this unit different:</strong> most of the graphs here have no equation you could write down. That is deliberate. NC expects you to describe a function's behaviour from a picture alone, so the skill being built is reading, not solving.</p>
+  </div>
+</div>
+
+<!-- ======== L1: WHAT A FUNCTION IS ======== -->
+<div class="card" id="sec-definition">
+  <h2 class="card-title"><span class="num">L1</span>What a function actually is</h2>
+  <p class="body-text">You met the definition in 8th grade and used it in Unit 1. Math 1 sharpens it and gives the pieces names.</p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">A <strong>function</strong> from a set called the <strong>domain</strong> to a set called the <strong>range</strong> assigns to each element of the domain <em>exactly one</em> element of the range.</p>
+  </div>
+
+  <p class="body-text">Two consequences worth stating explicitly:</p>
+  <div class="term-grid">
+    <div class="term-sym">$f(x)$</div><div class="term-def">the output of $f$ corresponding to the input $x$. Not $f$ multiplied by $x$.</div>
+    <div class="term-sym">The graph of $f$</div><div class="term-def">is the graph of the equation $y = f(x)$. So a point $(a, b)$ is on the graph exactly when $f(a) = b$.</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">The vertical line test is a symptom, not the definition</span>
+    The test works because a vertical line collects every point sharing one input &mdash; two crossings means one input with two outputs. But plenty of functions are not graphs at all. NC explicitly asks about <strong>categorical</strong> situations, where there is nothing to draw.
+  </div>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">A business keeps customer records.</span></div>
+    <div class="step"><span class="step-label">Rule $C$</span> assigns each customer their home phone number. <strong>This is a function.</strong> Every customer has exactly one home number.</div>
+    <div class="step"><span class="step-label">Rule $P$</span> assigns each phone number the customer name or names attached to it. <strong>Not a function.</strong> Two people in the same household share a number, so that one input returns two outputs.</div>
+    <div class="step"><span class="step-label">Which is why</span> a business identifies customers by something guaranteed unique, like an account number. Uniqueness of the input is what makes lookup reliable.</div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Drill &mdash; is this rule a function?</div>
+    <div id="fnQ" style="font-family:var(--fp);font-size:1.02rem;text-align:center;padding:16px 10px;line-height:1.65"></div>
+    <div class="btn-row">
+      <button class="site-btn" data-fn="yes">Function</button>
+      <button class="site-btn" data-fn="no">Not a function</button>
+    </div>
+    <div class="fb" id="fnFb"></div>
+    <div class="readout" id="fnScore" style="text-align:center"></div>
+    <div class="btn-row"><button class="site-btn secondary" id="fnNext">New rule</button></div>
+  </div>
+</div>
+
+<!-- ======== L2: FUNCTION NOTATION ======== -->
+<div class="card" id="sec-notation">
+  <h2 class="card-title"><span class="num">L2</span>Function notation, and how to read it out loud</h2>
+  <p class="body-text">Evaluating is the easy half: substitute and compute.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Find $f(2)$ for</span> $f(x) = 5(x - 3) + 17$: &nbsp;$5(2-3) + 17 = 5(-1) + 17 = 12$</div>
+    <div class="step"><span class="step-label">For</span> $f(x) = 1200(1.04)^x$: &nbsp;$1200(1.04)^2 = 1200(1.0816) = 1297.92$</div>
+    <div class="step"><span class="step-label">For</span> $f(x) = 3x^2 + 2x - 5$: &nbsp;$3(4) + 2(2) - 5 = 11$</div>
+  </div>
+
+  <p class="body-text">The harder half is reading a <em>statement</em> in function notation and saying what it means about the situation. That is what gets assessed.</p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">A yam goes into the oven and comes out after 45 minutes. Let $f$ be the function assigning each minute since it went in to the yam's temperature in &deg;F.</p>
+  </div>
+
+  <div class="notation-grid">
+    <div class="nsym">$f(0) = 65$</div>
+    <div class="nmean">When the yam went in, it was 65&deg;F &mdash; room temperature.</div>
+    <div class="nsym">$f(5) &lt; f(10)$</div>
+    <div class="nmean">It was cooler at 5 minutes than at 10 minutes, so it was heating up over that stretch.</div>
+    <div class="nsym">$f(40) = f(45)$</div>
+    <div class="nmean">Same temperature at 40 and 45 minutes &mdash; it had stopped getting hotter, having reached the oven's temperature.</div>
+    <div class="nsym">$f(45) &gt; f(60)$</div>
+    <div class="nmean">Fifteen minutes after coming out it was cooler than when it came out. It cooled once removed.</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">Read the input as a moment, not a number</span>
+    $f(45)$ is not "45". It is "the temperature at 45 minutes". Every interpretation sentence should name <em>what the input measures</em> and <em>what the output measures</em>, or it will not earn the point.
+  </div>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Going backwards.</span> Suppose $f$ is a function.</div>
+    <div class="step">If $10 = f(-4)$, then $(-4, 10)$ is a point on the graph &mdash; input first, output second.</div>
+    <div class="step">If $6$ is a solution of $f(w) = 1$, then $f(6) = 1$, so $(6, 1)$ is on the graph.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Interpret each statement.</strong> $f(x) = 50(0.85)^x$ gives the milligrams of a drug in the bloodstream $x$ hours after a dose. What do $f(0)$ and $f(4)$ mean, and what are they?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1')">Show answer</button>
+    <div class="a" id="p1">
+      $f(0) = 50(0.85)^0 = 50$. At the moment of the dose there are <strong>50 mg</strong> in the bloodstream &mdash; the initial dose.<br>
+      $f(4) = 50(0.85)^4 \approx 26.1$. Four hours later about <strong>26.1 mg</strong> remain.<br>
+      <em>The decay factor 0.85 means 15% of the drug clears each hour, so roughly half is gone after four hours.</em>
+    </div>
+  </div>
+</div>
+
+<!-- ======== L3: KEY FEATURES ======== -->
+<div class="card" id="sec-features">
+  <h2 class="card-title"><span class="num">L3</span>Key features of a graph</h2>
+  <p class="body-text">This is the heart of the unit. Given a graph &mdash; any graph, equation or not &mdash; you should be able to name and interpret every one of these.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Turn features on and off, then read what each one means</div>
+    <div class="feat-row" id="featBtns">
+      <button class="feat-btn" data-feat="yint">y-intercept</button>
+      <button class="feat-btn" data-feat="xint">x-intercepts</button>
+      <button class="feat-btn" data-feat="inc">Increasing</button>
+      <button class="feat-btn" data-feat="dec">Decreasing</button>
+      <button class="feat-btn" data-feat="pos">Positive</button>
+      <button class="feat-btn" data-feat="neg">Negative</button>
+      <button class="feat-btn" data-feat="ext">Max &amp; min</button>
+    </div>
+    <div class="stage"><svg id="kfSvg" viewBox="0 0 660 340" role="img" aria-label="A story graph with key features highlighted"></svg></div>
+    <div class="readout" id="kfOut"></div>
+  </div>
+
+  <p class="body-text">The graph above is a drone's height above a launch ledge, in metres, over 13 seconds. Negative means below the ledge. Here is every feature, in the language of the situation:</p>
+
+  <div class="term-grid">
+    <div class="term-sym">y-intercept</div><div class="term-def">the output when the input is 0 &mdash; here $(0, -3)$, so the drone started 3 m below the ledge</div>
+    <div class="term-sym">x-intercepts</div><div class="term-def">where the output is 0, also called <strong>zeros</strong> &mdash; here $x = 2, 8, 12$, the moments it was level with the ledge</div>
+    <div class="term-sym">Increasing</div><div class="term-def">intervals where the output <em>rises</em> as the input grows &mdash; the drone climbing</div>
+    <div class="term-sym">Decreasing</div><div class="term-def">intervals where the output <em>falls</em> &mdash; the drone descending</div>
+    <div class="term-sym">Positive</div><div class="term-def">intervals where the output is <em>above zero</em> &mdash; the drone above the ledge</div>
+    <div class="term-sym">Negative</div><div class="term-def">intervals where the output is <em>below zero</em> &mdash; the drone below the ledge</div>
+    <div class="term-sym">Maximum</div><div class="term-def">the highest output reached &mdash; 6 m, at 4 seconds</div>
+    <div class="term-sym">Minimum</div><div class="term-def">the lowest output reached &mdash; $-4$ m, at 10 seconds</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">Intervals are described in x, values in y</span>
+    "Increasing on $0 &lt; x &lt; 4$" is right. "Increasing from $-3$ to 6" describes the outputs, which is a different sentence. Say <em>where</em> using inputs; say <em>how much</em> using outputs.
+  </div>
+</div>
+
+<!-- ======== L4: THE BIG CONFUSION ======== -->
+<div class="card" id="sec-confusion">
+  <h2 class="card-title"><span class="num">L4</span>Increasing is not the same as positive</h2>
+  <p class="body-text">These two get merged more than any other pair in Math 1, and the graph above contains both counterexamples.</p>
+
+  <div class="cmp">
+    <div class="cmp-col a">
+      <h4>Increasing / decreasing</h4>
+      <p>About <strong>direction</strong> &mdash; is the graph going up or down as you read left to right?</p>
+      <p>Answers the question "is it growing?"</p>
+      <p>Compare each output to the <em>previous</em> output.</p>
+    </div>
+    <div class="cmp-col g">
+      <h4>Positive / negative</h4>
+      <p>About <strong>location</strong> &mdash; is the graph above or below the x-axis?</p>
+      <p>Answers the question "is the value more than zero?"</p>
+      <p>Compare each output to <em>zero</em>.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin-bottom:6px"><strong>Increasing but negative:</strong> on $10 &lt; x &lt; 12$ the drone is climbing from $-4$ m back toward the ledge. Going up, still below zero.</p>
+    <p class="body-text" style="margin:0"><strong>Decreasing but positive:</strong> on $4 &lt; x &lt; 8$ the drone is descending from 6 m toward the ledge. Going down, still above zero.</p>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Drill &mdash; at this moment, the function is&hellip;</div>
+    <div id="ipQ" style="font-family:var(--fp);font-size:1.05rem;text-align:center;padding:14px 10px;line-height:1.6"></div>
+    <div class="btn-row">
+      <button class="site-btn" data-ip="inc-pos">Increasing &amp; positive</button>
+      <button class="site-btn" data-ip="inc-neg">Increasing &amp; negative</button>
+    </div>
+    <div class="btn-row">
+      <button class="site-btn" data-ip="dec-pos">Decreasing &amp; positive</button>
+      <button class="site-btn" data-ip="dec-neg">Decreasing &amp; negative</button>
+    </div>
+    <div class="fb" id="ipFb"></div>
+    <div class="readout" id="ipScore" style="text-align:center"></div>
+    <div class="btn-row"><button class="site-btn secondary" id="ipNext">New moment</button></div>
+  </div>
+</div>
+
+<!-- ======== L5: ACROSS REPRESENTATIONS ======== -->
+<div class="card" id="sec-representations">
+  <h2 class="card-title"><span class="num">L5</span>The same features, whatever form you are given</h2>
+  <p class="body-text">A function can arrive as an equation, a table, a graph, or a sentence. The features do not change &mdash; only where you look for them.</p>
+
+  <table class="map-table">
+    <tr><th>Feature</th><th>Equation</th><th>Table</th><th>Graph</th></tr>
+    <tr><td class="code">y-intercept</td><td>evaluate at $x = 0$</td><td>the output paired with 0</td><td>where it crosses the y-axis</td></tr>
+    <tr><td class="code">x-intercepts</td><td>set the expression equal to 0 and solve</td><td>rows where the output is 0</td><td>where it crosses the x-axis</td></tr>
+    <tr><td class="code">Increasing</td><td>positive rate of change</td><td>outputs going up as inputs go up</td><td>rising left to right</td></tr>
+    <tr><td class="code">Positive</td><td>where the expression is $&gt; 0$</td><td>rows with a positive output</td><td>above the x-axis</td></tr>
+    <tr><td class="code">Max / min</td><td>hard without more tools</td><td>largest and smallest output listed</td><td>peaks and valleys</td></tr>
+    <tr><td class="code">Domain &amp; range</td><td>what inputs are allowed</td><td>the inputs and outputs shown</td><td>how far it extends left-right and up-down</td></tr>
+  </table>
+
+  <div class="note-flag">
+    <span class="flag-label">A table can lie by omission</span>
+    A table only shows the rows someone chose to include. If it lists $x = 0, 1, 2, 3$ with outputs 5, 3, 3, 5, it looks like the minimum is 3 &mdash; but the real minimum sits somewhere between $x = 1$ and $x = 2$ and is never shown. Say "the smallest value <em>in the table</em>", not "the minimum", unless you can see the whole graph.
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>From an equation.</strong> For $f(x) = 2x - 10$, find the y-intercept, the x-intercept, and say where the function is positive.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2')">Show answer</button>
+    <div class="a" id="p2">
+      y-intercept: $f(0) = -10$, so $(0, -10)$.<br>
+      x-intercept: $2x - 10 = 0 \Rightarrow x = 5$, so $(5, 0)$.<br>
+      Positive where $2x - 10 &gt; 0$, that is $x &gt; 5$. Negative for $x &lt; 5$.<br>
+      Increasing everywhere, since the rate of change 2 is positive &mdash; note it is increasing even on the stretch where it is still negative.
+    </div>
+  </div>
+</div>
+
+<!-- ======== L6: COMBINING FUNCTIONS ======== -->
+<div class="card" id="sec-combining">
+  <h2 class="card-title"><span class="num">L6</span>Building a function by combining functions</h2>
+  <p class="body-text">Sometimes the quantity you want is the difference, sum, or product of two things you can already model. You build each piece, then combine.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Two phone plans.</span> Company Y charges a \$10 start-up fee plus \$0.10 per minute. Company Z charges \$0.20 per minute with no fee.</div>
+    <div class="step"><span class="step-label">Model each:</span> $Y(x) = 10 + 0.10x$ and $Z(x) = 0.20x$.</div>
+    <div class="step"><span class="step-label">The difference:</span> $D(x) = Y(x) - Z(x) = 10 + 0.10x - 0.20x = 10 - 0.10x$</div>
+    <div class="step"><span class="step-label">Now read it.</span> $D(0) = 10$: with no calls, Y costs \$10 more. $D(100) = 0$: at 100 minutes they cost the same. $D(200) = -10$: at 200 minutes Y is \$10 <em>cheaper</em>.</div>
+    <div class="step"><span class="step-label">The zero of the difference function is the break-even point.</span> That is usually the question being asked.</div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Two clearance strategies on a \$45 item</div>
+    <div class="stage"><svg id="clSvg" viewBox="0 0 640 300" role="img" aria-label="Percent-off versus dollar-off clearance"></svg></div>
+    <div id="clTableWrap"></div>
+    <div class="readout" id="clOut"></div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Write the difference function</strong> for the clearance options: Option 1 cuts the price 15% each week, Option 2 cuts it \$5 each week. The item starts at \$45.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3')">Show answer</button>
+    <div class="a" id="p3">
+      Option 1 is exponential: $A(w) = 45(0.85)^w$.<br>
+      Option 2 is linear: $B(w) = 45 - 5w$.<br>
+      Difference: $D(w) = 45(0.85)^w - (45 - 5w)$.<br>
+      $D$ is negative for the first five weeks &mdash; the percent-off price is lower. From week 6 on it turns positive, meaning the dollar-off price is lower.<br>
+      <em>And they behave completely differently at the end: the dollar-off option reaches \$0 at week 9, while the percent-off option never reaches \$0 at all.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Multiplying two linear functions.</strong> A rectangular cage floor has length 4 feet greater than its width $w$. Both dimensions are increased by 2 feet. Write the new area $N$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4')">Show answer</button>
+    <div class="a" id="p4">
+      Original: width $w$, length $w + 4$.<br>
+      After the increase: width $w + 2$, length $w + 6$.<br>
+      $N = (w + 6)(w + 2) = w^2 + 8w + 12$<br>
+      <em>Two linear functions multiplied gave a quadratic. That is where Unit 6 begins.</em>
+    </div>
+  </div>
+</div>
+
+<!-- ======== QUICK REVIEW ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">&#10003;</span>Quick review</h2>
+  <div class="term-grid">
+    <div class="term-sym">Function</div><div class="term-def">each element of the domain is assigned exactly one element of the range</div>
+    <div class="term-sym">$f(x)$</div><div class="term-def">the output for input $x$; the point $(a,b)$ is on the graph exactly when $f(a) = b$</div>
+    <div class="term-sym">Intercepts</div><div class="term-def">y-intercept at $x = 0$; x-intercepts (zeros) where the output is 0</div>
+    <div class="term-sym">Increasing</div><div class="term-def">the output rises as the input grows &mdash; about direction</div>
+    <div class="term-sym">Positive</div><div class="term-def">the output is above zero &mdash; about location. Not the same thing.</div>
+    <div class="term-sym">Max / min</div><div class="term-def">the highest and lowest outputs; report both the value and where it happens</div>
+    <div class="term-sym">Combining</div><div class="term-def">add or subtract functions to model a difference; the zero of a difference function is the break-even point</div>
+  </div>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0"><strong>If you remember one thing:</strong> every feature has a meaning in the situation. Naming the feature is half the answer; saying what it means about the drone, the drug, or the phone bill is the other half, and it is the half that gets marked.</p>
+  </div>
+  <div class="btn-row" style="margin-top:16px">
+    <a class="site-btn secondary" href="unit-2-linear-exponential.html" style="text-decoration:none;display:inline-block">&larr; Unit 2</a>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+function toggleAns(id){ const a=document.getElementById(id); a.classList.toggle('show'); }
+window.toggleAns = toggleAns;
+function mathify(el){
+  if(window.renderMathInElement && el){
+    try{ renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]}); }catch(e){}
+  }
+}
+function fmt(x){
+  if(!isFinite(x)) return '?';
+  if(Number.isInteger(x)) return x.toLocaleString('en-US');
+  return (Math.round(x*1000)/1000).toString();
+}
+
+function toggleLwsTheme(){
+  const cur = document.body.dataset.theme || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.body.dataset.theme = next;
+  try{ localStorage.setItem('lws-theme', next); }catch(e){}
+  const btn = document.getElementById('themeBtn');
+  if(btn) btn.innerHTML = next === 'dark' ? '&#9728;' : '&#9790;';
+}
+window.toggleLwsTheme = toggleLwsTheme;
+try{
+  const saved = localStorage.getItem('lws-theme');
+  if(saved === 'dark'){
+    document.body.dataset.theme='dark';
+    const btn=document.getElementById('themeBtn'); if(btn) btn.innerHTML='&#9728;';
+  }
+}catch(e){}
+
+(function setupSearch(){
+  const input=document.querySelector('.search input');
+  if(!input) return;
+  const cards=Array.from(document.querySelectorAll('.main .card'));
+  const pgHead=document.querySelector('.main .pg-head');
+  let emptyMsg=null;
+  input.addEventListener('input', e=>{
+    const q=e.target.value.toLowerCase().trim(); let shown=0;
+    cards.forEach(card=>{
+      if(!q){ card.style.display=''; shown++; return; }
+      const hit=card.textContent.toLowerCase().includes(q);
+      card.style.display=hit?'':'none'; if(hit) shown++;
+    });
+    if(pgHead) pgHead.style.display=q?'none':'';
+    if(q && shown===0){
+      if(!emptyMsg){
+        emptyMsg=document.createElement('div'); emptyMsg.className='card'; emptyMsg.style.textAlign='center';
+        emptyMsg.innerHTML='<div class="body-text" style="color:var(--slate)">No sections match that search.</div>';
+        document.querySelector('.main').appendChild(emptyMsg);
+      }
+      emptyMsg.style.display='';
+    } else if(emptyMsg){ emptyMsg.style.display='none'; }
+  });
+  input.addEventListener('keydown', e=>{ if(e.key==='Escape'){ input.value=''; input.dispatchEvent(new Event('input')); } });
+})();
+
+/* ============================================================ */
+/* ===== Shared story graph: a drone's height over 13 seconds == */
+/* ============================================================ */
+// Vertices chosen so that increasing/positive genuinely come apart.
+const DRONE = [[0,-3],[2,0],[4,6],[6,2],[8,0],[10,-4],[12,0],[13,3]];
+
+function droneAt(x){
+  for(let i=0;i<DRONE.length-1;i++){
+    const [x1,y1]=DRONE[i], [x2,y2]=DRONE[i+1];
+    if(x>=x1 && x<=x2){
+      const t=(x-x1)/(x2-x1);
+      return y1+t*(y2-y1);
+    }
+  }
+  return DRONE[DRONE.length-1][1];
+}
+// Derive the feature intervals straight from the vertex list so they cannot drift.
+function droneFeatures(){
+  const inc=[], dec=[];
+  for(let i=0;i<DRONE.length-1;i++){
+    const [x1,y1]=DRONE[i], [x2,y2]=DRONE[i+1];
+    if(y2>y1) inc.push([x1,x2]); else if(y2<y1) dec.push([x1,x2]);
+  }
+  const merge=a=>{
+    const out=[];
+    a.forEach(iv=>{
+      if(out.length && Math.abs(out[out.length-1][1]-iv[0])<1e-9) out[out.length-1][1]=iv[1];
+      else out.push([iv[0],iv[1]]);
+    });
+    return out;
+  };
+  // zeros: where a segment crosses or touches y = 0
+  const zeros=[];
+  for(let i=0;i<DRONE.length-1;i++){
+    const [x1,y1]=DRONE[i], [x2,y2]=DRONE[i+1];
+    if(y1===0) zeros.push(x1);
+    if(y1*y2<0) zeros.push(x1+(0-y1)/(y2-y1)*(x2-x1));
+  }
+  const last=DRONE[DRONE.length-1]; if(last[1]===0) zeros.push(last[0]);
+  const uniq=[...new Set(zeros.map(z=>Math.round(z*1e6)/1e6))].sort((a,b)=>a-b);
+  // positive / negative stretches, sampled between consecutive zeros
+  const bounds=[DRONE[0][0], ...uniq, last[0]];
+  const pos=[], neg=[];
+  for(let i=0;i<bounds.length-1;i++){
+    const a=bounds[i], b=bounds[i+1];
+    if(b-a<1e-9) continue;
+    const mid=droneAt((a+b)/2);
+    if(mid>0) pos.push([a,b]); else if(mid<0) neg.push([a,b]);
+  }
+  let maxV=-Infinity,maxX=null,minV=Infinity,minX=null;
+  DRONE.forEach(([x,y])=>{ if(y>maxV){maxV=y;maxX=x;} if(y<minV){minV=y;minX=x;} });
+  return {inc:merge(inc), dec:merge(dec), zeros:uniq, pos:merge(pos), neg:merge(neg), maxV, maxX, minV, minX};
+}
+const DF = droneFeatures();
+
+/* ============================================================ */
+/* ===== W1: is it a function? drill ========================== */
+/* ============================================================ */
+(function fnDrill(){
+  const qEl=document.getElementById('fnQ'), fb=document.getElementById('fnFb'), sc=document.getElementById('fnScore');
+  if(!qEl) return;
+  const ITEMS=[
+    {t:'A rule that assigns to each student their student ID number.', a:'yes',
+     w:'Each student has exactly one ID. A function.'},
+    {t:'A rule that assigns to each student ID number the student it belongs to.', a:'yes',
+     w:'IDs are unique, so each one points to exactly one student. Also a function &mdash; which is why schools use IDs rather than names.'},
+    {t:'A rule that assigns to each phone number the people who live at that number.', a:'no',
+     w:'A household shares one number, so one input can return several people. Not a function.'},
+    {t:'A rule that assigns to each person their birth month.', a:'yes',
+     w:'Everyone has exactly one birth month. A function.'},
+    {t:'A rule that assigns to each birth month the people born in it.', a:'no',
+     w:'One month returns many people. Not a function.'},
+    {t:'A table pairing inputs 1, 2, 3, 4 with outputs 7, 7, 7, 7.', a:'yes',
+     w:'Repeated <em>outputs</em> are fine. The rule only breaks if an <em>input</em> repeats with different outputs.'},
+    {t:'A table pairing inputs 2, 4, 2, 6 with outputs 5, 9, 11, 3.', a:'no',
+     w:'The input 2 appears twice with different outputs, 5 and 11. Not a function.'},
+    {t:'A graph of a circle centred at the origin.', a:'no',
+     w:'A vertical line through the middle hits it twice, so one input has two outputs.'},
+    {t:'A rule assigning each square its area.', a:'yes',
+     w:'A given square has exactly one area. A function.'},
+    {t:'A rule assigning each area the square that has it.', a:'yes',
+     w:'For positive areas there is exactly one square with that area, so this one is also a function.'}
+  ];
+  let right=0,asked=0,ans=false,order=[],i=0;
+  function shuffle(){ order=ITEMS.map((_,k)=>k); for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));const t=order[k];order[k]=order[j];order[j]=t;} i=0; }
+  function show(){ if(i>=order.length) shuffle(); qEl.innerHTML=ITEMS[order[i]].t; fb.className='fb'; fb.innerHTML=''; ans=false; mathify(qEl); }
+  document.querySelectorAll('button[data-fn]').forEach(b=>{
+    b.addEventListener('click',()=>{
+      if(ans) return; ans=true; asked++;
+      const it=ITEMS[order[i]], ok=b.dataset.fn===it.a;
+      if(ok) right++;
+      fb.className='fb show '+(ok?'ok':'no');
+      fb.innerHTML=(ok?'<strong>Correct.</strong> ':'<strong>Not quite.</strong> ')+it.w;
+      sc.textContent='Score: '+right+' of '+asked; mathify(fb);
+    });
+  });
+  document.getElementById('fnNext').addEventListener('click',()=>{i++;show();});
+  shuffle(); sc.textContent='Score: 0 of 0'; show();
+})();
+
+/* ============================================================ */
+/* ===== W2: key features explorer ============================ */
+/* ============================================================ */
+(function keyFeatures(){
+  const svg=document.getElementById('kfSvg'), out=document.getElementById('kfOut');
+  if(!svg) return;
+  const on={yint:false,xint:false,inc:false,dec:false,pos:false,neg:false,ext:false};
+
+  document.querySelectorAll('#featBtns .feat-btn').forEach(b=>{
+    b.addEventListener('click',()=>{
+      const k=b.dataset.feat; on[k]=!on[k];
+      b.classList.toggle('on', on[k]);
+      draw();
+    });
+  });
+
+  function draw(){
+    const L=58, R=620, T=24, B=270;
+    const xMin=0, xMax=13, yMin=-6, yMax=8;
+    const sx=x=>L+((x-xMin)/(xMax-xMin))*(R-L);
+    const sy=y=>B-((y-yMin)/(yMax-yMin))*(B-T);
+    let s='';
+
+    // grid
+    for(let g=xMin;g<=xMax;g++) s+='<line x1="'+sx(g)+'" y1="'+T+'" x2="'+sx(g)+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="0.6" opacity="0.55"/>';
+    for(let g=yMin;g<=yMax;g+=2) s+='<line x1="'+L+'" y1="'+sy(g)+'" x2="'+R+'" y2="'+sy(g)+'" stroke="var(--sage-l)" stroke-width="0.6" opacity="0.55"/>';
+
+    // shaded x-intervals sit behind the curve
+    const band=(ivs,color,op)=>{
+      ivs.forEach(([a,b])=>{
+        s+='<rect x="'+sx(a)+'" y="'+T+'" width="'+(sx(b)-sx(a))+'" height="'+(B-T)+'" fill="'+color+'" opacity="'+op+'"/>';
+      });
+    };
+    if(on.inc) band(DF.inc,'var(--arith)',0.16);
+    if(on.dec) band(DF.dec,'var(--geo)',0.16);
+    if(on.pos) band(DF.pos,'var(--good)',0.13);
+    if(on.neg) band(DF.neg,'var(--bad)',0.13);
+
+    // axes
+    s+='<line x1="'+L+'" y1="'+sy(0)+'" x2="'+R+'" y2="'+sy(0)+'" stroke="var(--forest)" stroke-width="2"/>';
+    s+='<line x1="'+sx(0)+'" y1="'+T+'" x2="'+sx(0)+'" y2="'+B+'" stroke="var(--forest)" stroke-width="2"/>';
+
+    // the curve
+    let path='';
+    DRONE.forEach(([x,y],i)=>{ path+=(i?'L':'M')+sx(x)+' '+sy(y)+' '; });
+    s+='<path d="'+path+'" fill="none" stroke="var(--slate)" stroke-width="3"/>';
+
+    if(on.yint){
+      s+='<circle cx="'+sx(0)+'" cy="'+sy(-3)+'" r="7" fill="var(--forest)"/>';
+      s+='<text x="'+(sx(0)+11)+'" y="'+(sy(-3)+18)+'" font-family="Bitter,serif" font-size="12.5" font-weight="700" fill="var(--forest)">(0, -3)</text>';
+    }
+    if(on.xint){
+      DF.zeros.forEach(z=>{
+        s+='<circle cx="'+sx(z)+'" cy="'+sy(0)+'" r="7" fill="var(--sage)" stroke="var(--white)" stroke-width="1.5"/>';
+        s+='<text x="'+sx(z)+'" y="'+(sy(0)-13)+'" text-anchor="middle" font-family="Bitter,serif" font-size="12" font-weight="700" fill="var(--sage)">'+fmt(z)+'</text>';
+      });
+    }
+    if(on.ext){
+      s+='<circle cx="'+sx(DF.maxX)+'" cy="'+sy(DF.maxV)+'" r="7" fill="var(--good)"/>';
+      s+='<text x="'+sx(DF.maxX)+'" y="'+(sy(DF.maxV)-13)+'" text-anchor="middle" font-family="Bitter,serif" font-size="12.5" font-weight="700" fill="var(--good)">max ('+DF.maxX+', '+DF.maxV+')</text>';
+      s+='<circle cx="'+sx(DF.minX)+'" cy="'+sy(DF.minV)+'" r="7" fill="var(--bad)"/>';
+      s+='<text x="'+sx(DF.minX)+'" y="'+(sy(DF.minV)+22)+'" text-anchor="middle" font-family="Bitter,serif" font-size="12.5" font-weight="700" fill="var(--bad)">min ('+DF.minX+', '+DF.minV+')</text>';
+    }
+
+    for(let g=xMin;g<=xMax;g+=1) s+='<text x="'+sx(g)+'" y="'+(B+18)+'" text-anchor="middle" font-family="Bitter,serif" font-size="11" fill="var(--slate)">'+g+'</text>';
+    s+='<text x="'+((L+R)/2)+'" y="'+(B+38)+'" text-anchor="middle" font-family="Dosis,sans-serif" font-size="13" fill="var(--slate)">seconds</text>';
+    s+='<text x="'+(L-12)+'" y="'+(T+10)+'" text-anchor="end" font-family="Dosis,sans-serif" font-size="12" fill="var(--slate)">m</text>';
+    svg.innerHTML=s;
+
+    const iv=a=>a.map(([x,y])=>'$'+fmt(x)+' &lt; x &lt; '+fmt(y)+'$').join(' and ');
+    const parts=[];
+    if(on.yint) parts.push('<strong>y-intercept:</strong> $(0, -3)$ &mdash; the drone launched 3 m below the ledge.');
+    if(on.xint) parts.push('<strong>x-intercepts (zeros):</strong> $x = '+DF.zeros.map(fmt).join(', ')+'$ &mdash; the moments it was exactly level with the ledge.');
+    if(on.inc) parts.push('<strong>Increasing:</strong> '+iv(DF.inc)+' &mdash; climbing.');
+    if(on.dec) parts.push('<strong>Decreasing:</strong> '+iv(DF.dec)+' &mdash; descending.');
+    if(on.pos) parts.push('<strong>Positive:</strong> '+iv(DF.pos)+' &mdash; above the ledge.');
+    if(on.neg) parts.push('<strong>Negative:</strong> '+iv(DF.neg)+' &mdash; below the ledge.');
+    if(on.ext) parts.push('<strong>Maximum:</strong> '+DF.maxV+' m at '+DF.maxX+' s. &nbsp;<strong>Minimum:</strong> '+DF.minV+' m at '+DF.minX+' s.');
+    if(on.inc && on.neg) parts.push('<em>Look at $10 &lt; x &lt; 12$ &mdash; shaded by both. Increasing and negative at the same time.</em>');
+    if(on.dec && on.pos) parts.push('<em>Look at $4 &lt; x &lt; 8$ &mdash; shaded by both. Decreasing and positive at the same time.</em>');
+
+    out.innerHTML = parts.length ? parts.join('<br>') : 'Turn on a feature above to see where it lives on the graph and what it means for the drone.';
+    mathify(out);
+  }
+  draw();
+})();
+
+/* ============================================================ */
+/* ===== W3: increasing vs positive drill ===================== */
+/* ============================================================ */
+(function incPosDrill(){
+  const qEl=document.getElementById('ipQ'), fb=document.getElementById('ipFb'), sc=document.getElementById('ipScore');
+  if(!qEl) return;
+  // sample points that sit strictly inside one increasing/decreasing run
+  const SAMPLES=[1,3,5,7,9,11,12.5];
+  let right=0,asked=0,ans=false,cur=null,order=[],i=0;
+
+  function classify(x){
+    const inInc=DF.inc.some(([a,b])=>x>a && x<b);
+    const y=droneAt(x);
+    return (inInc?'inc':'dec')+'-'+(y>0?'pos':'neg');
+  }
+  function shuffle(){ order=SAMPLES.slice(); for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));const t=order[k];order[k]=order[j];order[j]=t;} i=0; }
+  function show(){
+    if(i>=order.length) shuffle();
+    cur=order[i];
+    qEl.innerHTML='At <strong>'+fmt(cur)+' seconds</strong>, the drone is at a height of <strong>'+fmt(Math.round(droneAt(cur)*100)/100)+' m</strong>. At that moment the function is&hellip;';
+    fb.className='fb'; fb.innerHTML=''; ans=false; mathify(qEl);
+  }
+  document.querySelectorAll('button[data-ip]').forEach(b=>{
+    b.addEventListener('click',()=>{
+      if(ans) return; ans=true; asked++;
+      const correct=classify(cur), ok=b.dataset.ip===correct;
+      if(ok) right++;
+      const y=droneAt(cur);
+      const words={'inc-pos':'increasing and positive','inc-neg':'increasing and negative','dec-pos':'decreasing and positive','dec-neg':'decreasing and negative'};
+      fb.className='fb show '+(ok?'ok':'no');
+      fb.innerHTML=(ok?'<strong>Correct &mdash; ':'<strong>Not quite &mdash; it is ')+words[correct]+'.</strong> '
+        + 'The height is '+fmt(Math.round(y*100)/100)+' m, which is '+(y>0?'above':'below')+' the ledge, so the function is <strong>'+(y>0?'positive':'negative')+'</strong>. '
+        + 'And the graph is heading '+(correct.startsWith('inc')?'up':'down')+' there, so it is <strong>'+(correct.startsWith('inc')?'increasing':'decreasing')+'</strong>.';
+      sc.textContent='Score: '+right+' of '+asked; mathify(fb);
+    });
+  });
+  document.getElementById('ipNext').addEventListener('click',()=>{i++;show();});
+  shuffle(); sc.textContent='Score: 0 of 0'; show();
+})();
+
+/* ============================================================ */
+/* ===== W4: clearance comparison ============================= */
+/* ============================================================ */
+(function clearance(){
+  const svg=document.getElementById('clSvg'), tw=document.getElementById('clTableWrap'), out=document.getElementById('clOut');
+  if(!svg) return;
+  const A=w=>45*Math.pow(0.85,w);   // 15% off each week
+  const Bf=w=>Math.max(0,45-5*w);   // $5 off each week, floored at zero
+  const N=10;
+
+  const L=58,R=600,T=22,B=238;
+  const sx=w=>L+(w/N)*(R-L), sy=v=>B-(v/50)*(B-T);
+  let s='';
+  for(let g=0;g<=N;g++) s+='<line x1="'+sx(g)+'" y1="'+T+'" x2="'+sx(g)+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="0.6" opacity="0.55"/>';
+  s+='<line x1="'+L+'" y1="'+sy(0)+'" x2="'+R+'" y2="'+sy(0)+'" stroke="var(--forest)" stroke-width="2"/>';
+  let pa='',pb='';
+  for(let k=0;k<=160;k++){ const w=(k/160)*N; pa+=(k?'L':'M')+sx(w)+' '+sy(A(w))+' '; pb+=(k?'L':'M')+sx(w)+' '+sy(Bf(w))+' '; }
+  s+='<path d="'+pa+'" fill="none" stroke="var(--geo)" stroke-width="2.6"/>';
+  s+='<path d="'+pb+'" fill="none" stroke="var(--arith)" stroke-width="2.6"/>';
+  // crossover
+  let cx=null; for(let w=0;w<=N;w+=0.01){ if(A(w)>Bf(w)){ cx=w; break; } }
+  if(cx!==null){
+    s+='<line x1="'+sx(cx)+'" y1="'+T+'" x2="'+sx(cx)+'" y2="'+B+'" stroke="var(--forest)" stroke-width="1.5" stroke-dasharray="5 4"/>';
+    s+='<text x="'+(sx(cx)+7)+'" y="'+(T+14)+'" font-family="Bitter,serif" font-size="12" font-weight="700" fill="var(--forest)">they cross at week &asymp; '+fmt(Math.round(cx*10)/10)+'</text>';
+  }
+  s+='<circle cx="'+(L+12)+'" cy="'+(B-6)+'" r="5" fill="var(--geo)"/><text x="'+(L+24)+'" y="'+(B-1)+'" font-family="Dosis,sans-serif" font-size="12.5" fill="var(--forest)">15% off each week</text>';
+  s+='<circle cx="'+(L+160)+'" cy="'+(B-6)+'" r="5" fill="var(--arith)"/><text x="'+(L+172)+'" y="'+(B-1)+'" font-family="Dosis,sans-serif" font-size="12.5" fill="var(--forest)">\$5 off each week</text>';
+  for(let g=0;g<=N;g++) s+='<text x="'+sx(g)+'" y="'+(B+18)+'" text-anchor="middle" font-family="Bitter,serif" font-size="11.5" fill="var(--slate)">'+g+'</text>';
+  s+='<text x="'+((L+R)/2)+'" y="'+(B+38)+'" text-anchor="middle" font-family="Dosis,sans-serif" font-size="13" fill="var(--slate)">weeks on clearance</text>';
+  svg.innerHTML=s;
+
+  let h='<table class="seq-table"><tr><th>week</th>';
+  for(let w=0;w<=9;w++) h+='<th>'+w+'</th>';
+  h+='</tr><tr><th>15% off</th>';
+  for(let w=0;w<=9;w++) h+='<td>'+fmt(Math.round(A(w)*100)/100)+'</td>';
+  h+='</tr><tr><th>\$5 off</th>';
+  for(let w=0;w<=9;w++) h+='<td>'+fmt(Math.round(Bf(w)*100)/100)+'</td>';
+  h+='</tr></table>';
+  tw.innerHTML=h;
+
+  out.innerHTML='<strong>Percent off:</strong> $A(w) = 45(0.85)^w$ &nbsp;&middot;&nbsp; <strong>Dollars off:</strong> $B(w) = 45 - 5w$<br><br>'
+    + 'For the first five weeks the percent-off price is lower. From week 6 the dollar-off price is lower, and the gap grows.<br>'
+    + 'They end completely differently: the dollar-off item hits <strong>\$0 at week 9</strong>, while the percent-off item is still <strong>\$'+fmt(Math.round(A(9)*100)/100)+'</strong> and will never reach zero.<br><br>'
+    + '<em>Taking a fixed amount off repeatedly gets you to free. Taking a fixed share off repeatedly never does &mdash; the same asymptote from Unit 2.</em>';
+  mathify(out);
+})();
+</script>
+</body>
+</html>
