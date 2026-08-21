@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equations &amp; Inequalities (Integrated Math 1, Unit 4)</title>
+<meta name="description" content="Interactive Integrated Math 1 notes on equations and inequalities: justifying every step of a solve, solving linear equations and inequalities, the sign-flip rule, creating equations from context, rearranging formulas, and representing solutions graphically as points, intersections, and regions. By tutoringwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<style>
+:root{
+  --white:#FFFFFF;--sage-l:#D0D6B3;--sage:#9BA06A;--slate:#525B76;--forest:#143109;
+  --bg:#f5f6ee;--sage-m:#e4e8cc;
+  --good:#5b8a3f;--bad:#b5503e;
+  --arith:#5b7fa8;--geo:#a86b5b;
+  --fh:'Young Serif',Georgia,serif;--fp:'Dosis','Trebuchet MS',Arial,sans-serif;--fb:'Bitter',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--fp);color:var(--forest);padding:18px 16px 52px;overflow-x:hidden}
+.page{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.pg-head{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:20px;padding:36px 28px;text-align:center}
+.pg-head .topic-badge{display:inline-block;font-family:var(--fb);font-weight:700;color:var(--slate);background:var(--white);border:1.5px solid var(--sage-l);padding:4px 14px;border-radius:20px;font-size:.82rem;margin-bottom:12px;letter-spacing:.04em}
+.pg-head h1{font-family:var(--fh);font-size:2.2rem;color:var(--forest);margin-bottom:6px}
+.pg-head .sub{font-family:var(--fp);color:var(--slate);font-size:1rem}
+.card{background:var(--white);border:2px solid var(--sage-l);border-radius:20px;padding:28px 26px;box-shadow:0 2px 12px rgba(20,49,9,0.06);scroll-margin-top:84px}
+.card-title{font-family:var(--fh);font-size:1.4rem;color:var(--forest);margin-bottom:14px}
+.card-title .num{font-family:var(--fb);font-weight:700;color:var(--sage);font-size:.9rem;background:var(--sage-m);border-radius:8px;padding:2px 10px;margin-right:8px;vertical-align:middle}
+.body-text{font-family:var(--fp);font-size:1.04rem;color:var(--forest);line-height:1.7;margin-bottom:12px}
+.body-text:last-child{margin-bottom:0}
+.highlight-box{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:14px;padding:18px 22px;margin:14px 0}
+.sub-title{font-family:var(--fh);font-size:1.1rem;color:var(--forest);margin:18px 0 8px}
+.term-grid{display:grid;grid-template-columns:180px 1fr;gap:8px 16px;margin:12px 0}
+.term-sym{font-family:var(--fb);font-weight:700;color:var(--sage);text-align:right;font-size:1rem}
+.term-def{font-family:var(--fp);font-size:.98rem;color:var(--forest);line-height:1.6}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
+.site-btn{font-family:var(--fp);font-weight:600;font-size:.92rem;border:none;border-radius:30px;padding:8px 18px;cursor:pointer;transition:background .18s,transform .18s;background:var(--sage);color:var(--white)}
+.site-btn:hover{background:var(--forest);transform:translateY(-1px)}
+.site-btn.secondary{background:var(--white);color:var(--forest);border:2px solid var(--sage-l)}
+.site-btn.secondary:hover{background:var(--sage-m)}
+.interactive-area{background:var(--sage-m);border:2px solid var(--sage-l);border-radius:16px;padding:20px 18px;margin:16px 0}
+.ia-label{font-family:var(--fb);font-size:1rem;color:var(--slate);margin-bottom:10px;text-align:center;font-weight:700}
+.practice-box{background:var(--white);border:2px dashed var(--sage-l);border-radius:14px;padding:16px 20px;margin:10px 0}
+.practice-box .q{font-family:var(--fp);font-size:1rem;color:var(--forest);margin-bottom:8px;line-height:1.6}
+.practice-box .a{font-family:var(--fp);font-size:.95rem;color:var(--forest);display:none;margin-top:8px;padding:12px 14px;background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;line-height:1.65}
+.practice-box .a.show{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.show-ans-btn{font-family:var(--fp);font-weight:600;font-size:.85rem;border:2px solid var(--sage-l);border-radius:20px;padding:5px 14px;cursor:pointer;background:var(--white);color:var(--sage);transition:background .18s}
+.show-ans-btn:hover{background:var(--sage-m)}
+.worked-example{background:#f9faf4;border-left:4px solid var(--sage);border-radius:0 14px 14px 0;padding:16px 22px;margin:14px 0}
+.worked-example .step{font-family:var(--fp);font-size:.98rem;color:var(--forest);margin-bottom:6px;line-height:1.65}
+.worked-example .step-label{font-family:var(--fb);font-weight:700;color:var(--sage)}
+.topics-list{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 18px;margin-top:8px}
+.topics-list .row{font-family:var(--fp);color:var(--forest);display:flex;gap:10px;font-size:.98rem;padding:3px 0}
+.topics-list .row .rn{font-family:var(--fb);color:var(--sage);min-width:32px;font-weight:700}
+.topics-list .row.current{background:var(--sage-m);border-radius:8px;padding:3px 8px;font-weight:600}
+.pick-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:8px 0}
+.pick-btn{font-family:var(--fb);font-size:.82rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:18px;padding:5px 12px;cursor:pointer;color:var(--forest);transition:background .15s}
+.pick-btn:hover{background:var(--sage-m)}
+.pick-btn.active{background:var(--sage);color:var(--white);border-color:var(--sage)}
+.stage{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:14px;text-align:center}
+.stage svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.readout{font-family:var(--fp);font-size:.95rem;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:10px;padding:12px 16px;margin-top:10px;line-height:1.6;text-align:left}
+.readout strong{font-family:var(--fb)}
+.ctrl-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin:10px 0}
+.ctrl{display:flex;align-items:center;gap:8px;font-family:var(--fp);font-size:.9rem;color:var(--forest)}
+.ctrl label{font-family:var(--fb);font-weight:700;font-size:.82rem;color:var(--slate)}
+.ctrl input[type=range]{width:140px;accent-color:var(--sage)}
+.ctrl input[type=number]{width:76px;font-family:var(--fb);font-size:.92rem;padding:5px 8px;border:1.5px solid var(--sage-l);border-radius:8px;background:var(--white);color:var(--forest)}
+.val-chip{font-family:var(--fb);font-weight:700;background:var(--white);border:1.5px solid var(--sage-l);border-radius:10px;padding:2px 10px;min-width:38px;display:inline-block;text-align:center}
+.seq-table{width:100%;border-collapse:collapse;font-family:var(--fb);font-size:.9rem;margin:10px 0;background:var(--white)}
+.seq-table th,.seq-table td{border:1.5px solid var(--sage-l);padding:7px 9px;text-align:center;color:var(--forest)}
+.seq-table th{background:var(--sage-m);font-weight:700;font-size:.82rem}
+.seq-table td.diff{color:var(--arith);font-weight:700}
+.seq-table td.ratio{color:var(--geo);font-weight:700}
+.fb{font-family:var(--fp);font-size:.95rem;border-radius:10px;padding:11px 14px;margin-top:10px;line-height:1.6;display:none;text-align:left}
+.fb.show{display:block;animation:fadeIn .2s ease}
+.fb.ok{background:#eaf3e2;border:1.5px solid var(--good);color:#2f4d1c}
+.fb.no{background:#f7e9e6;border:1.5px solid var(--bad);color:#6d2d21}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.cmp-col{border:2px solid var(--sage-l);border-radius:14px;padding:16px 18px;background:var(--white)}
+.cmp-col.a{border-color:var(--arith)}
+.cmp-col.g{border-color:var(--geo)}
+.cmp-col h4{font-family:var(--fh);font-size:1.05rem;margin-bottom:8px;color:var(--forest)}
+.cmp-col.a h4{color:var(--arith)}
+.cmp-col.g h4{color:var(--geo)}
+.cmp-col p{font-family:var(--fp);font-size:.94rem;line-height:1.6;margin-bottom:7px}
+.cmp-col p:last-child{margin-bottom:0}
+.map-table{width:100%;border-collapse:collapse;font-family:var(--fp);font-size:.93rem;margin:12px 0;background:var(--white)}
+.map-table th,.map-table td{border:1.5px solid var(--sage-l);padding:9px 11px;text-align:left;color:var(--forest);vertical-align:top;line-height:1.55}
+.map-table th{background:var(--sage-m);font-family:var(--fb);font-weight:700;font-size:.82rem}
+.map-table td.code{font-family:var(--fb);font-weight:700;color:var(--sage);white-space:nowrap;font-size:.85rem}
+.map-table td.ctr{text-align:center}
+.note-flag{border-left:4px solid var(--bad);background:#fbf3f1;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
+.note-flag .flag-label{font-family:var(--fb);font-weight:700;color:var(--bad);display:block;margin-bottom:4px}
+.fwd{border-left:4px solid var(--arith);background:#f2f6fa;border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-family:var(--fp);font-size:.97rem;line-height:1.65;color:var(--forest)}
+.fwd .fwd-label{font-family:var(--fb);font-weight:700;color:var(--arith);display:block;margin-bottom:4px}
+.fwd a{color:var(--forest);font-weight:600}
+/* 2x2 grid */
+.quad{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;margin:14px 0;font-family:var(--fp)}
+.quad .qh{font-family:var(--fb);font-weight:700;font-size:.84rem;color:var(--slate);display:flex;align-items:center;justify-content:center;text-align:center;padding:6px}
+.quad .qcell{border:2px solid var(--sage-l);border-radius:12px;padding:12px 14px;background:var(--white);font-size:.92rem;line-height:1.55}
+.quad .qcell .qt{font-family:var(--fb);font-weight:700;color:var(--forest);display:block;margin-bottom:4px}
+.quad .qcell .qs{color:var(--slate);font-size:.86rem}
+.quad .qcell.lin{border-color:var(--arith)}
+.quad .qcell.exp{border-color:var(--geo)}
+
+/* ===== LWS SHELL (v2 UI) ===== */
+body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01","cv11"}
+.page{max-width:none;margin:0;display:block}
+.lws-backdrop{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(228,232,204,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(208,214,179,.5) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(228,232,204,.6) 0%,transparent 55%),
+             var(--bg)}
+.app{position:relative;z-index:1;display:grid;grid-template-columns:264px 1fr;grid-template-rows:64px 1fr;grid-template-areas:"side top" "side main";min-height:100vh}
+.side{grid-area:side;padding:16px 14px 14px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-right:1px solid var(--sage-l);overflow-y:auto;box-shadow:0 1px 0 rgba(255,255,255,0.9) inset}
+.top{grid-area:top;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,0.62);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);border-bottom:1px solid var(--sage-l);position:sticky;top:0;z-index:15}
+.main{grid-area:main;padding:24px 28px 56px;max-width:1320px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;padding:8px 12px}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--forest));color:#fff;display:grid;place-items:center;font-family:var(--fh);font-size:1.1rem;line-height:1;box-shadow:0 6px 20px -6px rgba(20,49,9,0.35)}
+.brand-name{font-family:var(--fh);color:var(--forest);font-size:1.05rem;line-height:1.05}
+.brand-name small{display:block;font-family:var(--fb);font-style:italic;color:#7C8172;font-size:.7rem;margin-top:3px}
+.ws-switch{margin:0 4px}
+.ws-switch-btn{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.62);border:1px solid rgba(255,255,255,0.55);border-radius:12px;backdrop-filter:blur(14px);text-align:left;transition:background .15s}
+.ws-switch-btn .ico{width:30px;height:30px;border-radius:8px;background:var(--sage-m);color:var(--forest);display:grid;place-items:center;flex-shrink:0;font-family:var(--fb);font-weight:700;font-size:.78rem}
+.ws-switch-btn .meta{flex:1;min-width:0}
+.ws-switch-btn .lbl{font-family:var(--fh);color:var(--forest);font-size:.95rem;line-height:1.1}
+.ws-switch-btn .sub{font-family:var(--fb);color:#7C8172;font-size:.68rem;margin-top:3px}
+.side-section-label{font-family:var(--fb);font-size:.66rem;letter-spacing:.14em;color:#7C8172;text-transform:uppercase;padding:14px 12px 4px}
+.side-nav{display:flex;flex-direction:column;gap:1px;padding:0 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;text-decoration:none;color:var(--forest);transition:background .15s;font-family:var(--fp);font-size:.86rem;font-weight:500}
+.nav-item .num{font-family:var(--fb);color:var(--sage);font-weight:700;font-size:.78rem;min-width:30px}
+.nav-item .t{flex:1;color:var(--forest)}
+.nav-item:hover{background:var(--sage-m)}
+.nav-item.active{background:var(--white);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 12px 40px -12px rgba(20,49,9,0.18),0 2px 8px rgba(20,49,9,0.06);border:1px solid var(--sage-l)}
+.nav-item.active .t{color:var(--forest);font-weight:700}
+.nav-item.locked{color:#a3a89a;cursor:not-allowed}
+.nav-item.locked:hover{background:transparent}
+.nav-item.locked .num,.nav-item.locked .t{color:#a3a89a}
+.bread{display:flex;flex-direction:column;gap:0;flex:0 0 auto;min-width:0}
+.bread-trail{font-family:var(--fp);color:var(--slate);font-size:.78rem}
+.bread-now{font-family:var(--fp);font-weight:700;color:var(--forest);font-size:1rem;line-height:1.1}
+.search{flex:1;max-width:520px;min-width:120px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.62);border:1px solid var(--sage-l);border-radius:99px;padding:8px 16px;color:var(--slate);backdrop-filter:blur(14px)}
+.search input{border:0;background:transparent;outline:none;flex:1;font-family:var(--fp);font-size:.9rem;color:var(--forest);min-width:0}
+.search svg{flex-shrink:0;color:var(--slate)}
+.top-actions{display:flex;align-items:center;gap:8px}
+.btn-icon{width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--sage-l);color:var(--slate);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;font-size:1rem;padding:0}
+.btn-icon:hover{background:var(--sage-m);color:var(--forest)}
+.pg-head{margin-top:0}
+@media(max-width:980px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;grid-template-areas:"side" "top" "main"}
+  .side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--sage-l);max-height:none}
+  .top{padding:10px 18px;flex-wrap:wrap}
+  .main{padding:16px 18px 48px}
+  .search{order:3;flex-basis:100%;max-width:none}
+  .cmp{grid-template-columns:1fr}
+  .topics-list{grid-template-columns:1fr}
+  .term-grid{grid-template-columns:1fr}
+  .term-sym{text-align:left}
+  .quad{grid-template-columns:1fr}
+  .quad .qh{justify-content:flex-start}
+}
+[data-theme="dark"]{
+  --white:#14170F; --sage-l:#2B3320; --sage:#A9B07A; --sage-m:#1E2416;
+  --slate:#AEB5C8; --forest:#E8EBDA; --bg:#0E1108;
+  --arith:#8fb4dd; --geo:#dda28f;
+}
+[data-theme="dark"] body{color:var(--forest)}
+[data-theme="dark"] .lws-backdrop{
+  background:radial-gradient(1200px 600px at 8% -10%,rgba(43,51,32,.7) 0%,transparent 60%),
+             radial-gradient(900px 500px at 110% 0%,rgba(30,36,22,.55) 0%,transparent 55%),
+             radial-gradient(800px 400px at 50% 120%,rgba(43,51,32,.7) 0%,transparent 55%),
+             var(--bg)
+}
+[data-theme="dark"] .side,[data-theme="dark"] .top{background:rgba(20,23,15,0.7);border-color:#2B3320}
+[data-theme="dark"] .ws-switch-btn,[data-theme="dark"] .search,[data-theme="dark"] .btn-icon{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .lbl,[data-theme="dark"] .ws-switch-btn .ico{color:var(--forest)}
+[data-theme="dark"] .ws-switch-btn .ico{background:#2A3421}
+[data-theme="dark"] .nav-item,[data-theme="dark"] .nav-item .t{color:var(--forest)}
+[data-theme="dark"] .nav-item:hover{background:#2A3421}
+[data-theme="dark"] .nav-item.active{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .btn-icon:hover{background:#2A3421;color:var(--forest)}
+[data-theme="dark"] .search input{color:var(--forest)}
+[data-theme="dark"] .search input::placeholder{color:#7e8775}
+[data-theme="dark"] .pg-head{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .pg-head h1,[data-theme="dark"] .pg-head .sub,[data-theme="dark"] .pg-head .topic-badge{color:var(--forest)}
+[data-theme="dark"] .pg-head .topic-badge{background:#2A3421;border-color:#3A4A2E}
+[data-theme="dark"] .card{background:#14170F;border-color:#2B3320;color:var(--forest)}
+[data-theme="dark"] .card-title,[data-theme="dark"] .sub-title,[data-theme="dark"] .body-text,[data-theme="dark"] .term-def,[data-theme="dark"] .term-sym{color:var(--forest)}
+[data-theme="dark"] .card-title .num{background:#2A3421;color:var(--sage)}
+[data-theme="dark"] .highlight-box{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .interactive-area{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .ia-label{color:var(--forest)}
+[data-theme="dark"] .practice-box{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .practice-box .q,[data-theme="dark"] .practice-box .a{color:var(--forest)}
+[data-theme="dark"] .practice-box .a{background:#1E2416;border-color:#3A4A2E}
+[data-theme="dark"] .show-ans-btn{background:#1E2416;color:var(--sage);border-color:#3A4A2E}
+[data-theme="dark"] .worked-example{background:#1A1F11;border-left-color:var(--sage);color:var(--forest)}
+[data-theme="dark"] .site-btn.secondary{background:#1E2416;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .topics-list .row.current{background:#2A3421}
+[data-theme="dark"] .pick-btn{background:#14170F;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .pick-btn:hover{background:#2A3421}
+[data-theme="dark"] .stage{background:#14170F;border-color:#3A4A2E}
+[data-theme="dark"] .readout{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .seq-table,[data-theme="dark"] .map-table{background:#14170F}
+[data-theme="dark"] .seq-table th,[data-theme="dark"] .map-table th{background:#1E2416}
+[data-theme="dark"] .seq-table th,[data-theme="dark"] .seq-table td,[data-theme="dark"] .map-table th,[data-theme="dark"] .map-table td{border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .cmp-col,[data-theme="dark"] .quad .qcell{background:#14170F}
+[data-theme="dark"] .ctrl input[type=number]{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .val-chip{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .note-flag{background:#241a17;color:var(--forest)}
+[data-theme="dark"] .fwd{background:#161d24;color:var(--forest)}
+[data-theme="dark"] .fwd a{color:var(--forest)}
+[data-theme="dark"] .fb.ok{background:#1d2a15;color:#cfe4bd}
+[data-theme="dark"] .fb.no{background:#2c1a16;color:#e8c3b9}
+[data-theme="dark"] .katex{color:var(--forest)}
+
+/* feature toggles */
+.feat-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0}
+.feat-btn{font-family:var(--fb);font-size:.8rem;background:var(--white);border:1.5px solid var(--sage-l);border-radius:18px;padding:6px 13px;cursor:pointer;color:var(--forest);transition:background .15s}
+.feat-btn:hover{background:var(--sage-m)}
+.feat-btn.on{background:var(--forest);color:var(--white);border-color:var(--forest)}
+.notation-grid{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:12px 0;align-items:start}
+.notation-grid .nsym{font-family:var(--fb);font-weight:700;color:var(--forest);background:var(--sage-m);border:1.5px solid var(--sage-l);border-radius:9px;padding:6px 12px;white-space:nowrap;text-align:center}
+.notation-grid .nmean{font-family:var(--fp);font-size:.97rem;color:var(--forest);line-height:1.6;padding-top:6px}
+[data-theme="dark"] .feat-btn{background:#14170F;color:var(--forest);border-color:#3A4A2E}
+[data-theme="dark"] .feat-btn:hover{background:#2A3421}
+[data-theme="dark"] .feat-btn.on{background:var(--sage);color:#0E1108;border-color:var(--sage)}
+[data-theme="dark"] .notation-grid .nsym{background:#1E2416;border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .notation-grid .nmean{color:var(--forest)}
+@media(max-width:640px){ .notation-grid{grid-template-columns:1fr} }
+
+/* justification table */
+.just-table{width:100%;border-collapse:collapse;font-family:var(--fp);font-size:.95rem;margin:12px 0;background:var(--white)}
+.just-table th,.just-table td{border:1.5px solid var(--sage-l);padding:9px 12px;color:var(--forest);vertical-align:middle;line-height:1.55}
+.just-table th{background:var(--sage-m);font-family:var(--fb);font-weight:700;font-size:.82rem;text-align:left}
+.just-table td.eq{font-family:var(--fb);text-align:center;white-space:nowrap}
+.just-table td.why{font-size:.9rem;color:var(--slate)}
+.just-table tr.hl td{background:var(--sage-m)}
+[data-theme="dark"] .just-table{background:#14170F}
+[data-theme="dark"] .just-table th{background:#1E2416}
+[data-theme="dark"] .just-table th,[data-theme="dark"] .just-table td{border-color:#3A4A2E;color:var(--forest)}
+[data-theme="dark"] .just-table td.why{color:var(--slate)}
+[data-theme="dark"] .just-table tr.hl td{background:#2A3421}
+.numline{background:var(--white);border:1.5px solid var(--sage-l);border-radius:14px;padding:10px 6px}
+[data-theme="dark"] .numline{background:#14170F;border-color:#3A4A2E}
+</style>
+</head>
+<body data-theme="light">
+<div class="lws-backdrop"></div>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark">L</div>
+    <div class="brand-name">learningwithsruthi <small>nc math 1 notes</small></div>
+  </div>
+  <div class="ws-switch">
+    <div class="ws-switch-btn">
+      <div class="ico">4</div>
+      <div class="meta">
+        <div class="lbl">Equations &amp; Inequalities</div>
+        <div class="sub">Unit 4 of 8 &middot; NC Math 1</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-section-label">Start here</div>
+  <div class="side-nav">
+    <a class="nav-item" href="unit-0-eighth-grade-recap.html"><span class="num">0.</span><span class="t">8th Grade Recap</span></a>
+  </div>
+  <div class="side-section-label">Units</div>
+  <div class="side-nav">
+    <a class="nav-item" href="unit-1-sequences.html"><span class="num">1.</span><span class="t">Sequences</span></a>
+    <a class="nav-item" href="unit-2-linear-exponential.html"><span class="num">2.</span><span class="t">Linear &amp; Exponential Functions</span></a>
+    <a class="nav-item" href="unit-3-features-of-functions.html"><span class="num">3.</span><span class="t">Features of Functions</span></a>
+    <a class="nav-item active" href="unit-4-equations-inequalities.html"><span class="num">4.</span><span class="t">Equations &amp; Inequalities</span></a>
+    <a class="nav-item locked"><span class="num">5.</span><span class="t">Systems of Equations</span></a>
+    <a class="nav-item locked"><span class="num">6.</span><span class="t">Quadratic Functions</span></a>
+    <a class="nav-item locked"><span class="num">7.</span><span class="t">Structures of Expressions</span></a>
+    <a class="nav-item locked"><span class="num">8.</span><span class="t">Modeling Data</span></a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">NC Math 1 &middot; Unit 4 of 8</span>
+    <span class="bread-now">Equations &amp; Inequalities</span>
+  </div>
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input placeholder="Search topics, lessons, questions...">
+  </div>
+  <div class="top-actions">
+    <button class="btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleLwsTheme()">&#9790;</button>
+  </div>
+</header>
+
+<main class="main">
+
+<div class="pg-head">
+  <div class="topic-badge">Equations &amp; Inequalities &middot; NC Math 1, Unit 4</div>
+  <h1>Equations &amp; Inequalities</h1>
+  <p class="sub">You already know how to solve. This unit is about being able to say <em>why</em> every step was allowed.</p>
+</div>
+
+<!-- ======== MAP ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">Map</span>What this unit covers</h2>
+  <p class="body-text">Most of the mechanics here you met in 8th grade. What is new is the demand for <strong>justification</strong> &mdash; NC's own note on this standard says it is the first time a content standard requires you to explain your reasoning, not just get the answer.</p>
+  <div class="topics-list">
+    <div class="row current"><span class="rn">L1</span><span>Solving as reasoning &mdash; justify every step</span></div>
+    <div class="row current"><span class="rn">L2</span><span>Solving linear equations</span></div>
+    <div class="row current"><span class="rn">L3</span><span>Inequalities and the sign-flip rule</span></div>
+    <div class="row current"><span class="rn">L4</span><span>Creating equations from a context</span></div>
+    <div class="row current"><span class="rn">L5</span><span>Rearranging formulas</span></div>
+    <div class="row current"><span class="rn">L6</span><span>Solutions you can see: points and intersections</span></div>
+    <div class="row current"><span class="rn">L7</span><span>Inequalities as regions of the plane</span></div>
+  </div>
+  <div class="highlight-box" style="margin-top:16px">
+    <p class="body-text" style="margin:0"><strong>The thread through the unit:</strong> a solution is a value that makes a statement true. Everything else &mdash; the algebra, the graphs, the shaded regions &mdash; is a different way of finding or displaying that same set of values.</p>
+  </div>
+</div>
+
+<!-- ======== L1: JUSTIFICATION ======== -->
+<div class="card" id="sec-reasoning">
+  <h2 class="card-title"><span class="num">L1</span>Solving is reasoning, and reasoning can be written down</h2>
+  <p class="body-text">Every legal move in solving comes from one of a small set of properties. You are not expected to memorise their names, but you are expected to describe what you did and why it preserved the solution.</p>
+
+  <div class="term-grid">
+    <div class="term-sym">Addition property</div><div class="term-def">adding the same quantity to both sides keeps the equation true</div>
+    <div class="term-sym">Multiplication property</div><div class="term-def">multiplying both sides by the same <em>nonzero</em> number keeps it true</div>
+    <div class="term-sym">Distributive property</div><div class="term-def">$a(b + c) = ab + ac$ &mdash; rewrites one side without changing its value</div>
+    <div class="term-sym">Combining like terms</div><div class="term-def">also a rewrite of one side; the two sides stay equal because nothing was added or removed</div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">Two different kinds of move</span>
+    Some steps change <strong>both sides</strong> (adding, multiplying). Others rewrite <strong>one side</strong> into an equivalent expression (distributing, combining like terms). Both are legal, for different reasons, and a good justification says which kind you just used.
+  </div>
+
+  <h3 class="sub-title">The same equation, two valid routes</h3>
+  <p class="body-text">Solve $5(x + 3) - 3x = 55$. Both methods below are correct. Step through each and compare.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Step through a solution and see the justification for each line</div>
+    <div class="pick-row">
+      <button class="pick-btn active" data-jm="0">Method 1: distribute first</button>
+      <button class="pick-btn" data-jm="1">Method 2: divide first</button>
+    </div>
+    <div id="justWrap"></div>
+    <div class="btn-row">
+      <button class="site-btn secondary" id="justBack">&larr; Back</button>
+      <button class="site-btn" id="justNext">Next step &rarr;</button>
+      <button class="site-btn secondary" id="justAll">Show all</button>
+    </div>
+    <div class="readout" id="justOut"></div>
+  </div>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">Both routes reach $x = 20$, and both are fully justified. Method 1 is usually less error-prone because it avoids fractions; Method 2 is shorter when every term shares a factor. <strong>Being able to defend your choice is part of the standard</strong> &mdash; there is no single required method.</p>
+  </div>
+</div>
+
+<!-- ======== L2: SOLVING EQUATIONS ======== -->
+<div class="card" id="sec-solving">
+  <h2 class="card-title"><span class="num">L2</span>Solving linear equations</h2>
+  <p class="body-text">The goal never changes: isolate the variable using moves that keep both sides equal. A reliable order when you are unsure:</p>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">1.</span> Clear fractions by multiplying both sides by a common denominator, if that helps.</div>
+    <div class="step"><span class="step-label">2.</span> Distribute to remove brackets.</div>
+    <div class="step"><span class="step-label">3.</span> Combine like terms on each side separately.</div>
+    <div class="step"><span class="step-label">4.</span> Collect variable terms on one side, constants on the other.</div>
+    <div class="step"><span class="step-label">5.</span> Divide by the coefficient.</div>
+    <div class="step"><span class="step-label">6.</span> <strong>Check</strong> by substituting back. This is not optional &mdash; it catches almost every arithmetic slip.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Solve $\dfrac{7}{3}y - 8 = 111$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p1')">Show answer</button>
+    <div class="a" id="p1">
+      Add 8: $\dfrac{7}{3}y = 119$.<br>
+      Multiply by $\dfrac{3}{7}$: $y = 119 \cdot \dfrac{3}{7} = 51$.<br>
+      Check: $\dfrac{7}{3}(51) = 7 \cdot 17 = 119$, and $119 - 8 = 111$. Correct.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> Solve $\dfrac{3 + x}{7} = \dfrac{x - 9}{4}$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p2')">Show answer</button>
+    <div class="a" id="p2">
+      Cross-multiply (really: multiply both sides by 28): $4(3 + x) = 7(x - 9)$.<br>
+      $12 + 4x = 7x - 63$<br>
+      $75 = 3x$, so $x = 25$.<br>
+      Check: $\dfrac{28}{7} = 4$ and $\dfrac{16}{4} = 4$. Both sides agree.
+    </div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">Two answers that are not numbers</span>
+    If the variable vanishes and you are left with a true statement like $7 = 7$, every number is a solution &mdash; <strong>infinitely many solutions</strong>. If you are left with a false one like $7 = 3$, there is <strong>no solution</strong>. Neither means you made a mistake.
+  </div>
+</div>
+
+<!-- ======== L3: INEQUALITIES ======== -->
+<div class="card" id="sec-inequalities">
+  <h2 class="card-title"><span class="num">L3</span>Inequalities, and the one rule that changes</h2>
+  <p class="body-text">Inequalities solve exactly like equations, with a single exception that catches everybody at least once.</p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0"><strong>When you multiply or divide both sides by a negative number, the inequality sign flips.</strong> $&lt;$ becomes $&gt;$, and $\le$ becomes $\ge$.</p>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Why it flips &mdash; watch the number line</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>multiply both sides by</label><input type="range" id="flipK" min="-3" max="3" step="1" value="-2"><span class="val-chip" id="flipKVal">-2</span></div>
+    </div>
+    <div class="numline"><svg id="flipSvg" viewBox="0 0 640 190" role="img" aria-label="Multiplying an inequality by a number"></svg></div>
+    <div class="readout" id="flipOut"></div>
+  </div>
+
+  <p class="body-text">The answer to an inequality is not a single number but a <strong>set</strong> of them, so it deserves a picture. On a number line, an open circle means the endpoint is excluded ($&lt;$ or $&gt;$) and a filled circle means it is included ($\le$ or $\ge$).</p>
+
+  <div class="practice-box">
+    <div class="q"><strong>1.</strong> Solve $3x - 2 &gt; 9 + 5x$ and describe the solution.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p3')">Show answer</button>
+    <div class="a" id="p3">
+      Subtract $5x$: $-2x - 2 &gt; 9$.<br>
+      Add 2: $-2x &gt; 11$.<br>
+      Divide by $-2$ &mdash; <strong>flip the sign</strong>: $x &lt; -\dfrac{11}{2} = -5.5$.<br>
+      Every number below $-5.5$ works. Open circle at $-5.5$, arrow to the left.<br>
+      Check $x = -6$: left side $-20$, right side $-21$, and $-20 &gt; -21$. Correct.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>2.</strong> Solve $\dfrac{2}{3}x + 9 &lt; 8\left(\dfrac{1}{3}x - 2\right)$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p4')">Show answer</button>
+    <div class="a" id="p4">
+      Distribute: $\dfrac{2}{3}x + 9 &lt; \dfrac{8}{3}x - 16$.<br>
+      Subtract $\dfrac{2}{3}x$: $9 &lt; 2x - 16$.<br>
+      Add 16: $25 &lt; 2x$, so $x &gt; 12.5$.<br>
+      <em>No flip here &mdash; we divided by a positive 2. The sign only turns when the divisor is negative.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>3.</strong> Solve $\dfrac{1}{5}(10 - 20x) \le -14$.</div>
+    <button class="show-ans-btn" onclick="toggleAns('p5')">Show answer</button>
+    <div class="a" id="p5">
+      Distribute: $2 - 4x \le -14$.<br>
+      Subtract 2: $-4x \le -16$.<br>
+      Divide by $-4$ &mdash; <strong>flip</strong>: $x \ge 4$.<br>
+      Filled circle at 4, arrow to the right. Check $x = 4$: $\dfrac{1}{5}(10 - 80) = -14$, and $-14 \le -14$ is true.
+    </div>
+  </div>
+</div>
+
+<!-- ======== L4: CREATING EQUATIONS ======== -->
+<div class="card" id="sec-creating">
+  <h2 class="card-title"><span class="num">L4</span>Creating the equation in the first place</h2>
+  <p class="body-text">Often the hard part is not solving but writing. A routine that works:</p>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">1.</span> Name the unknown and state its units. "Let $t$ be the number of tons of wheat."</div>
+    <div class="step"><span class="step-label">2.</span> Write the total in words. "Cost of planes plus cost of wheat equals the budget."</div>
+    <div class="step"><span class="step-label">3.</span> Replace each phrase with an expression.</div>
+    <div class="step"><span class="step-label">4.</span> Solve, then check the answer <em>against the story</em>, not just the algebra.</div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Budget problem.</strong> A government spends $B = xz + yw$, buying $x$ planes at $z$ dollars each and $y$ tons of wheat at $w$ dollars each. It buys 5 planes at \$15 million each and spends \$100 million in total, with wheat at \$300 a ton. How many tons of wheat?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p6')">Show answer</button>
+    <div class="a" id="p6">
+      Substituting: $100{,}000{,}000 = 5(15{,}000{,}000) + y(300)$<br>
+      $100{,}000{,}000 = 75{,}000{,}000 + 300y$<br>
+      $300y = 25{,}000{,}000$, so $y \approx 83{,}333$ tons.<br>
+      <em>Check against the story: \$75 million on planes leaves \$25 million, and \$25 million at \$300 a ton is about 83,333 tons. Sensible.</em>
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Same formula, different unknown.</strong> The government buys 3 planes plus 10,000 tons of wheat at \$500 a ton, spending \$50 million total. What did each plane cost?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p7')">Show answer</button>
+    <div class="a" id="p7">
+      $50{,}000{,}000 = 3z + 10{,}000(500)$<br>
+      $50{,}000{,}000 = 3z + 5{,}000{,}000$<br>
+      $3z = 45{,}000{,}000$, so $z = \$15{,}000{,}000$ per plane.<br>
+      <em>The same formula answered a different question just by choosing a different letter to solve for. That is the whole idea of the next section.</em>
+    </div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">Inequalities show up whenever a limit does</span>
+    Words like <em>at most</em>, <em>no more than</em>, <em>at least</em>, and <em>minimum</em> signal an inequality rather than an equation. "A budget of \$1500" means $\text{cost} \le 1500$, not $\text{cost} = 1500$.
+  </div>
+</div>
+
+<!-- ======== L5: LITERAL EQUATIONS ======== -->
+<div class="card" id="sec-literal">
+  <h2 class="card-title"><span class="num">L5</span>Rearranging formulas</h2>
+  <p class="body-text">Solving for a letter when the other letters stay as letters feels different, but it is the same reasoning. Nothing about the rules changes just because the numbers have names.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Solve</span> $y - y_1 = m(x - x_1)$ <span class="step-label">for $m$.</span></div>
+    <div class="step">Divide both sides by $(x - x_1)$: &nbsp;$m = \dfrac{y - y_1}{x - x_1}$</div>
+    <div class="step"><span class="step-label">Recognise it?</span> That is the slope formula. Point-slope form rearranged <em>is</em> the definition of slope.</div>
+  </div>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Solve</span> $F = \dfrac{9}{5}C + 32$ <span class="step-label">for $C$.</span></div>
+    <div class="step">Subtract 32: &nbsp;$F - 32 = \dfrac{9}{5}C$</div>
+    <div class="step">Multiply by $\dfrac{5}{9}$: &nbsp;$C = \dfrac{5}{9}(F - 32)$</div>
+    <div class="step"><span class="step-label">Check with a known pair:</span> $F = 212$ gives $C = \dfrac{5}{9}(180) = 100$. Boiling point, correct.</div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Pick a formula and a variable to solve for</div>
+    <div class="pick-row" id="litPick"></div>
+    <div class="readout" id="litOut"></div>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">When a square is involved</span>
+    Solving $S = 4\pi r^2$ for $r$ gives $r = \sqrt{\dfrac{S}{4\pi}}$. Algebraically $\pm$ both work, but $r$ is a radius, so the negative root is discarded. <strong>Context decides which solutions survive</strong> &mdash; a habit worth building now, because Unit 6 is full of it.
+  </div>
+</div>
+
+<!-- ======== L6: GRAPHICAL SOLUTIONS ======== -->
+<div class="card" id="sec-graphical">
+  <h2 class="card-title"><span class="num">L6</span>Solutions you can see</h2>
+
+  <h3 class="sub-title">Every point on a graph is a solution</h3>
+  <p class="body-text">The graph of a two-variable equation is not a decoration of the equation &mdash; it <em>is</em> the complete set of its solutions. Every point on the line satisfies the equation, and every point off it does not.</p>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0">If $(a, b)$ sits on the graph of $y = 2x + 1$, then substituting gives a true statement. If it does not sit on the graph, substituting gives a false one. There is no third option.</p>
+  </div>
+
+  <h3 class="sub-title">Where two graphs cross</h3>
+  <p class="body-text">Now suppose you want to solve $f(x) = g(x)$. Graph $y = f(x)$ and $y = g(x)$ separately. Wherever they cross, the two outputs are equal at the same input &mdash; which is exactly what the equation asks for.</p>
+
+  <div class="interactive-area">
+    <div class="ia-label">Click anywhere on the grid to test a point against both lines</div>
+    <div class="stage"><svg id="ptSvg" viewBox="0 0 640 330" role="img" aria-label="Testing points against two lines" style="cursor:crosshair"></svg></div>
+    <div class="readout" id="ptOut"></div>
+  </div>
+
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0"><strong>The x-coordinate is the solution, not the point.</strong> If the graphs of $y = 2x+1$ and $y = -x+7$ meet at $(2, 5)$, then the solution of the <em>equation</em> $2x + 1 = -x + 7$ is $x = 2$. The 5 tells you what both sides equal there.</p>
+  </div>
+
+  <div class="note-flag">
+    <span class="flag-label">Why this matters beyond straight lines</span>
+    Plenty of equations cannot be solved by algebra you know yet. But if you can graph both sides, you can always read off approximate solutions where the curves cross. NC expects exactly this &mdash; approximating with technology or by narrowing down a table of values.
+  </div>
+</div>
+
+<!-- ======== L7: REGIONS ======== -->
+<div class="card" id="sec-regions">
+  <h2 class="card-title"><span class="num">L7</span>Inequalities as regions of the plane</h2>
+  <p class="body-text">A two-variable equation's solutions form a line. A two-variable <em>inequality</em>'s solutions form a whole region on one side of that line.</p>
+
+  <div class="worked-example">
+    <div class="step"><span class="step-label">1.</span> Rearrange into $y = \ldots$ form, remembering to flip the sign if you divide by a negative.</div>
+    <div class="step"><span class="step-label">2.</span> Graph the boundary line. <strong>Dashed</strong> for $&lt;$ or $&gt;$; <strong>solid</strong> for $\le$ or $\ge$.</div>
+    <div class="step"><span class="step-label">3.</span> Shade above for $&gt;$ or $\ge$, below for $&lt;$ or $\le$.</div>
+    <div class="step"><span class="step-label">4.</span> <strong>Test a point</strong> to confirm. $(0,0)$ is easiest, as long as the line does not pass through it.</div>
+  </div>
+
+  <div class="interactive-area">
+    <div class="ia-label">Build an inequality and see its region</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>$y$</label>
+        <select id="ineqOp" style="font-family:var(--fb);font-size:.95rem;padding:5px 9px;border:1.5px solid var(--sage-l);border-radius:8px;background:var(--white);color:var(--forest)">
+          <option value="gt">&gt;</option><option value="ge">&ge;</option><option value="lt">&lt;</option><option value="le">&le;</option>
+        </select>
+      </div>
+      <div class="ctrl"><label>slope</label><input type="number" id="ineqM" value="-2" step="0.5"></div>
+      <div class="ctrl"><label>intercept</label><input type="number" id="ineqB" value="6" step="1"></div>
+    </div>
+    <div class="stage"><svg id="ineqSvg" viewBox="0 0 640 330" role="img" aria-label="Solution region of a linear inequality"></svg></div>
+    <div class="readout" id="ineqOut"></div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Graph $3x - 4y \le 7$.</strong> Solid or dashed? Shade which side?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p8')">Show answer</button>
+    <div class="a" id="p8">
+      Rearrange: $-4y \le 7 - 3x$. Divide by $-4$ and <strong>flip</strong>: $y \ge \dfrac{3x - 7}{4}$.<br>
+      The sign is $\le$ in the original, so the boundary is <strong>solid</strong>. After the flip we shade <strong>above</strong> the line.<br>
+      Test $(0,0)$ in the original: $3(0) - 4(0) = 0 \le 7$ is true, so the origin is in the region &mdash; and it does sit above the line $y = 0.75x - 1.75$. Consistent.
+    </div>
+  </div>
+
+  <div class="practice-box">
+    <div class="q"><strong>Graph $-9x + 4y \ge 1$.</strong> Is the origin a solution?</div>
+    <button class="show-ans-btn" onclick="toggleAns('p9')">Show answer</button>
+    <div class="a" id="p9">
+      Rearrange: $4y \ge 9x + 1$, so $y \ge \dfrac{9x + 1}{4}$. No flip &mdash; we divided by a positive 4. Solid line, shade above.<br>
+      Test $(0,0)$: $-9(0) + 4(0) = 0 \ge 1$ is <strong>false</strong>, so the origin is <em>not</em> a solution and sits outside the shaded region.<br>
+      <em>This is why testing a point is worth the ten seconds &mdash; it catches a flipped shade immediately.</em>
+    </div>
+  </div>
+</div>
+
+<!-- ======== QUICK REVIEW ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">&#10003;</span>Quick review</h2>
+  <div class="term-grid">
+    <div class="term-sym">Solution</div><div class="term-def">a value that makes the statement true; solving means finding all of them</div>
+    <div class="term-sym">Justifying a step</div><div class="term-def">say what you did to both sides, or which side you rewrote and why it is equivalent</div>
+    <div class="term-sym">The flip rule</div><div class="term-def">multiplying or dividing an inequality by a negative reverses the sign. Nothing else does.</div>
+    <div class="term-sym">No solution</div><div class="term-def">the variable vanishes leaving something false, like $7 = 3$</div>
+    <div class="term-sym">Infinitely many</div><div class="term-def">the variable vanishes leaving something true, like $7 = 7$</div>
+    <div class="term-sym">Literal equation</div><div class="term-def">solving for one letter among others; same rules, no numbers required</div>
+    <div class="term-sym">A graph</div><div class="term-def">is the set of all solutions of its equation &mdash; every point on it, and nothing off it</div>
+    <div class="term-sym">Intersection</div><div class="term-def">the x-coordinate where two graphs cross solves $f(x) = g(x)$</div>
+    <div class="term-sym">Region</div><div class="term-def">a two-variable inequality's solutions; dashed boundary if strict, solid if inclusive</div>
+  </div>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0"><strong>If you remember one thing:</strong> check your answer. Substitute back into the <em>original</em> statement, and for word problems check it against the story too. This unit gives partial credit for reasoning, and a checked answer is reasoning you have already done.</p>
+  </div>
+  <div class="btn-row" style="margin-top:16px">
+    <a class="site-btn secondary" href="unit-3-features-of-functions.html" style="text-decoration:none;display:inline-block">&larr; Unit 3</a>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+function toggleAns(id){ const a=document.getElementById(id); a.classList.toggle('show'); }
+window.toggleAns=toggleAns;
+function mathify(el){
+  if(window.renderMathInElement && el){
+    try{ renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]}); }catch(e){}
+  }
+}
+function fmt(x){
+  if(!isFinite(x)) return '?';
+  if(Number.isInteger(x)) return x.toLocaleString('en-US');
+  return (Math.round(x*1000)/1000).toString();
+}
+function toggleLwsTheme(){
+  const cur=document.body.dataset.theme||'light', next=cur==='dark'?'light':'dark';
+  document.body.dataset.theme=next;
+  try{ localStorage.setItem('lws-theme',next); }catch(e){}
+  const b=document.getElementById('themeBtn'); if(b) b.innerHTML=next==='dark'?'&#9728;':'&#9790;';
+}
+window.toggleLwsTheme=toggleLwsTheme;
+try{ if(localStorage.getItem('lws-theme')==='dark'){ document.body.dataset.theme='dark'; const b=document.getElementById('themeBtn'); if(b) b.innerHTML='&#9728;'; } }catch(e){}
+
+(function setupSearch(){
+  const input=document.querySelector('.search input'); if(!input) return;
+  const cards=Array.from(document.querySelectorAll('.main .card'));
+  const pgHead=document.querySelector('.main .pg-head'); let emptyMsg=null;
+  input.addEventListener('input',e=>{
+    const q=e.target.value.toLowerCase().trim(); let shown=0;
+    cards.forEach(c=>{ if(!q){c.style.display='';shown++;return;} const hit=c.textContent.toLowerCase().includes(q); c.style.display=hit?'':'none'; if(hit)shown++; });
+    if(pgHead) pgHead.style.display=q?'none':'';
+    if(q&&shown===0){
+      if(!emptyMsg){ emptyMsg=document.createElement('div'); emptyMsg.className='card'; emptyMsg.style.textAlign='center';
+        emptyMsg.innerHTML='<div class="body-text" style="color:var(--slate)">No sections match that search.</div>';
+        document.querySelector('.main').appendChild(emptyMsg); }
+      emptyMsg.style.display='';
+    } else if(emptyMsg){ emptyMsg.style.display='none'; }
+  });
+  input.addEventListener('keydown',e=>{ if(e.key==='Escape'){input.value='';input.dispatchEvent(new Event('input'));} });
+})();
+
+/* ============================================================ */
+/* ===== W1: step-by-step justification ======================= */
+/* ============================================================ */
+(function justify(){
+  const wrap=document.getElementById('justWrap'), out=document.getElementById('justOut');
+  if(!wrap) return;
+  const METHODS=[
+    { name:'distribute first',
+      steps:[
+        ['5(x+3)-3x=55','the equation we were given'],
+        ['5x+15-3x=55','distributive property &mdash; rewrote the left side, both sides still equal'],
+        ['2x+15=55','combined like terms on the left, another one-sided rewrite'],
+        ['2x=40','subtracted 15 from <em>both</em> sides'],
+        ['x=20','divided <em>both</em> sides by 2']
+      ]},
+    { name:'divide first',
+      steps:[
+        ['5(x+3)-3x=55','the equation we were given'],
+        ['\\dfrac{5(x+3)}{5}-\\dfrac{3x}{5}=\\dfrac{55}{5}','divided <em>both</em> sides by 5'],
+        ['x+3-\\dfrac{3}{5}x=11','simplified each term &mdash; a one-sided rewrite'],
+        ['\\dfrac{2}{5}x+3=11','combined the two x terms: $1 - \\dfrac{3}{5} = \\dfrac{2}{5}$'],
+        ['\\dfrac{2}{5}x=8','subtracted 3 from <em>both</em> sides'],
+        ['x=20','multiplied <em>both</em> sides by $\\dfrac{5}{2}$']
+      ]}
+  ];
+  let mi=0, shown=1;
+
+  document.querySelectorAll('button[data-jm]').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('button[data-jm]').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); mi=+b.dataset.jm; shown=1; render();
+    });
+  });
+  document.getElementById('justNext').addEventListener('click',()=>{ if(shown<METHODS[mi].steps.length){shown++;render();} });
+  document.getElementById('justBack').addEventListener('click',()=>{ if(shown>1){shown--;render();} });
+  document.getElementById('justAll').addEventListener('click',()=>{ shown=METHODS[mi].steps.length; render(); });
+
+  function render(){
+    const M=METHODS[mi];
+    let h='<table class="just-table"><tr><th style="width:46%">Step</th><th>Why it is allowed</th></tr>';
+    M.steps.forEach((s,i)=>{
+      if(i>=shown) return;
+      h+='<tr'+(i===shown-1?' class="hl"':'')+'><td class="eq">$'+s[0]+'$</td><td class="why">'+s[1]+'</td></tr>';
+    });
+    h+='</table>';
+    wrap.innerHTML=h; mathify(wrap);
+    const done = shown===M.steps.length;
+    out.innerHTML = done
+      ? '<strong>Solved by '+M.name+', in '+(M.steps.length-1)+' steps.</strong> Check: $5(20+3)-3(20) = 5(23)-60 = 115-60 = 55$. Correct.<br>'
+        + 'Every line either changed <em>both</em> sides equally, or rewrote <em>one</em> side into something equivalent. That is what makes each step defensible.'
+      : 'Showing step '+shown+' of '+M.steps.length+'. Press <strong>Next step</strong> to continue.';
+    mathify(out);
+  }
+  render();
+})();
+
+/* ============================================================ */
+/* ===== W2: why the inequality flips ========================= */
+/* ============================================================ */
+(function flip(){
+  const svg=document.getElementById('flipSvg'), out=document.getElementById('flipOut');
+  const k=document.getElementById('flipK'), kv=document.getElementById('flipKVal');
+  if(!svg) return;
+  const A=2, B=6;   // start with the true statement 2 < 6
+
+  function draw(){
+    const K=+k.value; kv.textContent=K;
+    const a2=A*K, b2=B*K;
+    const lo=Math.min(-20,a2,b2,A,B)-2, hi=Math.max(20,a2,b2,A,B)+2;
+    const L=40,R=600,y1=52,y2=128;
+    const sx=v=>L+((v-lo)/(hi-lo))*(R-L);
+    let s='';
+    [[y1,'before'],[y2,'after']].forEach(([yy,lab])=>{
+      s+='<line x1="'+L+'" y1="'+yy+'" x2="'+R+'" y2="'+yy+'" stroke="var(--sage-l)" stroke-width="2"/>';
+      s+='<text x="'+(L-6)+'" y="'+(yy+4)+'" text-anchor="end" font-family="Bitter,serif" font-size="11" fill="var(--slate)">'+lab+'</text>';
+    });
+    s+='<line x1="'+sx(0)+'" y1="'+(y1-16)+'" x2="'+sx(0)+'" y2="'+(y2+16)+'" stroke="var(--forest)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/>';
+    s+='<text x="'+sx(0)+'" y="'+(y2+30)+'" text-anchor="middle" font-family="Bitter,serif" font-size="11" fill="var(--slate)">0</text>';
+    const dot=(v,yy,col,lab)=>{
+      s+='<circle cx="'+sx(v)+'" cy="'+yy+'" r="7" fill="'+col+'"/>';
+      s+='<text x="'+sx(v)+'" y="'+(yy-13)+'" text-anchor="middle" font-family="Bitter,serif" font-size="12" font-weight="700" fill="'+col+'">'+lab+'</text>';
+    };
+    dot(A,y1,'var(--arith)',A); dot(B,y1,'var(--geo)',B);
+    dot(a2,y2,'var(--arith)',fmt(a2)); dot(b2,y2,'var(--geo)',fmt(b2));
+    s+='<text x="'+((L+R)/2)+'" y="172" text-anchor="middle" font-family="Dosis,sans-serif" font-size="13" fill="var(--slate)">blue was smaller before &mdash; is it still smaller after?</text>';
+    svg.innerHTML=s;
+
+    let msg;
+    if(K===0){
+      msg='<strong>Multiplying by 0</strong> collapses both sides to 0, so $2 &lt; 6$ becomes $0 = 0$. The inequality is destroyed, which is exactly why the multiplication property requires a <em>nonzero</em> multiplier.';
+    } else if(K>0){
+      msg='$2 &lt; 6$, and multiplying both sides by $'+K+'$ gives $'+fmt(a2)+' &lt; '+fmt(b2)+'$. '
+        + '<strong>Order preserved</strong> &mdash; blue is still on the left. Positive multipliers stretch the line without turning it around, so the sign stays as it was.';
+    } else {
+      msg='$2 &lt; 6$, and multiplying both sides by $'+K+'$ gives $'+fmt(a2)+'$ and $'+fmt(b2)+'$. '
+        + 'Now blue is on the <strong>right</strong> &mdash; the order reversed, so the true statement is $'+fmt(a2)+' &gt; '+fmt(b2)+'$.<br>'
+        + '<strong>That is the flip.</strong> A negative multiplier reflects the number line through zero, and reflecting swaps which value is larger.';
+    }
+    out.innerHTML=msg; mathify(out);
+  }
+  k.addEventListener('input',draw); draw();
+})();
+
+/* ============================================================ */
+/* ===== W3: literal equations ================================ */
+/* ============================================================ */
+(function literal(){
+  const pick=document.getElementById('litPick'), out=document.getElementById('litOut');
+  if(!pick) return;
+  const ITEMS=[
+    {btn:'$A = \\ell w$ for $w$', formula:'A = \\ell w', target:'w',
+     steps:['Divide both sides by $\\ell$:', 'w = \\dfrac{A}{\\ell}'],
+     note:'Area of a rectangle. Dividing by $\\ell$ is legal as long as $\\ell \\ne 0$ &mdash; and a rectangle with no length is not a rectangle.'},
+    {btn:'$F = \\frac{9}{5}C + 32$ for $C$', formula:'F = \\frac{9}{5}C + 32', target:'C',
+     steps:['Subtract 32 from both sides:', 'F - 32 = \\dfrac{9}{5}C', 'Multiply both sides by $\\dfrac{5}{9}$:', 'C = \\dfrac{5}{9}(F - 32)'],
+     note:'Check with a known pair: $F = 212$ gives $C = \\frac{5}{9}(180) = 100$. Water boils at both, so the rearrangement is right.'},
+    {btn:'$E = mc^2$ for $m$', formula:'E = mc^2', target:'m',
+     steps:['Divide both sides by $c^2$:', 'm = \\dfrac{E}{c^2}'],
+     note:'The squared term is just a number here &mdash; $c$ is the speed of light, a constant. Nothing about the method changes.'},
+    {btn:'$y - y_1 = m(x - x_1)$ for $m$', formula:'y - y_1 = m(x - x_1)', target:'m',
+     steps:['Divide both sides by $(x - x_1)$:', 'm = \\dfrac{y - y_1}{x - x_1}'],
+     note:'Point-slope form rearranged gives the slope formula. They were the same statement all along.'},
+    {btn:'$S = 4\\pi r^2$ for $r$', formula:'S = 4\\pi r^2', target:'r',
+     steps:['Divide both sides by $4\\pi$:', 'r^2 = \\dfrac{S}{4\\pi}', 'Take the square root:', 'r = \\sqrt{\\dfrac{S}{4\\pi}}'],
+     note:'Algebraically the square root gives $\\pm$, but $r$ is a radius so the negative root is rejected. Context, not algebra, made that call.'}
+  ];
+  pick.innerHTML=ITEMS.map((it,i)=>'<button class="pick-btn'+(i===0?' active':'')+'" data-lit="'+i+'">'+it.btn+'</button>').join('');
+  mathify(pick);
+  pick.querySelectorAll('button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      pick.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); show(+b.dataset.lit);
+    });
+  });
+  function show(i){
+    const it=ITEMS[i];
+    let h='<strong>Start:</strong> $'+it.formula+'$ &nbsp; &mdash; solve for $'+it.target+'$<br><br>';
+    it.steps.forEach(s=>{ h += (s.indexOf('$')===0 || /[a-zA-Z]/.test(s[0]) && s.indexOf(':')<0 ? '$'+s+'$' : s) + '<br>'; });
+    h += '<br><em>'+it.note+'</em>';
+    out.innerHTML=h; mathify(out);
+  }
+  show(0);
+})();
+
+/* ============================================================ */
+/* ===== W4: point tester on two lines ======================== */
+/* ============================================================ */
+(function pointTester(){
+  const svg=document.getElementById('ptSvg'), out=document.getElementById('ptOut');
+  if(!svg) return;
+  const f=x=>2*x+1, g=x=>-x+7;
+  const L=54,R=600,T=22,B=272, xMin=-2,xMax=8,yMin=-4,yMax=12;
+  const sx=x=>L+((x-xMin)/(xMax-xMin))*(R-L);
+  const sy=y=>B-((y-yMin)/(yMax-yMin))*(B-T);
+  const ux=px=>xMin+((px-L)/(R-L))*(xMax-xMin);
+  const uy=py=>yMin+((B-py)/(B-T))*(yMax-yMin);
+  let mark=null;
+
+  function draw(){
+    let s='';
+    for(let gx=xMin;gx<=xMax;gx++) s+='<line x1="'+sx(gx)+'" y1="'+T+'" x2="'+sx(gx)+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="0.6" opacity="0.6"/>';
+    for(let gy=yMin;gy<=yMax;gy+=2) s+='<line x1="'+L+'" y1="'+sy(gy)+'" x2="'+R+'" y2="'+sy(gy)+'" stroke="var(--sage-l)" stroke-width="0.6" opacity="0.6"/>';
+    s+='<line x1="'+L+'" y1="'+sy(0)+'" x2="'+R+'" y2="'+sy(0)+'" stroke="var(--forest)" stroke-width="2"/>';
+    s+='<line x1="'+sx(0)+'" y1="'+T+'" x2="'+sx(0)+'" y2="'+B+'" stroke="var(--forest)" stroke-width="2"/>';
+    s+='<line x1="'+sx(xMin)+'" y1="'+sy(f(xMin))+'" x2="'+sx(xMax)+'" y2="'+sy(f(xMax))+'" stroke="var(--arith)" stroke-width="2.6"/>';
+    s+='<line x1="'+sx(xMin)+'" y1="'+sy(g(xMin))+'" x2="'+sx(xMax)+'" y2="'+sy(g(xMax))+'" stroke="var(--geo)" stroke-width="2.6"/>';
+    s+='<circle cx="'+sx(2)+'" cy="'+sy(5)+'" r="7" fill="var(--forest)"/>';
+    s+='<text x="'+(sx(2)+12)+'" y="'+(sy(5)-10)+'" font-family="Bitter,serif" font-size="12.5" font-weight="700" fill="var(--forest)">(2, 5)</text>';
+    s+='<text x="'+(sx(6)+4)+'" y="'+(sy(f(6))-6)+'" font-family="Dosis,sans-serif" font-size="12.5" fill="var(--arith)">y = 2x + 1</text>';
+    s+='<text x="'+(sx(5)+4)+'" y="'+(sy(g(5))+18)+'" font-family="Dosis,sans-serif" font-size="12.5" fill="var(--geo)">y = -x + 7</text>';
+    if(mark){
+      s+='<circle cx="'+sx(mark[0])+'" cy="'+sy(mark[1])+'" r="6" fill="none" stroke="var(--forest)" stroke-width="2.5"/>';
+      s+='<circle cx="'+sx(mark[0])+'" cy="'+sy(mark[1])+'" r="2.5" fill="var(--forest)"/>';
+    }
+    s+='<text x="'+((L+R)/2)+'" y="312" text-anchor="middle" font-family="Dosis,sans-serif" font-size="13" fill="var(--slate)">click the grid to test a point</text>';
+    svg.innerHTML=s;
+  }
+
+  function report(){
+    if(!mark){
+      out.innerHTML='The two lines cross at $(2, 5)$. That single point is where $2x + 1$ and $-x + 7$ agree, so $x = 2$ solves $2x + 1 = -x + 7$.<br>Click anywhere to test whether a point lies on either line.';
+      mathify(out); return;
+    }
+    const [x,y]=mark;
+    const fv=f(x), gv=g(x);
+    const onF=Math.abs(y-fv)<0.35, onG=Math.abs(y-gv)<0.35;
+    let msg='<strong>Testing $('+fmt(x)+', '+fmt(y)+')$</strong><br>';
+    msg+='In $y = 2x+1$: the line has $y = '+fmt(Math.round(fv*100)/100)+'$ there, so the point is '+(onF?'<strong>on</strong>':'<strong>not on</strong>')+' it.<br>';
+    msg+='In $y = -x+7$: the line has $y = '+fmt(Math.round(gv*100)/100)+'$ there, so the point is '+(onG?'<strong>on</strong>':'<strong>not on</strong>')+' it.<br><br>';
+    if(onF&&onG) msg+='On <em>both</em> &mdash; this is the intersection, and its x-coordinate solves $2x+1 = -x+7$.';
+    else if(onF||onG) msg+='On exactly one line, so it solves that one equation but not the other. Only the crossing point satisfies both at once.';
+    else msg+='On neither line, so it is a solution of neither equation. A graph contains <em>all</em> the solutions and nothing else &mdash; being off the line is the same as making the equation false.';
+    out.innerHTML=msg; mathify(out);
+  }
+
+  svg.addEventListener('click',ev=>{
+    const r=svg.getBoundingClientRect();
+    const px=((ev.clientX-r.left)/r.width)*640, py=((ev.clientY-r.top)/r.height)*330;
+    const x=Math.round(ux(px)*2)/2, y=Math.round(uy(py)*2)/2;
+    if(x<xMin||x>xMax||y<yMin||y>yMax) return;
+    mark=[x,y]; draw(); report();
+  });
+  draw(); report();
+})();
+
+/* ============================================================ */
+/* ===== W5: inequality regions =============================== */
+/* ============================================================ */
+(function regions(){
+  const svg=document.getElementById('ineqSvg'), out=document.getElementById('ineqOut');
+  const opEl=document.getElementById('ineqOp'), mEl=document.getElementById('ineqM'), bEl=document.getElementById('ineqB');
+  if(!svg) return;
+  const SIGN={gt:'&gt;',ge:'&ge;',lt:'&lt;',le:'&le;'};
+  const TEX={gt:'>',ge:'\\ge',lt:'<',le:'\\le'};
+
+  function draw(){
+    const op=opEl.value, m=+mEl.value, b=+bEl.value;
+    const solid=(op==='ge'||op==='le'), above=(op==='gt'||op==='ge');
+    const L=54,R=600,T=22,B=272, xMin=-6,xMax=8,yMin=-6,yMax=12;
+    const sx=x=>L+((x-xMin)/(xMax-xMin))*(R-L);
+    const sy=y=>B-((y-yMin)/(yMax-yMin))*(B-T);
+    const clamp=y=>Math.max(yMin,Math.min(yMax,y));
+
+    let s='';
+    // Shaded half-plane. Sample across the width and clamp each column, so the
+    // region stays correct even where the line leaves the top or bottom.
+    const yL=m*xMin+b, yR=m*xMax+b;
+    const edgeY = above ? T : B;
+    const N=80, top=[];
+    for(let i=0;i<=N;i++){
+      const x=xMin+(i/N)*(xMax-xMin);
+      top.push([sx(x), sy(clamp(m*x+b))]);
+    }
+    s+='<polygon points="'+top.map(p=>p[0]+','+p[1]).join(' ')
+      +' '+sx(xMax)+','+edgeY+' '+sx(xMin)+','+edgeY+'" fill="var(--sage)" opacity="0.22"/>';
+
+    for(let g=xMin;g<=xMax;g++) s+='<line x1="'+sx(g)+'" y1="'+T+'" x2="'+sx(g)+'" y2="'+B+'" stroke="var(--sage-l)" stroke-width="0.6" opacity="0.55"/>';
+    for(let g=yMin;g<=yMax;g+=2) s+='<line x1="'+L+'" y1="'+sy(g)+'" x2="'+R+'" y2="'+sy(g)+'" stroke="var(--sage-l)" stroke-width="0.6" opacity="0.55"/>';
+    s+='<line x1="'+L+'" y1="'+sy(0)+'" x2="'+R+'" y2="'+sy(0)+'" stroke="var(--forest)" stroke-width="2"/>';
+    s+='<line x1="'+sx(0)+'" y1="'+T+'" x2="'+sx(0)+'" y2="'+B+'" stroke="var(--forest)" stroke-width="2"/>';
+    s+='<line x1="'+sx(xMin)+'" y1="'+sy(clamp(yL))+'" x2="'+sx(xMax)+'" y2="'+sy(clamp(yR))+'" stroke="var(--arith)" stroke-width="3"'+(solid?'':' stroke-dasharray="8 5"')+'/>';
+
+    // the origin as a test point, when it is not on the line
+    const onLine = Math.abs(0-(m*0+b))<1e-9;
+    if(!onLine){
+      const inRegion = above ? (0 > m*0+b) : (0 < m*0+b);
+      s+='<circle cx="'+sx(0)+'" cy="'+sy(0)+'" r="7" fill="'+(inRegion?'var(--good)':'var(--bad)')+'"/>';
+      s+='<text x="'+(sx(0)+12)+'" y="'+(sy(0)+20)+'" font-family="Bitter,serif" font-size="12" font-weight="700" fill="'+(inRegion?'var(--good)':'var(--bad)')+'">(0,0) '+(inRegion?'works':'fails')+'</text>';
+    }
+    svg.innerHTML=s;
+
+    const eq='y '+TEX[op]+' '+fmt(m)+'x '+(b>=0?'+ '+fmt(b):'- '+fmt(Math.abs(b)));
+    let msg='<strong>$'+eq+'$</strong><br>';
+    msg+='Boundary line $y = '+fmt(m)+'x '+(b>=0?'+ '+fmt(b):'- '+fmt(Math.abs(b)))+'$, drawn <strong>'+(solid?'solid':'dashed')+'</strong> because the sign '+(solid?'includes':'excludes')+' equality.<br>';
+    msg+='Shade <strong>'+(above?'above':'below')+'</strong> the line.<br>';
+    if(!onLine){
+      const inRegion = above ? (0 > b) : (0 < b);
+      msg+='<br><strong>Test $(0,0)$:</strong> is $0 '+SIGN[op]+' '+fmt(b)+'$? '+(inRegion?'Yes':'No')+' &mdash; so the origin '+(inRegion?'is':'is not')+' in the solution region, which matches the shading.';
+    } else {
+      msg+='<br>The line passes through the origin, so pick a different test point &mdash; $(1,0)$ or $(0,1)$ will do.';
+    }
+    out.innerHTML=msg; mathify(out);
+  }
+  [opEl,mEl,bEl].forEach(el=>el.addEventListener('input',draw));
+  opEl.addEventListener('change',draw);
+  draw();
+})();
+</script>
+</body>
+</html>
