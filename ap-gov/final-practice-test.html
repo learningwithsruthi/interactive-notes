@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Practice Test (AP U.S. Government)</title>
+<meta name="description" content="Interactive AP U.S. Government notes: Fifty multiple-choice questions across every topic, graded at the end with a topic-by-topic breakdown. By learningwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ap-gov.css">
+</head>
+<body data-theme="light">
+<div class="lws-backdrop"></div>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark"><img src="../assets/logo-mark.png" alt="learningwithsruthi" width="46" height="30" decoding="async"></div>
+    <div class="brand-name">learningwithsruthi <small>ap gov notes</small></div>
+  </div>
+  <div class="ws-switch">
+    <div class="ws-switch-btn">
+      <div class="ico">T</div>
+      <div class="meta">
+        <div class="lbl">Final Practice Test</div>
+        <div class="sub">Cumulative test &middot; AP Gov</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-section-label">Topics</div>
+  <div class="side-nav">
+    <a class="nav-item" href="topic-1-federalist-70-78.html"><span class="num">1.</span><span class="t">Federalist 70 and 78</span></a>
+    <a class="nav-item" href="topic-2-separation-of-powers.html"><span class="num">2.</span><span class="t">Separation of Powers</span></a>
+    <a class="nav-item" href="topic-3-congress.html"><span class="num">3.</span><span class="t">Congress</span></a>
+    <a class="nav-item" href="topic-4-how-a-bill-becomes-law.html"><span class="num">4.</span><span class="t">How a Bill Becomes Law</span></a>
+    <a class="nav-item" href="topic-5-executive-and-judicial.html"><span class="num">5.</span><span class="t">Executive and Judicial Branches</span></a>
+    <a class="nav-item" href="topic-6-court-cases-redistricting.html"><span class="num">6.</span><span class="t">Court Cases and Redistricting</span></a>
+  </div>
+  <div class="side-section-label">Test yourself</div>
+  <div class="side-nav">
+    <a class="nav-item active" href="final-practice-test.html"><span class="num">50Q</span><span class="t">Final Practice Test</span></a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">AP Gov &middot; Final Practice Test</span>
+    <span class="bread-now">Final Practice Test</span>
+  </div>
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input placeholder="Search topics, cases, questions...">
+  </div>
+  <div class="top-actions">
+    <button class="btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleLwsTheme()">&#9790;</button>
+  </div>
+</header>
+
+<main class="main">
+
+<div class="pg-head">
+  <div class="topic-badge">Cumulative &middot; AP U.S. Government</div>
+  <h1>Final Practice Test</h1>
+  <p class="sub">Fifty multiple-choice questions across every topic, graded at the end with a topic-by-topic breakdown.</p>
+</div>
+
+<div class="card" id="sec-how">
+  <h2 class="card-title"><span class="num">How</span>How to take this test</h2>
+  <p class="body-text"><strong>50 questions, every topic, mixed together.</strong> The questions are new: none of them repeat the topic practice. The order shuffles each time you load the page.</p>
+  <div class="term-grid">
+    <div class="term-sym">Time</div><div class="term-def">The real AP exam gives you 80 minutes for 55 questions, about 87 seconds each. Aim for about 70 minutes here.</div>
+    <div class="term-sym">Grading</div><div class="term-def">Nothing is graded until you click <strong>Submit test</strong> at the bottom. Then every question shows the answer and explanation, and you get a score for each topic.</div>
+    <div class="term-sym">Guessing</div><div class="term-def">There is no penalty for wrong answers on the AP exam. Never leave one blank.</div>
+    <div class="term-sym">After</div><div class="term-def">Any topic under 80% gets a "review" tag. Go back to that topic's page and redo its practice.</div>
+  </div>
+  <div class="btn-row"><button class="site-btn" id="timerBtn">Start a 70-minute timer</button><span class="val-chip" id="timerOut" style="font-size:1.05rem;padding:6px 14px">70:00</span></div>
+</div>
+
+<div class="card" id="sec-test">
+  <h2 class="card-title"><span class="num">50Q</span>Final practice test</h2>
+  <div id="test"></div>
+</div>
+
+</main>
+</div>
+
+<script src="ap-gov.js"></script>
+<script>
+const F='Federalist 70 & 78', SP='Separation of Powers', CG='Congress', LW='How a Bill Becomes Law', EJ='Executive & Judicial', CC='Court Cases & Redistricting';
+const Q=[
+  /* ---- Federalist 70 & 78 (8) ---- */
+  {topic:F, stim:'"A feeble Executive implies a feeble execution of the government. A feeble execution is but another phrase for a bad execution."',
+   q:'The author of this passage would most likely support',
+   o:['an executive council chosen by Congress','a single president with substantial powers','term limits of one year for the president','eliminating the veto power'], a:1,
+   why:'Federalist 70 argues that a weak executive produces bad government, so the executive should be unified and energetic.'},
+  {topic:F, q:'Which of the following is one of the "ingredients" of executive energy listed in Federalist 70?',
+   o:['Judicial review','Unity','Bicameralism','Federalism'], a:1,
+   why:'Hamilton lists unity, duration, adequate provision for support, and competent powers.'},
+  {topic:F, q:'In Federalist 78, Hamilton argues that the judiciary is the least dangerous branch because it',
+   o:['has the power of the purse','commands the military','has neither force nor will, only judgment','is elected by the people'], a:2,
+   why:'The judiciary controls neither the sword nor the purse.'},
+  {topic:F, q:'Which constitutional feature reflects the argument of Federalist 78?',
+   o:['Two-year terms for House members','Federal judges serving during good behavior','The president\'s veto power','Equal representation in the Senate'], a:1,
+   why:'"During good behaviour" tenure is the permanency in office Hamilton defended.'},
+  {topic:F, q:'Hamilton argued in Federalist 70 that a plural executive is undesirable mainly because it would',
+   o:['cost too much','make it harder to assign responsibility for mistakes','give too much power to the states','violate the Bill of Rights'], a:1,
+   why:'A plural executive "tends to conceal faults and destroy responsibility."'},
+  {topic:F, stim:'"The interpretation of the laws is the proper and peculiar province of the courts."',
+   q:'This statement most directly supports which later development?',
+   o:['The filibuster','Judicial review as established in Marbury v. Madison','The War Powers Resolution','The 22nd Amendment'], a:1,
+   why:'If courts interpret the law, including the Constitution, they can declare conflicting statutes void.'},
+  {topic:F, q:'The Federalist Papers were originally written to',
+   o:['persuade New York voters to support ratification of the Constitution','declare independence from Britain','defend the Articles of Confederation','propose the Bill of Rights'], a:0,
+   why:'They were published in New York newspapers in 1787 and 1788 to win support for ratification.'},
+  {topic:F, q:'A critic who argues that federal judges should face elections every six years is most directly challenging which argument?',
+   o:['Federalist 70 on executive unity','Federalist 78 on judicial independence','Federalist 51 on checks and balances','Brutus 1 on the size of the republic'], a:1,
+   why:'Federalist 78 says lifetime tenure keeps judges independent from political pressure.'},
+
+  /* ---- Separation of Powers (8) ---- */
+  {topic:SP, q:'Separation of powers is best defined as',
+   o:['dividing power between the national and state governments','dividing the functions of government among three branches','the ability of courts to strike down laws','giving each state two senators'], a:1,
+   why:'Separation of powers divides lawmaking, enforcing, and interpreting among three branches. Dividing national and state power is federalism.'},
+  {topic:SP, q:'Which article of the Constitution establishes the executive branch?',
+   o:['Article I','Article II','Article III','Article V'], a:1,
+   why:'Article I: legislative. Article II: executive. Article III: judicial.'},
+  {topic:SP, q:'Which of the following is a check the executive has on the judicial branch?',
+   o:['Declaring laws unconstitutional','Granting pardons','Overriding vetoes','Impeaching judges'], a:1,
+   why:'A pardon cancels federal court punishments. The president also appoints judges.'},
+  {topic:SP, q:'Which of the following is a check the legislative branch has on the executive branch?',
+   o:['Issuing executive orders','Rejecting a treaty in the Senate','Granting reprieves','Interpreting laws'], a:1,
+   why:'Treaties need two-thirds of the Senate to be ratified.'},
+  {topic:SP, q:'Who presides over the Senate trial when a president is impeached?',
+   o:['The vice president','The Speaker of the House','The Chief Justice of the United States','The Senate majority leader'], a:2,
+   why:'The Constitution assigns this role to the Chief Justice, a judicial check on the executive.'},
+  {topic:SP, stim:'"If men were angels, no government would be necessary."',
+   q:'The author of this quote (Federalist 51) used it to argue that',
+   o:['government power should be checked because people in power cannot be trusted completely','government should be eliminated','only angels should hold office','the president should hold all power'], a:0,
+   why:'Madison argues that because people are not angels, power must be divided and checked.'},
+  {topic:SP, q:'The framers listed Congress first in the Constitution most likely because they',
+   o:['expected lawmaking to be the most powerful function of government','wanted the president to be weak','believed courts were unnecessary','copied the order of the Articles of Confederation exactly'], a:0,
+   why:'The legislature was expected to be the most powerful, and most worrying, branch.'},
+  {topic:SP, q:'Which scenario is an example of the judicial branch checking the executive branch?',
+   o:['The Senate rejects a cabinet nominee','A federal court rules that a presidential executive order is unconstitutional','The House impeaches a judge','The president vetoes a spending bill'], a:1,
+   why:'Courts can declare executive actions unconstitutional.'},
+
+  /* ---- Congress (10) ---- */
+  {topic:CG, q:'Members of the House of Representatives serve terms of',
+   o:['two years','four years','six years','life'], a:0, why:'Short terms keep House members close to public opinion.'},
+  {topic:CG, q:'What is the total number of voting members in the House and Senate combined?',
+   o:['435','100','535','538'], a:2, why:'435 representatives plus 100 senators. (538 is the number of electoral votes.)'},
+  {topic:CG, q:'Why does Wyoming have the same number of senators as California?',
+   o:['The census counts states equally','The Great Compromise gave every state equal representation in the Senate','Senate seats are based on land area','The Supreme Court ordered it in Baker v. Carr'], a:1,
+   why:'The Senate gives each state two seats regardless of population.'},
+  {topic:CG, q:'Because the size of the House is fixed at 435, a state whose population grows more slowly than the rest of the country',
+   o:['may lose House seats in reapportionment','automatically gains Senate seats','loses one senator','must redraw the boundaries of the state'], a:0,
+   why:'Seats are a share of a fixed total, so slow growth relative to others can cost seats.'},
+  {topic:CG, q:'Which power is given only to the House of Representatives?',
+   o:['Confirming ambassadors','Ratifying treaties','Bringing charges of impeachment','Trying impeachment cases'], a:2,
+   why:'The House impeaches; the Senate holds the trial.'},
+  {topic:CG, q:'Funding for the Department of Defense, which Congress votes on every year, is an example of',
+   o:['mandatory spending','discretionary spending','an entitlement','a pocket veto'], a:1,
+   why:'Defense is the largest piece of discretionary spending.'},
+  {topic:CG, q:'Which statement about mandatory spending is accurate?',
+   o:['It is the smallest part of the federal budget','It is required by existing laws and continues unless Congress changes those laws','It must be approved by the president every year','It includes all military spending'], a:1,
+   why:'Mandatory spending (Social Security, Medicare, Medicaid) is the largest part of the budget and runs on existing law.'},
+  {topic:CG, q:'Which officer casts a tie-breaking vote in the Senate?',
+   o:['The Speaker of the House','The president pro tempore','The vice president','The Senate majority whip'], a:2,
+   why:'The vice president is the constitutional President of the Senate.'},
+  {topic:CG, q:'A representative from a farm district follows constituents\' wishes on agriculture but uses her own judgment on foreign policy. She is acting as a',
+   o:['trustee','delegate','politico','whip'], a:2, why:'A politico mixes the trustee and delegate models depending on the issue.'},
+  {topic:CG, q:'The main job of a party whip in Congress is to',
+   o:['preside over floor debate','count votes and keep party members voting together','write the federal budget','draw congressional districts'], a:1,
+   why:'Whips track and round up votes for the party leadership.'},
+
+  /* ---- How a Bill Becomes Law (8) ---- */
+  {topic:LW, q:'The first step after a bill is introduced is usually',
+   o:['a floor vote','referral to a committee','a conference committee','a presidential signature'], a:1,
+   why:'Bills are referred to committee, where most of them die.'},
+  {topic:LW, q:'When a committee edits a bill line by line, the process is called',
+   o:['markup','cloture','logrolling','oversight'], a:0, why:'Markup is the committee revision stage.'},
+  {topic:LW, q:'Which body exists only in the House and sets the terms of floor debate?',
+   o:['The Ways and Means Committee','The Rules Committee','The conference committee','The Judiciary Committee'], a:1,
+   why:'The House Rules Committee sets time limits and amendment rules.'},
+  {topic:LW, q:'How many senators are needed to invoke cloture on most legislation?',
+   o:['51','60','67','75'], a:1, why:'Three-fifths of the Senate, which is 60.'},
+  {topic:LW, q:'Which of the following must happen before a bill can be sent to the president?',
+   o:['The Supreme Court must approve it','Both chambers must pass identical versions','The vice president must sign it','Two-thirds of each chamber must vote for it'], a:1,
+   why:'Only a simple majority is needed, but both chambers must pass the same text.'},
+  {topic:LW, q:'If the president vetoes a bill, Congress can override the veto with',
+   o:['a simple majority in each chamber','a two-thirds vote in both chambers','a three-fifths vote in the Senate only','the approval of the Supreme Court'], a:1,
+   why:'Two-thirds of both the House and Senate.'},
+  {topic:LW, q:'A president receives a bill 4 days before Congress adjourns and never signs it. The bill',
+   o:['becomes law after 10 days','dies by pocket veto','goes to a conference committee','returns to the House for an override vote'], a:1,
+   why:'Congress adjourned within the 10-day window, so the unsigned bill dies and cannot be overridden.'},
+  {topic:LW, q:'A senator attaches an unrelated amendment funding a museum in her state to a popular defense bill. This amendment is an example of',
+   o:['a rider that also brings pork-barrel spending','a filibuster','a discharge petition','cloture'], a:0,
+   why:'An unrelated amendment is a rider; local project funding is pork.'},
+
+  /* ---- Executive & Judicial (8) ---- */
+  {topic:EJ, q:'Which presidential power is listed in the Constitution?',
+   o:['Executive privilege','Executive agreements','Granting pardons','Signing statements'], a:2,
+   why:'Pardons are in Article II. The others are informal powers.'},
+  {topic:EJ, q:'The president\'s Cabinet is made up of',
+   o:['the leaders of both parties in Congress','the heads of the executive departments','all federal judges','the governors of the states'], a:1,
+   why:'Cabinet secretaries lead the executive departments, appointed by the president with Senate confirmation.'},
+  {topic:EJ, q:'Which amendment limits a president to two elected terms?',
+   o:['The 14th','The 19th','The 22nd','The 25th'], a:2, why:'The 22nd Amendment (1951).'},
+  {topic:EJ, q:'An executive agreement differs from a treaty because an executive agreement',
+   o:['must be ratified by two-thirds of the Senate','does not require Senate ratification','can only be made with Canada or Mexico','is written by the Supreme Court'], a:1,
+   why:'Executive agreements skip the Senate, which also makes them easier for a future president to undo.'},
+  {topic:EJ, q:'Most cases reach the Supreme Court through',
+   o:['original jurisdiction','a writ of certiorari','a discharge petition','an executive order'], a:1,
+   why:'The Court chooses its cases by granting certiorari, using the rule of four.'},
+  {topic:EJ, q:'Which court is where federal trials, with juries and evidence, usually take place?',
+   o:['The U.S. Supreme Court','The U.S. Courts of Appeals','The U.S. District Courts','The Senate'], a:2,
+   why:'District courts are the federal trial courts.'},
+  {topic:EJ, q:'A justice who disagrees with the outcome of a Supreme Court case may write a',
+   o:['majority opinion','concurring opinion','dissenting opinion','writ of mandamus'], a:2,
+   why:'Dissents disagree with the result. Concurrences agree with the result but not the reasoning.'},
+  {topic:EJ, q:'Why does the Supreme Court depend on the other branches to make its rulings effective?',
+   o:['It has no power to enforce its own decisions','Its rulings must be approved by Congress','The president can veto its decisions','Its justices are elected'], a:0,
+   why:'Courts have "neither force nor will"; the executive must carry out their decisions.'},
+
+  /* ---- Court Cases & Redistricting (8) ---- */
+  {topic:CC, q:'Which Chief Justice wrote the opinion in Marbury v. Madison?',
+   o:['Earl Warren','John Marshall','John Jay','Roger Taney'], a:1, why:'John Marshall, in 1803.'},
+  {topic:CC, q:'In Marbury v. Madison, the Supreme Court declared unconstitutional part of',
+   o:['the Bill of Rights','the Judiciary Act of 1789','the Voting Rights Act of 1965','the Articles of Confederation'], a:1,
+   why:'Section 13 of the Judiciary Act unconstitutionally expanded the Court\'s original jurisdiction.'},
+  {topic:CC, q:'The key holding of Baker v. Carr (1962) was that',
+   o:['redistricting questions can be decided by federal courts','race may never be considered in drawing districts','Congress has the power to draw all state districts','senators must be directly elected'], a:0,
+   why:'Redistricting is justiciable, not a political question.'},
+  {topic:CC, q:'In Baker v. Carr, Tennessee\'s districts were unequal because',
+   o:['the state had not redrawn them in about 60 years despite population shifts','the state used race to draw them','Congress had abolished them','the governor redrew them every year'], a:0,
+   why:'Tennessee had not redistricted since 1901, leaving cities badly underrepresented.'},
+  {topic:CC, q:'In Shaw v. Reno, the challenged North Carolina district was notable for',
+   o:['having no voters','its long, narrow shape following Interstate 85','being drawn by the Supreme Court','crossing into South Carolina'], a:1,
+   why:'The 12th District snaked about 160 miles along I-85.'},
+  {topic:CC, q:'Under strict scrutiny, a government using race to draw district lines must show',
+   o:['a rational reason','a compelling interest and a narrowly tailored plan','approval from the president','that the district is perfectly square'], a:1,
+   why:'Strict scrutiny requires a compelling interest and narrow tailoring.'},
+  {topic:CC, q:'Splitting the opposing party\'s voters across many districts so they are a minority in each is called',
+   o:['packing','cracking','apportionment','cloture'], a:1, why:'Cracking spreads them thin; packing concentrates them.'},
+  {topic:CC, q:'Which pair of cases both rely on the Equal Protection Clause of the 14th Amendment?',
+   o:['Marbury v. Madison and Baker v. Carr','Baker v. Carr and Shaw v. Reno','Marbury v. Madison and Shaw v. Reno','Only Marbury v. Madison'], a:1,
+   why:'Both redistricting cases are equal protection cases. Marbury is about Article III and judicial review.'}
+];
+for(let i=Q.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [Q[i],Q[j]]=[Q[j],Q[i]]; }
+renderMCQ(document.getElementById('test'),Q,{mode:'test'});
+
+(function timer(){
+  const btn=document.getElementById('timerBtn'), out=document.getElementById('timerOut'); let t=null, left=70*60;
+  const fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+  btn.onclick=()=>{
+    if(t){ clearInterval(t); t=null; btn.textContent='Resume timer'; return; }
+    btn.textContent='Pause timer';
+    t=setInterval(()=>{ left--; out.textContent=fmt(Math.max(left,0)); if(left<=0){ clearInterval(t); t=null; out.textContent='Time is up'; btn.disabled=true; } },1000);
+  };
+})();
+</script>
+</body>
+</html>

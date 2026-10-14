@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Court Cases and Redistricting (AP U.S. Government)</title>
+<meta name="description" content="Interactive AP U.S. Government notes: Marbury v. Madison, Baker v. Carr, Shaw v. Reno, and a gerrymandering lab where you draw the districts yourself. By learningwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ap-gov.css">
+</head>
+<body data-theme="light">
+<div class="lws-backdrop"></div>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark"><img src="../assets/logo-mark.png" alt="learningwithsruthi" width="46" height="30" decoding="async"></div>
+    <div class="brand-name">learningwithsruthi <small>ap gov notes</small></div>
+  </div>
+  <div class="ws-switch">
+    <div class="ws-switch-btn">
+      <div class="ico">6</div>
+      <div class="meta">
+        <div class="lbl">Court Cases and Redistricting</div>
+        <div class="sub">Topic 6 of 6 &middot; AP Gov</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-section-label">Topics</div>
+  <div class="side-nav">
+    <a class="nav-item" href="topic-1-federalist-70-78.html"><span class="num">1.</span><span class="t">Federalist 70 and 78</span></a>
+    <a class="nav-item" href="topic-2-separation-of-powers.html"><span class="num">2.</span><span class="t">Separation of Powers</span></a>
+    <a class="nav-item" href="topic-3-congress.html"><span class="num">3.</span><span class="t">Congress</span></a>
+    <a class="nav-item" href="topic-4-how-a-bill-becomes-law.html"><span class="num">4.</span><span class="t">How a Bill Becomes Law</span></a>
+    <a class="nav-item" href="topic-5-executive-and-judicial.html"><span class="num">5.</span><span class="t">Executive and Judicial Branches</span></a>
+    <a class="nav-item active" href="topic-6-court-cases-redistricting.html"><span class="num">6.</span><span class="t">Court Cases and Redistricting</span></a>
+  </div>
+  <div class="side-section-label">Test yourself</div>
+  <div class="side-nav">
+    <a class="nav-item" href="final-practice-test.html"><span class="num">50Q</span><span class="t">Final Practice Test</span></a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">AP Gov &middot; Topic 6 of 6</span>
+    <span class="bread-now">Court Cases and Redistricting</span>
+  </div>
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input placeholder="Search topics, cases, questions...">
+  </div>
+  <div class="top-actions">
+    <button class="btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleLwsTheme()">&#9790;</button>
+  </div>
+</header>
+
+<main class="main">
+
+<div class="pg-head">
+  <div class="topic-badge">Topic 6 &middot; AP U.S. Government</div>
+  <h1>Court Cases and Redistricting</h1>
+  <p class="sub">Marbury v. Madison, Baker v. Carr, Shaw v. Reno, and a gerrymandering lab where you draw the districts yourself.</p>
+</div>
+
+<!-- ======== MAP ======== -->
+<div class="card">
+  <h2 class="card-title"><span class="num">Map</span>What this topic covers</h2>
+  <p class="body-text">Three required Supreme Court cases, and the idea that ties two of them together: <strong>who draws the lines decides whose vote counts</strong>. Start with the gerrymandering lab. Once you have rigged an election yourself, Baker v. Carr and Shaw v. Reno make a lot more sense.</p>
+  <div class="topics-list">
+    <div class="row current"><span class="rn">6.1</span><span>Apportionment, redistricting, gerrymandering</span></div>
+    <div class="row current"><span class="rn">6.2</span><span>Gerrymandering lab: draw the districts yourself</span></div>
+    <div class="row current"><span class="rn">6.3</span><span>Marbury v. Madison (1803)</span></div>
+    <div class="row current"><span class="rn">6.4</span><span>Baker v. Carr (1962)</span></div>
+    <div class="row current"><span class="rn">6.5</span><span>Shaw v. Reno (1993)</span></div>
+    <div class="row current"><span class="rn">6.6</span><span>The three cases side by side</span></div>
+    <div class="row current"><span class="rn">P</span><span>10 multiple choice + 2 free response</span></div>
+  </div>
+</div>
+
+<!-- ======== 6.1 ======== -->
+<div class="card" id="sec-words">
+  <h2 class="card-title"><span class="num">6.1</span>Three words that sound alike</h2>
+  <div class="term-grid">
+    <div class="term-sym">Apportionment</div><div class="term-def">Dividing the 435 House seats among the states after each census. Decides <em>how many</em> seats a state gets. (You played with this in Topic 3.)</div>
+    <div class="term-sym">Redistricting</div><div class="term-def">Each state redrawing its district lines so each district has roughly the same population. In most states, the <strong>state legislature</strong> draws the lines; some states use independent commissions.</div>
+    <div class="term-sym">Gerrymandering</div><div class="term-def">Drawing district lines on purpose to help one party or group. The name comes from Massachusetts Governor Elbridge Gerry, whose 1812 district was shaped like a salamander.</div>
+    <div class="term-sym">Packing</div><div class="term-def">Cramming the other side's voters into a few districts they win by huge margins, wasting their extra votes.</div>
+    <div class="term-sym">Cracking</div><div class="term-def">Splitting the other side's voters across many districts so they are a losing minority in each.</div>
+  </div>
+</div>
+
+<!-- ======== 6.2 LAB ======== -->
+<div class="card" id="sec-lab">
+  <h2 class="card-title"><span class="num">6.2</span>Gerrymandering lab</h2>
+  <p class="body-text">This state has <strong>50 voters</strong> and needs <strong>5 districts of 10 voters</strong> each. <strong>60% support Party A</strong> (blue circles) and <strong>40% support Party B</strong> (gold squares). Same voters every time. Only the lines change.</p>
+  <div class="interactive-area">
+    <div class="pick-row" id="gmPreset">
+      <button class="pick-btn active" data-k="fair">Fair map</button>
+      <button class="pick-btn" data-k="crackB">Crack Party B</button>
+      <button class="pick-btn" data-k="packA">Pack Party A</button>
+      <button class="pick-btn" data-k="draw">Draw your own</button>
+    </div>
+    <div class="dist-pal" id="gmPal" style="display:none"></div>
+    <div class="stage"><div class="gm-grid" id="gmGrid" style="grid-template-columns:repeat(10,1fr)"></div></div>
+    <div class="seat-bar" id="gmBar"></div>
+    <div class="readout" id="gmOut"></div>
+  </div>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0"><strong>What to notice:</strong> with 60% of the vote, Party A can end up with 5 seats, 3 seats, or just 2 seats, depending only on who draws the map. Every one of those maps has districts with exactly equal populations, so they all satisfy "one person, one vote." Equal population alone does not stop gerrymandering.</p>
+  </div>
+</div>
+
+<!-- ======== 6.3 MARBURY ======== -->
+<div class="card" id="sec-marbury">
+  <h2 class="card-title"><span class="num">6.3</span>Marbury v. Madison (1803)</h2>
+  <p class="body-text"><strong>The one-line version: Marbury = the Court gets the power of judicial review.</strong> Click through the story.</p>
+  <div class="interactive-area">
+    <div class="steps" id="mbSteps"></div>
+    <div class="bill-card"><h4 id="mbTitle"></h4><p id="mbText"></p></div>
+    <div class="btn-row"><button class="site-btn secondary" id="mbPrev">Back</button><button class="site-btn" id="mbNext">Next</button></div>
+  </div>
+  <div class="highlight-box">
+    <p class="body-text" style="margin:0"><strong>Why it was a brilliant move:</strong> Marshall gave Jefferson's side the win (Marbury got nothing), so there was no order for Jefferson to defy. But in exchange, the Court claimed a far bigger power: the right to strike down acts of Congress. This is the formal start of what Hamilton described in Federalist 78.</p>
+  </div>
+</div>
+
+<!-- ======== 6.4 BAKER ======== -->
+<div class="card" id="sec-baker">
+  <h2 class="card-title"><span class="num">6.4</span>Baker v. Carr (1962)</h2>
+  <p class="body-text"><strong>The one-line version: Baker = one person, one vote.</strong></p>
+  <div class="term-grid">
+    <div class="term-sym">Facts</div><div class="term-def">Tennessee had not redrawn its state legislative districts since 1901, about 60 years, even though huge numbers of people had moved to cities. Rural districts with few people had the same representation as packed urban districts. Charles Baker, a voter from Shelby County (Memphis), sued.</div>
+    <div class="term-sym">Question</div><div class="term-def">Is redistricting a <strong>"political question"</strong> courts must stay out of, or is it <strong>justiciable</strong> (something a court can decide)?</div>
+    <div class="term-sym">Holding (6 to 2)</div><div class="term-def">It <strong>is justiciable</strong>. Unequal districts can violate the <strong>Equal Protection Clause of the 14th Amendment</strong>, so federal courts can hear these cases.</div>
+    <div class="term-sym">Significance</div><div class="term-def">Opened the door to the <strong>"one person, one vote"</strong> standard (applied in Reynolds v. Sims, 1964): districts must have roughly equal populations so every vote carries equal weight.</div>
+  </div>
+  <div class="interactive-area">
+    <div class="ia-label">How much is your vote worth? Two districts, one representative each</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Rural district population</label><input type="range" id="bkR" min="5000" max="100000" step="5000" value="10000"><span class="val-chip" id="bkRV">10,000</span></div>
+      <div class="ctrl"><label>City district population</label><input type="range" id="bkC" min="5000" max="100000" step="5000" value="80000"><span class="val-chip" id="bkCV">80,000</span></div>
+    </div>
+    <div class="stage"><svg id="bkSvg" class="dg" viewBox="0 0 640 170"></svg></div>
+    <div class="readout" id="bkOut"></div>
+  </div>
+</div>
+
+<!-- ======== 6.5 SHAW ======== -->
+<div class="card" id="sec-shaw">
+  <h2 class="card-title"><span class="num">6.5</span>Shaw v. Reno (1993)</h2>
+  <p class="body-text"><strong>The one-line version: Shaw = no racial gerrymandering; race-based districts must pass strict scrutiny.</strong></p>
+  <div class="term-grid">
+    <div class="term-sym">Facts</div><div class="term-def">After the 1990 census, North Carolina's population growth earned it a 12th House seat. Under the <strong>Voting Rights Act of 1965</strong>, the U.S. Justice Department pushed the state to create a <strong>second majority-Black district</strong>. The resulting 12th District snaked about 160 miles along Interstate 85, in places no wider than the highway. Five white voters sued.</div>
+    <div class="term-sym">Question</div><div class="term-def">Does a district drawn mainly on the basis of race violate the <strong>Equal Protection Clause of the 14th Amendment</strong>?</div>
+    <div class="term-sym">Holding (5 to 4)</div><div class="term-def">A district so bizarrely shaped that it can only be explained by race can be challenged as a <strong>racial gerrymander</strong>, and it must pass <strong>strict scrutiny</strong>. The case was sent back to the lower court; in a follow-up case (Shaw v. Hunt, 1996) the district failed strict scrutiny and was struck down.</div>
+    <div class="term-sym">Significance</div><div class="term-def">Race cannot be the main factor in drawing district lines unless the state can meet the highest standard of review.</div>
+  </div>
+  <div class="stage" style="margin:14px 0"><svg class="dg" viewBox="0 0 640 200" role="img" aria-label="Stylized shape of a compact district versus North Carolina's 12th District">
+    <rect x="30" y="50" width="120" height="110" rx="10" fill="var(--pa)" fill-opacity=".35" stroke="var(--pa)" stroke-width="2"/>
+    <text x="90" y="185" text-anchor="middle" font-size="12" class="dgb">A compact district</text>
+    <path d="M200 150 C230 150 235 110 265 112 S300 160 330 140 S365 70 400 80 S430 135 460 120 S500 50 530 60 S575 95 610 40 L612 54 C580 108 545 76 530 76 S502 140 462 136 S430 96 402 96 S368 158 330 156 S296 128 266 128 S234 166 200 166 Z" fill="var(--pb)" fill-opacity=".45" stroke="var(--pb)" stroke-width="2"/>
+    <text x="410" y="185" text-anchor="middle" font-size="12" class="dgb">The 1992 NC 12th District (stylized, not to scale): about 160 miles long</text>
+  </svg></div>
+  <div class="term-grid">
+    <div class="term-sym">Strict scrutiny</div><div class="term-def">The toughest test a law can face. The government must show a <strong>compelling interest</strong> and that the law is <strong>narrowly tailored</strong> (no less race-based way would work). Most laws fail it.</div>
+  </div>
+  <div class="note-flag">
+    <span class="flag-label">Beyond the board: partisan gerrymandering</span>
+    Shaw is about <em>racial</em> gerrymandering. For <em>partisan</em> gerrymandering (like the lab above), the Court ruled in <strong>Rucho v. Common Cause (2019)</strong> that it is a political question federal courts will not decide. Voters, state courts, and state laws (like independent commissions) are left to handle it.
+  </div>
+</div>
+
+<!-- ======== 6.6 COMPARE ======== -->
+<div class="card" id="sec-compare">
+  <h2 class="card-title"><span class="num">6.6</span>The three cases side by side</h2>
+  <div class="map-table-wrap"><table class="map-table">
+    <tr><th>Case</th><th>Constitutional basis</th><th>Holding</th><th>Remember it as</th></tr>
+    <tr><td class="code">Marbury v. Madison<br>(1803)</td><td>Article III</td><td>Part of the Judiciary Act of 1789 was unconstitutional; the Court can strike down laws</td><td>Judicial review</td></tr>
+    <tr><td class="code">Baker v. Carr<br>(1962)</td><td>14th Amendment, Equal Protection</td><td>Redistricting is justiciable; courts can hear it</td><td>One person, one vote</td></tr>
+    <tr><td class="code">Shaw v. Reno<br>(1993)</td><td>14th Amendment, Equal Protection</td><td>Districts drawn mainly by race must pass strict scrutiny</td><td>No racial gerrymandering</td></tr>
+  </table></div>
+  <div class="interactive-area">
+    <div class="ia-label">Match each fact to its case</div>
+    <div id="caseSort"></div>
+  </div>
+</div>
+
+<!-- ======== PRACTICE ======== -->
+<div class="card" id="sec-mcq">
+  <h2 class="card-title"><span class="num">P1</span>Multiple choice practice</h2>
+  <div id="mcq"></div>
+</div>
+<div class="card" id="sec-frq">
+  <h2 class="card-title"><span class="num">P2</span>Free response practice: SCOTUS comparison</h2>
+  <p class="body-text">On the AP exam, one FRQ gives you a case you have never studied and asks you to compare it to a required case. Each part is worth one point (part B is worth up to two).</p>
+  <div id="frq"></div>
+</div>
+
+</main>
+</div>
+
+<script src="ap-gov.js"></script>
+<script>
+/* ===== 6.2 gerrymandering lab ===== */
+(function lab(){
+  const C=10, R=5, DCOL=['#c9d7ea','#ecd6b4','#d3dfc0','#e6c9cf','#d9d2ea'];
+  const voter=(r,c)=>c<6?'A':'B';
+  const P={
+    fair:(r,c)=>Math.floor(c/2),
+    crackB:(r,c)=>r,
+    packA:(r,c)=>{
+      if(c<2) return 0; if(c<4) return 1;
+      if(r===0) return 2; if(r===1) return c>=6?2:3;
+      if(r===2) return 3; if(r===3) return c>=8?3:4; return 4;
+    }
+  };
+  const NOTE={
+    fair:'<strong>Fair map:</strong> districts follow where voters actually live. Party A wins 60% of the votes and 3 of 5 seats (60%). Seats match votes.',
+    crackB:'<strong>Cracking Party B:</strong> every district has 6 A voters and 4 B voters. Party B\'s 40% is spread so thin it wins nothing. A takes all 5 seats with 60% of the vote.',
+    packA:'<strong>Packing Party A:</strong> A voters are crammed into two districts that A wins 10 to 0, wasting 4 votes beyond the 6 it needs in each. The rest of the state is split so B wins three districts 6 to 4 or better. <strong>The minority party wins the majority of seats.</strong>',
+    draw:'<strong>Your turn.</strong> Pick a district color, then click or drag across cells to paint. Each district needs exactly 10 connected voters. Can you make Party B win 3 seats a different way? Can you make a 4 to 1 map?'
+  };
+  let mode='fair', asg=[], paint=0, down=false;
+  const grid=document.getElementById('gmGrid'), pal=document.getElementById('gmPal'), out=document.getElementById('gmOut'), bar=document.getElementById('gmBar');
+  function load(k){
+    mode=k; asg=[];
+    for(let r=0;r<R;r++) for(let c=0;c<C;c++) asg.push(k==='draw'?-1:P[k](r,c));
+    pal.style.display=k==='draw'?'':'none'; render();
+  }
+  function render(){
+    let h='';
+    for(let r=0;r<R;r++) for(let c=0;c<C;c++){
+      const i=r*C+c, d=asg[i], v=voter(r,c);
+      const bt=r>0&&asg[i-C]!==d, bb=r<R-1&&asg[i+C]!==d, bl=c>0&&asg[i-1]!==d, br=c<C-1&&asg[i+1]!==d, bw='2.5px solid #143109';
+      h+='<div class="gm-cell" data-i="'+i+'" style="background:'+(d<0?'var(--white)':DCOL[d])+';border-top:'+(bt?bw:'0')+';border-bottom:'+(bb?bw:'0')+';border-left:'+(bl?bw:'0')+';border-right:'+(br?bw:'0')+'">'
+        +'<div class="v'+(v==='B'?' sq':'')+'" style="background:'+(v==='A'?'var(--pa)':'var(--pb)')+'"></div></div>';
+    }
+    grid.innerHTML=h;
+    if(mode==='draw'){
+      pal.innerHTML=DCOL.map((col,d)=>'<button class="'+(d===paint?'on':'')+'" data-d="'+d+'" style="background:'+col+'">District '+(d+1)+' ('+asg.filter(x=>x===d).length+'/10)</button>').join('')
+        +'<button data-d="-1" style="background:var(--white)">Eraser</button><button data-clear="1" style="background:var(--white)">Clear all</button>';
+      pal.querySelectorAll('button').forEach(b=>b.onclick=()=>{ if(b.dataset.clear){ asg=asg.map(()=>-1); render(); return; } paint=+b.dataset.d; render(); });
+    }
+    tally();
+  }
+  function connected(d){
+    const cells=asg.map((x,i)=>x===d?i:-1).filter(i=>i>=0); if(!cells.length) return false;
+    const seen=new Set([cells[0]]), st=[cells[0]];
+    while(st.length){ const i=st.pop(), r=Math.floor(i/C), c=i%C;
+      [[r-1,c],[r+1,c],[r,c-1],[r,c+1]].forEach(([rr,cc])=>{ if(rr<0||rr>=R||cc<0||cc>=C) return; const j=rr*C+cc; if(asg[j]===d&&!seen.has(j)){ seen.add(j); st.push(j); } }); }
+    return seen.size===cells.length;
+  }
+  function tally(){
+    const res=[0,1,2,3,4].map(d=>{ let a=0,n=0; asg.forEach((x,i)=>{ if(x===d){ n++; if(voter(Math.floor(i/C),i%C)==='A') a++; } }); return {d,a,b:n-a,n,ok:n===10&&connected(d)}; });
+    const problems=res.filter(x=>!x.ok);
+    if(problems.length){
+      bar.innerHTML='';
+      out.innerHTML=NOTE.draw+'<br><br>'+problems.map(x=>'District '+(x.d+1)+': '+(x.n!==10?x.n+' of 10 voters':'not connected')).join(' &middot; ');
+      return;
+    }
+    let sa=0,sb=0,tie=0,wa=0,wb=0;
+    const rows=res.map(x=>{
+      let w; if(x.a>5){ sa++; w='A'; wa+=x.a-6; wb+=x.b; } else if(x.b>5){ sb++; w='B'; wb+=x.b-6; wa+=x.a; } else { tie++; w='tie'; }
+      return 'District '+(x.d+1)+': A '+x.a+', B '+x.b+' &rarr; <strong>'+(w==='tie'?'tie':'Party '+w)+'</strong>';
+    });
+    bar.innerHTML=(sa?'<div style="flex:'+sa+';background:var(--pa)">A: '+sa+'</div>':'')+(tie?'<div style="flex:'+tie+';background:var(--slate)">Tie: '+tie+'</div>':'')+(sb?'<div style="flex:'+sb+';background:var(--pb)">B: '+sb+'</div>':'');
+    out.innerHTML=(NOTE[mode]||'')+'<br><br>'+rows.join('<br>')
+      +'<br><br><strong>Votes:</strong> A 60%, B 40% &nbsp;&middot;&nbsp; <strong>Seats:</strong> A '+(sa*20)+'%, B '+(sb*20)+'%'+(tie?' ('+tie+' tied)':'')
+      +'<br><strong>Wasted votes</strong> (votes for a loser, plus winner votes beyond the 6 needed): A '+wa+', B '+wb+'. The party with far more wasted votes is the one the map works against.';
+  }
+  function paintAt(el){ if(mode!=='draw'||!el) return; const c=el.closest('.gm-cell'); if(!c) return; const i=+c.dataset.i; if(asg[i]===paint) return; asg[i]=paint; render(); }
+  grid.addEventListener('pointerdown',e=>{ down=true; paintAt(e.target); });
+  grid.addEventListener('pointermove',e=>{ if(down) paintAt(document.elementFromPoint(e.clientX,e.clientY)); });
+  window.addEventListener('pointerup',()=>down=false);
+  document.querySelectorAll('#gmPreset .pick-btn').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#gmPreset .pick-btn').forEach(x=>x.classList.toggle('active',x===b)); load(b.dataset.k); });
+  load('fair');
+})();
+
+/* ===== 6.3 Marbury story ===== */
+(function marbury(){
+  const S=[
+    ['The election of 1800','Federalist President <strong>John Adams</strong> loses the election to Democratic-Republican <strong>Thomas Jefferson</strong>. The Federalists are about to lose control of both the presidency and Congress.'],
+    ['The midnight judges','In his final days, Adams fills new judicial posts with Federalists. <strong>William Marbury</strong> is appointed a justice of the peace in Washington, D.C., and the Senate confirms him.'],
+    ['The missing commission','Marbury\'s official commission (the paper that gives him the job) is not delivered before Jefferson takes office. Jefferson\'s new Secretary of State, <strong>James Madison</strong>, refuses to deliver it.'],
+    ['The lawsuit','Marbury goes straight to the Supreme Court and asks for a <strong>writ of mandamus</strong>, an order forcing Madison to deliver the commission. Section 13 of the <strong>Judiciary Act of 1789</strong> said the Court could issue such writs.'],
+    ['The ruling','Chief Justice <strong>John Marshall</strong> writes that Marbury had a right to the job, <em>but</em> the Court cannot order Madison to deliver it. Why? That part of the Judiciary Act expanded the Court\'s original jurisdiction beyond what Article III allows, so <strong>that part of the law is unconstitutional</strong>. Marbury never gets the job.'],
+    ['The significance','For the first time, the Supreme Court struck down an act of Congress. This established <strong>judicial review</strong>: the power of the courts to declare laws (and later, executive actions) unconstitutional. It made the judiciary a truly equal branch.']
+  ];
+  let i=0;
+  function show(){
+    document.getElementById('mbSteps').innerHTML=S.map((s,j)=>'<span class="'+(j<i?'done':j===i?'now':'')+'">'+(j+1)+'</span>').join('');
+    document.getElementById('mbTitle').innerHTML=S[i][0]; document.getElementById('mbText').innerHTML=S[i][1];
+    document.getElementById('mbPrev').disabled=i===0; document.getElementById('mbNext').textContent=i===S.length-1?'Start over':'Next';
+  }
+  document.getElementById('mbNext').onclick=()=>{ i=(i+1)%S.length; show(); };
+  document.getElementById('mbPrev').onclick=()=>{ if(i>0){ i--; show(); } };
+  show();
+})();
+
+/* ===== 6.4 vote weight ===== */
+(function baker(){
+  const r=document.getElementById('bkR'), c=document.getElementById('bkC'), svg=document.getElementById('bkSvg'), out=document.getElementById('bkOut');
+  function draw(){
+    const R=+r.value, Cn=+c.value, f=n=>n.toLocaleString('en-US');
+    document.getElementById('bkRV').textContent=f(R); document.getElementById('bkCV').textContent=f(Cn);
+    const dotsR=Math.round(R/5000), dotsC=Math.round(Cn/5000);
+    let s='';
+    [[R,dotsR,40,'Rural district','var(--pb)'],[Cn,dotsC,340,'City district','var(--pa)']].forEach(([p,d,x0,lab,col])=>{
+      s+='<text x="'+(x0+130)+'" y="18" text-anchor="middle" class="dgb" font-size="13">'+lab+': '+f(p)+' people, 1 representative</text>';
+      for(let k=0;k<d;k++){ s+='<circle cx="'+(x0+14+(k%10)*26)+'" cy="'+(40+Math.floor(k/10)*26)+'" r="9" fill="'+col+'" opacity=".8"/>'; }
+    });
+    s+='<text x="320" y="164" text-anchor="middle" font-size="11" style="fill:var(--slate)">Each dot = 5,000 people</text>';
+    svg.innerHTML=s;
+    const ratio=Cn/R;
+    out.innerHTML=Math.abs(ratio-1)<0.05
+      ? '<strong>Equal districts.</strong> Every vote carries the same weight. This is "one person, one vote."'
+      : '<strong>A vote in the '+(ratio>1?'rural':'city')+' district is worth '+(ratio>1?ratio:1/ratio).toFixed(1)+' times as much</strong> as a vote in the '+(ratio>1?'city':'rural')+' district, because that district\'s one representative is shared by fewer people. This is the kind of inequality Baker v. Carr let courts address under the Equal Protection Clause.';
+  }
+  r.oninput=draw; c.oninput=draw; draw();
+})();
+
+/* ===== 6.6 case matcher ===== */
+makeSorter(document.getElementById('caseSort'),[
+  {t:'Writ of mandamus',bin:0},{t:'Judiciary Act of 1789',bin:0},{t:'John Marshall',bin:0},{t:'Midnight judges',bin:0},
+  {t:'Tennessee had not redistricted since 1901',bin:1},{t:'Justiciable, not a political question',bin:1},{t:'One person, one vote',bin:1},
+  {t:'A district along Interstate 85',bin:2},{t:'Majority-minority district',bin:2},{t:'Strict scrutiny of race-based lines',bin:2}
+],['Marbury v. Madison','Baker v. Carr','Shaw v. Reno']);
+
+/* ===== MCQ ===== */
+renderMCQ(document.getElementById('mcq'),[
+  {q:'Marbury v. Madison (1803) is significant because it',
+   o:['established the Supreme Court\'s power of judicial review','required districts to have equal populations','gave Congress the power to impeach judges','created the federal court of appeals'],
+   a:0, why:'The Court struck down part of the Judiciary Act of 1789, establishing judicial review.'},
+  {q:'In Marbury v. Madison, why did William Marbury NOT receive his commission?',
+   o:['The Senate refused to confirm him','The Court ruled that the law giving it power to order the delivery was unconstitutional','President Adams withdrew the appointment','Marbury was found unqualified'],
+   a:1, why:'Marshall ruled that Section 13 of the Judiciary Act unconstitutionally expanded the Court\'s original jurisdiction, so the Court could not issue the order.'},
+  {q:'Which constitutional provision was central to both Baker v. Carr and Shaw v. Reno?',
+   o:['The First Amendment','The Necessary and Proper Clause','The Equal Protection Clause of the 14th Amendment','Article III, Section 1'],
+   a:2, why:'Both cases turn on whether district lines deny citizens equal protection of the laws.'},
+  {q:'Before Baker v. Carr, many courts refused to hear redistricting cases because they considered them',
+   o:['criminal matters','political questions','state treaty issues','executive privilege claims'],
+   a:1, why:'Baker held that redistricting is justiciable rather than a nonreviewable political question.'},
+  {q:'The principle of "one person, one vote" requires that',
+   o:['each state has the same number of representatives','legislative districts have roughly equal populations','each citizen may vote only once per election year','senators be elected by state legislatures'],
+   a:1, why:'Equal populations mean each person\'s vote carries equal weight.'},
+  {q:'In Shaw v. Reno, the Court held that a congressional district drawn primarily on the basis of race',
+   o:['is always required by the Voting Rights Act','must be evaluated under strict scrutiny','is a political question courts cannot hear','violates the First Amendment'],
+   a:1, why:'Racial gerrymanders must serve a compelling interest and be narrowly tailored.'},
+  {q:'A state legislature draws lines so that the opposing party\'s voters are concentrated in two districts that they win by 90 percent. This strategy is called',
+   o:['cracking','packing','apportionment','logrolling'],
+   a:1, why:'Packing concentrates the other side\'s voters so many of their votes are wasted.'},
+  {q:'Which of the following happens every ten years after the census and determines how many House seats each state receives?',
+   o:['Redistricting','Gerrymandering','Reapportionment','Ratification'],
+   a:2, why:'Reapportionment divides the 435 seats among states. Redistricting then draws the lines within each state.'},
+  {stim:'A state where 55 percent of voters support Party X draws a map in which Party X wins 9 of 10 House seats. Every district has an equal population.',
+   q:'Which statement is most accurate about this map?',
+   o:['It violates "one person, one vote" because the seats do not match votes','It may be a partisan gerrymander, but equal populations satisfy one person, one vote','It is unconstitutional under Shaw v. Reno','It must be approved by the president'],
+   a:1, why:'One person, one vote is about equal population, which this map meets. Shaw is about racial gerrymandering, and federal courts do not decide partisan gerrymandering claims (Rucho v. Common Cause, 2019).'},
+  {q:'Federalist 78 and Marbury v. Madison are most closely related because both',
+   o:['support lifetime terms for members of Congress','support the courts\' power to declare laws unconstitutional','argue for a single executive','call for equal representation of states'],
+   a:1, why:'Hamilton defended judicial review in 1788; Marshall established it in practice in 1803.'}
+]);
+
+/* ===== FRQ ===== */
+renderFRQ(document.getElementById('frq'),[
+  {type:'SCOTUS Comparison',
+   stem:'In <strong>Reynolds v. Sims (1964)</strong>, voters in Alabama sued because the state legislature had not been reapportioned based on the 1900 census, even though the population had grown and shifted dramatically. Some districts had many times more people than others but the same representation. The Supreme Court ruled 8 to 1 that seats in both houses of a state legislature must be apportioned by population, so that each person\'s vote has roughly equal weight.',
+   parts:[
+    {p:'Identify the constitutional clause that is common to both Reynolds v. Sims and Baker v. Carr.',
+     guide:'<ul><li>The Equal Protection Clause of the 14th Amendment.</li></ul>'},
+    {p:'Explain how the facts of Baker v. Carr and the facts of Reynolds v. Sims led to similar holdings. (2 points)',
+     guide:'<ul><li>1 point: describes the relevant facts of Baker: Tennessee had not redrawn districts since 1901, so urban voters were underrepresented compared with rural voters.</li><li>1 point: explains the connection: in both cases, failing to redistrict made some citizens\' votes worth less than others, so the Court found federal courts could act (Baker) and required districts based on population (Reynolds), consistent with one person, one vote.</li></ul>'},
+    {p:'Explain how the decision in Reynolds v. Sims could affect the political power of people living in cities.',
+     guide:'<ul><li>Redrawing districts by population gives cities more seats in the state legislature, increasing urban voters\' influence over state laws and budgets relative to rural areas.</li></ul>'}
+   ]},
+  {type:'SCOTUS Comparison',
+   stem:'In <strong>Cooper v. Harris (2017)</strong>, North Carolina redrew its 1st and 12th congressional districts after the 2010 census, raising the share of Black voters in each above 50 percent. The state argued the Voting Rights Act required it. The Supreme Court ruled 5 to 3 that race was the predominant factor in drawing both districts and that the state had not met the standard of strict scrutiny, so the districts were unconstitutional.',
+   parts:[
+    {p:'Identify the constitutional clause that is common to both Cooper v. Harris and Shaw v. Reno.',
+     guide:'<ul><li>The Equal Protection Clause of the 14th Amendment.</li></ul>'},
+    {p:'Explain how the reasoning in Shaw v. Reno was applied in Cooper v. Harris. (2 points)',
+     guide:'<ul><li>1 point: describes Shaw: North Carolina\'s oddly shaped 12th District was drawn mainly by race, and the Court held race-based districts must pass strict scrutiny.</li><li>1 point: explains that Cooper applied the same rule: because race predominated, the state had to show a compelling interest and narrow tailoring; it could not, so the districts were struck down.</li></ul>'},
+    {p:'Explain one action state legislatures could take in response to decisions like Shaw and Cooper.',
+     guide:'<ul><li>Redraw districts using race-neutral criteria (compactness, keeping communities and counties together), or create independent redistricting commissions to reduce legal challenges.</li></ul>'}
+   ]}
+],'t6');
+</script>
+</body>
+</html>
