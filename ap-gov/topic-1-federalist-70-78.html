@@ -242,6 +242,7 @@
         const holdouts=votes.filter(v=>v!==m).length;
         out.innerHTML=n===1
           ? '<strong>Decided immediately:</strong> '+POS[m][0]+'. One person, one call. If it goes badly, everyone knows exactly who is responsible: the president. That is Hamilton\'s "decision, activity, secrecy, and dispatch," plus accountability.'
+          : day===0 ? '<strong>Decided right away:</strong> '+POS[m][0]+', but only because a majority happened to agree from the start, and '+holdouts+' member'+(holdouts>1?'s':'')+' still disagree'+(holdouts>1?'':'s')+'. Run the crisis again and see how often a council gets that lucky. And if it goes badly, who gets blamed? Each member can say "I was outvoted" or "it was a group decision." Hamilton: a plural executive "tends to conceal faults and destroy responsibility."'
           : '<strong>Decided on day '+day+':</strong> '+POS[m][0]+(holdouts?', with '+holdouts+' member'+(holdouts>1?'s':'')+' still disagreeing.':'.')+' The enemy had '+day+' day'+(day===1?'':'s')+' of head start. And if it goes badly, who gets blamed? Each member can say "I was outvoted" or "it was a group decision." Hamilton: a plural executive "tends to conceal faults and destroy responsibility."';
         return;
       }

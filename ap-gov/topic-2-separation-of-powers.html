@@ -106,7 +106,7 @@
   <p class="body-text">This is the triangle from the board. Click a <strong>branch</strong> to see its job and every check it holds. Click an <strong>arrow</strong> to see the checks in that one direction.</p>
   <div class="interactive-area">
     <div class="ia-label">Click a branch or an arrow</div>
-    <div class="stage"><svg id="cbSvg" class="dg" style="max-width:680px" viewBox="0 0 640 462" role="img" aria-label="Checks and balances between the three branches"></svg></div>
+    <div class="stage"><svg id="cbSvg" class="dg" style="max-width:760px" viewBox="0 0 760 450" role="img" aria-label="Checks and balances between the three branches"></svg></div>
     <div class="readout" id="cbOut">Start with Legislative at the top.</div>
   </div>
 </div>
@@ -162,9 +162,9 @@
 <script src="ap-gov.js"></script>
 <script>
 const BR=[
-  {k:'L',name:'Legislative',who:'Congress (House + Senate)',job:'Makes the laws',col:'var(--leg)',cx:320,cy:62},
-  {k:'E',name:'Executive',who:'President, VP, Cabinet',job:'Enforces the laws',col:'var(--exe)',cx:110,cy:380},
-  {k:'J',name:'Judicial',who:'Supreme Court + federal courts',job:'Interprets the laws',col:'var(--jud)',cx:530,cy:380}
+  {k:'L',name:'Legislative',who:'Congress (House + Senate)',job:'Makes the laws',col:'var(--leg)',cx:380,cy:62},
+  {k:'E',name:'Executive',who:'President, VP, Cabinet',job:'Enforces the laws',col:'var(--exe)',cx:130,cy:400},
+  {k:'J',name:'Judicial',who:'Supreme Court + federal courts',job:'Interprets the laws',col:'var(--jud)',cx:630,cy:400}
 ];
 const CHECKS={
   'L>E':{short:['override veto,','impeach, confirm, fund'],list:['Override a presidential veto with a <strong>two-thirds vote of both chambers</strong>','Impeach (House) and remove (Senate) the president','Senate rejects appointments and treaties','Controls funding for every executive program (power of the purse)','Investigates the executive branch (oversight hearings)','Declares war']},
@@ -187,11 +187,11 @@ const byK=k=>BR.find(b=>b.k===k);
   let sel=null;
   function arrowGeom(a,b){
     const A=byK(a),B=byK(b); const dx=B.cx-A.cx, dy=B.cy-A.cy, L=Math.hypot(dx,dy);
-    const ux=dx/L, uy=dy/L, nx=-uy, ny=ux, off=14, trimA=a==='L'?62:70, trimB=b==='L'?62:70;
-    const mx=(A.cx+B.cx)/2, my=(A.cy+B.cy)/2, outer=(nx*(mx-320)+ny*(my-240))>0, lo=outer?58:off;
-    return {x1:A.cx+ux*trimA+nx*off, y1:A.cy+uy*trimA+ny*off, x2:B.cx-ux*trimB+nx*off, y2:B.cy-uy*trimB+ny*off,
-            lx:mx+nx*lo, ly:my+ny*lo, pill:!outer};
+    const ux=dx/L, uy=dy/L, nx=-uy, ny=ux, off=11, trimA=a==='L'?62:70, trimB=b==='L'?62:96;
+    return {x1:A.cx+ux*trimA+nx*off, y1:A.cy+uy*trimA+ny*off, x2:B.cx-ux*trimB+nx*off, y2:B.cy-uy*trimB+ny*off};
   }
+  // label blocks sit in clear space: left of the left side, right of the right side, inside the triangle for the base
+  const LBL={'L>E':[236,168,'end'],'E>L':[236,214,'end'],'L>J':[524,168,'start'],'J>L':[524,214,'start'],'J>E':[380,292,'middle'],'E>J':[380,338,'middle']};
   function draw(){
     let s='<defs>';
     BR.forEach(b=>{ s+='<marker id="ah'+b.k+'" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="'+b.col+'"/></marker>'; });
@@ -202,8 +202,9 @@ const byK=k=>BR.find(b=>b.k===k);
       s+='<g data-arrow="'+key+'" style="cursor:pointer" opacity="'+(dim?.25:1)+'">';
       s+='<line x1="'+g.x1+'" y1="'+g.y1+'" x2="'+g.x2+'" y2="'+g.y2+'" stroke="transparent" stroke-width="22"/>';
       s+='<line x1="'+g.x1+'" y1="'+g.y1+'" x2="'+g.x2+'" y2="'+g.y2+'" stroke="'+col+'" stroke-width="'+(on?4:2.4)+'" marker-end="url(#ah'+a+')"/>';
-      if(g.pill) s+='<rect x="'+(g.lx-74)+'" y="'+(g.ly-18)+'" width="148" height="34" rx="8" fill="var(--white)" stroke="'+col+'" stroke-width="1.2"/>';
-      CHECKS[key].short.forEach((t,i)=>{ s+='<text x="'+g.lx+'" y="'+(g.ly-4+i*14)+'" text-anchor="middle" font-size="11.5" style="fill:'+col+'" class="dgb">'+t+'</text>'; });
+      const [lx,ly,an]=LBL[key];
+      s+='<text x="'+lx+'" y="'+ly+'" text-anchor="'+an+'" font-size="12" class="dgb" style="fill:'+col+'">'+byK(a).name+' checks '+byK(b).name+':</text>';
+      s+='<text x="'+lx+'" y="'+(ly+16)+'" text-anchor="'+an+'" font-size="12" style="fill:'+col+'">'+CHECKS[key].short.join(' ')+'</text>';
       s+='</g>';
     });
     BR.forEach(b=>{

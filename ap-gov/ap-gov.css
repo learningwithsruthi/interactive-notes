@@ -255,10 +255,10 @@ body{padding:0;background:var(--bg);overflow-x:auto;font-feature-settings:"ss01"
 
 /* quote / document cards */
 .doc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
-.flip{perspective:1000px;cursor:pointer;min-height:190px}
-.flip-in{position:relative;width:100%;height:100%;min-height:190px;transition:transform .5s;transform-style:preserve-3d}
+.flip{perspective:1000px;cursor:pointer}
+.flip-in{display:grid;width:100%;transition:transform .5s;transform-style:preserve-3d}
 .flip.on .flip-in{transform:rotateY(180deg)}
-.flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:2px solid var(--sage-l);border-radius:14px;padding:16px 18px;background:var(--white);display:flex;flex-direction:column;gap:8px;overflow:auto}
+.flip-face{grid-area:1/1;min-height:190px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:2px solid var(--sage-l);border-radius:14px;padding:16px 18px;background:var(--white);display:flex;flex-direction:column;gap:8px}
 .flip-face.back{transform:rotateY(180deg);background:var(--sage-m)}
 .flip-face h4{font-family:var(--fh);font-size:1.02rem;color:var(--forest)}
 .flip-face p,.flip-face li{font-family:var(--fp);font-size:.93rem;line-height:1.55;color:var(--forest)}
@@ -353,3 +353,21 @@ blockquote.src cite{display:block;font-style:normal;font-size:.8rem;color:var(--
 [data-theme="dark"] .steps span.done{background:var(--sage);color:#0E1108}
 [data-theme="dark"] .steps span.now{background:var(--forest);color:#0E1108}
 .map-table-wrap{overflow-x:auto}
+
+/* phone sizing: never let wide content stretch the page grid */
+.main,.card,.interactive-area,.stage{min-width:0}
+@media(max-width:980px){ .app{grid-template-columns:minmax(0,1fr)} }
+.flip-face .tag{align-self:flex-start}
+@media(max-width:640px){
+  .card{padding:20px 14px}
+  .interactive-area{padding:14px 10px}
+  .stage{padding:8px;overflow-x:auto}
+  /* labelled diagrams keep a readable size and scroll sideways inside their box */
+  .stage svg.dg{min-width:500px}
+  .stage:has(svg.dg)::after{content:"Swipe sideways to see the whole diagram";display:block;position:sticky;left:0;width:calc(100vw - 80px);font-family:var(--fb);font-size:.74rem;color:var(--slate);text-align:center;margin-top:4px}
+  .pg-head{padding:26px 16px}
+  .pg-head h1{font-size:1.7rem}
+  .card-title{font-size:1.22rem}
+  .ctrl input[type=range]{width:120px}
+  .gm-grid{gap:2px}
+}
