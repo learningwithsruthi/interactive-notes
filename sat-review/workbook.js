@@ -23,7 +23,7 @@ function parseNum(v){let s=String(v).trim().replace(/[−–]/g,'-').replace(/[,
   let m=s.match(/^(-?\d*\.?\d+)\/(-?\d*\.?\d+)$/);if(m)return parseFloat(m[1])/parseFloat(m[2]);
   return /^-?\d*\.?\d+$/.test(s)?parseFloat(s):NaN}
 function numOk(val,step){const a=parseNum(val),b=parseNum(step.answer);if(isNaN(a))return false;
-  const tol=step.tol!=null?step.tol:(String(step.answer).includes('/')?0.002:1e-9);return Math.abs(a-b)<=tol}
+  const tol=step.tol!=null?step.tol:(String(step.answer).includes('/')?0.0051:1e-9);return Math.abs(a-b)<=tol}
 function norm(s){return String(s).toLowerCase().replace(/[^a-z0-9/.\-]/g,'')}
 function textOk(val,step){const v=norm(val);return v!==''&&(step.answers||[]).some(a=>norm(a)===v)}
 let streak=0;function bump(ok){streak=ok?streak+1:0;const el=$('#streak');if(el)el.textContent='Streak '+streak}

@@ -44,7 +44,7 @@ window.LWS = window.LWS || {};
     return SVG(360, 290,
       GRID([0, 2, 4, 6, 8, 10], [0, 10, 20, 30, 40], X, Y) + TM(40, 257, 0) +
       PATH('M40 140 Q190 -60 340 240', ACC) +
-      DOT(40, 140) + DOT(160, 60) +
+      DOT(40, 140) + DOT(160, 60) + TM(160, 50, '(4, 36)') +
       TM(190, 282, 'x, months after March 1') + T(8, 26, 'Birds'));
   })();
 
