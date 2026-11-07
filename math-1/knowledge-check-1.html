@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Knowledge Check: Functions and Linear Forms</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Bitter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf7f2;--card:#fff;--ink:#2b2622;--muted:#6b625a;--line:#e3dbd0;--accent:#2f6f6a;--accent-ink:#fff;--ok:#2e7d32;--bad:#b3261e;--sel:#e3f0ee}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Bitter,Georgia,serif;line-height:1.5}
+main{max-width:760px;margin:0 auto;padding:24px 16px 80px}
+h1{font-family:"Young Serif",serif;font-weight:400;font-size:1.8rem;margin:.2em 0}
+.sub{color:var(--muted);margin:0 0 1.5em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px 14px;margin:0 0 16px}
+.qnum{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.prompt{margin:.3em 0 .8em;font-size:1.05rem}
+.opts{display:grid;gap:8px}
+.opts label{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:9px 12px;cursor:pointer}
+.opts label:has(input:checked){background:var(--sel);border-color:var(--accent)}
+.opts input{accent-color:var(--accent)}
+table.t{border-collapse:collapse;margin:.4em 0 .8em}
+table.t th,table.t td{border:1px solid var(--line);padding:4px 14px;text-align:center}
+table.t th{background:#f3eee6}
+svg{display:block;margin:.3em 0 .8em;max-width:100%}
+input[type=text]{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;width:100%;max-width:340px}
+button{font:inherit;font-weight:600;background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:10px 18px;cursor:pointer}
+button.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.err{color:var(--bad);min-height:1.4em}
+.hidden{display:none}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:.85rem;word-break:break-all;background:#f3eee6;border-radius:8px;padding:12px;user-select:all}
+.right{color:var(--ok);font-weight:700}.wrong{color:var(--bad);font-weight:700}
+.score{font-size:1.4rem;font-family:"Young Serif",serif}
+textarea{width:100%;min-height:110px;font-family:ui-monospace,Menlo,monospace;padding:10px;border:1px solid var(--line);border-radius:8px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+</style>
+</head>
+<body>
+<main>
+<h1>Knowledge Check</h1>
+<p class="sub">Functions, terms and degree, solutions, and the three forms of a linear equation.</p>
+
+<section id="gate" class="card">
+  <p class="prompt">Enter your name and the access code your tutor gave you.</p>
+  <p><input type="text" id="name" placeholder="Your name" autocomplete="off"></p>
+  <p><input type="text" id="code" placeholder="Access code" autocomplete="off"></p>
+  <p class="err" id="gateErr"></p>
+  <button id="start">Start</button>
+</section>
+
+<form id="quiz" class="hidden"></form>
+<div id="submitWrap" class="hidden"><p class="err" id="quizErr"></p><button id="submit" type="button">Submit Answers</button></div>
+
+<section id="done" class="card hidden">
+  <p class="score" id="doneScore"></p>
+  <p>Copy the code below and send it to your tutor. It holds all of your answers.</p>
+  <div class="code" id="resultCode"></div>
+  <div class="row"><button type="button" id="copy">Copy Code</button><span id="copied" class="sub" style="margin:0"></span></div>
+</section>
+
+<section id="review" class="hidden">
+  <div class="card">
+    <p class="prompt">Tutor review: paste a student's result code.</p>
+    <textarea id="reviewIn"></textarea>
+    <div class="row"><button type="button" id="reviewGo">Show Answers</button></div>
+    <p class="err" id="reviewErr"></p>
+  </div>
+  <div id="reviewOut"></div>
+</section>
+</main>
+
+<script>
+(function(){
+var ACCESS = 'LINEAR20';
+
+// Coordinate-plane SVG: x and y from -5 to 5
+function plane(draw){
+  var s=22,n=5,W=s*n*2+20,o=W/2,g='';
+  for(var i=-n;i<=n;i++){
+    g+='<line x1="'+(o+i*s)+'" y1="10" x2="'+(o+i*s)+'" y2="'+(W-10)+'" stroke="#e3dbd0"/>';
+    g+='<line x1="10" y1="'+(o+i*s)+'" x2="'+(W-10)+'" y2="'+(o+i*s)+'" stroke="#e3dbd0"/>';
+  }
+  g+='<line x1="10" y1="'+o+'" x2="'+(W-10)+'" y2="'+o+'" stroke="#6b625a" stroke-width="1.5"/>';
+  g+='<line x1="'+o+'" y1="10" x2="'+o+'" y2="'+(W-10)+'" stroke="#6b625a" stroke-width="1.5"/>';
+  g+='<text x="'+(W-14)+'" y="'+(o-6)+'" font-size="12" fill="#6b625a">x</text><text x="'+(o+6)+'" y="18" font-size="12" fill="#6b625a">y</text>';
+  for(var k=-4;k<=4;k+=2){ if(k){ g+='<text x="'+(o+k*s-4)+'" y="'+(o+14)+'" font-size="10" fill="#6b625a">'+k+'</text><text x="'+(o+4)+'" y="'+(o-k*s+4)+'" font-size="10" fill="#6b625a">'+k+'</text>'; } }
+  var X=function(x){return o+x*s}, Y=function(y){return o-y*s};
+  return '<svg width="'+W+'" height="'+W+'" viewBox="0 0 '+W+' '+W+'">'+g+draw(X,Y)+'</svg>';
+}
+function curve(pts){ return '<polyline fill="none" stroke="#2f6f6a" stroke-width="2.5" points="'+pts.join(' ')+'"/>'; }
+
+var gLine = plane(function(X,Y){ return curve([X(-2)+','+Y(-5), X(3)+','+Y(5)]); });             // y = 2x - 1
+var gCircle = plane(function(X,Y){ return '<circle cx="'+X(0)+'" cy="'+Y(0)+'" r="'+(X(3)-X(0))+'" fill="none" stroke="#2f6f6a" stroke-width="2.5"/>'; });
+var gSide = plane(function(X,Y){ var p=[]; for(var y=-3;y<=3.001;y+=0.25){ p.push(X(y*y/2-3)+','+Y(y)); } return curve(p); }); // x = y^2/2 - 3
+var gV = plane(function(X,Y){ return curve([X(-5)+','+Y(5), X(0)+','+Y(0), X(5)+','+Y(5)]); }); // y = |x|
+var gSol = plane(function(X,Y){ return curve([X(-4)+','+Y(-5), X(5)+','+Y(4)]); });            // y = x - 1
+
+function tbl(xs,ys){ var h='<table class="t"><tr><th>$x$</th>'; xs.forEach(function(v){h+='<td>$'+v+'$</td>'}); h+='</tr><tr><th>$y$</th>'; ys.forEach(function(v){h+='<td>$'+v+'$</td>'}); return h+'</tr></table>'; }
+
+var FN=['Function','Not a function'];
+var FORMS=['Slope-intercept form','Point-slope form','Standard form'];
+var Q=[
+ {p:'Is this table a function?'+tbl([1,2,3,4],[5,7,9,11]), o:FN, a:0},
+ {p:'Is this table a function?'+tbl([2,3,2,5],[4,6,8,10]), o:FN, a:1},
+ {p:'Is this table a function?'+tbl([1,2,3,4],[6,6,6,6]), o:FN, a:0},
+ {p:'Is the set of ordered pairs $\\{(1, 3), (2, 5), (1, 7), (4, 9)\\}$ a function?', o:FN, a:1},
+ {p:'Use the vertical line test. Is this graph a function?'+gLine, o:FN, a:0},
+ {p:'Use the vertical line test. Is this graph a function?'+gCircle, o:FN, a:1},
+ {p:'Use the vertical line test. Is this graph a function?'+gSide, o:FN, a:1},
+ {p:'Use the vertical line test. Is this graph a function?'+gV, o:FN, a:0},
+ {p:'Which statement describes a function?', o:['Every output has exactly one input','Each input has exactly one output','Each input can have two or more outputs','The inputs and outputs must all be different'], a:1},
+ {p:'How many terms are in $4x^2 - 3x + 7$?', o:['1','2','3','4'], a:2},
+ {p:'What is the degree of $5x^3 + 2x - 9$?', o:['1','2','3','5'], a:2},
+ {p:'What is the degree of $7 - 4x + x^2 + 2x^4$?', o:['1','2','4','7'], a:2},
+ {p:'Which pair are like terms?', o:['$3x$ and $3x^2$','$4y$ and $4x$','$-5x^2$ and $2x^2$','$6$ and $6x$'], a:2},
+ {p:'Simplify by combining like terms: $3x + 5 + 2x - 8$', o:['$5x + 3$','$5x - 3$','$x - 3$','$2x$'], a:1},
+ {p:'Simplify by combining like terms: $2x^2 + 4x - x^2 + 3x$', o:['$x^2 + 7x$','$3x^2 + 7x$','$8x^2$','$x^2 + x$'], a:0},
+ {p:'Is $(2, 7)$ a solution of $y = 3x + 1$?', o:['Yes','No'], a:0},
+ {p:'Is $(-1, 4)$ a solution of $y = 2x + 5$?', o:['Yes','No'], a:1},
+ {p:'This table shows solutions of an equation. Which ordered pair is <b>not</b> a solution shown in the table?'+tbl([0,1,2,3],[1,3,5,7]), o:['$(0, 1)$','$(1, 3)$','$(2, 6)$','$(3, 7)$'], a:2},
+ {p:'Which ordered pair is a solution of the line shown on the graph?'+gSol, o:['$(2, 3)$','$(3, 2)$','$(0, 1)$','$(1, 1)$'], a:1},
+ {p:'Which form is $y - 4 = 2(x + 1)$ written in?', o:FORMS, a:1},
+ {p:'Which form is $3x + 2y = 12$ written in?', o:FORMS, a:2},
+ {p:'Which form is $y = -5x + 8$ written in?', o:FORMS, a:0}
+];
+
+function $(id){return document.getElementById(id)}
+function tex(el){ if(window.renderMathInElement) renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]}); }
+function enc(o){ return 'KC1.'+btoa(unescape(encodeURIComponent(JSON.stringify(o)))); }
+function dec(s){ s=s.trim().replace(/^KC1\./,''); return JSON.parse(decodeURIComponent(escape(atob(s)))); }
+function strip(h){ var d=document.createElement('div'); d.innerHTML=h; return d.textContent; }
+
+// Tutor review mode: ?review
+if(/[?&]review/.test(location.search)){
+  $('gate').classList.add('hidden'); $('review').classList.remove('hidden');
+  $('reviewGo').onclick=function(){
+    $('reviewErr').textContent=''; var r;
+    try{ r=dec($('reviewIn').value); }catch(e){ $('reviewErr').textContent='That code could not be read. Check it was copied in full.'; return; }
+    var right=0, h='';
+    Q.forEach(function(q,i){
+      var s=r.a[i], ok=s===q.a; if(ok) right++;
+      h+='<div class="card"><div class="qnum">Question '+(i+1)+'</div><div class="prompt">'+q.p+'</div>'+
+         '<p>Student: <span class="'+(ok?'right':'wrong')+'">'+(s==null?'(blank)':q.o[s])+'</span>'+(ok?'':'<br>Correct: <b>'+q.o[q.a]+'</b>')+'</p></div>';
+    });
+    $('reviewOut').innerHTML='<div class="card"><p class="score">'+strip(r.n)+': '+right+' / '+Q.length+'</p><p class="sub" style="margin:0">Submitted '+new Date(r.t).toLocaleString()+'</p></div>'+h;
+    tex($('reviewOut'));
+  };
+  return;
+}
+
+$('start').onclick=function(){
+  var nm=$('name').value.trim(), cd=$('code').value.trim().toUpperCase();
+  if(!nm){ $('gateErr').textContent='Please enter your name.'; return; }
+  if(cd!==ACCESS){ $('gateErr').textContent='That access code is not right.'; return; }
+  $('gate').classList.add('hidden');
+  var h='';
+  Q.forEach(function(q,i){
+    h+='<div class="card"><div class="qnum">Question '+(i+1)+' of '+Q.length+'</div><div class="prompt">'+q.p+'</div><div class="opts">';
+    q.o.forEach(function(o,j){ h+='<label><input type="radio" name="q'+i+'" value="'+j+'"> <span>'+o+'</span></label>'; });
+    h+='</div></div>';
+  });
+  $('quiz').innerHTML=h; tex($('quiz')); $('quiz').classList.remove('hidden'); $('submitWrap').classList.remove('hidden');
+  window.scrollTo(0,0);
+};
+
+$('submit').onclick=function(){
+  var ans=Q.map(function(q,i){ var c=document.querySelector('input[name=q'+i+']:checked'); return c?+c.value:null; });
+  var blanks=ans.reduce(function(n,v){return n+(v==null?1:0)},0);
+  if(blanks && !confirm(blanks+' question(s) are blank. Submit anyway?')) return;
+  var right=ans.reduce(function(n,v,i){return n+(v===Q[i].a?1:0)},0);
+  var code=enc({n:$('name').value.trim(), a:ans, t:Date.now()});
+  $('quiz').classList.add('hidden'); $('submitWrap').classList.add('hidden');
+  $('doneScore').textContent='Score: '+right+' / '+Q.length;
+  $('resultCode').textContent=code; $('done').classList.remove('hidden');
+  window.scrollTo(0,0);
+};
+$('copy').onclick=function(){
+  var t=$('resultCode').textContent;
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){ $('copied').textContent='Copied.'; },function(){ $('copied').textContent='Select the code and copy it by hand.'; });
+};
+})();
+</script>
+</body>
+</html>
