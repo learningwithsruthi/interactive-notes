@@ -22,15 +22,30 @@
 .eo-bar div{display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--fb);font-size:.8rem;font-weight:700;transition:width .25s;white-space:nowrap;overflow:hidden}
 .hz{cursor:pointer}
 .hz:hover rect,.hz:hover ellipse,.hz:hover circle,.hz:hover path{filter:brightness(1.08)}
-.tabbar{position:sticky;top:64px;z-index:5;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;background:var(--bg);padding:8px 0}
-.tabbar button{font-family:var(--fp);font-weight:600;font-size:.92rem;border:2px solid var(--sage-l);background:var(--white);color:var(--forest);border-radius:30px;padding:7px 16px;cursor:pointer}
-.tabbar button.on{background:var(--forest);color:#fff;border-color:var(--forest)}
+.tabbar{position:sticky;top:64px;z-index:5;display:flex;gap:4px;flex-wrap:wrap;justify-content:center;background:var(--white);border:2px solid var(--sage-l);border-radius:16px;padding:6px;box-shadow:0 2px 12px rgba(20,49,9,0.06)}
+.tabbar button{font-family:var(--fp);font-weight:600;font-size:.95rem;border:none;background:transparent;color:var(--slate);border-radius:12px;padding:8px 16px;cursor:pointer}
+.tabbar button:hover{background:var(--sage-m);color:var(--forest)}
+.tabbar button.on{background:var(--sage-m);color:var(--forest);box-shadow:inset 0 0 0 2px var(--sage)}
 .tab{display:none;flex-direction:column;gap:22px}
 .tab.on{display:flex}
-[data-theme="dark"] .tabbar{background:#0f120b}
-[data-theme="dark"] .tabbar button{background:#1d2a17;color:#eef1e4;border-color:#2B3320}
-[data-theme="dark"] .tabbar button.on{background:#9BA06A;color:#143109}
+[data-theme="dark"] .tabbar{background:#14170F;border-color:#2B3320}
+[data-theme="dark"] .tabbar button{color:#cfd5b8}
+[data-theme="dark"] .tabbar button.on{background:#2a3a22;color:#eef1e4}
 @media (max-width:640px){.tabbar{top:0}.tabbar button{font-size:.8rem;padding:6px 10px}}
+.kc{margin-top:18px;border-top:2px dashed var(--sage-l);padding-top:14px}
+.kc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:4px}
+.kc-label{font-family:var(--fb);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white);background:var(--sage);border-radius:8px;padding:3px 10px}
+.kc-sub{font-family:var(--fb);font-size:.82rem;color:var(--slate)}
+.kc .quiz-head{margin-bottom:0}.kc .mcq{margin:10px 0}
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:6px 0 10px}
+.exam-opt{display:flex;flex-direction:column;gap:3px;text-align:left;font-family:var(--fp);background:var(--white);border:2px solid var(--sage-l);border-radius:14px;padding:14px 16px;cursor:pointer;color:var(--forest);transition:background .15s,transform .15s}
+.exam-opt:hover{background:var(--sage-m);transform:translateY(-1px)}
+.exam-opt b{font-family:var(--fh);font-weight:400;font-size:1.05rem}
+.exam-opt span{font-size:.88rem;color:var(--slate)}
+.exam-opt em{font-style:normal;font-family:var(--fb);font-weight:700;font-size:.8rem;color:var(--good);min-height:1em}
+.dg text{font-family:var(--fp)}
+[data-theme="dark"] .exam-opt{background:#1d2a17;color:#eef1e4;border-color:#2B3320}
+[data-theme="dark"] .exam-opt b{color:#eef1e4}
 </style>
 </head>
 <body data-theme="light">
@@ -60,8 +75,10 @@
   <div class="side-section-label">Study Tools</div>
   <div class="side-nav">
     <a class="nav-item" data-tab="srs" href="#srs"><span class="num">SRS</span><span class="t">Flashcard Review</span></a>
-    <a class="nav-item" data-tab="exam" href="#exam"><span class="num">Exam</span><span class="t">Practice Exam</span></a>
+    <a class="nav-item" data-tab="exam" href="#exam"><span class="num">Exam</span><span class="t">Practice Exams</span></a>
   </div>
+  <div class="side-section-label">On This Tab</div>
+  <div class="side-nav" id="tocNav"></div>
 </aside>
 
 <header class="top">
@@ -79,7 +96,7 @@
 </header>
 
 <main class="main">
-<div class="tabbar" id="tabbar"><button data-tab="ch13">Ch 13 Weight</button><button data-tab="ch14">Ch 14 Eating Disorders</button><button data-tab="ch15">Ch 15 Sports</button><button data-tab="srs">Flashcards</button><button data-tab="exam">Practice Exam</button></div>
+<div class="tabbar" id="tabbar"><button data-tab="ch13">Ch 13 Weight</button><button data-tab="ch14">Ch 14 Eating Disorders</button><button data-tab="ch15">Ch 15 Sports</button><button data-tab="srs">Flashcards</button><button data-tab="exam">Practice Exams</button></div>
 <section class="tab" id="tab-ch13">
 
 <div class="pg-head">
@@ -198,7 +215,7 @@
   <p class="body-text">Every method trades accuracy against practicality. Click a dot on the chart to read about that method.</p>
   <div class="interactive-area">
     <div class="ia-label">Accuracy vs Practicality</div>
-    <div class="stage"><svg id="methSvg" class="dg" viewBox="0 0 560 330" style="max-width:600px" role="img" aria-label="Body fat measurement methods plotted by accuracy and practicality"></svg></div>
+    <div class="stage"><svg id="methSvg" class="dg" viewBox="0 0 620 380" style="max-width:660px" role="img" aria-label="Body fat measurement methods plotted by accuracy and practicality"></svg></div>
     <div class="readout" id="methOut">Click a method.</div>
   </div>
   <div class="mnemo"><span class="mlabel">Memory Hook</span><strong>DEXA</strong> sees three things: lean, fat, and bone. It is the gold standard. <strong>BIA</strong>: lean tissue is wet, water carries current, so leaner means <strong>less</strong> resistance.</div>
@@ -230,8 +247,8 @@
   <div class="interactive-area">
     <div class="ia-label">Build a Day of Energy Out</div>
     <div class="ctrl-row">
-      <div class="ctrl"><label>BMR (kcal)</label><input type="range" id="eoB" min="1000" max="2200" step="50" value="1400"><span class="val-chip" id="eoBv"></span></div>
-      <div class="ctrl"><label>Activity (kcal)</label><input type="range" id="eoA" min="100" max="1500" step="50" value="450"><span class="val-chip" id="eoAv"></span></div>
+      <div class="ctrl"><label>BMR (kcal)</label><input type="range" id="eoB" min="1000" max="2200" step="50" value="1300"><span class="val-chip" id="eoBv"></span></div>
+      <div class="ctrl"><label>Activity (kcal)</label><input type="range" id="eoA" min="100" max="1500" step="50" value="500"><span class="val-chip" id="eoAv"></span></div>
       <div class="ctrl"><label>Food eaten (kcal)</label><input type="range" id="eoI" min="1200" max="4000" step="50" value="2100"><span class="val-chip" id="eoIv"></span></div>
     </div>
     <div class="eo-bar" id="eoBar"></div>
@@ -301,7 +318,7 @@
 <!-- CHECK -->
 <div class="card" id="sec-check">
   <h2 class="card-title"><span class="num">R3</span>Chapter Check</h2>
-  <p class="body-text">Ten questions drawn from the chapter bank, different each time you reload. When you score 80% or higher a few times in a row, take the full <a href="#exam">Practice Exam</a>.</p>
+  <p class="body-text">Ten questions drawn from the chapter bank, different each time you reload. When you score 80% or higher a few times in a row, take the full <a href="#exam">Practice Exams</a>.</p>
   <div id="mcq13"></div>
 </div>
 
@@ -631,27 +648,26 @@
 <section class="tab" id="tab-exam">
 <div class="pg-head">
   <div class="topic-badge">Study Tool</div>
-  <h1>Practice Exam</h1>
-  <p class="sub">A mixed exam across all three chapters with a score by topic, so you know exactly what to review.</p>
+  <h1>Practice Exams</h1>
+  <p class="sub">Three full exams with no repeated questions, plus quick quizzes and chapter tests. Every result shows a score by topic so you know what to review.</p>
 </div>
 <div class="card">
-  <h2 class="card-title"><span class="num">Setup</span>Start an Exam</h2>
-  <p class="body-text">Questions are drawn at random from the full bank (with every topic represented) and answer choices are shuffled, so each attempt is different. Answer everything, then submit. Your results are saved in this browser and feed the readiness panel on the Flashcards tab.</p>
-  <div class="pick-row" style="justify-content:center" id="examLen">
-    <button class="pick-btn" data-n="15">Quick: 15 Questions</button>
-    <button class="pick-btn active" data-n="45">Full: 45 Questions</button>
-    <button class="pick-btn" data-n="999">Everything in the Bank</button>
+  <h2 class="card-title"><span class="num">Plan</span>How to use these</h2>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">1</span> Study a chapter tab: read, do the knowledge checks, fill the workbook blanks.</div>
+    <div class="step"><span class="step-label">2</span> Take that chapter's <strong>Chapter Test</strong>. Review any topic under 80%.</div>
+    <div class="step"><span class="step-label">3</span> Take <strong>Practice Exam A</strong> timed. Fix weak topics with the flashcards.</div>
+    <div class="step"><span class="step-label">4</span> Take <strong>Exam B</strong>, then <strong>Exam C</strong> closer to test day. They share no questions with A or each other.</div>
+    <div class="step"><span class="step-label">Goal</span> 80% or higher on two full exams in a row.</div>
   </div>
-  <div class="pick-row" style="justify-content:center" id="examCh">
-    <button class="pick-btn active" data-c="all">All Chapters</button>
-    <button class="pick-btn" data-c="13">Ch 13</button>
-    <button class="pick-btn" data-c="14">Ch 14</button>
-    <button class="pick-btn" data-c="15">Ch 15</button>
-  </div>
-  <div class="btn-row"><button class="site-btn" id="examStart">Start Exam</button><span class="timer" id="timer" style="display:none"></span></div>
+</div>
+<div class="card">
+  <h2 class="card-title"><span class="num">Pick</span>Choose an Exam</h2>
+  <div class="exam-grid" id="examPick"></div>
+  <div class="btn-row"><span class="timer" id="timer" style="display:none"></span></div>
   <div class="readout" id="examHist"></div>
 </div>
-<div class="card" id="examCard" style="display:none"><div id="examBox"></div></div>
+<div class="card" id="examCard" style="display:none"><h2 class="card-title" id="examTitle"></h2><div id="examBox"></div></div>
 </section>
 
 </main>
@@ -664,6 +680,7 @@
 <script src="exam-ch14.js?v=1"></script>
 <script src="srs-ch15.js?v=1"></script>
 <script src="exam-ch15.js?v=1"></script>
+<script src="kc.js?v=1"></script>
 <script>
 function renderMath(el){ if(window.renderMathInElement) renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]}); }
 const NS='http://www.w3.org/2000/svg';
@@ -723,54 +740,6 @@ function css(v){ return getComputedStyle(document.body).getPropertyValue(v).trim
   R.oninput=upd; upd();
 })();
 
-/* ---- Measurement methods plot ---- */
-(function(){
-  const s=document.getElementById('methSvg'), out=document.getElementById('methOut');
-  const M=[
-    {n:'DEXA',x:1.2,y:9.3,t:'<strong>DEXA (dual-energy X-ray absorptiometry)</strong> is the <strong>gold standard</strong>. Two low-dose X-rays separate lean tissue, fat, and bone. Expensive and not widely available.'},
-    {n:'Underwater',x:2.2,y:8.4,t:'<strong>Underwater weighing (hydrodensitometry)</strong>: fat floats and lean tissue sinks, so body density reveals fat. Accurate, but needs a lab and trained personnel.'},
-    {n:'Bod Pod',x:3.6,y:8,t:'<strong>Air displacement (Bod Pod)</strong>: the air you push out of a sealed pod equals your body volume, which gives density. Same accuracy vs practicality trade-off as underwater weighing, without getting wet.'},
-    {n:'Skinfold',x:7.6,y:6.2,t:'<strong>Skinfold calipers</strong> pinch skin plus subcutaneous fat. Measure each site <strong>twice</strong>. Cheap and fairly accurate if the technician is trained.'},
-    {n:'BIA',x:8.8,y:4.2,t:'<strong>Bioelectrical impedance</strong>: a tiny current conducts best through lean tissue (it holds the water), so the leaner the person, the <strong>less</strong> the resistance. Hand-held analyzers are less accurate.'}
-  ];
-  const fg=css('--forest'), sl=css('--slate');
-  function draw(sel){
-    s.innerHTML=''; const X=v=>60+v*46, Y=v=>290-v*28;
-    s.appendChild(svgEl('line',{x1:60,y1:290,x2:530,y2:290,stroke:sl,'stroke-width':2}));
-    s.appendChild(svgEl('line',{x1:60,y1:290,x2:60,y2:10,stroke:sl,'stroke-width':2}));
-    s.appendChild(svgEl('text',{x:295,y:322,'text-anchor':'middle',fill:sl,'font-size':14},'More practical (cheap, portable)  →'));
-    const yl=svgEl('text',{x:20,y:150,'text-anchor':'middle',fill:sl,'font-size':14,transform:'rotate(-90 20 150)'},'More accurate  →'); s.appendChild(yl);
-    M.forEach((m,i)=>{ const g=svgEl('g',{class:'hz'}); const on=sel===i;
-      g.appendChild(svgEl('circle',{cx:X(m.x),cy:Y(m.y),r:on?16:12,fill:on?'#c08a3e':'#9BA06A',stroke:fg,'stroke-width':on?3:1.5}));
-      g.appendChild(svgEl('text',{x:X(m.x),y:Y(m.y)-20,'text-anchor':'middle',fill:fg,'font-size':14,'font-weight':700},m.n));
-      g.onclick=()=>{ draw(i); out.innerHTML=m.t; }; s.appendChild(g); });
-  }
-  draw(-1);
-})();
-
-/* ---- Apple vs pear ---- */
-(function(){
-  const s=document.getElementById('shapeSvg'), out=document.getElementById('shapeOut'), fg=css('--forest');
-  function body(x,apple){
-    const g=svgEl('g',{class:'hz'});
-    g.appendChild(svgEl('circle',{cx:x,cy:40,r:22,fill:'#e4e8cc',stroke:fg,'stroke-width':2}));
-    const d=apple?'M'+(x-34)+',70 Q'+(x-80)+',150 '+(x-40)+',215 L'+(x+40)+',215 Q'+(x+80)+',150 '+(x+34)+',70 Z'
-                 :'M'+(x-28)+',70 Q'+(x-40)+',130 '+(x-70)+',195 Q'+(x-60)+',225 '+(x-30)+',225 L'+(x+30)+',225 Q'+(x+60)+',225 '+(x+70)+',195 Q'+(x+40)+',130 '+(x+28)+',70 Z';
-    g.appendChild(svgEl('path',{d,fill:'#e4e8cc',stroke:fg,'stroke-width':2}));
-    if(apple) g.appendChild(svgEl('ellipse',{cx:x,cy:145,rx:44,ry:40,fill:'#b5503e',opacity:.75}));
-    else g.appendChild(svgEl('ellipse',{cx:x,cy:200,rx:62,ry:22,fill:'#c08a3e',opacity:.75}));
-    g.appendChild(svgEl('line',{x1:x-18,y1:225,x2:x-22,y2:285,stroke:fg,'stroke-width':10,'stroke-linecap':'round'}));
-    g.appendChild(svgEl('line',{x1:x+18,y1:225,x2:x+22,y2:285,stroke:fg,'stroke-width':10,'stroke-linecap':'round'}));
-    return g;
-  }
-  const a=body(140,true), p=body(380,false);
-  a.appendChild(svgEl('text',{x:140,y:20,'text-anchor':'middle',fill:fg,'font-size':15,'font-weight':700},''));
-  s.appendChild(a); s.appendChild(p);
-  s.appendChild(svgEl('text',{x:250,y:296,'text-anchor':'middle',fill:fg,'font-size':13},'Apple (left)  ·  Pear (right)'));
-  a.onclick=()=>{ out.innerHTML='<strong>Apple shape (typical male pattern).</strong> Fat sits in the abdomen as <strong>visceral fat</strong> around the organs. This is <strong>central obesity</strong>, linked to heart disease, cancers, diabetes, and metabolic syndrome.'; };
-  p.onclick=()=>{ out.innerHTML='<strong>Pear shape (typical female pattern).</strong> Fat sits on the hips and thighs, mostly <strong>subcutaneous</strong> fat under the skin. Lower metabolic risk than the apple pattern.'; };
-})();
-
 /* ---- Energy out builder ---- */
 (function(){
   const B=document.getElementById('eoB'), A=document.getElementById('eoA'), I=document.getElementById('eoI');
@@ -789,30 +758,133 @@ function css(v){ return getComputedStyle(document.body).getPropertyValue(v).trim
   [B,A,I].forEach(x=>x.oninput=upd); window.addEventListener('load',upd); upd();
 })();
 
+/* ---- Shared diagram helpers ---- */
+const DG={ink:'#143109',soft:'#525B76',paper:'#f7f8f0',line:'#c9cfa8',sage:'#9BA06A',red:'#b5503e',green:'#5b8a3f',blue:'#5b7fa8',amber:'#c08a3e',rose:'#a8566b'};
+function dgMarker(svg,id,color,kind){
+  let d=svg.querySelector('defs'); if(!d){ d=svgEl('defs'); svg.appendChild(d); }
+  const m=svgEl('marker',{id,viewBox:'0 0 10 10',refX:kind==='bar'?5:9,refY:5,markerWidth:8,markerHeight:8,orient:'auto-start-reverse',markerUnits:'userSpaceOnUse'});
+  m.setAttribute('markerWidth',kind==='bar'?14:11); m.setAttribute('markerHeight',kind==='bar'?14:11);
+  m.appendChild(kind==='bar'?svgEl('rect',{x:4,y:0,width:2.4,height:10,fill:color}):svgEl('path',{d:'M0,0 L10,5 L0,10 z',fill:color}));
+  d.appendChild(m); return 'url(#'+id+')';
+}
+function dgBox(svg,o){ /* o:{x,y,w,h,title,sub,stroke,fill,click,sel} centered at x,y */
+  const g=svgEl('g',{class:o.click?'hz':''}); const fill=o.sel?'#fbf1df':(o.fill||'#ffffff');
+  g.appendChild(svgEl('rect',{x:o.x-o.w/2,y:o.y-o.h/2,width:o.w,height:o.h,rx:12,fill,stroke:o.stroke||DG.ink,'stroke-width':o.sel?3.5:2}));
+  const lines=[].concat(o.title);
+  const total=lines.length+(o.sub?1:0), lh=18, y0=o.y-(total-1)*lh/2+5;
+  lines.forEach((t,i)=>g.appendChild(svgEl('text',{x:o.x,y:y0+i*lh,'text-anchor':'middle',fill:DG.ink,'font-size':15,'font-weight':700},t)));
+  if(o.sub) g.appendChild(svgEl('text',{x:o.x,y:y0+lines.length*lh,'text-anchor':'middle',fill:o.stroke||DG.soft,'font-size':13.5,'font-weight':700},o.sub));
+  if(o.click) g.onclick=o.click; svg.appendChild(g); return g;
+}
+function dgChip(svg,x,y,text,color){
+  const w=text.length*7.4+18; const g=svgEl('g');
+  g.appendChild(svgEl('rect',{x:x-w/2,y:y-12,width:w,height:24,rx:12,fill:'#ffffff',stroke:color,'stroke-width':1.5}));
+  g.appendChild(svgEl('text',{x,y:y+4.5,'text-anchor':'middle',fill:color,'font-size':13,'font-weight':700},text));
+  svg.appendChild(g);
+}
+
+/* ---- Measurement methods plot ---- */
+(function(){
+  const s=document.getElementById('methSvg'), out=document.getElementById('methOut');
+  s.setAttribute('viewBox','0 0 620 380');
+  const M=[
+    {n:'DEXA',x:1.3,y:9.3,lx:'r',t:'<strong>DEXA (dual-energy X-ray absorptiometry)</strong> is the <strong>gold standard</strong>. Two low-dose X-rays separate lean tissue, fat, and bone. Expensive and not widely available.'},
+    {n:'Underwater weighing',x:2.4,y:7.9,lx:'r',t:'<strong>Underwater weighing (hydrodensitometry)</strong>: fat floats and lean tissue sinks, so body density reveals fat. Accurate, but needs a lab and trained personnel.'},
+    {n:'Bod Pod',x:3.6,y:6.6,lx:'r',t:'<strong>Air displacement (Bod Pod)</strong>: the air you push out of a sealed pod equals your body volume, which gives density. Same accuracy vs practicality trade-off, without getting wet.'},
+    {n:'Skinfold calipers',x:7.0,y:5.0,lx:'l',t:'<strong>Skinfold calipers</strong> pinch skin plus subcutaneous fat. Measure each site <strong>twice</strong>. Cheap and fairly accurate if the technician is trained.'},
+    {n:'Hand-held BIA',x:8.8,y:3.2,lx:'l',t:'<strong>Bioelectrical impedance</strong>: a tiny current conducts best through lean tissue (it holds the water), so the leaner the person, the <strong>less</strong> the resistance. Hand-held analyzers are less accurate.'}
+  ];
+  const L=70,R=600,T=24,B=320, X=v=>L+(v/10)*(R-L), Y=v=>B-(v/10)*(B-T);
+  function draw(sel){
+    s.innerHTML='';
+    s.appendChild(svgEl('rect',{x:L,y:T,width:(R-L)/2,height:(B-T)/2,fill:'#eef1e0'}));
+    s.appendChild(svgEl('rect',{x:L+(R-L)/2,y:T+(B-T)/2,width:(R-L)/2,height:(B-T)/2,fill:'#f6efe0'}));
+    s.appendChild(svgEl('text',{x:L+12,y:T+(B-T)/2-12,fill:DG.green,'font-size':13,'font-weight':700},'LAB METHODS'));
+    s.appendChild(svgEl('text',{x:R-12,y:B-12,'text-anchor':'end',fill:DG.amber,'font-size':13,'font-weight':700},'FIELD METHODS'));
+    const ax=dgMarker(s,'axh',DG.soft);
+    s.appendChild(svgEl('line',{x1:L,y1:B,x2:R+6,y2:B,stroke:DG.soft,'stroke-width':2,'marker-end':ax}));
+    s.appendChild(svgEl('line',{x1:L,y1:B,x2:L,y2:T-8,stroke:DG.soft,'stroke-width':2,'marker-end':ax}));
+    s.appendChild(svgEl('text',{x:(L+R)/2,y:B+34,'text-anchor':'middle',fill:DG.soft,'font-size':15,'font-weight':600},'More practical: cheaper, portable, quick'));
+    s.appendChild(svgEl('text',{x:26,y:(T+B)/2,'text-anchor':'middle',fill:DG.soft,'font-size':15,'font-weight':600,transform:'rotate(-90 26 '+(T+B)/2+')'},'More accurate'));
+    M.forEach((m,i)=>{ const on=sel===i, g=svgEl('g',{class:'hz'}), cx=X(m.x), cy=Y(m.y);
+      g.appendChild(svgEl('circle',{cx,cy,r:22,fill:'transparent'}));
+      g.appendChild(svgEl('circle',{cx,cy,r:on?12:9,fill:on?DG.amber:DG.sage,stroke:DG.ink,'stroke-width':on?3:1.5}));
+      g.appendChild(svgEl('text',{x:m.lx==='r'?cx+18:cx-18,y:cy+5,'text-anchor':m.lx==='r'?'start':'end',fill:DG.ink,'font-size':15,'font-weight':700},m.n));
+      g.onclick=()=>{ draw(i); out.innerHTML=m.t; }; s.appendChild(g); });
+  }
+  draw(-1);
+})();
+
+/* ---- Apple vs pear ---- */
+(function(){
+  const s=document.getElementById('shapeSvg'), out=document.getElementById('shapeOut');
+  s.setAttribute('viewBox','0 0 600 380'); s.style.maxWidth='620px';
+  const skin='#f1ead9';
+  function person(x,apple,sel){
+    const g=svgEl('g',{class:'hz'});
+    g.appendChild(svgEl('rect',{x:x-130,y:6,width:260,height:330,rx:18,fill:sel?'#fbf1df':'transparent',stroke:sel?DG.amber:'transparent','stroke-width':2}));
+    // legs
+    g.appendChild(svgEl('path',{d:apple?`M${x-30},232 L${x-34},318 L${x-12},318 L${x-6},232 Z M${x+6},232 L${x+12},318 L${x+34},318 L${x+30},232 Z`
+                                       :`M${x-52},236 Q${x-42},280 ${x-34},318 L${x-12},318 L${x-4},240 Z M${x+4},240 L${x+12},318 L${x+34},318 Q${x+42},280 ${x+52},236 Z`,fill:skin,stroke:DG.ink,'stroke-width':2,'stroke-linejoin':'round'}));
+    // arms
+    const arm=apple?[[x-52,92,x-78,190],[x+52,92,x+78,190]]:[[x-40,92,x-62,180],[x+40,92,x+62,180]];
+    arm.forEach(a=>g.appendChild(svgEl('line',{x1:a[0],y1:a[1],x2:a[2],y2:a[3],stroke:DG.ink,'stroke-width':15,'stroke-linecap':'round'})));
+    arm.forEach(a=>g.appendChild(svgEl('line',{x1:a[0],y1:a[1],x2:a[2],y2:a[3],stroke:skin,'stroke-width':11,'stroke-linecap':'round'})));
+    // torso
+    const torso=apple
+      ?`M${x-36},80 Q${x-58},84 ${x-56},104 Q${x-74},160 ${x-50},214 Q${x-40},238 ${x},238 Q${x+40},238 ${x+50},214 Q${x+74},160 ${x+56},104 Q${x+58},84 ${x+36},80 Z`
+      :`M${x-30},80 Q${x-46},84 ${x-44},104 Q${x-40},150 ${x-38},168 Q${x-70},206 ${x-56},240 Q${x},252 ${x+56},240 Q${x+70},206 ${x+38},168 Q${x+40},150 ${x+44},104 Q${x+46},84 ${x+30},80 Z`;
+    g.appendChild(svgEl('path',{d:torso,fill:skin,stroke:DG.ink,'stroke-width':2,'stroke-linejoin':'round'}));
+    // fat region
+    if(apple){ g.appendChild(svgEl('ellipse',{cx:x,cy:168,rx:44,ry:42,fill:DG.red,opacity:.55}));
+      ['stomach','liver'].forEach((o,i)=>g.appendChild(svgEl('ellipse',{cx:x+(i?-14:14),cy:162+(i?-6:8),rx:14,ry:10,fill:'#fff',stroke:DG.red,'stroke-width':1.5,opacity:.9}))); }
+    else { g.appendChild(svgEl('path',{d:`M${x-56},212 Q${x-70},236 ${x-46},262 L${x-20},250 Q${x-34},230 ${x-38},206 Z`,fill:DG.amber,opacity:.6}));
+      g.appendChild(svgEl('path',{d:`M${x+56},212 Q${x+70},236 ${x+46},262 L${x+20},250 Q${x+34},230 ${x+38},206 Z`,fill:DG.amber,opacity:.6})); }
+    // head + neck
+    g.appendChild(svgEl('rect',{x:x-9,y:62,width:18,height:22,fill:skin,stroke:DG.ink,'stroke-width':2}));
+    g.appendChild(svgEl('circle',{cx:x,cy:44,r:24,fill:skin,stroke:DG.ink,'stroke-width':2}));
+    // labels
+    g.appendChild(svgEl('text',{x,y:344+8,'text-anchor':'middle',fill:DG.ink,'font-size':17,'font-weight':700},apple?'Apple shape':'Pear shape'));
+    g.appendChild(svgEl('text',{x,y:370,'text-anchor':'middle',fill:apple?DG.red:DG.amber,'font-size':14,'font-weight':700},apple?'Visceral fat around the organs':'Subcutaneous fat on hips and thighs'));
+    return g;
+  }
+  let sel=-1;
+  function draw(){
+    s.innerHTML='';
+    const a=person(160,true,sel===0), p=person(440,false,sel===1);
+    s.appendChild(a); s.appendChild(p);
+    // waist tape on apple
+    s.appendChild(svgEl('line',{x1:96,y1:206,x2:222,y2:206,stroke:DG.blue,'stroke-width':2.5,'stroke-dasharray':'7 5'}));
+    dgChip(s,256,206,'waist',DG.blue);
+    a.onclick=()=>{ sel=0; draw(); out.innerHTML='<strong>Apple shape (typical male pattern).</strong> Fat sits in the abdomen as <strong>visceral fat</strong> packed around organs like the stomach and liver. This is <strong>central obesity</strong>, linked to heart disease, cancers, diabetes, and metabolic syndrome. Check it with waist circumference: tape just above the upper hip bones.'; };
+    p.onclick=()=>{ sel=1; draw(); out.innerHTML='<strong>Pear shape (typical female pattern).</strong> Fat sits on the hips and thighs, mostly <strong>subcutaneous</strong> fat under the skin. Lower metabolic risk than the apple pattern.'; };
+  }
+  draw();
+})();
+
 /* ---- Hormone diagram ---- */
 (function(){
-  const s=document.getElementById('hormSvg'), out=document.getElementById('hormOut'), fg=css('--forest');
-  const brain=svgEl('g'); brain.appendChild(svgEl('ellipse',{cx:300,cy:60,rx:110,ry:44,fill:'#e4e8cc',stroke:fg,'stroke-width':2}));
-  brain.appendChild(svgEl('text',{x:300,y:56,'text-anchor':'middle',fill:fg,'font-size':16,'font-weight':700},'Hypothalamus'));
-  brain.appendChild(svgEl('text',{x:300,y:76,'text-anchor':'middle',fill:fg,'font-size':12},'control center'));
-  s.appendChild(brain);
+  const s=document.getElementById('hormSvg'), out=document.getElementById('hormOut');
+  s.setAttribute('viewBox','0 0 640 400'); s.style.maxWidth='680px';
   const O=[
-    {n:'Stomach',h:'Ghrelin',x:90,y:270,c:'#b5503e',arrowTo:[220,92],t:'<strong>Ghrelin, the hunger hormone</strong>, is made by the <strong>stomach</strong>. It stimulates appetite, increases intake, and decreases energy expenditure. It <strong>rises with fasting and falls after eating</strong>.'},
-    {n:'Gut',h:'Peptide YY',x:300,y:290,c:'#5b7fa8',arrowTo:[150,250],t:'<strong>Peptide YY</strong> is a peptide hormone released after eating. It signals the stomach to <strong>cut ghrelin secretion</strong>, so hunger fades.'},
-    {n:'Fat Tissue',h:'Leptin',x:510,y:270,c:'#5b8a3f',arrowTo:[380,92],t:'<strong>Leptin, the satiety hormone</strong>, is made by <strong>adipose tissue</strong> and suppresses appetite. Most people with obesity have plenty of leptin but have <strong>leptin resistance</strong>.'}
+    {k:'st',title:'Stomach',sub:'Ghrelin',x:110,y:300,c:DG.red,t:'<strong>Ghrelin, the hunger hormone</strong>, is made by the <strong>stomach</strong>. It stimulates appetite, increases intake, and decreases energy expenditure. It <strong>rises with fasting and falls after eating</strong>.'},
+    {k:'gut',title:'Gut',sub:'Peptide YY',x:320,y:300,c:DG.blue,t:'<strong>Peptide YY</strong> is a peptide hormone released after eating. It signals the stomach to <strong>cut ghrelin secretion</strong>, so hunger fades. The flat-ended arrow means "inhibits."'},
+    {k:'fat',title:'Fat tissue',sub:'Leptin',x:530,y:300,c:DG.green,t:'<strong>Leptin, the satiety hormone</strong>, is made by <strong>adipose tissue</strong> and suppresses appetite. Most people with obesity have plenty of leptin but have <strong>leptin resistance</strong>.'},
+    {k:'hy',title:'Hypothalamus',sub:'control center',x:320,y:70,c:DG.ink,t:'The <strong>hypothalamus</strong> is the control center for hunger and satiety. It integrates nervous, endocrine, and digestive signals.'}
   ];
-  const defs=svgEl('defs'); O.forEach((o,i)=>{ const m=svgEl('marker',{id:'ah'+i,viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:7,markerHeight:7,orient:'auto-start-reverse'}); m.appendChild(svgEl('path',{d:'M0,0 L10,5 L0,10 z',fill:o.c})); defs.appendChild(m); }); s.appendChild(defs);
-  O.forEach((o,i)=>{
-    s.appendChild(svgEl('line',{x1:o.x,y1:o.y-36,x2:o.arrowTo[0],y2:o.arrowTo[1],stroke:o.c,'stroke-width':3,'marker-end':'url(#ah'+i+')','stroke-dasharray':i===1?'6 4':''}));
-    const g=svgEl('g',{class:'hz'});
-    g.appendChild(svgEl('rect',{x:o.x-70,y:o.y-34,width:140,height:68,rx:14,fill:'#fff',stroke:o.c,'stroke-width':3}));
-    g.appendChild(svgEl('text',{x:o.x,y:o.y-8,'text-anchor':'middle',fill:'#143109','font-size':15,'font-weight':700},o.n));
-    g.appendChild(svgEl('text',{x:o.x,y:o.y+16,'text-anchor':'middle',fill:o.c,'font-size':14,'font-weight':700},o.h));
-    g.onclick=()=>{ out.innerHTML=o.t; }; s.appendChild(g);
-  });
-  s.appendChild(svgEl('text',{x:150,y:175,'text-anchor':'middle',fill:'#b5503e','font-size':13,'font-weight':700},'"Eat!"'));
-  s.appendChild(svgEl('text',{x:450,y:175,'text-anchor':'middle',fill:'#5b8a3f','font-size':13,'font-weight':700},'"Enough."'));
-  s.appendChild(svgEl('text',{x:225,y:262,'text-anchor':'middle',fill:'#5b7fa8','font-size':12,'font-weight':700},'"Pipe down"'));
+  let sel=-1;
+  function draw(){
+    s.innerHTML='';
+    const aR=dgMarker(s,'hR',DG.red), aG=dgMarker(s,'hG',DG.green), bB=dgMarker(s,'hB',DG.blue,'bar');
+    s.appendChild(svgEl('path',{d:'M140,266 Q170,160 248,104',fill:'none',stroke:DG.red,'stroke-width':3.5,'marker-end':aR}));
+    s.appendChild(svgEl('path',{d:'M500,266 Q470,160 392,104',fill:'none',stroke:DG.green,'stroke-width':3.5,'marker-end':aG}));
+    s.appendChild(svgEl('line',{x1:242,y1:300,x2:194,y2:300,stroke:DG.blue,'stroke-width':3.5,'marker-end':bB}));
+    dgChip(s,150,176,'"Eat!"  appetite up',DG.red);
+    dgChip(s,490,176,'"Enough."  appetite down',DG.green);
+    dgChip(s,218,354,'cuts ghrelin',DG.blue);
+    O.forEach((o,i)=>dgBox(s,{x:o.x,y:o.y,w:o.k==='hy'?220:150,h:o.k==='hy'?74:70,title:o.title,sub:o.sub,stroke:o.c,fill:o.k==='hy'?'#eef1e0':'#ffffff',sel:sel===i,click:()=>{ sel=i; draw(); out.innerHTML=o.t; }}));
+  }
+  draw();
 })();
 
 /* ---- Workbook recall ---- */
@@ -896,27 +968,28 @@ makeSorter(document.getElementById('edSort'),[
 ],['Anorexia Nervosa','Bulimia Nervosa','Binge-Eating Disorder']);
 (function(){
   const s=document.getElementById('triadSvg'), out=document.getElementById('triOut');
-  const N=[{x:90,y:150,t:'Low energy intake',d:'<strong>Low energy availability</strong>: the athlete eats less than training burns (negative energy balance), often in sports that reward low body mass.'},
-           {x:240,y:150,t:'Low estrogen',d:'With too little energy the body shuts down reproductive hormones, so <strong>estrogen falls</strong>.'},
-           {x:400,y:70,t:'Menstrual dysfunction',d:'Low estrogen disrupts the cycle, up to <strong>amenorrhea</strong> (no period for 3+ months).'},
-           {x:400,y:230,t:'Weakened bones',d:'Estrogen protects bone, so bone mineral density drops.'},
-           {x:540,y:230,t:'Osteopenia',d:'<strong>Osteopenia</strong> (soft bones), which can progress to <strong>osteoporosis</strong> and stress fractures.'}];
-  const L=[[0,1],[1,2],[1,3],[3,4]]; let k=0;
+  s.setAttribute('viewBox','0 0 680 330'); s.style.maxWidth='720px';
+  const E=DG.amber, Mn=DG.rose, Bn=DG.blue;
+  const N=[{x:90,y:165,t:['Low energy','intake'],tag:'Energy',c:E,d:'<strong>Low energy availability</strong>: the athlete eats less than training burns (negative energy balance), often in sports that reward low body mass. This is the <strong>energy</strong> corner of the triad.'},
+           {x:260,y:165,t:['Low','estrogen'],tag:'',c:DG.ink,d:'With too little energy the body shuts down reproductive hormones, so <strong>estrogen falls</strong>. Estrogen is the link to the other two corners.'},
+           {x:440,y:75,t:['Menstrual','dysfunction'],tag:'Menstrual',c:Mn,d:'Low estrogen disrupts the cycle, up to <strong>amenorrhea</strong> (no period for 3+ months). This is the <strong>menstrual function</strong> corner.'},
+           {x:440,y:255,t:['Weakened','bones'],tag:'Bone',c:Bn,d:'Estrogen protects bone, so <strong>bone mineral density</strong> drops. This is the <strong>bone</strong> corner.'},
+           {x:600,y:255,t:['Osteopenia','to osteoporosis'],tag:'',c:Bn,d:'<strong>Osteopenia</strong> (soft bones), which can progress to <strong>osteoporosis</strong> and stress fractures.'}];
+  const L=[[0,1],[1,2],[1,3],[3,4]], W=136, H=64; let k=0;
+  function edge(a,b){ const dx=b.x-a.x, dy=b.y-a.y; const fx=v=>{ const tx=(W/2+4)/Math.abs(dx||1e-9), ty=(H/2+4)/Math.abs(dy||1e-9), t=Math.min(tx,ty); return t; };
+    const ta=fx(), sx=a.x+dx*ta, sy=a.y+dy*ta, ex=b.x-dx*ta, ey=b.y-dy*ta; return [sx,sy,ex,ey]; }
   function draw(){
-    s.innerHTML='<defs><marker id="tah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#525B76"/></marker></defs>';
-    L.forEach(([a,b])=>{ if(b<=k) s.appendChild(svgEl('line',{x1:N[a].x+58,y1:N[a].y,x2:N[b].x-62,y2:N[b].y,stroke:'#525B76','stroke-width':3,'marker-end':'url(#tah)'})); });
-    N.forEach((n,i)=>{ const on=i<=k; const g=svgEl('g',{opacity:on?1:.25});
-      g.appendChild(svgEl('rect',{x:n.x-60,y:n.y-28,width:120,height:56,rx:12,fill:i===k?'#c08a3e':'#e4e8cc',stroke:'#143109','stroke-width':2}));
-      const w=n.t.split(' '); const l1=w.slice(0,Math.ceil(w.length/2)).join(' '), l2=w.slice(Math.ceil(w.length/2)).join(' ');
-      g.appendChild(svgEl('text',{x:n.x,y:n.y-(l2?4:-5),'text-anchor':'middle',fill:'#143109','font-size':13,'font-weight':700},l1));
-      if(l2) g.appendChild(svgEl('text',{x:n.x,y:n.y+14,'text-anchor':'middle',fill:'#143109','font-size':13,'font-weight':700},l2));
-      s.appendChild(g); });
+    s.innerHTML=''; const ah=dgMarker(s,'tah',DG.soft);
+    L.forEach(([a,b])=>{ if(b<=k){ const [x1,y1,x2,y2]=edge(N[a],N[b]); s.appendChild(svgEl('line',{x1,y1,x2,y2,stroke:DG.soft,'stroke-width':3,'marker-end':ah})); } });
+    N.forEach((n,i)=>{ const g=dgBox(s,{x:n.x,y:n.y,w:W,h:H,title:n.t,stroke:n.c,fill:i<=k?'#ffffff':'#f3f3ee',sel:i===k}); g.setAttribute('opacity',i<=k?1:.3);
+      if(n.tag){ const tw=n.tag.length*7.6+16; const tg=svgEl('g',{opacity:i<=k?1:.3}); tg.appendChild(svgEl('rect',{x:n.x-tw/2,y:n.y-H/2-24,width:tw,height:20,rx:10,fill:n.c})); tg.appendChild(svgEl('text',{x:n.x,y:n.y-H/2-9.5,'text-anchor':'middle',fill:'#fff','font-size':12,'font-weight':700},n.tag.toUpperCase())); s.appendChild(tg); } });
     out.innerHTML='<strong>Step '+(k+1)+' of 5.</strong> '+N[k].d;
   }
   document.getElementById('triNext').onclick=()=>{ k=Math.min(4,k+1); draw(); };
   document.getElementById('triReset').onclick=()=>{ k=0; draw(); };
   draw();
 })();
+
 renderCloze(document.getElementById('cloze14'),[
  'Disordered eating = behaviors that are neither normal nor [[healthy]], but do not meet [[DSM-5|DSM5|DSM]] criteria.',
  'An eating disorder jeopardizes physical or [[psychological]] health and meets DSM-5 criteria.',
@@ -1064,45 +1137,78 @@ function drawReady(){
 }
 renderSRS(document.getElementById('srsAll'), NUTRI_SRS, {filterable:true, onChange:drawReady});
 
-/* ===== Practice exam ===== */
+/* ===== Practice exams ===== */
 (function(){
-  let N=45, CH='all', tick=null;
-  document.querySelectorAll('#examLen [data-n]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#examLen [data-n]').forEach(x=>x.classList.toggle('active',x===b)); N=+b.dataset.n; });
-  document.querySelectorAll('#examCh [data-c]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#examCh [data-c]').forEach(x=>x.classList.toggle('active',x===b)); CH=b.dataset.c; });
+  let tick=null;
+  function rng(seed){ return function(){ seed|=0; seed=seed+0x6D2B79F5|0; let t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+  function seededShuffle(a,seed){ const r=rng(seed), b=a.slice(); for(let i=b.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
+  /* split the bank into three disjoint forms, dealing each topic round-robin so every form covers every topic */
+  const FORMS=[[],[],[]];
+  (function(){ const by={}; seededShuffle(NUTRI_EXAM,155).forEach(q=>(by[q.topic]=by[q.topic]||[]).push(q)); let k=0;
+    Object.keys(by).sort().forEach(t=>by[t].forEach(q=>{ FORMS[k%3].push(q); k++; })); })();
+  const sortT=a=>a.slice().sort((x,y)=>x.topic.localeCompare(y.topic,undefined,{numeric:true}));
+  function random(n,ch){ const pool=NUTRI_EXAM.filter(q=>!ch||q.topic.startsWith(ch)); return sortT(pool.slice().sort(()=>Math.random()-.5).slice(0,n)); }
+  const OPTS=[
+    {id:'A',name:'Practice Exam A',desc:FORMS[0].length+' questions, all chapters',get:()=>sortT(FORMS[0])},
+    {id:'B',name:'Practice Exam B',desc:FORMS[1].length+' questions, all chapters',get:()=>sortT(FORMS[1])},
+    {id:'C',name:'Practice Exam C',desc:FORMS[2].length+' questions, all chapters',get:()=>sortT(FORMS[2])},
+    {id:'Q',name:'Quick Quiz',desc:'20 random questions',get:()=>random(20)},
+    {id:'13',name:'Chapter 13 Test',desc:'25 random, weight management',get:()=>random(25,'13')},
+    {id:'14',name:'Chapter 14 Test',desc:'25 random, eating disorders',get:()=>random(25,'14')},
+    {id:'15',name:'Chapter 15 Test',desc:'25 random, sports nutrition',get:()=>random(25,'15')}
+  ];
+  function best(id){ const a=examLoad().filter(r=>r.id===id); if(!a.length) return ''; const b=Math.max(...a.map(r=>Math.round(100*r.right/r.total))); return 'Best: '+b+'%'; }
+  function pickers(){ document.getElementById('examPick').innerHTML=OPTS.map(o=>'<button class="exam-opt" data-x="'+o.id+'"><b>'+o.name+'</b><span>'+o.desc+'</span><em>'+best(o.id)+'</em></button>').join('');
+    document.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>start(OPTS.find(o=>o.id===b.dataset.x))); }
   function hist(){ const a=examLoad(); const el=document.getElementById('examHist');
-    el.innerHTML=a.length?'<strong>Recent attempts:</strong><br>'+a.slice(-5).reverse().map(r=>new Date(r.at).toLocaleDateString()+' &middot; '+r.scope+' &middot; '+r.right+'/'+r.total+' ('+Math.round(100*r.right/r.total)+'%)').join('<br>'):'No attempts yet. Aim for 80% or higher on a full exam before test day.'; }
-  function pickQs(){
-    const pool=NUTRI_EXAM.filter(q=>CH==='all'||q.topic.startsWith(CH));
-    const by={}; pool.forEach(q=>(by[q.topic]=by[q.topic]||[]).push(q));
-    Object.values(by).forEach(a=>a.sort(()=>Math.random()-.5));
-    const out=[]; const keys=Object.keys(by).sort(()=>Math.random()-.5); const n=Math.min(N,pool.length);
-    while(out.length<n){ let added=false; keys.forEach(k=>{ if(out.length<n&&by[k].length){ out.push(by[k].pop()); added=true; } }); if(!added) break; }
-    return out.sort((a,b)=>a.topic.localeCompare(b.topic,undefined,{numeric:true}));
-  }
-  document.getElementById('examStart').onclick=()=>{
-    const qs=pickQs(); const card=document.getElementById('examCard'); card.style.display='';
+    el.innerHTML=a.length?'<strong>Recent attempts</strong><br>'+a.slice(-6).reverse().map(r=>new Date(r.at).toLocaleDateString()+' &middot; '+r.scope+' &middot; '+r.right+'/'+r.total+' ('+Math.round(100*r.right/r.total)+'%)').join('<br>'):'No attempts yet. Aim for 80% or higher on two full exams in a row.'; }
+  function start(o){
+    const qs=o.get(), card=document.getElementById('examCard'); card.style.display='';
+    document.getElementById('examTitle').innerHTML='<span class="num">'+o.id+'</span>'+o.name;
     const t0=Date.now(), tm=document.getElementById('timer'); tm.style.display=''; clearInterval(tick);
-    tick=setInterval(()=>{ const s=Math.floor((Date.now()-t0)/1000); tm.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0')+' elapsed'; },1000);
+    tick=setInterval(()=>{ const s=Math.floor((Date.now()-t0)/1000); tm.textContent=o.name+': '+Math.floor(s/60)+':'+String(s%60).padStart(2,'0')+' elapsed'; },1000);
     renderMCQ(document.getElementById('examBox'), qs, {mode:'test', onSubmit:(right,total,by)=>{
       clearInterval(tick);
       const byCh={}; Object.keys(by).forEach(t=>{ const c=t.slice(0,2); byCh[c]=byCh[c]||[0,0]; byCh[c][0]+=by[t][0]; byCh[c][1]+=by[t][1]; });
-      examSave({at:Date.now(),scope:(CH==='all'?'All chapters':'Ch '+CH)+', '+total+' Q',right,total,byCh});
-      hist(); drawReady();
+      examSave({at:Date.now(),id:o.id,scope:o.name,right,total,byCh}); hist(); pickers(); drawReady();
     }});
     card.scrollIntoView({behavior:'smooth'});
-  };
-  hist();
+  }
+  pickers(); hist();
 })();
 drawReady();
 
+
+/* ===== Knowledge checks under every section ===== */
+document.querySelectorAll('.tab .card').forEach(card=>{
+  const n=card.querySelector('.card-title .num'); if(!n) return; const key=n.textContent.trim();
+  const qs=(window.NUTRI_KC||{})[key]; if(!qs) return;
+  const box=document.createElement('div'); box.className='kc';
+  box.innerHTML='<div class="kc-head"><span class="kc-label">Knowledge Check</span><span class="kc-sub">'+qs.length+' questions on section '+key+'</span></div><div class="kc-body"></div>';
+  card.appendChild(box); renderMCQ(box.querySelector('.kc-body'), qs);
+});
+
+/* ===== Sidebar: sections of the current tab ===== */
+function buildToc(t){
+  const nav=document.getElementById('tocNav'); if(!nav) return; nav.innerHTML='';
+  document.querySelectorAll('#tab-'+t+' .card').forEach((c,i)=>{
+    const n=c.querySelector('.card-title .num'), ttl=c.querySelector('.card-title'); if(!ttl) return;
+    if(!c.id) c.id=t+'-s'+i;
+    const a=document.createElement('a'); a.className='nav-item'; a.href='#'+t; a.innerHTML='<span class="num">'+(n?n.textContent:'')+'</span><span class="t">'+ttl.textContent.replace(n?n.textContent:'','').trim()+'</span>';
+    a.onclick=e=>{ e.preventDefault(); c.scrollIntoView({behavior:'smooth',block:'start'}); };
+    nav.appendChild(a);
+  });
+}
+
 /* ===== Tabs ===== */
 (function(){
-  const names={ch13:'Weight Management',ch14:'Eating Disorders',ch15:'Sports Nutrition',srs:'Flashcard Review',exam:'Practice Exam'};
+  const names={ch13:'Weight Management',ch14:'Eating Disorders',ch15:'Sports Nutrition',srs:'Flashcard Review',exam:'Practice Exams'};
   function show(t){ if(!names[t]) t='ch13';
     document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('on',s.id==='tab-'+t));
     document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle(b.tagName==='A'?'active':'on',b.dataset.tab===t));
     document.getElementById('breadNow').textContent=names[t];
     if(t==='srs') drawReady();
+    buildToc(t);
     renderMath(document.getElementById('tab-'+t));
     window.scrollTo(0,0); }
   document.querySelectorAll('#tabbar [data-tab]').forEach(b=>b.onclick=()=>{ history.replaceState(null,'','#'+b.dataset.tab); show(b.dataset.tab); });
