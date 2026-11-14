@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrition Chapters 13 to 15 (BIO-155)</title>
+<meta name="description" content="Interactive nutrition notes for chapters 13 to 15: weight management, eating disorders, and sports nutrition, with flashcards and a practice exam. By learningwithsruthi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Dosis:wght@400;500;600;700&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="window.mathReady=true;renderMath(document.body)"></script>
+<link rel="stylesheet" href="nutrition.css?v=1">
+<style>
+.gauge{position:relative;height:34px;border-radius:10px;overflow:hidden;display:flex;margin:14px 0 4px}
+.gauge div{display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:.74rem;font-weight:700;color:#fff}
+.gauge-pin{position:absolute;top:-6px;width:4px;height:46px;background:var(--forest);border-radius:2px;transition:left .25s}
+.gauge-ticks{position:relative;height:18px;font-family:var(--fb);font-size:.74rem;color:var(--slate)}
+.gauge-ticks span{position:absolute;transform:translateX(-50%)}
+.eo-bar{display:flex;height:46px;border-radius:12px;overflow:hidden;margin:12px 0}
+.eo-bar div{display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--fb);font-size:.8rem;font-weight:700;transition:width .25s;white-space:nowrap;overflow:hidden}
+.hz{cursor:pointer}
+.hz:hover rect,.hz:hover ellipse,.hz:hover circle,.hz:hover path{filter:brightness(1.08)}
+.tabbar{position:sticky;top:64px;z-index:5;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;background:var(--bg);padding:8px 0}
+.tabbar button{font-family:var(--fp);font-weight:600;font-size:.92rem;border:2px solid var(--sage-l);background:var(--white);color:var(--forest);border-radius:30px;padding:7px 16px;cursor:pointer}
+.tabbar button.on{background:var(--forest);color:#fff;border-color:var(--forest)}
+.tab{display:none;flex-direction:column;gap:22px}
+.tab.on{display:flex}
+[data-theme="dark"] .tabbar{background:#0f120b}
+[data-theme="dark"] .tabbar button{background:#1d2a17;color:#eef1e4;border-color:#2B3320}
+[data-theme="dark"] .tabbar button.on{background:#9BA06A;color:#143109}
+@media (max-width:640px){.tabbar{top:0}.tabbar button{font-size:.8rem;padding:6px 10px}}
+</style>
+</head>
+<body data-theme="light">
+<div class="lws-backdrop"></div>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark"><img src="../assets/logo-mark.png" alt="learningwithsruthi" width="46" height="30" decoding="async"></div>
+    <div class="brand-name">learningwithsruthi <small>nutrition notes</small></div>
+  </div>
+  <div class="ws-switch">
+    <div class="ws-switch-btn">
+      <div class="ico">155</div>
+      <div class="meta">
+        <div class="lbl">Nutrition Ch 13 to 15</div>
+        <div class="sub">BIO-155 &middot; Exam Review</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-section-label">Chapters</div>
+  <div class="side-nav">
+    <a class="nav-item" data-tab="ch13" href="#ch13"><span class="num">13</span><span class="t">Weight Management</span></a>
+    <a class="nav-item" data-tab="ch14" href="#ch14"><span class="num">14</span><span class="t">Eating Disorders</span></a>
+    <a class="nav-item" data-tab="ch15" href="#ch15"><span class="num">15</span><span class="t">Sports Nutrition</span></a>
+  </div>
+  <div class="side-section-label">Study Tools</div>
+  <div class="side-nav">
+    <a class="nav-item" data-tab="srs" href="#srs"><span class="num">SRS</span><span class="t">Flashcard Review</span></a>
+    <a class="nav-item" data-tab="exam" href="#exam"><span class="num">Exam</span><span class="t">Practice Exam</span></a>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="bread">
+    <span class="bread-trail">BIO-155 Nutrition</span>
+    <span class="bread-now" id="breadNow">Weight Management</span>
+  </div>
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input placeholder="Search terms, hormones, numbers...">
+  </div>
+  <div class="top-actions">
+    <button class="btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleLwsTheme()">&#9790;</button>
+  </div>
+</header>
+
+<main class="main">
+<div class="tabbar" id="tabbar"><button data-tab="ch13">Ch 13 Weight</button><button data-tab="ch14">Ch 14 Eating Disorders</button><button data-tab="ch15">Ch 15 Sports</button><button data-tab="srs">Flashcards</button><button data-tab="exam">Practice Exam</button></div>
+<section class="tab" id="tab-ch13">
+
+<div class="pg-head">
+  <div class="topic-badge">Chapter 13 &middot; BIO-155 Nutrition</div>
+  <h1>Weight Management</h1>
+  <p class="sub">What body weight is made of, how we measure fat, where energy goes, and what drives us to eat.</p>
+</div>
+
+<!-- MAP -->
+<div class="card">
+  <h2 class="card-title"><span class="num">Map</span>How this chapter fits together</h2>
+  <p class="body-text">The chapter tells one story in four steps. First, <strong>what is the problem?</strong> Excess body fat, especially fat around the organs, raises disease risk. Second, <strong>how do we measure it?</strong> BMI is quick but crude, so we also measure body composition directly. Third, <strong>why does fat build up?</strong> Energy in versus energy out. Fourth, <strong>why is that balance so hard to control?</strong> Genes, hormones, and environment push on appetite. Treatment comes last because it has to answer all of the above.</p>
+  <div class="topics-list">
+    <div class="row current"><span class="rn">13.1</span><span>Overweight vs obesity and the health risks</span></div>
+    <div class="row current"><span class="rn">13.2</span><span>BMI: the quick screen and its limits</span></div>
+    <div class="row current"><span class="rn">13.3</span><span>Body composition and measuring body fat</span></div>
+    <div class="row current"><span class="rn">13.4</span><span>Where the fat sits: apple vs pear</span></div>
+    <div class="row current"><span class="rn">13.5</span><span>Energy balance and the three parts of energy out</span></div>
+    <div class="row current"><span class="rn">13.6</span><span>Genes, hunger, appetite, and the hunger hormones</span></div>
+    <div class="row current"><span class="rn">13.7</span><span>Treatment: activity targets and why fad diets fail</span></div>
+    <div class="row current"><span class="rn">R</span><span>Workbook recall, flashcards, chapter check</span></div>
+  </div>
+</div>
+
+<!-- 13.1 -->
+<div class="card" id="sec-risk">
+  <h2 class="card-title"><span class="num">13.1</span>Overweight vs obesity</h2>
+  <p class="body-text">These two words are not interchangeable. <strong>Overweight</strong> means extra weight from <em>anything</em>: bone, muscle, body fat, or body water. <strong>Obesity</strong> means excessive <strong>body fat</strong> specifically. A bodybuilder can be overweight without being obese.</p>
+  <p class="body-text">Water is about <strong>60%</strong> of an adult's body weight. That is why the scale can jump two or three pounds overnight after a salty meal: that is fluid, not fat.</p>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>Overweight weighs everything on the scale. Obesity only counts the fat.</div>
+  <h3 class="sub-title">Why excess fat is dangerous</h3>
+  <p class="body-text">Fat first fills adipose tissue. When that storage is full, fat <strong>migrates</strong> into the abdomen, heart, and liver. Fat in those places disrupts metabolism and produces a cluster of problems: <strong>insulin resistance + abnormal blood lipids + high blood pressure = metabolic syndrome</strong>.</p>
+  <div class="cmp">
+    <div class="cmp-col a"><h4>Central obesity</h4><p>May raise heart attack and stroke risk as much as the three leading risk factors: <strong>high LDL cholesterol, hypertension, and smoking</strong>.</p></div>
+    <div class="cmp-col g"><h4>PCOS (in females with obesity)</h4><p>Irregular or absent periods, <strong>low estrogen, high testosterone</strong>, ovarian cysts, and insulin resistance. PCOS can lead to infertility.</p></div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>The three leading risk factors spell <strong>LHS</strong>: LDL, Hypertension, Smoking. Central fat is as bad as all of them.</div>
+  <h3 class="sub-title">Weight stigma</h3>
+  <p class="body-text">Stigma in health care causes psychological distress and makes people <strong>avoid health-care services</strong>. It also feeds binge eating, less activity, more weight gain, isolation, depression, and low self-esteem. Notice the loop: stigma is meant to "motivate" but actually makes the weight problem worse.</p>
+  <div class="practice-box"><div class="q"><strong>Quick check:</strong> Insulin resistance shows up in two conditions in this section. Which two?</div><button class="show-ans-btn" onclick="toggleAns('a131')">Show Answer</button><div class="a" id="a131">Metabolic syndrome and PCOS. Both tie excess fat to hormone problems.</div></div>
+</div>
+
+<!-- 13.2 -->
+<div class="card" id="sec-bmi">
+  <h2 class="card-title"><span class="num">13.2</span>BMI: the quick screen</h2>
+  <p class="body-text">Body mass index compares weight to height:</p>
+  <p class="body-text" style="text-align:center">$$\text{BMI}=\frac{\text{weight in kg}}{(\text{height in m})^2}$$</p>
+  <div class="map-table-wrap"><table class="map-table">
+    <tr><th>BMI</th><th>Category</th></tr>
+    <tr><td class="code">below 18.5</td><td>Underweight</td></tr>
+    <tr><td class="code">18.5 to 24.9</td><td>Healthy weight</td></tr>
+    <tr><td class="code">25 to 29.9</td><td>Overweight</td></tr>
+    <tr><td class="code">30 and up</td><td>Obese</td></tr>
+  </table></div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span><strong>18.5, 25, 30</strong>: three fences split the line into four fields. Picture a runner clearing hurdles at 18.5, 25, and 30.</div>
+  <div class="interactive-area">
+    <div class="ia-label">BMI Calculator</div>
+    <div class="pick-row" style="justify-content:center"><button class="pick-btn active" data-u="imp">Pounds and Inches</button><button class="pick-btn" data-u="met">Kilograms and Meters</button></div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label id="wLbl">Weight (lb)</label><input type="range" id="bmiW" min="80" max="350" value="150"><span class="val-chip" id="bmiWv"></span></div>
+      <div class="ctrl"><label id="hLbl">Height (in)</label><input type="range" id="bmiH" min="55" max="80" value="66"><span class="val-chip" id="bmiHv"></span></div>
+    </div>
+    <div class="gauge" id="gauge">
+      <div style="width:17.5%;background:#5b7fa8">Under</div>
+      <div style="width:32.5%;background:#5b8a3f">Healthy</div>
+      <div style="width:25%;background:#c08a3e">Overweight</div>
+      <div style="width:25%;background:#b5503e">Obese</div>
+      <span class="gauge-pin" id="pin"></span>
+    </div>
+    <div class="gauge-ticks"><span style="left:17.5%">18.5</span><span style="left:50%">25</span><span style="left:75%">30</span></div>
+    <div class="readout" id="bmiOut"></div>
+  </div>
+  <h3 class="sub-title">What BMI cannot tell you</h3>
+  <p class="body-text">BMI does <strong>not describe body composition</strong>. It cannot tell muscle from fat, so a very muscular person can be classified "overweight." It is less useful for <strong>highly muscular people, older adults, and people with chronic illnesses</strong>, and it ignores sex, race, and ethnicity.</p>
+  <div class="note-flag"><span class="flag-label">The flip side</span><strong>Normal weight obesity</strong> is a normal BMI with an elevated percent body fat. These people look "fine" on BMI but carry higher cardiovascular disease and mortality risk. This is exactly why the next section measures fat directly.</div>
+</div>
+
+<!-- 13.3 -->
+<div class="card" id="sec-comp">
+  <h2 class="card-title"><span class="num">13.3</span>Body composition and measuring body fat</h2>
+  <p class="body-text"><strong>Body composition</strong> is the measurement of body tissues, usually expressed as <strong>percent body fat</strong>. The body splits into two compartments:</p>
+  <div class="term-grid">
+    <div class="term-sym">Fat mass</div><div class="term-def">All adipose tissue. Includes <strong>essential fat</strong>, the fat needed for body processes to occur normally. Females carry more essential fat for reproductive functions.</div>
+    <div class="term-sym">Lean (fat-free) mass</div><div class="term-def">Total body weight minus adipose tissue weight: muscle, bone, organs, water.</div>
+    <div class="term-sym">Subcutaneous fat</div><div class="term-def">Fat under the skin. Insulates and protects. (sub = under, cutaneous = skin)</div>
+    <div class="term-sym">Visceral fat</div><div class="term-def">Fat between the internal organs. (viscera = organs) The dangerous kind.</div>
+  </div>
+  <div class="interactive-area">
+    <div class="ia-label">Body Fat Classification</div>
+    <div class="pick-row" style="justify-content:center"><button class="pick-btn active" data-sex="m">Male</button><button class="pick-btn" data-sex="f">Female</button></div>
+    <div class="ctrl-row"><div class="ctrl"><label>Body fat %</label><input type="range" id="bfR" min="5" max="50" value="20"><span class="val-chip" id="bfV"></span></div></div>
+    <div id="bfBands"></div>
+    <div class="readout" id="bfOut"></div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>Learn the male ladder (<strong>13-21, 22-25, 26-31, 32+</strong>), then add about 10 for females (<strong>23-31, 32-37, 38-42, 43+</strong>). The gap is essential fat.</div>
+  <h3 class="sub-title">Five ways to measure body fat</h3>
+  <p class="body-text">Every method trades accuracy against practicality. Click a dot on the chart to read about that method.</p>
+  <div class="interactive-area">
+    <div class="ia-label">Accuracy vs Practicality</div>
+    <div class="stage"><svg id="methSvg" class="dg" viewBox="0 0 560 330" style="max-width:600px" role="img" aria-label="Body fat measurement methods plotted by accuracy and practicality"></svg></div>
+    <div class="readout" id="methOut">Click a method.</div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span><strong>DEXA</strong> sees three things: lean, fat, and bone. It is the gold standard. <strong>BIA</strong>: lean tissue is wet, water carries current, so leaner means <strong>less</strong> resistance.</div>
+</div>
+
+<!-- 13.4 -->
+<div class="card" id="sec-where">
+  <h2 class="card-title"><span class="num">13.4</span>Where the fat sits</h2>
+  <p class="body-text">How much fat matters, but <strong>where</strong> it sits matters just as much. Excess visceral fat around the abdominal organs is <strong>central obesity</strong> (upper-body fat), linked to heart disease, cancers, and diabetes. This connects back to 13.1: central fat is the fat that migrates into organs and causes metabolic syndrome.</p>
+  <div class="interactive-area">
+    <div class="ia-label">Click a Shape</div>
+    <div class="stage"><svg id="shapeSvg" class="dg" viewBox="0 0 520 300" style="max-width:560px" role="img" aria-label="Apple and pear body shapes"></svg></div>
+    <div class="readout" id="shapeOut">Click the apple or the pear.</div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>An apple's core is in the middle, like fat packed around the organs. A pear is heavy at the bottom, like fat on hips and thighs. <strong>Males = apple, females = pear.</strong></div>
+  <p class="body-text"><strong>Waist circumference</strong> is the quick way to check central fat: the tape crosses just above the <strong>upper hip bones</strong>, snug but not compressing the skin.</p>
+</div>
+
+<!-- 13.5 -->
+<div class="card" id="sec-energy">
+  <h2 class="card-title"><span class="num">13.5</span>Energy balance</h2>
+  <p class="body-text"><strong>Energy balance</strong> compares <strong>energy in</strong> (food, beverages, alcohol) with <strong>energy out</strong> (the calories your cells use). Energy out has three parts:</p>
+  <div class="term-grid">
+    <div class="term-sym">Basal metabolism</div><div class="term-def">Up to <strong>2/3</strong> of the day. Breathing, heartbeat, marrow making red blood cells, kidneys filtering. <strong>BMR</strong> is the rate of energy use for life-sustaining activities and does <strong>not</strong> include skeletal muscle movement or digestion.</div>
+    <div class="term-sym">Physical activity</div><div class="term-def">The <strong>most variable</strong> and most changeable part. Longer, more frequent, more intense movement burns more. Includes <strong>NEAT</strong> (non-exercise activity thermogenesis): fidgeting, shivering, cooking, cleaning, holding upright posture.</div>
+    <div class="term-sym">Thermic effect of food</div><div class="term-def">About <strong>5 to 10%</strong> of intake: energy to digest food and beverages and to absorb and further process the nutrients (GI contractions, digestive juices).</div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>Energy out is a <strong>BAT</strong>: Basal (biggest), Activity (most variable), Thermic (tiny, 5 to 10%).</div>
+  <div class="interactive-area">
+    <div class="ia-label">Build a Day of Energy Out</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>BMR (kcal)</label><input type="range" id="eoB" min="1000" max="2200" step="50" value="1400"><span class="val-chip" id="eoBv"></span></div>
+      <div class="ctrl"><label>Activity (kcal)</label><input type="range" id="eoA" min="100" max="1500" step="50" value="450"><span class="val-chip" id="eoAv"></span></div>
+      <div class="ctrl"><label>Food eaten (kcal)</label><input type="range" id="eoI" min="1200" max="4000" step="50" value="2100"><span class="val-chip" id="eoIv"></span></div>
+    </div>
+    <div class="eo-bar" id="eoBar"></div>
+    <div class="readout" id="eoOut"></div>
+  </div>
+  <h3 class="sub-title">BMR vs RMR, and what moves BMR</h3>
+  <p class="body-text"><strong>RMR</strong> (resting metabolic rate) is measured after resting and eating, so it runs about <strong>10% higher</strong> than BMR.</p>
+  <div class="cmp">
+    <div class="cmp-col g"><h4>Raises BMR</h4><p>Fever, stress, growth, caffeine, smoking, hormones (such as thyroid hormone)</p></div>
+    <div class="cmp-col a"><h4>Lowers BMR</h4><p>Aging, fasting or starvation, malnutrition</p></div>
+  </div>
+  <div class="highlight-box"><p class="body-text" style="margin:0"><strong>Connect forward:</strong> "Starvation lowers BMR" is the same fact you will see in Chapter 14, where anorexia slows BMR as the body tries to conserve energy. A slower BMR is also why very low calorie diets stall.</p></div>
+  <h3 class="sub-title">Positive vs negative balance and the 3,500 rule</h3>
+  <div class="cmp">
+    <div class="cmp-col g"><h4>Positive balance</h4><p>Intake greater than output, so weight <strong>increases</strong>. Examples: pregnancy, body building.</p></div>
+    <div class="cmp-col a"><h4>Negative balance</h4><p>Intake less than output, so weight <strong>is lost</strong>. Example: chronic disease.</p></div>
+  </div>
+  <p class="body-text">Rule of thumb: about <strong>3,500 kcal</strong> eaten in excess stores about 1 pound of body fat, and the reverse for losing it.</p>
+  <p class="body-text" style="text-align:center">$$500\ \tfrac{\text{kcal}}{\text{day}}\times 7\ \text{days}=3{,}500\ \text{kcal}\approx 1\ \text{lb per week}$$</p>
+  <div class="practice-box"><div class="q"><strong>Quick check:</strong> Someone cuts 250 kcal per day. About how long until they lose 1 pound?</div><button class="show-ans-btn" onclick="toggleAns('a135')">Show Answer</button><div class="a" id="a135">$3{,}500 \div 250 = 14$ days, so about 2 weeks.</div></div>
+</div>
+
+<!-- 13.6 -->
+<div class="card" id="sec-hormones">
+  <h2 class="card-title"><span class="num">13.6</span>Genes, hormones, and behavior</h2>
+  <p class="body-text">If weight were only math, everyone would balance the equation. It is hard because biology and surroundings push on the "energy in" side. More than <strong>300</strong> sites in the human genome are linked to obesity and fat distribution, and an <strong>obesogenic environment</strong> (all the daily circumstances that push us toward fatness) works on those genes.</p>
+  <div class="term-grid">
+    <div class="term-sym">Hunger</div><div class="term-def">The <strong>physiological</strong> sensation that drives eating.</div>
+    <div class="term-sym">Appetite</div><div class="term-def">The <strong>desire</strong> for appealing food. You can have appetite without hunger (dessert after a big meal).</div>
+    <div class="term-sym">Satiety</div><div class="term-def">The sense that <strong>enough</strong> food or beverage has been consumed.</div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>Hunger is the body, appetite is the mind, satiety sounds like "satisfied."</div>
+  <p class="body-text">The <strong>hypothalamus</strong> is the control center. It collects nervous, endocrine, and digestive signals. Click each organ to follow its hormone.</p>
+  <div class="interactive-area">
+    <div class="ia-label">Hunger and Satiety Signals</div>
+    <div class="stage"><svg id="hormSvg" class="dg" viewBox="0 0 600 360" style="max-width:640px" role="img" aria-label="Ghrelin, leptin, and peptide YY signaling to the hypothalamus"></svg></div>
+    <div class="readout" id="hormOut">Click the stomach, the gut, or the fat tissue.</div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span><strong>Ghrelin</strong> is the stomach growling. <strong>Leptin</strong> comes from the lipids (fat tissue). <strong>PYY</strong> tells ghrelin to "pipe down."</div>
+  <div class="note-flag"><span class="flag-label">Common trap</span>People with obesity usually have <strong>plenty</strong> of leptin. The problem is <strong>leptin resistance</strong>: the brain stops listening to the signal. Do not answer "leptin deficiency."</div>
+  <div class="highlight-box"><p class="body-text" style="margin:0"><strong>Connect forward:</strong> Leptin is made by fat tissue, so very low body fat means very low leptin. That is part of why the low energy availability in Chapter 14 (female athlete triad) shuts down reproductive hormones.</p></div>
+</div>
+
+<!-- 13.7 -->
+<div class="card" id="sec-treat">
+  <h2 class="card-title"><span class="num">13.7</span>Treatment</h2>
+  <p class="body-text">Successful weight management combines three things, one for each piece of the story above: <strong>dietary changes</strong> (energy in), <strong>physical activity</strong> (energy out), and <strong>psychological and behavior changes</strong> such as better sleep patterns (the hormones and environment).</p>
+  <p class="body-text">The activity target paired with diet: at least <strong>150 minutes</strong> of moderate-intensity <strong>or</strong> <strong>75 minutes</strong> of vigorous-intensity activity per week, plus fewer sedentary behaviors.</p>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>150 or 75: vigorous minutes count double. The same numbers return in Chapter 15 as the adult activity guideline.</div>
+  <div class="note-flag"><span class="flag-label">Fad diets</span>They tend to be <strong>unsustainable</strong> and <strong>nutritionally inadequate</strong>, ignore dietary recommendations, and lead to weight <strong>regain</strong>.</div>
+</div>
+
+<!-- RECALL -->
+<div class="card" id="sec-recall">
+  <h2 class="card-title"><span class="num">R1</span>Recall the Workbook</h2>
+  <p class="body-text">Every blank from the Chapter 13 workbook. Type the answer, press Enter to check each one, or click Check to grade all. Spelling is graded loosely, so focus on the idea.</p>
+  <div class="interactive-area"><div id="cloze"></div></div>
+</div>
+
+<!-- SRS -->
+<div class="card" id="sec-srs">
+  <h2 class="card-title"><span class="num">R2</span>Flashcards (SRS)</h2>
+  <p class="body-text">Spaced repetition shows a card again right before you would forget it. Rate yourself honestly: <strong>Again</strong> brings the card back in 10 minutes, <strong>Easy</strong> pushes it days out. Progress saves in this browser and is shared with the <a href="#srs">Flashcards</a> tab, which mixes all three chapters.</p>
+  <div class="interactive-area"><div id="srs13"></div></div>
+</div>
+
+<!-- CHECK -->
+<div class="card" id="sec-check">
+  <h2 class="card-title"><span class="num">R3</span>Chapter Check</h2>
+  <p class="body-text">Ten questions drawn from the chapter bank, different each time you reload. When you score 80% or higher a few times in a row, take the full <a href="#exam">Practice Exam</a>.</p>
+  <div id="mcq13"></div>
+</div>
+
+</section>
+<section class="tab" id="tab-ch14">
+<div class="pg-head">
+  <div class="topic-badge">Chapter 14 &middot; BIO-155 Nutrition</div>
+  <h1>Disordered Eating and Eating Disorders</h1>
+  <p class="sub">From unhealthy habits to clinical disorders: who is at risk, what each disorder does to the body, and how they are treated.</p>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">Map</span>How this chapter fits together</h2>
+  <p class="body-text">Think of eating behavior as a <strong>spectrum</strong>. Normal eating sits at one end, disordered eating in the middle, and diagnosable eating disorders at the far end. The chapter walks that spectrum: define the line between the middle and the end (DSM-5), ask who is at risk, then study each disorder by asking the same three questions: <strong>what is the behavior, what does it do to the body, and why?</strong> It ends with athletes (where Chapter 13's energy balance meets Chapter 15's sports nutrition) and treatment.</p>
+  <div class="topics-list">
+    <div class="row current"><span class="rn">14.1</span><span>Disordered eating vs eating disorders</span></div>
+    <div class="row current"><span class="rn">14.2</span><span>Risk factors</span></div>
+    <div class="row current"><span class="rn">14.3</span><span>Anorexia nervosa</span></div>
+    <div class="row current"><span class="rn">14.4</span><span>Bulimia nervosa and the binge cycle</span></div>
+    <div class="row current"><span class="rn">14.5</span><span>Binge-eating disorder, and AN vs BN vs BED</span></div>
+    <div class="row current"><span class="rn">14.6</span><span>Other specified disorders</span></div>
+    <div class="row current"><span class="rn">14.7</span><span>Female athlete triad and RED-S</span></div>
+    <div class="row current"><span class="rn">14.8</span><span>Treatment and prevention</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">14.1</span>Disordered eating vs eating disorders</h2>
+  <div class="interactive-area">
+    <div class="ia-label">The Eating Spectrum</div>
+    <div class="gauge"><div style="width:30%;background:#5b8a3f">Normal</div><div style="width:40%;background:#c08a3e">Disordered Eating</div><div style="width:30%;background:#b5503e">Eating Disorder</div></div>
+    <div class="gauge-ticks"><span style="left:70%">DSM-5 line</span></div>
+  </div>
+  <div class="cmp">
+    <div class="cmp-col g"><h4>Disordered eating</h4><p>Behaviors that are neither normal nor <strong>healthy</strong>: restrained eating, fasting, repeating the same meal, an occasional binge or purge. Does <strong>not</strong> meet DSM-5 criteria.</p></div>
+    <div class="cmp-col a"><h4>Eating disorder</h4><p>A disturbance in eating behavior that jeopardizes physical or <strong>psychological</strong> health <strong>and meets DSM-5 criteria</strong>.</p></div>
+  </div>
+  <p class="body-text"><strong>DSM-5</strong> = Diagnostic and Statistical Manual of Mental Disorders. Its three main eating disorders: <strong>anorexia nervosa, bulimia nervosa, binge-eating disorder</strong>.</p>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>Disordered eating is the hallway. An eating disorder is the room with a diagnosis on the door. The big three go <strong>A, B, B</strong>: Anorexia, Bulimia, Binge-eating.</div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">14.2</span>Risk factors</h2>
+  <p class="body-text">Risk factors fall into three groups: <strong>biological, psychological, and sociocultural</strong>. No single factor causes an eating disorder; they stack. Sort each one below.</p>
+  <div class="interactive-area"><div class="ia-label">Sort the Risk Factors</div><div id="riskSort"></div></div>
+  <div class="note-flag"><span class="flag-label">Key number</span>Up to <strong>39%</strong> of women and <strong>15%</strong> of men with <strong>type 1</strong> diabetes develop an eating disorder. Remember it, because diabulimia (14.6) is the reason.</div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">14.3</span>Anorexia nervosa</h2>
+  <p class="body-text"><strong>an</strong> = without, <strong>orex</strong> = mouth or appetite, <strong>nervosa</strong> = of nervous origin. The person is starving themselves.</p>
+  <p class="body-text"><strong>Core features:</strong> refusal to maintain a minimally <strong>normal</strong> body weight, plus a distorted perception of body <strong>shape</strong> and weight. They see themselves as fat while dangerously underweight.</p>
+  <p class="body-text">The body is malnourished: deprived of lean protein and body fat. Almost every effect makes sense as the body <strong>conserving energy</strong> or <strong>running out of materials</strong>. Click a body system.</p>
+  <div class="interactive-area">
+    <div class="ia-label">Starvation Effects by System</div>
+    <div class="pick-row" style="justify-content:center" id="anPick"></div>
+    <div class="readout" id="anOut">Pick a system.</div>
+  </div>
+  <div class="note-flag"><span class="flag-label">Do not mix these up</span><strong>Menarche</strong> is the first period, which low estrogen <strong>delays</strong>. <strong>Amenorrhea</strong> is no menstruation for <strong>3+ months</strong> (a = without, men = monthly, rrhea = flow).</div>
+  <p class="body-text">Anorexia often occurs with depression, bipolar disorder, anxiety, and <strong>obsessive</strong>-compulsive disorder. Young adults with anorexia have a mortality rate about <strong>12 times</strong> their peers, usually from cardiac complications or <strong>suicide</strong>.</p>
+  <div class="highlight-box"><p class="body-text" style="margin:0"><strong>Connect back:</strong> "BMR slows" is the Chapter 13 fact that fasting and starvation lower BMR. Less fat also means less leptin, and less insulation.</p></div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">14.4</span>Bulimia nervosa</h2>
+  <p class="body-text"><strong>Pattern:</strong> binge eating followed by <strong>purging</strong> (self-induced vomiting, laxative or diuretic misuse, or excessive exercise) to rid the body of the <strong>kilocalories</strong> consumed. People with bulimia are usually <strong>normal</strong> weight or overweight, think constantly about food, and keep the behavior secret. That is why it is easy to miss.</p>
+  <p class="body-text">Every physical sign traces back to the purge. Follow the vomit upward:</p>
+  <div class="map-table-wrap"><table class="map-table">
+    <tr><th>Cause</th><th>Sign</th></tr>
+    <tr><td>Stomach acid passing up</td><td>Chronic sore <strong>throat</strong>, swollen <strong>salivary</strong> glands, worn tooth <strong>enamel</strong>, heartburn</td></tr>
+    <tr><td>Fluid loss</td><td>Severe dehydration, intestinal distress</td></tr>
+    <tr><td>Vomiting + diuretic abuse lose potassium</td><td><strong>Hypokalemia</strong> (low blood potassium), leading to cardiac <strong>arrhythmias</strong> and skeletal muscle damage</td></tr>
+  </table></div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span><strong>Hypo-kal-emia</strong>: low, kalium (potassium, symbol K), in the blood. The heart runs on potassium, so low K throws off its rhythm.</div>
+  <div class="interactive-area">
+    <div class="ia-label">The Binge Cycle (Click Next)</div>
+    <div class="steps" id="bingeSteps"></div>
+    <div class="btn-row"><button class="site-btn" id="bingeNext">Next Stage</button><button class="site-btn secondary" id="bingeReset">Restart</button></div>
+    <div class="readout" id="bingeOut">The cycle starts before any food is eaten.</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">14.5</span>Binge-eating disorder</h2>
+  <p class="body-text">Recurring binges with a marked feeling of lack of <strong>control</strong>, but the person rarely or never <strong>purges</strong>, so obesity risk rises. It is the <strong>most</strong> common eating disorder in the U.S., <strong>twice</strong> as common in females. It raises risk for obesity, type 2 <strong>diabetes</strong>, and hypertension, plus self-loathing, depression, and anxiety. <strong>Cognitive behavioral therapy</strong> combined with lifestyle recommendations appears beneficial.</p>
+  <h3 class="sub-title">The big three side by side</h3>
+  <div class="map-table-wrap"><table class="map-table">
+    <tr><th></th><th>Anorexia</th><th>Bulimia</th><th>Binge-eating</th></tr>
+    <tr><td><strong>Behavior</strong></td><td>Starvation</td><td>Binge + purge</td><td>Binge, no purge</td></tr>
+    <tr><td><strong>Weight</strong></td><td>Dangerously low</td><td>Normal or overweight</td><td>Often overweight or obese</td></tr>
+    <tr><td><strong>Hallmark signs</strong></td><td>Feels cold, brittle hair, amenorrhea</td><td>Sore throat, enamel, salivary glands</td><td>Loss of control, shame</td></tr>
+    <tr><td><strong>Main danger</strong></td><td>Heart failure, suicide (12x mortality)</td><td>Hypokalemia and arrhythmia</td><td>Obesity, type 2 diabetes, hypertension</td></tr>
+  </table></div>
+  <div class="interactive-area"><div class="ia-label">Which Disorder? Sort the Clues</div><div id="edSort"></div></div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">14.6</span>Other specified disorders</h2>
+  <p class="body-text">Click each card to flip it. Say the definition out loud before flipping.</p>
+  <div class="doc-grid">
+    <div class="flip"><div class="flip-in"><div class="flip-face"><h4>Night-Eating Syndrome</h4><p>Eating disorder + ___ disorder</p><span class="flip-hint">Click to flip</span></div><div class="flip-face back"><p>Eating disorder + <strong>sleep</strong> disorder. <strong>50%</strong> or more of daily calories after the evening meal, waking at night to eat, believing sleep requires a big meal first. Linked to sleep disturbances, metabolic syndrome, type 2 diabetes; more likely as body weight rises.</p></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="flip-face"><h4>Diabulimia</h4><p>Diabetes + bulimia</p><span class="flip-hint">Click to flip</span></div><div class="flip-face back"><p>A person with <strong>type 1</strong> diabetes withholds <strong>insulin</strong> to lose weight. Can be deadly. Long-term: blindness, kidney <strong>failure</strong>, diabetic ketoacidosis.</p></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="flip-face"><h4>Orthorexia</h4><p>ortho = correct</p><span class="flip-hint">Click to flip</span></div><div class="flip-face back"><p>Obsession with "good" or "clean" nutrition. Foods sorted into clean vs bad or <strong>forbidden</strong>; ritualized, highly obsessive pattern; the diet becomes nutritionally unbalanced. At risk: nutrition and dietetics students, dancers.</p></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="flip-face"><h4>Muscle Dysmorphia</h4><p>The mirror says "too small"</p><span class="flip-hint">Click to flip</span></div><div class="flip-face back"><p>Preoccupation with being too <strong>small</strong> or inadequately muscular, usually in <strong>males</strong>. High-protein diets, supplements, hours of training, often steroid abuse; trains despite injury.</p></div></div></div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>Muscle dysmorphia is anorexia in a mirror: the person with anorexia sees "too big," the person with muscle dysmorphia sees "too small."</div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">14.7</span>Female athlete triad and RED-S</h2>
+  <p class="body-text">The <strong>triad</strong> is the interplay of three things: <strong>energy availability</strong> (low energy, negative energy balance), <strong>menstrual function</strong>, and <strong>bone mineral density</strong>. At-risk sports reward low body mass: gymnastics, <strong>dance</strong>, cheerleading, distance running.</p>
+  <div class="interactive-area">
+    <div class="ia-label">Step Through the Chain</div>
+    <div class="stage"><svg id="triadSvg" class="dg" viewBox="0 0 600 300" style="max-width:640px" role="img" aria-label="Female athlete triad cause chain"></svg></div>
+    <div class="btn-row"><button class="site-btn" id="triNext">Next Step</button><button class="site-btn secondary" id="triReset">Restart</button></div>
+    <div class="readout" id="triOut">It starts with energy.</div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>Triad = <strong>EMB</strong>: Energy, Menstruation, Bones. <strong>Osteo-penia</strong> = bone poverty.</div>
+  <div class="note-flag"><span class="flag-label">Triad vs RED-S</span><strong>RED-S</strong> = <strong>Relative</strong> Energy Deficiency in Sport. It is the broader syndrome: it affects <strong>both</strong> males and females and harms health <em>and</em> performance. The triad is the female-only version focused on three outcomes.</div>
+  <div class="highlight-box"><p class="body-text" style="margin:0"><strong>Connect:</strong> "Low energy availability" is Chapter 13's negative energy balance in an athlete. Chapter 15 adds the other side: athletes need enough total kcal and carbohydrate, and female athletes are also at higher risk of iron deficiency.</p></div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">14.8</span>Treatment and prevention</h2>
+  <p class="body-text">Treatment takes a <strong>multidisciplinary</strong> team: nutrition, mental health, medicine, sometimes pharmacy.</p>
+  <div class="cmp">
+    <div class="cmp-col g"><h4>Cognitive behavioral therapy</h4><p>Challenges current beliefs and replaces them with more realistic thoughts.</p></div>
+    <div class="cmp-col a"><h4>Dialectical behavioral therapy</h4><p>Builds skills for handling stress and feelings of inadequacy.</p></div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span><strong>C</strong>BT changes the <strong>C</strong>ognitions (thoughts). <strong>D</strong>BT builds the <strong>D</strong>eal-with-it skills.</div>
+  <p class="body-text"><strong>Other therapies:</strong> phototherapy (light), biofeedback (recognizing warning signs, heart rate monitoring), equine therapy (self, relationships, fun), meditation and relaxation therapy, and acupuncture (for depression and anxiety).</p>
+  <p class="body-text"><strong>Prevention:</strong> early identification, education to improve body <strong>image</strong>, and teaching athletes, parents, and coaches about the triad.</p>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">R1</span>Recall the Workbook</h2>
+  <p class="body-text">Every Chapter 14 blank. Press Enter to check each one.</p>
+  <div class="interactive-area"><div id="cloze14"></div></div>
+</div>
+<div class="card">
+  <h2 class="card-title"><span class="num">R2</span>Flashcards (SRS)</h2>
+  <p class="body-text">Chapter 14 cards only. The <a href="#srs">Flashcards</a> tab mixes all three chapters with the same saved progress.</p>
+  <div class="interactive-area"><div id="srs14"></div></div>
+</div>
+<div class="card">
+  <h2 class="card-title"><span class="num">R3</span>Chapter Check</h2>
+  <p class="body-text">Ten questions from the Chapter 14 bank, new set on each reload.</p>
+  <div id="mcq14"></div>
+</div>
+</section>
+
+<section class="tab" id="tab-ch15">
+<div class="pg-head">
+  <div class="topic-badge">Chapter 15 &middot; BIO-155 Nutrition</div>
+  <h1>Physical Activity and Sports Nutrition</h1>
+  <p class="sub">How much to move, what fuels the muscles, and how to eat, drink, and supplement for performance.</p>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">Map</span>How this chapter fits together</h2>
+  <p class="body-text">Chapter 13 called physical activity the most variable part of energy out. This chapter zooms in. First, <strong>how much activity</strong> do we need? Then, <strong>what fuels it</strong>: carbohydrate for hard efforts, fat for easy ones, with glycogen as the limited tank. Then <strong>what to eat</strong> (carbs, fat, protein, iron), <strong>what to drink</strong> (fluids, heat, sports drinks), and finally <strong>what not to take</strong> (ergogenic aids).</p>
+  <div class="topics-list">
+    <div class="row current"><span class="rn">15.1</span><span>Basics and guidelines</span></div>
+    <div class="row current"><span class="rn">15.2</span><span>Fuels and glycogen</span></div>
+    <div class="row current"><span class="rn">15.3</span><span>Carbohydrate needs and loading</span></div>
+    <div class="row current"><span class="rn">15.4</span><span>Fat and protein</span></div>
+    <div class="row current"><span class="rn">15.5</span><span>Micronutrients and iron</span></div>
+    <div class="row current"><span class="rn">15.6</span><span>Fluids, heat illness, sports drinks</span></div>
+    <div class="row current"><span class="rn">15.7</span><span>Ergogenic aids</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">15.1</span>Basics and guidelines</h2>
+  <div class="term-grid">
+    <div class="term-sym">Physical activity</div><div class="term-def">Bodily movement from muscle contractions that significantly raises <strong>energy</strong> expenditure.</div>
+    <div class="term-sym">Exercise</div><div class="term-def"><strong>Planned</strong>, structured, repetitive movement done to promote or maintain fitness.</div>
+    <div class="term-sym">Physical fitness</div><div class="term-def">The result. Physical activity is the broadest, exercise is the planned subset, fitness is the outcome.</div>
+    <div class="term-sym">Aerobic</div><div class="term-def">Sustained, rhythmic contractions of large muscle groups.</div>
+    <div class="term-sym">Resistance</div><div class="term-def">Builds muscle strength and endurance (and mass).</div>
+  </div>
+  <p class="body-text"><strong>Adult guideline:</strong> at least <strong>150 min/week moderate</strong> OR <strong>75 min/week vigorous</strong> aerobic activity, plus muscle strengthening on at least <strong>2 days/week</strong>. These are the same 150/75 numbers from Chapter 13's weight-loss target.</p>
+  <div class="interactive-area">
+    <div class="ia-label">Does This Week Meet the Guideline?</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Moderate min/week</label><input type="range" id="gMod" min="0" max="300" step="10" value="90"><span class="val-chip" id="gModV"></span></div>
+      <div class="ctrl"><label>Vigorous min/week</label><input type="range" id="gVig" min="0" max="150" step="5" value="20"><span class="val-chip" id="gVigV"></span></div>
+      <div class="ctrl"><label>Strength days/week</label><input type="range" id="gStr" min="0" max="7" value="1"><span class="val-chip" id="gStrV"></span></div>
+    </div>
+    <div class="readout" id="gOut"></div>
+  </div>
+  <h3 class="sub-title">The activity pyramid</h3>
+  <div class="map-table-wrap"><table class="map-table">
+    <tr><th>Level</th><th>How often</th></tr>
+    <tr><td><strong>Top: sedentary</strong> activities</td><td>Least often</td></tr>
+    <tr><td>Strength</td><td><strong>2 to 3</strong> days/week, 8 to 12 exercises, 1 set of 8 to 12 reps</td></tr>
+    <tr><td>Flexibility</td><td><strong>2 to 3</strong> days/week, hold stretches 10 to 30 seconds</td></tr>
+    <tr><td>Aerobic</td><td><strong>3 to 5</strong> days/week</td></tr>
+    <tr><td><strong>Base:</strong> activities of daily living</td><td>30+ minutes most days</td></tr>
+  </table></div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>"<strong>3-5</strong> for the heart, <strong>2-3</strong> to stretch, <strong>2-3</strong> for strength, and <strong>8-12</strong> twice" (8 to 12 exercises, 8 to 12 reps).</div>
+  <p class="body-text"><strong>Session order:</strong> warm-up, peak activity, <strong>cool-down</strong>. The cool-down lets heart rate slow gradually and reduces cramping.</p>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">15.2</span>Fuels and glycogen</h2>
+  <p class="body-text">Glucose is stored as <strong>glycogen</strong> in the liver and muscles. During exercise the liver breaks its glycogen down and releases glucose to the blood. Total glycogen holds less than <strong>2,000 kcal</strong>, roughly <strong>20 miles</strong> of running. When it runs out, muscles <strong>fatigue</strong>. This is "hitting the wall."</p>
+  <div class="interactive-area">
+    <div class="ia-label">Fuel Mix by Intensity</div>
+    <div class="ctrl-row"><div class="ctrl"><label>Exercise intensity</label><input type="range" id="intR" min="0" max="100" value="30"><span class="val-chip" id="intV"></span></div></div>
+    <div class="eo-bar" id="fuelBar"></div>
+    <div class="readout" id="fuelOut"></div>
+  </div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span><strong>Sprint on sugar, stroll on fat.</strong> High intensity: ATP mainly from carbohydrate. Moderate intensity: ATP from fatty acid oxidation.</div>
+  <p class="body-text"><strong>Trained athletes</strong> oxidize more <strong>fat</strong> at the same intensity, sparing glycogen so they can go longer.</p>
+  <p class="body-text"><strong>Energy needs:</strong> male endurance athletes training more than 90 min/day need at least <strong>50 kcal/kg/day</strong>; females need <strong>45 to 50 kcal/kg/day</strong>.</p>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">15.3</span>Carbohydrate</h2>
+  <div class="map-table-wrap"><table class="map-table">
+    <tr><th>Training</th><th>Carbohydrate</th></tr>
+    <tr><td>1 to 3 h/day, moderate to high intensity</td><td><strong>6 to 10 g/kg/day</strong></td></tr>
+    <tr><td>More than 4 to 5 h/day</td><td><strong>8 to 12 g/kg/day</strong></td></tr>
+  </table></div>
+  <div class="interactive-area">
+    <div class="ia-label">Carbohydrate Calculator</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Body weight (kg)</label><input type="range" id="cW" min="40" max="120" value="70"><span class="val-chip" id="cWv"></span></div>
+      <div class="ctrl"><label>Training hours/day</label><input type="range" id="cH" min="1" max="6" step=".5" value="2"><span class="val-chip" id="cHv"></span></div>
+    </div>
+    <div class="readout" id="cOut"></div>
+  </div>
+  <p class="body-text"><strong>Carbohydrate loading</strong> manipulates training and carb intake to maximize muscle glycogen stores. It delays fatigue in events lasting longer than <strong>90 minutes</strong>. A healthy person stores about <strong>6 g of glycogen per kg</strong>, and every gram of glycogen pulls about <strong>3 g of water</strong> into the muscle with it, which is why loaded athletes feel heavy.</p>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">15.4</span>Fat and protein</h2>
+  <p class="body-text">Athletes should get <strong>20 to 35%</strong> of energy from fat, saturated fat under <strong>10%</strong>. Dropping fat below <strong>20%</strong> risks inadequate energy and nutrients.</p>
+  <p class="body-text">Protein is not a major fuel. Carbohydrate <strong>spares</strong> protein: with too little carb (or too much fat), amino acids get converted to glucose, because fatty acids can <strong>never</strong> provide glucose.</p>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>Fat cannot be turned into glucose, so when carbs run short the body raids muscle protein. Carbs are the bodyguard for protein.</div>
+  <div class="note-flag"><span class="flag-label">Do not mix these up</span><strong>DOMS</strong> (delayed-onset muscle soreness) comes from <strong>microtears</strong> in muscle fibers and hits <strong>24 to 48 hours</strong> after activity. The burning during activity is lactic acid, a different thing.</div>
+  <p class="body-text"><strong>Protein pattern:</strong> <strong>20 to 30 g</strong> of high-quality protein at each of 4 to 5 small meals. Even the highest recommendations can be met without protein <strong>supplements</strong>.</p>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">15.5</span>Micronutrients and iron</h2>
+  <p class="body-text">Routine <strong>antioxidant</strong> vitamin supplements are NOT recommended for athletes. Eat antioxidant-rich foods instead.</p>
+  <p class="body-text">Iron is part of <strong>hemoglobin</strong>, which delivers oxygen for energy metabolism. Anemia means tiring easily and poor aerobic performance. Risk runs high in <strong>females, distance runners</strong>, and athletes on low-calorie or plant-based diets.</p>
+  <div class="cmp">
+    <div class="cmp-col a"><h4>Iron-deficiency anemia</h4><p>True shortage of iron. Real loss of oxygen delivery and performance.</p></div>
+    <div class="cmp-col g"><h4>Sports anemia</h4><p>NOT true iron deficiency. A temporary, adaptive response to endurance training: older, fragile red cells get destroyed.</p></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">15.6</span>Fluids, heat illness, sports drinks</h2>
+  <p class="body-text">Three heat illnesses, mildest to worst: exercise-associated muscle <strong>cramps</strong>, heat <strong>exhaustion</strong>, <strong>heatstroke</strong>. Heatstroke means a body temperature above <strong>104&deg;F</strong> and is potentially <strong>fatal</strong>.</p>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span><strong>C, E, S</strong> climbing a ladder: Cramps, Exhaustion, Stroke. The top rung is above 104.</div>
+  <div class="interactive-area">
+    <div class="ia-label">Sweat Loss Check (2% Rule)</div>
+    <div class="ctrl-row">
+      <div class="ctrl"><label>Weight before (lb)</label><input type="range" id="sB" min="100" max="250" value="150"><span class="val-chip" id="sBv"></span></div>
+      <div class="ctrl"><label>Weight after (lb)</label><input type="range" id="sA" min="90" max="250" step=".5" value="147"><span class="val-chip" id="sAv"></span></div>
+    </div>
+    <div class="readout" id="sOut"></div>
+  </div>
+  <p class="body-text">Electrolytes lost in sweat: sodium, <strong>potassium</strong>, chloride, magnesium. A normal diet replaces them for events under an hour.</p>
+  <div class="interactive-area">
+    <div class="ia-label">Sports Drink Strength</div>
+    <div class="ctrl-row"><div class="ctrl"><label>Carbohydrate %</label><input type="range" id="dR" min="2" max="14" step=".5" value="7"><span class="val-chip" id="dV"></span></div></div>
+    <div class="gauge"><div style="width:33.3%;background:#5b7fa8">Too weak</div><div style="width:16.7%;background:#5b8a3f">Sweet spot</div><div style="width:16.7%;background:#c08a3e">Risky</div><div style="width:33.3%;background:#b5503e">GI trouble</div><span class="gauge-pin" id="dPin"></span></div>
+    <div class="gauge-ticks"><span style="left:33.3%">6%</span><span style="left:50%">8%</span><span style="left:66.7%">10%</span></div>
+    <div class="readout" id="dOut"></div>
+  </div>
+  <p class="body-text">Sports drinks earn their place in strenuous activity lasting longer than <strong>1 hour</strong>.</p>
+  <div class="note-flag"><span class="flag-label">Hyponatremia</span>Replacing sweat losses with <strong>plain water only</strong> dilutes blood sodium: <strong>hyponatremia</strong> (hypo = low, natr = sodium, Na). It can progress to seizures, coma, and death. Compare Chapter 14's <strong>hypokalemia</strong> (low potassium, from purging).</div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">15.7</span>Ergogenic aids</h2>
+  <p class="body-text">An <strong>ergogenic aid</strong> is a substance or technique used to try to enhance <strong>physical performance</strong> ("ergo" = work, "genic" = gives rise to).</p>
+  <div class="term-grid">
+    <div class="term-sym">Anabolic steroids</div><div class="term-def">The most dangerous and illegal class, derived from testosterone.</div>
+    <div class="term-sym">Creatine</div><div class="term-def">Combines with phosphate to make <strong>creatine phosphate</strong> in muscle. Supported for short-term, repetitive, <strong>high</strong>-intensity work like lifting and sprinting.</div>
+    <div class="term-sym">Caffeine</div><div class="term-def">Enhances alertness and endurance but causes GI upset, nervousness, headaches. NCAA restricts it, capping urine concentration at <strong>15 mg/L</strong>.</div>
+  </div>
+  <div class="interactive-area"><div class="ia-label">Sort Into NCAA Buckets</div><div id="ncaaSort"></div></div>
+  <div class="mnemo"><span class="mlabel">Memory Hook</span>NCAA buckets are traffic lights: <strong>Permissible</strong> green, <strong>Impermissible</strong> yellow (legal, but the department cannot hand it out), <strong>Banned</strong> red.</div>
+</div>
+
+<div class="card">
+  <h2 class="card-title"><span class="num">R1</span>Recall the Workbook</h2>
+  <p class="body-text">Every Chapter 15 blank. Press Enter to check each one.</p>
+  <div class="interactive-area"><div id="cloze15"></div></div>
+</div>
+<div class="card">
+  <h2 class="card-title"><span class="num">R2</span>Flashcards (SRS)</h2>
+  <p class="body-text">Chapter 15 cards only. The <a href="#srs">Flashcards</a> tab mixes all three chapters.</p>
+  <div class="interactive-area"><div id="srs15"></div></div>
+</div>
+<div class="card">
+  <h2 class="card-title"><span class="num">R3</span>Chapter Check</h2>
+  <p class="body-text">Ten questions from the Chapter 15 bank, new set on each reload.</p>
+  <div id="mcq15"></div>
+</div>
+</section>
+
+<section class="tab" id="tab-srs">
+<div class="pg-head">
+  <div class="topic-badge">Study Tool</div>
+  <h1>Flashcard Review</h1>
+  <p class="sub">Every term, number, and key fact from Chapters 13 to 15, scheduled by spaced repetition.</p>
+</div>
+<div class="card">
+  <h2 class="card-title"><span class="num">Ready</span>Exam Readiness</h2>
+  <p class="body-text">A card counts as <strong>learned</strong> once you have rated it Good or Easy enough times that it is scheduled 4+ days out. Aim for 80% learned in every chapter and 80%+ on the practice exam.</p>
+  <div class="ready-grid" id="ready"></div>
+</div>
+<div class="card">
+  <h2 class="card-title"><span class="num">SRS</span>Study</h2>
+  <p class="body-text">Up to 20 new cards a day plus everything due. The night before the exam, use <strong>Cram Every Card</strong> to see the whole deck once, with missed cards coming back a few cards later.</p>
+  <div class="interactive-area"><div id="srsAll"></div></div>
+</div>
+</section>
+
+<section class="tab" id="tab-exam">
+<div class="pg-head">
+  <div class="topic-badge">Study Tool</div>
+  <h1>Practice Exam</h1>
+  <p class="sub">A mixed exam across all three chapters with a score by topic, so you know exactly what to review.</p>
+</div>
+<div class="card">
+  <h2 class="card-title"><span class="num">Setup</span>Start an Exam</h2>
+  <p class="body-text">Questions are drawn at random from the full bank (with every topic represented) and answer choices are shuffled, so each attempt is different. Answer everything, then submit. Your results are saved in this browser and feed the readiness panel on the Flashcards tab.</p>
+  <div class="pick-row" style="justify-content:center" id="examLen">
+    <button class="pick-btn" data-n="15">Quick: 15 Questions</button>
+    <button class="pick-btn active" data-n="45">Full: 45 Questions</button>
+    <button class="pick-btn" data-n="999">Everything in the Bank</button>
+  </div>
+  <div class="pick-row" style="justify-content:center" id="examCh">
+    <button class="pick-btn active" data-c="all">All Chapters</button>
+    <button class="pick-btn" data-c="13">Ch 13</button>
+    <button class="pick-btn" data-c="14">Ch 14</button>
+    <button class="pick-btn" data-c="15">Ch 15</button>
+  </div>
+  <div class="btn-row"><button class="site-btn" id="examStart">Start Exam</button><span class="timer" id="timer" style="display:none"></span></div>
+  <div class="readout" id="examHist"></div>
+</div>
+<div class="card" id="examCard" style="display:none"><div id="examBox"></div></div>
+</section>
+
+</main>
+</div>
+
+<script src="nutrition.js?v=1"></script>
+<script src="srs-ch13.js?v=1"></script>
+<script src="exam-ch13.js?v=1"></script>
+<script src="srs-ch14.js?v=1"></script>
+<script src="exam-ch14.js?v=1"></script>
+<script src="srs-ch15.js?v=1"></script>
+<script src="exam-ch15.js?v=1"></script>
+<script>
+function renderMath(el){ if(window.renderMathInElement) renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]}); }
+const NS='http://www.w3.org/2000/svg';
+function svgEl(t,a,txt){ const e=document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); if(txt!=null) e.textContent=txt; return e; }
+function css(v){ return getComputedStyle(document.body).getPropertyValue(v).trim()||'#143109'; }
+
+/* ---- BMI ---- */
+(function(){
+  let unit='imp'; const W=document.getElementById('bmiW'), H=document.getElementById('bmiH');
+  function setUnit(u){ unit=u;
+    if(u==='imp'){ W.min=80;W.max=350;W.step=1;W.value=150; H.min=55;H.max=80;H.step=1;H.value=66; document.getElementById('wLbl').textContent='Weight (lb)'; document.getElementById('hLbl').textContent='Height (in)'; }
+    else { W.min=36;W.max=160;W.step=1;W.value=68; H.min=1.4;H.max=2.05;H.step=.01;H.value=1.68; document.getElementById('wLbl').textContent='Weight (kg)'; document.getElementById('hLbl').textContent='Height (m)'; }
+    upd(); }
+  function upd(){
+    const w=+W.value, h=+H.value; let kg,m;
+    if(unit==='imp'){ kg=w*0.4536; m=h*0.0254; document.getElementById('bmiWv').textContent=w+' lb'; document.getElementById('bmiHv').textContent=Math.floor(h/12)+' ft '+(h%12)+' in'; }
+    else { kg=w; m=h; document.getElementById('bmiWv').textContent=w+' kg'; document.getElementById('bmiHv').textContent=h.toFixed(2)+' m'; }
+    const b=kg/(m*m); const cat=b<18.5?'underweight':b<25?'healthy weight':b<30?'overweight':'obese';
+    const pos=Math.max(0,Math.min(100,(b-11)/(41-11)*100));
+    // map so 18.5 -> 17.5%, 25 -> 50%, 30 -> 75% piecewise
+    let p; if(b<18.5) p=Math.max(0,(b-12)/(6.5))*17.5; else if(b<25) p=17.5+(b-18.5)/6.5*32.5; else if(b<30) p=50+(b-25)/5*25; else p=Math.min(99,75+(b-30)/10*25);
+    document.getElementById('pin').style.left='calc('+p+'% - 2px)';
+    const out=document.getElementById('bmiOut');
+    out.innerHTML='$\\text{BMI}=\\dfrac{'+kg.toFixed(1)+'}{('+m.toFixed(2)+')^2}='+b.toFixed(1)+'$ &nbsp; <strong>'+cat+'</strong>'
+      +(unit==='imp'?'<br><span style="color:var(--slate)">Converted: '+w+' lb is '+kg.toFixed(1)+' kg and '+h+' in is '+m.toFixed(2)+' m.</span>':'')
+      +'<br><span style="color:var(--slate)">Remember: this says nothing about how much of that weight is muscle vs fat.</span>';
+    renderMath(out);
+  }
+  document.querySelectorAll('[data-u]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('[data-u]').forEach(x=>x.classList.toggle('active',x===b)); setUnit(b.dataset.u); });
+  W.oninput=upd; H.oninput=upd; window.addEventListener('load',upd); upd();
+})();
+
+/* ---- Body fat classification ---- */
+(function(){
+  let sex='m'; const R=document.getElementById('bfR');
+  const T={m:[['Healthy',13,21],['Overweight',22,25],['Obesity',26,31],['Extreme obesity',32,50]],f:[['Healthy',23,31],['Overweight',32,37],['Obesity',38,42],['Extreme obesity',43,50]]};
+  const C=['#5b8a3f','#c08a3e','#b5503e','#7a2f24'];
+  function upd(){
+    const v=+R.value; document.getElementById('bfV').textContent=v+'%';
+    let h='<div class="gauge">'; const lo=5,hi=50; const first=T[sex][0][1];
+    h+='<div style="width:'+((first-lo)/(hi-lo)*100)+'%;background:#5b7fa8">Below</div>';
+    T[sex].forEach((t,i)=>{ const end=i<3?T[sex][i+1][1]:hi; h+='<div style="width:'+((end-t[1])/(hi-lo)*100)+'%;background:'+C[i]+'">'+(i===3?'Extreme':t[0])+'</div>'; });
+    h+='<span class="gauge-pin" style="left:calc('+((v-lo)/(hi-lo)*100)+'% - 2px)"></span></div>';
+    document.getElementById('bfBands').innerHTML=h;
+    const cat=v<first?'below the healthy range':T[sex].find((t,i)=>v>=t[1]&&(i===3||v<T[sex][i+1][1]))[0].toLowerCase();
+    document.getElementById('bfOut').innerHTML='A '+(sex==='m'?'male':'female')+' at <strong>'+v+'% body fat</strong> is classified as <strong>'+cat+'</strong>. '
+      +(sex==='m'?'Male ranges: 13 to 21, 22 to 25, 26 to 31, 32 and up.':'Female ranges: 23 to 31, 32 to 37, 38 to 42, 43 and up.')
+      +(v<first?' Going too low cuts into essential fat, which normal body processes need.':'');
+  }
+  document.querySelectorAll('[data-sex]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('[data-sex]').forEach(x=>x.classList.toggle('active',x===b)); sex=b.dataset.sex; upd(); });
+  R.oninput=upd; upd();
+})();
+
+/* ---- Measurement methods plot ---- */
+(function(){
+  const s=document.getElementById('methSvg'), out=document.getElementById('methOut');
+  const M=[
+    {n:'DEXA',x:1.2,y:9.3,t:'<strong>DEXA (dual-energy X-ray absorptiometry)</strong> is the <strong>gold standard</strong>. Two low-dose X-rays separate lean tissue, fat, and bone. Expensive and not widely available.'},
+    {n:'Underwater',x:2.2,y:8.4,t:'<strong>Underwater weighing (hydrodensitometry)</strong>: fat floats and lean tissue sinks, so body density reveals fat. Accurate, but needs a lab and trained personnel.'},
+    {n:'Bod Pod',x:3.6,y:8,t:'<strong>Air displacement (Bod Pod)</strong>: the air you push out of a sealed pod equals your body volume, which gives density. Same accuracy vs practicality trade-off as underwater weighing, without getting wet.'},
+    {n:'Skinfold',x:7.6,y:6.2,t:'<strong>Skinfold calipers</strong> pinch skin plus subcutaneous fat. Measure each site <strong>twice</strong>. Cheap and fairly accurate if the technician is trained.'},
+    {n:'BIA',x:8.8,y:4.2,t:'<strong>Bioelectrical impedance</strong>: a tiny current conducts best through lean tissue (it holds the water), so the leaner the person, the <strong>less</strong> the resistance. Hand-held analyzers are less accurate.'}
+  ];
+  const fg=css('--forest'), sl=css('--slate');
+  function draw(sel){
+    s.innerHTML=''; const X=v=>60+v*46, Y=v=>290-v*28;
+    s.appendChild(svgEl('line',{x1:60,y1:290,x2:530,y2:290,stroke:sl,'stroke-width':2}));
+    s.appendChild(svgEl('line',{x1:60,y1:290,x2:60,y2:10,stroke:sl,'stroke-width':2}));
+    s.appendChild(svgEl('text',{x:295,y:322,'text-anchor':'middle',fill:sl,'font-size':14},'More practical (cheap, portable)  →'));
+    const yl=svgEl('text',{x:20,y:150,'text-anchor':'middle',fill:sl,'font-size':14,transform:'rotate(-90 20 150)'},'More accurate  →'); s.appendChild(yl);
+    M.forEach((m,i)=>{ const g=svgEl('g',{class:'hz'}); const on=sel===i;
+      g.appendChild(svgEl('circle',{cx:X(m.x),cy:Y(m.y),r:on?16:12,fill:on?'#c08a3e':'#9BA06A',stroke:fg,'stroke-width':on?3:1.5}));
+      g.appendChild(svgEl('text',{x:X(m.x),y:Y(m.y)-20,'text-anchor':'middle',fill:fg,'font-size':14,'font-weight':700},m.n));
+      g.onclick=()=>{ draw(i); out.innerHTML=m.t; }; s.appendChild(g); });
+  }
+  draw(-1);
+})();
+
+/* ---- Apple vs pear ---- */
+(function(){
+  const s=document.getElementById('shapeSvg'), out=document.getElementById('shapeOut'), fg=css('--forest');
+  function body(x,apple){
+    const g=svgEl('g',{class:'hz'});
+    g.appendChild(svgEl('circle',{cx:x,cy:40,r:22,fill:'#e4e8cc',stroke:fg,'stroke-width':2}));
+    const d=apple?'M'+(x-34)+',70 Q'+(x-80)+',150 '+(x-40)+',215 L'+(x+40)+',215 Q'+(x+80)+',150 '+(x+34)+',70 Z'
+                 :'M'+(x-28)+',70 Q'+(x-40)+',130 '+(x-70)+',195 Q'+(x-60)+',225 '+(x-30)+',225 L'+(x+30)+',225 Q'+(x+60)+',225 '+(x+70)+',195 Q'+(x+40)+',130 '+(x+28)+',70 Z';
+    g.appendChild(svgEl('path',{d,fill:'#e4e8cc',stroke:fg,'stroke-width':2}));
+    if(apple) g.appendChild(svgEl('ellipse',{cx:x,cy:145,rx:44,ry:40,fill:'#b5503e',opacity:.75}));
+    else g.appendChild(svgEl('ellipse',{cx:x,cy:200,rx:62,ry:22,fill:'#c08a3e',opacity:.75}));
+    g.appendChild(svgEl('line',{x1:x-18,y1:225,x2:x-22,y2:285,stroke:fg,'stroke-width':10,'stroke-linecap':'round'}));
+    g.appendChild(svgEl('line',{x1:x+18,y1:225,x2:x+22,y2:285,stroke:fg,'stroke-width':10,'stroke-linecap':'round'}));
+    return g;
+  }
+  const a=body(140,true), p=body(380,false);
+  a.appendChild(svgEl('text',{x:140,y:20,'text-anchor':'middle',fill:fg,'font-size':15,'font-weight':700},''));
+  s.appendChild(a); s.appendChild(p);
+  s.appendChild(svgEl('text',{x:250,y:296,'text-anchor':'middle',fill:fg,'font-size':13},'Apple (left)  ·  Pear (right)'));
+  a.onclick=()=>{ out.innerHTML='<strong>Apple shape (typical male pattern).</strong> Fat sits in the abdomen as <strong>visceral fat</strong> around the organs. This is <strong>central obesity</strong>, linked to heart disease, cancers, diabetes, and metabolic syndrome.'; };
+  p.onclick=()=>{ out.innerHTML='<strong>Pear shape (typical female pattern).</strong> Fat sits on the hips and thighs, mostly <strong>subcutaneous</strong> fat under the skin. Lower metabolic risk than the apple pattern.'; };
+})();
+
+/* ---- Energy out builder ---- */
+(function(){
+  const B=document.getElementById('eoB'), A=document.getElementById('eoA'), I=document.getElementById('eoI');
+  function upd(){
+    const b=+B.value, a=+A.value, i=+I.value, tef=Math.round(i*0.08), tot=b+a+tef, bal=i-tot;
+    document.getElementById('eoBv').textContent=b; document.getElementById('eoAv').textContent=a; document.getElementById('eoIv').textContent=i;
+    const pc=x=>Math.round(x/tot*100);
+    document.getElementById('eoBar').innerHTML='<div style="width:'+pc(b)+'%;background:#5b7fa8">Basal '+pc(b)+'%</div><div style="width:'+pc(a)+'%;background:#5b8a3f">Activity '+pc(a)+'%</div><div style="width:'+Math.max(pc(tef),6)+'%;background:#c08a3e">TEF</div>';
+    const lbW=bal*7/3500;
+    const out=document.getElementById('eoOut');
+    out.innerHTML='Energy out $= '+b+' + '+a+' + '+tef+' = '+tot+'$ kcal (TEF estimated at 8% of intake). '
+      +'Energy in $= '+i+'$ kcal.<br><strong>'+(bal>0?'Positive balance':'Negative balance')+' of '+Math.abs(bal)+' kcal/day</strong>, about $'+Math.abs(lbW).toFixed(2)+'$ lb '+(bal>0?'gained':'lost')+' per week by the 3,500 rule.'
+      +(pc(b)>67?'<br><span style="color:var(--slate)">Basal is above two-thirds here, which happens in very inactive people.</span>':'');
+    renderMath(out);
+  }
+  [B,A,I].forEach(x=>x.oninput=upd); window.addEventListener('load',upd); upd();
+})();
+
+/* ---- Hormone diagram ---- */
+(function(){
+  const s=document.getElementById('hormSvg'), out=document.getElementById('hormOut'), fg=css('--forest');
+  const brain=svgEl('g'); brain.appendChild(svgEl('ellipse',{cx:300,cy:60,rx:110,ry:44,fill:'#e4e8cc',stroke:fg,'stroke-width':2}));
+  brain.appendChild(svgEl('text',{x:300,y:56,'text-anchor':'middle',fill:fg,'font-size':16,'font-weight':700},'Hypothalamus'));
+  brain.appendChild(svgEl('text',{x:300,y:76,'text-anchor':'middle',fill:fg,'font-size':12},'control center'));
+  s.appendChild(brain);
+  const O=[
+    {n:'Stomach',h:'Ghrelin',x:90,y:270,c:'#b5503e',arrowTo:[220,92],t:'<strong>Ghrelin, the hunger hormone</strong>, is made by the <strong>stomach</strong>. It stimulates appetite, increases intake, and decreases energy expenditure. It <strong>rises with fasting and falls after eating</strong>.'},
+    {n:'Gut',h:'Peptide YY',x:300,y:290,c:'#5b7fa8',arrowTo:[150,250],t:'<strong>Peptide YY</strong> is a peptide hormone released after eating. It signals the stomach to <strong>cut ghrelin secretion</strong>, so hunger fades.'},
+    {n:'Fat Tissue',h:'Leptin',x:510,y:270,c:'#5b8a3f',arrowTo:[380,92],t:'<strong>Leptin, the satiety hormone</strong>, is made by <strong>adipose tissue</strong> and suppresses appetite. Most people with obesity have plenty of leptin but have <strong>leptin resistance</strong>.'}
+  ];
+  const defs=svgEl('defs'); O.forEach((o,i)=>{ const m=svgEl('marker',{id:'ah'+i,viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:7,markerHeight:7,orient:'auto-start-reverse'}); m.appendChild(svgEl('path',{d:'M0,0 L10,5 L0,10 z',fill:o.c})); defs.appendChild(m); }); s.appendChild(defs);
+  O.forEach((o,i)=>{
+    s.appendChild(svgEl('line',{x1:o.x,y1:o.y-36,x2:o.arrowTo[0],y2:o.arrowTo[1],stroke:o.c,'stroke-width':3,'marker-end':'url(#ah'+i+')','stroke-dasharray':i===1?'6 4':''}));
+    const g=svgEl('g',{class:'hz'});
+    g.appendChild(svgEl('rect',{x:o.x-70,y:o.y-34,width:140,height:68,rx:14,fill:'#fff',stroke:o.c,'stroke-width':3}));
+    g.appendChild(svgEl('text',{x:o.x,y:o.y-8,'text-anchor':'middle',fill:'#143109','font-size':15,'font-weight':700},o.n));
+    g.appendChild(svgEl('text',{x:o.x,y:o.y+16,'text-anchor':'middle',fill:o.c,'font-size':14,'font-weight':700},o.h));
+    g.onclick=()=>{ out.innerHTML=o.t; }; s.appendChild(g);
+  });
+  s.appendChild(svgEl('text',{x:150,y:175,'text-anchor':'middle',fill:'#b5503e','font-size':13,'font-weight':700},'"Eat!"'));
+  s.appendChild(svgEl('text',{x:450,y:175,'text-anchor':'middle',fill:'#5b8a3f','font-size':13,'font-weight':700},'"Enough."'));
+  s.appendChild(svgEl('text',{x:225,y:262,'text-anchor':'middle',fill:'#5b7fa8','font-size':12,'font-weight':700},'"Pipe down"'));
+})();
+
+/* ---- Workbook recall ---- */
+renderCloze(document.getElementById('cloze'),[
+ 'Overweight = extra weight from bone, muscle, body fat, and/or body [[water|h2o]]; obesity = excessive body [[fat]].',
+ 'Water makes up about [[60|sixty]]% of an adult\'s body weight, so fluid retention or loss swings the scale.',
+ 'Insulin resistance + abnormal blood lipids + high blood pressure = [[metabolic]] syndrome.',
+ 'Central obesity may raise heart attack and stroke risk as much as high [[LDL]] cholesterol, hypertension, and smoking.',
+ 'PCOS: irregular or absent periods, low [[estrogen]], high [[testosterone]], ovarian cysts, insulin resistance.',
+ 'Weight stigma leads to avoidance of [[health-care|health care|healthcare|health]] services.',
+ 'BMI = weight in [[kilograms|kg]] divided by the square of height in [[meters|m|metres]].',
+ 'BMI does not describe body [[composition]]; it is less useful for people with [[chronic]] illnesses.',
+ 'Normal weight obesity = normal BMI but elevated percent [[body fat|fat]].',
+ '[[Essential]] fat is the amount needed for body processes to occur normally.',
+ 'Fat mass vs fat-free ([[lean]]) mass; lean body mass = total weight minus [[adipose]] tissue weight.',
+ 'Fat under the skin = [[subcutaneous]] fat; fat between internal organs = [[visceral]] fat.',
+ 'Underwater weighing = hydro[[densitometry]]. The Bod Pod estimates density from [[air]] displaced.',
+ '[[DEXA|DXA|dual-energy x-ray absorptiometry]] is the gold standard for body fat percentage.',
+ 'Bioelectrical impedance: current conducts best through [[lean]] tissue, so the leaner the person, the [[less|lower]] the resistance.',
+ 'Skinfold: [[calipers]] pinch skin and subcutaneous fat; measure each site [[2|twice|two]] times.',
+ 'Excess visceral fat around abdominal organs = [[central]] obesity.',
+ 'Female fat pattern = [[pear]] shape; male pattern = [[apple]] shape.',
+ 'Waist circumference: tape crosses just above the upper [[hip]] bones.',
+ 'Energy balance = energy [[in]] vs energy out.',
+ 'Three parts of energy out: basal metabolism + [[physical activity|activity]] + thermic effect of food.',
+ 'Up to [[2/3|two-thirds|two thirds]] of a day\'s energy expenditure supports basal metabolism.',
+ 'BMR = rate of energy use for [[life]]-sustaining activities.',
+ 'RMR runs about [[10|ten]]% higher than BMR.',
+ 'BMR is raised by fever, stress, growth, caffeine, smoking, and [[hormones|thyroid hormones|thyroid]].',
+ 'Physical activity is the most [[variable]] part of energy out.',
+ 'NEAT includes fidgeting, shivering, cooking, cleaning, and holding [[upright]] posture.',
+ 'Thermic effect of food is about [[10|5-10|ten]]% of energy intake.',
+ 'Positive energy balance means weight [[gain|increase]]; negative energy balance means weight [[loss]].',
+ 'About [[3,500|3500]] kcal eaten in excess = 1 pound of body fat stored.',
+ 'More than [[300]] sites in the human genome are linked to obesity.',
+ 'An [[obesogenic]] environment pushes us toward fatness.',
+ 'Hunger = [[physiological]] sensation; appetite = [[desire]] for appealing food; satiety = sense that [[enough|sufficient]] has been consumed.',
+ 'The [[hypothalamus]] is the control center for hunger and satiety signals.',
+ 'Ghrelin = the [[hunger]] hormone, made by the [[stomach]].',
+ '[[Peptide YY|PYY|peptideyy]] signals the stomach to cut ghrelin secretion.',
+ 'Leptin = the [[satiety]] hormone, made by [[adipose|fat]] tissue; most people with obesity have leptin [[resistance]].',
+ 'Activity target: at least [[150]] minutes moderate OR [[75]] minutes vigorous per week.',
+ 'Fad diets are unsustainable and nutritionally [[inadequate]], and lead to weight [[regain]].'
+]);
+
+/* ---- SRS + check ---- */
+renderSRS(document.getElementById('srs13'), NUTRI_SRS, {chapters:[13]});
+renderMCQ(document.getElementById('mcq13'), NUTRI_EXAM.filter(q=>q.topic.startsWith('13')).sort(()=>Math.random()-.5).slice(0,10));
+
+/* ===== Chapter 14 ===== */
+makeSorter(document.getElementById('riskSort'),[
+ {t:'Close relative with an eating disorder',bin:0},{t:'History of frequent dieting',bin:0},{t:'Low energy availability',bin:0},{t:'Being female',bin:0},{t:'Being an adolescent',bin:0},
+ {t:'Perfectionism',bin:1},{t:'Impulsivity',bin:1},{t:'Emotional dysregulation',bin:1},{t:'Body image dissatisfaction',bin:1},
+ {t:'Weight stigma',bin:2},{t:'Teasing or bullying',bin:2},{t:'Sport that emphasizes a lean build',bin:2},{t:'Social media time',bin:2}
+],['Biological','Psychological','Sociocultural']);
+(function(){
+  const S=[['Growth and Metabolism','Growth ceases and <strong>BMR slows</strong>. The body is deprived of lean protein and fat, so it cuts energy spending.'],
+   ['Heart and Blood','Heart muscle becomes <strong>weak and thin</strong>, blood pressure <strong>falls</strong>, and heartbeat-regulating minerals unbalance. Slow resting pulse. Cardiac complications are a leading cause of death.'],
+   ['Brain','Brain tissue is lost. Often occurs with depression, bipolar disorder, anxiety, and OCD.'],
+   ['Blood and Immunity','Mild <strong>anemia</strong> and an impaired immune response, from too few raw materials.'],
+   ['Skin, Hair, Warmth','Brittle <strong>hair</strong> and nails. Less fat mass means less <strong>insulation</strong>, so the person is always cold and wears layers.'],
+   ['Reproduction','Low <strong>estrogen</strong> delays <strong>menarche</strong> (first period) and causes <strong>amenorrhea</strong> (no period for 3+ months).'],
+   ['Energy and Gut','Chronic fatigue, slow breathing, constipation.']];
+  const pick=document.getElementById('anPick'), out=document.getElementById('anOut');
+  S.forEach((s,i)=>{ const b=document.createElement('button'); b.className='pick-btn'; b.textContent=s[0]; b.onclick=()=>{ pick.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b)); out.innerHTML=s[1]; }; pick.appendChild(b); });
+})();
+(function(){
+  const st=['Anticipation and planning','Anxiety','Urgency','Rapid, uncontrollable eating','Relief','Disappointment','Shame or disgust'];
+  const why=['The binge is planned ahead: buying food, waiting to be alone.','Tension builds as the plan gets closer.','The urge feels impossible to resist.','Large amounts eaten fast, with a sense of lost control.','Brief relief: the tension drops.','Then regret sets in.','Shame or disgust, which in bulimia drives the purge, and the stress that feeds the next binge.'];
+  let k=-1; const box=document.getElementById('bingeSteps'), out=document.getElementById('bingeOut');
+  function draw(){ box.innerHTML=st.map((s,i)=>'<span class="'+(i<k?'done':i===k?'now':'')+'">'+(i+1)+'. '+s+'</span>').join(''); if(k>=0) out.innerHTML='<strong>'+st[k]+'.</strong> '+why[k]; }
+  document.getElementById('bingeNext').onclick=()=>{ k=Math.min(st.length-1,k+1); draw(); };
+  document.getElementById('bingeReset').onclick=()=>{ k=-1; draw(); out.textContent='The cycle starts before any food is eaten.'; };
+  draw();
+})();
+makeSorter(document.getElementById('edSort'),[
+ {t:'Dangerously underweight but sees themselves as fat',bin:0},{t:'Wears layers because they are always cold',bin:0},{t:'Mortality about 12 times their peers',bin:0},
+ {t:'Worn tooth enamel and swollen salivary glands',bin:1},{t:'Normal weight, keeps behavior secret, purges',bin:1},{t:'Hypokalemia leading to arrhythmia',bin:1},
+ {t:'Binges with lack of control, rarely purges',bin:2},{t:'Most common eating disorder in the U.S.',bin:2},{t:'Raises risk of type 2 diabetes and hypertension',bin:2}
+],['Anorexia Nervosa','Bulimia Nervosa','Binge-Eating Disorder']);
+(function(){
+  const s=document.getElementById('triadSvg'), out=document.getElementById('triOut');
+  const N=[{x:90,y:150,t:'Low energy intake',d:'<strong>Low energy availability</strong>: the athlete eats less than training burns (negative energy balance), often in sports that reward low body mass.'},
+           {x:240,y:150,t:'Low estrogen',d:'With too little energy the body shuts down reproductive hormones, so <strong>estrogen falls</strong>.'},
+           {x:400,y:70,t:'Menstrual dysfunction',d:'Low estrogen disrupts the cycle, up to <strong>amenorrhea</strong> (no period for 3+ months).'},
+           {x:400,y:230,t:'Weakened bones',d:'Estrogen protects bone, so bone mineral density drops.'},
+           {x:540,y:230,t:'Osteopenia',d:'<strong>Osteopenia</strong> (soft bones), which can progress to <strong>osteoporosis</strong> and stress fractures.'}];
+  const L=[[0,1],[1,2],[1,3],[3,4]]; let k=0;
+  function draw(){
+    s.innerHTML='<defs><marker id="tah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#525B76"/></marker></defs>';
+    L.forEach(([a,b])=>{ if(b<=k) s.appendChild(svgEl('line',{x1:N[a].x+58,y1:N[a].y,x2:N[b].x-62,y2:N[b].y,stroke:'#525B76','stroke-width':3,'marker-end':'url(#tah)'})); });
+    N.forEach((n,i)=>{ const on=i<=k; const g=svgEl('g',{opacity:on?1:.25});
+      g.appendChild(svgEl('rect',{x:n.x-60,y:n.y-28,width:120,height:56,rx:12,fill:i===k?'#c08a3e':'#e4e8cc',stroke:'#143109','stroke-width':2}));
+      const w=n.t.split(' '); const l1=w.slice(0,Math.ceil(w.length/2)).join(' '), l2=w.slice(Math.ceil(w.length/2)).join(' ');
+      g.appendChild(svgEl('text',{x:n.x,y:n.y-(l2?4:-5),'text-anchor':'middle',fill:'#143109','font-size':13,'font-weight':700},l1));
+      if(l2) g.appendChild(svgEl('text',{x:n.x,y:n.y+14,'text-anchor':'middle',fill:'#143109','font-size':13,'font-weight':700},l2));
+      s.appendChild(g); });
+    out.innerHTML='<strong>Step '+(k+1)+' of 5.</strong> '+N[k].d;
+  }
+  document.getElementById('triNext').onclick=()=>{ k=Math.min(4,k+1); draw(); };
+  document.getElementById('triReset').onclick=()=>{ k=0; draw(); };
+  draw();
+})();
+renderCloze(document.getElementById('cloze14'),[
+ 'Disordered eating = behaviors that are neither normal nor [[healthy]], but do not meet [[DSM-5|DSM5|DSM]] criteria.',
+ 'An eating disorder jeopardizes physical or [[psychological]] health and meets DSM-5 criteria.',
+ 'The three main eating disorders: anorexia nervosa, [[bulimia]] nervosa, and binge-eating disorder.',
+ 'Biological risk: close relative with an eating disorder, history of [[dieting]], low energy availability.',
+ 'Up to [[39]]% of women and 15% of men with type [[1|one]] diabetes develop an eating disorder.',
+ 'Psychological risk: perfectionism, impulsivity, emotional dysregulation, body image [[dissatisfaction]].',
+ 'Social risk: weight [[stigma]], teasing, sports or jobs that emphasize a [[lean|thin]] body build.',
+ 'Anorexia roots: "an" = [[without]], "orex" = mouth or appetite.',
+ 'Refusal to maintain a minimally [[normal]] body weight + distorted perception of body [[shape]].',
+ 'Less fat mass means less [[insulation]], so trouble keeping warm.',
+ 'Signs: extreme thinness, mild anemia, brittle [[hair]] and nails.',
+ 'Often occurs with depression, anxiety, and [[obsessive]]-compulsive disorder.',
+ 'Mortality about [[12|twelve]]x peers, usually cardiac complications or [[suicide]].',
+ 'Starvation: BMR [[slows|decreases|drops]], blood pressure [[falls|drops|decreases]].',
+ 'Low estrogen delays [[menarche]] and causes [[amenorrhea|amenorrhoea]] (no period for 3+ months).',
+ 'Bulimia: binge eating followed by [[purging]], to rid the body of the [[kilocalories|calories|kcal]] consumed.',
+ 'People with bulimia are usually [[normal]] weight or overweight.',
+ 'Signs: chronic sore [[throat]], swollen [[salivary]] glands, worn tooth [[enamel]].',
+ 'Vomiting + diuretic abuse cause [[hypokalemia]] (low potassium), leading to cardiac [[arrhythmias|arrhythmia]].',
+ 'Binge stages end in disappointment and then [[shame|disgust|shame or disgust]].',
+ 'BED: binges with lack of [[control]], but the person rarely or never [[purges]].',
+ 'BED is the [[most]] common eating disorder in the U.S.; [[twice|2x|two times|double]] as common in females.',
+ 'BED raises risk for obesity, type 2 [[diabetes]], and hypertension.',
+ 'Night-eating syndrome = eating disorder + [[sleep]] disorder; [[50]]% or more of calories after the evening meal.',
+ 'Diabulimia: a person with type 1 diabetes withholds [[insulin]]; complications include kidney [[failure]].',
+ 'Orthorexia: foods sorted into good/clean vs bad/[[forbidden]].',
+ 'Muscle dysmorphia: preoccupation with being too [[small]], usually in [[males|men]].',
+ 'Triad = [[energy]] availability, [[menstrual]] function, bone mineral [[density]].',
+ 'At-risk sports: gymnastics, [[dance|dancing]], cheerleading, distance running.',
+ 'Low energy intake leads to low [[estrogen]], then weakened bones and [[osteopenia]].',
+ 'RED-S = [[relative]] energy deficiency in sport; affects [[both]] males and females.',
+ 'Treatment takes a [[multidisciplinary]] team.',
+ '[[Cognitive]] behavioral therapy replaces beliefs with more realistic thoughts.',
+ 'Prevention: education to improve body [[image]].'
+]);
+renderSRS(document.getElementById('srs14'), NUTRI_SRS, {chapters:[14]});
+renderMCQ(document.getElementById('mcq14'), NUTRI_EXAM.filter(q=>q.topic.startsWith('14')).sort(()=>Math.random()-.5).slice(0,10));
+
+/* ===== Chapter 15 ===== */
+(function(){
+  const M=document.getElementById('gMod'),V=document.getElementById('gVig'),S=document.getElementById('gStr');
+  function upd(){ const m=+M.value,v=+V.value,s=+S.value, eq=m+2*v;
+    document.getElementById('gModV').textContent=m; document.getElementById('gVigV').textContent=v; document.getElementById('gStrV').textContent=s;
+    const ok1=eq>=150, ok2=s>=2, o=document.getElementById('gOut');
+    o.innerHTML='Moderate-equivalent minutes $= '+m+' + 2\\times'+v+' = '+eq+'$ (each vigorous minute counts as two). '
+      +'<br>Aerobic: <strong style="color:var(--'+(ok1?'good':'bad')+')">'+(ok1?'met':'not met, '+(150-eq)+' moderate minutes short')+'</strong>. Strength: <strong style="color:var(--'+(ok2?'good':'bad')+')">'+(ok2?'met':'need at least 2 days')+'</strong>.';
+    renderMath(o); }
+  [M,V,S].forEach(x=>x.oninput=upd); window.addEventListener('load',upd); upd();
+})();
+(function(){
+  const R=document.getElementById('intR');
+  function upd(){ const v=+R.value, carb=Math.round(15+v*0.8), fat=100-carb;
+    document.getElementById('intV').textContent=v<35?'Low':v<70?'Moderate':'High';
+    document.getElementById('fuelBar').innerHTML='<div style="width:'+carb+'%;background:#c08a3e">Carbohydrate '+carb+'%</div><div style="width:'+fat+'%;background:#5b7fa8">Fat '+fat+'%</div>';
+    document.getElementById('fuelOut').innerHTML=v<35?'<strong>Low intensity</strong> (walking, easy jog): mostly <strong>fatty acid oxidation</strong>. Fat stores are huge, so this can go on a long time.'
+      :v<70?'<strong>Moderate intensity</strong>: a mix, with fat still a major fuel. Trained athletes burn more fat here and save glycogen.'
+      :'<strong>High intensity</strong> (sprints, intervals): ATP mainly from <strong>carbohydrate</strong>. Glycogen (under 2,000 kcal) drains fast, and when it runs out muscles fatigue.';
+    document.getElementById('fuelOut').innerHTML+='<br><span style="color:var(--slate)">Shares are illustrative, to show the direction of the shift.</span>'; }
+  R.oninput=upd; upd();
+})();
+(function(){
+  const W=document.getElementById('cW'),H=document.getElementById('cH');
+  function upd(){ const w=+W.value,h=+H.value; document.getElementById('cWv').textContent=w+' kg'; document.getElementById('cHv').textContent=h+' h';
+    const hi=h>=4, lo=hi?8:6, up=hi?12:10, o=document.getElementById('cOut'), gly=6*w;
+    o.innerHTML=(hi?'Over 4 h/day':'1 to 3 h/day')+' calls for $'+lo+'$ to $'+up+'$ g/kg: $'+w+'\\times'+lo+'='+(w*lo)+'$ to $'+w+'\\times'+up+'='+(w*up)+'$ <strong>g carbohydrate/day</strong>.'
+      +'<br>Glycogen stored at about 6 g/kg: $'+w+'\\times 6='+gly+'$ g, which pulls in about $'+gly+'\\times 3='+(gly*3)+'$ g of water.'
+      +(h>3&&h<4?'<br><span style="color:var(--slate)">Between 3 and 4 h the notes give no separate range; use the 6 to 10 g/kg band.</span>':'');
+    renderMath(o); }
+  [W,H].forEach(x=>x.oninput=upd); window.addEventListener('load',upd); upd();
+})();
+(function(){
+  const B=document.getElementById('sB'),A=document.getElementById('sA');
+  function upd(){ const b=+B.value,a=+A.value; document.getElementById('sBv').textContent=b+' lb'; document.getElementById('sAv').textContent=a+' lb';
+    const lost=b-a, pct=lost/b*100, o=document.getElementById('sOut');
+    o.innerHTML=lost<=0?'No weight lost. Good hydration (but watch for overdrinking plain water in long events: hyponatremia).'
+      :'$\\dfrac{'+lost.toFixed(1)+'}{'+b+'}\\times 100='+pct.toFixed(1)+'\\%$ of body weight lost. '+(pct>2?'<strong style="color:var(--bad)">Over the 2% limit.</strong> Performance suffers and heat illness risk climbs. Drink more during the session.':'<strong style="color:var(--good)">Within the 2% limit.</strong> Max allowed for this athlete: '+(b*0.02).toFixed(1)+' lb.');
+    renderMath(o); }
+  [B,A].forEach(x=>x.oninput=upd); window.addEventListener('load',upd); upd();
+})();
+(function(){
+  const R=document.getElementById('dR');
+  function upd(){ const v=+R.value; document.getElementById('dV').textContent=v+'%';
+    document.getElementById('dPin').style.left='calc('+((v-2)/12*100)+'% - 2px)';
+    document.getElementById('dOut').innerHTML=v<6?'Under 6%: may not help performance.':v<=8?'About 7% is typical and ideal: enough carbohydrate to help, absorbed easily.':v<=10?'8 to 10% and up: risk of cramps, nausea, and diarrhea begins.':'Over 10%: likely cramps, nausea, and diarrhea. Too concentrated to drink during exercise.'; }
+  R.oninput=upd; upd();
+})();
+makeSorter(document.getElementById('ncaaSort'),[
+ {t:'Vitamins',bin:0},{t:'Sports drinks',bin:0},{t:'Energy bars',bin:0},
+ {t:'High-protein supplements',bin:1},
+ {t:'Anabolic steroids',bin:2},{t:'DHEA',bin:2},{t:'hGH (human growth hormone)',bin:2}
+],['Permissible','Impermissible','Banned']);
+renderCloze(document.getElementById('cloze15'),[
+ 'Physical activity = movement from muscle contractions that significantly raises [[energy]] expenditure.',
+ 'Exercise = [[planned]], structured, repetitive movement.',
+ 'Adult guideline: at least [[150]] min/week moderate OR [[75]] min/week vigorous, plus muscle strengthening at least [[2|two]] days/week.',
+ 'Top of the activity pyramid (least often) = [[sedentary]] activities.',
+ 'Aerobic exercise [[3-5|3 to 5]] days/week; flexibility [[2-3|2 to 3]] days/week; strength [[2-3|2 to 3]] days/week.',
+ 'Training sessions run: warm-up, peak activity, [[cool-down|cooldown|cool down]].',
+ 'Glucose is stored as [[glycogen]] in the liver and muscles.',
+ 'Total glycogen stores hold less than [[2,000|2000]] kcal, roughly [[20|twenty]] miles of running; then muscles [[fatigue]].',
+ 'High intensity: ATP mainly from [[carbohydrate|carbohydrates|carbs|glucose]]; moderate intensity: [[fatty]] acid oxidation.',
+ 'Trained athletes oxidize more [[fat]] at the same intensity, sparing glycogen.',
+ 'Male endurance athletes training >90 min/day need at least [[50]] kcal/kg/day; females [[45-50|45 to 50]].',
+ 'Training 1 to 3 h/day: [[6-10|6 to 10]] g carbohydrate/kg/day; more than 4 to 5 h/day: [[8-12|8 to 12]] g/kg/day.',
+ 'Carbohydrate loading helps in events lasting longer than [[90]] minutes.',
+ 'A healthy person stores about [[6|six]] g glycogen per kg; each gram takes about [[3|three]] g water with it.',
+ 'Athletes: [[20-35|20 to 35]]% of energy from fat, saturated fat under [[10]]%; below [[20]]% risks inadequate nutrients.',
+ 'Carbohydrate [[spares]] protein, because fatty acids can [[never]] provide glucose.',
+ 'DOMS comes from [[microtears]] in muscle fibers, hitting [[24-48|24 to 48]] hours after activity.',
+ 'Protein: [[20-30|20 to 30]] g at each of 4 to 5 meals; needs can be met without protein [[supplements]].',
+ 'Routine [[antioxidant]] vitamin supplements are NOT recommended.',
+ 'Iron deficiency risk is high in females and [[distance]] runners.',
+ 'Iron is part of [[hemoglobin|haemoglobin]].',
+ '[[Sports]] anemia is a temporary, adaptive response to endurance training.',
+ 'Heat illnesses: muscle [[cramps]], heat [[exhaustion]], heatstroke.',
+ 'Heatstroke = body temperature above [[104]] degrees F, potentially [[fatal|deadly]].',
+ 'Do not lose more than [[2|two]]% of body weight during exercise.',
+ 'Electrolytes lost in sweat: sodium, [[potassium]], chloride, magnesium.',
+ 'Most sports drinks are about [[7|seven]]% carbohydrate; over 8 to 10% can cause cramps, nausea, and [[diarrhea|diarrhoea]].',
+ 'Sports drinks help in strenuous activity lasting longer than [[1|one]] hour.',
+ 'Plain water only can cause [[hyponatremia]] (low blood sodium).',
+ 'Ergogenic aid = used to enhance [[physical performance|performance|physical]].',
+ 'Most dangerous class: [[anabolic]] steroids.',
+ 'Creatine makes creatine [[phosphate]], supported for [[high]]-intensity work.',
+ 'NCAA caps urine caffeine at [[15]] mg/L.',
+ 'NCAA: permissible, [[impermissible]], and banned (steroids, DHEA, [[hGH|HGH|human growth hormone]]).'
+]);
+renderSRS(document.getElementById('srs15'), NUTRI_SRS, {chapters:[15]});
+renderMCQ(document.getElementById('mcq15'), NUTRI_EXAM.filter(q=>q.topic.startsWith('15')).sort(()=>Math.random()-.5).slice(0,10));
+
+/* ===== Readiness + all-chapter SRS ===== */
+function drawReady(){
+  const box=document.getElementById('ready'); if(!box) return; const hist=examLoad(); let h='';
+  [[13,'Ch 13 Weight Management'],[14,'Ch 14 Eating Disorders'],[15,'Ch 15 Sports Nutrition']].forEach(([c,n])=>{
+    const st=srsStats(NUTRI_SRS.filter(x=>x.ch===c)), pl=Math.round(st.learned/st.total*100), ps=Math.round(st.seen/st.total*100);
+    let er=null; for(let i=hist.length-1;i>=0;i--){ const b=hist[i].byCh&&hist[i].byCh[c]; if(b){ er=b; break; } }
+    const ep=er?Math.round(er[0]/er[1]*100):null;
+    h+='<div class="ready-cell"><h4>'+n+'</h4><div class="lbl">Cards seen: '+st.seen+' / '+st.total+'</div><div class="bar"><i style="width:'+ps+'%"></i></div>'
+      +'<div class="lbl">Cards learned: '+pl+'%</div><div class="bar"><i style="width:'+pl+'%"></i></div>'
+      +'<div class="lbl">Last exam score: '+(ep===null?'not taken yet':ep+'% ('+er[0]+'/'+er[1]+')')+'</div><div class="bar"><i style="width:'+(ep||0)+'%;background:'+(ep!==null&&ep<80?'var(--bad)':'var(--good)')+'"></i></div>'
+      +'<div class="lbl"><strong>'+((pl>=80&&ep>=80)?'Ready':'Keep going')+'</strong></div></div>';
+  });
+  box.innerHTML=h;
+}
+renderSRS(document.getElementById('srsAll'), NUTRI_SRS, {filterable:true, onChange:drawReady});
+
+/* ===== Practice exam ===== */
+(function(){
+  let N=45, CH='all', tick=null;
+  document.querySelectorAll('#examLen [data-n]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#examLen [data-n]').forEach(x=>x.classList.toggle('active',x===b)); N=+b.dataset.n; });
+  document.querySelectorAll('#examCh [data-c]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('#examCh [data-c]').forEach(x=>x.classList.toggle('active',x===b)); CH=b.dataset.c; });
+  function hist(){ const a=examLoad(); const el=document.getElementById('examHist');
+    el.innerHTML=a.length?'<strong>Recent attempts:</strong><br>'+a.slice(-5).reverse().map(r=>new Date(r.at).toLocaleDateString()+' &middot; '+r.scope+' &middot; '+r.right+'/'+r.total+' ('+Math.round(100*r.right/r.total)+'%)').join('<br>'):'No attempts yet. Aim for 80% or higher on a full exam before test day.'; }
+  function pickQs(){
+    const pool=NUTRI_EXAM.filter(q=>CH==='all'||q.topic.startsWith(CH));
+    const by={}; pool.forEach(q=>(by[q.topic]=by[q.topic]||[]).push(q));
+    Object.values(by).forEach(a=>a.sort(()=>Math.random()-.5));
+    const out=[]; const keys=Object.keys(by).sort(()=>Math.random()-.5); const n=Math.min(N,pool.length);
+    while(out.length<n){ let added=false; keys.forEach(k=>{ if(out.length<n&&by[k].length){ out.push(by[k].pop()); added=true; } }); if(!added) break; }
+    return out.sort((a,b)=>a.topic.localeCompare(b.topic,undefined,{numeric:true}));
+  }
+  document.getElementById('examStart').onclick=()=>{
+    const qs=pickQs(); const card=document.getElementById('examCard'); card.style.display='';
+    const t0=Date.now(), tm=document.getElementById('timer'); tm.style.display=''; clearInterval(tick);
+    tick=setInterval(()=>{ const s=Math.floor((Date.now()-t0)/1000); tm.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0')+' elapsed'; },1000);
+    renderMCQ(document.getElementById('examBox'), qs, {mode:'test', onSubmit:(right,total,by)=>{
+      clearInterval(tick);
+      const byCh={}; Object.keys(by).forEach(t=>{ const c=t.slice(0,2); byCh[c]=byCh[c]||[0,0]; byCh[c][0]+=by[t][0]; byCh[c][1]+=by[t][1]; });
+      examSave({at:Date.now(),scope:(CH==='all'?'All chapters':'Ch '+CH)+', '+total+' Q',right,total,byCh});
+      hist(); drawReady();
+    }});
+    card.scrollIntoView({behavior:'smooth'});
+  };
+  hist();
+})();
+drawReady();
+
+/* ===== Tabs ===== */
+(function(){
+  const names={ch13:'Weight Management',ch14:'Eating Disorders',ch15:'Sports Nutrition',srs:'Flashcard Review',exam:'Practice Exam'};
+  function show(t){ if(!names[t]) t='ch13';
+    document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('on',s.id==='tab-'+t));
+    document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle(b.tagName==='A'?'active':'on',b.dataset.tab===t));
+    document.getElementById('breadNow').textContent=names[t];
+    if(t==='srs') drawReady();
+    renderMath(document.getElementById('tab-'+t));
+    window.scrollTo(0,0); }
+  document.querySelectorAll('#tabbar [data-tab]').forEach(b=>b.onclick=()=>{ history.replaceState(null,'','#'+b.dataset.tab); show(b.dataset.tab); });
+  window.addEventListener('hashchange',()=>show(location.hash.slice(1)));
+  show(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>
