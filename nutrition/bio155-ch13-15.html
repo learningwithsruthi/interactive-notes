@@ -127,6 +127,25 @@
   <h2 class="card-title"><span class="num">13.2</span>BMI: the quick screen</h2>
   <p class="body-text">Body mass index compares weight to height:</p>
   <p class="body-text" style="text-align:center">$$\text{BMI}=\frac{\text{weight in kg}}{(\text{height in m})^2}$$</p>
+  <h3 class="sub-title">Converting units first</h3>
+  <p class="body-text">The formula only works in <strong>kilograms</strong> and <strong>meters</strong>. If you are given pounds, feet, inches, or centimeters, convert before you plug in.</p>
+  <div class="map-table-wrap"><table class="map-table">
+    <tr><th>You have</th><th>Do this</th><th>Example</th></tr>
+    <tr><td>Pounds (lb)</td><td>Divide by 2.2 to get kg</td><td>$154\text{ lb}\div 2.2=70\text{ kg}$</td></tr>
+    <tr><td>Feet and inches</td><td>Feet times 12, plus the inches</td><td>$5\text{ ft }6\text{ in}=5\times12+6=66\text{ in}$</td></tr>
+    <tr><td>Inches (in)</td><td>Multiply by 0.0254 to get m (1 in = 2.54 cm)</td><td>$66\times0.0254=1.68\text{ m}$</td></tr>
+    <tr><td>Centimeters (cm)</td><td>Divide by 100 to get m</td><td>$168\text{ cm}\div100=1.68\text{ m}$</td></tr>
+    <tr><td>Grams (g)</td><td>Divide by 1,000 to get kg</td><td>$70{,}000\text{ g}\div1000=70\text{ kg}$</td></tr>
+  </table></div>
+  <div class="worked-example">
+    <div class="step"><span class="step-label">Example</span> A student is 5 ft 6 in tall and weighs 154 lb. Find the BMI.</div>
+    <div class="step"><span class="step-label">Weight</span> $154\div2.2=70\text{ kg}$</div>
+    <div class="step"><span class="step-label">Height</span> $5\times12+6=66\text{ in}$, then $66\times0.0254=1.68\text{ m}$</div>
+    <div class="step"><span class="step-label">Square</span> $1.68^2=2.82$</div>
+    <div class="step"><span class="step-label">Divide</span> $\text{BMI}=70\div2.82=24.8$, healthy weight (just under 25)</div>
+  </div>
+  <div class="note-flag"><span class="flag-label">Pounds and inches shortcut</span>If you stay in pounds and inches, multiply by 703: $\text{BMI}=\dfrac{703\times\text{lb}}{(\text{in})^2}$. Check: $\dfrac{703\times154}{66^2}=\dfrac{108{,}262}{4{,}356}=24.9$. Same answer, small rounding difference. The most common mistake is forgetting to <strong>square</strong> the height.</div>
+  <div class="practice-box"><div class="q"><strong>Try it:</strong> 198 lb and 6 ft 0 in. What is the BMI and category?</div><button class="show-ans-btn" onclick="toggleAns('aBmiC')">Show Answer</button><div class="a" id="aBmiC">$198\div2.2=90\text{ kg}$. $6\times12=72\text{ in}$, $72\times0.0254=1.83\text{ m}$, $1.83^2=3.35$. $\text{BMI}=90\div3.35=26.9$, overweight.</div></div>
   <div class="map-table-wrap"><table class="map-table">
     <tr><th>BMI</th><th>Category</th></tr>
     <tr><td class="code">below 18.5</td><td>Underweight</td></tr>
@@ -137,7 +156,7 @@
   <div class="mnemo"><span class="mlabel">Memory Hook</span><strong>18.5, 25, 30</strong>: three fences split the line into four fields. Picture a runner clearing hurdles at 18.5, 25, and 30.</div>
   <div class="interactive-area">
     <div class="ia-label">BMI Calculator</div>
-    <div class="pick-row" style="justify-content:center"><button class="pick-btn active" data-u="imp">Pounds and Inches</button><button class="pick-btn" data-u="met">Kilograms and Meters</button></div>
+    <div class="pick-row" style="justify-content:center"><button class="pick-btn active" data-u="imp">Pounds and Inches</button><button class="pick-btn" data-u="met">Kilograms and Meters</button><button class="pick-btn" data-u="cm">Kilograms and Centimeters</button></div>
     <div class="ctrl-row">
       <div class="ctrl"><label id="wLbl">Weight (lb)</label><input type="range" id="bmiW" min="80" max="350" value="150"><span class="val-chip" id="bmiWv"></span></div>
       <div class="ctrl"><label id="hLbl">Height (in)</label><input type="range" id="bmiH" min="55" max="80" value="66"><span class="val-chip" id="bmiHv"></span></div>
@@ -639,7 +658,7 @@
 </div>
 
 <script src="nutrition.js?v=1"></script>
-<script src="srs-ch13.js?v=1"></script>
+<script src="srs-ch13.js?v=2"></script>
 <script src="exam-ch13.js?v=1"></script>
 <script src="srs-ch14.js?v=1"></script>
 <script src="exam-ch14.js?v=1"></script>
@@ -656,21 +675,27 @@ function css(v){ return getComputedStyle(document.body).getPropertyValue(v).trim
   let unit='imp'; const W=document.getElementById('bmiW'), H=document.getElementById('bmiH');
   function setUnit(u){ unit=u;
     if(u==='imp'){ W.min=80;W.max=350;W.step=1;W.value=150; H.min=55;H.max=80;H.step=1;H.value=66; document.getElementById('wLbl').textContent='Weight (lb)'; document.getElementById('hLbl').textContent='Height (in)'; }
-    else { W.min=36;W.max=160;W.step=1;W.value=68; H.min=1.4;H.max=2.05;H.step=.01;H.value=1.68; document.getElementById('wLbl').textContent='Weight (kg)'; document.getElementById('hLbl').textContent='Height (m)'; }
+    else if(u==='met'){ W.min=36;W.max=160;W.step=1;W.value=68; H.min=1.4;H.max=2.05;H.step=.01;H.value=1.68; document.getElementById('wLbl').textContent='Weight (kg)'; document.getElementById('hLbl').textContent='Height (m)'; }
+    else { W.min=36;W.max=160;W.step=1;W.value=68; H.min=140;H.max=205;H.step=1;H.value=168; document.getElementById('wLbl').textContent='Weight (kg)'; document.getElementById('hLbl').textContent='Height (cm)'; }
     upd(); }
   function upd(){
     const w=+W.value, h=+H.value; let kg,m;
-    if(unit==='imp'){ kg=w*0.4536; m=h*0.0254; document.getElementById('bmiWv').textContent=w+' lb'; document.getElementById('bmiHv').textContent=Math.floor(h/12)+' ft '+(h%12)+' in'; }
-    else { kg=w; m=h; document.getElementById('bmiWv').textContent=w+' kg'; document.getElementById('bmiHv').textContent=h.toFixed(2)+' m'; }
+    if(unit==='imp'){ kg=w/2.2; m=h*0.0254; document.getElementById('bmiWv').textContent=w+' lb'; document.getElementById('bmiHv').textContent=Math.floor(h/12)+' ft '+(h%12)+' in'; }
+    else if(unit==='met'){ kg=w; m=h; document.getElementById('bmiWv').textContent=w+' kg'; document.getElementById('bmiHv').textContent=h.toFixed(2)+' m'; }
+    else { kg=w; m=h/100; document.getElementById('bmiWv').textContent=w+' kg'; document.getElementById('bmiHv').textContent=h+' cm'; }
     const b=kg/(m*m); const cat=b<18.5?'underweight':b<25?'healthy weight':b<30?'overweight':'obese';
-    const pos=Math.max(0,Math.min(100,(b-11)/(41-11)*100));
-    // map so 18.5 -> 17.5%, 25 -> 50%, 30 -> 75% piecewise
     let p; if(b<18.5) p=Math.max(0,(b-12)/(6.5))*17.5; else if(b<25) p=17.5+(b-18.5)/6.5*32.5; else if(b<30) p=50+(b-25)/5*25; else p=Math.min(99,75+(b-30)/10*25);
     document.getElementById('pin').style.left='calc('+p+'% - 2px)';
-    const out=document.getElementById('bmiOut');
-    out.innerHTML='$\\text{BMI}=\\dfrac{'+kg.toFixed(1)+'}{('+m.toFixed(2)+')^2}='+b.toFixed(1)+'$ &nbsp; <strong>'+cat+'</strong>'
-      +(unit==='imp'?'<br><span style="color:var(--slate)">Converted: '+w+' lb is '+kg.toFixed(1)+' kg and '+h+' in is '+m.toFixed(2)+' m.</span>':'')
-      +'<br><span style="color:var(--slate)">Remember: this says nothing about how much of that weight is muscle vs fat.</span>';
+    const out=document.getElementById('bmiOut'), lb=kg*2.2, inch=m/0.0254, ft=Math.floor(Math.round(inch)/12), ri=Math.round(inch)%12;
+    let steps='';
+    if(unit==='imp') steps='<strong>Step 1, weight:</strong> $'+w+'\\text{ lb}\\div 2.2='+kg.toFixed(1)+'\\text{ kg}$<br>'
+      +'<strong>Step 2, height:</strong> $'+Math.floor(h/12)+'\\text{ ft }'+(h%12)+'\\text{ in}='+h+'\\text{ in}$, and $'+h+'\\times0.0254='+m.toFixed(2)+'\\text{ m}$<br>';
+    else if(unit==='cm') steps='<strong>Step 1, height:</strong> $'+h+'\\text{ cm}\\div100='+m.toFixed(2)+'\\text{ m}$<br>';
+    steps+='<strong>'+(unit==='imp'?'Step 3':unit==='cm'?'Step 2':'Step 1')+', square and divide:</strong> $\\text{BMI}=\\dfrac{'+kg.toFixed(1)+'}{('+m.toFixed(2)+')^2}=\\dfrac{'+kg.toFixed(1)+'}{'+(m*m).toFixed(2)+'}='+b.toFixed(1)+'$ &nbsp; <strong>'+cat+'</strong>';
+    if(unit==='imp') steps+='<br><strong>Shortcut check:</strong> $\\dfrac{703\\times'+w+'}{'+h+'^2}='+(703*w/(h*h)).toFixed(1)+'$';
+    out.innerHTML=steps
+      +'<br><span style="color:var(--slate)">Same person in other units: '+lb.toFixed(0)+' lb = '+kg.toFixed(1)+' kg; '+ft+' ft '+ri+' in = '+Math.round(inch)+' in = '+(m*100).toFixed(0)+' cm = '+m.toFixed(2)+' m.</span>'
+      +'<br><span style="color:var(--slate)">Remember: BMI says nothing about how much of that weight is muscle vs fat.</span>';
     renderMath(out);
   }
   document.querySelectorAll('[data-u]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('[data-u]').forEach(x=>x.classList.toggle('active',x===b)); setUnit(b.dataset.u); });
@@ -799,6 +824,7 @@ renderCloze(document.getElementById('cloze'),[
  'PCOS: irregular or absent periods, low [[estrogen]], high [[testosterone]], ovarian cysts, insulin resistance.',
  'Weight stigma leads to avoidance of [[health-care|health care|healthcare|health]] services.',
  'BMI = weight in [[kilograms|kg]] divided by the square of height in [[meters|m|metres]].',
+ 'To convert pounds to kilograms, divide by [[2.2]]; to convert centimeters to meters, divide by [[100]].',
  'BMI does not describe body [[composition]]; it is less useful for people with [[chronic]] illnesses.',
  'Normal weight obesity = normal BMI but elevated percent [[body fat|fat]].',
  '[[Essential]] fat is the amount needed for body processes to occur normally.',

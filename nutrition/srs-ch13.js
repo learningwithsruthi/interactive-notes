@@ -10,6 +10,7 @@ window.NUTRI_SRS=(window.NUTRI_SRS||[]).concat([
 {id:'c13-stigma',ch:13,sec:'Overweight vs Obesity',kind:'Fact',f:'Name effects of weight stigma in health care.',b:'Psychological distress and avoiding health-care services, plus binge eating, less activity, more weight gain, isolation, depression, and low self-esteem.'},
 /* 13.2 BMI */
 {id:'c13-bmi-formula',ch:13,sec:'BMI',kind:'Fact',f:'What is the BMI formula?',b:'BMI = weight in kilograms divided by height in meters squared (kg/m&sup2;).',m:'Kilos over meters squared. Never pounds and inches without a conversion.'},
+{id:'c13-bmi-convert',ch:13,sec:'BMI',kind:'Number',f:'How do you convert pounds, inches, and centimeters for the BMI formula?',b:'Pounds divided by 2.2 = kg. Inches times 0.0254 = m (1 in = 2.54 cm). Centimeters divided by 100 = m. Feet times 12 = inches. Shortcut in lb and in: BMI = 703 x lb / in squared.',m:'Formula speaks metric only: kilos and meters. Convert first, square the height, then divide.'},
 {id:'c13-bmi-under',ch:13,sec:'BMI',kind:'Number',f:'What BMI is underweight?',b:'Below 18.5.'},
 {id:'c13-bmi-healthy',ch:13,sec:'BMI',kind:'Number',f:'What BMI range is healthy weight?',b:'18.5 to 24.9.'},
 {id:'c13-bmi-over',ch:13,sec:'BMI',kind:'Number',f:'What BMI range is overweight?',b:'25 to 29.9.'},
